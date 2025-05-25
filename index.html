@@ -3,271 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary, My Love ❤️</title>
-    <meta name="description" content="A romantic anniversary website celebrating our love story">
+    <title>❤️ For My Sweet Jerry (Puja) ❤️</title>
+    <meta name="description" content="A special surprise for my love">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- CSS Libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff6b9d, #ffa8cc, #ffb3d6, #ff8fab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            transform: rotate(45deg);
+            animation: floatUp 8s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.7;
+                transform: translateY(85vh) rotate(45deg) scale(1);
+            }
+            85% {
+                opacity: 0.7;
+                transform: translateY(15vh) rotate(45deg) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .enter-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .enter-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden">
-    
-    <!-- Particles Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>
-    
-    <!-- Music Player -->
-    <div id="music-player" class="fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur-sm rounded-full p-3 shadow-lg">
-        <button id="play-pause-btn" class="w-12 h-12 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center text-white transition-colors">
-            <svg id="play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-            </svg>
-            <svg id="pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-            </svg>
-        </button>
-        <input type="range" id="volume-slider" min="0" max="100" value="50" class="mt-2 w-12 accent-pink-500">
+<body>
+    <div class="container">
+        <h1 class="font-dancing text-5xl md:text-7xl mb-6 drop-shadow-lg">
+            💕 For My Sweet Jerry 💕
+        </h1>
+        <h2 class="text-2xl md:text-3xl mb-4 opacity-90">
+            My Dearest Puja (Pujuu) 🐒
+        </h2>
+        <p class="text-lg md:text-xl mb-8 opacity-80 max-w-md mx-auto">
+            I have prepared something very special for you... 
+            <br>A surprise that's been waiting just for you! ✨
+        </p>
+        
+        <a href="countdown.html" class="enter-btn">
+            🎁 Open Your Surprise 🎁
+        </a>
+        
+        <p class="text-sm mt-6 opacity-70 font-dancing">
+            With all my love, Your Mankada (Soumya) 💖
+        </p>
     </div>
-
-    <!-- Hidden Audio -->
-    <audio id="background-music" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-    </audio>
-
-    <!-- YouTube Music Player (Hidden) -->
-    <div class="hidden">
-        <iframe id="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/ilNt2bikxDI?autoplay=0&loop=1&playlist=ilNt2bikxDI&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+    <!-- Floating hearts -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+        <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1s; animation-duration: 7s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 2s; animation-duration: 8s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 3s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 4s; animation-duration: 7s;"></div>
     </div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-sm border-b border-pink-200">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-center space-x-6">
-                <a href="#welcome" class="text-pink-600 hover:text-pink-800 transition-colors">Home</a>
-                <a href="#story" class="text-pink-600 hover:text-pink-800 transition-colors">Our Story</a>
-                <a href="#gallery" class="text-pink-600 hover:text-pink-800 transition-colors">Gallery</a>
-                <a href="#message" class="text-pink-600 hover:text-pink-800 transition-colors">Love Letter</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Welcome Section -->
-    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 pt-16">
-        <div class="text-center px-4">
-            <div class="floating-hearts">
-                <div class="heart"></div>
-                <div class="heart"></div>
-                <div class="heart"></div>
-                <div class="heart"></div>
-                <div class="heart"></div>
-            </div>
+    
+    <!-- Sparkles -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
+        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 30%; left: 85%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 60%; left: 25%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 80%; left: 75%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+    </div>
+    
+    <script>
+        // Add some extra sparkles dynamically
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparkle.style.zIndex = '2';
+            sparkle.style.pointerEvents = 'none';
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-6 font-dancing" data-aos="fade-up">
-                Happy Anniversary, My Love ❤️
-            </h1>
-              <h2 class="text-2xl md:text-3xl text-pink-700 mb-8 font-dancing" data-aos="fade-up" data-aos-delay="200">
-                To my dearest <span class="text-red-500">Puja (Pujuu)</span>, my sweet <span class="text-red-500">Jerry</span> 🐒💕
-            </h2>
+            document.body.appendChild(sparkle);
             
-            <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                <span id="typed-text" class="border-r-2 border-pink-500"></span>
-            </div>
-            
-            <button onclick="scrollToSection('story')" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg" data-aos="fade-up" data-aos-delay="600">
-                Explore Our Love Story 💕
-            </button>
-        </div>
-    </section>
-
-    <!-- Our Love Story Section -->
-    <section id="story" class="py-20 relative z-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center text-pink-600 mb-16 font-dancing" data-aos="fade-up">
-                Our Beautiful Journey Together 💖
-            </h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="timeline">
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">January 14, 2020</div>
-                        <div class="timeline-content">
-                            <h3>First Meeting 💫</h3>
-                            <p>The day our eyes met and I knew you were special. Your smile lit up my entire world, my sweet Jerry.</p>
-                            <div class="timeline-image">
-                                <img src="images/first-meeting.jpg" alt="First Meeting" class="w-full h-40 object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">March 22, 2020</div>
-                        <div class="timeline-content">
-                            <h3>First Date 🌹</h3>
-                            <p>Our magical first date where we talked for hours. I realized I could spend forever listening to your voice.</p>
-                            <div class="timeline-image">
-                                <img src="images/first-date.jpg" alt="First Date" class="w-full h-40 object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">June 15, 2020</div>
-                        <div class="timeline-content">
-                            <h3>First "I Love You" 💕</h3>
-                            <p>The moment we confessed our love under the starlit sky. My heart has been yours ever since, beautiful Puja.</p>
-                            <div class="timeline-image">
-                                <img src="images/first-love.jpg" alt="First I Love You" class="w-full h-40 object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">December 25, 2020</div>
-                        <div class="timeline-content">
-                            <h3>Our First Christmas 🎄</h3>
-                            <p>Celebrating our first Christmas together, creating memories that warm my heart to this day.</p>
-                            <div class="timeline-image">
-                                <img src="images/first-christmas.jpg" alt="First Christmas" class="w-full h-40 object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">Today & Forever</div>
-                        <div class="timeline-content">
-                            <h3>Our Anniversary 🎉</h3>
-                            <p>Every day with you feels like a celebration. Here's to many more years of love, laughter, and calling you my adorable Jerry!</p>
-                            <div class="timeline-image">
-                                <img src="images/anniversary.jpg" alt="Anniversary" class="w-full h-40 object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Photo Gallery Section -->
-    <section id="gallery" class="py-20 bg-white/50 relative z-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center text-pink-600 mb-16 font-dancing" data-aos="fade-up">
-                Our Precious Memories 📸
-            </h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="gallery-container" data-aos="fade-up">
-                    <div class="gallery-slide active">
-                        <img src="images/memory1.jpg" alt="Memory 1" class="w-full h-96 object-cover rounded-lg shadow-lg">
-                        <p class="text-center mt-4 text-gray-700">Our first adventure together 💫</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="images/memory2.jpg" alt="Memory 2" class="w-full h-96 object-cover rounded-lg shadow-lg">
-                        <p class="text-center mt-4 text-gray-700">Laughing together like always 😄</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="images/memory3.jpg" alt="Memory 3" class="w-full h-96 object-cover rounded-lg shadow-lg">
-                        <p class="text-center mt-4 text-gray-700">My beautiful Puja ✨</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="images/memory4.jpg" alt="Memory 4" class="w-full h-96 object-cover rounded-lg shadow-lg">
-                        <p class="text-center mt-4 text-gray-700">Being silly together 🐒💕</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="images/memory5.jpg" alt="Memory 5" class="w-full h-96 object-cover rounded-lg shadow-lg">
-                        <p class="text-center mt-4 text-gray-700">Forever and always ❤️</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-navigation mt-8 flex justify-center space-x-4">
-                    <button onclick="previousSlide()" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-                    <button onclick="nextSlide()" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="gallery-dots mt-4 flex justify-center space-x-2">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Love Letter Section -->
-    <section id="message" class="py-20 relative z-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center text-pink-600 mb-16 font-dancing" data-aos="fade-up">
-                A Letter From My Heart 💌
-            </h2>
-            
-            <div class="max-w-3xl mx-auto">
-                <div class="love-letter bg-white/80 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-xl" data-aos="fade-up">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-dancing text-pink-600 mb-4">To My Dearest Puja (Pujuu), My Sweet Jerry 🐒💕</h3>
-                    </div>
-                    
-                    <div class="space-y-6 text-gray-700 leading-relaxed">                        <p>My beautiful Puja,</p>
-                        
-                        <p>Every day with you feels like a beautiful dream that I never want to wake up from. When I call you my little Jerry, it's because you bring such playful joy and endless smiles to my life, just like a mischievous little monkey who has completely stolen my heart.</p>
-                        
-                        <p>You are my sunshine on cloudy days, my anchor in stormy weather, and my greatest adventure. Your laugh is my favorite sound, your smile is my favorite sight, and your love is my greatest treasure.</p>
-                        
-                        <p>From the moment we met, you've made every ordinary day feel extraordinary. Whether we're sharing quiet moments together or being completely silly, every second with you is a gift I cherish.</p>
-                          <p>Thank you for being my partner, my best friend, my love, and my adorable Jerry. Thank you for choosing to love me every single day.</p>
-                        
-                        <p>Here's to all our tomorrows, filled with love, laughter, and endless monkey business! 🐒❤️</p>
-                        
-                        <p class="text-right mt-8">
-                            <span class="font-dancing text-xl text-pink-600">Forever yours,</span><br>
-                            <span class="font-dancing text-2xl text-red-500">Your loving Mankada (Soumya) 💕</span>
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <button id="surprise-btn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        🎉 Click for a Special Surprise! 🎉
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Message Section -->
-    <section id="final" class="py-20 bg-gradient-to-r from-pink-500 to-red-500 text-white relative z-10">
-        <div class="container mx-auto px-4 text-center">            <h2 class="text-4xl md:text-6xl font-bold font-dancing mb-8" data-aos="fade-up">
-                I Love You, Puja ❤️
-            </h2>
-            <p class="text-xl md:text-2xl mb-8 opacity-90" data-aos="fade-up" data-aos-delay="200">
-                My sweet Jerry, you are my everything 🐒💕
-            </p>
-            <p class="text-lg opacity-80" data-aos="fade-up" data-aos-delay="400">
-                Happy Anniversary, my love. Here's to forever together! 🌟
-            </p>
-        </div>
-    </section>
-
-    <!-- Confetti Canvas -->
-    <canvas id="confetti-canvas" class="fixed inset-0 z-30 pointer-events-none"></canvas>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
-    <script src="script.js"></script>
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 2000);
+        }
+        
+        // Create sparkles every 3 seconds
+        setInterval(createSparkle, 3000);
+        
+        // Initial sparkles
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createSparkle, i * 500);
+        }
+        
+        console.log('💕 Welcome to the anniversary surprise! 💕');
+    </script>
 </body>
 </html>

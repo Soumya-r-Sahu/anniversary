@@ -197,7 +197,7 @@ function createFloatingHeart() {
 // Enter button click handler
 enterBtn.addEventListener('click', function() {
     // Redirect to main anniversary page
-    window.location.href = 'index.html';
+    window.location.href = 'anniversary.html';
 });
 
 // Initialize
