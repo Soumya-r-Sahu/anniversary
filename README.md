@@ -2,43 +2,74 @@
 
 A beautiful, romantic anniversary website celebrating your love story with animations, music, and heartfelt messages.
 
+## 🎵 Featured Music
+
+The website includes **YouTube background music** with automatic playback:
+- **Featured Song**: Beautiful romantic music from https://youtu.be/Es4NrOnoNb4
+- **Auto-play**: Music starts automatically on all pages (respects browser restrictions)
+- **User Controls**: Floating music toggle button on every page
+- **Seamless Experience**: Music continues as you navigate between pages
+
 ## ✨ Features
 
 - 🌹 **Romantic Design** - Soft pastels, elegant typography, and loving touches
 - 💬 **Heartfelt Messages** - Personal love letter and anniversary wishes
-- 🎶 **Background Music** - Anuv Jain's romantic songs with player controls
+- 🎶 **Background Music** - YouTube embedded music with user controls
 - 💞 **Animations** - Floating hearts, smooth scrolling, and fade-in effects
 - 📸 **Photo Gallery** - Responsive slideshow of your precious memories
 - 📱 **Mobile Friendly** - Optimized for phones, tablets, and desktop
 - 🎉 **Interactive Features** - Confetti effects and surprise messages
 - ⚡ **Fast Loading** - Optimized performance and smooth animations
-
-## 🎵 Featured Music
-
-The website includes Anuv Jain's beautiful romantic songs:
-- "Jo Tum Mere Ho" - Perfect for the welcome section
-- Additional romantic tracks can be easily added
+- ⏰ **Countdown Timer** - Special countdown to anniversary date
 
 ## 🚀 Quick Start
 
 1. **Download/Clone** this repository
 2. **Add Photos**: Replace placeholder images in the `images/` folder
-3. **Customize**: Edit names, dates, and messages in `index.html`
-4. **Deploy**: Upload to GitHub Pages, Netlify, or any web hosting
+3. **Customize**: Edit names, dates, and messages in the HTML files
+4. **Test**: Open `index.html` in a web browser
+5. **Deploy**: Upload to GitHub Pages, Netlify, or any web hosting
+
+## 📱 Page Flow
+
+The website consists of three main pages:
+
+1. **`index.html`** - Beautiful landing page with entrance
+   - Welcome message for Jerry (Puja)
+   - "Open Your Surprise" button
+   - Floating hearts and sparkle animations
+   - Background music with controls
+
+2. **`countdown.html`** - Countdown to anniversary date
+   - Live countdown timer to June 16th, 2025
+   - Celebration when date arrives
+   - Fireworks and confetti effects
+   - Same background music continues
+
+3. **`anniversary.html`** - Main celebration page
+   - Complete anniversary website
+   - Photo gallery, timeline, love letter
+   - Interactive features and animations
+   - Consistent music experience
 
 ## 📁 File Structure
 
 ```
 anniversary-website/
-├── index.html          # Main website file
+├── index.html          # Landing page with entrance
+├── countdown.html      # Countdown timer to anniversary date
+├── anniversary.html    # Main anniversary celebration page
 ├── style.css           # Custom styles and animations
 ├── script.js           # Interactive features and animations
+├── countdown.js        # Countdown timer functionality
 ├── images/             # Your photo memories
 │   ├── README.md       # Instructions for adding photos
 │   ├── first-meeting.jpg
 │   ├── first-date.jpg
 │   ├── memory1.jpg
 │   └── ... (more photos)
+├── music/              # Music files and documentation
+│   └── README.md       # Music implementation details
 └── README.md           # This file
 ```
 
@@ -117,9 +148,7 @@ anniversary-website/
 
 ## 🎉 Special Thanks
 
-Created with love for **Puja (Pujuu)** and her adorable nickname **Jerry** 🐒💕
 
-From your loving **Mankada (Soumya)** 💕
 
 ---
 

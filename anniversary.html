@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Happy Anniversary, My Love ❤️</title>
     <meta name="description" content="A romantic anniversary website celebrating our love story">
     
-    <!-- Fonts -->
+    <!-- Mobile Chrome Optimization -->
+    <meta name="theme-color" content="#ec4899">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Anniversary Love">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Fonts with optimized loading -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- CSS Libraries -->
@@ -19,46 +32,32 @@
 <body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden">
     
     <!-- Particles Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>
-    
-    <!-- Music Player -->
-    <div id="music-player" class="fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur-sm rounded-full p-3 shadow-lg">
-        <button id="play-pause-btn" class="w-12 h-12 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center text-white transition-colors">
-            <svg id="play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-            </svg>
-            <svg id="pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-            </svg>
+    <div id="particles-js" class="fixed inset-0 z-0"></div>    <!-- Background Music Player -->
+    <div id="music-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 8px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <button id="play-pause-btn" style="background: linear-gradient(135deg, #ff6b9d, #ffa8cc); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease;">
+            <span id="play-icon" style="display: none;">🎵</span>
+            <span id="pause-icon">🔇</span>
         </button>
-        <input type="range" id="volume-slider" min="0" max="100" value="50" class="mt-2 w-12 accent-pink-500">
-    </div>
-
-    <!-- Hidden Audio -->
-    <audio id="background-music" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-    </audio>
-
-    <!-- YouTube Music Player (Hidden) -->
-    <div class="hidden">
-        <iframe id="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/ilNt2bikxDI?autoplay=0&loop=1&playlist=ilNt2bikxDI&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-sm border-b border-pink-200">
+    </div>    <!-- Hidden Audio Player for background music -->
+    <audio id="background-music" loop preload="auto">
+        <source src="music/song1.m4a" type="audio/mp4">
+        <source src="music/song1.mp3" type="audio/mpeg">
+        <source src="music/song1.wav" type="audio/wav">
+        <!-- Fallback message -->
+        Your browser does not support the audio element.
+    </audio><!-- Navigation - Mobile Optimized -->
+    <nav class="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-sm border-b border-pink-200 safe-area-inset-top">
         <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-center space-x-6">
-                <a href="#welcome" class="text-pink-600 hover:text-pink-800 transition-colors">Home</a>
-                <a href="#story" class="text-pink-600 hover:text-pink-800 transition-colors">Our Story</a>
-                <a href="#gallery" class="text-pink-600 hover:text-pink-800 transition-colors">Gallery</a>
-                <a href="#message" class="text-pink-600 hover:text-pink-800 transition-colors">Love Letter</a>
+            <div class="flex justify-center space-x-3 sm:space-x-6 overflow-x-auto">
+                <a href="#welcome" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Home">Home</a>
+                <a href="#story" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Our Story">Our Story</a>
+                <a href="#gallery" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Gallery">Gallery</a>
+                <a href="#message" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Love Letter">Love Letter</a>
             </div>
         </div>
-    </nav>
-
-    <!-- Welcome Section -->
-    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 pt-16">
-        <div class="text-center px-4">
+    </nav>    <!-- Welcome Section - Mobile Optimized -->
+    <section id="welcome" class="min-h-screen min-h-[100dvh] flex items-center justify-center relative z-10 pt-16 px-4">
+        <div class="text-center w-full max-w-4xl">
             <div class="floating-hearts">
                 <div class="heart"></div>
                 <div class="heart"></div>
@@ -67,18 +66,18 @@
                 <div class="heart"></div>
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-6 font-dancing" data-aos="fade-up">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-4 sm:mb-6 font-dancing leading-tight" data-aos="fade-up">
                 Happy Anniversary, My Love ❤️
             </h1>
-              <h2 class="text-2xl md:text-3xl text-pink-700 mb-8 font-dancing" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-6 sm:mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 To my dearest <span class="text-red-500">Puja (Pujuu)</span>, my sweet <span class="text-red-500">Jerry</span> 🐒💕
             </h2>
             
-            <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+            <div class="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="400">
                 <span id="typed-text" class="border-r-2 border-pink-500"></span>
             </div>
             
-            <button onclick="scrollToSection('story')" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg" data-aos="fade-up" data-aos-delay="600">
+            <button onclick="scrollToSection('story')" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 sm:px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 active:from-pink-700 active:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg touch-manipulation min-h-[44px]" data-aos="fade-up" data-aos-delay="600" aria-label="Explore Our Love Story">
                 Explore Our Love Story 💕
             </button>
         </div>
@@ -182,26 +181,25 @@
                         <p class="text-center mt-4 text-gray-700">Forever and always ❤️</p>
                     </div>
                 </div>
-                
-                <div class="gallery-navigation mt-8 flex justify-center space-x-4">
-                    <button onclick="previousSlide()" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="gallery-navigation mt-6 sm:mt-8 flex justify-center space-x-4">
+                    <button onclick="previousSlide()" class="bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white p-3 rounded-full transition-colors touch-manipulation min-h-[44px] min-w-[44px]" aria-label="Previous Image">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
-                    <button onclick="nextSlide()" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="nextSlide()" class="bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white p-3 rounded-full transition-colors touch-manipulation min-h-[44px] min-w-[44px]" aria-label="Next Image">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
                 </div>
                 
                 <div class="gallery-dots mt-4 flex justify-center space-x-2">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot active touch-manipulation" onclick="currentSlide(1)" aria-label="Go to image 1"></span>
+                    <span class="dot touch-manipulation" onclick="currentSlide(2)" aria-label="Go to image 2"></span>
+                    <span class="dot touch-manipulation" onclick="currentSlide(3)" aria-label="Go to image 3"></span>
+                    <span class="dot touch-manipulation" onclick="currentSlide(4)" aria-label="Go to image 4"></span>
+                    <span class="dot touch-manipulation" onclick="currentSlide(5)" aria-label="Go to image 5"></span>
                 </div>
             </div>
         </div>
@@ -237,9 +235,8 @@
                         </p>
                     </div>
                 </div>
-                
-                <div class="text-center mt-12">
-                    <button id="surprise-btn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  <div class="text-center mt-8 sm:mt-12">
+                    <button id="surprise-btn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 sm:px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 active:from-pink-700 active:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg touch-manipulation min-h-[44px]" aria-label="Special Surprise">
                         🎉 Click for a Special Surprise! 🎉
                     </button>
                 </div>

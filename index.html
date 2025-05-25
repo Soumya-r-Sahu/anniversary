@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ff6b9d">
     <title>❤️ For My Sweet Jerry (Puja) ❤️</title>
     <meta name="description" content="A special surprise for my love">
     
-    <!-- Fonts -->
+    <!-- Preload critical fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
+      <style>
+        /* CSS Reset for mobile compatibility */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(-45deg, #ff6b9d, #ffa8cc, #ffb3d6, #ff8fab);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height for mobile */
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
+            padding: 1rem;
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         @keyframes gradientShift {
@@ -28,46 +41,75 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        
-        .container {
+          .container {
             text-align: center;
             color: white;
             z-index: 10;
             position: relative;
+            max-width: 90vw;
+            padding: 1rem;
         }
         
         .font-dancing {
             font-family: 'Dancing Script', cursive;
         }
         
-        .heart {
+        .main-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .description {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .signature {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            margin-top: 1.5rem;
+            opacity: 0.7;
+        }
+          .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: clamp(12px, 3vw, 20px);
+            height: clamp(12px, 3vw, 20px);
             background: #ff6b9d;
             transform: rotate(45deg);
             animation: floatUp 8s infinite ease-in-out;
             opacity: 0.7;
+            will-change: transform;
         }
         
         .heart:before,
         .heart:after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: clamp(12px, 3vw, 20px);
+            height: clamp(12px, 3vw, 20px);
             background: #ff6b9d;
             border-radius: 50%;
         }
         
         .heart:before {
-            top: -10px;
+            top: calc(-50% + 1px);
             left: 0;
         }
         
         .heart:after {
             top: 0;
-            left: -10px;
+            left: calc(-50% + 1px);
         }
         
         @keyframes floatUp {
@@ -88,68 +130,115 @@
                 opacity: 0;
             }
         }
-        
-        .enter-btn {
+          .enter-btn {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 15px 30px;
+            padding: clamp(12px, 4vw, 18px) clamp(24px, 8vw, 36px);
             border-radius: 50px;
-            font-size: 18px;
+            font-size: clamp(1rem, 4vw, 1.125rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 1.5rem;
             animation: pulse 2s infinite;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+            min-height: 44px; /* iOS minimum touch target */
+            min-width: 200px;
         }
         
-        .enter-btn:hover {
+        .enter-btn:hover,
+        .enter-btn:focus {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+            outline: none;
         }
         
-        @keyframes pulse {
+        .enter-btn:active {
+            transform: translateY(-1px) scale(1.02);
+            transition-duration: 0.1s;
+        }
+          @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.02); }
         }
         
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: clamp(3px, 1vw, 6px);
+            height: clamp(3px, 1vw, 6px);
             background: gold;
             border-radius: 50%;
             animation: sparkle 2s infinite;
+            will-change: transform;
         }
         
         @keyframes sparkle {
             0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
             50% { opacity: 1; transform: scale(1) rotate(180deg); }
         }
-    </style>
+        
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .heart,
+            .sparkle,
+            .enter-btn {
+                animation: none;
+            }
+            
+            body {
+                animation: none;
+                background: #ff6b9d;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .enter-btn {
+                border-width: 3px;
+                background: rgba(255, 255, 255, 0.9);
+                color: #000;
+            }
+        }    </style>
 </head>
-<body>
+<body>    <!-- Background Music Player -->
+    <div id="music-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 8px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <button id="music-toggle" style="background: linear-gradient(135deg, #ff6b9d, #ffa8cc); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease;">
+            🎵
+        </button>
+    </div>    <!-- Hidden Audio Player for background music -->
+    <audio id="background-music" loop preload="auto">
+        <source src="music/song1.m4a" type="audio/mp4">
+        <source src="music/song1.mp3" type="audio/mpeg">
+        <source src="music/song1.wav" type="audio/wav">
+        <!-- Fallback message -->
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="container">
-        <h1 class="font-dancing text-5xl md:text-7xl mb-6 drop-shadow-lg">
+        <h1 class="font-dancing main-title drop-shadow-lg">
             💕 For My Sweet Jerry 💕
         </h1>
-        <h2 class="text-2xl md:text-3xl mb-4 opacity-90">
-            My Dearest Puja (Pujuu) 🐒
+        <h2 class="subtitle">
+            My Dearest Pujuu (Jerry)🐭
         </h2>
-        <p class="text-lg md:text-xl mb-8 opacity-80 max-w-md mx-auto">
+        <p class="description">
             I have prepared something very special for you... 
             <br>A surprise that's been waiting just for you! ✨
         </p>
         
-        <a href="countdown.html" class="enter-btn">
+        <a href="countdown.html" class="enter-btn" role="button" aria-label="Open your anniversary surprise">
             🎁 Open Your Surprise 🎁
         </a>
         
-        <p class="text-sm mt-6 opacity-70 font-dancing">
+        <p class="signature font-dancing">
             With all my love, Your Mankada (Soumya) 💖
         </p>
     </div>
@@ -170,11 +259,67 @@
         <div class="sparkle" style="top: 60%; left: 25%; animation-delay: 1s;"></div>
         <div class="sparkle" style="top: 80%; left: 75%; animation-delay: 1.5s;"></div>
         <div class="sparkle" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
-    </div>
-    
-    <script>
-        // Add some extra sparkles dynamically
+    </div>      <script>
+        // Background Music Control - Local Audio
+        let musicPlaying = false;
+        const musicToggle = document.getElementById('music-toggle');
+        const backgroundMusic = document.getElementById('background-music');
+          // Set initial volume
+        backgroundMusic.volume = 0.3; // 30% volume for background music
+        
+        // Auto-play music when page loads
+        backgroundMusic.play().then(() => {
+            musicToggle.innerHTML = '🎵';
+            musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+            musicPlaying = true;
+        }).catch(error => {
+            console.log('Autoplay blocked by browser:', error);
+            // Keep the muted icon if autoplay fails
+            musicToggle.innerHTML = '🔇';
+        });
+        
+        // Initialize music control
+        musicToggle.addEventListener('click', function() {
+            if (musicPlaying) {
+                // Pause music
+                backgroundMusic.pause();
+                musicToggle.innerHTML = '🔇';
+                musicToggle.style.background = 'linear-gradient(135deg, #666, #999)';
+                musicPlaying = false;
+            } else {
+                // Play music
+                backgroundMusic.play().then(() => {
+                    musicToggle.innerHTML = '🎵';
+                    musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                    musicPlaying = true;                }).catch(error => {
+                    console.log('Audio play failed:', error);
+                    // Show user-friendly message
+                    musicToggle.innerHTML = '❌';
+                    musicToggle.title = 'Please check that song1.m4a is in the music folder';
+                });
+            }        });
+        
+        // Handle audio loading errors
+        backgroundMusic.addEventListener('error', function() {
+            musicToggle.innerHTML = '❌';
+            musicToggle.title = 'Music file not found. Please check that song1.m4a is in the music folder';
+            musicToggle.style.background = 'linear-gradient(135deg, #999, #666)';
+        });
+        
+        // Handle audio loading success
+        backgroundMusic.addEventListener('loadeddata', function() {
+            musicToggle.title = 'Click to play/pause background music';
+        });
+        
+        // Mobile-optimized sparkle creation
+        let animationFrameId;
+        let lastSparkleTime = 0;
+        
         function createSparkle() {
+            const now = Date.now();
+            if (now - lastSparkleTime < 1000) return; // Throttle for performance
+            lastSparkleTime = now;
+            
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
             sparkle.style.position = 'fixed';
@@ -193,15 +338,62 @@
             }, 2000);
         }
         
-        // Create sparkles every 3 seconds
-        setInterval(createSparkle, 3000);
-        
-        // Initial sparkles
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createSparkle, i * 500);
+        // Optimized animation loop
+        function animationLoop() {
+            if (Math.random() < 0.1) { // 10% chance per frame
+                createSparkle();
+            }
+            animationFrameId = requestAnimationFrame(animationLoop);
         }
         
-        console.log('💕 Welcome to the anniversary surprise! 💕');
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        // Initialize animations only if motion is allowed
+        if (!prefersReducedMotion) {
+            // Start animation loop
+            animationLoop();
+            
+            // Initial sparkles
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createSparkle, i * 500);
+            }
+        }
+        
+        // Handle page visibility changes for battery optimization
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+            } else if (!prefersReducedMotion) {
+                animationLoop();
+            }
+        });
+        
+        // Touch feedback for the button
+        const enterBtn = document.querySelector('.enter-btn');
+        if (enterBtn) {
+            enterBtn.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-1px) scale(1.02)';
+            }, { passive: true });
+            
+            enterBtn.addEventListener('touchend', function() {
+                this.style.transform = '';
+            }, { passive: true });
+        }
+        
+        // Prevent zoom on double tap for iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        console.log('💕 Mobile-optimized anniversary surprise loaded! 💕');
     </script>
 </body>
 </html>

@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ff6b9d">
     <title>Countdown to Our Special Day ❤️</title>
     <meta name="description" content="Countdown to our anniversary - June 16th">
     
-    <!-- Fonts -->
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
+      <style>
+        /* CSS Reset for mobile compatibility */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         .font-dancing {
             font-family: 'Dancing Script', cursive;
         }
         
-        /* Countdown styling */
+        /* Mobile-optimized countdown styling */
         .countdown-container {
             perspective: 1000px;
         }
@@ -26,9 +35,16 @@
         .countdown-item {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(236, 72, 153, 0.3);
             transform-style: preserve-3d;
             animation: float 6s ease-in-out infinite;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            will-change: transform;
         }
         
         .countdown-item:nth-child(1) { animation-delay: 0s; }
@@ -41,7 +57,22 @@
             50% { transform: translateY(-10px) rotateX(5deg); }
         }
         
-        /* Floating hearts */
+        .countdown-number {
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: bold;
+            color: #ec4899;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-label {
+            font-size: clamp(0.75rem, 3vw, 1rem);
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+          /* Floating hearts */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -55,32 +86,33 @@
         
         .heart {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: clamp(12px, 3vw, 18px);
+            height: clamp(12px, 3vw, 18px);
             background: #ff6b9d;
             transform: rotate(45deg);
             animation: floatUp 8s infinite ease-in-out;
             opacity: 0.7;
+            will-change: transform;
         }
         
         .heart:before,
         .heart:after {
             content: '';
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: clamp(12px, 3vw, 18px);
+            height: clamp(12px, 3vw, 18px);
             background: #ff6b9d;
             border-radius: 50%;
         }
         
         .heart:before {
-            top: -7px;
+            top: calc(-50% + 1px);
             left: 0;
         }
         
         .heart:after {
             top: 0;
-            left: -7px;
+            left: calc(-50% + 1px);
         }
         
         @keyframes floatUp {
@@ -156,12 +188,13 @@
             70% { transform: scale(0.95); }
             100% { opacity: 1; transform: scale(1); }
         }
-        
-        /* Gradient background animation */
+          /* Gradient background animation */
         .gradient-bg {
             background: linear-gradient(-45deg, #ff6b9d, #ffa8cc, #ffb3d6, #ff8fab);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height for mobile */
         }
         
         @keyframes gradientShift {
@@ -169,9 +202,69 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-    </style>
+        
+        /* Mobile-optimized text sizes */
+        .main-title {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.25rem, 5vw, 2rem);
+        }
+        
+        .description {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            line-height: 1.6;
+        }
+        
+        .celebration-title {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            line-height: 1.1;
+        }
+        
+        .celebration-subtitle {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+        }
+        
+        /* Mobile-optimized button */
+        .enter-btn {
+            padding: clamp(12px, 4vw, 18px) clamp(24px, 8vw, 48px);
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .countdown-item,
+            .heart,
+            .sparkle,
+            .celebration-text {
+                animation: none;
+            }
+            
+            .gradient-bg {
+                animation: none;
+                background: #ff6b9d;
+            }
+        }    </style>
 </head>
 <body class="gradient-bg min-h-screen overflow-x-hidden">
+      <!-- Background Music Player -->
+    <div id="music-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 8px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">        <button id="music-toggle" style="background: linear-gradient(135deg, #ff6b9d, #ffa8cc); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease;">
+            🎵
+        </button>
+    </div>    <!-- Hidden Audio Player for background music -->
+    <audio id="background-music" autoplay loop preload="auto">
+        <source src="music/song1.m4a" type="audio/mp4">
+        <source src="music/song1.mp3" type="audio/mpeg">
+        <source src="music/song1.wav" type="audio/wav">
+        <!-- Fallback message -->
+        Your browser does not support the audio element.
+    </audio>
     
     <!-- Floating Hearts -->
     <div class="floating-hearts"></div>
@@ -183,37 +276,35 @@
     <div class="min-h-screen flex items-center justify-center relative z-10 px-4">
         
         <!-- Countdown Section -->
-        <div id="countdown-section" class="text-center max-w-4xl mx-auto">
-            <div class="mb-12" data-aos="fade-up">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-dancing drop-shadow-lg">
+        <div id="countdown-section" class="text-center max-w-4xl mx-auto">            <div class="mb-12" data-aos="fade-up">
+                <h1 class="main-title font-bold text-white mb-6 font-dancing drop-shadow-lg">
                     Our Special Day is Coming! 💕
                 </h1>
-                <p class="text-xl md:text-2xl text-white/90 mb-4">
+                <p class="subtitle text-white/90 mb-4">
                     Countdown to <span class="text-yellow-300 font-semibold">June 16th</span> - Our Anniversary! 
                 </p>
-                <p class="text-lg text-white/80 font-dancing">
+                <p class="description text-white/80 font-dancing">
                     From your loving Mankada (Soumya) to sweet Jerry (Puja) 🐒💕
                 </p>
             </div>
             
             <!-- Countdown Timer -->
-            <div class="countdown-container mb-12" data-aos="fade-up" data-aos-delay="200">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            <div class="countdown-container mb-12" data-aos="fade-up" data-aos-delay="200">                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     <div class="countdown-item p-6 rounded-2xl text-center shadow-2xl">
-                        <div id="days" class="text-3xl md:text-4xl font-bold text-pink-600 mb-2">00</div>
-                        <div class="text-sm md:text-base text-gray-600 uppercase tracking-wide">Days</div>
+                        <div id="days" class="countdown-number">00</div>
+                        <div class="countdown-label">Days</div>
                     </div>
                     <div class="countdown-item p-6 rounded-2xl text-center shadow-2xl">
-                        <div id="hours" class="text-3xl md:text-4xl font-bold text-pink-600 mb-2">00</div>
-                        <div class="text-sm md:text-base text-gray-600 uppercase tracking-wide">Hours</div>
+                        <div id="hours" class="countdown-number">00</div>
+                        <div class="countdown-label">Hours</div>
                     </div>
                     <div class="countdown-item p-6 rounded-2xl text-center shadow-2xl">
-                        <div id="minutes" class="text-3xl md:text-4xl font-bold text-pink-600 mb-2">00</div>
-                        <div class="text-sm md:text-base text-gray-600 uppercase tracking-wide">Minutes</div>
+                        <div id="minutes" class="countdown-number">00</div>
+                        <div class="countdown-label">Minutes</div>
                     </div>
                     <div class="countdown-item p-6 rounded-2xl text-center shadow-2xl">
-                        <div id="seconds" class="text-3xl md:text-4xl font-bold text-pink-600 mb-2">00</div>
-                        <div class="text-sm md:text-base text-gray-600 uppercase tracking-wide">Seconds</div>
+                        <div id="seconds" class="countdown-number">00</div>
+                        <div class="countdown-label">Seconds</div>
                     </div>
                 </div>
             </div>
@@ -229,7 +320,7 @@
                         Your anniversary surprise will be unlocked at exactly <span class="text-yellow-300 font-semibold">12:00 AM on June 16th</span>!
                     </p>
                     <p class="text-base text-white/80">
-                        Get ready for fireworks, confetti, and a beautiful journey through our love story! 🎆💕
+                        Get ready for The Surprise! 🎆💕
                     </p>
                 </div>
             </div>
@@ -249,18 +340,17 @@
         </div>
         
         <!-- Celebration Section (Hidden initially) -->
-        <div id="celebration-section" class="text-center max-w-4xl mx-auto hidden">
-            <div class="celebration-text">
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-6 font-dancing drop-shadow-lg">
+        <div id="celebration-section" class="text-center max-w-4xl mx-auto hidden">            <div class="celebration-text">
+                <h1 class="celebration-title font-bold text-white mb-6 font-dancing drop-shadow-lg">
                     🎉 HAPPY ANNIVERSARY! 🎉
                 </h1>
-                <h2 class="text-2xl md:text-4xl text-yellow-300 mb-8 font-dancing">
+                <h2 class="celebration-subtitle text-yellow-300 mb-8 font-dancing">
                     Welcome to Our Love Story, Jerry! 💕
                 </h2>
                 <p class="text-xl text-white/90 mb-8">
                     The wait is over! Your anniversary surprise is now unlocked! 🔓✨
                 </p>
-                <button id="enter-btn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-12 py-4 rounded-full text-xl font-semibold hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                <button id="enter-btn" class="enter-btn bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-full font-semibold hover:from-pink-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-2xl">
                     Enter Our Love Story 💖
                 </button>
             </div>

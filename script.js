@@ -1,21 +1,47 @@
-// Love Anniversary Website JavaScript
+// Love Anniversary Website JavaScript - Mobile Optimized
 
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 1000,
-    easing: 'ease-in-out',
-    once: true,
-    mirror: false
+// Mobile detection and performance optimization
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const isLowPerformance = isMobile || navigator.hardwareConcurrency <= 2;
+
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Battery optimization
+let isPageVisible = true;
+document.addEventListener('visibilitychange', function() {
+    isPageVisible = !document.hidden;
 });
 
-// Initialize Particles.js
+// Initialize AOS (Animate On Scroll) with mobile optimizations
+AOS.init({
+    duration: isMobile ? 600 : 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false,
+    offset: isMobile ? 50 : 120,
+    delay: isMobile ? 50 : 100
+});
+
+// Initialize Particles.js with mobile optimization
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 50,
+            value: isLowPerformance ? 25 : 50,
             density: {
                 enable: true,
-                value_area: 800
+                value_area: isLowPerformance ? 1200 : 800
             }
         },
         color: {
@@ -32,18 +58,18 @@ particlesJS('particles-js', {
             value: 0.6,
             random: true,
             anim: {
-                enable: true,
+                enable: !isLowPerformance,
                 speed: 1,
                 opacity_min: 0.1,
                 sync: false
             }
         },
         size: {
-            value: 3,
+            value: isMobile ? 2 : 3,
             random: true,
             anim: {
-                enable: true,
-                speed: 2,
+                enable: !isLowPerformance,
+                speed: isLowPerformance ? 1 : 2,
                 size_min: 0.1,
                 sync: false
             }
@@ -52,8 +78,8 @@ particlesJS('particles-js', {
             enable: false
         },
         move: {
-            enable: true,
-            speed: 1,
+            enable: isPageVisible,
+            speed: isLowPerformance ? 0.5 : 1,
             direction: "top",
             random: true,
             straight: false,
@@ -65,7 +91,7 @@ particlesJS('particles-js', {
         detect_on: "canvas",
         events: {
             onhover: {
-                enable: true,
+                enable: !isMobile,
                 mode: "bubble"
             },
             onclick: {
@@ -76,14 +102,14 @@ particlesJS('particles-js', {
         },
         modes: {
             bubble: {
-                distance: 100,
-                size: 6,
+                distance: isMobile ? 80 : 100,
+                size: isMobile ? 4 : 6,
                 duration: 2,
                 opacity: 0.8,
                 speed: 3
             },
             repulse: {
-                distance: 100,
+                distance: isMobile ? 80 : 100,
                 duration: 0.4
             }
         }
@@ -112,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Gallery Functionality
+// Gallery Functionality - Mobile Enhanced
 let currentSlideIndex = 0;
 const slides = document.querySelectorAll('.gallery-slide');
 const dots = document.querySelectorAll('.dot');
@@ -123,10 +149,17 @@ function showSlide(index) {
     dots.forEach(dot => dot.classList.remove('active'));
     
     // Show current slide
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
+    if (slides[index]) {
+        slides[index].classList.add('active');
+        dots[index]?.classList.add('active');
+    }
     
     currentSlideIndex = index;
+    
+    // Haptic feedback on mobile
+    if ('vibrate' in navigator && isMobile) {
+        navigator.vibrate(50);
+    }
 }
 
 function nextSlide() {
@@ -143,66 +176,92 @@ function currentSlide(index) {
     showSlide(index - 1);
 }
 
-// Auto-advance gallery every 5 seconds
-setInterval(nextSlide, 5000);
+// Auto-advance gallery with performance consideration
+let galleryInterval;
+function startGalleryAutoAdvance() {
+    if (galleryInterval) clearInterval(galleryInterval);
+    galleryInterval = setInterval(() => {
+        if (isPageVisible && !isLowPerformance) {
+            nextSlide();
+        }
+    }, isMobile ? 6000 : 5000);
+}
 
-// Music Player Functionality
-const musicPlayer = document.getElementById('background-music');
+// Start auto-advance
+startGalleryAutoAdvance();
+
+// Pause auto-advance when user interacts
+function pauseGalleryAutoAdvance() {
+    if (galleryInterval) {
+        clearInterval(galleryInterval);
+        setTimeout(startGalleryAutoAdvance, 10000); // Restart after 10 seconds
+    }
+}
+
+// Music Player Functionality - Local Audio Implementation
 const playPauseBtn = document.getElementById('play-pause-btn');
 const playIcon = document.getElementById('play-icon');
 const pauseIcon = document.getElementById('pause-icon');
-const volumeSlider = document.getElementById('volume-slider');
-const youtubePlayer = document.getElementById('youtube-player');
+const backgroundMusic = document.getElementById('background-music');
 
 let isPlaying = false;
-let useYoutube = true; // Set to true to use YouTube player
 
-// Initialize volume
-musicPlayer.volume = 0.5;
+// Set initial volume
+if (backgroundMusic) {
+    backgroundMusic.volume = 0.3; // 30% volume for background music
+    
+    // Auto-play music when page loads
+    backgroundMusic.play().then(() => {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        isPlaying = true;
+    }).catch(error => {
+        console.log('Autoplay blocked by browser:', error);
+        // Keep the play icon if autoplay fails
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+    });
+}
 
-playPauseBtn.addEventListener('click', function() {
-    if (useYoutube) {
-        // Toggle YouTube player
-        if (!isPlaying) {
-            // Start YouTube music
-            youtubePlayer.src = youtubePlayer.src.replace('autoplay=0', 'autoplay=1');
-            playIcon.classList.add('hidden');
-            pauseIcon.classList.remove('hidden');
-            isPlaying = true;
-        } else {
-            // Pause YouTube music (reload with autoplay=0)
-            youtubePlayer.src = youtubePlayer.src.replace('autoplay=1', 'autoplay=0');
-            playIcon.classList.remove('hidden');
-            pauseIcon.classList.add('hidden');
-            isPlaying = false;
-        }
-    } else {
-        // Use HTML5 audio
-        if (musicPlayer.paused) {
-            musicPlayer.play().then(() => {
-                playIcon.classList.add('hidden');
-                pauseIcon.classList.remove('hidden');
-                isPlaying = true;
-            }).catch(e => {
-                console.log('Audio play failed:', e);
-                // Fallback to YouTube
-                useYoutube = true;
-                playPauseBtn.click();
-            });
-        } else {
-            musicPlayer.pause();
-            playIcon.classList.remove('hidden');
-            pauseIcon.classList.add('hidden');
-            isPlaying = false;
-        }
+// Initialize music control
+function initializeMusicControl() {
+    if (playPauseBtn && backgroundMusic) {
+        // Music toggle functionality
+        playPauseBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                // Pause music
+                backgroundMusic.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                isPlaying = false;
+            } else {
+                // Play music
+                backgroundMusic.play().then(() => {
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log('Audio play failed:', error);
+                    console.log('Please check that song1.m4a is in the music folder');
+                });
+            }        });
+        
+        // Handle audio loading errors
+        backgroundMusic.addEventListener('error', function() {
+            console.log('Music file not found. Please check that song1.m4a is in the music folder');
+        });
+        
+        // Handle audio loading success
+        backgroundMusic.addEventListener('loadeddata', function() {
+            console.log('Music loaded successfully');
+        });
+          // Initial state will be set by autoplay attempt
     }
-});
+}
 
-volumeSlider.addEventListener('input', function() {
-    if (!useYoutube) {
-        musicPlayer.volume = this.value / 100;
-    }
-    // Note: YouTube embedded player volume control is limited due to API restrictions
+// Initialize music control when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMusicControl();
 });
 
 // Smooth scrolling function
@@ -214,31 +273,39 @@ function scrollToSection(sectionId) {
     });
 }
 
-// Surprise Button with Confetti
+// Surprise Button with Confetti - Mobile Optimized
 const surpriseBtn = document.getElementById('surprise-btn');
 const confettiCanvas = document.getElementById('confetti-canvas');
 const ctx = confettiCanvas.getContext('2d');
 
-// Set canvas size
+// Set canvas size with performance optimization
 function resizeCanvas() {
-    confettiCanvas.width = window.innerWidth;
-    confettiCanvas.height = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = confettiCanvas.getBoundingClientRect();
+    
+    confettiCanvas.width = rect.width * (isMobile ? 1 : dpr);
+    confettiCanvas.height = rect.height * (isMobile ? 1 : dpr);
+    
+    if (!isMobile) {
+        ctx.scale(dpr, dpr);
+    }
 }
 
-window.addEventListener('resize', resizeCanvas);
+const throttledResize = throttle(resizeCanvas, 250);
+window.addEventListener('resize', throttledResize);
 resizeCanvas();
 
-// Confetti particle class
+// Confetti particle class - Mobile optimized
 class Confetti {
     constructor() {
         this.x = Math.random() * confettiCanvas.width;
         this.y = -10;
-        this.size = Math.random() * 3 + 2;
+        this.size = Math.random() * (isMobile ? 2 : 3) + (isMobile ? 1.5 : 2);
         this.speedX = Math.random() * 3 - 1.5;
         this.speedY = Math.random() * 3 + 1;
         this.color = this.getRandomColor();
         this.rotation = Math.random() * 360;
-        this.rotationSpeed = Math.random() * 10 - 5;
+        this.rotationSpeed = Math.random() * (isMobile ? 5 : 10) - (isMobile ? 2.5 : 5);
     }
     
     getRandomColor() {
@@ -265,15 +332,17 @@ class Confetti {
 
 let confettiParticles = [];
 let confettiActive = false;
+let confettiAnimationId;
 
 function createConfetti() {
-    for (let i = 0; i < 150; i++) {
+    const particleCount = isMobile ? 75 : 150;
+    for (let i = 0; i < particleCount; i++) {
         confettiParticles.push(new Confetti());
     }
 }
 
 function animateConfetti() {
-    if (!confettiActive) return;
+    if (!confettiActive || !isPageVisible) return;
     
     ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
     
@@ -289,20 +358,31 @@ function animateConfetti() {
     }
     
     if (confettiParticles.length > 0) {
-        requestAnimationFrame(animateConfetti);
+        confettiAnimationId = requestAnimationFrame(animateConfetti);
     } else {
         confettiActive = false;
     }
 }
 
 function triggerConfetti() {
+    if (confettiActive) return; // Prevent multiple simultaneous confetti
+    
     confettiActive = true;
     createConfetti();
     animateConfetti();
+    
+    // Haptic feedback on mobile
+    if ('vibrate' in navigator && isMobile) {
+        navigator.vibrate([100, 50, 100]);
+    }
 }
 
-// Surprise button event
-surpriseBtn.addEventListener('click', function() {
+// Surprise button event - Mobile Enhanced
+surpriseBtn?.addEventListener('click', function() {
+    // Prevent multiple rapid clicks
+    if (this.disabled) return;
+    this.disabled = true;
+    
     // Change button text
     const originalText = this.innerHTML;
     this.innerHTML = '🎉 Surprise! You are my everything! 🎉';
@@ -310,17 +390,34 @@ surpriseBtn.addEventListener('click', function() {
     
     // Trigger confetti
     triggerConfetti();
-      // Show surprise message
+    
+    // Show surprise message with mobile-friendly alert
     setTimeout(() => {
-        alert('🐒💕 Happy Anniversary, my sweet Jerry! You make every day magical! 💕🐒');
+        if (isMobile) {
+            // Use a more mobile-friendly notification
+            const message = '🐒💕 Happy Anniversary, my sweet Jerry! You make every day magical! 💕🐒';
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('Anniversary Surprise!', { body: message, icon: '💕' });
+            } else {
+                alert(message);
+            }
+        } else {
+            alert('🐒💕 Happy Anniversary, my sweet Jerry! You make every day magical! 💕🐒');
+        }
     }, 500);
     
     // Reset button after 3 seconds
     setTimeout(() => {
         this.innerHTML = originalText;
         this.style.background = '';
+        this.disabled = false;
     }, 3000);
 });
+
+// Request notification permission on mobile
+if (isMobile && 'Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+}
 
 // Navigation smooth scroll
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
@@ -356,26 +453,53 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Create floating hearts periodically
+// Create floating hearts periodically - Mobile Optimized
 function createFloatingHeart() {
+    if (!isPageVisible || isLowPerformance) return;
+    
     const heart = document.createElement('div');
     heart.className = 'heart';
     heart.style.left = Math.random() * 100 + '%';
-    heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+    heart.style.animationDuration = (Math.random() * 3 + (isMobile ? 6 : 5)) + 's';
     heart.style.animationDelay = Math.random() * 2 + 's';
     
-    document.querySelector('.floating-hearts').appendChild(heart);
-    
-    // Remove heart after animation
-    setTimeout(() => {
-        if (heart.parentNode) {
-            heart.parentNode.removeChild(heart);
-        }
-    }, 8000);
+    const heartsContainer = document.querySelector('.floating-hearts');
+    if (heartsContainer) {
+        heartsContainer.appendChild(heart);
+        
+        // Remove heart after animation with mobile-optimized timing
+        setTimeout(() => {
+            if (heart.parentNode) {
+                heart.parentNode.removeChild(heart);
+            }
+        }, isMobile ? 9000 : 8000);
+    }
 }
 
-// Create new floating hearts every 3 seconds
-setInterval(createFloatingHeart, 3000);
+// Create new floating hearts with mobile consideration
+let heartInterval;
+function startHeartAnimation() {
+    if (heartInterval) clearInterval(heartInterval);
+    
+    const interval = isMobile ? 4000 : 3000;
+    heartInterval = setInterval(() => {
+        if (isPageVisible && !document.hidden) {
+            createFloatingHeart();
+        }
+    }, interval);
+}
+
+// Start heart animation
+startHeartAnimation();
+
+// Pause hearts when page is not visible
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        if (heartInterval) clearInterval(heartInterval);
+    } else {
+        startHeartAnimation();
+    }
+});
 
 // Preload images with placeholder
 function preloadImages() {
@@ -399,30 +523,71 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add touch support for mobile gallery
+// Add touch support for mobile gallery - Enhanced
 let touchStartX = 0;
 let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+let touchStartTime = 0;
 
 const galleryContainer = document.querySelector('.gallery-container');
 
-galleryContainer.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
+if (galleryContainer) {
+    galleryContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        touchStartTime = Date.now();
+        pauseGalleryAutoAdvance();
+    }, { passive: true });
 
-galleryContainer.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}, { passive: true });
+    galleryContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }, { passive: true });
+
+    // Add click event listeners to gallery buttons
+    const prevBtn = document.querySelector('button[onclick="previousSlide()"]');
+    const nextBtn = document.querySelector('button[onclick="nextSlide()"]');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            pauseGalleryAutoAdvance();
+            if ('vibrate' in navigator) navigator.vibrate(30);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            pauseGalleryAutoAdvance();
+            if ('vibrate' in navigator) navigator.vibrate(30);
+        });
+    }
+}
 
 function handleSwipe() {
     const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
+    const timeThreshold = 300; // Maximum time for a swipe
+    const verticalThreshold = 100; // Maximum vertical movement for horizontal swipe
     
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
+    const timeDiff = Date.now() - touchStartTime;
+    const horizontalDiff = touchStartX - touchEndX;
+    const verticalDiff = Math.abs(touchStartY - touchEndY);
+    
+    // Only process if it's a quick swipe and mostly horizontal
+    if (timeDiff < timeThreshold && 
+        Math.abs(horizontalDiff) > swipeThreshold && 
+        verticalDiff < verticalThreshold) {
+        
+        if (horizontalDiff > 0) {
             nextSlide(); // Swipe left - next slide
         } else {
             previousSlide(); // Swipe right - previous slide
+        }
+        
+        // Haptic feedback
+        if ('vibrate' in navigator) {
+            navigator.vibrate(50);
         }
     }
 }
