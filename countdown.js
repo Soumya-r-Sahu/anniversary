@@ -287,20 +287,16 @@ function animateNumber(element, newValue) {
     }
 }
 
-// Show celebration with fireworks
+// Show celebration with redirect to wish page
 function showCelebration() {
-    // Hide countdown, show celebration
-    countdownSection.classList.add('hidden');
-    celebrationSection.classList.remove('hidden');
-    
-    // Trigger massive fireworks display
+    // Trigger celebration effects briefly before redirect
     launchCelebrationFireworks();
-    
-    // Play celebration sound effect (if available)
     playCelebrationSound();
     
-    // Create continuous sparkles
-    setInterval(createSparkles, 200);
+    // Redirect to wish page after a short delay for visual effect
+    setTimeout(() => {
+        window.location.href = 'wish.html';
+    }, 2000); // 2 seconds delay to show fireworks first
 }
 
 // Create mobile-optimized fireworks
@@ -450,9 +446,8 @@ if (enterBtn) {
         if (navigator.vibrate) {
             navigator.vibrate(100);
         }
-        
-        // Redirect to main anniversary page
-        window.location.href = 'anniversary.html';
+          // Redirect to main anniversary page
+        window.location.href = 'anniversary-enhanced.html';
     });
     
     // Add touch feedback

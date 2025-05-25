@@ -19,12 +19,12 @@
 - **Description**: "23/11/2024 last bali yatra dina tu to family members nka saha puri bulibaku asi thilu... amara dekha hei helani"
 
 ### 5. **04/12/2024** (First succesful Meeting or planned seccond meeting - Engagement Day)
-- **Event**: Actually met for the first time at Ashu bhai's sister's engagement
-- **Description**: "04/12/2025 ashu bhai nka didi nkara engegment thila... finally seia hin hei thila"
+- **Event**: Actually met for the first time on the day Ashu's sister's engagement happend . i planed to surprise you 
+- **Description**: "04/12/2025 ashu bhai nka didi nkara engegment thila... finally seia hin hei thila" . i planed to surprise you on this day but i was so excited to see you for the first time that i couldn't meet you. i was so excited to see you for the first time, but it wasn't meant to be yet.
 - **Note**: Date appears to be written as 2025 but likely meant 2024 based on context
 
 ### 6. **16/12/2024** (Second successfull Meeting)
-- **Event**: Second meeting at Balia Store
+- **Event**: Second meeting at Jagatsinghpur 
 - **Description**: "next meet hei thila 16/12/2024 sedina tu mte 2 ta bele asibu kahiki 5 ta bele asilu"
 
 ### 7. **1/1/2025** (Birthday Meeting)

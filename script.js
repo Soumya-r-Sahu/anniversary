@@ -1,4 +1,5 @@
-// Love Anniversary Website JavaScript - Mobile Optimized
+// Enhanced Love Anniversary Website JavaScript
+// Mobile Optimized with Advanced Music Player
 
 // Mobile detection and performance optimization
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -24,763 +25,857 @@ document.addEventListener('visibilitychange', function() {
     isPageVisible = !document.hidden;
 });
 
-// Initialize AOS (Animate On Scroll) with mobile optimizations
-AOS.init({
-    duration: isMobile ? 600 : 1000,
-    easing: 'ease-in-out',
-    once: true,
-    mirror: false,
-    offset: isMobile ? 50 : 120,
-    delay: isMobile ? 50 : 100
-});
-
-// Initialize Particles.js with mobile optimization
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: isLowPerformance ? 25 : 50,
-            density: {
-                enable: true,
-                value_area: isLowPerformance ? 1200 : 800
-            }
-        },
-        color: {
-            value: ["#ff6b9d", "#ffa8cc", "#ffb3d6"]
-        },
-        shape: {
-            type: "circle",
-            stroke: {
-                width: 0,
-                color: "#000000"
-            }
-        },
-        opacity: {
-            value: 0.6,
-            random: true,
-            anim: {
-                enable: !isLowPerformance,
-                speed: 1,
-                opacity_min: 0.1,
-                sync: false
-            }
-        },
-        size: {
-            value: isMobile ? 2 : 3,
-            random: true,
-            anim: {
-                enable: !isLowPerformance,
-                speed: isLowPerformance ? 1 : 2,
-                size_min: 0.1,
-                sync: false
-            }
-        },
-        line_linked: {
-            enable: false
-        },
-        move: {
-            enable: isPageVisible,
-            speed: isLowPerformance ? 0.5 : 1,
-            direction: "top",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false
-        }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: {
-            onhover: {
-                enable: !isMobile,
-                mode: "bubble"
-            },
-            onclick: {
-                enable: true,
-                mode: "repulse"
-            },
-            resize: true
-        },
-        modes: {
-            bubble: {
-                distance: isMobile ? 80 : 100,
-                size: isMobile ? 4 : 6,
-                duration: 2,
-                opacity: 0.8,
-                speed: 3
-            },
-            repulse: {
-                distance: isMobile ? 80 : 100,
-                duration: 0.4
-            }
-        }
-    },
-    retina_detect: true
-});
-
-// Typed.js Animation
-document.addEventListener('DOMContentLoaded', function() {    const typed = new Typed('#typed-text', {        strings: [
-            'From your first smile emoji 😁 to forever... ✨',
-            'You said "Love you" first on our 3-hour call... 💕',
-            'October 13th gave us a new beginning... 🌅',
-            'My heart beats only for you, Puja... 💓',
-            'Forever grateful for my sweet Jerry... 🐒💕',
-            'Our first meeting: "Tike agaku dekh"... 👀💖',
-            'Best birthday ever: 1/1/2025 with you... 🎂❤️',
-            'You never wanted to hurt me, and I love you for that... 🥺💕',
-            'From Balia Store to forever in my heart... 🏪💖'
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        startDelay: 1000,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|'
-    });
-});
-
-// Gallery Functionality - Mobile Enhanced
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.gallery-slide');
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(index) {
-    // Hide all slides
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Show current slide
-    if (slides[index]) {
-        slides[index].classList.add('active');
-        dots[index]?.classList.add('active');
-    }
-    
-    currentSlideIndex = index;
-    
-    // Haptic feedback on mobile
-    if ('vibrate' in navigator && isMobile) {
-        navigator.vibrate(50);
-    }
-}
-
-function nextSlide() {
-    const nextIndex = (currentSlideIndex + 1) % slides.length;
-    showSlide(nextIndex);
-}
-
-function previousSlide() {
-    const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    showSlide(prevIndex);
-}
-
-function currentSlide(index) {
-    showSlide(index - 1);
-}
-
-// Auto-advance gallery with performance consideration
-let galleryInterval;
-function startGalleryAutoAdvance() {
-    if (galleryInterval) clearInterval(galleryInterval);
-    galleryInterval = setInterval(() => {
-        if (isPageVisible && !isLowPerformance) {
-            nextSlide();
-        }
-    }, isMobile ? 6000 : 5000);
-}
-
-// Start auto-advance
-startGalleryAutoAdvance();
-
-// Pause auto-advance when user interacts
-function pauseGalleryAutoAdvance() {
-    if (galleryInterval) {
-        clearInterval(galleryInterval);
-        setTimeout(startGalleryAutoAdvance, 10000); // Restart after 10 seconds
-    }
-}
-
-// Music Player Functionality - Enhanced Playlist System
-const playPauseBtn = document.getElementById('play-pause-btn');
-const playIcon = document.getElementById('play-icon');
-const pauseIcon = document.getElementById('pause-icon');
-
-let isPlaying = false;
-let currentSongIndex = 0;
-let playlist = ['music/song1.m4a']; // Start with main song
-let currentAudio = null;
-
-// Load playlist from queue directory
-async function loadPlaylist() {
-    try {
-        // Try to load songs from queue_song directory (anniversary page)
-        const queueSongs = [
-            'music/queue_song/01-song.m4a',
-            'music/queue_song/02-song.m4a', 
-            'music/queue_song/03-song.m4a',
-            'music/queue_song/01-song.mp3',
-            'music/queue_song/02-song.mp3',
-            'music/queue_song/03-song.mp3'
-        ];
-        
-        // Check which songs exist and add them to playlist
-        for (const song of queueSongs) {
-            try {
-                const audio = new Audio(song);
-                audio.addEventListener('loadeddata', () => {
-                    if (playlist.indexOf(song) === -1) {
-                        playlist.push(song);
-                    }
-                });
-                audio.addEventListener('error', () => {
-                    // Song doesn't exist, skip it
-                });
-                audio.load();
-            } catch (error) {
-                // Skip songs that can't be loaded
-            }
-        }
-    } catch (error) {
-        console.log('Could not load queue songs, using main song only');
-    }
-}
-
-// Enhanced Audio Context Management
-let audioContext = null;
-
-// Initialize Audio Context for better autoplay support
-function initAudioContext() {
-    try {
-        // Create AudioContext if supported
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (AudioContextClass && !audioContext) {
-            audioContext = new AudioContextClass();
-            console.log('🎵 AudioContext created:', audioContext.state);
-            
-            // Resume audio context if suspended
-            if (audioContext.state === 'suspended') {
-                audioContext.resume().then(() => {
-                    console.log('✅ AudioContext resumed');
-                }).catch(error => {
-                    console.log('❌ Failed to resume AudioContext:', error);
-                });
-            }
-        }
-    } catch (error) {
-        console.log('❌ AudioContext not supported:', error);
-    }
-}
-
-// Enhanced createAudioElement with Web Audio API support
-function createAudioElement(src) {
-    const audio = new Audio();
-    audio.preload = 'auto';
-    audio.volume = 0.3;
-    audio.crossOrigin = 'anonymous';
-    
-    // Add multiple source formats for better compatibility
-    const sources = [
-        { src: src, type: 'audio/mp4' },
-        { src: src.replace('.m4a', '.mp3'), type: 'audio/mpeg' },
-        { src: src.replace('.m4a', '.wav').replace('.mp3', '.wav'), type: 'audio/wav' }
-    ];
-    
-    audio.src = src;
-    
-    // Connect to AudioContext if available
-    if (audioContext && audioContext.state === 'running') {
-        try {
-            const source = audioContext.createMediaElementSource(audio);
-            source.connect(audioContext.destination);
-        } catch (error) {
-            console.log('Could not connect to AudioContext:', error);
-        }
-    }
-    
-    return audio;
-}
-
-// Play current song in playlist
-function playCurrentSong() {
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio = null;
-    }
-    
-    const currentSong = playlist[currentSongIndex];
-    currentAudio = createAudioElement(currentSong);
-    
-    // When song ends, play next song in playlist
-    currentAudio.addEventListener('ended', () => {
-        currentSongIndex = (currentSongIndex + 1) % playlist.length;
-        playCurrentSong();
-    });
-    
-    // Handle errors by skipping to next song
-    currentAudio.addEventListener('error', () => {
-        console.log(`Error playing ${currentSong}, skipping to next`);
-        currentSongIndex = (currentSongIndex + 1) % playlist.length;
-        playCurrentSong();
-    });
-    
-    return currentAudio.play();
-}
-
-// Enhanced Autoplay System - Bypass Browser Restrictions
-let autoplayAttempted = false;
-let userInteracted = false;
-
-// Track user interaction globally
-function enableAudioContext() {
-    userInteracted = true;
-    console.log('🎵 User interaction detected - audio context enabled');
-    
-    // Try to start music immediately after first interaction
-    if (!autoplayAttempted && currentAudio) {
-        attemptAutoplay();
-    }
-}
-
-// Aggressive autoplay attempt with multiple fallback strategies
-function attemptAutoplay() {
-    if (autoplayAttempted) return;
-    autoplayAttempted = true;
-    
-    console.log('🎵 Attempting aggressive autoplay...');
-    
-    // Strategy 1: Direct play attempt
-    playCurrentSong().then(() => {
-        console.log('✅ Autoplay successful!');
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-        isPlaying = true;    }).catch(error => {
-        console.log('❌ Direct autoplay failed:', error);
-        
-        // Strategy 2: Silent audio trick - for now, just log the failure
-        console.log('🔇 Autoplay blocked by browser policy');
-    });
-}
-
-// Initialize music control
-function initializeMusicControl() {
-    if (playPauseBtn) {
-        // Load playlist first
-        loadPlaylist();
-        
-        // Initialize first audio element
-        currentAudio = createAudioElement(playlist[0]);
-        
-        // Enhanced autoplay attempt
-        setTimeout(() => {
-            attemptAutoplay();
-        }, 500); // Small delay to ensure page is ready
-        
-        // Music toggle functionality
-        playPauseBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                // Pause music
-                if (currentAudio) {
-                    currentAudio.pause();
-                }
-                playIcon.classList.remove('hidden');
-                pauseIcon.classList.add('hidden');
-                isPlaying = false;
-            } else {
-                // Play music
-                if (currentAudio) {
-                    currentAudio.play().then(() => {
-                        playIcon.classList.add('hidden');
-                        pauseIcon.classList.remove('hidden');
-                        isPlaying = true;
-                    }).catch(error => {
-                        console.log('Audio play failed:', error);
-                        // Show user-friendly message
-                        playIcon.classList.remove('hidden');
-                        pauseIcon.classList.add('hidden');
-                    });
-                } else {
-                    // Restart playlist if no current audio
-                    playCurrentSong().then(() => {
-                        playIcon.classList.add('hidden');
-                        pauseIcon.classList.remove('hidden');
-                        isPlaying = true;
-                    }).catch(error => {
-                        console.log('Audio play failed:', error);
-                        playIcon.classList.remove('hidden');
-                        pauseIcon.classList.add('hidden');
-                    });
-                }
-            }
-        });
-        
-        // Handle loading success
-        if (playPauseBtn) {
-            playPauseBtn.title = 'Click to play/pause background music playlist';
-        }
-    }
-}
-
-// Initialize music control when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeMusicControl();
-});
-
-// Smooth scrolling function
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-}
-
-// Surprise Button with Confetti - Mobile Optimized
-const surpriseBtn = document.getElementById('surprise-btn');
-const confettiCanvas = document.getElementById('confetti-canvas');
-const ctx = confettiCanvas.getContext('2d');
-
-// Set canvas size with performance optimization
-function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    const rect = confettiCanvas.getBoundingClientRect();
-    
-    confettiCanvas.width = rect.width * (isMobile ? 1 : dpr);
-    confettiCanvas.height = rect.height * (isMobile ? 1 : dpr);
-    
-    if (!isMobile) {
-        ctx.scale(dpr, dpr);
-    }
-}
-
-const throttledResize = throttle(resizeCanvas, 250);
-window.addEventListener('resize', throttledResize);
-resizeCanvas();
-
-// Confetti particle class - Mobile optimized
-class Confetti {
+// Enhanced Music Player Class
+class EnhancedMusicPlayer {
     constructor() {
-        this.x = Math.random() * confettiCanvas.width;
-        this.y = -10;
-        this.size = Math.random() * (isMobile ? 2 : 3) + (isMobile ? 1.5 : 2);
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 + 1;
-        this.color = this.getRandomColor();
-        this.rotation = Math.random() * 360;
-        this.rotationSpeed = Math.random() * (isMobile ? 5 : 10) - (isMobile ? 2.5 : 5);
-    }
-    
-    getRandomColor() {
-        const colors = ['#ff6b9d', '#ffa8cc', '#ffb3d6', '#ff8fab', '#f72585', '#b5179e'];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-    
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.rotation += this.rotationSpeed;
-        this.speedY += 0.1; // gravity
-    }
-    
-    draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation * Math.PI / 180);
-        ctx.fillStyle = this.color;
-        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
-        ctx.restore();
-    }
-}
-
-let confettiParticles = [];
-let confettiActive = false;
-let confettiAnimationId;
-
-function createConfetti() {
-    const particleCount = isMobile ? 75 : 150;
-    for (let i = 0; i < particleCount; i++) {
-        confettiParticles.push(new Confetti());
-    }
-}
-
-function animateConfetti() {
-    if (!confettiActive || !isPageVisible) return;
-    
-    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-    
-    for (let i = confettiParticles.length - 1; i >= 0; i--) {
-        const particle = confettiParticles[i];
-        particle.update();
-        particle.draw();
+                this.isPlaying = false;
+        this.volume = 0.3;
+        this.button = null;
+        this.icon = null;
+        this.visualizer = null;
+        this.autoplayAttempted = false;
+        this.userInteracted = false;
         
-        // Remove particles that have fallen off screen
-        if (particle.y > confettiCanvas.height + 10) {
-            confettiParticles.splice(i, 1);
-        }
+        this.init();
     }
     
-    if (confettiParticles.length > 0) {
-        confettiAnimationId = requestAnimationFrame(animateConfetti);
-    } else {
-        confettiActive = false;
+    init() {
+        // Initialize audio element
+        this.audio = document.getElementById('background-music');
+        this.button = document.getElementById('music-toggle');
+        this.icon = document.getElementById('music-icon');
+        this.visualizer = document.getElementById('music-visualizer');
+        
+        if (!this.audio || !this.button) return;
+        
+        // Set initial properties
+        this.audio.volume = this.volume;
+        this.audio.loop = true;
+        
+        // Event listeners
+        this.button.addEventListener('click', () => this.toggle());
+        
+        // Audio event listeners
+        this.audio.addEventListener('play', () => this.onPlay());
+        this.audio.addEventListener('pause', () => this.onPause());
+        this.audio.addEventListener('error', () => this.onError());
+        this.audio.addEventListener('canplaythrough', () => this.onReady());
+        
+        // Attempt autoplay after user interaction
+        this.setupAutoplay();
+        
+        // Update button state
+        this.updateButton();
     }
-}
-
-function triggerConfetti() {
-    if (confettiActive) return; // Prevent multiple simultaneous confetti
     
-    confettiActive = true;
-    createConfetti();
-    animateConfetti();
-    
-    // Haptic feedback on mobile
-    if ('vibrate' in navigator && isMobile) {
-        navigator.vibrate([100, 50, 100]);
-    }
-}
-
-// Surprise button event - Mobile Enhanced
-surpriseBtn?.addEventListener('click', function() {
-    // Prevent multiple rapid clicks
-    if (this.disabled) return;
-    this.disabled = true;
-    
-    // Change button text
-    const originalText = this.innerHTML;
-    this.innerHTML = '🎉 Surprise! You are my everything! 🎉';
-    this.style.background = 'linear-gradient(45deg, #ff6b9d, #f72585, #b5179e)';
-    
-    // Trigger confetti
-    triggerConfetti();
-    
-    // Show surprise message with mobile-friendly alert
-    setTimeout(() => {
-        if (isMobile) {
-            // Use a more mobile-friendly notification
-            const message = '🐒💕 Happy Anniversary, my sweet Jerry! You make every day magical! 💕🐒';
-            if ('Notification' in window && Notification.permission === 'granted') {
-                new Notification('Anniversary Surprise!', { body: message, icon: '💕' });
-            } else {
-                alert(message);
+    setupAutoplay() {
+        const events = ['click', 'touchstart', 'keydown', 'scroll'];
+        const handleFirstInteraction = () => {
+            if (!this.userInteracted) {
+                this.userInteracted = true;
+                this.attemptAutoplay();
+                
+                // Remove listeners after first interaction
+                events.forEach(event => {
+                    document.removeEventListener(event, handleFirstInteraction);
+                });
             }
-        } else {
-            alert('🐒💕 Happy Anniversary, my sweet Jerry! You make every day magical! 💕🐒');
-        }
-    }, 500);
+        };
+        
+        events.forEach(event => {
+            document.addEventListener(event, handleFirstInteraction, { once: true, passive: true });
+        });
+    }
     
-    // Reset button after 3 seconds
-    setTimeout(() => {
-        this.innerHTML = originalText;
-        this.style.background = '';
-        this.disabled = false;
-    }, 3000);
-});
-
-// Request notification permission on mobile
-if (isMobile && 'Notification' in window && Notification.permission === 'default') {
-    Notification.requestPermission();
+    async attemptAutoplay() {
+        if (this.autoplayAttempted || !this.audio) return;
+        this.autoplayAttempted = true;
+        
+        try {
+            await this.audio.play();
+            console.log('🎵 Autoplay successful!');
+        } catch (error) {
+            console.log('🔇 Autoplay prevented by browser policy');
+        }
+    }
+    
+    async toggle() {
+        if (!this.audio) return;
+        
+        try {
+            if (this.isPlaying) {
+                this.audio.pause();
+            } else {
+                await this.audio.play();
+            }
+        } catch (error) {
+            console.error('Audio playback error:', error);
+            this.onError();
+        }
+    }
+    
+    onPlay() {
+        this.isPlaying = true;
+        this.updateButton();
+        this.startVisualizer();
+    }
+    
+    onPause() {
+        this.isPlaying = false;
+        this.updateButton();
+        this.stopVisualizer();
+    }
+    
+    onError() {
+        this.isPlaying = false;
+        this.updateButton();
+        this.stopVisualizer();
+        console.error('Audio playback error');
+    }
+    
+    onReady() {
+        console.log('🎵 Audio ready to play');
+    }
+    
+    updateButton() {
+        if (!this.icon) return;
+        
+        if (this.isPlaying) {
+            this.icon.textContent = '🎵';
+            this.button.style.background = 'linear-gradient(135deg, #ec4899, #f472b6, #fb7185)';
+            this.button.setAttribute('aria-label', 'Pause Background Music');
+        } else {
+            this.icon.textContent = '🔇';
+            this.button.style.background = 'linear-gradient(135deg, #6b7280, #9ca3af)';
+            this.button.setAttribute('aria-label', 'Play Background Music');
+        }
+    }
+    
+    startVisualizer() {
+        if (this.visualizer) {
+            this.visualizer.style.display = 'inline-flex';
+        }
+    }
+    
+    stopVisualizer() {
+        if (this.visualizer) {
+            this.visualizer.style.display = 'none';
+        }
+    }
+    
+    setVolume(volume) {
+        this.volume = Math.max(0, Math.min(1, volume));
+        if (this.audio) {
+            this.audio.volume = this.volume;
+        }
+    }
 }
 
-// Navigation smooth scroll
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+// Initialize AOS (Animate On Scroll) with mobile optimizations
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: isMobile ? 600 : 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+        offset: isMobile ? 50 : 120,
+        delay: isMobile ? 50 : 100
     });
 });
 
-// Add scroll spy for navigation
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+// Enhanced Random Heart Animation System
+class RandomHeartAnimation {    constructor() {
+        this.heartContainer = null;
+        this.isRunning = false;
+        this.heartInterval = null;
+        // Expanded heart emoji collection for more variety
+        this.heartTypes = ['💕', '💖', '💝', '💗', '💘', '❤️', '💞', '💓', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '❣️', '💟', '♥️', '💋'];
+        this.init();
+    }
     
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
+    init() {
+        // Create heart container if it doesn't exist
+        if (!document.querySelector('.floating-hearts')) {
+            this.heartContainer = document.createElement('div');
+            this.heartContainer.className = 'floating-hearts';
+            this.heartContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 5;
+                overflow: hidden;
+            `;
+            document.body.appendChild(this.heartContainer);
+        } else {
+            this.heartContainer = document.querySelector('.floating-hearts');
         }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('text-pink-800', 'font-semibold');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('text-pink-800', 'font-semibold');
-        }
-    });
-});
-
-// Create floating hearts periodically - Mobile Optimized
-function createFloatingHeart() {
-    if (!isPageVisible || isLowPerformance) return;
-    
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = Math.random() * 100 + '%';
-    heart.style.animationDuration = (Math.random() * 3 + (isMobile ? 6 : 5)) + 's';
-    heart.style.animationDelay = Math.random() * 2 + 's';
-    
-    const heartsContainer = document.querySelector('.floating-hearts');
-    if (heartsContainer) {
-        heartsContainer.appendChild(heart);
         
-        // Remove heart after animation with mobile-optimized timing
+        this.startAnimation();
+    }
+    
+    startAnimation() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        
+        // Create hearts at random intervals
+        const createRandomHeart = () => {
+            if (this.isRunning && isPageVisible) {
+                this.createRandomHeart();
+            }
+            
+            // Random delay between 1-4 seconds
+            const nextDelay = (Math.random() * 3000) + 1000;
+            this.heartInterval = setTimeout(createRandomHeart, nextDelay);
+        };
+        
+        createRandomHeart();
+    }
+      createRandomHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'random-heart';
+        
+        // Expanded heart emoji collection for more variety
+        const heartType = this.heartTypes[Math.floor(Math.random() * this.heartTypes.length)];
+        
+        // Enhanced random movement patterns
+        const movementPattern = Math.floor(Math.random() * 6); // 0-5: different movement patterns
+        let startX, startY, endX, endY, animationType;
+        
+        switch(movementPattern) {
+            case 0: // Traditional edge-to-edge
+                const spawnSide = Math.floor(Math.random() * 4);
+                switch(spawnSide) {
+                    case 0: // From top
+                        startX = Math.random() * window.innerWidth;
+                        startY = -50;
+                        endX = Math.random() * window.innerWidth;
+                        endY = window.innerHeight + 50;
+                        break;
+                    case 1: // From right
+                        startX = window.innerWidth + 50;
+                        startY = Math.random() * window.innerHeight;
+                        endX = -50;
+                        endY = Math.random() * window.innerHeight;
+                        break;
+                    case 2: // From bottom
+                        startX = Math.random() * window.innerWidth;
+                        startY = window.innerHeight + 50;
+                        endX = Math.random() * window.innerWidth;
+                        endY = -50;
+                        break;
+                    case 3: // From left
+                        startX = -50;
+                        startY = Math.random() * window.innerHeight;
+                        endX = window.innerWidth + 50;
+                        endY = Math.random() * window.innerHeight;
+                        break;
+                }
+                animationType = 'linear';
+                break;
+                
+            case 1: // Spiral movement
+                startX = Math.random() * window.innerWidth;
+                startY = Math.random() * window.innerHeight;
+                endX = Math.random() * window.innerWidth;
+                endY = Math.random() * window.innerHeight;
+                animationType = 'spiral';
+                break;
+                
+            case 2: // Bouncing effect
+                startX = Math.random() * window.innerWidth;
+                startY = -50;
+                endX = Math.random() * window.innerWidth;
+                endY = window.innerHeight + 50;
+                animationType = 'bounce';
+                break;
+                
+            case 3: // Zigzag pattern
+                startX = Math.random() * 100;
+                startY = Math.random() * window.innerHeight;
+                endX = window.innerWidth - Math.random() * 100;
+                endY = Math.random() * window.innerHeight;
+                animationType = 'zigzag';
+                break;
+                
+            case 4: // Center explosion
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                startX = centerX + (Math.random() - 0.5) * 100;
+                startY = centerY + (Math.random() - 0.5) * 100;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 300 + 200;
+                endX = centerX + Math.cos(angle) * distance;
+                endY = centerY + Math.sin(angle) * distance;
+                animationType = 'explosion';
+                break;
+                
+            case 5: // Random teleport (appear and disappear at random positions)
+                startX = Math.random() * window.innerWidth;
+                startY = Math.random() * window.innerHeight;
+                endX = Math.random() * window.innerWidth;
+                endY = Math.random() * window.innerHeight;
+                animationType = 'teleport';
+                break;
+        }
+        
+        // Enhanced random properties
+        const size = Math.random() * 20 + 12; // 12-32px (wider range)
+        const duration = Math.random() * 6 + 3; // 3-9 seconds (wider range)
+        const rotationSpeed = Math.random() * 720 + 180; // 180-900 degrees (more rotation)
+        const opacity = Math.random() * 0.6 + 0.4; // 0.4-1.0
+        const randomHue = Math.random() * 60 - 30; // -30 to +30 hue shift for color variety
+        
+        heart.style.cssText = `
+            position: absolute;
+            left: ${startX}px;
+            top: ${startY}px;
+            font-size: ${size}px;
+            opacity: ${opacity};
+            pointer-events: none;
+            user-select: none;
+            z-index: 5;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.8)) hue-rotate(${randomHue}deg);
+            transition: all ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        `;
+        
+        heart.textContent = heartType;
+        this.heartContainer.appendChild(heart);
+        
+        // Apply different animation based on pattern
+        this.animateHeart(heart, startX, startY, endX, endY, duration, rotationSpeed, animationType);
+        
+        // Remove heart after animation
         setTimeout(() => {
             if (heart.parentNode) {
                 heart.parentNode.removeChild(heart);
             }
-        }, isMobile ? 9000 : 8000);
+        }, duration * 1000 + 500);
     }
-}
-
-// Create new floating hearts with mobile consideration
-let heartInterval;
-function startHeartAnimation() {
-    if (heartInterval) clearInterval(heartInterval);
     
-    const interval = isMobile ? 4000 : 3000;
-    heartInterval = setInterval(() => {
-        if (isPageVisible && !document.hidden) {
-            createFloatingHeart();
+    animateHeart(heart, startX, startY, endX, endY, duration, rotationSpeed, animationType) {
+        switch(animationType) {
+            case 'spiral':
+                this.animateSpiral(heart, startX, startY, endX, endY, duration, rotationSpeed);
+                break;
+            case 'bounce':
+                this.animateBounce(heart, startX, startY, endX, endY, duration, rotationSpeed);
+                break;
+            case 'zigzag':
+                this.animateZigzag(heart, startX, startY, endX, endY, duration, rotationSpeed);
+                break;
+            case 'explosion':
+                this.animateExplosion(heart, startX, startY, endX, endY, duration, rotationSpeed);
+                break;
+            case 'teleport':
+                this.animateTeleport(heart, startX, startY, endX, endY, duration, rotationSpeed);
+                break;
+            default: // linear
+                this.animateLinear(heart, startX, startY, endX, endY, duration, rotationSpeed);
         }
-    }, interval);
+    }
+    
+    animateLinear(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        requestAnimationFrame(() => {
+            const curveX = (Math.random() - 0.5) * 300; // Increased curve intensity
+            const curveY = (Math.random() - 0.5) * 150;
+            
+            heart.style.transform = `
+                translate(${endX - startX + curveX}px, ${endY - startY + curveY}px) 
+                rotate(${rotationSpeed}deg) 
+                scale(${Math.random() * 0.8 + 0.6})
+            `;
+            heart.style.opacity = '0';
+        });
+    }
+    
+    animateSpiral(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        const steps = 100;
+        const stepDuration = duration * 1000 / steps;
+        let currentStep = 0;
+        
+        const spiralAnimation = () => {
+            if (currentStep >= steps || !heart.parentNode) return;
+            
+            const progress = currentStep / steps;
+            const angle = progress * Math.PI * 4; // 2 full spirals
+            const radius = 50 * (1 - progress); // Shrinking spiral
+            
+            const currentX = startX + (endX - startX) * progress + Math.cos(angle) * radius;
+            const currentY = startY + (endY - startY) * progress + Math.sin(angle) * radius;
+            const currentRotation = rotationSpeed * progress;
+            
+            heart.style.transform = `
+                translate(${currentX - startX}px, ${currentY - startY}px) 
+                rotate(${currentRotation}deg) 
+                scale(${1 - progress * 0.5})
+            `;
+            heart.style.opacity = 1 - progress;
+            
+            currentStep++;
+            setTimeout(spiralAnimation, stepDuration);
+        };
+        
+        spiralAnimation();
+    }
+    
+    animateBounce(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        const bounces = 3;
+        const bounceHeight = 100;
+        
+        requestAnimationFrame(() => {
+            heart.style.transition = `all ${duration}s cubic-bezier(0.68, -0.55, 0.265, 1.55)`;
+            heart.style.transform = `
+                translate(${endX - startX}px, ${endY - startY}px) 
+                rotate(${rotationSpeed}deg) 
+                scale(0.8)
+            `;
+            heart.style.opacity = '0';
+        });
+    }
+    
+    animateZigzag(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        const zigzagSteps = 8;
+        const stepDuration = duration * 1000 / zigzagSteps;
+        let currentStep = 0;
+        
+        const zigzagAnimation = () => {
+            if (currentStep >= zigzagSteps || !heart.parentNode) return;
+            
+            const progress = currentStep / zigzagSteps;
+            const zigzagAmplitude = 80;
+            const zigzagOffset = Math.sin(progress * Math.PI * 3) * zigzagAmplitude;
+            
+            const currentX = startX + (endX - startX) * progress + zigzagOffset;
+            const currentY = startY + (endY - startY) * progress;
+            const currentRotation = rotationSpeed * progress;
+            
+            heart.style.transform = `
+                translate(${currentX - startX}px, ${currentY - startY}px) 
+                rotate(${currentRotation}deg) 
+                scale(${0.8 + Math.sin(progress * Math.PI * 2) * 0.3})
+            `;
+            heart.style.opacity = 1 - progress;
+            
+            currentStep++;
+            setTimeout(zigzagAnimation, stepDuration);
+        };
+        
+        zigzagAnimation();
+    }
+    
+    animateExplosion(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        requestAnimationFrame(() => {
+            heart.style.transition = `all ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+            heart.style.transform = `
+                translate(${endX - startX}px, ${endY - startY}px) 
+                rotate(${rotationSpeed}deg) 
+                scale(${Math.random() * 1.5 + 0.5})
+            `;
+            heart.style.opacity = '0';
+        });
+    }
+    
+    animateTeleport(heart, startX, startY, endX, endY, duration, rotationSpeed) {
+        // Fade out, move, then fade in
+        heart.style.transition = 'opacity 0.3s ease-in-out';
+        heart.style.opacity = '0';
+        
+        setTimeout(() => {
+            heart.style.left = endX + 'px';
+            heart.style.top = endY + 'px';
+            heart.style.transform = `rotate(${rotationSpeed}deg) scale(${Math.random() * 0.5 + 0.75})`;
+            heart.style.transition = `opacity ${duration - 0.6}s ease-in-out`;
+            heart.style.opacity = '1';
+            
+            setTimeout(() => {
+                heart.style.opacity = '0';
+            }, (duration - 0.6) * 1000);
+        }, 300);
+    }
+
+    // ...existing code...
 }
 
-// Start heart animation
-startHeartAnimation();
-
-// Pause hearts when page is not visible
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        if (heartInterval) clearInterval(heartInterval);
-    } else {
-        startHeartAnimation();
-    }
-});
-
-// Preload images with placeholder
-function preloadImages() {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            // Create a placeholder for missing images
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmNlN2YzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2VjNDg5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlBob3RvIE1lbW9yeSAyODE+PC90ZXh0Pjwvc3ZnPg==';
-            this.alt = 'Beautiful Memory ❤️';
-        });
+// Initialize Particles.js with mobile optimization
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: isLowPerformance ? 25 : 50,
+                density: {
+                    enable: true,
+                    value_area: isLowPerformance ? 1200 : 800
+                }
+            },
+            color: {
+                value: ["#ff6b9d", "#ffa8cc", "#ffb3d6"]
+            },
+            shape: {
+                type: "circle",
+            },
+            opacity: {
+                value: 0.3,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 2,
+                    size_min: 0.1,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: false
+            },
+            move: {
+                enable: true,
+                speed: isLowPerformance ? 1 : 2,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: {
+                    enable: !isLowPerformance,
+                    mode: "repulse"
+                },
+                onclick: {
+                    enable: true,
+                    mode: "push"
+                },
+                resize: true
+            },
+            modes: {
+                repulse: {
+                    distance: 100,
+                    duration: 0.4
+                },
+                push: {
+                    particles_nb: 2
+                }
+            }
+        },
+        retina_detect: true
     });
 }
 
-// Initialize when DOM is loaded
+// Enhanced smooth scrolling function
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+    
+    const targetPosition = element.offsetTop - 80; // Account for fixed nav
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 800;
+    
+    let start = null;
+    
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const ease = easeInOutCubic(progress / duration);
+        
+        window.scrollTo(0, startPosition + distance * ease);
+        
+        if (progress < duration) {
+            window.requestAnimationFrame(step);
+        }
+    }
+    
+    window.requestAnimationFrame(step);
+}
+
+// Easing function for smooth animations
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+}
+
+// Enhanced Gallery Functionality
+class EnhancedGallery {
+    constructor() {
+        this.currentSlide = 0;
+        this.gallerySlides = document.querySelectorAll('.gallery-slide');
+        this.autoAdvanceInterval = null;
+        this.init();
+    }
+    
+    init() {
+        if (this.gallerySlides.length === 0) return;
+        
+        this.showSlide(0);
+        
+        // Auto-advance gallery on desktop
+        if (!isMobile && this.gallerySlides.length > 1) {
+            this.startAutoAdvance();
+        }
+        
+        // Pause auto-advance when page is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.stopAutoAdvance();
+            } else if (!isMobile) {
+                this.startAutoAdvance();
+            }
+        });
+    }
+    
+    showSlide(index) {
+        this.gallerySlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            slide.style.opacity = i === index ? '1' : '0';
+        });
+        this.currentSlide = index;
+    }
+    
+    nextSlide() {
+        const next = (this.currentSlide + 1) % this.gallerySlides.length;
+        this.showSlide(next);
+    }
+    
+    previousSlide() {
+        const prev = (this.currentSlide - 1 + this.gallerySlides.length) % this.gallerySlides.length;
+        this.showSlide(prev);
+    }
+    
+    goToSlide(index) {
+        if (index >= 0 && index < this.gallerySlides.length) {
+            this.showSlide(index);
+        }
+    }
+    
+    startAutoAdvance() {
+        this.stopAutoAdvance();
+        this.autoAdvanceInterval = setInterval(() => {
+            if (isPageVisible) {
+                this.nextSlide();
+            }
+        }, 5000);
+    }
+    
+    stopAutoAdvance() {
+        if (this.autoAdvanceInterval) {
+            clearInterval(this.autoAdvanceInterval);
+            this.autoAdvanceInterval = null;
+        }
+    }
+}
+
+// Global functions for gallery controls
+let galleryInstance;
+
+function nextSlide() {
+    if (galleryInstance) galleryInstance.nextSlide();
+}
+
+function previousSlide() {
+    if (galleryInstance) galleryInstance.previousSlide();
+}
+
+function currentSlide(index) {
+    if (galleryInstance) galleryInstance.goToSlide(index - 1);
+}
+
+// Typed.js initialization
+function initTypedText() {
+    if (typeof Typed !== 'undefined' && document.getElementById('typed-text')) {
+        new Typed('#typed-text', {
+            strings: [
+                "From June 16, 2024 to forever...",
+                "Every moment with you is magical ✨",
+                "You are my greatest blessing 💕",
+                "My sweet Jerry, my everything 🐒❤️"
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|'
+        });
+    }
+}
+
+// Surprise button functionality
+function initSurpriseButton() {
+    const surpriseBtn = document.getElementById('surprise-btn');
+    if (surpriseBtn) {
+        surpriseBtn.addEventListener('click', function() {
+            // Create confetti effect
+            createConfetti();
+            
+            // Show surprise modal or animation
+            showSurpriseMessage();
+        });
+    }
+}
+
+// Confetti effect
+function createConfetti() {
+    const confettiCount = 50;
+    const colors = ['#ff6b9d', '#ffa8cc', '#ffb3d6', '#ff8fab', '#ec4899'];
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${Math.random() * 100}vw;
+            top: -10px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: confetti-fall 3s linear forwards;
+        `;
+        
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+
+// Add confetti animation CSS
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `
+    @keyframes confetti-fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+        }
+    }
+`;
+document.head.appendChild(confettiStyle);
+
+// Surprise message
+function showSurpriseMessage() {
+    const messages = [
+        "You are the most beautiful thing that happened to me! 💕",
+        "Every day with you feels like a dream come true! ✨",
+        "My sweet Jerry, you make my heart skip a beat! 🐒❤️",
+        "I love you more than words can express! 💖"
+    ];
+    
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        backdrop-filter: blur(5px);
+    `;
+    
+    const messageBox = document.createElement('div');
+    messageBox.style.cssText = `
+        background: linear-gradient(135deg, #ff6b9d, #ffa8cc);
+        color: white;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 400px;
+        margin: 1rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        animation: modalAppear 0.5s ease-out;
+    `;
+    
+    messageBox.innerHTML = `
+        <h3 style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-bottom: 1rem;">
+            💕 Special Message 💕
+        </h3>
+        <p style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;">
+            ${randomMessage}
+        </p>
+        <button onclick="this.closest('.modal').remove()" style="
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        ">Close 💖</button>
+    `;
+    
+    modal.className = 'modal';
+    modal.appendChild(messageBox);
+    document.body.appendChild(modal);
+    
+    // Click outside to close
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+    });
+}
+
+// Add modal animation CSS
+const modalStyle = document.createElement('style');
+modalStyle.textContent = `
+    @keyframes modalAppear {
+        from {
+            transform: scale(0.5) translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(modalStyle);
+
+// Initialize everything when DOM is loaded
+let musicPlayer, gallery, heartAnimation;
+
 document.addEventListener('DOMContentLoaded', function() {
-    preloadImages();
+    // Initialize music player
+    musicPlayer = new EnhancedMusicPlayer();
     
-    // Add some initial floating hearts
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingHeart, i * 1000);
-    }
+    // Initialize gallery
+    galleryInstance = new EnhancedGallery();
+    
+    // Initialize random heart animation system
+    heartAnimation = new RandomHeartAnimation();
+    
+    // Initialize typed text
+    setTimeout(initTypedText, 1000);
+    
+    // Initialize surprise button
+    initSurpriseButton();
+    
+    console.log('🎉 Enhanced Anniversary Website Initialized!');
 });
 
-// Add touch support for mobile gallery - Enhanced
-let touchStartX = 0;
-let touchEndX = 0;
-let touchStartY = 0;
-let touchEndY = 0;
-let touchStartTime = 0;
-
-const galleryContainer = document.querySelector('.gallery-container');
-
-if (galleryContainer) {
-    galleryContainer.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-        touchStartTime = Date.now();
-        pauseGalleryAutoAdvance();
-    }, { passive: true });
-
-    galleryContainer.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
-    }, { passive: true });
-
-    // Add click event listeners to gallery buttons
-    const prevBtn = document.querySelector('button[onclick="previousSlide()"]');
-    const nextBtn = document.querySelector('button[onclick="nextSlide()"]');
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            pauseGalleryAutoAdvance();
-            if ('vibrate' in navigator) navigator.vibrate(30);
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            pauseGalleryAutoAdvance();
-            if ('vibrate' in navigator) navigator.vibrate(30);
-        });
-    }
-}
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const timeThreshold = 300; // Maximum time for a swipe
-    const verticalThreshold = 100; // Maximum vertical movement for horizontal swipe
-    
-    const timeDiff = Date.now() - touchStartTime;
-    const horizontalDiff = touchStartX - touchEndX;
-    const verticalDiff = Math.abs(touchStartY - touchEndY);
-    
-    // Only process if it's a quick swipe and mostly horizontal
-    if (timeDiff < timeThreshold && 
-        Math.abs(horizontalDiff) > swipeThreshold && 
-        verticalDiff < verticalThreshold) {
-        
-        if (horizontalDiff > 0) {
-            nextSlide(); // Swipe left - next slide
-        } else {
-            previousSlide(); // Swipe right - previous slide
-        }
-        
-        // Haptic feedback
-        if ('vibrate' in navigator) {
-            navigator.vibrate(50);
-        }
-    }
-}
-
-// Add some easter eggs
-let clickCount = 0;
-document.addEventListener('click', function(e) {
-    clickCount++;
-    if (clickCount % 20 === 0) {
-        triggerConfetti();
-        console.log('🐒💕 You found an easter egg! Keep exploring! 💕🐒');
-    }
-});
-
-// Performance optimization: Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-        }
+// Performance monitoring
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log(`📊 Page Load Time: ${perfData.loadEventEnd - perfData.loadEventStart}ms`);
+        }, 0);
     });
-}, observerOptions);
-
-// Observe timeline items for better performance
-document.querySelectorAll('.timeline-item').forEach(item => {
-    observer.observe(item);
-});
-
-console.log('💕 Love Anniversary Website Loaded Successfully! 💕');
-console.log('🐒 Special message for Jerry: You are loved beyond words! 💕');
-console.log('💕 From your loving Mankada (Soumya) with all my heart! 🐒');
+}

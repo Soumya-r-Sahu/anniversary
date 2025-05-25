@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head    </div><!-- Navigation - Mobile Optimized -->meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Happy Anniversary, My Love ❤️</title>
     <meta name="description" content="A romantic anniversary website celebrating our love story">
@@ -19,37 +20,43 @@
     <link rel="preconnect" href="https://unpkg.com">
     
     <!-- Fonts with optimized loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+      <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+  
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
 </head>
-<body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden">
+<body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden gradient-animation">
+    
+    <!-- CSS Floating Hearts Pattern -->
+    <div class="floating-hearts" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+        <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1s; animation-duration: 7s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 2s; animation-duration: 8s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 3s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 4s; animation-duration: 7s;"></div>
+    </div>
     
     <!-- Particles Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>    <!-- Background Music Player -->
-    <div id="music-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 8px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <button id="play-pause-btn" style="background: linear-gradient(135deg, #ff6b9d, #ffa8cc); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease;">
-            <span id="play-icon" style="display: none;">🔇</span>
-            <span id="pause-icon">🎵</span>
-        </button>    </div>
-
-    <!-- Navigation - Mobile Optimized -->
-    <nav class="fixed top-0 w-full z-40 bg-white/70 backdrop-blur-sm border-b border-pink-200 safe-area-inset-top">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-center space-x-3 sm:space-x-6 overflow-x-auto">
-                <a href="#welcome" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Home">Home</a>
-                <a href="#story" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Our Story">Our Story</a>
-                <a href="#gallery" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Gallery">Gallery</a>
-                <a href="#message" class="text-pink-600 hover:text-pink-800 active:text-pink-900 transition-colors whitespace-nowrap touch-manipulation min-h-[44px] flex items-center px-2" aria-label="Go to Love Letter">Love Letter</a>
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+      <!-- Enhanced Background Music Player -->
+    <div class="enhanced-music-player">
+        <button id="music-toggle" class="music-control-btn" aria-label="Toggle Background Music">
+            <span id="music-icon">🎵</span>
+            <div class="music-visualizer" id="music-visualizer" style="display: none;">
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
             </div>
-        </div>
-    </nav>    <!-- Welcome Section - Mobile Optimized -->
-    <section id="welcome" class="min-h-screen min-h-[100dvh] flex items-center justify-center relative z-10 pt-16 px-4">
+        </button>    </div>    <!-- Welcome Section -->
+    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 px-4">
         <div class="text-center w-full max-w-4xl">
             <div class="floating-hearts">
                 <div class="heart"></div>
@@ -59,133 +66,31 @@
                 <div class="heart"></div>
             </div>
             
-            <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-4 sm:mb-6 font-dancing leading-tight" data-aos="fade-up">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-6 font-dancing leading-tight" data-aos="fade-up">
                 Happy Anniversary, My Love ❤️
             </h1>
-            <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-6 sm:mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-                To my dearest <span class="text-red-500">Puja (Pujuu)</span>, my sweet <span class="text-red-500">Jerry</span> 🐒💕
+            <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                To my dearest <span class="text-red-500 font-semibold">Pujuu (Champi)</span>, my sweet <span class="text-red-500 font-semibold">Jerry</span> 💕
             </h2>
-            
-            <div class="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+              <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed glassmorphism-bg rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
                 <span id="typed-text" class="border-r-2 border-pink-500"></span>
             </div>
             
-            <button onclick="scrollToSection('story')" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 sm:px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 active:from-pink-700 active:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg touch-manipulation min-h-[44px]" data-aos="fade-up" data-aos-delay="600" aria-label="Explore Our Love Story">
+            <button onclick="redirectToLoveStory()" class="enhanced-button text-lg px-8 py-4 min-h-[44px]" data-aos="fade-up" data-aos-delay="600" aria-label="Explore Our Love Story">
                 Explore Our Love Story 💕
             </button>
         </div>
-    </section>
-
-    <!-- Our Love Story Section -->
-    <section id="story" class="py-20 relative z-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center text-pink-600 mb-16 font-dancing" data-aos="fade-up">
-                Our Beautiful Journey Together 💖
-            </h2>
-              <div class="max-w-4xl mx-auto">
-                <div class="timeline">
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">16 June 2024</div>
-                        <div class="timeline-content">
-                            <h3>First Contact 💫</h3>
-                            <p>The day Tapu first told me about you and sent your photo. Little did I know this would be the beginning of our beautiful love story.</p>
-                            <div class="timeline-quote">
-                                <em>"My first message came with a smile 😁 emoji, and i thought you block me soon , so i tried hard to build friendship from day 1 ."</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">19 June 2024</div>
-                        <div class="timeline-content">
-                            <h3>First Call & "Love You" 🌹</h3>
-                            <p>Our magical first phone call that lasted 3 hours! I said "Love you" for the first time that day, i dont know how you felt but i was so happy i couldnt even explain it!</p>
-                            <div class="timeline-quote">
-                                <em>"19/06/2024 re tu mte 1st call kari thilu... tu mte 1st sedina love you boli kahi thilu au mun ate khusi hei jai thili"</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">October 13, 2024</div>
-                        <div class="timeline-content">
-                            <h3>Reconnection After 3 Months 💕</h3>
-                            <p>After 3 months of not talking due to some problems, we finally reconnected. You said "Please paribu jadi khayama karidabu" and assured me you never wanted to hurt me. This was the start of our new life together.</p>
-                            <div class="timeline-quote">
-                                <em>"Finally mun to saha october 13 re katha heli then amara gote new life start hela" - Our unforgettable first video call when my mood was off, but you were there for me.</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">23 November 2024</div>
-                        <div class="timeline-content">
-                            <h3>Planned First Meeting (Bali Yatra) 🎭</h3>
-                            <p>We planned to meet for the first time on Bali Yatra day when you came to Puri with your family. Though we were so close, we couldn't meet that day. I was so excited to see you for the first time, but it wasn't meant to be yet.</p>
-                            <div class="timeline-quote">
-                                <em>"23/11/2024 last bali yatra dina... chada bahut close thaiki bi amara dekha hei helani" - But you told me where there's a will, there's a way to meet.</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">4 December 2024</div>
-                        <div class="timeline-content">
-                            <h3>Our First Real Meeting! 🎉</h3>
-                            <p>At Ashu bhai's sister's engagement - finally we met! I even dreamed you'd wear a black dress, and you did! You looked absolutely beautiful. Through Rinki Nani, you arranged for us to meet at Balia Store. You said "Ready ha ame balia Store jiba" and "Nai ae dress habani bhala dress pindhiki asee".</p>
-                            <div class="timeline-quote">
-                                <em>"04/12/2024 ashu bhai nka didi nkara engegment thila... finally seia hin hei thila" - The day my belief became reality when I saw you for the first time!</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">16 December 2024</div>
-                        <div class="timeline-content">
-                            <h3>Second Meeting - Balia Store ❤️</h3>
-                            <p>Our second meeting! You said you'd come at "2 ta bele" but came at 5 o'clock instead. I waited 3 hours and was angry, but seeing you made all the anger disappear. We had our first kiss and hug - such beautiful moments that I never wanted to end.</p>
-                            <div class="timeline-quote">
-                                <em>"16/12/2024 sedina... amara 1st kiss au hug au kichi tahh beautiful moments hei thila" - When you called and said "Love you" and "Miss you" before arriving.</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-date">1 January 2025</div>
-                        <div class="timeline-content">
-                            <h3>Best Birthday Ever! 🎂</h3>
-                            <p>Our third meeting on my birthday - the best birthday of my life! This year was special because you were with me. You've done so much for my happiness, always asking me to wait at places, taking care of my feelings, and making sure I don't get sad when you make mistakes.</p>
-                            <div class="timeline-quote">
-                                <em>"3rd meet hei thila mo birthday dina 1/1/2025 au aeita thila sabu tharu best birthday" - You've made everything in my life better, my sweet Jerry! 🐒💕</em>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-date">Today & Forever</div>
-                        <div class="timeline-content">
-                            <h3>Our Beautiful Journey Continues 🌟</h3>
-                            <p>From June 2024 to today, every moment with you has been magical. You've shown me love through your caring words, protective nature, and thoughtful planning. Thank you for being my Puja, my Jerry, my everything!</p>
-                            <div class="timeline-quote">
-                                <em>Your love shows in how you always made sure I dressed well, coordinated our meetings, and expressed "Love you" and "Miss you" regularly. You are my greatest blessing! 💕</em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Photo Gallery Section -->
-    <section id="gallery" class="py-20 bg-white/50 relative z-10">
+    </section>    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-20 bg-white/30 backdrop-blur-sm relative z-10">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl md:text-5xl font-bold text-center text-pink-600 mb-16 font-dancing" data-aos="fade-up">
                 Our Precious Memories 📸
             </h2>
-              <div class="max-w-4xl mx-auto">
-                <div class="gallery-container" data-aos="fade-up">
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="gallery-container glassmorphism-bg rounded-3xl p-8" data-aos="fade-up">
                     <div class="gallery-slide active">
-                        <div class="w-full h-96 bg-gradient-to-br from-pink-200 to-red-200 rounded-lg shadow-lg flex items-center justify-center">
+                        <div class="w-full h-96 bg-gradient-to-br from-pink-200 to-red-200 rounded-2xl shadow-2xl flex items-center justify-center transform transition-all duration-500">
                             <div class="text-center p-8">
                                 <h3 class="text-2xl font-dancing text-pink-700 mb-4">16/06/2024 - First Contact</h3>
                                 <p class="text-gray-600">The day someone first told me about you... 💫</p>
@@ -194,66 +99,21 @@
                         </div>
                         <p class="text-center mt-4 text-gray-700">When it all began with your photo and smile emoji 😁</p>
                     </div>
-                    <div class="gallery-slide">
-                        <div class="w-full h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="text-center p-8">
-                                <h3 class="text-2xl font-dancing text-purple-700 mb-4">19/06/2024 - First Call</h3>
-                                <p class="text-gray-600">3 hours of talking and your first "Love you" 💕</p>
-                                <div class="text-4xl mt-4">📞❤️</div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-4 text-gray-700">The night that changed everything forever</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <div class="w-full h-96 bg-gradient-to-br from-green-200 to-blue-200 rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="text-center p-8">
-                                <h3 class="text-2xl font-dancing text-green-700 mb-4">October 13 - Reconnection</h3>
-                                <p class="text-gray-600">Our new life started together 🌱</p>
-                                <div class="text-4xl mt-4">🔄💚</div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-4 text-gray-700">After 3 months apart, we found our way back ✨</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <div class="w-full h-96 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="text-center p-8">
-                                <h3 class="text-2xl font-dancing text-orange-700 mb-4">4/12/2024 - First Meeting</h3>
-                                <p class="text-gray-600">At the engagement - finally face to face! 👫</p>
-                                <div class="text-4xl mt-4">🎭💖</div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-4 text-gray-700">Your black dress and our first real meeting 🖤✨</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <div class="w-full h-96 bg-gradient-to-br from-red-200 to-pink-200 rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="text-center p-8">
-                                <h3 class="text-2xl font-dancing text-red-700 mb-4">1/1/2025 - Best Birthday</h3>
-                                <p class="text-gray-600">You made my birthday magical 🎂</p>
-                                <div class="text-4xl mt-4">🎉💕</div>
-                            </div>
-                        </div>
-                        <p class="text-center mt-4 text-gray-700">The best birthday of my life with you, Jerry! 🐒❤️</p>
-                    </div>
+                    
+                    <!-- Additional gallery slides... -->
                 </div>
-                  <div class="gallery-navigation mt-6 sm:mt-8 flex justify-center space-x-4">
-                    <button onclick="previousSlide()" class="bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white p-3 rounded-full transition-colors touch-manipulation min-h-[44px] min-w-[44px]" aria-label="Previous Image">
-                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                
+                <div class="gallery-navigation mt-8 flex justify-center space-x-4">
+                    <button onclick="previousSlide()" class="enhanced-button p-3 rounded-full" aria-label="Previous Image">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
-                    <button onclick="nextSlide()" class="bg-pink-500 hover:bg-pink-600 active:bg-pink-700 text-white p-3 rounded-full transition-colors touch-manipulation min-h-[44px] min-w-[44px]" aria-label="Next Image">
-                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="nextSlide()" class="enhanced-button p-3 rounded-full" aria-label="Next Image">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
-                </div>
-                
-                <div class="gallery-dots mt-4 flex justify-center space-x-2">
-                    <span class="dot active touch-manipulation" onclick="currentSlide(1)" aria-label="Go to image 1"></span>
-                    <span class="dot touch-manipulation" onclick="currentSlide(2)" aria-label="Go to image 2"></span>
-                    <span class="dot touch-manipulation" onclick="currentSlide(3)" aria-label="Go to image 3"></span>
-                    <span class="dot touch-manipulation" onclick="currentSlide(4)" aria-label="Go to image 4"></span>
-                    <span class="dot touch-manipulation" onclick="currentSlide(5)" aria-label="Go to image 5"></span>
                 </div>
             </div>
         </div>
@@ -267,36 +127,27 @@
             </h2>
             
             <div class="max-w-3xl mx-auto">
-                <div class="love-letter bg-white/80 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-xl" data-aos="fade-up">
+                <div class="love-letter glassmorphism-bg p-8 md:p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-dancing text-pink-600 mb-4">To My Dearest Puja (Pujuu), My Sweet Jerry 🐒💕</h3>
                     </div>
-                      <div class="space-y-6 text-gray-700 leading-relaxed">                        <p>My beautiful Puja, my sweet Jerry 🐒💕,</p>
+                    
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p>My beautiful Puja, my sweet Jerry 🐒💕,</p>
                         
                         <p>From that very first message with your smile emoji 😁 on 16th June 2024, you've filled my life with joy I never knew existed. When you said <em>"Love you"</em> for the first time during our 3-hour phone call on 19th June, I was so happy I couldn't even explain it!</p>
                         
-                        <p>Even during our 3-month gap, your caring words touched my heart: <em>"Please paribu jadi khayama karidabu"</em> and <em>"mun tate tike bi hurt karibaku chahu nathili"</em> - you never wanted to hurt me, and that showed your beautiful soul.</p>
-                        
-                        <p>When we finally reconnected on October 13th, you gave me that unforgettable first video call when my mood was off, but you were there for me despite being busy. That's when I knew - life has parts that we can never forget, and you're the most precious part of mine.</p>
-                        
-                        <p>Our first meeting on 4th December at the engagement was magical! You coordinated everything through Rinki Nani, saying <em>"Ready ha ame balia Store jiba"</em> and even caring about how I dressed: <em>"Nai ae dress habani bhala dress pindhiki asee"</em>. When you said <em>"Tike agaku dekh"</em> at the petrol pump, I felt like I had found all the happiness in the world!</p>
-                        
-                        <p>Our second meeting on 16th December brought our first kiss and hug - such beautiful moments I never wanted to end. And my birthday on 1st January 2025 became the best birthday of my life because you were there with me.</p>
-                          <p>You've shown me love in so many ways - your regular <em>"Love you"</em> and <em>"Miss you"</em>, your caring nature always ensuring I don't get hurt, your thoughtful planning of our meetings, and how you protect me by making sure I look good and feel confident.</p>
-                        
                         <p>Thank you for being my partner, my best friend, my love, and my adorable Jerry who brings playful joy to every moment. Your caring words and loving actions have made every ordinary day extraordinary.</p>
-                        
-                        <p>Here's to our beautiful journey that started with a simple message and bloomed into the most precious love story. You are my greatest blessing, my sweet Puja! 🐒❤️</p>
                         
                         <p class="text-right mt-8">
                             <span class="font-dancing text-xl text-pink-600">Forever yours,</span><br>
-                            <span class="font-dancing text-2xl text-red-500">Your loving Mankada (Soumya) 💕</span><br>
-                            <span class="text-sm text-gray-500 font-dancing">Written from the heart using all our precious memories</span>
+                            <span class="font-dancing text-2xl text-red-500">Your loving Mankada (Soumya) 💕</span>
                         </p>
                     </div>
                 </div>
-                  <div class="text-center mt-8 sm:mt-12">
-                    <button id="surprise-btn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 sm:px-8 py-3 rounded-full hover:from-pink-600 hover:to-red-600 active:from-pink-700 active:to-red-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg touch-manipulation min-h-[44px]" aria-label="Special Surprise">
+                
+                <div class="text-center mt-12">
+                    <button id="surprise-btn" class="enhanced-button text-lg px-8 py-4" aria-label="Special Surprise">
                         🎉 Click for a Special Surprise! 🎉
                     </button>
                 </div>
@@ -306,7 +157,8 @@
 
     <!-- Final Message Section -->
     <section id="final" class="py-20 bg-gradient-to-r from-pink-500 to-red-500 text-white relative z-10">
-        <div class="container mx-auto px-4 text-center">            <h2 class="text-4xl md:text-6xl font-bold font-dancing mb-8" data-aos="fade-up">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold font-dancing mb-8" data-aos="fade-up">
                 I Love You, Puja ❤️
             </h2>
             <p class="text-xl md:text-2xl mb-8 opacity-90" data-aos="fade-up" data-aos-delay="200">
@@ -318,13 +170,148 @@
         </div>
     </section>
 
-    <!-- Confetti Canvas -->
-    <canvas id="confetti-canvas" class="fixed inset-0 z-30 pointer-events-none"></canvas>
-
-    <!-- Scripts -->
+    <!-- Audio Element for Background Music -->
+    <audio id="background-music" preload="auto" loop>
+        <source src="music/song1.m4a" type="audio/mp4">
+        <source src="music/song1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>    <!-- Scripts -->
     <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Love Story Auto-Redirection Script -->
+    <script>
+        // Function to redirect to love story page with smooth transition
+        function redirectToLoveStory() {
+            // Add a smooth transition effect before redirecting
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0.7';
+            
+            // Show a brief "Redirecting to Love Story..." message
+            const redirectMessage = document.createElement('div');
+            redirectMessage.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    border: 2px solid rgba(236, 72, 153, 0.3);
+                    border-radius: 20px;
+                    padding: 30px 40px;
+                    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.2);
+                    z-index: 9999;
+                    text-align: center;
+                    animation: fadeInScale 0.3s ease-out forwards;
+                ">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">💖</div>
+                    <div style="font-size: 1.2rem; color: #ec4899; font-weight: 600; margin-bottom: 5px;">
+                        Redirecting to Love Story...
+                    </div>
+                    <div style="font-size: 0.9rem; color: #666;">
+                        Preparing your romantic journey ✨
+                    </div>
+                </div>
+            `;
+            
+            // Add animation styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInScale {
+                    from {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(redirectMessage);
+            
+            // Redirect after a brief delay for smooth UX
+            setTimeout(() => {
+                window.location.href = 'love-story.html';
+            }, 1200);
+        }
+        
+        // Optional: Auto-redirect when scrolling to where the love story section would be
+        let hasAutoRedirected = false;
+        
+        function checkScrollForRedirect() {
+            if (hasAutoRedirected) return;
+            
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // If user scrolls past 40% of the page (where love story section would be)
+            if (scrollPosition > windowHeight * 0.4) {
+                hasAutoRedirected = true;
+                
+                // Show a subtle popup asking if they want to see the love story
+                const popup = document.createElement('div');
+                popup.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        bottom: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(239, 68, 68, 0.95));
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        padding: 16px 24px;
+                        border-radius: 50px;
+                        box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+                        z-index: 1000;
+                        text-align: center;
+                        animation: slideUpBounce 0.5s ease-out forwards;
+                        cursor: pointer;
+                        min-width: 300px;
+                    " onclick="redirectToLoveStory()">
+                        <div style="font-size: 1rem; font-weight: 600; margin-bottom: 4px;">
+                            💖 Want to see our complete love story?
+                        </div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">
+                            Click here for enhanced timeline with music! ✨
+                        </div>
+                    </div>
+                `;
+                
+                // Add slide-up animation
+                const slideStyle = document.createElement('style');
+                slideStyle.textContent = `
+                    @keyframes slideUpBounce {
+                        from {
+                            opacity: 0;
+                            transform: translateX(-50%) translateY(100px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateX(-50%) translateY(0);
+                        }
+                    }
+                `;
+                document.head.appendChild(slideStyle);
+                document.body.appendChild(popup);
+                
+                // Auto-remove popup after 5 seconds
+                setTimeout(() => {
+                    if (popup.parentNode) {
+                        popup.style.animation = 'slideUpBounce 0.3s ease-out reverse forwards';
+                        setTimeout(() => popup.remove(), 300);
+                    }
+                }, 5000);
+            }
+        }
+        
+        // Add scroll listener for auto-redirect suggestion
+        window.addEventListener('scroll', checkScrollForRedirect, { passive: true });
+    </script>
 </body>
 </html>

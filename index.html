@@ -1,514 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#ff6b9d">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Anniversary Love">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ec4899">
     <title>❤️ For My Sweet Jerry (Puja) ❤️</title>
     <meta name="description" content="A special surprise for my love">
     
-    <!-- Preload critical fonts for better performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnect for performance -->    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-      <style>
-        /* CSS Reset for mobile compatibility */
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #ff6b9d, #ffa8cc, #ffb3d6, #ff8fab);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            min-height: 100vh;
-            min-height: 100dvh; /* Dynamic viewport height for mobile */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 1rem;
-            overflow: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-          .container {
-            text-align: center;
-            color: white;
-            z-index: 10;
-            position: relative;
-            max-width: 90vw;
-            padding: 1rem;
-        }
-        
-        .font-dancing {
-            font-family: 'Dancing Script', cursive;
-        }
-        
-        .main-title {
-            font-size: clamp(2rem, 8vw, 4rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .subtitle {
-            font-size: clamp(1.2rem, 5vw, 2rem);
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        
-        .description {
-            font-size: clamp(1rem, 4vw, 1.25rem);
-            margin-bottom: 2rem;
-            opacity: 0.8;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .signature {
-            font-size: clamp(0.8rem, 3vw, 1rem);
-            margin-top: 1.5rem;
-            opacity: 0.7;
-        }
-          .heart {
-            position: absolute;
-            width: clamp(12px, 3vw, 20px);
-            height: clamp(12px, 3vw, 20px);
-            background: #ff6b9d;
-            transform: rotate(45deg);
-            animation: floatUp 8s infinite ease-in-out;
-            opacity: 0.7;
-            will-change: transform;
-        }
-        
-        .heart:before,
-        .heart:after {
-            content: '';
-            position: absolute;
-            width: clamp(12px, 3vw, 20px);
-            height: clamp(12px, 3vw, 20px);
-            background: #ff6b9d;
-            border-radius: 50%;
-        }
-        
-        .heart:before {
-            top: calc(-50% + 1px);
-            left: 0;
-        }
-        
-        .heart:after {
-            top: 0;
-            left: calc(-50% + 1px);
-        }
-        
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(45deg) scale(0);
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.7;
-                transform: translateY(85vh) rotate(45deg) scale(1);
-            }
-            85% {
-                opacity: 0.7;
-                transform: translateY(15vh) rotate(45deg) scale(1);
-            }
-            100% {
-                transform: translateY(-10vh) rotate(45deg) scale(0);
-                opacity: 0;
-            }
-        }
-          .enter-btn {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: clamp(12px, 4vw, 18px) clamp(24px, 8vw, 36px);
-            border-radius: 50px;
-            font-size: clamp(1rem, 4vw, 1.125rem);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1.5rem;
-            animation: pulse 2s infinite;
-            touch-action: manipulation;
-            -webkit-user-select: none;
-            user-select: none;
-            min-height: 44px; /* iOS minimum touch target */
-            min-width: 200px;
-        }
-        
-        .enter-btn:hover,
-        .enter-btn:focus {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
-            outline: none;
-        }
-        
-        .enter-btn:active {
-            transform: translateY(-1px) scale(1.02);
-            transition-duration: 0.1s;
-        }
-          @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        
-        .sparkle {
-            position: absolute;
-            width: clamp(3px, 1vw, 6px);
-            height: clamp(3px, 1vw, 6px);
-            background: gold;
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-            will-change: transform;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1) rotate(180deg); }
-        }
-        
-        /* Reduced motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            .heart,
-            .sparkle,
-            .enter-btn {
-                animation: none;
-            }
-            
-            body {
-                animation: none;
-                background: #ff6b9d;
-            }
-        }
-        
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            .enter-btn {
-                border-width: 3px;
-                background: rgba(255, 255, 255, 0.9);
-                color: #000;
-            }
-        }    </style>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    <!-- Preload important scripts -->
+    <link rel="preload" href="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js" as="script">
+    
+    <!-- Fonts with optimized loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
 </head>
-<body>    <!-- Background Music Player -->
-    <div id="music-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 8px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <button id="music-toggle" style="background: linear-gradient(135deg, #ff6b9d, #ffa8cc); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.3s ease;">
-            🎵
-        </button>    </div>
-
-    <div class="container">
-        <h1 class="font-dancing main-title drop-shadow-lg">
-            💕 For My Sweet Jerry 💕
-        </h1>
-        <h2 class="subtitle">
-            My Dearest Pujuu (Jerry)🐭
-        </h2>
-        <p class="description">
-            I have prepared something very special for you... 
-            <br>A surprise that's been waiting just for you! ✨
-        </p>
-        
-        <a href="countdown.html" class="enter-btn" role="button" aria-label="Open your anniversary surprise">
-            🎁 Open Your Surprise 🎁
-        </a>
-        
-        <p class="signature font-dancing">
-            With all my love, Your Mankada (Soumya) 💖
-        </p>
-    </div>
+<body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden gradient-animation">
+      <!-- Particles Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
     
-    <!-- Floating hearts -->
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-        <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 6s;"></div>
-        <div class="heart" style="left: 30%; animation-delay: 1s; animation-duration: 7s;"></div>
-        <div class="heart" style="left: 50%; animation-delay: 2s; animation-duration: 8s;"></div>
-        <div class="heart" style="left: 70%; animation-delay: 3s; animation-duration: 6s;"></div>
-        <div class="heart" style="left: 90%; animation-delay: 4s; animation-duration: 7s;"></div>
-    </div>
+    <!-- Floating Hearts Container for Burst Effects -->
+    <div id="floating-hearts-container" class="fixed inset-0 pointer-events-none z-50"></div>
     
-    <!-- Sparkles -->
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
-        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
-        <div class="sparkle" style="top: 30%; left: 85%; animation-delay: 0.5s;"></div>
-        <div class="sparkle" style="top: 60%; left: 25%; animation-delay: 1s;"></div>
-        <div class="sparkle" style="top: 80%; left: 75%; animation-delay: 1.5s;"></div>
-        <div class="sparkle" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
-    </div>      <script>        // Background Music Control - Simple Single Song
-        let musicPlaying = false;
-        let playlist = ['music/song1.m4a']; // Only main song
-        let currentAudio = null;
-        const musicToggle = document.getElementById('music-toggle');
-        
-        // Initialize with main song only (queue functionality removed)
-        function loadPlaylist() {
-            // Only play the main song, no queue functionality
-            console.log('Playing main song only (queue functionality removed from waiting features)');
-        }
-        
-        // Create and manage audio elements
-        function createAudioElement(src) {
-            const audio = new Audio();
-            audio.preload = 'auto';
-            audio.volume = 0.3;
-            audio.src = src;
-            return audio;
-        }
-          // Play current song (simplified to single song)
-        function playCurrentSong() {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio = null;
-            }
-            
-            // Always play the main song (playlist[0])
-            currentAudio = createAudioElement(playlist[0]);
-            
-            // When song ends, replay the same song (loop)
-            currentAudio.addEventListener('ended', () => {
-                playCurrentSong(); // Just replay the main song
-            });
-            
-            // Handle errors
-            currentAudio.addEventListener('error', () => {
-                console.log(`Error playing main song: ${playlist[0]}`);
-            });
-            
-            return currentAudio.play();
-        }
-          // Enhanced Autoplay System - Bypass Browser Restrictions
-        let autoplayAttempted = false;
-        let userInteracted = false;
+    <!-- Enhanced Background Music Player -->
+    <div class="enhanced-music-player">
+        <button id="music-toggle" class="music-control-btn" aria-label="Toggle Background Music">
+            <span id="music-icon">🎵</span>
+            <div class="music-visualizer" id="music-visualizer" style="display: none;">
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+            </div>
+        </button>
+    </div>
 
-        // Track user interaction globally
-        function enableAudioContext() {
-            userInteracted = true;
-            console.log('🎵 User interaction detected - audio context enabled');
+    <!-- Welcome Section -->
+    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 px-4">        <div class="text-center w-full max-w-4xl">
+            <div class="floating-hearts" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+                <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 6s;"></div>
+                <div class="heart" style="left: 30%; animation-delay: 1s; animation-duration: 7s;"></div>
+                <div class="heart" style="left: 50%; animation-delay: 2s; animation-duration: 8s;"></div>
+                <div class="heart" style="left: 70%; animation-delay: 3s; animation-duration: 6s;"></div>
+                <div class="heart" style="left: 90%; animation-delay: 4s; animation-duration: 7s;"></div>
+            </div>
             
-            // Try to start music immediately after first interaction
-            if (!autoplayAttempted && currentAudio) {
-                attemptAutoplay();
-            }
-        }
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-6 font-dancing leading-tight" data-aos="fade-up">
+                💕 For My Sweet Jerry 💕
+            </h1>
+            <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                My Dearest <span class="text-red-500 font-semibold">Pujuu (Jerry)</span> 🐭
+            </h2>              <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed glassmorphism-bg rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
+                <span id="typed-text" class="border-r-2 border-pink-500 min-h-[3em] block"></span>
+            </div>
+            
+            <a href="countdown.html" class="enhanced-button text-lg px-8 py-4 min-h-[44px] inline-block text-decoration-none" data-aos="fade-up" data-aos-delay="600" aria-label="Open your anniversary surprise">
+                🎁 Open Your Surprise 🎁
+            </a>
+            
+            <p class="text-base text-pink-600 mt-6 font-dancing" data-aos="fade-up" data-aos-delay="800">
+                With all my love, Your Mankada (Soumya) 💖
+            </p>
+        </div>
+    </section>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Initialize AOS (Animate On Scroll) with mobile optimizations
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: isMobile ? 600 : 1000,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: isMobile ? 50 : 120,
+                delay: isMobile ? 50 : 100
+            });
+        });
 
-        // Aggressive autoplay attempt with multiple fallback strategies
-        function attemptAutoplay() {
-            if (autoplayAttempted) return;
-            autoplayAttempted = true;
-            
-            console.log('🎵 Attempting aggressive autoplay...');
-            
-            // Strategy 1: Direct play attempt
-            playCurrentSong().then(() => {
-                console.log('✅ Autoplay successful!');
-                musicToggle.innerHTML = '🎵';
-                musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                musicPlaying = true;
-            }).catch(error => {
-                console.log('❌ Direct autoplay failed:', error);
+        // Initialize Particles.js
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: isMobile ? 30 : 60,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ["#ff6b9d", "#ffa8cc", "#ffb3d6"]
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#ff6b9d",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: isMobile ? 1 : 2,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: !isMobile,
+                            mode: "repulse"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        }
+        
+        // Synchronized Music Playback Manager for Cross-Page Continuity
+        class SynchronizedMusicManager {
+            constructor() {
+                this.musicStateKey = 'musicPlaybackState'; // Shared key with countdown.html
+                this.playlist = ['music/song1.m4a'];
+                this.currentAudio = null;
+                this.musicPlaying = false;
+                this.musicToggle = document.getElementById('music-toggle');
+                this.playbackState = {
+                    wasPlaying: false,
+                    currentTime: 0,
+                    volume: 0.3,
+                    lastUpdated: Date.now()
+                };
                 
-                // Strategy 2: Silent audio trick
-                const silentAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMG');
-                silentAudio.volume = 0;
-                silentAudio.play().then(() => {
-                    console.log('🔇 Silent audio played, trying main audio...');
-                    setTimeout(() => {
-                        playCurrentSong().then(() => {
-                            console.log('✅ Secondary autoplay successful!');
-                            musicToggle.innerHTML = '🎵';
-                            musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                            musicPlaying = true;
-                        }).catch(() => {
-                            console.log('❌ Secondary autoplay failed, waiting for user interaction');
-                            setupInteractionListeners();
+                this.init();
+            }
+            
+            init() {
+                // Load saved playback state from other page
+                this.loadPlaybackState();
+                
+                // Initialize audio element
+                this.createAudioElement();
+                
+                // Set up event listeners for state tracking
+                this.setupStateTracking();
+                
+                // Check if music should resume from previous page
+                this.handleCrossPageResume();
+                
+                // Set up music toggle functionality
+                this.setupMusicToggle();
+                
+                console.log('🎵 Synchronized Music Manager initialized for index.html');
+            }
+            
+            setupMusicToggle() {
+                if (this.musicToggle) {
+                    // Remove any existing listeners first
+                    this.musicToggle.removeEventListener('click', this.handleMusicToggle);
+                    
+                    // Add the event listener with proper binding
+                    this.musicToggle.addEventListener('click', () => {
+                        this.handleMusicToggle();
+                    });
+                    this.musicToggle.title = 'Click to play/pause background music';
+                    console.log('🎛️ Music toggle setup complete');
+                }
+            }
+            
+            handleMusicToggle() {
+                console.log('🎵 Synchronized Music toggle clicked!', {
+                    audioElement: !!this.currentAudio,
+                    isPaused: this.currentAudio ? this.currentAudio.paused : 'no audio'
+                });
+                
+                if (!this.currentAudio) return;
+                
+                if (this.currentAudio.paused) {
+                    console.log('▶️ Attempting to play synchronized music...');
+                    
+                    // Resume from saved position if available
+                    if (this.playbackState.currentTime > 0) {
+                        this.currentAudio.currentTime = this.playbackState.currentTime;
+                    }
+                    
+                    this.currentAudio.play()
+                        .then(() => {
+                            console.log('✅ Synchronized music started successfully');
+                            this.musicPlaying = true;
+                            this.updateMusicButton(true);
+                            this.playbackState.wasPlaying = true;
+                            this.savePlaybackState();
+                        })
+                        .catch((error) => {
+                            console.log('⚠️ Failed to play synchronized music:', error);
                         });
-                    }, 100);
-                }).catch(() => {
-                    console.log('❌ Silent audio failed, waiting for user interaction');
-                    setupInteractionListeners();
-                });
-            });
-        }
-
-        // Setup comprehensive interaction listeners
-        function setupInteractionListeners() {
-            const events = ['click', 'touchstart', 'touchend', 'keydown', 'scroll', 'mousemove'];
-            const handleFirstInteraction = () => {
-                enableAudioContext();
-                if (!musicPlaying && currentAudio) {
-                    playCurrentSong().then(() => {
-                        console.log('✅ Music started after user interaction');
-                        musicToggle.innerHTML = '🎵';
-                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                        musicPlaying = true;
-                    }).catch(error => {
-                        console.log('❌ Audio play failed even after interaction:', error);
-                    });
-                }
-                
-                // Remove listeners after first interaction
-                events.forEach(event => {
-                    document.removeEventListener(event, handleFirstInteraction);
-                });
-            };
-            
-            events.forEach(event => {
-                document.addEventListener(event, handleFirstInteraction, { once: true, passive: true });
-            });
-        }
-
-        // Initialize playlist and enhanced auto-play
-        if (musicToggle) {
-            // Load playlist first
-            loadPlaylist();
-            
-            // Initialize first audio element
-            currentAudio = createAudioElement(playlist[0]);
-            
-            // Enhanced autoplay attempt
-            setTimeout(() => {
-                attemptAutoplay();
-            }, 500); // Small delay to ensure page is ready
-        }// Music toggle functionality
-        musicToggle.addEventListener('click', function() {
-            if (musicPlaying) {
-                // Pause music
-                if (currentAudio) {
-                    currentAudio.pause();
-                }
-                musicToggle.innerHTML = '🔇';
-                musicToggle.style.background = 'linear-gradient(135deg, #666, #999)';
-                musicPlaying = false;
-            } else {
-                // Play music
-                if (currentAudio) {
-                    currentAudio.play().then(() => {
-                        musicToggle.innerHTML = '🎵';
-                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                        musicPlaying = true;
-                    }).catch(error => {
-                        console.log('Audio play failed:', error);
-                        musicToggle.innerHTML = '❌';
-                        musicToggle.title = 'Please check music files in music folder';
-                    });
                 } else {
-                    // Restart playlist if no current audio
-                    playCurrentSong().then(() => {
-                        musicToggle.innerHTML = '🎵';
-                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                        musicPlaying = true;
-                    }).catch(error => {
-                        console.log('Audio play failed:', error);
-                        musicToggle.innerHTML = '❌';
-                        musicToggle.title = 'Please check music files in music folder';
+                    console.log('⏸️ Pausing synchronized music...');
+                    this.currentAudio.pause();
+                    console.log('✅ Synchronized music paused successfully');
+                    this.musicPlaying = false;
+                    this.updateMusicButton(false);
+                    this.playbackState.wasPlaying = false;
+                    this.playbackState.currentTime = this.currentAudio.currentTime;
+                    this.savePlaybackState();
+                }
+            }
+            
+            setupInteractionListeners() {
+                const events = ['click', 'touchstart', 'touchend', 'keydown', 'scroll', 'mousemove'];
+                const handleFirstInteraction = () => {
+                    if (this.playbackState.wasPlaying && this.currentAudio && this.currentAudio.paused) {
+                        console.log('🎵 Attempting to resume music after user interaction...');
+                        this.resumePlayback();
+                    }
+                    
+                    // Remove listeners after first interaction
+                    events.forEach(event => {
+                        document.removeEventListener(event, handleFirstInteraction);
                     });
+                };
+                
+                events.forEach(event => {
+                    document.addEventListener(event, handleFirstInteraction, { once: true, passive: true });
+                });
+            }
+            
+            loadPlaybackState() {
+                try {
+                    const savedState = localStorage.getItem(this.musicStateKey);
+                    if (savedState) {
+                        this.playbackState = { ...this.playbackState, ...JSON.parse(savedState) };
+                        console.log('🔄 Loaded music state:', this.playbackState);
+                    }
+                } catch (error) {
+                    console.log('⚠️ Failed to load music state:', error);
                 }
             }
-        });
-        
-        // Set tooltip
-        musicToggle.title = 'Click to play/pause background music playlist';
-        
-        // Mobile-optimized sparkle creation
-        let animationFrameId;
-        let lastSparkleTime = 0;
-        
-        function createSparkle() {
-            const now = Date.now();
-            if (now - lastSparkleTime < 1000) return; // Throttle for performance
-            lastSparkleTime = now;
             
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.position = 'fixed';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            sparkle.style.animationDelay = Math.random() * 2 + 's';
-            sparkle.style.zIndex = '2';
-            sparkle.style.pointerEvents = 'none';
+            savePlaybackState() {
+                try {
+                    this.playbackState.lastUpdated = Date.now();
+                    localStorage.setItem(this.musicStateKey, JSON.stringify(this.playbackState));
+                } catch (error) {
+                    console.log('⚠️ Failed to save music state:', error);
+                }
+            }
             
-            document.body.appendChild(sparkle);
+            createAudioElement() {
+                this.currentAudio = new Audio();
+                this.currentAudio.preload = 'auto';
+                this.currentAudio.volume = this.playbackState.volume;
+                this.currentAudio.src = this.playlist[0];
+                
+                // Loop the song
+                this.currentAudio.addEventListener('ended', () => {
+                    this.currentAudio.currentTime = 0;
+                    this.currentAudio.play();
+                });
+                
+                // Handle errors
+                this.currentAudio.addEventListener('error', () => {
+                    console.log(`Error playing song: ${this.playlist[0]}`);
+                });
+            }
             
+            setupStateTracking() {
+                if (!this.currentAudio) return;
+                
+                // Track play/pause events
+                this.currentAudio.addEventListener('play', () => {
+                    this.musicPlaying = true;
+                    this.playbackState.wasPlaying = true;
+                    this.savePlaybackState();
+                    this.updateMusicButton(true);
+                });
+                
+                this.currentAudio.addEventListener('pause', () => {
+                    this.musicPlaying = false;
+                    this.playbackState.wasPlaying = false;
+                    this.playbackState.currentTime = this.currentAudio.currentTime;
+                    this.savePlaybackState();
+                    this.updateMusicButton(false);
+                });
+                
+                // Track time updates (save every 3 seconds to avoid too frequent writes)
+                let lastSaveTime = 0;
+                this.currentAudio.addEventListener('timeupdate', () => {
+                    const now = Date.now();
+                    if (now - lastSaveTime > 3000) { // Save every 3 seconds
+                        this.playbackState.currentTime = this.currentAudio.currentTime;
+                        this.playbackState.volume = this.currentAudio.volume;
+                        this.savePlaybackState();
+                        lastSaveTime = now;
+                    }
+                });
+                
+                // Track volume changes
+                this.currentAudio.addEventListener('volumechange', () => {
+                    this.playbackState.volume = this.currentAudio.volume;
+                    this.savePlaybackState();
+                });
+                
+                // Save state before page unload
+                window.addEventListener('beforeunload', () => {
+                    if (!this.currentAudio.paused) {
+                        this.playbackState.wasPlaying = true;
+                        this.playbackState.currentTime = this.currentAudio.currentTime;
+                    } else {
+                        this.playbackState.wasPlaying = false;
+                    }
+                    this.savePlaybackState();
+                });
+            }
+            
+            handleCrossPageResume() {
+                const timeSinceLastUpdate = Date.now() - this.playbackState.lastUpdated;
+                const maxResumeTime = 30 * 60 * 1000; // 30 minutes
+                
+                if (this.playbackState.wasPlaying && timeSinceLastUpdate < maxResumeTime) {
+                    console.log('🔄 Resuming music from countdown page at time:', this.playbackState.currentTime);
+                    this.resumePlayback();
+                } else if (this.playbackState.currentTime > 0) {
+                    console.log('🎵 Music position saved, ready to resume manually');
+                    this.currentAudio.currentTime = this.playbackState.currentTime;
+                }
+            }
+            
+            resumePlayback() {
+                if (this.currentAudio) {
+                    // Set saved volume and time
+                    this.currentAudio.volume = this.playbackState.volume;
+                    this.currentAudio.currentTime = this.playbackState.currentTime;
+                    
+                    // Attempt to resume playback
+                    const playPromise = this.currentAudio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise
+                            .then(() => {
+                                console.log('✅ Successfully resumed synchronized music playback');
+                                this.updateMusicButton(true);
+                            })
+                            .catch((error) => {
+                                console.log('⚠️ Auto-resume blocked by browser:', error.message);
+                                // Set up interaction listener for manual resume
+                                this.setupInteractionListeners();
+                            });
+                    }
+                }
+            }
+            
+            updateMusicButton(isPlaying) {
+                if (this.musicToggle) {
+                    const icon = this.musicToggle.querySelector('#music-icon');
+                    const visualizer = this.musicToggle.querySelector('#music-visualizer');
+                    
+                    if (isPlaying) {
+                        if (icon) icon.textContent = '🎵';
+                        this.musicToggle.classList.add('playing');
+                        this.musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                        if (visualizer) visualizer.style.display = 'flex';
+                    } else {
+                        if (icon) icon.textContent = '🔇';
+                        this.musicToggle.classList.remove('playing');
+                        this.musicToggle.style.background = 'linear-gradient(135deg, #666, #999)';
+                        if (visualizer) visualizer.style.display = 'none';
+                    }
+                }
+            }
+            
+            attemptAutoplay() {
+                if (this.currentAudio && this.currentAudio.paused) {
+                    this.currentAudio.play()
+                        .then(() => {
+                            console.log('✅ Autoplay successful on index page!');
+                        })
+                        .catch((error) => {
+                            console.log('⚠️ Autoplay blocked, waiting for user interaction:', error.message);
+                            this.setupInteractionListeners();
+                        });
+                }
+            }
+        }
+
+        // Initialize Synchronized Music Manager
+        let syncMusicManager;
+        
+        if (document.getElementById('music-toggle')) {
+            syncMusicManager = new SynchronizedMusicManager();
+            
+            // Enhanced autoplay attempt after short delay
             setTimeout(() => {
-                if (sparkle.parentNode) {
-                    sparkle.parentNode.removeChild(sparkle);
+                if (syncMusicManager) {
+                    syncMusicManager.attemptAutoplay();
                 }
-            }, 2000);
+            }, 1000);
+        } else {
+            console.log('❌ Music toggle button not found');
         }
+
+        console.log('💕 Enhanced anniversary index page with synchronized music loaded! 💕');
         
-        // Optimized animation loop
-        function animationLoop() {
-            if (Math.random() < 0.1) { // 10% chance per frame
-                createSparkle();
-            }
-            animationFrameId = requestAnimationFrame(animationLoop);
-        }
-        
-        // Check for reduced motion preference
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        // Initialize animations only if motion is allowed
-        if (!prefersReducedMotion) {
-            // Start animation loop
-            animationLoop();
+        // Heart burst effect for click interactions
+        function createHeartBurst(x, y) {
+            const heartsContainer = document.getElementById('floating-hearts-container');
+            if (!heartsContainer) return;
             
-            // Initial sparkles
-            for (let i = 0; i < 3; i++) {
-                setTimeout(createSparkle, i * 500);
+            const heartEmojis = ['💕', '💖', '💝', '💗', '💘', '❤️', '💞', '💓', '🧡', '💛', '💚', '💙', '💜'];
+            const burstCount = Math.random() * 8 + 5; // 5-13 hearts in burst
+            
+            for (let i = 0; i < burstCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'burst-heart';
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                
+                // Random burst properties
+                const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.5;
+                const velocity = Math.random() * 200 + 100; // 100-300px
+                const size = Math.random() * 15 + 10; // 10-25px
+                const duration = Math.random() * 1.5 + 1; // 1-2.5 seconds
+                const rotation = Math.random() * 720 + 360; // 360-1080 degrees
+                const gravity = Math.random() * 200 + 150; // Fall speed
+                
+                const endX = x + Math.cos(angle) * velocity;
+                const endY = y + Math.sin(angle) * velocity - 50; // Start upward
+                const finalY = y + gravity; // Fall down with gravity
+                
+                heart.style.cssText = `
+                    position: fixed;
+                    left: ${x}px;
+                    top: ${y}px;
+                    font-size: ${size}px;
+                    pointer-events: none;
+                    z-index: 100;
+                    animation: heartBurst ${duration}s ease-out forwards;
+                    --endX: ${endX}px;
+                    --endY: ${endY}px;
+                    --finalY: ${finalY}px;
+                    --rotation: ${rotation}deg;
+                    filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.8)) hue-rotate(${Math.random() * 60 - 30}deg);
+                `;
+                
+                heartsContainer.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, duration * 1000 + 100);
             }
         }
         
-        // Handle page visibility changes for battery optimization
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
+        // Add burst animation styles
+        const burstStyle = document.createElement('style');
+        burstStyle.textContent = `
+            @keyframes heartBurst {
+                0% {
+                    transform: translate(0, 0) rotate(0deg) scale(0.3);
+                    opacity: 1;
                 }
-            } else if (!prefersReducedMotion) {
-                animationLoop();
+                30% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh)) rotate(calc(var(--rotation) * 0.3)) scale(1.2);
+                    opacity: 1;
+                }
+                70% {
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh)) rotate(var(--rotation)) scale(0.1);
+                    opacity: 0;
+                }
             }
+            
+            .burst-heart {
+                user-select: none;
+                will-change: transform, opacity;
+            }
+        `;
+        document.head.appendChild(burstStyle);
+        
+        // Add emoji burst effect to the "Open Your Surprise" button
+        document.addEventListener('DOMContentLoaded', function() {
+            const surpriseButton = document.querySelector('a[href="countdown.html"]');
+            if (surpriseButton) {
+                surpriseButton.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = rect.left + rect.width / 2;
+                    const y = rect.top + rect.height / 2;
+                    createHeartBurst(x, y);
+                });
+            }        });
+    </script>
+      <!-- Typed.js for typewriter animation (improved) -->
+    <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
+    <script>
+        // Preload Typed.js to avoid delay
+        const typedScript = document.createElement('script');
+        typedScript.src = 'https://unpkg.com/typed.js@2.0.12/lib/typed.min.js';
+        typedScript.async = false;
+        document.head.appendChild(typedScript);
+        
+        // Initialize Typed.js with improved transition
+        let typedInstance = null;
+          function initTyped() {
+            const typedElement = document.getElementById('typed-text');
+            if (!typedElement) return;
+            
+            // Create CSS for fade transitions
+            const fadeStyle = document.createElement('style');
+            fadeStyle.textContent = `
+                .typed-fade-out {
+                    opacity: 0;
+                    transition: opacity 0.25s;
+                    -webkit-animation: 0;
+                    animation: 0;
+                }
+            `;
+            document.head.appendChild(fadeStyle);
+            
+            // Create Typed instance with smooth transitions
+            typedInstance = new Typed('#typed-text', {
+                strings: [
+                    "From June 16, 2024 to forever...",
+                    "Every moment with you is magical ✨",
+                    "You are my greatest blessing 💕",
+                    "My sweet Jerry, my everything 🐒❤️"
+                ],
+                typeSpeed: 50,         // Speed of typing
+                backSpeed: 25,         // Speed of deleting (slightly faster)
+                backDelay: 1800,       // Delay after typing before starting to delete
+                startDelay: 300,       // Small delay before starting first string
+                loop: true,
+                showCursor: true,
+                cursorChar: '|',
+                fadeOut: true,         // Adds smooth fade effect between transitions
+                fadeOutClass: 'typed-fade-out',
+                fadeOutDelay: 500,     // How long the fade lasts
+                autoInsertCss: true,
+                smartBackspace: true,  // Only delete what differs from previous string
+                onBegin: (self) => {
+                    typedElement.style.minHeight = '3em'; // Maintain consistent height
+                }
+            });
+        }
+        
+        // Start animation as soon as DOM is ready and Typed.js is loaded
+        function checkTypedLoaded() {
+            if (typeof Typed !== 'undefined' && document.getElementById('typed-text')) {
+                initTyped();
+            } else {
+                // If not loaded yet, try again in 100ms
+                setTimeout(checkTypedLoaded, 100);
+            }
+        }
+        
+        // Initialize after DOM content is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Use requestAnimationFrame for smoother initialization
+            requestAnimationFrame(() => {
+                checkTypedLoaded();
+            });
         });
-        
-        // Touch feedback for the button
-        const enterBtn = document.querySelector('.enter-btn');
-        if (enterBtn) {
-            enterBtn.addEventListener('touchstart', function() {
-                this.style.transform = 'translateY(-1px) scale(1.02)';
-            }, { passive: true });
-            
-            enterBtn.addEventListener('touchend', function() {
-                this.style.transform = '';
-            }, { passive: true });
-        }
-        
-        // Prevent zoom on double tap for iOS
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
-            const now = Date.now();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-        
-        console.log('💕 Mobile-optimized anniversary surprise loaded! 💕');
     </script>
 </body>
 </html>
