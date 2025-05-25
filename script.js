@@ -118,15 +118,16 @@ particlesJS('particles-js', {
 });
 
 // Typed.js Animation
-document.addEventListener('DOMContentLoaded', function() {
-    const typed = new Typed('#typed-text', {        strings: [
-            'You light up my world like nobody else... ✨',
-            'Every moment with you is a treasure... 💎',
-            'You are my today and all of my tomorrows... 🌅',
+document.addEventListener('DOMContentLoaded', function() {    const typed = new Typed('#typed-text', {        strings: [
+            'From your first smile emoji 😁 to forever... ✨',
+            'You said "Love you" first on our 3-hour call... 💕',
+            'October 13th gave us a new beginning... 🌅',
             'My heart beats only for you, Puja... 💓',
             'Forever grateful for my sweet Jerry... 🐒💕',
-            'You are my greatest adventure... 🌟',
-            'In your arms, I have found my home... 🏠💖'
+            'Our first meeting: "Tike agaku dekh"... 👀💖',
+            'Best birthday ever: 1/1/2025 with you... 🎂❤️',
+            'You never wanted to hurt me, and I love you for that... 🥺💕',
+            'From Balia Store to forever in my heart... 🏪💖'
         ],
         typeSpeed: 50,
         backSpeed: 30,
@@ -198,64 +199,223 @@ function pauseGalleryAutoAdvance() {
     }
 }
 
-// Music Player Functionality - Local Audio Implementation
+// Music Player Functionality - Enhanced Playlist System
 const playPauseBtn = document.getElementById('play-pause-btn');
 const playIcon = document.getElementById('play-icon');
 const pauseIcon = document.getElementById('pause-icon');
-const backgroundMusic = document.getElementById('background-music');
 
 let isPlaying = false;
+let currentSongIndex = 0;
+let playlist = ['music/song1.m4a']; // Start with main song
+let currentAudio = null;
 
-// Set initial volume
-if (backgroundMusic) {
-    backgroundMusic.volume = 0.3; // 30% volume for background music
+// Load playlist from queue directory
+async function loadPlaylist() {
+    try {
+        // Try to load songs from queue_song directory (anniversary page)
+        const queueSongs = [
+            'music/queue_song/01-song.m4a',
+            'music/queue_song/02-song.m4a', 
+            'music/queue_song/03-song.m4a',
+            'music/queue_song/01-song.mp3',
+            'music/queue_song/02-song.mp3',
+            'music/queue_song/03-song.mp3'
+        ];
+        
+        // Check which songs exist and add them to playlist
+        for (const song of queueSongs) {
+            try {
+                const audio = new Audio(song);
+                audio.addEventListener('loadeddata', () => {
+                    if (playlist.indexOf(song) === -1) {
+                        playlist.push(song);
+                    }
+                });
+                audio.addEventListener('error', () => {
+                    // Song doesn't exist, skip it
+                });
+                audio.load();
+            } catch (error) {
+                // Skip songs that can't be loaded
+            }
+        }
+    } catch (error) {
+        console.log('Could not load queue songs, using main song only');
+    }
+}
+
+// Enhanced Audio Context Management
+let audioContext = null;
+
+// Initialize Audio Context for better autoplay support
+function initAudioContext() {
+    try {
+        // Create AudioContext if supported
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass && !audioContext) {
+            audioContext = new AudioContextClass();
+            console.log('🎵 AudioContext created:', audioContext.state);
+            
+            // Resume audio context if suspended
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    console.log('✅ AudioContext resumed');
+                }).catch(error => {
+                    console.log('❌ Failed to resume AudioContext:', error);
+                });
+            }
+        }
+    } catch (error) {
+        console.log('❌ AudioContext not supported:', error);
+    }
+}
+
+// Enhanced createAudioElement with Web Audio API support
+function createAudioElement(src) {
+    const audio = new Audio();
+    audio.preload = 'auto';
+    audio.volume = 0.3;
+    audio.crossOrigin = 'anonymous';
     
-    // Auto-play music when page loads
-    backgroundMusic.play().then(() => {
+    // Add multiple source formats for better compatibility
+    const sources = [
+        { src: src, type: 'audio/mp4' },
+        { src: src.replace('.m4a', '.mp3'), type: 'audio/mpeg' },
+        { src: src.replace('.m4a', '.wav').replace('.mp3', '.wav'), type: 'audio/wav' }
+    ];
+    
+    audio.src = src;
+    
+    // Connect to AudioContext if available
+    if (audioContext && audioContext.state === 'running') {
+        try {
+            const source = audioContext.createMediaElementSource(audio);
+            source.connect(audioContext.destination);
+        } catch (error) {
+            console.log('Could not connect to AudioContext:', error);
+        }
+    }
+    
+    return audio;
+}
+
+// Play current song in playlist
+function playCurrentSong() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+    }
+    
+    const currentSong = playlist[currentSongIndex];
+    currentAudio = createAudioElement(currentSong);
+    
+    // When song ends, play next song in playlist
+    currentAudio.addEventListener('ended', () => {
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        playCurrentSong();
+    });
+    
+    // Handle errors by skipping to next song
+    currentAudio.addEventListener('error', () => {
+        console.log(`Error playing ${currentSong}, skipping to next`);
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        playCurrentSong();
+    });
+    
+    return currentAudio.play();
+}
+
+// Enhanced Autoplay System - Bypass Browser Restrictions
+let autoplayAttempted = false;
+let userInteracted = false;
+
+// Track user interaction globally
+function enableAudioContext() {
+    userInteracted = true;
+    console.log('🎵 User interaction detected - audio context enabled');
+    
+    // Try to start music immediately after first interaction
+    if (!autoplayAttempted && currentAudio) {
+        attemptAutoplay();
+    }
+}
+
+// Aggressive autoplay attempt with multiple fallback strategies
+function attemptAutoplay() {
+    if (autoplayAttempted) return;
+    autoplayAttempted = true;
+    
+    console.log('🎵 Attempting aggressive autoplay...');
+    
+    // Strategy 1: Direct play attempt
+    playCurrentSong().then(() => {
+        console.log('✅ Autoplay successful!');
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
-        isPlaying = true;
-    }).catch(error => {
-        console.log('Autoplay blocked by browser:', error);
-        // Keep the play icon if autoplay fails
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
+        isPlaying = true;    }).catch(error => {
+        console.log('❌ Direct autoplay failed:', error);
+        
+        // Strategy 2: Silent audio trick - for now, just log the failure
+        console.log('🔇 Autoplay blocked by browser policy');
     });
 }
 
 // Initialize music control
 function initializeMusicControl() {
-    if (playPauseBtn && backgroundMusic) {
+    if (playPauseBtn) {
+        // Load playlist first
+        loadPlaylist();
+        
+        // Initialize first audio element
+        currentAudio = createAudioElement(playlist[0]);
+        
+        // Enhanced autoplay attempt
+        setTimeout(() => {
+            attemptAutoplay();
+        }, 500); // Small delay to ensure page is ready
+        
         // Music toggle functionality
         playPauseBtn.addEventListener('click', function() {
             if (isPlaying) {
                 // Pause music
-                backgroundMusic.pause();
+                if (currentAudio) {
+                    currentAudio.pause();
+                }
                 playIcon.classList.remove('hidden');
                 pauseIcon.classList.add('hidden');
                 isPlaying = false;
             } else {
                 // Play music
-                backgroundMusic.play().then(() => {
-                    playIcon.classList.add('hidden');
-                    pauseIcon.classList.remove('hidden');
-                    isPlaying = true;
-                }).catch(error => {
-                    console.log('Audio play failed:', error);
-                    console.log('Please check that song1.m4a is in the music folder');
-                });
-            }        });
-        
-        // Handle audio loading errors
-        backgroundMusic.addEventListener('error', function() {
-            console.log('Music file not found. Please check that song1.m4a is in the music folder');
+                if (currentAudio) {
+                    currentAudio.play().then(() => {
+                        playIcon.classList.add('hidden');
+                        pauseIcon.classList.remove('hidden');
+                        isPlaying = true;
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                        // Show user-friendly message
+                        playIcon.classList.remove('hidden');
+                        pauseIcon.classList.add('hidden');
+                    });
+                } else {
+                    // Restart playlist if no current audio
+                    playCurrentSong().then(() => {
+                        playIcon.classList.add('hidden');
+                        pauseIcon.classList.remove('hidden');
+                        isPlaying = true;
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                        playIcon.classList.remove('hidden');
+                        pauseIcon.classList.add('hidden');
+                    });
+                }
+            }
         });
         
-        // Handle audio loading success
-        backgroundMusic.addEventListener('loadeddata', function() {
-            console.log('Music loaded successfully');
-        });
-          // Initial state will be set by autoplay attempt
+        // Handle loading success
+        if (playPauseBtn) {
+            playPauseBtn.title = 'Click to play/pause background music playlist';
+        }
     }
 }
 

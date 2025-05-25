@@ -4,17 +4,19 @@ A beautiful, romantic anniversary website celebrating your love story with anima
 
 ## 🎵 Featured Music
 
-The website includes **YouTube background music** with automatic playback:
-- **Featured Song**: Beautiful romantic music from https://youtu.be/Es4NrOnoNb4
+The website includes **local background music** with smart playlist system:
+- **Queue System**: Different music queues for different pages (waiting vs celebration)
+- **Main Song**: `song1.m4a` - Beautiful romantic background music
 - **Auto-play**: Music starts automatically on all pages (respects browser restrictions)
 - **User Controls**: Floating music toggle button on every page
 - **Seamless Experience**: Music continues as you navigate between pages
+- **Smart Playlists**: `queue_waiting/` for anticipation, `queue_song/` for celebration
 
 ## ✨ Features
 
 - 🌹 **Romantic Design** - Soft pastels, elegant typography, and loving touches
 - 💬 **Heartfelt Messages** - Personal love letter and anniversary wishes
-- 🎶 **Background Music** - YouTube embedded music with user controls
+- 🎶 **Background Music** - Local music files with smart queue system
 - 💞 **Animations** - Floating hearts, smooth scrolling, and fade-in effects
 - 📸 **Photo Gallery** - Responsive slideshow of your precious memories
 - 📱 **Mobile Friendly** - Optimized for phones, tablets, and desktop
@@ -69,7 +71,13 @@ anniversary-website/
 │   ├── memory1.jpg
 │   └── ... (more photos)
 ├── music/              # Music files and documentation
-│   └── README.md       # Music implementation details
+│   ├── README.md       # Music implementation details
+│   ├── song1.m4a       # Main romantic background song
+│   ├── queue_waiting/  # Playlist for waiting/anticipation pages
+│   │   ├── README.md   # Waiting music guide
+│   │   └── song1.m4a   # Main song (copy/symlink)
+│   └── queue_song/     # Playlist for anniversary celebration
+│       └── README.md   # Celebration music guide
 └── README.md           # This file
 ```
 

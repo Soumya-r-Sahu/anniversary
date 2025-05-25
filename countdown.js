@@ -1,59 +1,201 @@
 // Countdown and Celebration JavaScript - Mobile Optimized
 
-// Background Music Control - Local Audio
+// Background Music Control - Simple Single Song
 let musicPlaying = false;
+let playlist = ['music/song1.m4a']; // Only main song
+let currentAudio = null;
+
+// Initialize with main song only (queue functionality removed)
+function loadPlaylist() {
+    // Only play the main song, no queue functionality
+    console.log('Playing main song only (queue functionality removed from waiting features)');
+}
+
+// Create and manage audio elements
+function createAudioElement(src) {
+    const audio = new Audio();
+    audio.preload = 'auto';
+    audio.volume = 0.3;
+    
+    // Add multiple source formats
+    const sources = [
+        { src: src, type: 'audio/mp4' },
+        { src: src.replace('.m4a', '.mp3'), type: 'audio/mpeg' },
+        { src: src.replace('.m4a', '.wav').replace('.mp3', '.wav'), type: 'audio/wav' }
+    ];
+    
+    // Try to load the first available format
+    audio.src = src;
+    
+    return audio;
+}
+
+// Play current song in playlist (simplified to single song)
+function playCurrentSong() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+    }
+    
+    // Always play the main song (playlist[0])
+    currentAudio = createAudioElement(playlist[0]);
+    
+    // When song ends, replay the same song (loop)
+    currentAudio.addEventListener('ended', () => {
+        playCurrentSong(); // Just replay the main song
+    });
+    
+    // Handle errors
+    currentAudio.addEventListener('error', () => {
+        console.log(`Error playing main song: ${playlist[0]}`);
+    });
+    
+    return currentAudio.play();
+}
+
+// Enhanced Autoplay System - Bypass Browser Restrictions
+let autoplayAttempted = false;
+let userInteracted = false;
+
+// Track user interaction globally
+function enableAudioContext() {
+    userInteracted = true;
+    console.log('🎵 User interaction detected - audio context enabled');
+    
+    // Try to start music immediately after first interaction
+    if (!autoplayAttempted && currentAudio) {
+        attemptAutoplay();
+    }
+}
+
+// Aggressive autoplay attempt with multiple fallback strategies
+function attemptAutoplay() {
+    if (autoplayAttempted) return;
+    autoplayAttempted = true;
+    
+    console.log('🎵 Attempting aggressive autoplay...');
+    
+    // Strategy 1: Direct play attempt
+    playCurrentSong().then(() => {
+        console.log('✅ Autoplay successful!');
+        const musicToggle = document.getElementById('music-toggle');
+        if (musicToggle) {
+            musicToggle.innerHTML = '🎵';
+            musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+        }
+        musicPlaying = true;
+    }).catch(error => {
+        console.log('❌ Direct autoplay failed:', error);
+        
+        // Strategy 2: Silent audio trick
+        const silentAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMGJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhByOJ2fPSgjMG');
+        silentAudio.volume = 0;
+        silentAudio.play().then(() => {
+            console.log('🔇 Silent audio played, trying main audio...');
+            setTimeout(() => {
+                playCurrentSong().then(() => {
+                    console.log('✅ Secondary autoplay successful!');
+                    const musicToggle = document.getElementById('music-toggle');
+                    if (musicToggle) {
+                        musicToggle.innerHTML = '🎵';
+                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                    }
+                    musicPlaying = true;
+                }).catch(() => {
+                    console.log('❌ Secondary autoplay failed, waiting for user interaction');
+                    setupInteractionListeners();
+                });
+            }, 100);
+        }).catch(() => {
+            console.log('❌ Silent audio failed, waiting for user interaction');
+            setupInteractionListeners();
+        });
+    });
+}
+
+// Setup comprehensive interaction listeners
+function setupInteractionListeners() {
+    const events = ['click', 'touchstart', 'touchend', 'keydown', 'scroll', 'mousemove'];
+    const handleFirstInteraction = () => {
+        enableAudioContext();
+        if (!musicPlaying && currentAudio) {
+            playCurrentSong().then(() => {
+                console.log('✅ Music started after user interaction');
+                const musicToggle = document.getElementById('music-toggle');
+                if (musicToggle) {
+                    musicToggle.innerHTML = '🎵';
+                    musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                }
+                musicPlaying = true;
+            }).catch(error => {
+                console.log('❌ Audio play failed even after interaction:', error);
+            });
+        }
+        
+        // Remove listeners after first interaction
+        events.forEach(event => {
+            document.removeEventListener(event, handleFirstInteraction);
+        });
+    };
+    
+    events.forEach(event => {
+        document.addEventListener(event, handleFirstInteraction, { once: true, passive: true });
+    });
+}
 
 function initializeMusicControl() {
     const musicToggle = document.getElementById('music-toggle');
-    const backgroundMusic = document.getElementById('background-music');
     
-    if (musicToggle && backgroundMusic) {
-        // Set initial volume
-        backgroundMusic.volume = 0.3; // 30% volume for background music
+    if (musicToggle) {
+        // Load playlist first
+        loadPlaylist();
         
-        // Auto-play music when page loads
-        backgroundMusic.play().then(() => {
-            musicToggle.innerHTML = '🎵';
-            musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-            musicPlaying = true;
-        }).catch(error => {
-            console.log('Autoplay blocked by browser:', error);
-            // Keep the muted icon if autoplay fails
-            musicToggle.innerHTML = '🔇';
-        });
+        // Initialize first audio element
+        currentAudio = createAudioElement(playlist[0]);
+        
+        // Enhanced autoplay attempt
+        setTimeout(() => {
+            attemptAutoplay();
+        }, 500); // Small delay to ensure page is ready
         
         // Music toggle functionality
-        musicToggle.addEventListener('click', function() {
-            if (musicPlaying) {
+        musicToggle.addEventListener('click', function() {            if (musicPlaying) {
                 // Pause music
-                backgroundMusic.pause();
+                if (currentAudio) {
+                    currentAudio.pause();
+                }
                 musicToggle.innerHTML = '🔇';
                 musicToggle.style.background = 'linear-gradient(135deg, #666, #999)';
                 musicPlaying = false;
             } else {
                 // Play music
-                backgroundMusic.play().then(() => {
-                    musicToggle.innerHTML = '🎵';
-                    musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
-                    musicPlaying = true;                }).catch(error => {
-                    console.log('Audio play failed:', error);
-                    // Show user-friendly message
-                    musicToggle.innerHTML = '❌';
-                    musicToggle.title = 'Please check that song1.m4a is in the music folder';
-                });
+                if (currentAudio) {
+                    currentAudio.play().then(() => {
+                        musicToggle.innerHTML = '🎵';
+                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                        musicPlaying = true;
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                        // Show user-friendly message
+                        musicToggle.innerHTML = '❌';
+                        musicToggle.title = 'Please check music files in music folder';
+                    });
+                } else {
+                    // Restart playlist if no current audio
+                    playCurrentSong().then(() => {
+                        musicToggle.innerHTML = '🎵';
+                        musicToggle.style.background = 'linear-gradient(135deg, #ff6b9d, #ffa8cc)';
+                        musicPlaying = true;
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                        musicToggle.innerHTML = '❌';
+                        musicToggle.title = 'Please check music files in music folder';
+                    });
+                }
             }        });
         
-        // Handle audio loading errors
-        backgroundMusic.addEventListener('error', function() {
-            musicToggle.innerHTML = '❌';
-            musicToggle.title = 'Music file not found. Please check that song1.m4a is in the music folder';
-            musicToggle.style.background = 'linear-gradient(135deg, #999, #666)';
-        });
-        
-        // Handle audio loading success
-        backgroundMusic.addEventListener('loadeddata', function() {
-            musicToggle.title = 'Click to play/pause background music';
-        });
+        // Handle loading success
+        musicToggle.title = 'Click to play/pause background music playlist';
     }
 }
 
