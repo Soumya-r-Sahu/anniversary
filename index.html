@@ -66,7 +66,7 @@
             <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 My Dearest <span class="text-red-500 font-semibold">Pujuu (Jerry)</span> 🐭
             </h2>              <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed glassmorphism-bg rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
-                <span id="typed-text" class="border-r-2 border-pink-500 min-h-[3em] block"></span>
+                <span id="typed-text" class="border-r-2 border-pink-500"></span>
             </div>
             
             <a href="countdown.html" class="enhanced-button text-lg px-8 py-4 min-h-[44px] inline-block text-decoration-none" data-aos="fade-up" data-aos-delay="600" aria-label="Open your anniversary surprise">
@@ -578,77 +578,34 @@
                     const y = rect.top + rect.height / 2;
                     createHeartBurst(x, y);
                 });
-            }        });
-    </script>
-      <!-- Typed.js for typewriter animation (improved) -->
+            }        });    </script>
+      <!-- Typed.js for typewriter animation -->
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
     <script>
-        // Preload Typed.js to avoid delay
-        const typedScript = document.createElement('script');
-        typedScript.src = 'https://unpkg.com/typed.js@2.0.12/lib/typed.min.js';
-        typedScript.async = false;
-        document.head.appendChild(typedScript);
-        
-        // Initialize Typed.js with improved transition
-        let typedInstance = null;
-          function initTyped() {
-            const typedElement = document.getElementById('typed-text');
-            if (!typedElement) return;
-            
-            // Create CSS for fade transitions
-            const fadeStyle = document.createElement('style');
-            fadeStyle.textContent = `
-                .typed-fade-out {
-                    opacity: 0;
-                    transition: opacity 0.25s;
-                    -webkit-animation: 0;
-                    animation: 0;
-                }
-            `;
-            document.head.appendChild(fadeStyle);
-            
-            // Create Typed instance with smooth transitions
-            typedInstance = new Typed('#typed-text', {
-                strings: [
-                    "From June 16, 2024 to forever...",
-                    "Every moment with you is magical ✨",
-                    "You are my greatest blessing 💕",
-                    "My sweet Jerry, my everything 🐒❤️"
-                ],
-                typeSpeed: 50,         // Speed of typing
-                backSpeed: 25,         // Speed of deleting (slightly faster)
-                backDelay: 1800,       // Delay after typing before starting to delete
-                startDelay: 300,       // Small delay before starting first string
-                loop: true,
-                showCursor: true,
-                cursorChar: '|',
-                fadeOut: true,         // Adds smooth fade effect between transitions
-                fadeOutClass: 'typed-fade-out',
-                fadeOutDelay: 500,     // How long the fade lasts
-                autoInsertCss: true,
-                smartBackspace: true,  // Only delete what differs from previous string
-                onBegin: (self) => {
-                    typedElement.style.minHeight = '3em'; // Maintain consistent height
-                }
-            });
-        }
-        
-        // Start animation as soon as DOM is ready and Typed.js is loaded
-        function checkTypedLoaded() {
+        // Typed.js initialization (copied exactly from script.js/anniversary.html)
+        function initTypedText() {
             if (typeof Typed !== 'undefined' && document.getElementById('typed-text')) {
-                initTyped();
-            } else {
-                // If not loaded yet, try again in 100ms
-                setTimeout(checkTypedLoaded, 100);
+                new Typed('#typed-text', {
+                    strings: [
+                        "From June 16, 2024 to forever...",
+                        "Every moment with you is magical ✨",
+                        "You are my greatest blessing 💕",
+                        "My sweet Jerry, my everything 🐒❤️"
+                    ],
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    backDelay: 2000,
+                    loop: true,
+                    showCursor: true,
+                    cursorChar: '|'
+                });
             }
         }
         
-        // Initialize after DOM content is loaded
+        // Initialize everything when DOM is loaded (same pattern as script.js)
         document.addEventListener('DOMContentLoaded', function() {
-            // Use requestAnimationFrame for smoother initialization
-            requestAnimationFrame(() => {
-                checkTypedLoaded();
-            });
+            // Initialize typed text (same timing as script.js)
+            setTimeout(initTypedText, 1000);
         });
     </script>
 </body>
