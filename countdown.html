@@ -106,6 +106,9 @@
 </head>
 <body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 min-h-screen overflow-x-hidden gradient-animation">
     
+    <!-- Particles Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    
     <!-- CSS Floating Hearts Pattern -->
     <div class="floating-hearts" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
         <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 6s;"></div>
@@ -181,11 +184,119 @@
     <audio id="background-music" preload="auto" loop>
         <source src="music/song1.m4a" type="audio/mp4">
         <source src="music/song1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>    <!-- Scripts -->
+        Your browser does not support the audio element.    </audio>    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="heart-animation.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="heart-animation.js"></script>    <script>
+        // Initialize particles.js with mobile detection
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Initialize Particles.js (same configuration as index.html for consistency)
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: isMobile ? 10 : 18, // Performance optimized
+                        density: {
+                            enable: true,
+                            value_area: 1200
+                        }
+                    },
+                    color: {
+                        value: ["#ff6b9d", "#ffa8cc", "#ffb3d6"]
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.4, // Slightly reduced for countdown page
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 2.5,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 120,
+                        color: "#ff6b9d",
+                        opacity: 0.3,
+                        width: 0.8
+                    },
+                    move: {
+                        enable: true,
+                        speed: isMobile ? 0.6 : 1.2, // Performance optimized speed
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: !isMobile,
+                            mode: "repulse"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 3 // Reduced for performance
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        }
+        
         // Enhanced Countdown Logic
         class EnhancedCountdown {
             constructor(targetDate) {

@@ -1,5 +1,69 @@
 /* Custom CSS Styles for Love Anniversary Website */
 
+/* Performance Optimizations for 60+ FPS */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* GPU Acceleration for all animated elements */
+.floating-hearts,
+.heart,
+.burst-heart,
+.typed-text,
+.gradient-animation,
+.timeline,
+.timeline-item,
+.music-control-btn {
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* CSS Containment for performance isolation */
+.floating-hearts {
+    contain: layout style paint;
+}
+
+.timeline {
+    contain: layout style;
+}
+
+.burst-hearts-container {
+    contain: layout style paint;
+}
+
+/* Optimized backdrop filter alternatives */
+.glass-effect {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Debounced resize handling */
+.resize-optimized {
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heart,
+    .burst-heart,
+    .gradient-animation {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 /* CSS Reset for Mobile Chrome */
 * {
     -webkit-tap-highlight-color: transparent;
@@ -37,7 +101,7 @@ input, button, a {
     font-family: 'Dancing Script', cursive;
 }
 
-/* Floating Hearts Animation - Mobile Optimized */
+/* Floating Hearts Animation - Performance Optimized */
 .floating-hearts {
     position: absolute;
     top: 0;
@@ -46,85 +110,99 @@ input, button, a {
     height: 100%;
     pointer-events: none;
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
     will-change: transform;
+    contain: layout style paint;
 }
 
 .heart {
     position: absolute;
-    width: clamp(15px, 4vw, 20px);
-    height: clamp(15px, 4vw, 20px);
+    width: clamp(12px, 3.5vw, 18px); /* Reduced size for performance */
+    height: clamp(12px, 3.5vw, 18px);
     background: #ff6b9d;
-    transform: rotate(45deg);
-    animation: float 6s infinite ease-in-out;
-    opacity: 0.7;
+    transform: rotate(45deg) translate3d(0, 0, 0);
+    animation: floatOptimized 8s infinite ease-in-out; /* Slower for performance */
+    opacity: 0.6; /* Slightly reduced opacity */
     will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .heart:before,
 .heart:after {
     content: '';
     position: absolute;
-    width: clamp(15px, 4vw, 20px);
-    height: clamp(15px, 4vw, 20px);
+    width: clamp(12px, 3.5vw, 18px);
+    height: clamp(12px, 3.5vw, 18px);
     background: #ff6b9d;
     border-radius: 50%;
+    transform: translate3d(0, 0, 0);
 }
 
 .heart:before {
-    top: clamp(-7px, -2vw, -10px);
+    top: clamp(-6px, -1.8vw, -9px);
     left: 0;
 }
 
 .heart:after {
     top: 0;
-    left: clamp(-7px, -2vw, -10px);
+    left: clamp(-6px, -1.8vw, -9px);
 }
 
+/* Optimized heart positioning with fewer elements */
 .heart:nth-child(1) {
-    left: 10%;
+    left: 15%;
     animation-delay: 0s;
-    animation-duration: 6s;
-}
-
-.heart:nth-child(2) {
-    left: 30%;
-    animation-delay: 1s;
-    animation-duration: 7s;
-}
-
-.heart:nth-child(3) {
-    left: 50%;
-    animation-delay: 2s;
     animation-duration: 8s;
 }
 
-.heart:nth-child(4) {
-    left: 70%;
-    animation-delay: 3s;
-    animation-duration: 6s;
+.heart:nth-child(2) {
+    left: 45%;
+    animation-delay: 2s;
+    animation-duration: 9s;
 }
 
-.heart:nth-child(5) {
-    left: 90%;
+.heart:nth-child(3) {
+    left: 75%;
     animation-delay: 4s;
-    animation-duration: 7s;
+    animation-duration: 8s;
 }
 
-@keyframes float {
+/* Optimized float animation with GPU acceleration */
+@keyframes floatOptimized {
     0% {
-        transform: translateY(100vh) rotate(45deg) scale(0);
+        transform: translate3d(0, 100vh, 0) rotate(45deg) scale(0);
         opacity: 0;
     }
-    15% {
-        opacity: 0.7;
-        transform: translateY(85vh) rotate(45deg) scale(1);
+    10% {
+        opacity: 0.6;
+        transform: translate3d(0, 90vh, 0) rotate(45deg) scale(1);
     }
-    85% {
-        opacity: 0.7;
-        transform: translateY(15vh) rotate(45deg) scale(1);
+    90% {
+        opacity: 0.6;
+        transform: translate3d(0, 10vh, 0) rotate(45deg) scale(1);
     }
     100% {
-        transform: translateY(-10vh) rotate(45deg) scale(0);
+        transform: translate3d(0, -10vh, 0) rotate(45deg) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Optimized burst heart animations */
+@keyframes heartBurstOptimized {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.2);
+        opacity: 1;
+    }
+    25% {
+        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh), 0) rotate(calc(var(--rotation) * 0.25)) scale(1);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh), 0) rotate(calc(var(--rotation) * 0.75)) scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--finalY) + 100px - 50vh), 0) rotate(var(--rotation)) scale(0);
         opacity: 0;
     }
 }
