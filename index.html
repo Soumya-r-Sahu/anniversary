@@ -94,10 +94,18 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="music-manager.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
-    
-    <script>
+      <script>
         // Initialize AOS (Animate On Scroll) with mobile optimizations
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // ✨ PAGE TRANSITION CONFIGURATION ✨
+        const TRANSITION_CONFIG = {
+            navigationDelay: 2000,      // Delay before navigation (milliseconds)
+            fadeOutDuration: 500,       // Fade out animation duration (milliseconds)
+            sparkleInterval: 200,       // Interval between sparkle effects (milliseconds)
+            burstIntensity: 15,         // Number of bubbles in click burst
+            hoverBurstIntensity: 5      // Number of bubbles in hover burst
+        };
         
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
@@ -314,25 +322,63 @@
                     }
                 }, duration * 1000 + 250);
             }
-        }
-          // Setup Bubble Burst Effects for "Open Your Surprise" Button
+        }        // Setup Bubble Burst Effects and Delayed Navigation for "Open Your Surprise" Button
         function setupBubbleBurstEffects() {
             const surpriseButton = document.querySelector('a[href="countdown.html"]');
             
             if (surpriseButton) {
+                // Remove default href to prevent immediate navigation
+                const originalHref = surpriseButton.href;
+                surpriseButton.removeAttribute('href');
+                surpriseButton.style.cursor = 'pointer';
+                
                 surpriseButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Visual feedback - button animation
+                    this.style.transform = 'scale(0.95)';
+                    this.style.transition = 'all 0.3s ease';
+                    
                     const rect = this.getBoundingClientRect();
                     const x = rect.left + rect.width / 2;
                     const y = rect.top + rect.height / 2;
-                    createBubbleBurst(x, y);
+                      // Create burst effect
+                    createBubbleBurst(x, y, TRANSITION_CONFIG.burstIntensity);
+                    
+                    // Show loading message
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '✨ Opening surprise... ✨';
+                    this.style.background = 'linear-gradient(45deg, #ff6b9d, #ffa8cc)';
+                    
+                    // Add sparkle effects during delay
+                    const sparkleInterval = setInterval(() => {
+                        createBubbleBurst(
+                            rect.left + Math.random() * rect.width,
+                            rect.top + Math.random() * rect.height,
+                            3
+                        );
+                    }, TRANSITION_CONFIG.sparkleInterval);
+                    
+                    // Navigate after delay
+                    setTimeout(() => {
+                        clearInterval(sparkleInterval);
+                        
+                        // Fade out effect before navigation
+                        document.body.style.transition = `opacity ${TRANSITION_CONFIG.fadeOutDuration}ms ease-out`;
+                        document.body.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            window.location.href = originalHref;
+                        }, TRANSITION_CONFIG.fadeOutDuration);
+                        
+                    }, TRANSITION_CONFIG.navigationDelay);
                 });
-                
-                // Also trigger on hover for extra magic
+                  // Also trigger on hover for extra magic
                 surpriseButton.addEventListener('mouseenter', function(e) {
                     const rect = this.getBoundingClientRect();
                     const x = rect.left + rect.width / 2;
                     const y = rect.top + rect.height / 2;
-                    createBubbleBurst(x, y, 5); // Smaller burst on hover
+                    createBubbleBurst(x, y, TRANSITION_CONFIG.hoverBurstIntensity);
                 });
             }
         }
