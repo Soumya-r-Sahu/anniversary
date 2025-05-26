@@ -40,12 +40,13 @@ export default defineConfig({
             './src/components/UnifiedGallery.js',
             './src/components/UnifiedParticleSystem.js',
             './src/components/BackgroundComponents.js'
-          ],
-          // Utilities
+          ],          // Utilities
           'utils': [
             './src/utils/performance.js',
             './src/utils/lazyLoader.js',
-            './src/utils/throttle.js'
+            './src/utils/throttle.js',
+            './src/utils/music-manager.js',
+            './src/utils/smooth-transitions.js'
           ],
           // Page controllers
           'pages': [

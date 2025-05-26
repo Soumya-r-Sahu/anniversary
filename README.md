@@ -87,44 +87,43 @@ npm run preview
 ### **Directory Structure**
 ```
 anniversary-website/
-├── 📁 src/                          # Modern modular architecture
-│   ├── 📁 core/                     # Core functionality
-│   │   ├── UnifiedMusicManager.js   # Single music system
-│   │   ├── UnifiedStorageManager.js # Optimized localStorage
-│   │   └── UnifiedPerformanceMonitor.js # Performance tracking
-│   ├── 📁 components/               # Reusable UI components
-│   │   ├── BackgroundComponents.js  # Unified background system
-│   │   ├── UnifiedHeartAnimation.js # Heart effects
-│   │   ├── UnifiedGallery.js        # Photo gallery
-│   │   └── UnifiedParticleSystem.js # Custom particles
-│   ├── 📁 pages/                    # Page-specific controllers
-│   │   ├── index.js                 # Landing page logic
-│   │   ├── anniversary.js           # Anniversary page logic
-│   │   ├── countdown.js             # Countdown page logic
-│   │   ├── love-story.js            # Love story page logic
-│   │   └── photo-gallery.js         # Gallery page logic
-│   ├── 📁 utils/                    # Utility functions
-│   │   ├── performance.js           # Performance utilities
-│   │   ├── lazyLoader.js            # Intelligent lazy loading
-│   │   └── throttle.js              # Throttling and debouncing
-│   ├── 📁 styles/                   # Modern CSS architecture
-│   │   └── variables.css            # CSS custom properties
-│   ├── 📁 templates/                # HTML templates
-│   │   ├── base.html                # Base template with PWA
-│   │   └── components.html          # Reusable components
-│   ├── integrator.js                # Legacy integration bridge
-│   └── sw.js                        # Service worker
-├── 📁 Legacy Files/                 # Original HTML files
-│   ├── index.html                   # Landing page
-│   ├── anniversary.html             # Anniversary celebration
-│   ├── countdown.html               # Countdown timer
-│   ├── love-story.html              # Interactive love story
-│   └── photo-gallery.html           # Photo gallery
-├── 📁 images/                       # Photo assets
-├── 📁 music/                        # Audio files
-├── package.json                     # Build configuration
-├── vite.config.js                   # Vite build setup
-└── README.md                        # This file
+├── 📁 config/                    # JSON configurations
+│   ├── eslint.json              # Code quality rules
+│   ├── prettier.json            # Code formatting rules
+│   └── README.md               # Config documentation
+├── 📁 .vscode/                   # VS Code workspace settings
+│   └── settings.json            # Points to new config locations
+├── 📁 src/                      # Modern modular architecture
+│   ├── 📁 core/                 # Core functionality
+│   │   ├── UnifiedMusicManager.js
+│   │   ├── UnifiedStorageManager.js
+│   │   └── UnifiedPerformanceMonitor.js
+│   ├── 📁 components/           # Reusable UI components
+│   │   ├── BackgroundComponents.js
+│   │   ├── UnifiedHeartAnimation.js
+│   │   ├── UnifiedGallery.js
+│   │   └── UnifiedParticleSystem.js
+│   ├── 📁 pages/                # Page-specific controllers
+│   │   ├── index.js
+│   │   ├── anniversary.js
+│   │   ├── countdown.js
+│   │   ├── love-story.js
+│   │   └── photo-gallery.js
+│   ├── 📁 utils/                # Utility functions
+│   │   ├── music-manager.js
+│   │   ├── smooth-transitions.js
+│   │   ├── performance.js
+│   │   ├── lazyLoader.js
+│   │   ├── throttle.js
+│   │   └── README.md
+│   ├── 📁 styles/               # Modern CSS architecture
+│   │   └── variables.css
+│   └── sw.js                    # Service worker
+├── 📁 images/                   # Photo assets
+├── 📁 music/                    # Audio files
+├── package.json                 # Build configuration
+├── vite.config.js               # Vite build setup
+└── README.md                    # This file
 ```
 
 ### **Key Architectural Improvements**
@@ -184,22 +183,11 @@ anniversary-website/
 ├── countdown.html      # Countdown timer to anniversary date
 ├── anniversary.html    # Main anniversary celebration page
 ├── style.css           # Custom styles and animations
-├── script.js           # Interactive features and animations
-├── countdown.js        # Countdown timer functionality
+├── src/utils/          # Utility scripts
+│   ├── music-manager.js
+│   └── smooth-transitions.js
 ├── images/             # Your photo memories
-│   ├── README.md       # Instructions for adding photos
-│   ├── first-meeting.jpg
-│   ├── first-date.jpg
-│   ├── memory1.jpg
-│   └── ... (more photos)
 ├── music/              # Music files and documentation
-│   ├── README.md       # Music implementation details
-│   ├── song1.m4a       # Main romantic background song
-│   ├── queue_waiting/  # Playlist for waiting/anticipation pages
-│   │   ├── README.md   # Waiting music guide
-│   │   └── song1.m4a   # Main song (copy/symlink)
-│   └── queue_song/     # Playlist for anniversary celebration
-│       └── README.md   # Celebration music guide
 └── README.md           # This file
 ```
 
@@ -222,113 +210,6 @@ anniversary-website/
 3. Modify gradient colors throughout
 
 ## 🚀 Deployment Options
-
-### **Recommended: Netlify (Free)**
-```bash
-# Build the project
-npm run build
-
-# Deploy to Netlify
-npm run deploy
-```
-
-### **GitHub Pages**
-```bash
-# Build and deploy
-npm run build
-npm run deploy:github
-```
-
-### **Manual Deployment**
-1. Run `npm run build` to create optimized files
-2. Upload the `dist/` folder to your web hosting provider
-3. Configure server to serve `index.html` for all routes
-
-### **Advanced Hosting**
-- **Vercel**: `vercel --prod`
-- **Firebase**: `firebase deploy`
-- **AWS S3**: Configure as static website hosting
-- **Docker**: Use included `Dockerfile` for containerized deployment
-
-## ⚙️ Configuration
-
-### **Environment Variables**
-Create a `.env` file for customization:
-```env
-VITE_ANNIVERSARY_DATE=2025-06-16
-VITE_PARTNER_NAME=Jerry
-VITE_YOUR_NAME=Puja
-VITE_ENABLE_PWA=true
-VITE_ENABLE_ANALYTICS=false
-```
-
-### **PWA Configuration**
-Edit `vite.config.js` to customize PWA settings:
-```javascript
-pwa: {
-  registerType: 'autoUpdate',
-  workbox: {
-    globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,mp3,m4a}']
-  },
-  manifest: {
-    name: 'Our Love Anniversary',
-    short_name: 'Anniversary',
-    description: 'A beautiful anniversary celebration website'
-  }
-}
-```
-
-### **Performance Tuning**
-- **Image Optimization**: Use WebP format for better compression
-- **Music Files**: Convert to multiple formats (MP3, OGG, M4A) for compatibility
-- **Bundle Analysis**: Run `npm run analyze` to check bundle sizes
-- **Lighthouse Audit**: Test performance with built-in tools
-
-## 🔧 Development
-
-### **Available Scripts**
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build locally
-npm run test         # Run tests (if configured)
-npm run lint         # Check code quality
-npm run format       # Format code with Prettier
-npm run analyze      # Analyze bundle size
-npm run deploy       # Deploy to configured hosting
-```
-
-### **Development Features**
-- **Hot Module Replacement**: Instant updates during development
-- **Source Maps**: Debug original source code
-- **Error Overlay**: Visual error display in browser
-- **Auto-reload**: Automatic browser refresh on file changes
-
-### **Code Quality**
-- **ESLint**: Code linting with modern JavaScript standards
-- **Prettier**: Consistent code formatting
-- **Husky**: Pre-commit hooks for quality assurance
-- **TypeScript**: Optional type checking support
-
-## 🎨 Customization
-
-### Changing Names and Messages:
-1. Open `index.html`
-2. Search for "Puja" and "Jerry" to replace with your names
-3. Update the love letter content in the message section
-4. Modify timeline dates and milestones
-
-### Adding Your Photos:
-1. Place your photos in the `images/` folder
-2. Use the exact filenames listed in `images/README.md`
-3. Recommended size: 800x600px or larger
-
-### Changing Colors:
-1. Edit the CSS custom properties in `style.css`
-2. Update Tailwind classes in `index.html`
-3. Modify gradient colors throughout
-
-## 🌐 Deployment Options
 
 ### GitHub Pages (Free):
 1. Create a new repository on GitHub
