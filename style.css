@@ -11,10 +11,35 @@
 }
 
 /* GPU Acceleration for all animated elements */
-.floating-hearts,
-.heart,
-.burst-heart,
+.floating-bubbles,
+.bubble,
+.burst-bubble,
 .typed-text,
+#typed-text {
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    min-height: 1.5em;
+    display: inline-block;
+}
+
+/* Fallback styles for when typewriter fails */
+#typed-text.fallback-shown {
+    animation: typingFallback 2s ease-in-out;
+    border-right: 2px solid #ec4899;
+}
+
+@keyframes typingFallback {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .gradient-animation,
 .timeline,
 .timeline-item,
@@ -26,7 +51,7 @@
 }
 
 /* CSS Containment for performance isolation */
-.floating-hearts {
+.floating-bubbles {
     contain: layout style paint;
 }
 
@@ -34,7 +59,7 @@
     contain: layout style;
 }
 
-.burst-hearts-container {
+.burst-bubbles-container {
     contain: layout style paint;
 }
 
@@ -56,8 +81,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .heart,
-    .burst-heart,
+    .bubble,
+    .burst-bubble,
     .gradient-animation {
         animation: none !important;
         transition: none !important;
@@ -101,8 +126,8 @@ input, button, a {
     font-family: 'Dancing Script', cursive;
 }
 
-/* Floating Hearts Animation - Performance Optimized */
-.floating-hearts {
+/* Floating Bubbles Animation - Performance Optimized */
+.floating-bubbles {
     position: absolute;
     top: 0;
     left: 0;
@@ -115,74 +140,74 @@ input, button, a {
     contain: layout style paint;
 }
 
-.heart {
+.bubble {
     position: absolute;
-    width: clamp(12px, 3.5vw, 18px); /* Reduced size for performance */
-    height: clamp(12px, 3.5vw, 18px);
-    background: #ff6b9d;
-    transform: rotate(45deg) translate3d(0, 0, 0);
-    animation: floatOptimized 8s infinite ease-in-out; /* Slower for performance */
-    opacity: 0.6; /* Slightly reduced opacity */
+    width: clamp(15px, 4vw, 25px);
+    height: clamp(15px, 4vw, 25px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(236, 72, 153, 0.4), rgba(190, 24, 93, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    box-shadow: 
+        0 0 10px rgba(236, 72, 153, 0.2),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: bubbleFloat 10s infinite ease-in-out;
+    opacity: 0.7;
     will-change: transform, opacity;
     backface-visibility: hidden;
 }
 
-.heart:before,
-.heart:after {
-    content: '';
-    position: absolute;
-    width: clamp(12px, 3.5vw, 18px);
-    height: clamp(12px, 3.5vw, 18px);
-    background: #ff6b9d;
-    border-radius: 50%;
-    transform: translate3d(0, 0, 0);
-}
-
-.heart:before {
-    top: clamp(-6px, -1.8vw, -9px);
-    left: 0;
-}
-
-.heart:after {
-    top: 0;
-    left: clamp(-6px, -1.8vw, -9px);
-}
-
-/* Optimized heart positioning with fewer elements */
-.heart:nth-child(1) {
+/* Optimized bubble positioning with fewer elements */
+.bubble:nth-child(1) {
     left: 15%;
     animation-delay: 0s;
     animation-duration: 8s;
 }
 
-.heart:nth-child(2) {
-    left: 45%;
-    animation-delay: 2s;
+.bubble:nth-child(2) {
+    left: 35%;
+    animation-delay: 1.5s;
     animation-duration: 9s;
 }
 
-.heart:nth-child(3) {
+.bubble:nth-child(3) {
+    left: 55%;
+    animation-delay: 3s;
+    animation-duration: 7s;
+}
+
+.bubble:nth-child(4) {
     left: 75%;
-    animation-delay: 4s;
+    animation-delay: 4.5s;
     animation-duration: 8s;
 }
 
-/* Optimized float animation with GPU acceleration */
-@keyframes floatOptimized {
+.bubble:nth-child(5) {
+    left: 85%;
+    animation-delay: 2s;
+    animation-duration: 10s;
+}
+
+/* Optimized bubble float animation with GPU acceleration */
+@keyframes bubbleFloat {
     0% {
-        transform: translate3d(0, 100vh, 0) rotate(45deg) scale(0);
+        transform: translate3d(0, 100vh, 0) scale(0.3);
         opacity: 0;
     }
     10% {
-        opacity: 0.6;
-        transform: translate3d(0, 90vh, 0) rotate(45deg) scale(1);
+        opacity: 0.7;
+        transform: translate3d(0, 90vh, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(20px, 50vh, 0) scale(1.1);
+        opacity: 0.8;
     }
     90% {
         opacity: 0.6;
-        transform: translate3d(0, 10vh, 0) rotate(45deg) scale(1);
+        transform: translate3d(-20px, 10vh, 0) scale(0.9);
     }
     100% {
-        transform: translate3d(0, -10vh, 0) rotate(45deg) scale(0);
+        transform: translate3d(0, -10vh, 0) scale(0.3);
         opacity: 0;
     }
 }
@@ -744,20 +769,16 @@ img {
     
     /* High contrast mode support */
     @media (prefers-contrast: high) {
-        .heart {
+        .bubble {
             background: #000;
-        }
-        
-        .heart:before,
-        .heart:after {
-            background: #000;
+            border: 2px solid #fff;
         }
     }
 }
 
 /* Battery saving mode */
 @media (prefers-reduced-motion: reduce) {
-    .floating-hearts {
+    .floating-bubbles {
         display: none;
     }
     
@@ -765,7 +786,7 @@ img {
         display: none;
     }
     
-    .heart {
+    .bubble {
         animation: none;
     }
 }
@@ -787,167 +808,647 @@ img {
     }
 }
 
-/* Enhanced Music Player Styles */
-.enhanced-music-player {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 25px;
-    padding: 8px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.enhanced-music-player:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-}
-
-.music-control-btn {
-    background: linear-gradient(135deg, #ff6b9d, #ffa8cc);
-    border: none;
+/* Floating Bubbles Animation Enhancement */
+.floating-bubbles .bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: all 0.3s ease;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(236, 72, 153, 0.6), rgba(147, 51, 234, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
+    animation: bubbleFloat 6s infinite linear;
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Bubble Styles with Variations */
+.floating-bubbles .bubble:nth-child(2n) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(59, 130, 246, 0.6), rgba(99, 102, 241, 0.4));
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.floating-bubbles .bubble:nth-child(3n) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(16, 185, 129, 0.6), rgba(5, 150, 105, 0.4));
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.floating-bubbles .bubble:nth-child(4n) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(251, 191, 36, 0.6), rgba(245, 158, 11, 0.4));
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.floating-bubbles .bubble:nth-child(5n) {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(244, 63, 94, 0.6), rgba(225, 29, 72, 0.4));
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(244, 63, 94, 0.3);
+}
+
+/* ===== ENHANCED SMOOTH TRANSITIONS FOR ALL PAGES ===== */
+
+/* Page Transition Container */
+body {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Page Loading Animation */
+body.page-loading {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Smooth Link Transitions */
+a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:not(.no-transition):hover {
+    transform: translateY(-1px);
+}
+
+/* Enhanced Navigation Transitions */
+nav a {
     position: relative;
     overflow: hidden;
 }
 
-.music-control-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
-}
-
-.music-control-btn:active {
-    transform: scale(0.95);
-}
-
-.music-visualizer {
-    display: none;
-    align-items: center;
-    gap: 2px;
-    margin-left: 8px;
-}
-
-.music-bar {
-    width: 3px;
-    height: 10px;
-    background: linear-gradient(to top, #ff6b9d, #ffa8cc);
-    border-radius: 2px;
-    animation: musicBounce 0.6s ease-in-out infinite alternate;
-}
-
-.music-bar:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.music-bar:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.music-bar:nth-child(4) {
-    animation-delay: 0.3s;
-}
-
-@keyframes musicBounce {
-    0% {
-        height: 4px;
-        transform: scaleY(0.4);
-    }
-    100% {
-        height: 16px;
-        transform: scaleY(1);
-    }
-}
-
-/* Enhanced Navigation */
-.enhanced-nav {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 182, 193, 0.3);
-    transition: all 0.3s ease;
-}
-
-.nav-link {
-    position: relative;
-    padding: 8px 16px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-    background: rgba(255, 107, 157, 0.1);
-    transform: translateY(-1px);
-}
-
-.nav-link::after {
+nav a::before {
     content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.1), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+/* Section Fade-in Animation */
+.section-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Animation for Multiple Elements */
+.stagger-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add delay for staggered effect */
+.stagger-animation:nth-child(1) { transition-delay: 0.1s; }
+.stagger-animation:nth-child(2) { transition-delay: 0.2s; }
+.stagger-animation:nth-child(3) { transition-delay: 0.3s; }
+.stagger-animation:nth-child(4) { transition-delay: 0.4s; }
+.stagger-animation:nth-child(5) { transition-delay: 0.5s; }
+.stagger-animation:nth-child(6) { transition-delay: 0.6s; }
+
+/* Smooth Card Animations */
+.card-transition {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0) scale(1);
+}
+
+.card-transition:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Ripple Effect */
+.ripple-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ripple-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #ff6b9d, #ffa8cc);
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple-button:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Smooth Image Loading */
+.smooth-image {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Enhanced Hover Effects for Memory Cards */
+.memory-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar with Transitions */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b9d, #ffa8cc);
+    border-radius: 4px;
     transition: all 0.3s ease;
-    transform: translateX(-50%);
 }
 
-.nav-link:hover::after {
-    width: 80%;
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff4785, #ff7fb3);
 }
 
-/* Particle container */
-#particles-js {
-    opacity: 0.6;
+/* Page Enter Animation */
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
-/* Button hover animations - Mobile Enhanced */
-button {
+/* Page Exit Animation */
+@keyframes pageExit {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+}
+
+/* Apply page animations */
+.page-enter {
+    animation: pageEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-exit {
+    animation: pageExit 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Enhanced Timeline Transitions */
+.timeline-item.smooth-timeline {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-item.smooth-timeline:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.timeline-item.smooth-timeline.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Gallery Transition Enhancements */
+.gallery-item {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+}
+
+.gallery-item.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Smooth Background Transitions */
+.bg-transition {
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-transition::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 107, 157, 0.1), rgba(255, 168, 204, 0.1));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.bg-transition:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Countdown Transitions */
+.countdown-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+}
+
+.countdown-item.removing {
+    animation: countdownBoxExit 0.5s ease-out forwards;
+}
+
+@keyframes countdownBoxExit {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8) translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-20px);
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* Countdown Number Animation Enhancement */
+.countdown-number {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.countdown-number.updating {
+    animation: numberUpdate 0.3s ease-out;
+}
+
+@keyframes numberUpdate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 20px rgba(236, 72, 153, 0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Final Message Portal Animation Enhancement */
+.portal-animation {
+    animation: portalPulse 3s ease-in-out infinite;
+}
+
+@keyframes portalPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(168, 85, 247, 0.8);
+    }
+}
+
+/* Enhanced Floating Animation */
+.float-animation {
+    animation: enhancedFloat 6s ease-in-out infinite;
+}
+
+@keyframes enhancedFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+/* Memory Card Enhanced Transitions */
+.memory-card.card-transition {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.memory-card.card-transition:hover {
+    transform: translateY(-15px) rotateX(10deg) rotateY(5deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== ENHANCED BUTTON STYLING FOR "OPEN YOUR SURPRISE" ===== */
+
+/* Enhanced Button for Main CTA */
+.enhanced-button {
+    position: relative;
+    background: linear-gradient(135deg, #ff6b9d 0%, #e91e63 50%, #ff4081 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 25px rgba(236, 72, 153, 0.3),
+        0 4px 15px rgba(255, 107, 157, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    z-index: 1;
+}
+
+/* Enhanced Button Hover Effects */
+.enhanced-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 40px rgba(236, 72, 153, 0.4),
+        0 8px 25px rgba(255, 107, 157, 0.3),
+        0 0 30px rgba(236, 72, 153, 0.2);
+    background: linear-gradient(135deg, #ff4081 0%, #e91e63 50%, #c2185b 100%);
+    color: white;
+}
+
+/* Enhanced Button Active State */
+.enhanced-button:active {
+    transform: translateY(-1px) scale(1.02);
+    transition: all 0.1s ease;
+}
+
+/* Shimmering Animation Overlay */
+.enhanced-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    transition: left 0.6s ease;
+    z-index: -1;
+}
+
+.enhanced-button:hover::before {
+    left: 100%;
+}
+
+/* Pulsing Glow Effect */
+.enhanced-button::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #ff6b9d, #e91e63, #ff4081);
+    border-radius: 25px;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.enhanced-button:hover::after {
+    opacity: 0.7;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        filter: blur(8px);
+        transform: scale(1);
+    }
+    50% {
+        filter: blur(12px);
+        transform: scale(1.02);
+    }
+}
+
+/* Button Text Glow */
+.enhanced-button:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced Button Bubble Theme Integration */
+.enhanced-button.bubble-enhanced {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 157, 0.9) 0%, 
+        rgba(236, 72, 153, 1) 50%, 
+        rgba(190, 24, 93, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 25px rgba(236, 72, 153, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.enhanced-button.bubble-enhanced:hover {
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 15px 40px rgba(236, 72, 153, 0.5),
+        0 8px 25px rgba(255, 107, 157, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Floating Sparkle Effect */
+.enhanced-button.sparkle-effect {
+    overflow: visible;
+}
+
+.enhanced-button.sparkle-effect::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 16px;
+    opacity: 0;
+    transform: scale(0);
     transition: all 0.3s ease;
-    will-change: transform, box-shadow;
+    pointer-events: none;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+.enhanced-button.sparkle-effect:hover::before {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    animation: floatSparkle 2s ease-in-out infinite;
 }
 
-button:active {
-    transform: translateY(0);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+@keyframes floatSparkle {
+    0%, 100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) translateY(-5px) rotate(180deg);
+    }
 }
 
-/* Touch feedback for mobile */
-@media (hover: none) and (pointer: coarse) {
-    button:hover {
-        transform: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+/* Heart Beat Animation for Button */
+.enhanced-button.heartbeat {
+    animation: gentleHeartbeat 3s ease-in-out infinite;
+}
+
+@keyframes gentleHeartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.02);
+    }
+    20% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.02);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .enhanced-button {
+        padding: 16px 24px;
+        font-size: 1rem;
+        border-radius: 20px;
+        min-height: 48px;
     }
     
-    button:active {
-        transform: scale(0.98);
-        transition: transform 0.1s ease;
+    .enhanced-button:hover {
+        transform: translateY(-2px) scale(1.03);
     }
 }
 
-/* Gradient text animation */
-.bg-clip-text {
-    background-size: 200% 200%;
-    animation: gradientShift 3s ease infinite;
+/* Focus State for Accessibility */
+.enhanced-button:focus {
+    outline: 3px solid rgba(236, 72, 153, 0.3);
+    outline-offset: 2px;
 }
 
-@keyframes gradientShift {
+/* Button Loading State (if needed) */
+.enhanced-button.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.enhanced-button.loading::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: buttonSpinner 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes buttonSpinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Button for Special Occasions */
+.enhanced-button.special-occasion {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffa8cc 25%, #ffcce0 50%, #ffa8cc 75%, #ff6b9d 100%);
+    background-size: 300% 300%;
+    animation: specialGradient 3s ease infinite;
+}
+
+@keyframes specialGradient {
     0%, 100% {
         background-position: 0% 50%;
     }
@@ -956,334 +1457,4 @@ button:active {
     }
 }
 
-/* Confetti styles will be handled by JavaScript */
-#confetti-canvas {
-    z-index: 1000;
-}
-
-/* Loading animation for images */
-img {
-    opacity: 0;
-    animation: imageLoad 0.5s ease-in-out forwards;
-}
-
-@keyframes imageLoad {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
-    .backdrop-blur-sm {
-        backdrop-filter: blur(10px);
-    }
-}
-
-/* Mobile Chrome specific optimizations */
-@media screen and (max-width: 768px) {
-    /* Prevent zoom on input focus */
-    input, select, textarea {
-        font-size: 16px;
-    }
-    
-    /* Optimize scroll performance */
-    * {
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Better touch targets */
-    a, button, input, select, textarea {
-        min-height: 44px;
-        min-width: 44px;
-    }
-    
-    /* Reduce motion for users who prefer it */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .heart {
-            background: #000;
-        }
-        
-        .heart:before,
-        .heart:after {
-            background: #000;
-        }
-    }
-}
-
-/* Battery saving mode */
-@media (prefers-reduced-motion: reduce) {
-    .floating-hearts {
-        display: none;
-    }
-    
-    #particles-js {
-        display: none;
-    }
-    
-    .heart {
-        animation: none;
-    }
-}
-
-/* Dark mode support for better mobile experience */
-@media (prefers-color-scheme: dark) {
-    body {
-        background: linear-gradient(135deg, #1a0a1a, #2d1b2d, #3d2b3d);
-    }
-    
-    .timeline-content {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-    }
-    
-    .love-letter {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-    }
-}
-
-/* Floating Hearts Animation Enhancement */
-.floating-hearts .heart {
-    position: absolute;
-    font-size: 20px;
-    color: #ff6b9d;
-    animation: float 6s infinite linear;
-    pointer-events: none;
-    user-select: none;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Enhanced Heart Styles */
-.floating-hearts .heart::before {
-    content: '💕';
-    filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.5));
-}
-
-.floating-hearts .heart:nth-child(2n)::before {
-    content: '💖';
-}
-
-.floating-hearts .heart:nth-child(3n)::before {
-    content: '💝';
-}
-
-.floating-hearts .heart:nth-child(4n)::before {
-    content: '💗';
-}
-
-.floating-hearts .heart:nth-child(5n)::before {
-    content: '💘';
-}
-
-/* Enhanced Glassmorphism Background */
-.glassmorphism-bg {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Advanced Gradient Animations */
-.gradient-animation {
-    background: linear-gradient(-45deg, #fff5f5, #fce7f3, #f3e8ff, #fef7ff);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Enhanced Button Styles */
-.enhanced-button {
-    background: linear-gradient(135deg, #ff6b9d, #ffa8cc, #ffb3d6);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 24px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-}
-
-.enhanced-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.enhanced-button:hover::before {
-    left: 100%;
-}
-
-.enhanced-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
-}
-
-.enhanced-button:active {
-    transform: translateY(0);
-}
-
-/* Timeline Enhancements */
-.timeline-item {
-    transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-    transform: translateY(-5px);
-}
-
-.timeline-quote {
-    background: rgba(255, 107, 157, 0.1);
-    border-left: 4px solid #ff6b9d;
-    padding: 12px 16px;
-    margin-top: 12px;
-    border-radius: 8px;
-    font-style: italic;
-}
-
-/* Gallery Enhancements */
-.gallery-container {
-    transition: all 0.3s ease;
-}
-
-.gallery-slide {
-    transition: all 0.5s ease;
-}
-
-.gallery-slide:not(.active) {
-    opacity: 0.7;
-    transform: scale(0.95);
-}
-
-/* Love Letter Enhancements */
-.love-letter {
-    position: relative;
-    overflow: hidden;
-}
-
-.love-letter::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
-    animation: letterGlow 4s ease-in-out infinite;
-}
-
-@keyframes letterGlow {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.1);
-    }
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-    .enhanced-music-player {
-        top: 15px;
-        right: 15px;
-        padding: 6px;
-    }
-    
-    .music-control-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 16px;
-    }
-    
-    .enhanced-button {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-    
-    .glassmorphism-bg {
-        backdrop-filter: blur(10px);
-    }
-    
-    .timeline-quote {
-        font-size: 14px;
-        padding: 10px 12px;
-    }
-}
-
-/* Floating Hearts Animation Enhancement */
-.floating-hearts .heart {
-    position: absolute;
-    font-size: 20px;
-    color: #ff6b9d;
-    animation: float 6s infinite linear;
-    pointer-events: none;
-    user-select: none;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Enhanced Heart Styles */
-.floating-hearts .heart::before {
-    content: '💕';
-    filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.5));
-}
-
-.floating-hearts .heart:nth-child(2n)::before {
-    content: '💖';
-}
-
-.floating-hearts .heart:nth-child(3n)::before {
-    content: '💝';
-}
-
-.floating-hearts .heart:nth-child(4n)::before {
-    content: '💗';
-}
-
-.floating-hearts .heart:nth-child(5n)::before {
-    content: '💘';
-}
+/* ...existing code... */
