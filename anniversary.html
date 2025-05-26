@@ -167,14 +167,18 @@
             <p class="text-lg opacity-80" data-aos="fade-up" data-aos-delay="400">
                 Happy Anniversary, my love. Here's to forever together! 🌟
             </p>
-        </div>
-    </section>
+        </div>    </section>
+
+    <!-- Floating Hearts Container (Dynamic) -->
+    <div class="floating-hearts" id="floating-hearts-container">
+        <!-- Hearts will be dynamically generated for burst effects -->
+    </div>
 
     <!-- Audio Element for Background Music -->
     <audio id="background-music" preload="auto" loop>
         <source src="music/song1.m4a" type="audio/mp4">
         <source src="music/song1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.    </audio>    <!-- Scripts -->
+        Your browser does not support the audio element.    </audio><!-- Scripts -->
     <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
@@ -554,9 +558,111 @@
                 }, 5000);
             }
         }
-        
-        // Add scroll listener for auto-redirect suggestion
+          // Add scroll listener for auto-redirect suggestion
         window.addEventListener('scroll', checkScrollForRedirect, { passive: true });
+        
+        // Anniversary heart burst effect
+        function createAnniversaryHeartBurst(x, y) {
+            const heartsContainer = document.getElementById('floating-hearts-container');
+            if (!heartsContainer) return;
+            
+            const burstHeartEmojis = ['💕', '💖', '💝', '💗', '💘', '❤️', '💞', '💓', '❣️', '🧡', '💛', '💚', '💙', '💜', '🤍', '💋'];
+            const burstCount = Math.random() * 12 + 8; // 8-20 hearts in burst
+            
+            for (let i = 0; i < burstCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'anniversary-burst-heart';
+                heart.textContent = burstHeartEmojis[Math.floor(Math.random() * burstHeartEmojis.length)];
+                
+                // Anniversary-themed burst properties
+                const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.6;
+                const velocity = Math.random() * 280 + 140; // 140-420px
+                const size = Math.random() * 22 + 12; // 12-34px
+                const duration = Math.random() * 2.2 + 1.4; // 1.4-3.6 seconds
+                const rotation = Math.random() * 1080 + 540; // Enhanced rotation
+                const gravity = Math.random() * 280 + 180; // Enhanced gravity
+                
+                const endX = x + Math.cos(angle) * velocity;
+                const endY = y + Math.sin(angle) * velocity - 70; // Higher initial burst
+                const finalY = y + gravity;
+                
+                heart.style.cssText = `
+                    position: fixed;
+                    left: ${x}px;
+                    top: ${y}px;
+                    font-size: ${size}px;
+                    pointer-events: none;
+                    z-index: 150;
+                    animation: anniversaryBurstAnimation ${duration}s ease-out forwards;
+                    --endX: ${endX}px;
+                    --endY: ${endY}px;
+                    --finalY: ${finalY}px;
+                    --rotation: ${rotation}deg;
+                    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 1)) hue-rotate(${Math.random() * 60 - 30}deg) brightness(1.2);
+                `;
+                
+                heartsContainer.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, duration * 1000 + 200);
+            }
+        }
+        
+        // Add click event listener for heart burst
+        document.addEventListener('click', function(e) {
+            // Don't create burst if clicking on buttons or interactive elements
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button') || 
+                e.target.closest('.enhanced-music-player') || e.target.closest('.clear-visits-btn') ||
+                e.target.closest('.gallery-navigation')) {
+                return;
+            }
+            createAnniversaryHeartBurst(e.clientX, e.clientY);
+        });
+        
+        // Add touch event listener for mobile
+        document.addEventListener('touchend', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button') || 
+                e.target.closest('.enhanced-music-player') || e.target.closest('.clear-visits-btn') ||
+                e.target.closest('.gallery-navigation')) {
+                return;
+            }
+            if (e.changedTouches && e.changedTouches[0]) {
+                createAnniversaryHeartBurst(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            }
+        });
+        
+        // Anniversary burst animation styles
+        const anniversaryBurstStyle = document.createElement('style');
+        anniversaryBurstStyle.textContent = `
+            @keyframes anniversaryBurstAnimation {
+                0% {
+                    transform: translate(0, 0) rotate(0deg) scale(0.3);
+                    opacity: 1;
+                }
+                30% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh)) rotate(calc(var(--rotation) * 0.3)) scale(1.4);
+                    opacity: 1;
+                }
+                70% {
+                    opacity: 0.9;
+                }
+                100% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh)) rotate(var(--rotation)) scale(0.1);
+                    opacity: 0;
+                }
+            }
+            
+            .anniversary-burst-heart {
+                user-select: none;
+                will-change: transform, opacity;
+                text-shadow: 0 0 12px rgba(255, 107, 157, 0.8);
+            }
+        `;
+        document.head.appendChild(anniversaryBurstStyle);
     </script>
 </body>
 </html>

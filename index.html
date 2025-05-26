@@ -209,60 +209,7 @@
                     }
                 },
                 retina_detect: true
-            });
-        }
-        
-        // Enhanced Heart Burst Effects for "Open Your Surprise" Button
-        function createHeartBurst(x, y, count = 12) {
-            const container = document.getElementById('floating-hearts-container');
-            if (!container) return;
-            
-            const heartEmojis = ['💕', '💖', '💝', '💗', '💘', '❤️', '💞', '💓'];
-            
-            for (let i = 0; i < count; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'burst-heart';
-                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-                
-                // Random burst properties
-                const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
-                const velocity = Math.random() * 200 + 100;
-                const size = Math.random() * 15 + 10;
-                const duration = Math.random() * 1.5 + 1;
-                const rotation = Math.random() * 720 + 360;
-                const gravity = Math.random() * 200 + 150;
-                
-                const endX = x + Math.cos(angle) * velocity;
-                const endY = y + Math.sin(angle) * velocity - 50;
-                const finalY = y + gravity;
-                
-                heart.style.cssText = `
-                    position: fixed;
-                    left: ${x}px;
-                    top: ${y}px;
-                    font-size: ${size}px;
-                    pointer-events: none;
-                    z-index: 100;
-                    animation: heartBurstOptimized ${duration}s ease-out forwards;
-                    --endX: ${endX}px;
-                    --endY: ${endY}px;
-                    --finalY: ${finalY}px;
-                    --rotation: ${rotation}deg;
-                    transform: translate3d(0, 0, 0);
-                    will-change: transform, opacity;
-                    filter: drop-shadow(0 0 8px rgba(255, 107, 157, 0.6)) hue-rotate(${Math.random() * 60 - 30}deg);
-                `;
-                
-                container.appendChild(heart);
-                
-                // Remove heart after animation
-                setTimeout(() => {
-                    if (heart.parentNode) {
-                        heart.parentNode.removeChild(heart);
-                    }
-                }, duration * 1000 + 100);
-            }
-        }
+            });        }
         
         // Enhanced Music Integration with Cross-Page Sync
         function setupEnhancedMusic() {
@@ -312,7 +259,57 @@
             });
             
             document.body.appendChild(clearVisitsBtn);
-            console.log('🎵 Enhanced music integration setup complete');
+            console.log('🎵 Enhanced music integration setup complete');        }
+        
+        // Create heart burst effect for index page
+        function createHeartBurst(x, y, intensity = 10) {
+            const heartsContainer = document.getElementById('floating-hearts-container');
+            if (!heartsContainer) return;
+            
+            const burstHeartEmojis = ['💕', '💖', '💝', '💗', '💘', '❤️', '💞', '💓', '❣️', '🧡', '💛', '💚', '💙', '💜', '🤍', '💋', '🌹'];
+            const burstCount = Math.random() * intensity + intensity; // Dynamic burst count
+            
+            for (let i = 0; i < burstCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'index-burst-heart';
+                heart.textContent = burstHeartEmojis[Math.floor(Math.random() * burstHeartEmojis.length)];
+                
+                // Index page burst properties
+                const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5) * 0.7;
+                const velocity = Math.random() * 300 + 160; // 160-460px
+                const size = Math.random() * 24 + 14; // 14-38px
+                const duration = Math.random() * 2.5 + 1.3; // 1.3-3.8 seconds
+                const rotation = Math.random() * 1200 + 600; // Enhanced rotation
+                const gravity = Math.random() * 320 + 200; // Enhanced gravity
+                
+                const endX = x + Math.cos(angle) * velocity;
+                const endY = y + Math.sin(angle) * velocity - 80; // Higher initial burst
+                const finalY = y + gravity;
+                
+                heart.style.cssText = `
+                    position: fixed;
+                    left: ${x}px;
+                    top: ${y}px;
+                    font-size: ${size}px;
+                    pointer-events: none;
+                    z-index: 150;
+                    animation: indexBurstAnimation ${duration}s ease-out forwards;
+                    --endX: ${endX}px;
+                    --endY: ${endY}px;
+                    --finalY: ${finalY}px;
+                    --rotation: ${rotation}deg;
+                    filter: drop-shadow(0 0 18px rgba(255, 107, 157, 1)) hue-rotate(${Math.random() * 80 - 40}deg) brightness(1.3);
+                `;
+                
+                heartsContainer.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, duration * 1000 + 250);
+            }
         }
         
         // Setup Heart Burst Effects for "Open Your Surprise" Button
@@ -365,9 +362,58 @@
             // Setup enhanced features
             setupEnhancedMusic();
             setupHeartBurstEffects();
-            
-            console.log('💕 Enhanced anniversary index page loaded! 💕');
+              console.log('💕 Enhanced anniversary index page loaded! 💕');
         });
+        
+        // Add general click event listener for heart burst
+        document.addEventListener('click', function(e) {
+            // Don't create burst if clicking on buttons or interactive elements
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button') || 
+                e.target.closest('.enhanced-music-player') || e.target.closest('a')) {
+                return;
+            }
+            createHeartBurst(e.clientX, e.clientY, 8);
+        });
+        
+        // Add touch event listener for mobile
+        document.addEventListener('touchend', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button') || 
+                e.target.closest('.enhanced-music-player') || e.target.closest('a')) {
+                return;
+            }
+            if (e.changedTouches && e.changedTouches[0]) {
+                createHeartBurst(e.changedTouches[0].clientX, e.changedTouches[0].clientY, 8);
+            }
+        });
+        
+        // Index burst animation styles
+        const indexBurstStyle = document.createElement('style');
+        indexBurstStyle.textContent = `
+            @keyframes indexBurstAnimation {
+                0% {
+                    transform: translate(0, 0) rotate(0deg) scale(0.2);
+                    opacity: 1;
+                }
+                25% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh)) rotate(calc(var(--rotation) * 0.25)) scale(1.5);
+                    opacity: 1;
+                }
+                65% {
+                    opacity: 0.95;
+                }
+                100% {
+                    transform: translate(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh)) rotate(var(--rotation)) scale(0.05);
+                    opacity: 0;
+                }
+            }
+            
+            .index-burst-heart {
+                user-select: none;
+                will-change: transform, opacity;
+                text-shadow: 0 0 15px rgba(255, 107, 157, 1);
+            }
+        `;
+        document.head.appendChild(indexBurstStyle);
     </script>
 </body>
 </html>

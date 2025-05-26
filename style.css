@@ -187,26 +187,6 @@ input, button, a {
     }
 }
 
-/* Optimized burst heart animations */
-@keyframes heartBurstOptimized {
-    0% {
-        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.2);
-        opacity: 1;
-    }
-    25% {
-        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh), 0) rotate(calc(var(--rotation) * 0.25)) scale(1);
-        opacity: 0.9;
-    }
-    75% {
-        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh), 0) rotate(calc(var(--rotation) * 0.75)) scale(0.8);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translate3d(calc(var(--endX) - 50vw), calc(var(--finalY) + 100px - 50vh), 0) rotate(var(--rotation)) scale(0);
-        opacity: 0;
-    }
-}
-
 /* Timeline Styles - Mobile Optimized */
 .timeline {
     position: relative;
