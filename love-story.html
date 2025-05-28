@@ -437,30 +437,21 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="src/core/UnifiedMusicManager.js"></script>
+    <script type="module" src="src/components/UnifiedBubbleAnimation.js"></script>
+    <script type="module" src="src/components/UnifiedBufferStatus.js"></script>
+    <script type="module" src="src/components/BackgroundComponents.js"></script>
+    <script type="module" src="src/integrator.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>
 
     <!-- Love story page initialization -->
-    <script>
-        // Simple love story page initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎯 Love story page loaded - unified components will handle initialization');
-
-            // Initialize AOS if available
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1000,
-                    easing: 'ease-in-out',
-                    once: true,
-                    offset: 120
-                });
-            }
-        });
-    </script>
+    <!-- Love Story Page Script -->
+    <script type="module" src="src/pages/love-story-page.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
     
     <!-- Smooth Transitions Script -->
-    <script src="src/utils/smooth-transitions.js"></script>
+    <script type="module" src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>

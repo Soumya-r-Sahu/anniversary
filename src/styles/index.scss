@@ -1,0 +1,8 @@
+@use "./App.scss";
+
+// Additional global styles for React root
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

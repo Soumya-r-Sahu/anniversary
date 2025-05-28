@@ -1,0 +1,87 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'anniversary_flutter/**'
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'anniversary_flutter/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.6'
+        channel: 'stable'
+        cache: true
+        
+    - name: Install dependencies
+      working-directory: ./anniversary_flutter
+      run: flutter pub get
+      
+    - name: Verify Flutter installation
+      run: flutter doctor -v
+      
+    - name: Build APK
+      working-directory: ./anniversary_flutter
+      run: flutter build apk --release
+      
+    - name: Build App Bundle
+      working-directory: ./anniversary_flutter
+      run: flutter build appbundle --release
+      
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: anniversary-app-release.apk
+        path: anniversary_flutter/build/app/outputs/flutter-apk/app-release.apk
+        
+    - name: Upload App Bundle artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: anniversary-app-release.aab
+        path: anniversary_flutter/build/app/outputs/bundle/release/app-release.aab
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          anniversary_flutter/build/app/outputs/flutter-apk/app-release.apk
+          anniversary_flutter/build/app/outputs/bundle/release/app-release.aab
+        name: Anniversary App ${{ github.ref_name }}
+        body: |
+          Anniversary App release ${{ github.ref_name }}
+          
+          ## What's New
+          - Beautiful anniversary celebration app
+          - Interactive photo gallery
+          - Love story timeline
+          - Music player with celebration sounds
+          - Real-time countdown timer
+          - Celebration page with animations
+          
+          ## Downloads
+          - **APK**: Direct install on Android devices
+          - **AAB**: For Google Play Store distribution
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

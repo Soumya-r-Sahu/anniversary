@@ -1,0 +1,449 @@
+/**
+ * Mobile Optimization Styles
+ * Comprehensive mobile-first responsive design for the Anniversary Website
+ */
+
+@use "./variables" as *;
+@use "./mixins" as *;
+
+// Mobile-first approach
+// Base styles are mobile, then progressively enhanced for larger screens
+
+// Touch target optimization
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+// Mobile navigation optimizations
+@include mobile {
+  .navbar {
+    .navbar-toggler {
+      border: none;
+      padding: 8px;
+
+      &:focus {
+        box-shadow: none;
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    }
+
+    .navbar-collapse {
+      background: rgba(white, 0.95);
+      backdrop-filter: blur(10px);
+      margin: 1rem -1rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(var(--color-primary), 0.2);
+    }
+
+    .navbar-nav {
+      .nav-item {
+        margin: 0.5rem 0;
+
+        .nav-link {
+          padding: 12px 16px;
+          border-radius: 8px;
+          text-align: center;
+          background: rgba(var(--color-primary), 0.1);
+
+          &:hover {
+            background: rgba(var(--color-primary), 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Page-specific mobile optimizations
+.page-container {
+  @include mobile {
+    padding: 1rem 0.5rem;
+    min-height: calc(100vh - 120px); // Account for navbar and footer
+  }
+
+  @include tablet {
+    padding: 2rem 1rem;
+  }
+}
+
+// Homepage mobile optimizations
+.homepage {
+  @include mobile {
+    .hero-section {
+      padding: 2rem 1rem;
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+
+        .btn {
+          width: 100%;
+          max-width: 280px;
+        }
+      }
+    }
+  }
+}
+
+// Countdown page mobile optimizations
+.countdown-page {
+  @include mobile {
+    .countdown-container {
+      padding: 1rem;
+
+      .countdown-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+
+        .countdown-item {
+          padding: 1rem 0.5rem;
+          border-radius: 8px;
+
+          .countdown-number {
+            font-size: 1.5rem;
+          }
+
+          .countdown-label {
+            font-size: 0.7rem;
+          }
+        }
+      }
+
+      .anniversary-message {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Timeline/Love Story mobile optimizations
+.timeline-page {
+  @include mobile {
+    .timeline {
+      padding: 0 0.5rem;
+
+      .timeline-item {
+        margin-bottom: 2rem;
+
+        &::before {
+          left: 20px; // Adjust timeline line position
+        }
+
+        .timeline-content {
+          margin-left: 50px;
+          padding: 1rem;
+
+          .timeline-date {
+            font-size: 0.8rem;
+          }
+
+          .timeline-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .timeline-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+          }
+        }
+
+        .timeline-icon {
+          width: 30px;
+          height: 30px;
+          left: 5px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Gallery mobile optimizations
+.gallery-page {
+  @include mobile {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      padding: 0.5rem;
+
+      .gallery-item {
+        aspect-ratio: 1;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .gallery-overlay {
+          .gallery-info {
+            padding: 0.5rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    // Modal optimizations for mobile
+    .gallery-modal {
+      .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+        height: 100%;
+
+        .modal-content {
+          height: 100%;
+          border-radius: 0;
+
+          .modal-body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              max-width: 100%;
+              max-height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Games page mobile optimizations
+.games-page {
+  @include mobile {
+    .games-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.5rem;
+
+      .game-card {
+        padding: 1.5rem 1rem;
+
+        .game-title {
+          font-size: 1.2rem;
+        }
+
+        .game-description {
+          font-size: 0.9rem;
+          margin: 0.75rem 0;
+        }
+
+        .game-controls {
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Celebration page mobile optimizations
+.celebration-page {
+  @include mobile {
+    .fireworks-container {
+      height: 60vh; // Reduce height on mobile
+
+      .fireworks-message {
+        padding: 1rem;
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .celebration-controls {
+      padding: 1rem;
+
+      .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+// Form optimizations
+@include mobile {
+  .form-group {
+    margin-bottom: 1rem;
+
+    label {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      font-size: 16px; // Prevents zoom on iOS
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .form-text {
+      font-size: 0.8rem;
+    }
+  }
+
+  .btn-group {
+    flex-direction: column;
+
+    .btn {
+      width: 100%;
+      border-radius: 8px !important;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Animation performance optimizations for mobile
+@include mobile {
+  // Reduce animation complexity on mobile
+  .bubble-animation,
+  .heart-animation,
+  .particle-animation {
+    will-change: transform;
+    transform: translateZ(0); // Force hardware acceleration
+  }
+
+  // Simplify hover effects on touch devices
+  @media (hover: none) and (pointer: coarse) {
+    .btn:hover,
+    .card:hover,
+    .nav-link:hover {
+      transform: none !important;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// Accessibility improvements for mobile
+@include mobile {
+  // Focus indicators
+  button:focus,
+  .btn:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  // Skip links
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-primary);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+
+    &:focus {
+      top: 6px;
+    }
+  }
+}
+
+// Orientation specific optimizations
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    min-height: 50px;
+
+    .navbar-brand {
+      font-size: 1rem;
+    }
+  }
+
+  .page-container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  // Reduce vertical spacing in landscape mode
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5rem;
+  }
+
+  .mb-3 {
+    margin-bottom: 0.5rem !important;
+  }
+  .mb-4 {
+    margin-bottom: 1rem !important;
+  }
+  .mb-5 {
+    margin-bottom: 1rem !important;
+  }
+}
+
+// Print styles (mobile users might want to print/save)
+@media print {
+  .navbar,
+  .footer,
+  .btn,
+  .floating-elements,
+  .particle-background {
+    display: none !important;
+  }
+
+  .page-container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .card {
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+}

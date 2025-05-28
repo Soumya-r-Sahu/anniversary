@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎛️ Anniversary Website Control Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .control-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .section-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .control-btn.danger {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+        }
+        
+        .control-btn.danger:hover {
+            box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+        }
+        
+        .control-btn.warning {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+        }
+        
+        .control-btn.warning:hover {
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+        
+        .control-btn.primary {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        .control-btn.primary:hover {
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-indicator.active {
+            background: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+        
+        .status-indicator.inactive {
+            background: #f44336;
+            box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+        }
+        
+        .status-indicator.warning {
+            background: #ff9800;
+            box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+        }
+        
+        .log-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #00ff00;
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: white;
+            width: 100%;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(33, 150, 243, 0.5);
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        }
+        
+        .quick-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .quick-nav .control-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="control-panel p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h1 class="text-3xl font-bold text-white flex items-center">
+                    🎛️ Anniversary Website Control Panel
+                </h1>
+                <div class="flex items-center space-x-4">
+                    <div class="text-white">
+                        <span class="status-indicator active"></span>
+                        System Status: Online
+                    </div>
+                    <button class="control-btn danger" onclick="resetAllSettings()">
+                        🔄 Reset All
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Quick Navigation -->
+            <div class="section-card p-4 mb-4">
+                <h3 class="text-white font-semibold mb-3">🚀 Quick Navigation</h3>
+                <div class="quick-nav">
+                    <button class="control-btn primary" onclick="openPage('index.html')">🏠 Home</button>
+                    <button class="control-btn primary" onclick="openPage('countdown.html')">⏰ Countdown</button>
+                    <button class="control-btn primary" onclick="openPage('anniversary.html')">💕 Anniversary</button>
+                    <button class="control-btn primary" onclick="openPage('love-story.html')">📖 Love Story</button>
+                    <button class="control-btn primary" onclick="openPage('photo-gallery.html')">📸 Gallery</button>
+                    <button class="control-btn primary" onclick="openPage('test-chunked-streaming.html')">🎵 Music Test</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            
+            <!-- Countdown Controls -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4 flex items-center">
+                    ⏰ Countdown Controls
+                    <span class="status-indicator active ml-2"></span>
+                </h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white block mb-2">Target Date & Time</label>
+                        <input type="datetime-local" id="targetDateTime" class="form-control" />
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Quick Time Tests</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn warning" onclick="setCountdownTest('5min')">5 Min Test</button>
+                            <button class="control-btn warning" onclick="setCountdownTest('1min')">1 Min Test</button>
+                            <button class="control-btn warning" onclick="setCountdownTest('30sec')">30 Sec Test</button>
+                            <button class="control-btn warning" onclick="setCountdownTest('10sec')">10 Sec Test</button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="control-btn" onclick="updateCountdownTime()">⚙️ Update Time</button>
+                        <button class="control-btn danger" onclick="resetCountdown()">🔄 Reset</button>
+                    </div>
+                    
+                    <div>
+                        <button class="control-btn primary w-full" onclick="forceCountdownComplete()">
+                            ⚡ Force Complete
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Controls -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4 flex items-center">
+                    🎵 Music System Controls
+                    <span class="status-indicator" id="musicStatus"></span>
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="control-btn" onclick="toggleMusic()" id="musicToggle">▶️ Play</button>
+                        <button class="control-btn" onclick="stopMusic()">⏹️ Stop</button>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Volume</label>
+                        <input type="range" min="0" max="100" value="30" class="w-full" id="volumeSlider" oninput="setVolume(this.value)">
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Music Options</label>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button class="control-btn" onclick="testChunkedStreaming()">🧪 Test Chunked Streaming</button>
+                            <button class="control-btn" onclick="clearMusicCache()">🗑️ Clear Cache</button>
+                            <button class="control-btn" onclick="toggleCrossFade()">🔄 Toggle Crossfade</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button class="control-btn primary w-full" onclick="forceMusicSync()">
+                            🔗 Force Cross-Page Sync
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Testing Controls -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4">🧪 Page Testing</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white block mb-2">Test Features</label>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button class="control-btn" onclick="toggleTestButtons()">👁️ Toggle Test Buttons</button>
+                            <button class="control-btn" onclick="testBubbleAnimations()">🫧 Test Bubbles</button>
+                            <button class="control-btn" onclick="testParticleSystem()">✨ Test Particles</button>
+                            <button class="control-btn" onclick="testTransitions()">🔄 Test Transitions</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Animation Controls</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn" onclick="disableAnimations()">⏸️ Disable</button>
+                            <button class="control-btn" onclick="enableAnimations()">▶️ Enable</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button class="control-btn warning w-full" onclick="performanceTest()">
+                            ⚡ Performance Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme & UI Controls -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4">🎨 Theme & UI Controls</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white block mb-2">Button Themes</label>
+                        <select class="form-control" id="buttonTheme" onchange="changeButtonTheme(this.value)">
+                            <option value="default">Default Pink/Red</option>
+                            <option value="blue">Blue Theme</option>
+                            <option value="green">Green Theme</option>
+                            <option value="purple">Purple Theme</option>
+                            <option value="golden">Golden Theme</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Background Effects</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn" onclick="toggleParticles()">✨ Particles</button>
+                            <button class="control-btn" onclick="toggleBubbles()">🫧 Bubbles</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button class="control-btn primary w-full" onclick="previewAllThemes()">
+                            👀 Preview All Themes
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debug & Monitoring -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4">🔍 Debug & Monitoring</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white block mb-2">Debug Options</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn" onclick="toggleConsole()">💻 Console</button>
+                            <button class="control-btn" onclick="showStats()">📊 Stats</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Storage Management</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn warning" onclick="clearStorage()">🗑️ Clear</button>
+                            <button class="control-btn" onclick="exportSettings()">💾 Export</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">System Status</label>
+                        <div class="text-white text-sm space-y-1">
+                            <div>Memory: <span id="memoryUsage">--</span> MB</div>
+                            <div>Load Time: <span id="loadTime">--</span> ms</div>
+                            <div>Active Animations: <span id="activeAnimations">--</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Actions -->
+            <div class="section-card p-6">
+                <h2 class="text-xl font-semibold text-white mb-4">⚙️ System Actions</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white block mb-2">Navigation Testing</label>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button class="control-btn" onclick="testAllLinks()">🔗 Test All Links</button>
+                            <button class="control-btn" onclick="simulateUserJourney()">👤 Simulate Journey</button>
+                            <button class="control-btn" onclick="stressTestNavigation()">💥 Stress Test</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-white block mb-2">Emergency Actions</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="control-btn danger" onclick="emergencyStop()">🛑 Emergency Stop</button>
+                            <button class="control-btn warning" onclick="safeMode()">🛡️ Safe Mode</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button class="control-btn primary w-full" onclick="generateReport()">
+                            📋 Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Log Console -->
+        <div class="control-panel p-6 mt-6">
+            <h2 class="text-xl font-semibold text-white mb-4">📝 System Log</h2>
+            <div class="log-container" id="systemLog">
+                <div>System initialized...</div>
+                <div>Control panel loaded successfully</div>
+                <div>Ready for commands...</div>
+            </div>
+            <div class="mt-4 flex gap-2">
+                <button class="control-btn" onclick="clearLog()">🗑️ Clear Log</button>
+                <button class="control-btn" onclick="exportLog()">💾 Export Log</button>
+                <button class="control-btn primary" onclick="refreshStatus()">🔄 Refresh Status</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load required scripts -->
+    <script src="src/core/UnifiedMusicManager.js"></script>
+    <script src="src/components/UnifiedBubbleAnimation.js"></script>
+    <script src="src/components/BackgroundComponents.js"></script>
+
+    <script>
+        // Control Panel JavaScript
+        class AnniversaryControlPanel {
+            constructor() {
+                this.log = [];
+                this.systemStatus = {
+                    musicManager: null,
+                    bubbleSystem: null,
+                    particleSystem: null,
+                    testMode: false
+                };
+                this.init();
+            }
+
+            init() {
+                this.log('🎛️ Control Panel Initialized');
+                this.setupEventListeners();
+                this.initializeTargetDateTime();
+                this.checkSystemStatus();
+                this.startMonitoring();
+            }
+
+            setupEventListeners() {
+                // Set up real-time monitoring
+                setInterval(() => this.updateSystemStats(), 1000);
+                
+                // Listen for music manager events
+                window.addEventListener('musicManager:initialized', () => {
+                    this.log('🎵 Music Manager Connected');
+                    this.updateMusicStatus();
+                });
+                
+                // Monitor page visibility
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.log('📱 Control Panel Hidden');
+                    } else {
+                        this.log('📱 Control Panel Visible');
+                        this.refreshStatus();
+                    }
+                });
+            }
+
+            initializeTargetDateTime() {
+                // Set default target to June 16, 2025
+                const targetDateTime = document.getElementById('targetDateTime');
+                const defaultDate = new Date('2025-06-16T00:00:00');
+                targetDateTime.value = defaultDate.toISOString().slice(0, 16);
+            }
+
+            log(message, type = 'info') {
+                const timestamp = new Date().toLocaleTimeString();
+                const logEntry = `[${timestamp}] ${message}`;
+                this.log.push(logEntry);
+                
+                const logContainer = document.getElementById('systemLog');
+                const logDiv = document.createElement('div');
+                logDiv.textContent = logEntry;
+                logDiv.style.color = type === 'error' ? '#ff6b6b' : type === 'warning' ? '#ffd93d' : '#00ff00';
+                logContainer.appendChild(logDiv);
+                logContainer.scrollTop = logContainer.scrollHeight;
+                
+                console.log(`[Control Panel] ${message}`);
+            }
+
+            checkSystemStatus() {
+                // Check music manager
+                if (window.UnifiedMusicManager) {
+                    this.systemStatus.musicManager = true;
+                    this.log('✅ Music Manager Available');
+                } else {
+                    this.log('⚠️ Music Manager Not Found');
+                }
+
+                // Check bubble system
+                if (window.UnifiedBubbleAnimation) {
+                    this.systemStatus.bubbleSystem = true;
+                    this.log('✅ Bubble System Available');
+                } else {
+                    this.log('⚠️ Bubble System Not Found');
+                }
+
+                // Check particle system
+                if (window.BackgroundComponents) {
+                    this.systemStatus.particleSystem = true;
+                    this.log('✅ Particle System Available');
+                } else {
+                    this.log('⚠️ Particle System Not Found');
+                }
+            }
+
+            updateSystemStats() {
+                // Update memory usage (approximation)
+                const memoryUsage = performance.memory ? 
+                    Math.round(performance.memory.usedJSHeapSize / 1024 / 1024) : '--';
+                document.getElementById('memoryUsage').textContent = memoryUsage;
+
+                // Update load time
+                const loadTime = performance.timing ? 
+                    performance.timing.loadEventEnd - performance.timing.navigationStart : '--';
+                document.getElementById('loadTime').textContent = loadTime;
+
+                // Update active animations (estimate)
+                const activeAnimations = document.querySelectorAll('.bubble, .particle, [style*="animation"]').length;
+                document.getElementById('activeAnimations').textContent = activeAnimations;
+            }
+
+            updateMusicStatus() {
+                const statusIndicator = document.getElementById('musicStatus');
+                const musicToggle = document.getElementById('musicToggle');
+                
+                if (window.musicManager) {
+                    if (window.musicManager.state && window.musicManager.state.isPlaying) {
+                        statusIndicator.className = 'status-indicator active';
+                        musicToggle.textContent = '⏸️ Pause';
+                    } else {
+                        statusIndicator.className = 'status-indicator inactive';
+                        musicToggle.textContent = '▶️ Play';
+                    }
+                } else {
+                    statusIndicator.className = 'status-indicator warning';
+                    musicToggle.textContent = '❌ Unavailable';
+                }
+            }
+
+            startMonitoring() {
+                setInterval(() => {
+                    this.updateMusicStatus();
+                }, 2000);
+            }
+
+            // Utility method to refresh all status indicators
+            refreshStatus() {
+                this.checkSystemStatus();
+                this.updateMusicStatus();
+                this.updateSystemStats();
+                this.log('🔄 Status Refreshed');
+            }
+        }
+
+        // Initialize control panel
+        const controlPanel = new AnniversaryControlPanel();
+
+        // Control Panel Functions
+
+        // Navigation Functions
+        function openPage(page) {
+            controlPanel.log(`🚀 Opening ${page}`);
+            window.open(page, '_blank');
+        }
+
+        // Countdown Control Functions
+        function setCountdownTest(duration) {
+            const now = new Date();
+            let targetDate;
+            
+            switch(duration) {
+                case '5min':
+                    targetDate = new Date(now.getTime() + 5 * 60 * 1000);
+                    break;
+                case '1min':
+                    targetDate = new Date(now.getTime() + 1 * 60 * 1000);
+                    break;
+                case '30sec':
+                    targetDate = new Date(now.getTime() + 30 * 1000);
+                    break;
+                case '10sec':
+                    targetDate = new Date(now.getTime() + 10 * 1000);
+                    break;
+            }
+            
+            document.getElementById('targetDateTime').value = targetDate.toISOString().slice(0, 16);
+            controlPanel.log(`⏰ Set countdown test: ${duration}`);
+        }
+
+        function updateCountdownTime() {
+            const targetDateTime = document.getElementById('targetDateTime').value;
+            if (targetDateTime) {
+                localStorage.setItem('anniversaryTargetDate', targetDateTime);
+                controlPanel.log(`⚙️ Updated countdown target: ${targetDateTime}`);
+                
+                // Notify all open pages
+                window.postMessage({
+                    type: 'COUNTDOWN_UPDATE',
+                    targetDate: targetDateTime
+                }, '*');
+            } else {
+                controlPanel.log('⚠️ No target date selected', 'warning');
+            }
+        }
+
+        function resetCountdown() {
+            localStorage.removeItem('anniversaryTargetDate');
+            controlPanel.log('🔄 Countdown reset');
+            
+            // Reset to default
+            const defaultDate = new Date('2025-06-16T00:00:00');
+            document.getElementById('targetDateTime').value = defaultDate.toISOString().slice(0, 16);
+        }
+
+        function forceCountdownComplete() {
+            controlPanel.log('⚡ Forcing countdown completion');
+            
+            // Set countdown to complete
+            window.postMessage({
+                type: 'FORCE_COUNTDOWN_COMPLETE'
+            }, '*');
+            
+            // Open anniversary page
+            setTimeout(() => {
+                openPage('anniversary.html');
+            }, 1000);
+        }
+
+        // Music Control Functions
+        async function toggleMusic() {
+            try {
+                if (!window.musicManager) {
+                    // Initialize music manager if not available
+                    if (window.UnifiedMusicManager) {
+                        window.musicManager = new window.UnifiedMusicManager();
+                        await window.musicManager.init();
+                        controlPanel.log('🎵 Music Manager Initialized');
+                    } else {
+                        controlPanel.log('❌ Music Manager not available', 'error');
+                        return;
+                    }
+                }
+
+                if (window.musicManager.state.isPlaying) {
+                    await window.musicManager.pause();
+                    controlPanel.log('⏸️ Music Paused');
+                } else {
+                    await window.musicManager.play();
+                    controlPanel.log('▶️ Music Playing');
+                }
+            } catch (error) {
+                controlPanel.log(`❌ Music control error: ${error.message}`, 'error');
+            }
+        }
+
+        function stopMusic() {
+            if (window.musicManager) {
+                window.musicManager.stop();
+                controlPanel.log('⏹️ Music Stopped');
+            }
+        }
+
+        function setVolume(value) {
+            if (window.musicManager) {
+                window.musicManager.setVolume(value / 100);
+                controlPanel.log(`🔊 Volume set to ${value}%`);
+            }
+        }
+
+        function testChunkedStreaming() {
+            controlPanel.log('🧪 Testing chunked streaming...');
+            openPage('test-chunked-streaming.html');
+        }
+
+        function clearMusicCache() {
+            if (window.musicManager && window.musicManager.clearStoredState) {
+                window.musicManager.clearStoredState();
+                controlPanel.log('🗑️ Music cache cleared');
+            }
+        }
+
+        function toggleCrossFade() {
+            controlPanel.log('🔄 Toggled crossfade (feature implementation needed)');
+        }
+
+        function forceMusicSync() {
+            if (window.musicManager) {
+                // Force sync across all open pages
+                window.postMessage({
+                    type: 'FORCE_MUSIC_SYNC',
+                    state: window.musicManager.state
+                }, '*');
+                controlPanel.log('🔗 Forced cross-page music sync');
+            }
+        }
+
+        // Testing Functions
+        function toggleTestButtons() {
+            const testMode = !controlPanel.systemStatus.testMode;
+            controlPanel.systemStatus.testMode = testMode;
+            
+            window.postMessage({
+                type: 'TOGGLE_TEST_MODE',
+                enabled: testMode
+            }, '*');
+            
+            controlPanel.log(`👁️ Test buttons ${testMode ? 'enabled' : 'disabled'}`);
+        }
+
+        function testBubbleAnimations() {
+            controlPanel.log('🫧 Testing bubble animations...');
+            
+            // Create test bubble burst
+            if (window.BackgroundComponents && window.BackgroundComponents.bubbleAnimation) {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const x = Math.random() * window.innerWidth;
+                        const y = Math.random() * window.innerHeight;
+                        window.BackgroundComponents.bubbleAnimation.createBubbleBurst(x, y, 10);
+                    }, i * 500);
+                }
+            }
+        }
+
+        function testParticleSystem() {
+            controlPanel.log('✨ Testing particle system...');
+            // Implementation for particle testing
+        }
+
+        function testTransitions() {
+            controlPanel.log('🔄 Testing page transitions...');
+            // Implementation for transition testing
+        }
+
+        function disableAnimations() {
+            document.body.style.setProperty('--animation-duration', '0s');
+            controlPanel.log('⏸️ Animations disabled');
+        }
+
+        function enableAnimations() {
+            document.body.style.removeProperty('--animation-duration');
+            controlPanel.log('▶️ Animations enabled');
+        }
+
+        function performanceTest() {
+            controlPanel.log('⚡ Starting performance test...');
+            
+            const startTime = performance.now();
+            
+            // Simulate load test
+            testBubbleAnimations();
+            setTimeout(() => {
+                const endTime = performance.now();
+                const duration = Math.round(endTime - startTime);
+                controlPanel.log(`⚡ Performance test completed in ${duration}ms`);
+            }, 3000);
+        }
+
+        // Theme Functions
+        function changeButtonTheme(theme) {
+            controlPanel.log(`🎨 Changing button theme to: ${theme}`);
+            
+            window.postMessage({
+                type: 'CHANGE_THEME',
+                theme: theme
+            }, '*');
+        }
+
+        function toggleParticles() {
+            controlPanel.log('✨ Toggled particle effects');
+            
+            window.postMessage({
+                type: 'TOGGLE_PARTICLES'
+            }, '*');
+        }
+
+        function toggleBubbles() {
+            controlPanel.log('🫧 Toggled bubble effects');
+            
+            window.postMessage({
+                type: 'TOGGLE_BUBBLES'
+            }, '*');
+        }
+
+        function previewAllThemes() {
+            controlPanel.log('👀 Previewing all themes...');
+            const themes = ['default', 'blue', 'green', 'purple', 'golden'];
+            
+            themes.forEach((theme, index) => {
+                setTimeout(() => {
+                    changeButtonTheme(theme);
+                    controlPanel.log(`🎨 Preview: ${theme} theme`);
+                }, index * 1000);
+            });
+        }
+
+        // Debug Functions
+        function toggleConsole() {
+            controlPanel.log('💻 Console toggle (browser dev tools)');
+        }
+
+        function showStats() {
+            const stats = {
+                userAgent: navigator.userAgent,
+                screenSize: `${screen.width}x${screen.height}`,
+                windowSize: `${window.innerWidth}x${window.innerHeight}`,
+                localStorage: Object.keys(localStorage).length,
+                performance: performance.memory ? {
+                    used: Math.round(performance.memory.usedJSHeapSize / 1024 / 1024),
+                    total: Math.round(performance.memory.totalJSHeapSize / 1024 / 1024)
+                } : 'Not available'
+            };
+            
+            controlPanel.log('📊 System Stats:');
+            Object.entries(stats).forEach(([key, value]) => {
+                controlPanel.log(`   ${key}: ${typeof value === 'object' ? JSON.stringify(value) : value}`);
+            });
+        }
+
+        function clearStorage() {
+            const confirmed = confirm('Clear all local storage? This will reset all settings.');
+            if (confirmed) {
+                localStorage.clear();
+                sessionStorage.clear();
+                controlPanel.log('🗑️ All storage cleared');
+            }
+        }
+
+        function exportSettings() {
+            const settings = {
+                localStorage: { ...localStorage },
+                timestamp: new Date().toISOString(),
+                controlPanelLog: controlPanel.log
+            };
+            
+            const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `anniversary-settings-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            controlPanel.log('💾 Settings exported');
+        }
+
+        // System Action Functions
+        function testAllLinks() {
+            controlPanel.log('🔗 Testing all navigation links...');
+            
+            const pages = ['index.html', 'countdown.html', 'anniversary.html', 'love-story.html', 'photo-gallery.html'];
+            let tested = 0;
+            
+            pages.forEach((page, index) => {
+                setTimeout(() => {
+                    fetch(page)
+                        .then(response => {
+                            if (response.ok) {
+                                controlPanel.log(`✅ ${page} - OK`);
+                            } else {
+                                controlPanel.log(`❌ ${page} - Error ${response.status}`, 'error');
+                            }
+                            tested++;
+                            if (tested === pages.length) {
+                                controlPanel.log('🔗 Link testing completed');
+                            }
+                        })
+                        .catch(error => {
+                            controlPanel.log(`❌ ${page} - ${error.message}`, 'error');
+                            tested++;
+                            if (tested === pages.length) {
+                                controlPanel.log('🔗 Link testing completed');
+                            }
+                        });
+                }, index * 200);
+            });
+        }
+
+        function simulateUserJourney() {
+            controlPanel.log('👤 Simulating user journey...');
+            
+            const journey = [
+                { page: 'index.html', delay: 1000 },
+                { page: 'countdown.html', delay: 2000 },
+                { page: 'anniversary.html', delay: 3000 },
+                { page: 'love-story.html', delay: 2000 },
+                { page: 'photo-gallery.html', delay: 2000 }
+            ];
+            
+            let totalDelay = 0;
+            journey.forEach((step, index) => {
+                totalDelay += step.delay;
+                setTimeout(() => {
+                    controlPanel.log(`👤 Step ${index + 1}: ${step.page}`);
+                    if (index === journey.length - 1) {
+                        controlPanel.log('👤 User journey simulation completed');
+                    }
+                }, totalDelay);
+            });
+        }
+
+        function stressTestNavigation() {
+            controlPanel.log('💥 Starting navigation stress test...');
+            
+            // Rapid navigation simulation
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const pages = ['index.html', 'countdown.html', 'anniversary.html'];
+                    const randomPage = pages[Math.floor(Math.random() * pages.length)];
+                    controlPanel.log(`💥 Stress test ${i + 1}: ${randomPage}`);
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                controlPanel.log('💥 Stress test completed');
+            }, 1100);
+        }
+
+        function emergencyStop() {
+            controlPanel.log('🛑 EMERGENCY STOP ACTIVATED', 'error');
+            
+            // Stop all animations
+            disableAnimations();
+            
+            // Stop music
+            if (window.musicManager) {
+                window.musicManager.stop();
+            }
+            
+            // Clear intervals
+            for (let i = 1; i < 99999; i++) window.clearInterval(i);
+            
+            controlPanel.log('🛑 All systems stopped', 'error');
+        }
+
+        function safeMode() {
+            controlPanel.log('🛡️ Entering safe mode...', 'warning');
+            
+            disableAnimations();
+            toggleParticles();
+            toggleBubbles();
+            
+            controlPanel.log('🛡️ Safe mode activated', 'warning');
+        }
+
+        function generateReport() {
+            controlPanel.log('📋 Generating system report...');
+            
+            const report = {
+                timestamp: new Date().toISOString(),
+                systemStatus: controlPanel.systemStatus,
+                logs: controlPanel.log.slice(-50), // Last 50 log entries
+                performance: {
+                    memory: document.getElementById('memoryUsage').textContent,
+                    loadTime: document.getElementById('loadTime').textContent,
+                    activeAnimations: document.getElementById('activeAnimations').textContent
+                },
+                settings: {
+                    targetDateTime: document.getElementById('targetDateTime').value,
+                    volume: document.getElementById('volumeSlider').value,
+                    buttonTheme: document.getElementById('buttonTheme').value
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `anniversary-report-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            controlPanel.log('📋 Report generated and downloaded');
+        }
+
+        // Utility Functions
+        function resetAllSettings() {
+            const confirmed = confirm('Reset ALL settings? This will clear storage and reset the control panel.');
+            if (confirmed) {
+                clearStorage();
+                resetCountdown();
+                document.getElementById('volumeSlider').value = 30;
+                document.getElementById('buttonTheme').value = 'default';
+                controlPanel.log('🔄 All settings reset', 'warning');
+                
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+        }
+
+        function clearLog() {
+            document.getElementById('systemLog').innerHTML = '';
+            controlPanel.log = [];
+            controlPanel.log('🗑️ Log cleared');
+        }
+
+        function exportLog() {
+            const logContent = controlPanel.log.join('\n');
+            const blob = new Blob([logContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `anniversary-log-${Date.now()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            controlPanel.log('💾 Log exported');
+        }
+
+        function refreshStatus() {
+            controlPanel.refreshStatus();
+        }
+
+        // Listen for messages from other pages
+        window.addEventListener('message', (event) => {
+            if (event.data.type) {
+                controlPanel.log(`📨 Received message: ${event.data.type}`);
+            }
+        });
+
+        // Initial status check
+        setTimeout(() => {
+            controlPanel.refreshStatus();
+        }, 1000);
+    </script>
+</body>
+</html>

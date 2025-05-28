@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunked Streaming Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .control-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .control-btn:hover {
+            background: #45a049;
+        }
+        .control-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .status {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .log {
+            height: 200px;
+            overflow-y: scroll;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎵 Chunked Music Streaming Test</h1>
+        <p>This page tests the chunked music streaming system with buffer status monitoring.</p>
+        
+        <div class="test-section">
+            <h3>Music Controls</h3>
+            <button class="control-btn" id="playBtn">▶️ Play</button>
+            <button class="control-btn" id="pauseBtn">⏸️ Pause</button>
+            <button class="control-btn" id="stopBtn">⏹️ Stop</button>
+            <button class="control-btn" id="nextBtn">⏭️ Next</button>
+            <button class="control-btn" id="prevBtn">⏮️ Previous</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Streaming Status</h3>
+            <div class="status" id="streamingStatus">
+                Initializing...
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Buffer Status</h3>
+            <div class="status" id="bufferStatus">
+                Buffer status will appear here...
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test Controls</h3>
+            <button class="control-btn" id="toggleBufferStatus">Toggle Buffer Status</button>
+            <button class="control-btn" id="simulateSlowNetwork">Simulate Slow Network</button>
+            <button class="control-btn" id="clearLog">Clear Log</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Event Log</h3>
+            <div class="log" id="eventLog"></div>
+        </div>
+    </div>
+
+    <!-- Load the core music system -->
+    <script src="src/core/ChunkedMusicPlayer.js"></script>
+    <script src="src/core/UnifiedMusicManager.js"></script>
+    <script src="src/components/UnifiedBufferStatus.js"></script>
+
+    <script>
+        // Test script
+        let musicManager;
+        let eventLog = document.getElementById('eventLog');
+        let streamingStatus = document.getElementById('streamingStatus');
+        let bufferStatus = document.getElementById('bufferStatus');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.style.color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#74c0fc';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            eventLog.appendChild(logEntry);
+            eventLog.scrollTop = eventLog.scrollHeight;
+            console.log(`[Chunked Streaming Test] ${message}`);
+        }
+
+        // Initialize music manager with chunked streaming
+        async function initializeMusicManager() {
+            try {
+                log('Initializing music manager with chunked streaming...', 'info');
+                
+                musicManager = new UnifiedMusicManager({
+                    enableChunkedStreaming: true,
+                    chunkDuration: 15, // smaller chunks for testing
+                    preloadChunks: 2,
+                    bufferAhead: 1,
+                    volume: 0.3,
+                    autoplay: false
+                });
+
+                await musicManager.init();
+                log('Music manager initialized successfully!', 'success');
+                
+                updateStreamingStatus();
+                setupEventListeners();
+                
+            } catch (error) {
+                log(`Failed to initialize music manager: ${error.message}`, 'error');
+            }
+        }
+
+        function updateStreamingStatus() {
+            if (!musicManager) return;
+            
+            const state = musicManager.state;
+            streamingStatus.innerHTML = `
+                <strong>Streaming Mode:</strong> ${state.usingChunkedPlayer ? 'Chunked' : 'Regular'}<br>
+                <strong>Playing:</strong> ${state.isPlaying}<br>
+                <strong>Current Song:</strong> ${state.currentSongIndex + 1} of ${musicManager.playlist.length}<br>
+                <strong>Buffer Health:</strong> ${state.bufferHealth}%<br>
+                <strong>Current Chunk:</strong> ${state.currentChunk} / ${state.totalChunks}
+            `;
+        }
+
+        function setupEventListeners() {
+            // Music manager events
+            window.addEventListener('musicManager:chunkLoaded', (e) => {
+                log(`Chunk loaded: ${e.detail.chunkIndex}`, 'success');
+                updateStreamingStatus();
+            });
+
+            window.addEventListener('musicManager:bufferUpdate', (e) => {
+                log(`Buffer health: ${e.detail.bufferHealth}%`, 'info');
+                bufferStatus.textContent = `Buffer Health: ${e.detail.bufferHealth}% | Loaded: ${e.detail.loadedChunks || 0} chunks`;
+                updateStreamingStatus();
+            });
+
+            window.addEventListener('musicManager:error', (e) => {
+                log(`Error: ${e.detail.error}`, 'error');
+            });
+
+            window.addEventListener('musicManager:play', () => {
+                log('Playback started', 'success');
+                updateStreamingStatus();
+            });
+
+            window.addEventListener('musicManager:pause', () => {
+                log('Playback paused', 'info');
+                updateStreamingStatus();
+            });
+
+            // Button event listeners
+            document.getElementById('playBtn').addEventListener('click', () => {
+                if (musicManager) {
+                    musicManager.play();
+                    log('Play button clicked', 'info');
+                }
+            });
+
+            document.getElementById('pauseBtn').addEventListener('click', () => {
+                if (musicManager) {
+                    musicManager.pause();
+                    log('Pause button clicked', 'info');
+                }
+            });
+
+            document.getElementById('stopBtn').addEventListener('click', () => {
+                if (musicManager) {
+                    musicManager.stop();
+                    log('Stop button clicked', 'info');
+                }
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (musicManager) {
+                    musicManager.next();
+                    log('Next button clicked', 'info');
+                }
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (musicManager) {
+                    musicManager.previous();
+                    log('Previous button clicked', 'info');
+                }
+            });
+
+            document.getElementById('toggleBufferStatus').addEventListener('click', () => {
+                if (musicManager && musicManager.bufferStatus) {
+                    if (musicManager.bufferStatus.state.visible) {
+                        musicManager.bufferStatus.hide();
+                        log('Buffer status hidden', 'info');
+                    } else {
+                        musicManager.bufferStatus.show();
+                        log('Buffer status shown', 'info');
+                    }
+                }
+            });
+
+            document.getElementById('clearLog').addEventListener('click', () => {
+                eventLog.innerHTML = '';
+                log('Log cleared', 'info');
+            });
+        }
+
+        // Update status every second
+        setInterval(updateStreamingStatus, 1000);
+
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            log('Page loaded, initializing test...', 'info');
+            initializeMusicManager();
+        });
+
+        // User interaction to enable audio
+        document.addEventListener('click', function enableAudio() {
+            log('User interaction detected, audio context will be enabled', 'success');
+            document.removeEventListener('click', enableAudio);
+        }, { once: true });
+    </script>
+</body>
+</html>

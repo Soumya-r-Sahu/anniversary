@@ -1,0 +1,423 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.enhanced-countdown {
+  position: relative;
+  padding: 3rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba($primary-color, 0.1),
+    rgba($secondary-color, 0.1)
+  );
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(white, 0.2);
+  overflow: hidden;
+
+  .bubbles-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .crackers-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .countdown-grid {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .countdown-unit {
+    position: relative;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, rgba(white, 0.15), rgba(white, 0.05));
+    border-radius: 15px;
+    border: 1px solid rgba(white, 0.2);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(white, 0.25), rgba(white, 0.15));
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba($primary-color, 0.3);
+    }
+
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $text-color;
+      opacity: 0.8;
+    }
+
+    .countdown-sparkle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    &.seconds {
+      .countdown-number {
+        background: linear-gradient(135deg, $accent-color, $highlight-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .urgency-message {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: linear-gradient(
+      135deg,
+      rgba($accent-color, 0.2),
+      rgba($highlight-color, 0.2)
+    );
+    border-radius: 10px;
+    border: 1px solid rgba($accent-color, 0.3);
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, $accent-color, $highlight-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 1s ease-in-out infinite;
+    }
+  }
+
+  .countdown-progress {
+    margin-top: 2rem;
+    height: 8px;
+    background: rgba(white, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        $primary-color,
+        $secondary-color,
+        $accent-color
+      );
+      border-radius: 4px;
+      transition: width 1s ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(white, 0.3),
+          transparent
+        );
+        animation: shimmer 2s ease-in-out infinite;
+      }
+    }
+  }
+
+  // Urgency states
+  &.urgent-final {
+    animation: finalCountdown 1s ease-in-out infinite;
+    border-color: $accent-color;
+    box-shadow: 0 0 30px rgba($accent-color, 0.5);
+
+    .countdown-unit {
+      .countdown-number {
+        animation: finalPulse 0.5s ease-in-out infinite;
+      }
+    }
+  }
+
+  &.urgent-minute {
+    border-color: $highlight-color;
+    box-shadow: 0 0 20px rgba($highlight-color, 0.3);
+
+    .countdown-unit.seconds {
+      animation: secondsPulse 1s ease-in-out infinite;
+    }
+  }
+
+  &.urgent-hour {
+    border-color: rgba($primary-color, 0.6);
+    box-shadow: 0 0 15px rgba($primary-color, 0.2);
+  }
+
+  &.urgent-day {
+    border-color: rgba($secondary-color, 0.6);
+    box-shadow: 0 0 10px rgba($secondary-color, 0.2);
+  }
+}
+
+// Floating bubbles
+.countdown-bubble {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(white, 0.3), rgba(white, 0.1));
+  border-radius: 50%;
+  border: 1px solid rgba(white, 0.2);
+  animation: floatUp 4s linear infinite;
+  pointer-events: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    background: rgba(white, 0.6);
+    border-radius: 50%;
+  }
+}
+
+// Mini crackers
+.mini-cracker {
+  position: absolute;
+  font-size: 1.5rem;
+  pointer-events: none;
+  user-select: none;
+  z-index: 15;
+}
+
+// Animations
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes finalCountdown {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba($accent-color, 0.5);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba($accent-color, 0.8);
+  }
+}
+
+@keyframes finalPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes secondsPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Dark theme adjustments
+[data-theme="dark"] {
+  .enhanced-countdown {
+    background: linear-gradient(
+      135deg,
+      rgba($primary-color-dark, 0.2),
+      rgba($secondary-color-dark, 0.2)
+    );
+    border-color: rgba(white, 0.1);
+
+    .countdown-unit {
+      background: linear-gradient(135deg, rgba(white, 0.1), rgba(white, 0.05));
+      border-color: rgba(white, 0.1);
+
+      .countdown-label {
+        color: $text-color-dark;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, rgba(white, 0.2), rgba(white, 0.1));
+      }
+    }
+
+    .countdown-progress {
+      background: rgba(white, 0.05);
+    }
+  }
+
+  .countdown-bubble {
+    background: radial-gradient(
+      circle,
+      rgba($primary-color-light, 0.3),
+      rgba($primary-color-light, 0.1)
+    );
+    border-color: rgba($primary-color-light, 0.2);
+
+    &::before {
+      background: rgba($primary-color-light, 0.6);
+    }
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .enhanced-countdown {
+    padding: 2rem 1rem;
+    border-radius: 15px;
+
+    .countdown-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 100%;
+    }
+
+    .countdown-unit {
+      padding: 1rem 0.5rem;
+      border-radius: 10px;
+
+      .countdown-number {
+        font-size: 1.8rem;
+        line-height: 1.2;
+      }
+
+      .countdown-label {
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+      }
+    }
+
+    .anniversary-message {
+      .anniversary-date {
+        font-size: 1.1rem;
+      }
+
+      .message-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    }
+
+    .crackers-container .cracker {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .enhanced-countdown {
+    .countdown-unit {
+      .countdown-number {
+        font-size: 2rem;
+      }
+
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+// Touch device optimizations
+@media (hover: none) and (pointer: coarse) {
+  .enhanced-countdown {
+    .countdown-unit {
+      &:hover {
+        transform: none;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}

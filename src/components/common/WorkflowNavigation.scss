@@ -1,0 +1,512 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.workflow-navigation {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.workflow-progress {
+  background: linear-gradient(
+    135deg,
+    rgba($primary-color, 0.05),
+    rgba($secondary-color, 0.05)
+  );
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba($primary-color, 0.2);
+  backdrop-filter: blur(10px);
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h5 {
+      margin: 0;
+      font-weight: 600;
+      color: $text-color;
+    }
+
+    .progress-text {
+      font-size: 0.9rem;
+      color: $text-color;
+      opacity: 0.8;
+    }
+  }
+
+  .progress-bar-container {
+    height: 8px;
+    background: rgba(white, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        $primary-color,
+        $secondary-color,
+        $accent-color
+      );
+      border-radius: 4px;
+      transition: width 0.8s ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(white, 0.3),
+          transparent
+        );
+        animation: shimmer 2s ease-in-out infinite;
+      }
+    }
+  }
+
+  .steps-indicator {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    .step-indicator {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+      padding: 1rem 0.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+
+      .step-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .step-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $text-color;
+        opacity: 0.8;
+      }
+
+      .step-check {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 0.8rem;
+      }
+
+      &.completed {
+        background: linear-gradient(
+          135deg,
+          rgba($success-color, 0.2),
+          rgba($success-color, 0.1)
+        );
+        border: 1px solid rgba($success-color, 0.3);
+
+        .step-icon {
+          filter: grayscale(0);
+        }
+
+        .step-name {
+          color: $success-color;
+          opacity: 1;
+        }
+      }
+
+      &.current {
+        background: linear-gradient(
+          135deg,
+          rgba($primary-color, 0.2),
+          rgba($secondary-color, 0.2)
+        );
+        border: 2px solid $primary-color;
+        box-shadow: 0 0 20px rgba($primary-color, 0.3);
+        animation: currentPulse 2s ease-in-out infinite;
+
+        .step-icon {
+          animation: bounce 1s ease-in-out infinite;
+        }
+
+        .step-name {
+          color: $primary-color;
+          font-weight: 700;
+        }
+      }
+
+      &.unlocked {
+        background: linear-gradient(
+          135deg,
+          rgba($primary-color, 0.1),
+          rgba($secondary-color, 0.1)
+        );
+        border: 1px solid rgba($primary-color, 0.2);
+
+        &:hover {
+          background: linear-gradient(
+            135deg,
+            rgba($primary-color, 0.2),
+            rgba($secondary-color, 0.2)
+          );
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba($primary-color, 0.2);
+        }
+      }
+
+      &.locked {
+        background: rgba(gray, 0.1);
+        border: 1px solid rgba(gray, 0.2);
+        cursor: not-allowed;
+
+        .step-icon {
+          filter: grayscale(100%);
+          opacity: 0.5;
+        }
+
+        .step-name {
+          color: gray;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.workflow-controls {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(white, 0.1), rgba(white, 0.05));
+  border-radius: 15px;
+  border: 1px solid rgba(white, 0.2);
+  backdrop-filter: blur(10px);
+
+  .current-step-info {
+    .step-icon-large {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h4 {
+      margin: 0.5rem 0;
+      font-weight: 700;
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: $text-color;
+      opacity: 0.8;
+    }
+  }
+}
+
+.auto-progress-hint {
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba($accent-color, 0.1),
+    rgba($highlight-color, 0.1)
+  );
+  border-radius: 10px;
+  border: 1px solid rgba($accent-color, 0.2);
+  margin-top: 1rem;
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $text-color;
+
+    strong {
+      color: $accent-color;
+      font-weight: 700;
+    }
+  }
+}
+
+// Animations
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes currentPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba($primary-color, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba($primary-color, 0.6);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// Dark theme adjustments
+[data-theme="dark"] {
+  .workflow-progress {
+    background: linear-gradient(
+      135deg,
+      rgba($primary-color-dark, 0.1),
+      rgba($secondary-color-dark, 0.1)
+    );
+    border-color: rgba(white, 0.1);
+
+    .progress-header {
+      h5,
+      .progress-text {
+        color: $text-color-dark;
+      }
+    }
+
+    .progress-bar-container {
+      background: rgba(white, 0.05);
+    }
+
+    .steps-indicator .step-indicator {
+      .step-name {
+        color: $text-color-dark;
+      }
+
+      &.unlocked {
+        background: linear-gradient(
+          135deg,
+          rgba($primary-color-light, 0.1),
+          rgba($secondary-color-light, 0.1)
+        );
+        border-color: rgba($primary-color-light, 0.2);
+
+        &:hover {
+          background: linear-gradient(
+            135deg,
+            rgba($primary-color-light, 0.2),
+            rgba($secondary-color-light, 0.2)
+          );
+        }
+      }
+
+      &.current {
+        border-color: $primary-color-light;
+        box-shadow: 0 0 20px rgba($primary-color-light, 0.3);
+
+        .step-name {
+          color: $primary-color-light;
+        }
+      }
+    }
+  }
+
+  .workflow-controls {
+    background: linear-gradient(135deg, rgba(white, 0.05), rgba(white, 0.02));
+    border-color: rgba(white, 0.1);
+
+    .current-step-info {
+      p {
+        color: $text-color-dark;
+      }
+    }
+  }
+
+  .auto-progress-hint {
+    background: linear-gradient(
+      135deg,
+      rgba($accent-color-light, 0.1),
+      rgba($highlight-color-light, 0.1)
+    );
+    border-color: rgba($accent-color-light, 0.2);
+
+    p {
+      color: $text-color-dark;
+
+      strong {
+        color: $accent-color-light;
+      }
+    }
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .workflow-progress {
+    padding: 1rem;
+
+    .steps-indicator {
+      .step-indicator {
+        min-width: 80px;
+        padding: 0.8rem 0.3rem;
+
+        .step-icon {
+          font-size: 1.2rem;
+        }
+
+        .step-name {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .workflow-controls {
+    padding: 1rem;
+
+    .current-step-info {
+      .step-icon-large {
+        font-size: 2rem;
+      }
+
+      h4 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .workflow-controls {
+    .row {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+
+  .workflow-progress {
+    .steps-indicator {
+      .step-indicator {
+        min-width: 60px;
+
+        .step-name {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+// Mobile responsiveness
+@include mobile {
+  .workflow-navigation {
+    margin-bottom: 1.5rem;
+  }
+
+  .workflow-progress {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+
+    .progress-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      h5 {
+        font-size: 0.9rem;
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+      }
+    }
+
+    .steps-indicator {
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      .step-indicator {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+
+        .step-label {
+          font-size: 0.7rem;
+          top: 45px;
+        }
+      }
+    }
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 1rem;
+
+    .nav-button {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@include tablet {
+  .workflow-progress {
+    .steps-indicator {
+      gap: 1rem;
+
+      .step-indicator {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .navigation-buttons {
+    .nav-button {
+      padding: 16px 28px;
+    }
+  }
+}
+
+// Touch device optimizations
+@media (hover: none) and (pointer: coarse) {
+  .workflow-progress {
+    .steps-indicator .step-indicator {
+      &:hover {
+        transform: none;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}

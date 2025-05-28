@@ -599,29 +599,22 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="module" src="src/core/UnifiedMusicManager.js"></script>
+    <script type="module" src="src/components/UnifiedBubbleAnimation.js"></script>
+    <script type="module" src="src/components/UnifiedBufferStatus.js"></script>
+    <script type="module" src="src/components/BackgroundComponents.js"></script>
+    <script type="module" src="src/components/UnifiedGallery.js"></script>
+    <script type="module" src="src/integrator.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>
 
     <!-- Photo gallery page initialization -->
-    <script>
-        // Simple photo gallery page initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎯 Photo gallery page loaded - unified components will handle initialization');
-
-            // Initialize AOS if available
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 800,
-                    easing: 'ease-in-out',
-                    once: true
-                });
-            }
-        });
-    </script>
+    <!-- Photo Gallery Page Script -->
+    <script type="module" src="src/pages/photo-gallery-page.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
     
     <!-- Smooth Transitions Script -->
-    <script src="src/utils/smooth-transitions.js"></script>
+    <script type="module" src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>

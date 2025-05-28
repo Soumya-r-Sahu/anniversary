@@ -1,0 +1,626 @@
+@use "./variables" as vars;
+@use "./mixins" as mix;
+
+// Bootstrap imports
+@import "~bootstrap/scss/bootstrap";
+
+// Mobile optimizations
+@import "./mobile";
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-text;
+  background: $gradient-primary;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $space-4;
+  color: $color-heading;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  @include mobile {
+    font-size: $font-size-3xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+p {
+  margin-bottom: $space-4;
+
+  &.lead {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Links
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: $transition-colors;
+
+  &:hover,
+  &:focus {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+}
+
+// Buttons
+.btn {
+  font-family: $font-family-base;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-base;
+  padding: $btn-padding-y $btn-padding-x;
+  transition: $btn-transition;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.btn-primary {
+    background: $gradient-primary;
+    color: white;
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        darken($color-primary, 10%),
+        darken($color-secondary, 10%)
+      );
+    }
+  }
+
+  &.btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: $color-primary;
+    border: 2px solid $color-primary;
+
+    &:hover {
+      background: $color-primary;
+      color: white;
+    }
+  }
+
+  &.btn-sm {
+    padding: $space-2 $space-3;
+    font-size: $font-size-sm;
+  }
+
+  &.btn-lg {
+    padding: $space-4 $space-6;
+    font-size: $font-size-lg;
+  }
+}
+
+// Cards
+.card {
+  background: $card-background;
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+  box-shadow: $card-shadow;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  transition: $transition-all;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+
+  .card-title {
+    margin-bottom: $space-3;
+    color: $color-primary;
+  }
+
+  .card-text {
+    color: $color-text-muted;
+    margin-bottom: $space-4;
+  }
+}
+
+// Navigation
+.navbar {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  transition: $transition-all;
+
+  .navbar-brand {
+    font-family: $font-family-script;
+    font-size: $font-size-xl;
+    color: $color-primary !important;
+    font-weight: $font-weight-bold;
+  }
+
+  .nav-link {
+    color: $color-text !important;
+    font-weight: $font-weight-medium;
+    padding: $space-2 $space-4 !important;
+    border-radius: $radius-base;
+    transition: $transition-all;
+    position: relative;
+
+    &:hover,
+    &.active {
+      color: $color-primary !important;
+      background: rgba(255, 107, 157, 0.1);
+      transform: translateY(-1px);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: $gradient-primary;
+      transition: $transition-all;
+      transform: translateX(-50%);
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 80%;
+    }
+  }
+}
+
+// Loading screen
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $gradient-primary;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .loading-heart {
+    font-size: 4rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .loading-text {
+    color: white;
+    font-family: $font-family-script;
+    font-size: $font-size-xl;
+    margin-top: $space-4;
+    opacity: 0.9;
+  }
+}
+
+// Animations
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Animation classes
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+// Glass effect
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-lg;
+}
+
+// Gradient text
+.gradient-text {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Heart decorations
+.heart-decoration {
+  &::before,
+  &::after {
+    content: "💖";
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  &::before {
+    top: -10px;
+    left: -20px;
+    animation-delay: 0s;
+  }
+
+  &::after {
+    bottom: -10px;
+    right: -20px;
+    animation-delay: 2s;
+  }
+}
+
+// Responsive utilities
+@include mobile {
+  // Global mobile adjustments
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  // Container adjustments
+  .container,
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  // Typography scaling
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 0.9rem;
+  }
+
+  // Button optimizations
+  .btn {
+    min-height: 44px; // Touch target size
+    padding: 12px 20px;
+    font-size: 0.9rem;
+
+    &.btn-sm {
+      min-height: 40px;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+    }
+
+    &.btn-lg {
+      min-height: 48px;
+      padding: 14px 24px;
+      font-size: 1rem;
+    }
+  }
+
+  // Card optimizations
+  .card {
+    margin-bottom: 1rem;
+    border-radius: 10px;
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-header {
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  // Form optimizations
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 16px; // Prevents zoom on iOS
+    padding: 12px 16px;
+  }
+
+  // Spacing adjustments
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  .mb-5 {
+    margin-bottom: 2rem !important;
+  }
+
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  .mt-5 {
+    margin-top: 2rem !important;
+  }
+
+  // Navigation adjustments
+  .navbar {
+    padding: 0.5rem 1rem;
+
+    .navbar-brand {
+      font-size: 1.1rem;
+    }
+
+    .navbar-nav {
+      .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // Modal optimizations
+  .modal-dialog {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+
+    .modal-content {
+      border-radius: 10px;
+    }
+
+    .modal-header,
+    .modal-footer {
+      padding: 1rem;
+    }
+
+    .modal-body {
+      padding: 1rem;
+    }
+  }
+}
+
+@include tablet {
+  // Tablet-specific optimizations
+  .container {
+    max-width: 720px;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+}
+
+// Touch device optimizations
+@media (hover: none) and (pointer: coarse) {
+  // Remove hover effects on touch devices
+  .btn:hover,
+  .card:hover,
+  .nav-link:hover {
+    transform: none;
+  }
+
+  // Add active states for touch feedback
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .card:active {
+    transform: scale(0.99);
+  }
+
+  // Improve touch targets
+  button,
+  .btn,
+  a,
+  .nav-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+// Landscape mobile adjustments
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.25rem 1rem;
+  }
+
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  // Reduce spacing in landscape mode
+  .mb-4 {
+    margin-bottom: 1rem !important;
+  }
+  .mb-5 {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+// High DPI displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  // Ensure crisp rendering on retina displays
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Bubble burst animation
+@keyframes bubbleBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.3) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.burst-bubble {
+  animation: bubbleBurst 2.5s ease-out forwards;
+}
+
+// Print styles
+@media print {
+  .navbar,
+  .music-player,
+  .particle-background,
+  .floating-hearts {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid currentColor;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+// Dark mode preference
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a0a1a, #2d1b2d, #3d2b3d);
+    color: #f0f0f0;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f0f0f0;
+  }
+
+  .navbar {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+}
