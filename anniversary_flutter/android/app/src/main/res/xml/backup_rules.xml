@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Include user preferences -->
+    <include domain="sharedpref" path="." />
+    
+    <!-- Include app database -->
+    <include domain="database" path="." />
+    
+    <!-- Include internal storage files -->
+    <include domain="file" path="." />
+    
+    <!-- Include cached music files -->
+    <include domain="cache" path="music/" />
+    
+    <!-- Exclude sensitive data -->
+    <exclude domain="sharedpref" path="device_id.xml" />
+    <exclude domain="database" path="temp_cache.db" />
+</full-backup-content>

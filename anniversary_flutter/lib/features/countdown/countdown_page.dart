@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'dart:async';
-import '../shared/widgets/floating_bubbles.dart';
-import '../shared/widgets/music_player.dart';
-import '../shared/themes/app_theme.dart';
+import '../../shared/widgets/floating_bubbles.dart';
+import '../../shared/widgets/music_player.dart';
+import '../../shared/themes/app_theme.dart';
 
 class CountdownPage extends StatefulWidget {
   const CountdownPage({Key? key}) : super(key: key);

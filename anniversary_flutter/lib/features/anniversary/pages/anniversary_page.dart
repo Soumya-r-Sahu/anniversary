@@ -5,7 +5,7 @@ import '../../../shared/widgets/floating_bubbles.dart';
 import '../../../shared/widgets/bubble_animation.dart';
 import '../../../shared/widgets/music_player.dart';
 import '../../../shared/themes/app_theme.dart';
-import '../../../core/services/audio_service.dart';
+import '../../../services/audio_service.dart';
 
 class AnniversaryPage extends ConsumerStatefulWidget {
   const AnniversaryPage({super.key});

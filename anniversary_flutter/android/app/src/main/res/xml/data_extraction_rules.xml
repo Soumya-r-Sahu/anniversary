@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- Allow backup of user preferences and settings -->
+        <include domain="sharedpref" path="." />
+        <!-- Exclude sensitive data like auth tokens -->
+        <exclude domain="sharedpref" path="auth_tokens.xml" />
+        <!-- Include app database -->
+        <include domain="database" path="." />
+        <!-- Include external files like photos (with user consent) -->
+        <include domain="external" path="." />
+    </cloud-backup>
+    
+    <device-transfer>
+        <!-- Transfer user settings between devices -->
+        <include domain="sharedpref" path="." />
+        <!-- Transfer photo gallery data -->
+        <include domain="database" path="." />
+        <!-- Transfer cached audio files -->
+        <include domain="file" path="music_cache/" />
+    </device-transfer>
+</data-extraction-rules>

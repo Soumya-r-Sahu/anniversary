@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="countdown"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/countdown_short_label"
+        android:shortcutLongLabel="@string/countdown_long_label"
+        android:shortcutDisabledMessage="@string/countdown_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.anniversary.anniversary_flutter"
+            android:targetClass="com.anniversary.anniversary_flutter.MainActivity"
+            android:data="anniversary://countdown" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    
+    <shortcut
+        android:shortcutId="photo_gallery"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/gallery_short_label"
+        android:shortcutLongLabel="@string/gallery_long_label"
+        android:shortcutDisabledMessage="@string/gallery_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.anniversary.anniversary_flutter"
+            android:targetClass="com.anniversary.anniversary_flutter.MainActivity"
+            android:data="anniversary://gallery" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

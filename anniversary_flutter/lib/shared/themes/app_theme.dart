@@ -6,6 +6,25 @@ class AppTheme {
   static const Color mediumPink = Color(0xFFfce7f3);
   static const Color redAccent = Color(0xFFf43f5e);
   
+  // Additional static properties referenced throughout the app
+  static const Color primaryColor = primaryPink;
+  static const Color accentColor = redAccent;
+  static const Color textColor = Color(0xFF6b7280);
+  static const Color backgroundColor = lightPink;
+  
+  static const TextStyle headingStyle = TextStyle(
+    fontFamily: 'Dancing Script',
+    fontSize: 36,
+    fontWeight: FontWeight.w600,
+    color: primaryPink,
+  );
+  
+  static const TextStyle bodyStyle = TextStyle(
+    fontSize: 16,
+    color: textColor,
+    height: 1.5,
+  );
+  
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,

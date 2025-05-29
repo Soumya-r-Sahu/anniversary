@@ -1125,7 +1125,11 @@ jobs:
 
 #### **Platform Targets:**
 - 🌐 **Web**: Perfect GitHub Pages deployment
-- 📱 **Android**: APK < 25MB, supports Android 6.0+
+- 📱 **Android**: APK < 25MB, supports Android 5.0+ (API 21), optimized for Android 13+ (API 33)
+- 🎯 **Target SDK**: Android 14 (API 34) with full backward compatibility
+- 🔒 **Security**: Enhanced permissions model for Android 13+ granular media access
+- 🎵 **Audio**: Foreground service support for background music on Android 13+
+- 🔔 **Notifications**: POST_NOTIFICATIONS permission handling for Android 13+
 
 #### **Quality Targets:**
 - 🛡️ **Zero crashes** across platforms

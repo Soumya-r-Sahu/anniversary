@@ -190,14 +190,13 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
   Widget _buildNavButton(
     BuildContext context,
     String label,
     IconData icon,
-    String route,
-    int delay,
-  ) {
+    String route, {
+    int delay = 0,
+  }) {
     return BubbleAnimationWidget(
       child: ElevatedButton.icon(
         onPressed: () => Navigator.pushNamed(context, route),

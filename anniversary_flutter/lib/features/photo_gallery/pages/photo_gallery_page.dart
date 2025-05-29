@@ -627,11 +627,9 @@ class _PhotoViewerState extends State<PhotoViewer> {
                 currentIndex = index;
               });
             },
-            itemCount: widget.photos.length,
-            itemBuilder: (context, index) {
-              final photo = widget.photos[index];
-              return Center(
-                child: Container(
+            itemCount: widget.photos.length,          itemBuilder: (context, index) {
+            return Center(
+              child: Container(
                   margin: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(

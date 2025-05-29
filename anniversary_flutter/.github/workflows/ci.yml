@@ -1,0 +1,69 @@
+name: Build and Test Flutter App
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.6'
+        channel: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Verify the installation
+      run: flutter doctor -v
+
+    - name: Run analyzer
+      run: flutter analyze
+
+    - name: Run tests
+      run: flutter test
+
+    - name: Build web (test build)
+      run: flutter build web --release
+
+    - name: Build Android APK (test build)
+      run: flutter build apk --release
+
+  build-web:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.6'
+        channel: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Build optimized web
+      run: |
+        flutter build web --release \
+          --web-renderer canvaskit \
+          --tree-shake-icons \
+          --dart-define=FLUTTER_WEB_USE_SKIA=true
+
+    - name: Upload web build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: web-build
+        path: build/web/

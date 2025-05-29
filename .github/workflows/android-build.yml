@@ -1,8 +1,8 @@
-name: Build Android APK
+name: Build Android APK/AAB for Android 13+
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, flutter-test-branch ]
     paths:
       - 'anniversary_flutter/**'
     tags:
@@ -21,13 +21,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Setup Java
+    - name: Setup Java 17 (Required for Android 13+)
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
         java-version: '17'
         
-    - name: Setup Flutter
+    - name: Setup Flutter (Latest Stable)
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.19.6'
@@ -41,47 +41,102 @@ jobs:
     - name: Verify Flutter installation
       run: flutter doctor -v
       
-    - name: Build APK
+    - name: Analyze Flutter code
       working-directory: ./anniversary_flutter
-      run: flutter build apk --release
+      run: flutter analyze
       
-    - name: Build App Bundle
+    - name: Run Flutter tests
+      working-directory: ./anniversary_flutter
+      run: flutter test
+      
+    - name: Build Android APK (Multi-architecture)
+      working-directory: ./anniversary_flutter
+      run: |
+        flutter build apk --release \
+          --target-platform android-arm,android-arm64,android-x64 \
+          --split-per-abi
+      
+    - name: Build App Bundle (AAB)
       working-directory: ./anniversary_flutter
       run: flutter build appbundle --release
       
-    - name: Upload APK artifact
+    - name: Upload APK artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: anniversary-app-release.apk
-        path: anniversary_flutter/build/app/outputs/flutter-apk/app-release.apk
+        name: anniversary-love-android-apks
+        path: |
+          anniversary_flutter/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          anniversary_flutter/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          anniversary_flutter/build/app/outputs/flutter-apk/app-x86_64-release.apk
+        retention-days: 30
         
     - name: Upload App Bundle artifact
       uses: actions/upload-artifact@v4
       with:
-        name: anniversary-app-release.aab
+        name: anniversary-love-android-aab
         path: anniversary_flutter/build/app/outputs/bundle/release/app-release.aab
-        
-    - name: Create Release
+        retention-days: 30        
+    - name: Create GitHub Release
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          anniversary_flutter/build/app/outputs/flutter-apk/app-release.apk
+          anniversary_flutter/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          anniversary_flutter/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          anniversary_flutter/build/app/outputs/flutter-apk/app-x86_64-release.apk
           anniversary_flutter/build/app/outputs/bundle/release/app-release.aab
-        name: Anniversary App ${{ github.ref_name }}
+        name: Anniversary Love ${{ github.ref_name }} - Android 13+ Compatible
         body: |
-          Anniversary App release ${{ github.ref_name }}
+          ## 🎉 Anniversary Love Android Release
           
-          ## What's New
-          - Beautiful anniversary celebration app
-          - Interactive photo gallery
-          - Love story timeline
-          - Music player with celebration sounds
-          - Real-time countdown timer
-          - Celebration page with animations
+          ### 📱 Android Compatibility
+          - **Minimum Android Version**: Android 5.0 (API 21)
+          - **Target Android Version**: Android 14 (API 34)
+          - **Optimized for**: Android 13+ features and security
           
-          ## Downloads
-          - **APK**: Direct install on Android devices
-          - **AAB**: For Google Play Store distribution
+          ### 📦 Download Options
+          
+          #### APK Files (Direct Installation)
+          - **app-arm64-v8a-release.apk** - For modern 64-bit devices (Recommended)
+          - **app-armeabi-v7a-release.apk** - For older 32-bit devices
+          - **app-x86_64-release.apk** - For x86 devices/emulators
+          
+          #### AAB File (Google Play Store)
+          - **app-release.aab** - For Google Play Store distribution
+          
+          ### ✨ Features
+          - 🎵 Background music with Android 13+ notification controls
+          - 🖼️ Photo gallery with granular media permissions
+          - 💫 Smooth 60fps animations optimized for all devices
+          - 🔔 Smart notification management (Android 13+ compatible)
+          - 🎭 Immersive fullscreen experience
+          - 💾 Secure data backup and restore
+          - 🌟 Themed app icons (Android 13+ dynamic theming)
+          
+          ### 🛠️ Installation Instructions
+          
+          #### For APK Installation:
+          1. Download the appropriate APK for your device architecture
+          2. Enable "Install from Unknown Sources" in your device settings
+          3. Install the APK file
+          4. Grant required permissions when prompted
+          
+          #### For Developers:
+          - Use the AAB file for Google Play Store distribution
+          - All files are signed and optimized for production use
+          
+          ### 🔒 Permissions Explained
+          - **Storage Access**: For photo gallery and music caching
+          - **Audio Recording**: For enhanced audio experience (optional)
+          - **Notifications**: For music playback controls
+          - **Network Access**: For web-based features and updates
+          
+          ### 🎯 System Requirements
+          - Android 5.0+ (minimum)
+          - 50MB free storage space
+          - Audio output capability
+          - Optional: Camera for photo features
+          
+          Built with Flutter 3.19.x | Targeting Android 14 (API 34)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

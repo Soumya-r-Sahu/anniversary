@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Anniversary Love</string>
+    <string name="app_description">Interactive anniversary celebration with beautiful animations</string>
+    
+    <!-- Shortcut labels -->
+    <string name="countdown_short_label">Countdown</string>
+    <string name="countdown_long_label">Anniversary Countdown</string>
+    <string name="countdown_disabled">Countdown is currently unavailable</string>
+    
+    <string name="gallery_short_label">Photos</string>
+    <string name="gallery_long_label">Photo Gallery</string>
+    <string name="gallery_disabled">Photo gallery is currently unavailable</string>
+    
+    <!-- Notification strings -->
+    <string name="music_notification_title">Anniversary Love</string>
+    <string name="music_notification_description">Playing background music</string>
+    <string name="music_channel_name">Background Music</string>
+    <string name="music_channel_description">Channel for background music playback</string>
+    
+    <!-- Permission explanations -->
+    <string name="permission_audio_title">Audio Permission</string>
+    <string name="permission_audio_message">This app needs audio permission to play anniversary music</string>
+    <string name="permission_notification_title">Notification Permission</string>
+    <string name="permission_notification_message">This app needs notification permission to show music controls</string>
+    <string name="permission_storage_title">Storage Permission</string>
+    <string name="permission_storage_message">This app needs storage permission to access your photos for the gallery</string>
+    
+    <!-- Common actions -->
+    <string name="action_allow">Allow</string>
+    <string name="action_deny">Deny</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    
+    <!-- Error messages -->
+    <string name="error_audio_playback">Unable to play audio. Please check your device settings.</string>
+    <string name="error_storage_access">Unable to access storage. Please grant permission in settings.</string>
+    <string name="error_network">Network error. Please check your internet connection.</string>
+</resources>

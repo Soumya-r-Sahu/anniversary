@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:confetti/confetti.dart';
+import 'dart:math' as math;
 import '../../../shared/widgets/floating_bubbles.dart';
 import '../../../shared/widgets/bubble_animation.dart';
 import '../../../shared/widgets/music_player.dart';
 import '../../../shared/themes/app_theme.dart';
-import '../../../core/services/audio_service.dart';
+import '../../../services/audio_service.dart';
 
 class CelebrationPage extends ConsumerStatefulWidget {
   const CelebrationPage({super.key});
@@ -922,6 +923,3 @@ class FireworkData {
     required this.color,
   });
 }
-
-// Import for math functions
-import 'dart:math' as math;
