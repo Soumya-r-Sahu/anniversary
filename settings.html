@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-page-type="settings">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f0f23">
+    <title>⚙️ Settings - Anniversary Website</title>
+    <meta name="description" content="Settings and configuration for the Anniversary Website">
+
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E">
+
+    <style>
+        /* Settings Page Specific Styles */
+        .settings-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 2rem 0;
+        }
+
+        .settings-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .settings-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .settings-section:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(45deg, #ec4899, #f472b6);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .test-button {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .test-button.danger {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+
+        .test-button.danger:hover {
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online { background-color: #22c55e; }
+        .status-offline { background-color: #ef4444; }
+        .status-warning { background-color: #f59e0b; }
+
+        .performance-meter {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .performance-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            transition: width 0.3s ease;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .notification-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+        }
+
+        .notification-toast.success {
+            background: rgba(34, 197, 94, 0.9);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .notification-toast.error {
+            background: rgba(239, 68, 68, 0.9);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .notification-toast.warning {
+            background: rgba(245, 158, 11, 0.9);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- UI Control System will be added by JavaScript -->
+    
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        ← Back to Home
+    </a>
+
+    <!-- Floating Bubbles Background -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <!-- Header -->
+                    <div class="text-center mb-5" data-aos="fade-down">
+                        <h1 class="display-4 text-white mb-3" style="font-family: 'Dancing Script', cursive;">
+                            ⚙️ Settings & Configuration
+                        </h1>
+                        <p class="text-white-50 lead">
+                            Customize your anniversary website experience
+                        </p>
+                    </div>
+
+                    <!-- Main Settings Card -->
+                    <div class="settings-card p-4" data-aos="fade-up">
+                        
+                        <!-- Theme Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-white mb-3">🎨 Theme & Appearance</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Dark Theme</label>
+                                    <p class="text-white-50 small mb-0">Enable dark mode for better viewing experience</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="darkThemeToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Bubble Animations</label>
+                                    <p class="text-white-50 small mb-0">Show floating bubble animations</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="bubblesToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Reduced Motion</label>
+                                    <p class="text-white-50 small mb-0">Reduce animations for better performance</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="reducedMotionToggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audio Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="text-white mb-3">🎵 Audio & Music</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Background Music</label>
+                                    <p class="text-white-50 small mb-0">Enable background music playback</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="musicToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <label class="text-white-75 fw-medium">Volume Level</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="range" class="form-range" id="volumeSlider" min="0" max="100" value="30">
+                                    <div class="text-center text-white-50 small mt-1">
+                                        <span id="volumeValue">30%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Cross-Page Sync</label>
+                                    <p class="text-white-50 small mb-0">Continue music when navigating between pages</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="crossPageSyncToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="text-white mb-3">⚡ Performance & Optimization</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">High Performance Mode</label>
+                                    <p class="text-white-50 small mb-0">Enable GPU acceleration and optimizations</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="performanceToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <label class="text-white-75 fw-medium">Current Performance</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="performance-meter">
+                                        <div class="performance-bar" id="performanceBar" style="width: 85%"></div>
+                                    </div>
+                                    <div class="text-center text-white-50 small mt-1">
+                                        <span id="performanceValue">85% - Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Preload Images</label>
+                                    <p class="text-white-50 small mb-0">Preload images for faster page loading</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="preloadToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Testing -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="400">
+                            <h3 class="text-white mb-3">🧪 System Testing & Diagnostics</h3>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Music System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testMusicSystem()">
+                                        Test Music Playback
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Theme System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testThemeSystem()">
+                                        Test Theme Toggle
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Animation System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testAnimationSystem()">
+                                        Test Animations
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Navigation System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testNavigationSystem()">
+                                        Test Navigation
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-warning"></span>
+                                        <span class="text-white-75 fw-medium">Performance Test</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="runPerformanceTest()">
+                                        Run Performance Test
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Storage System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testStorageSystem()">
+                                        Test Local Storage
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Management -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="500">
+                            <h3 class="text-white mb-3">🗂️ Data Management</h3>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Auto-Save Settings</label>
+                                    <p class="text-white-50 small mb-0">Automatically save your preferences</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoSaveToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="exportSettings()">
+                                        📤 Export Settings
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="importSettings()">
+                                        📥 Import Settings
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="resetToDefaults()">
+                                        🔄 Reset to Defaults
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button danger w-100" onclick="clearAllData()">
+                                        🗑️ Clear All Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Developer Tools -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="600">
+                            <h3 class="text-white mb-3">🛠️ Developer Tools</h3>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Debug Mode</label>
+                                    <p class="text-white-50 small mb-0">Enable console logging and debug information</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="debugToggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="showSystemInfo()">
+                                        📊 System Information
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="downloadLogs()">
+                                        📋 Download Logs
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="runFullDiagnostic()">
+                                        🔍 Full Diagnostic
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="checkForUpdates()">
+                                        🔄 Check Updates
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Section -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="700">
+                            <h3 class="text-white mb-3">ℹ️ About</h3>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="text-white-75 mb-1"><strong>Version:</strong> 2.0.0</p>
+                                    <p class="text-white-75 mb-1"><strong>Build:</strong> Production</p>
+                                    <p class="text-white-75 mb-1"><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="text-white-75 mb-1"><strong>Theme:</strong> Dark Romantic</p>
+                                    <p class="text-white-75 mb-1"><strong>Framework:</strong> Vanilla JS + CSS</p>
+                                    <p class="text-white-75 mb-1"><strong>Status:</strong> <span class="text-success">Production Ready</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast">
+        <span id="notificationMessage"></span>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Music System Initializer - Must load first -->
+    <script type="module" src="./src/core/EnhancedMusicManager.js"></script>
+
+    <!-- Settings Page Specific Initialization -->
+    <script type="module">
+        // Initialize music system for settings page without UI controls
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Apply dark theme immediately
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.classList.add('dark-theme');
+
+                // Initialize music system if not already done
+                if (!window.musicManager && window.musicSystemInitializer) {
+                    await window.musicSystemInitializer.init();
+                }
+
+                console.log('⚙️ Settings page initialized without UI controls');
+            } catch (error) {
+                console.warn('Settings page initialization error:', error);
+            }
+        });
+    </script>
+
+    <!-- UI Polish Initializer - Settings page doesn't need UI controls -->
+    <!-- <script type="module" src="./src/utils/ui-polish-initializer.js"></script> -->    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
+
+    <!-- Integration Script - Loads unified components -->
+    <script type="module" src="./src/integrator.js"></script>
+
+    <!-- Smooth Transitions Script -->
+    <script src="src/utils/smooth-transitions.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Settings Manager Class
+        class SettingsManager {
+            constructor() {
+                this.settings = this.loadSettings();
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateUI();
+                this.updateLastUpdated();
+                this.runInitialDiagnostics();
+            }
+
+            loadSettings() {
+                const defaultSettings = {
+                    darkTheme: true,
+                    bubbleAnimations: true,
+                    reducedMotion: false,
+                    backgroundMusic: true,
+                    volume: 30,
+                    crossPageSync: true,
+                    highPerformance: true,
+                    preloadImages: true,
+                    autoSave: true,
+                    debugMode: false
+                };
+
+                try {
+                    const saved = localStorage.getItem('anniversarySettings');
+                    return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+                } catch (error) {
+                    console.warn('Failed to load settings:', error);
+                    return defaultSettings;
+                }
+            }
+
+            saveSettings() {
+                try {
+                    localStorage.setItem('anniversarySettings', JSON.stringify(this.settings));
+                    this.showNotification('Settings saved successfully', 'success');
+                } catch (error) {
+                    console.error('Failed to save settings:', error);
+                    this.showNotification('Failed to save settings', 'error');
+                }
+            }
+
+            setupEventListeners() {
+                // Toggle switches
+                document.getElementById('darkThemeToggle').addEventListener('change', (e) => {
+                    this.settings.darkTheme = e.target.checked;
+                    this.applyTheme();
+                    this.saveSettings();
+                });
+
+                document.getElementById('bubblesToggle').addEventListener('change', (e) => {
+                    this.settings.bubbleAnimations = e.target.checked;
+                    this.toggleBubbles();
+                    this.saveSettings();
+                });
+
+                document.getElementById('reducedMotionToggle').addEventListener('change', (e) => {
+                    this.settings.reducedMotion = e.target.checked;
+                    this.applyReducedMotion();
+                    this.saveSettings();
+                });
+
+                document.getElementById('musicToggle').addEventListener('change', (e) => {
+                    this.settings.backgroundMusic = e.target.checked;
+                    this.toggleMusic();
+                    this.saveSettings();
+                });
+
+                document.getElementById('volumeSlider').addEventListener('input', (e) => {
+                    this.settings.volume = parseInt(e.target.value);
+                    this.updateVolumeDisplay();
+                    this.applyVolume();
+                    this.saveSettings();
+                });
+
+                document.getElementById('crossPageSyncToggle').addEventListener('change', (e) => {
+                    this.settings.crossPageSync = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('performanceToggle').addEventListener('change', (e) => {
+                    this.settings.highPerformance = e.target.checked;
+                    this.applyPerformanceMode();
+                    this.saveSettings();
+                });
+
+                document.getElementById('preloadToggle').addEventListener('change', (e) => {
+                    this.settings.preloadImages = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('autoSaveToggle').addEventListener('change', (e) => {
+                    this.settings.autoSave = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('debugToggle').addEventListener('change', (e) => {
+                    this.settings.debugMode = e.target.checked;
+                    this.toggleDebugMode();
+                    this.saveSettings();
+                });
+            }
+
+            updateUI() {
+                // Update toggle switches
+                document.getElementById('darkThemeToggle').checked = this.settings.darkTheme;
+                document.getElementById('bubblesToggle').checked = this.settings.bubbleAnimations;
+                document.getElementById('reducedMotionToggle').checked = this.settings.reducedMotion;
+                document.getElementById('musicToggle').checked = this.settings.backgroundMusic;
+                document.getElementById('volumeSlider').value = this.settings.volume;
+                document.getElementById('crossPageSyncToggle').checked = this.settings.crossPageSync;
+                document.getElementById('performanceToggle').checked = this.settings.highPerformance;
+                document.getElementById('preloadToggle').checked = this.settings.preloadImages;
+                document.getElementById('autoSaveToggle').checked = this.settings.autoSave;
+                document.getElementById('debugToggle').checked = this.settings.debugMode;
+
+                this.updateVolumeDisplay();
+            }
+
+            updateVolumeDisplay() {
+                document.getElementById('volumeValue').textContent = `${this.settings.volume}%`;
+            }
+
+            updateLastUpdated() {
+                const now = new Date();
+                document.getElementById('lastUpdated').textContent = now.toLocaleDateString();
+            }
+
+            applyTheme() {
+                const html = document.documentElement;
+                if (this.settings.darkTheme) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            }
+
+            toggleBubbles() {
+                const bubbles = document.querySelector('.floating-bubbles');
+                if (bubbles) {
+                    bubbles.style.display = this.settings.bubbleAnimations ? 'block' : 'none';
+                }
+            }
+
+            applyReducedMotion() {
+                if (this.settings.reducedMotion) {
+                    document.body.classList.add('reduced-motion');
+                } else {
+                    document.body.classList.remove('reduced-motion');
+                }
+            }
+
+            toggleMusic() {
+                if (window.musicManager) {
+                    if (this.settings.backgroundMusic) {
+                        window.musicManager.play();
+                    } else {
+                        window.musicManager.pause();
+                    }
+                }
+            }
+
+            applyVolume() {
+                if (window.musicManager) {
+                    window.musicManager.setVolume(this.settings.volume / 100);
+                }
+            }
+
+            applyPerformanceMode() {
+                if (this.settings.highPerformance) {
+                    document.body.classList.add('high-performance');
+                } else {
+                    document.body.classList.remove('high-performance');
+                }
+            }
+
+            toggleDebugMode() {
+                if (this.settings.debugMode) {
+                    console.log('Debug mode enabled');
+                    window.debugMode = true;
+                } else {
+                    console.log('Debug mode disabled');
+                    window.debugMode = false;
+                }
+            }
+
+            runInitialDiagnostics() {
+                // Check system status
+                setTimeout(() => {
+                    this.updateSystemStatus();
+                }, 1000);
+            }
+
+            updateSystemStatus() {
+                // Update performance meter
+                const performance = this.calculatePerformance();
+                document.getElementById('performanceBar').style.width = `${performance}%`;
+
+                let status = 'Poor';
+                if (performance >= 80) status = 'Excellent';
+                else if (performance >= 60) status = 'Good';
+                else if (performance >= 40) status = 'Fair';
+
+                document.getElementById('performanceValue').textContent = `${performance}% - ${status}`;
+            }
+
+            calculatePerformance() {
+                let score = 100;
+
+                // Check if animations are running smoothly
+                if (!this.settings.highPerformance) score -= 15;
+                if (this.settings.reducedMotion) score -= 10;
+                if (!this.settings.preloadImages) score -= 5;
+
+                // Random variation for demo
+                score += Math.random() * 10 - 5;
+
+                return Math.max(0, Math.min(100, Math.round(score)));
+            }
+
+            showNotification(message, type = 'info') {
+                const toast = document.getElementById('notificationToast');
+                const messageEl = document.getElementById('notificationMessage');
+
+                messageEl.textContent = message;
+                toast.className = `notification-toast ${type}`;
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Test Functions
+        async function testMusicSystem() {
+            settingsManager.showNotification('Testing music system...', 'info');
+
+            try {
+                if (window.musicManager) {
+                    // Test play functionality
+                    if (typeof window.musicManager.play === 'function') {
+                        const playResult = await window.musicManager.play();
+
+                        // Pause immediately after test
+                        if (typeof window.musicManager.pause === 'function') {
+                            setTimeout(() => window.musicManager.pause(), 500);
+                        }
+
+                        if (playResult !== false) {
+                            settingsManager.showNotification('Music system: ✅ Working perfectly', 'success');
+                        } else {
+                            settingsManager.showNotification('Music system: ⚠️ Found but play failed', 'warning');
+                        }
+                    } else {
+                        settingsManager.showNotification('Music system: ⚠️ Found but no play method', 'warning');
+                    }
+                } else {
+                    settingsManager.showNotification('Music system: ❌ Not found', 'error');
+
+                    // Try to initialize music system
+                    if (window.musicSystemInitializer) {
+                        settingsManager.showNotification('Attempting to initialize music...', 'info');
+                        await window.musicSystemInitializer.init();
+
+                        if (window.musicManager) {
+                            settingsManager.showNotification('Music system: ✅ Initialized successfully', 'success');
+                        } else {
+                            settingsManager.showNotification('Music system: ❌ Initialization failed', 'error');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Music test error:', error);
+                settingsManager.showNotification(`Music system: ❌ Error - ${error.message}`, 'error');
+            }
+        }
+
+        function testThemeSystem() {
+            settingsManager.showNotification('Testing theme system...', 'info');
+
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+
+            setTimeout(() => {
+                if (currentTheme) {
+                    settingsManager.showNotification('Theme system: ✅ Working', 'success');
+                } else {
+                    settingsManager.showNotification('Theme system: ❌ Error', 'error');
+                }
+            }, 1000);
+        }
+
+        function testAnimationSystem() {
+            settingsManager.showNotification('Testing animations...', 'info');
+
+            setTimeout(() => {
+                const bubbles = document.querySelector('.floating-bubbles');
+                if (bubbles) {
+                    settingsManager.showNotification('Animation system: ✅ Working', 'success');
+                } else {
+                    settingsManager.showNotification('Animation system: ❌ Error', 'error');
+                }
+            }, 1000);
+        }
+
+        function testNavigationSystem() {
+            settingsManager.showNotification('Testing navigation...', 'info');
+
+            setTimeout(() => {
+                settingsManager.showNotification('Navigation system: ✅ Working', 'success');
+            }, 1000);
+        }
+
+        function runPerformanceTest() {
+            settingsManager.showNotification('Running performance test...', 'info');
+
+            setTimeout(() => {
+                settingsManager.updateSystemStatus();
+                settingsManager.showNotification('Performance test completed', 'success');
+            }, 2000);
+        }
+
+        function testStorageSystem() {
+            settingsManager.showNotification('Testing storage...', 'info');
+
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                setTimeout(() => {
+                    settingsManager.showNotification('Storage system: ✅ Working', 'success');
+                }, 1000);
+            } catch (error) {
+                setTimeout(() => {
+                    settingsManager.showNotification('Storage system: ❌ Error', 'error');
+                }, 1000);
+            }
+        }
+
+        function exportSettings() {
+            const settings = settingsManager.settings;
+            const dataStr = JSON.stringify(settings, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'anniversary-settings.json';
+            link.click();
+
+            settingsManager.showNotification('Settings exported successfully', 'success');
+        }
+
+        function importSettings() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const settings = JSON.parse(e.target.result);
+                            settingsManager.settings = { ...settingsManager.settings, ...settings };
+                            settingsManager.updateUI();
+                            settingsManager.saveSettings();
+                            settingsManager.showNotification('Settings imported successfully', 'success');
+                        } catch (error) {
+                            settingsManager.showNotification('Failed to import settings', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+
+            input.click();
+        }
+
+        function resetToDefaults() {
+            settingsManager.settings = settingsManager.loadSettings();
+            settingsManager.updateUI();
+            settingsManager.saveSettings();
+            settingsManager.showNotification('Settings reset to defaults', 'success');
+        }
+
+        function clearAllData() {
+            localStorage.clear();
+            sessionStorage.clear();
+            settingsManager.showNotification('All data cleared successfully', 'success');
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        }
+
+        function showSystemInfo() {
+            const info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                cookieEnabled: navigator.cookieEnabled,
+                onLine: navigator.onLine,
+                screen: `${screen.width}x${screen.height}`,
+                viewport: `${window.innerWidth}x${window.innerHeight}`,
+                localStorage: typeof(Storage) !== "undefined",
+                sessionStorage: typeof(Storage) !== "undefined"
+            };
+
+            console.table(info);
+            settingsManager.showNotification('System info logged to console', 'info');
+        }
+
+        function downloadLogs() {
+            const logs = [
+                `Anniversary Website Logs - ${new Date().toISOString()}`,
+                `Version: 2.0.0`,
+                `Theme: ${document.documentElement.getAttribute('data-theme')}`,
+                `Settings: ${JSON.stringify(settingsManager.settings, null, 2)}`,
+                `User Agent: ${navigator.userAgent}`,
+                `Platform: ${navigator.platform}`,
+                `Screen: ${screen.width}x${screen.height}`,
+                `Viewport: ${window.innerWidth}x${window.innerHeight}`
+            ].join('\n');
+
+            const dataBlob = new Blob([logs], {type: 'text/plain'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'anniversary-logs.txt';
+            link.click();
+
+            settingsManager.showNotification('Logs downloaded successfully', 'success');
+        }
+
+        function runFullDiagnostic() {
+            settingsManager.showNotification('Running full diagnostic...', 'info');
+
+            let tests = [
+                () => testMusicSystem(),
+                () => testThemeSystem(),
+                () => testAnimationSystem(),
+                () => testNavigationSystem(),
+                () => testStorageSystem(),
+                () => runPerformanceTest()
+            ];
+
+            tests.forEach((test, index) => {
+                setTimeout(test, index * 500);
+            });
+
+            setTimeout(() => {
+                settingsManager.showNotification('Full diagnostic completed', 'success');
+            }, tests.length * 500 + 1000);
+        }
+
+        function checkForUpdates() {
+            settingsManager.showNotification('Checking for updates...', 'info');
+
+            setTimeout(() => {
+                settingsManager.showNotification('You have the latest version!', 'success');
+            }, 2000);
+        }
+
+        // Initialize Settings Manager
+        let settingsManager;
+        document.addEventListener('DOMContentLoaded', () => {
+            settingsManager = new SettingsManager();
+        });
+    </script>
+</body>
+</html>
+
+

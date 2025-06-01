@@ -1,8 +1,12 @@
 # Dump Directory - Cleaned Up
 
-This directory previously contained deprecated files that were moved out of the main codebase during project cleanup and polishing.
+This directory contains deprecated files and test files that were moved out of the main codebase during project cleanup and polishing.
 
 ## Status: CLEANED UP ✅
+
+## Contents:
+- `test-music-fix.html` - Test file for music overlap fix (moved during final cleanup)
+- `music-test.js` - Test script for music system debugging (moved during final cleanup)
 
 All deprecated files have been permanently removed as part of the code polishing process. The project now uses only the optimized, current versions of all components.
 

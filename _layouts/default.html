@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ec4899">
+    
+    <!-- SEO and Meta Tags -->
+    {% seo %}
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/src/styles/enhanced-romantic.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/src/styles/dark-theme.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/src/styles/ui-controls.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/src/styles/variables.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/src/styles/performance-optimized.css' | relative_url }}">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+    
+    <!-- Page-specific CSS -->
+    {% if page.custom_css %}
+        {% for css_file in page.custom_css %}
+            <link rel="stylesheet" href="{{ css_file | relative_url }}">
+        {% endfor %}
+    {% endif %}
+    
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+</head>
+<body class="dark-theme">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-pink-600 text-white px-4 py-2 rounded">
+        Skip to main content
+    </a>
+    
+    <!-- Navigation -->
+    {% include navigation.html %}
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main" class="min-h-screen">
+        {{ content }}
+    </main>
+    
+    <!-- Footer -->
+    {% include footer.html %}
+    
+    <!-- Background Effects -->
+    <div class="floating-bubbles" aria-hidden="true">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <!-- Particles.js Container -->
+    <div id="particles-js" aria-hidden="true"></div>
+    
+    <!-- Music Player -->
+    {% include music-player.html %}
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Enhanced Components -->
+    <script type="module" src="{{ '/src/core/MusicSystemInitializer.js' | relative_url }}"></script>
+    <script type="module" src="{{ '/src/utils/ui-polish-initializer.js' | relative_url }}"></script>
+    <script type="module" src="{{ '/src/integrator.js' | relative_url }}"></script>
+    
+    <!-- Page-specific JavaScript -->
+    {% if page.custom_js %}
+        {% for js_file in page.custom_js %}
+            <script src="{{ js_file | relative_url }}"></script>
+        {% endfor %}
+    {% endif %}
+    
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    </script>
+    
+    <!-- Jekyll Environment -->
+    <script>
+        window.jekyllEnv = {
+            baseurl: '{{ site.baseurl }}',
+            url: '{{ site.url }}',
+            title: '{{ site.title }}',
+            description: '{{ site.description }}'
+        };
+    </script>
+    
+    <!-- Analytics -->
+    {% if site.google_analytics %}
+        <!-- Google Analytics 4 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ site.google_analytics }}');
+        </script>
+    {% endif %}
+</body>
+</html>

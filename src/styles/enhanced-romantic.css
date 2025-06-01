@@ -3,44 +3,10 @@
  * GitHub Pages Compatible - Pure CSS Animations
  */
 
-/* Enhanced Music Player Styles */
-.enhanced-music-player {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+/* Enhanced Music Player Styles - Removed for clean deployment */
+/* Music player styles moved to UI controls system */
 
-.music-control-btn.enhanced-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #ec4899;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 32px rgba(236, 72, 153, 0.2);
-}
-
-.music-control-btn.enhanced-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.4);
-    background: rgba(236, 72, 153, 0.2);
-}
-
-.music-control-btn.playing {
-    background: rgba(236, 72, 153, 0.3);
-    animation: musicPulse 2s infinite;
-}
+/* Enhanced music player button styles removed for clean deployment */
 
 @keyframes musicPulse {
     0%, 100% { 
@@ -77,36 +43,7 @@
     50% { height: 18px; opacity: 1; }
 }
 
-.volume-control {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-}
-
-.volume-slider {
-    width: 80px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    background: #ec4899;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
-}
+/* Volume control and slider styles removed for clean deployment */
 
 .song-info {
     background: rgba(255, 255, 255, 0.1);
@@ -701,21 +638,37 @@
     height: 32px !important;
 }
 
-/* Mobile optimizations for colorful bubbles */
+/* Mobile optimizations for colorful bubbles - MUCH SLOWER */
 @media (max-width: 768px) {
     .bubble-burst {
-        animation-duration: 2s !important;
+        animation-duration: 8s !important;
         backdrop-filter: blur(2px) saturate(1.5) !important;
     }
-    
+
     .bubble-burst[data-type="holographic"] {
-        animation-duration: 2.2s !important;
+        animation-duration: 10s !important;
         filter: brightness(1.3) saturate(1.8) !important;
     }
-    
+
     .bubble-burst[data-type="rainbow"] {
-        animation-duration: 2.1s !important;
+        animation-duration: 9s !important;
         filter: brightness(1.2) saturate(1.9) !important;
+    }
+
+    /* Floating bubbles on mobile - extra slow */
+    .floating-bubbles .bubble {
+        animation-duration: 60s !important;
+    }
+}
+
+/* Android specific - even slower */
+@media (max-width: 480px) {
+    .bubble-burst {
+        animation-duration: 12s !important;
+    }
+
+    .floating-bubbles .bubble {
+        animation-duration: 80s !important;
     }
 }
 
@@ -780,17 +733,12 @@
 .dark-theme .nav-container,
 .dark-theme .control-group,
 .dark-theme .footer-content,
-.dark-theme .volume-control,
 .dark-theme .song-info {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark-theme .music-control-btn.enhanced-btn {
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: #f472b6;
-}
+/* Dark theme music control styles removed for clean deployment */
 
 .dark-theme .control-btn {
     background: rgba(0, 0, 0, 0.3);
@@ -824,8 +772,7 @@
 /* Accessibility improvements */
 .romantic-button:focus,
 .nav-item:focus,
-.control-btn:focus,
-.music-control-btn:focus {
+.control-btn:focus {
     outline: 2px solid #ec4899;
     outline-offset: 2px;
 }
@@ -836,8 +783,7 @@
     .romantic-sparkle,
     .love-message-romantic,
     .nav-icon,
-    .footer-heart,
-    .music-control-btn.playing {
+    .footer-heart {
         animation: none;
     }
     

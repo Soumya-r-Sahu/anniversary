@@ -1,5 +1,10 @@
 # 🌟 Anniversary Website Enhancement Suggestions
 
+> **🚀 NEW: GitHub Pages Roadmap Available!**
+> Check out the comprehensive [GitHub Pages Enhancement Roadmap](GITHUB_PAGES_ENHANCEMENT_ROADMAP.md) for a detailed deployment and enhancement strategy specifically designed for GitHub Pages hosting with advanced features, automation, and professional deployment!
+
+---
+
 ## 📋 Summary of Completed Updates
 
 ### ✅ Anniversary.html Enhancements

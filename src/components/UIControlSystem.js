@@ -6,12 +6,19 @@
 
 class UIControlSystem {
     constructor(options = {}) {
+        // Get current page to determine settings availability
+        const currentPage = window.location.pathname.toLowerCase();
+        const isIndexOrCountdown = currentPage.includes('index.html') || 
+                                  currentPage.includes('countdown.html') || 
+                                  currentPage === '/' || 
+                                  currentPage.endsWith('/');
+        
         // Configuration
         this.config = {
             enableThemeToggle: options.enableThemeToggle !== false,
             enableMusicControl: options.enableMusicControl !== false,
-            enableSettingsPanel: options.enableSettingsPanel !== false,
-            enableClearVisits: options.enableClearVisits !== false,
+            enableSettingsPanel: isIndexOrCountdown ? false : (options.enableSettingsPanel !== false),
+            enableClearVisits: options.enableClearVisits || false, // Disabled by default, moved to settings
             position: options.position || 'top-right', // 'top-right', 'top-left', 'bottom-right', 'bottom-left'
             autoHide: options.autoHide || false,
             hideDelay: options.hideDelay || 3000,
@@ -24,7 +31,8 @@ class UIControlSystem {
             isExpanded: false,
             currentTheme: 'dark',
             isMusicPlaying: false,
-            hideTimeout: null
+            hideTimeout: null,
+            lastNotificationTime: null
         };
 
         // UI elements
@@ -96,8 +104,7 @@ class UIControlSystem {
 
         // Create main control panel
         this.ui.controlPanel = document.createElement('div');
-        this.ui.controlPanel.className = 'ui-control-panel';
-        this.ui.controlPanel.style.cssText = this.getPositionStyles();
+        this.ui.controlPanel.className = `ui-control-panel ${this.config.position}`;
 
         // Create theme toggle
         if (this.config.enableThemeToggle) {
@@ -245,15 +252,22 @@ class UIControlSystem {
     }
 
     /**
-     * Initialize music control
+     * Initialize music control with PageSpecificMusicManager priority
      */
     async initializeMusicControl() {
         try {
-            // Check if music manager is available
-            if (window.musicManager) {
+            // Priority 1: PageSpecificMusicManager (preferred for new system)
+            if (window.pageSpecificMusicManager) {
+                this.components.musicManager = window.pageSpecificMusicManager;
+                console.log('🎵 Using PageSpecificMusicManager for UI controls');
+            }
+            // Priority 2: Existing global music manager
+            else if (window.musicManager) {
                 this.components.musicManager = window.musicManager;
-            } else {
-                // Try to import and initialize music manager
+                console.log('🎵 Using existing global music manager');
+            }
+            // Priority 3: Initialize UnifiedMusicManager as fallback
+            else {
                 try {
                     const { UnifiedMusicManager } = await import('../core/UnifiedMusicManager.js');
                     this.components.musicManager = new UnifiedMusicManager({
@@ -263,20 +277,17 @@ class UIControlSystem {
                     });
                     await this.components.musicManager.init();
                     window.musicManager = this.components.musicManager;
+                    console.log('🎵 Initialized UnifiedMusicManager as fallback');
                 } catch (importError) {
-                    console.warn('UnifiedMusicManager not found, trying MusicPlayerManager:', importError);
-                    const { MusicPlayerManager } = await import('../core/MusicPlayerManager.js');
-                    this.components.musicManager = new MusicPlayerManager({
-                        autoplay: false,
-                        volume: 0.3,
-                        crossPageSync: true
-                    });
-                    await this.components.musicManager.init();
-                    window.musicManager = this.components.musicManager;
+                    console.warn('UnifiedMusicManager not available, music controls disabled:', importError);
+                    return;
                 }
             }
 
-            // Update music control state
+            // Setup state synchronization with the music manager
+            this.setupMusicStateSync();
+            
+            // Initial UI update
             this.updateMusicControlState();
         } catch (error) {
             console.warn('Failed to initialize music manager:', error);
@@ -294,19 +305,38 @@ class UIControlSystem {
     }
 
     onMusicToggle() {
+        // Priority 1: PageSpecificMusicManager (preferred)
+        if (window.pageSpecificMusicManager) {
+            window.pageSpecificMusicManager.handleUserInteraction();
+            window.pageSpecificMusicManager.togglePopup();
+            return;
+        }
+        
+        // Priority 2: Use assigned music manager
         if (this.components.musicManager) {
-            if (this.state.isMusicPlaying) {
-                this.components.musicManager.pause();
-            } else {
-                this.components.musicManager.play();
+            try {
+                // Handle different music manager interfaces
+                if (typeof this.components.musicManager.toggle === 'function') {
+                    this.components.musicManager.toggle();
+                } else if (typeof this.components.musicManager.play === 'function') {
+                    if (this.state.isMusicPlaying) {
+                        this.components.musicManager.pause();
+                    } else {
+                        this.components.musicManager.play();
+                    }
+                }
+                this.updateMusicControlState();
+            } catch (error) {
+                console.warn('Error toggling music:', error);
             }
-            this.updateMusicControlState();
+        } else {
+            console.warn('No music manager available');
         }
     }
 
     onSettingsToggle() {
-        // Toggle settings panel (to be implemented)
-        console.log('Settings panel toggle');
+        // Navigate to settings page
+        window.location.href = 'settings.html';
     }
 
     onClearVisits() {
@@ -360,11 +390,63 @@ class UIControlSystem {
     }
 
     /**
-     * Update music control state
+     * Setup music state synchronization
+     */
+    setupMusicStateSync() {
+        if (!this.components.musicManager) return;
+
+        // Listen for music state changes
+        if (this.components.musicManager === window.pageSpecificMusicManager) {
+            // PageSpecificMusicManager integration
+            this.musicStateUpdateInterval = setInterval(() => {
+                this.updateMusicControlStateFromPageSpecificManager();
+            }, 500);
+        } else {
+            // Traditional music manager integration
+            this.musicStateUpdateInterval = setInterval(() => {
+                this.updateMusicControlState();
+            }, 500);
+        }
+    }
+
+    /**
+     * Update music control state for PageSpecificMusicManager
+     */
+    updateMusicControlStateFromPageSpecificManager() {
+        if (!this.ui.musicControl || !window.pageSpecificMusicManager) return;
+
+        const isPlaying = window.pageSpecificMusicManager.isPlaying;
+        this.state.isMusicPlaying = isPlaying;
+
+        const icon = this.ui.musicControl.querySelector(':not(.music-visualizer)');
+        const visualizer = this.ui.musicControl.querySelector('.music-visualizer');
+
+        if (isPlaying) {
+            this.ui.musicControl.classList.add('playing');
+            if (icon) icon.style.display = 'none';
+            if (visualizer) visualizer.style.display = 'flex';
+            this.ui.musicControl.title = 'Open Music Player';
+        } else {
+            this.ui.musicControl.classList.remove('playing');
+            if (icon) icon.style.display = 'flex';
+            if (visualizer) visualizer.style.display = 'none';
+            this.ui.musicControl.title = 'Open Music Player';
+        }
+    }
+
+    /**
+     * Update music control state (optimized)
      */
     updateMusicControlState() {
         if (!this.ui.musicControl) return;
 
+        // Use PageSpecificMusicManager if available
+        if (window.pageSpecificMusicManager) {
+            this.updateMusicControlStateFromPageSpecificManager();
+            return;
+        }
+
+        // Traditional music manager state check
         const isPlaying = this.components.musicManager && 
                          this.components.musicManager.state && 
                          this.components.musicManager.state.isPlaying;
@@ -417,9 +499,15 @@ class UIControlSystem {
     }
 
     /**
-     * Show subtle notification
+     * Show subtle notification with improved performance
      */
     showNotification(message, type = 'info') {
+        // Prevent notification spam
+        if (this.state.lastNotificationTime && 
+            Date.now() - this.state.lastNotificationTime < 1000) {
+            return;
+        }
+
         const notification = document.createElement('div');
         notification.className = `ui-notification ui-notification-${type}`;
         notification.textContent = message;
@@ -436,6 +524,7 @@ class UIControlSystem {
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             animation: slideInRight 0.3s ease-out;
+            will-change: transform, opacity;
         `;
 
         if (type === 'success') {
@@ -444,31 +533,57 @@ class UIControlSystem {
         }
 
         document.body.appendChild(notification);
+        this.state.lastNotificationTime = Date.now();
 
-        // Auto remove after 3 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOutRight 0.3s ease-out';
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 300);
-        }, 3000);
+        // Auto remove with optimized cleanup
+        const removeNotification = () => {
+            if (notification.parentNode) {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        };
+
+        setTimeout(removeNotification, 3000);
     }
 
     /**
-     * Destroy UI control system
+     * Enhanced destroy method with comprehensive cleanup
      */
     destroy() {
+        // Clear music state sync interval
+        if (this.musicStateUpdateInterval) {
+            clearInterval(this.musicStateUpdateInterval);
+            this.musicStateUpdateInterval = null;
+        }
+
+        // Clear hide timeout
+        if (this.state.hideTimeout) {
+            clearTimeout(this.state.hideTimeout);
+            this.state.hideTimeout = null;
+        }
+
         // Remove event listeners
         if (this.ui.controlPanel) {
             this.ui.controlPanel.removeEventListener('mouseenter', this.boundHandlers.onMouseEnter);
             this.ui.controlPanel.removeEventListener('mouseleave', this.boundHandlers.onMouseLeave);
         }
 
-        // Clear timeouts
-        if (this.state.hideTimeout) {
-            clearTimeout(this.state.hideTimeout);
+        // Remove individual button event listeners
+        if (this.ui.themeToggle) {
+            this.ui.themeToggle.removeEventListener('click', this.boundHandlers.onThemeToggle);
+        }
+        if (this.ui.musicControl) {
+            this.ui.musicControl.removeEventListener('click', this.boundHandlers.onMusicToggle);
+        }
+        if (this.ui.settingsButton) {
+            this.ui.settingsButton.removeEventListener('click', this.boundHandlers.onSettingsToggle);
+        }
+        if (this.ui.clearVisitsButton) {
+            this.ui.clearVisitsButton.removeEventListener('click', this.boundHandlers.onClearVisits);
         }
 
         // Remove from DOM
@@ -476,7 +591,19 @@ class UIControlSystem {
             this.ui.controlPanel.parentNode.removeChild(this.ui.controlPanel);
         }
 
-        console.log('🎛️ UI Control System destroyed');
+        // Clean up references
+        this.ui = {};
+        this.components = {};
+        this.state = {
+            isVisible: false,
+            isExpanded: false,
+            currentTheme: 'dark',
+            isMusicPlaying: false,
+            hideTimeout: null,
+            lastNotificationTime: null
+        };
+
+        console.log('🧹 UIControlSystem cleaned up completely');
     }
 }
 

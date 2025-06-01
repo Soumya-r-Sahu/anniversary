@@ -117,9 +117,25 @@ temp/
 *.temp
 .sass-cache/
 
+# Jekyll (GitHub Pages)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
 # Project specific
 details.md
 girlfriend_words_filtered.md
 filtered_dates.md
 test.html/
+
+# Keep important files for GitHub Pages
+!_config.yml
+!_data/
+!_includes/
+!_layouts/
+!manifest.json
+!sw.js
+!.github/
 

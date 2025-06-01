@@ -1,0 +1,263 @@
+/* 90fps Performance Optimized CSS for Anniversary Website */
+
+/* Force GPU acceleration for all animated elements */
+* {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Optimize main containers */
+body, html {
+    will-change: auto;
+    contain: layout style paint;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* High performance particle system */
+.floating-particles {
+    contain: layout style paint;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.particle {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    contain: strict;
+    isolation: isolate;
+}
+
+/* Optimize bubble animations for 90fps */
+.bubble,
+.floating-bubbles .bubble {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transform: translateZ(0);
+    /* Reduce composite layer creation */
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+
+/* High-performance heart animations */
+.heart-float,
+.floating-heart {
+    will-change: transform;
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transform: translateZ(0);
+}
+
+/* Optimize glassmorphism effects for performance */
+.glassmorphism {
+    /* Use less expensive effects on mobile */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .glassmorphism {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+/* High performance button animations */
+.btn {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    transform: translate3d(0, -2px, 0);
+}
+
+.btn:active {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Optimize music visualizer for 60fps */
+.music-visualizer {
+    contain: strict;
+    will-change: opacity;
+    backface-visibility: hidden;
+}
+
+.music-bar {
+    will-change: transform;
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transform: translateZ(0);
+}
+
+/* Performance-optimized animations */
+@keyframes optimized-fade-in {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes optimized-pulse {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        transform: scale3d(1.05, 1.05, 1);
+    }
+}
+
+@keyframes optimized-bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+/* Reduce expensive filters on mobile */
+@media (max-width: 768px) {
+    /* Disable expensive filters on mobile */
+    .enhanced-filter {
+        filter: none !important;
+    }
+    
+    /* Reduce backdrop blur intensity */
+    .glassmorphism {
+        backdrop-filter: blur(5px) !important;
+        -webkit-backdrop-filter: blur(5px) !important;
+    }
+    
+    /* Simplify animations on mobile */
+    .complex-animation {
+        animation-duration: 2s !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Ultra-mobile optimizations for 480px and below */
+@media (max-width: 480px) {
+    /* Minimal effects mode */
+    .glassmorphism {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    /* Disable all complex filters */
+    * {
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Super slow bubble animations for Android */
+    .bubble,
+    .floating-bubbles .bubble {
+        animation-duration: 120s !important;
+    }
+}
+
+/* Performance monitoring helper classes */
+.performance-high .expensive-effect {
+    /* Full effects for high-performance devices */
+    opacity: 1;
+}
+
+.performance-low .expensive-effect {
+    /* Disable expensive effects on low-end devices */
+    display: none;
+}
+
+/* Prefers reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .particle, .bubble, .heart-float {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* High refresh rate optimizations */
+@media (min-resolution: 120dpi) {
+    /* Optimize for high refresh rate displays */
+    .smooth-animation {
+        animation-timing-function: linear;
+    }
+}
+
+/* Container queries for modern browsers */
+@container (width < 400px) {
+    .responsive-effect {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* Memory usage optimization */
+.memory-efficient {
+    contain: layout style;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+}
+
+/* GPU memory optimization */
+.gpu-optimized {
+    /* Limit layers to prevent GPU memory issues */
+    transform: translateZ(0);
+    will-change: auto;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Critical rendering path optimization */
+.above-fold {
+    contain: layout style paint;
+    content-visibility: visible;
+}
+
+.below-fold {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+}
+
+/* Performance debugging helpers */
+.performance-debug {
+    outline: 2px solid red;
+}
+
+.performance-debug::after {
+    content: "⚡ Performance Layer";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    color: white;
+    font-size: 10px;
+    padding: 2px;
+    z-index: 9999;
+}

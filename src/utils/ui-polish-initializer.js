@@ -20,14 +20,13 @@ class UIPolishInitializer {
             componentsLoaded: new Set()
         };
 
-        // Initialize immediately
-        this.init();
+        // Don't initialize automatically - will be called by initializeWhenReady
     }
 
     /**
      * Initialize UI polishing system
      */
-    init() {
+    async init() {
         try {
             // Apply dark theme immediately
             this.applyDarkTheme();
@@ -35,8 +34,11 @@ class UIPolishInitializer {
             // Setup performance optimizations
             this.setupPerformanceOptimizations();
 
+            // Initialize music system first
+            await this.initializeMusicSystem();
+
             // Initialize UI control system
-            this.initializeUIControls();
+            await this.initializeUIControls();
 
             // Setup theme synchronization
             this.setupThemeSync();
@@ -103,6 +105,64 @@ class UIPolishInitializer {
     }
 
     /**
+     * Initialize music system with comprehensive fallbacks
+     */
+    async initializeMusicSystem() {
+        try {
+            // Check if music manager already exists
+            if (window.musicManager) {
+                console.log('🎵 Music manager already exists');
+                return;
+            }
+
+            // Use the new comprehensive music system initializer
+            const { MusicSystemInitializer } = await import('../core/MusicSystemInitializer.js');
+
+            if (!window.musicSystemInitializer) {
+                window.musicSystemInitializer = new MusicSystemInitializer();
+            }
+
+            await window.musicSystemInitializer.init();
+            window.musicManager = window.musicSystemInitializer.getMusicManager();
+
+            console.log('🎵 Comprehensive music system initialized');
+        } catch (error) {
+            console.warn('Failed to initialize music system:', error);
+
+            // Final fallback - try simple audio element
+            this.initializeSimpleAudio();
+        }
+    }
+
+    /**
+     * Simple audio fallback
+     */
+    initializeSimpleAudio() {
+        try {
+            const audio = document.getElementById('background-music');
+            if (audio && audio instanceof HTMLAudioElement) {
+                window.musicManager = {
+                    audio: audio,
+                    play: () => audio.play().catch(e => console.warn('Play failed:', e)),
+                    pause: () => audio.pause(),
+                    toggle: function() {
+                        if (this.audio.paused) {
+                            this.play();
+                        } else {
+                            this.pause();
+                        }
+                    },
+                    setVolume: (volume) => audio.volume = Math.max(0, Math.min(1, volume))
+                };
+
+                console.log('🎵 Simple audio fallback initialized');
+            }
+        } catch (error) {
+            console.error('Failed to initialize simple audio:', error);
+        }
+    }
+
+    /**
      * Initialize UI control system
      */
     async initializeUIControls() {
@@ -120,10 +180,11 @@ class UIPolishInitializer {
             
             if (!window.uiControlSystem) {
                 window.uiControlSystem = new UIControlSystem({
-                    enableThemeToggle: true,
+                    enableThemeToggle: false, // Removed auto theme toggle
                     enableMusicControl: true,
-                    enableClearVisits: true,
-                    position: 'top-right'
+                    enableSettingsPanel: true,
+                    enableClearVisits: false, // Moved to settings page
+                    position: 'bottom-right' // Moved settings to bottom
                 });
             }
 
@@ -301,11 +362,13 @@ class UIPolishInitializer {
      */
     static initializeWhenReady() {
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new UIPolishInitializer();
+            document.addEventListener('DOMContentLoaded', async () => {
+                const initializer = new UIPolishInitializer();
+                await initializer.init();
             });
         } else {
-            new UIPolishInitializer();
+            const initializer = new UIPolishInitializer();
+            initializer.init();
         }
     }
 }

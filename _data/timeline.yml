@@ -1,0 +1,190 @@
+# Timeline Data File
+# Chronological journey of Jerry & Puja's love story
+
+timeline:
+  2023:
+    year_title: "The Beginning of Our Story"
+    year_description: "The year everything changed - when two hearts found each other"
+    months:
+      January:
+        - date: "2023-01-14"
+          title: "We Met"
+          description: "Our eyes met and the world stopped"
+          type: "milestone"
+          icon: "💕"
+          color: "#ec4899"
+          memory_id: "first-meeting"
+          
+        - date: "2023-01-21"
+          title: "First Date"
+          description: "Dinner, stars, and endless conversation"
+          type: "date"
+          icon: "🌟"
+          color: "#f472b6"
+          memory_id: "first-date"
+          
+      February:
+        - date: "2023-02-14"
+          title: "First Kiss"
+          description: "Valentine's Day magic under the stars"
+          type: "milestone"
+          icon: "💋"
+          color: "#ef4444"
+          memory_id: "first-kiss"
+          
+      March:
+        - date: "2023-03-15"
+          title: "First 'I Love You'"
+          description: "Three words that changed everything"
+          type: "milestone"
+          icon: "❤️"
+          color: "#dc2626"
+          memory_id: "first-i-love-you"
+          
+      April:
+        - date: "2023-04-10"
+          title: "Meeting the Parents"
+          description: "Nervous but excited to meet your family"
+          type: "family"
+          icon: "👨‍👩‍👧‍👦"
+          color: "#10b981"
+          
+      May:
+        - date: "2023-05-20"
+          title: "First Road Trip"
+          description: "Adventure awaits on the open road"
+          type: "travel"
+          icon: "🚗"
+          color: "#3b82f6"
+          
+      June:
+        - date: "2023-06-20"
+          title: "Beach Vacation"
+          description: "A week in paradise together"
+          type: "travel"
+          icon: "🏖️"
+          color: "#06b6d4"
+          memory_id: "beach-vacation"
+          
+      July:
+        - date: "2023-07-04"
+          title: "Fourth of July"
+          description: "Fireworks and freedom with you"
+          type: "holiday"
+          icon: "🎆"
+          color: "#8b5cf6"
+          
+      August:
+        - date: "2023-08-15"
+          title: "Concert Under the Stars"
+          description: "Dancing to our favorite songs"
+          type: "date"
+          icon: "🎵"
+          color: "#22c55e"
+          
+      September:
+        - date: "2023-09-01"
+          title: "Moving In Together"
+          description: "Two hearts, one home"
+          type: "milestone"
+          icon: "🏠"
+          color: "#f59e0b"
+          memory_id: "moving-in"
+          
+      October:
+        - date: "2023-10-31"
+          title: "First Halloween"
+          description: "Couples costume and candy"
+          type: "holiday"
+          icon: "🎃"
+          color: "#ea580c"
+          
+      November:
+        - date: "2023-11-23"
+          title: "First Thanksgiving"
+          description: "Grateful for finding each other"
+          type: "holiday"
+          icon: "🦃"
+          color: "#92400e"
+          memory_id: "thanksgiving-2023"
+          
+      December:
+        - date: "2023-12-25"
+          title: "First Christmas"
+          description: "Creating new traditions together"
+          type: "holiday"
+          icon: "🎄"
+          color: "#059669"
+          memory_id: "christmas-2023"
+          
+  2024:
+    year_title: "Growing Stronger Together"
+    year_description: "Building our future, one beautiful moment at a time"
+    months:
+      January:
+        - date: "2024-01-01"
+          title: "New Year Together"
+          description: "New year, new adventures"
+          type: "holiday"
+          icon: "🎊"
+          color: "#7c3aed"
+          memory_id: "new-years-2024"
+          
+        - date: "2024-01-14"
+          title: "Our First Anniversary"
+          description: "One year of pure love and joy"
+          type: "anniversary"
+          icon: "💖"
+          color: "#ec4899"
+          memory_id: "anniversary-2024"
+          
+      February:
+        - date: "2024-02-14"
+          title: "Second Valentine's Day"
+          description: "Even more in love than last year"
+          type: "holiday"
+          icon: "💝"
+          color: "#ef4444"
+          
+      March:
+        - date: "2024-03-15"
+          title: "One Year of 'I Love You'"
+          description: "365 days of saying those three words"
+          type: "milestone"
+          icon: "💕"
+          color: "#dc2626"
+
+# Timeline statistics
+stats:
+  total_events: 16
+  milestones: 6
+  holidays: 6
+  dates: 2
+  travel: 2
+  relationship_duration_days: 365
+  
+# Event types
+event_types:
+  milestone: "Major relationship milestones"
+  date: "Romantic dates and special outings"
+  travel: "Adventures and trips"
+  holiday: "Holiday celebrations"
+  anniversary: "Anniversary celebrations"
+  family: "Family-related events"
+  
+# Upcoming events (for reminders)
+upcoming:
+  - date: "2024-02-14"
+    title: "Valentine's Day 2024"
+    type: "holiday"
+    days_until: 30
+    
+  - date: "2024-06-20"
+    title: "Beach Vacation Anniversary"
+    type: "anniversary"
+    days_until: 150
+    
+  - date: "2025-01-14"
+    title: "Second Anniversary"
+    type: "anniversary"
+    days_until: 365

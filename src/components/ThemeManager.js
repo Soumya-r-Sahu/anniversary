@@ -80,11 +80,9 @@ class ThemeManager {
             }
         };
 
-        // UI elements
+        // UI elements - removed theme-toggle, theme-selector, auto-mode-container
         this.ui = {
-            themeToggle: null,
-            themeSelector: null,
-            autoModeToggle: null
+            // Theme controls removed as per user request
         };
 
         // Event handlers
@@ -140,105 +138,28 @@ class ThemeManager {
     }
 
     /**
-     * Setup DOM elements
+     * Setup DOM elements - Theme controls removed
      */
     setupDOM() {
-        // Find or create theme toggle
-        this.ui.themeToggle = document.querySelector('.theme-toggle') || this.createThemeToggle();
+        // Theme controls removed as per user request
+        // Only programmatic theme management is available
 
-        // Find or create theme selector
-        this.ui.themeSelector = document.querySelector('.theme-selector') || this.createThemeSelector();
-
-        // Find or create auto mode toggle
-        this.ui.autoModeToggle = document.querySelector('.auto-mode-toggle') || this.createAutoModeToggle();
-
-        // Setup event listeners
+        // Setup event listeners for system changes
         this.setupEventListeners();
     }
 
-    /**
-     * Create theme toggle button
-     */
-    createThemeToggle() {
-        const toggle = document.createElement('button');
-        toggle.className = 'theme-toggle';
-        toggle.setAttribute('aria-label', 'Toggle theme');
-        toggle.innerHTML = this.getThemeIcon(this.state.currentTheme);
+    // Theme UI creation methods removed as per user request
 
-        // Add to page (you might want to customize this)
-        const nav = document.querySelector('nav') || document.querySelector('header') || document.body;
-        nav.appendChild(toggle);
-
-        return toggle;
-    }
+    // Auto mode toggle creation removed as per user request
 
     /**
-     * Create theme selector dropdown
-     */
-    createThemeSelector() {
-        const selector = document.createElement('select');
-        selector.className = 'theme-selector';
-        selector.setAttribute('aria-label', 'Select theme');
-
-        // Add theme options
-        Object.entries(this.themes).forEach(([key, theme]) => {
-            const option = document.createElement('option');
-            option.value = key;
-            option.textContent = `${theme.icon} ${theme.name}`;
-            selector.appendChild(option);
-        });
-
-        selector.value = this.state.currentTheme;
-
-        // Add to page
-        const controls = document.querySelector('.theme-controls') || document.body;
-        controls.appendChild(selector);
-
-        return selector;
-    }
-
-    /**
-     * Create auto mode toggle
-     */
-    createAutoModeToggle() {
-        const container = document.createElement('div');
-        container.className = 'auto-mode-container';
-
-        const toggle = document.createElement('input');
-        toggle.type = 'checkbox';
-        toggle.id = 'auto-mode-toggle';
-        toggle.className = 'auto-mode-toggle';
-        toggle.checked = this.state.isAutoMode;
-
-        const label = document.createElement('label');
-        label.htmlFor = 'auto-mode-toggle';
-        label.textContent = 'Auto theme';
-
-        container.appendChild(toggle);
-        container.appendChild(label);
-
-        // Add to page
-        const controls = document.querySelector('.theme-controls') || document.body;
-        controls.appendChild(container);
-
-        return toggle;
-    }
-
-    /**
-     * Setup event listeners
+     * Setup event listeners - UI controls removed
      */
     setupEventListeners() {
-        if (this.ui.themeToggle) {
-            this.ui.themeToggle.addEventListener('click', this.boundHandlers.onThemeToggle);
-        }
-
-        if (this.ui.themeSelector) {
-            this.ui.themeSelector.addEventListener('change', this.boundHandlers.onThemeSelect);
-        }
-
-        if (this.ui.autoModeToggle) {
-            this.ui.autoModeToggle.addEventListener('change', this.boundHandlers.onAutoModeToggle);
-        }
+        // Theme UI controls removed as per user request
+        // Only system-level listeners are maintained
+        this.setupMediaQueryListeners();
+        this.setupStorageListener();
     }
 
     /**
@@ -450,23 +371,11 @@ class ThemeManager {
     }
 
     /**
-     * Update UI elements
+     * Update UI elements - UI controls removed
      */
     updateUI() {
-        // Update theme toggle icon
-        if (this.ui.themeToggle) {
-            this.ui.themeToggle.innerHTML = this.getThemeIcon(this.state.currentTheme);
-        }
-
-        // Update theme selector
-        if (this.ui.themeSelector) {
-            this.ui.themeSelector.value = this.state.currentTheme;
-        }
-
-        // Update auto mode toggle
-        if (this.ui.autoModeToggle) {
-            this.ui.autoModeToggle.checked = this.state.isAutoMode;
-        }
+        // Theme UI controls removed as per user request
+        // Only programmatic theme management is available
     }
 
     /**
@@ -510,18 +419,7 @@ class ThemeManager {
      * Destroy theme manager
      */
     destroy() {
-        // Remove event listeners
-        if (this.ui.themeToggle) {
-            this.ui.themeToggle.removeEventListener('click', this.boundHandlers.onThemeToggle);
-        }
-
-        if (this.ui.themeSelector) {
-            this.ui.themeSelector.removeEventListener('change', this.boundHandlers.onThemeSelect);
-        }
-
-        if (this.ui.autoModeToggle) {
-            this.ui.autoModeToggle.removeEventListener('change', this.boundHandlers.onAutoModeToggle);
-        }
+        // Theme UI controls removed as per user request
 
         // Remove media query listeners
         Object.values(this.mediaQueries).forEach(mq => {

@@ -1,0 +1,275 @@
+name: Anniversary Reminders & Automation
+
+on:
+  schedule:
+    # Run on the 14th of every month at 9 AM UTC
+    - cron: '0 9 14 * *'
+    # Run weekly on Sundays for memory prompts
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
+    inputs:
+      reminder_type:
+        description: 'Type of reminder to create'
+        required: true
+        default: 'monthly'
+        type: choice
+        options:
+        - monthly
+        - weekly
+        - special
+        - anniversary
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  create-anniversary-reminder:
+    if: github.event.schedule == '0 9 14 * *' || github.event.inputs.reminder_type == 'monthly' || github.event.inputs.reminder_type == 'anniversary'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+        
+      - name: Get Current Date 📅
+        id: date
+        run: |
+          echo "current_date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "month_name=$(date +'%B')" >> $GITHUB_OUTPUT
+          echo "day=$(date +'%d')" >> $GITHUB_OUTPUT
+          echo "year=$(date +'%Y')" >> $GITHUB_OUTPUT
+          
+      - name: Calculate Anniversary Info 💕
+        id: anniversary
+        run: |
+          # Calculate days since relationship started (assuming Jan 14, 2023)
+          start_date="2023-01-14"
+          current_date="${{ steps.date.outputs.current_date }}"
+          
+          # Calculate difference in days
+          days_together=$(( ($(date -d "$current_date" +%s) - $(date -d "$start_date" +%s)) / 86400 ))
+          months_together=$(( days_together / 30 ))
+          
+          echo "days_together=$days_together" >> $GITHUB_OUTPUT
+          echo "months_together=$months_together" >> $GITHUB_OUTPUT
+          
+          # Check if it's a special anniversary
+          if [[ "$current_date" == *"-01-14" ]]; then
+            years_together=$(( ($(date -d "$current_date" +%Y) - 2023) ))
+            echo "is_yearly_anniversary=true" >> $GITHUB_OUTPUT
+            echo "years_together=$years_together" >> $GITHUB_OUTPUT
+          else
+            echo "is_yearly_anniversary=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create Monthly Anniversary Issue 💌
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { days_together, months_together, is_yearly_anniversary, years_together } = ${{ toJson(steps.anniversary.outputs) }};
+            const monthName = '${{ steps.date.outputs.month_name }}';
+            const currentDate = '${{ steps.date.outputs.current_date }}';
+            
+            let title, body;
+            
+            if (is_yearly_anniversary === 'true') {
+              title = `🎉 ${years_together} Year Anniversary Celebration! 💕`;
+              body = `## 🎊 Happy ${years_together} Year Anniversary! 🎊
+              
+              Today marks **${years_together} incredible year${years_together > 1 ? 's' : ''}** of love, laughter, and beautiful memories together!
+              
+              ### 📊 Our Journey So Far:
+              - 💕 **${days_together} days** of love
+              - 🗓️ **${months_together} months** of memories
+              - 🎯 **${years_together} year${years_together > 1 ? 's' : ''}** of partnership
+              
+              ### 🎯 Anniversary Celebration Ideas:
+              - [ ] 📸 Add new photos to the gallery
+              - [ ] 💌 Write a special anniversary memory
+              - [ ] 🎵 Update our love songs playlist
+              - [ ] 🎁 Plan something extra special
+              - [ ] 📝 Update the timeline with this milestone
+              - [ ] 🌟 Create a new tradition
+              
+              ### 💭 Reflection Prompts:
+              - What has been your favorite memory from this past year?
+              - How have we grown together as a couple?
+              - What are you most grateful for in our relationship?
+              - What dreams do we want to pursue together this year?
+              
+              **This is our special day - let's make it unforgettable! 💕✨**`;
+            } else {
+              title = `💕 ${monthName} Monthly Anniversary Reminder`;
+              body = `## 💕 ${monthName} 14th - Monthly Anniversary! 
+              
+              It's the 14th of ${monthName}! Time to celebrate another month of love and create new memories together.
+              
+              ### 📊 Our Love Journey:
+              - 💕 **${days_together} days** together
+              - 🗓️ **${months_together} months** of memories
+              - 📅 **Date**: ${currentDate}
+              
+              ### 🎯 Monthly Memory Activities:
+              - [ ] 📸 Add new photos from this month
+              - [ ] 💌 Write about a special moment from ${monthName}
+              - [ ] 🎵 Add a song that reminds you of this month
+              - [ ] 📝 Update our timeline with recent events
+              - [ ] 💭 Share what made this month special
+              
+              ### 💡 ${monthName} Memory Prompt:
+              **What made this month unique in our love story?** Think about:
+              - New places we visited together
+              - Funny moments that made us laugh
+              - Challenges we overcame as a team
+              - Small gestures that meant the most
+              - Dreams we shared for our future
+              
+              ### 🎁 Surprise Ideas for Today:
+              - Cook a special meal together
+              - Take a walk down memory lane
+              - Write each other love notes
+              - Plan a mini date night at home
+              - Look through old photos together
+              
+              **Every month with you is a gift! 💖**`;
+            }
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['anniversary', 'reminder', 'love', 'monthly'],
+              assignees: [context.repo.owner]
+            });
+
+  create-weekly-memory-prompt:
+    if: github.event.schedule == '0 10 * * 0' || github.event.inputs.reminder_type == 'weekly'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+        
+      - name: Get Week Info 📅
+        id: week
+        run: |
+          echo "week_start=$(date -d 'last sunday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "week_end=$(date -d 'next saturday' +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "week_number=$(date +'%U')" >> $GITHUB_OUTPUT
+          echo "current_date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          
+      - name: Create Weekly Memory Prompt 📝
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const weekStart = '${{ steps.week.outputs.week_start }}';
+            const weekEnd = '${{ steps.week.outputs.week_end }}';
+            const weekNumber = '${{ steps.week.outputs.week_number }}';
+            
+            const prompts = [
+              "What made you smile the most this week?",
+              "Describe a moment when you felt extra grateful for your partner.",
+              "What's a small gesture your partner did that meant a lot?",
+              "Share a funny conversation or moment from this week.",
+              "What's something new you learned about each other?",
+              "Describe a challenge you faced together and how you handled it.",
+              "What's a dream or goal you discussed this week?",
+              "Share a photo or moment that captures this week perfectly.",
+              "What's something you're looking forward to doing together?",
+              "Describe how your love has grown this week."
+            ];
+            
+            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+            
+            const title = `📝 Week ${weekNumber} Memory Prompt`;
+            const body = `## 📝 Weekly Memory Prompt - Week ${weekNumber}
+            
+            **Week of ${weekStart} to ${weekEnd}**
+            
+            ### 💭 This Week's Prompt:
+            **${randomPrompt}**
+            
+            ### 📝 Instructions:
+            1. Take a few minutes to reflect on this week together
+            2. Share your thoughts in a comment below
+            3. Consider adding any photos or memories to the gallery
+            4. Update the timeline if anything special happened
+            
+            ### 🎯 Weekly Reflection Questions:
+            - [ ] What was the highlight of our week?
+            - [ ] How did we support each other?
+            - [ ] What are we grateful for from this week?
+            - [ ] What do we want to remember about this week?
+            
+            ### 📸 Photo Challenge:
+            Take a photo that represents this week in your relationship and add it to the gallery!
+            
+            **Every week is a new chapter in our love story! 💕**`;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['memory-prompt', 'weekly', 'reflection'],
+              assignees: [context.repo.owner]
+            });
+
+  update-relationship-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+        
+      - name: Calculate Updated Stats 📊
+        id: stats
+        run: |
+          # Calculate current relationship statistics
+          start_date="2023-01-14"
+          current_date=$(date +'%Y-%m-%d')
+          
+          days_together=$(( ($(date -d "$current_date" +%s) - $(date -d "$start_date" +%s)) / 86400 ))
+          weeks_together=$(( days_together / 7 ))
+          months_together=$(( days_together / 30 ))
+          years_together=$(( days_together / 365 ))
+          
+          echo "days_together=$days_together" >> $GITHUB_OUTPUT
+          echo "weeks_together=$weeks_together" >> $GITHUB_OUTPUT
+          echo "months_together=$months_together" >> $GITHUB_OUTPUT
+          echo "years_together=$years_together" >> $GITHUB_OUTPUT
+          echo "current_date=$current_date" >> $GITHUB_OUTPUT
+          
+      - name: Update Stats in Data File 📈
+        run: |
+          # Update the relationship stats in _data/stats.yml
+          cat > _data/stats.yml << EOF
+          # Relationship Statistics - Auto-updated by GitHub Actions
+          # Last updated: ${{ steps.stats.outputs.current_date }}
+          
+          relationship:
+            start_date: "2023-01-14"
+            current_date: "${{ steps.stats.outputs.current_date }}"
+            days_together: ${{ steps.stats.outputs.days_together }}
+            weeks_together: ${{ steps.stats.outputs.weeks_together }}
+            months_together: ${{ steps.stats.outputs.months_together }}
+            years_together: ${{ steps.stats.outputs.years_together }}
+            
+          milestones:
+            first_month: "2023-02-14"
+            first_year: "2024-01-14"
+            next_anniversary: "2025-01-14"
+            
+          memories:
+            total_count: 10  # Update manually or via script
+            photos_count: 13  # Update manually or via script
+            last_updated: "${{ steps.stats.outputs.current_date }}"
+          EOF
+          
+      - name: Commit Updated Stats 💾
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Anniversary Bot"
+          git add _data/stats.yml
+          git commit -m "📊 Auto-update relationship statistics - Day ${{ steps.stats.outputs.days_together }}" || exit 0
+          git push

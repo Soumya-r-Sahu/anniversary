@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Fix Test</title>
+</head>
+<body>
+    <h1>Testing Music Player Fix</h1>
+    <div id="test-results"></div>
+
+    <!-- Load the music systems like index.html does -->
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script type="module">
+        // Import PageSpecificMusicManager like index.html does
+        import('./src/core/PageSpecificMusicManager.js').then(({ PageSpecificMusicManager }) => {
+            window.pageSpecificMusicManager = new PageSpecificMusicManager();
+            
+            // Test results after 1 second
+            setTimeout(() => {
+                const results = document.getElementById('test-results');
+                const enhancedPlayer = document.getElementById('enhanced-music-player');
+                
+                if (enhancedPlayer) {
+                    results.innerHTML = '<p style="color: red;">❌ FAILED: Enhanced music player div still exists when PageSpecificMusicManager is present</p>';
+                } else {
+                    results.innerHTML = '<p style="color: green;">✅ SUCCESS: Enhanced music player div correctly not created when PageSpecificMusicManager is present</p>';
+                }
+                
+                // Log console messages
+                if (window.pageSpecificMusicManager) {
+                    results.innerHTML += '<p style="color: blue;">✅ PageSpecificMusicManager is available</p>';
+                } else {
+                    results.innerHTML += '<p style="color: orange;">⚠️ PageSpecificMusicManager is not available</p>';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="src/styles/ui-controls.css">
     <link rel="stylesheet" href="src/styles/variables.css">
     <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
 
     <style>
         /* Enhanced love story specific styles */
@@ -437,7 +438,7 @@
     <!-- Enhanced Components -->
     <script src="src/core/EnhancedMusicManager.js"></script>
     <script src="src/components/RomanticEffects.js"></script>
-    <script src="src/components/EnhancedThemeManager.js"></script>
+    <script src="src/components/ThemeManager.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>
 
     <!-- Love story page initialization -->
@@ -456,11 +457,15 @@
                 });
             }
         });
-    </script>    <!-- UI Polish Initializer - Must load first -->
-    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
+    </script>    <!-- Music System Initializer - Must load first -->
+    <script type="module" src="./src/core/EnhancedMusicManager.js"></script>
 
-    <!-- UI Control System -->
+    <!-- UI Polish Initializer - Must load first -->
+    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>    <!-- UI Control System -->
     <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
@@ -469,3 +474,5 @@
     <script src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>
+
+

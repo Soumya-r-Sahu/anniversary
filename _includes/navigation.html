@@ -1,0 +1,205 @@
+<!-- Navigation Component -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-20 backdrop-filter backdrop-blur-lg border-b border-pink-500 border-opacity-20" role="navigation" aria-label="Main navigation">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo/Brand -->
+            <div class="flex items-center">
+                <a href="{{ '/' | relative_url }}" class="text-pink-400 hover:text-pink-300 transition-colors duration-300 flex items-center space-x-2">
+                    <span class="text-2xl">💕</span>
+                    <span class="font-bold text-lg hidden sm:inline">{{ site.title }}</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    {% for nav_item in site.navigation %}
+                        {% assign current_page = page.url | remove: '.html' %}
+                        {% assign nav_url = nav_item.url | remove: '.html' %}
+                        {% assign is_current = false %}
+                        
+                        {% if current_page == nav_url or (nav_url == '/' and current_page == '/index') %}
+                            {% assign is_current = true %}
+                        {% endif %}
+                        
+                        <a href="{{ nav_item.url | relative_url }}" 
+                           class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 {% if is_current %}text-pink-300 bg-pink-500 bg-opacity-20{% else %}text-gray-300 hover:text-pink-300 hover:bg-pink-500 hover:bg-opacity-10{% endif %}"
+                           {% if is_current %}aria-current="page"{% endif %}>
+                            {{ nav_item.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" 
+                        class="mobile-menu-button bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-300"
+                        aria-controls="mobile-menu" 
+                        aria-expanded="false"
+                        aria-label="Toggle navigation menu">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Hamburger icon -->
+                    <svg class="hamburger-icon block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Close icon -->
+                    <svg class="close-icon hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden md:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black bg-opacity-40 backdrop-filter backdrop-blur-lg">
+            {% for nav_item in site.navigation %}
+                {% assign current_page = page.url | remove: '.html' %}
+                {% assign nav_url = nav_item.url | remove: '.html' %}
+                {% assign is_current = false %}
+                
+                {% if current_page == nav_url or (nav_url == '/' and current_page == '/index') %}
+                    {% assign is_current = true %}
+                {% endif %}
+                
+                <a href="{{ nav_item.url | relative_url }}" 
+                   class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 {% if is_current %}text-pink-300 bg-pink-500 bg-opacity-20{% else %}text-gray-300 hover:text-pink-300 hover:bg-pink-500 hover:bg-opacity-10{% endif %}"
+                   {% if is_current %}aria-current="page"{% endif %}>
+                    {{ nav_item.title }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+
+<!-- Navigation Styles -->
+<style>
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.mobile-nav-link {
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link[aria-current="page"] {
+    border-left-color: #ec4899;
+    transform: translateX(5px);
+}
+
+/* Smooth mobile menu animation */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.mobile-menu.show {
+    max-height: 500px;
+}
+
+/* Navigation backdrop blur effect */
+nav {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+</style>
+
+<!-- Navigation JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('show');
+            
+            // Update aria-expanded
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle icons
+            if (hamburgerIcon && closeIcon) {
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                if (hamburgerIcon && closeIcon) {
+                    hamburgerIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                if (hamburgerIcon && closeIcon) {
+                    hamburgerIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            }
+        });
+    }
+    
+    // Add scroll effect to navigation
+    let lastScrollTop = 0;
+    const nav = document.querySelector('nav');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            nav.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
+</script>

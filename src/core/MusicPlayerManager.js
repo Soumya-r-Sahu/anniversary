@@ -33,9 +33,13 @@ class MusicPlayerManager {
 
         // Audio queue and management
         this.playlist = [
-            'music/song1.m4a',
-            'music/queue_song/01-anniversary-celebration.m4a',
-            'music/queue_song/02-love-story-theme.m4a'
+            'music/Arijitsingh.m4a',
+            'music/queue_song/01-nit-khair-manga.m4a',
+            'music/queue_song/02-Kahani-Suno.m4a',
+            'music/queue_song/03-champakali.m4a',
+            'music/queue_song/04-jo-tum-mere-ho.m4a',
+            'music/queue_song/05-paro.m4a',
+            'music/queue_song/06-Jugrafiyan.m4a'
         ];
 
         // Performance optimization

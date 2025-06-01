@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="src/styles/ui-controls.css">
     <link rel="stylesheet" href="src/styles/variables.css">
     <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
@@ -587,7 +588,7 @@
     <!-- Enhanced Components -->
     <script src="src/core/EnhancedMusicManager.js"></script>
     <script src="src/components/RomanticEffects.js"></script>
-    <script src="src/components/EnhancedThemeManager.js"></script>
+    <script src="src/components/ThemeManager.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>
 
     <!-- Photo gallery page initialization -->
@@ -605,11 +606,16 @@
                 });
             }
         });
-    </script>    <!-- UI Polish Initializer - Must load first -->
+    </script>    <!-- Music System Initializer - Must load first -->
+    <script type="module" src="./src/core/EnhancedMusicManager.js"></script>
+
+    <!-- UI Polish Initializer - Must load first -->
     <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
 
-    <!-- UI Control System -->
-    <script type="module" src="./src/components/UIControlSystem.js"></script>
+    <!-- UI Control System -->    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
@@ -618,3 +624,5 @@
     <script src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>
+
+

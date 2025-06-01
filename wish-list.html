@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish List - Anniversary</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Our shared wishlist for gifts and experiences together">
+    <meta name="keywords" content="anniversary, love, wishlist, gifts, experiences, dreams">
+    <meta name="author" content="Anniversary Website">
+    
+    <!-- Theme and Icons -->
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="msapplication-navbutton-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        .wishlist-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .wishlist-main {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .category-tab {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+        
+        .category-tab.active,
+        .category-tab:hover {
+            background: rgba(255, 105, 180, 0.3);
+            border-color: #ff69b4;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .wish-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wish-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+        }
+        
+        .wish-item.completed {
+            background: rgba(75, 181, 67, 0.2);
+            border-color: #4bb543;
+        }
+        
+        .wish-item.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #4bb543;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .wish-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.3), rgba(138, 43, 226, 0.3));
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .wish-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .wish-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .wish-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .wish-price {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        
+        .wish-priority {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .priority-star {
+            color: #ffd700;
+            font-size: 1rem;
+        }
+        
+        .wish-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .wish-btn {
+            background: rgba(255, 105, 180, 0.3);
+            border: 1px solid #ff69b4;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .wish-btn:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+        
+        .wish-btn.complete {
+            background: rgba(75, 181, 67, 0.3);
+            border-color: #4bb543;
+        }
+        
+        .wish-btn.complete:hover {
+            background: #4bb543;
+        }
+        
+        .wishlist-sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-title {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .surprise-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .surprise-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 20px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .filter-section {
+            margin-bottom: 1rem;
+        }
+        
+        .filter-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .filter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .price-range {
+            margin-top: 1rem;
+        }
+        
+        .range-slider {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        .add-wish-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-wish-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .wishlist-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .wishlist-sidebar {
+                order: -1;
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" data-aos="fade-down">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-heart"></i>
+                <span>Our Journey</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="countdown.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Countdown</span>
+                </a>
+                <a href="memories-timeline.html" class="nav-link">
+                    <i class="fas fa-timeline"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="wish-list.html" class="nav-link active">
+                    <i class="fas fa-star"></i>
+                    <span>Wishes</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-star"></i>
+                    Our Wish List
+                </h1>
+                <p class="hero-subtitle">Dreams, gifts, and experiences we want to share together</p>
+            </div>
+        </section>
+        
+        <!-- Wishlist Container -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="wishlist-container">
+                <!-- Main Wishlist Area -->
+                <div class="wishlist-main">
+                    <!-- Category Tabs -->
+                    <div class="category-tabs">
+                        <div class="category-tab active" data-category="all">
+                            <i class="fas fa-list"></i> All Wishes
+                        </div>
+                        <div class="category-tab" data-category="gifts">
+                            <i class="fas fa-gift"></i> Gifts
+                        </div>
+                        <div class="category-tab" data-category="experiences">
+                            <i class="fas fa-heart"></i> Experiences
+                        </div>
+                        <div class="category-tab" data-category="trips">
+                            <i class="fas fa-plane"></i> Trips
+                        </div>
+                        <div class="category-tab" data-category="dates">
+                            <i class="fas fa-calendar-heart"></i> Date Ideas
+                        </div>
+                    </div>
+                    
+                    <!-- Wishlist Grid -->
+                    <div class="wishlist-grid" id="wishlistGrid">
+                        <!-- Wish items will be generated by JavaScript -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <i class="fas fa-star" style="font-size: 3rem; margin-bottom: 1rem; color: rgba(255, 105, 180, 0.5);"></i>
+                        <p>No wishes found in this category.</p>
+                        <p>Add some dreams to make them come true! ✨</p>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="wishlist-sidebar">
+                    <!-- Surprise Me Button -->
+                    <div class="sidebar-section">
+                        <button class="surprise-btn" onclick="surpriseMe()">
+                            <i class="fas fa-magic"></i> Surprise Me!
+                        </button>
+                    </div>
+                    
+                    <!-- Statistics -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-chart-bar"></i> Progress
+                        </h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalWishes">12</div>
+                                <div class="stat-label">Total Wishes</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="completedWishes">3</div>
+                                <div class="stat-label">Completed</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+                        </div>
+                        <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-top: 0.5rem;">
+                            <span id="progressPercent">25</span>% Complete
+                        </p>
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-filter"></i> Filters
+                        </h3>
+                        <div class="filter-section">
+                            <input type="text" class="filter-input" placeholder="Search wishes..." id="searchFilter" oninput="filterWishes()">
+                        </div>
+                        <div class="price-range">
+                            <label style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Price Range</label>
+                            <input type="range" class="range-slider" min="0" max="1000" value="1000" id="priceRange" oninput="filterWishes()">
+                            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; text-align: center;">
+                                $0 - $<span id="priceValue">1000</span>+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-bolt"></i> Quick Actions
+                        </h3>
+                        <button class="wish-btn" style="width: 100%; margin-bottom: 0.5rem;" onclick="exportWishlist()">
+                            <i class="fas fa-download"></i> Export List
+                        </button>
+                        <button class="wish-btn" style="width: 100%;" onclick="shareWishlist()">
+                            <i class="fas fa-share"></i> Share List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Add Wish Button -->
+    <button class="add-wish-btn" onclick="addNewWish()" title="Add New Wish">
+        <i class="fas fa-plus"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/utils/ui-controls.js"></script>
+    <script src="src/core/particles-config.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Initialize Enhanced Music Manager
+        const musicManager = window.musicManager;
+        
+        // Wishlist data
+        let wishlist = [
+            {
+                id: 1,
+                title: "Couple's Spa Day",
+                description: "Relaxing spa day with massages and facials for both of us",
+                category: "experiences",
+                price: 300,
+                priority: 5,
+                completed: false,
+                icon: "🧖‍♀️"
+            },
+            {
+                id: 2,
+                title: "Paris Weekend Getaway",
+                description: "Romantic weekend in the City of Love with Seine river cruise",
+                category: "trips",
+                price: 1200,
+                priority: 5,
+                completed: false,
+                icon: "🗼"
+            },
+            {
+                id: 3,
+                title: "Cooking Class Together",
+                description: "Learn to cook Italian cuisine in a couples cooking class",
+                category: "experiences",
+                price: 150,
+                priority: 4,
+                completed: true,
+                icon: "👨‍🍳"
+            },
+            {
+                id: 4,
+                title: "Diamond Necklace",
+                description: "Beautiful diamond necklace for special occasions",
+                category: "gifts",
+                price: 500,
+                priority: 3,
+                completed: false,
+                icon: "💎"
+            },
+            {
+                id: 5,
+                title: "Hot Air Balloon Ride",
+                description: "Sunset hot air balloon ride over the countryside",
+                category: "experiences",
+                price: 250,
+                priority: 4,
+                completed: false,
+                icon: "🎈"
+            },
+            {
+                id: 6,
+                title: "Concert Tickets",
+                description: "Front row seats to see our favorite band live",
+                category: "experiences",
+                price: 200,
+                priority: 4,
+                completed: true,
+                icon: "🎵"
+            },
+            {
+                id: 7,
+                title: "Picnic in the Park",
+                description: "Romantic afternoon picnic with homemade sandwiches",
+                category: "dates",
+                price: 50,
+                priority: 3,
+                completed: false,
+                icon: "🧺"
+            },
+            {
+                id: 8,
+                title: "Smart Watch",
+                description: "Latest smartwatch with health tracking features",
+                category: "gifts",
+                price: 400,
+                priority: 2,
+                completed: false,
+                icon: "⌚"
+            },
+            {
+                id: 9,
+                title: "Wine Tasting Tour",
+                description: "Full day wine tasting tour in wine country",
+                category: "experiences",
+                price: 180,
+                priority: 3,
+                completed: false,
+                icon: "🍷"
+            },
+            {
+                id: 10,
+                title: "Beach House Weekend",
+                description: "Cozy beach house rental for a romantic weekend",
+                category: "trips",
+                price: 400,
+                priority: 4,
+                completed: false,
+                icon: "🏖️"
+            },
+            {
+                id: 11,
+                title: "Stargazing Night",
+                description: "Drive to the mountains for a night of stargazing",
+                category: "dates",
+                price: 30,
+                priority: 5,
+                completed: true,
+                icon: "⭐"
+            },
+            {
+                id: 12,
+                title: "Professional Photo Shoot",
+                description: "Couples photo session with a professional photographer",
+                category: "experiences",
+                price: 300,
+                priority: 3,
+                completed: false,
+                icon: "📸"
+            }
+        ];
+        
+        let currentCategory = 'all';
+        
+        function renderWishlist() {
+            const grid = document.getElementById('wishlistGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            let filteredWishes = wishlist;
+            
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filteredWishes = filteredWishes.filter(wish => wish.category === currentCategory);
+            }
+            
+            // Filter by search term
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
+            if (searchTerm) {
+                filteredWishes = filteredWishes.filter(wish => 
+                    wish.title.toLowerCase().includes(searchTerm) ||
+                    wish.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Filter by price
+            const maxPrice = parseInt(document.getElementById('priceRange').value);
+            filteredWishes = filteredWishes.filter(wish => wish.price <= maxPrice);
+            
+            if (filteredWishes.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            grid.innerHTML = filteredWishes.map(wish => `
+                <div class="wish-item ${wish.completed ? 'completed' : ''}" data-aos="fade-up" data-aos-delay="${Math.random() * 500}">
+                    <div class="wish-image">
+                        <span style="font-size: 3rem;">${wish.icon}</span>
+                    </div>
+                    <h3 class="wish-title">${wish.title}</h3>
+                    <p class="wish-description">${wish.description}</p>
+                    <div class="wish-details">
+                        <div class="wish-price">$${wish.price}</div>
+                        <div class="wish-priority">
+                            ${Array(wish.priority).fill('<i class="fas fa-star priority-star"></i>').join('')}
+                        </div>
+                    </div>
+                    <div class="wish-actions">
+                        <button class="wish-btn ${wish.completed ? 'complete' : ''}" onclick="toggleWishComplete(${wish.id})">
+                            <i class="fas fa-${wish.completed ? 'undo' : 'check'}"></i>
+                            ${wish.completed ? 'Undo' : 'Complete'}
+                        </button>
+                        <button class="wish-btn" onclick="editWish(${wish.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="wish-btn" onclick="deleteWish(${wish.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Re-initialize AOS for new elements
+            AOS.refresh();
+        }
+        
+        function updateStatistics() {
+            const total = wishlist.length;
+            const completed = wishlist.filter(wish => wish.completed).length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('totalWishes').textContent = total;
+            document.getElementById('completedWishes').textContent = completed;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressPercent').textContent = percentage;
+        }
+        
+        function switchCategory(category) {
+            currentCategory = category;
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            renderWishlist();
+        }
+        
+        function filterWishes() {
+            document.getElementById('priceValue').textContent = document.getElementById('priceRange').value;
+            renderWishlist();
+        }
+        
+        function toggleWishComplete(id) {
+            const wish = wishlist.find(w => w.id === id);
+            if (wish) {
+                wish.completed = !wish.completed;
+                renderWishlist();
+                updateStatistics();
+                
+                if (wish.completed) {
+                    showCelebration(`"${wish.title}" completed! 🎉`);
+                }
+            }
+        }
+        
+        function editWish(id) {
+            const wish = wishlist.find(w => w.id === id);
+            if (wish) {
+                const newTitle = prompt('Edit title:', wish.title);
+                const newDescription = prompt('Edit description:', wish.description);
+                const newPrice = prompt('Edit price:', wish.price);
+                
+                if (newTitle && newDescription && newPrice) {
+                    wish.title = newTitle;
+                    wish.description = newDescription;
+                    wish.price = parseInt(newPrice);
+                    renderWishlist();
+                }
+            }
+        }
+        
+        function deleteWish(id) {
+            if (confirm('Are you sure you want to delete this wish?')) {
+                wishlist = wishlist.filter(w => w.id !== id);
+                renderWishlist();
+                updateStatistics();
+            }
+        }
+        
+        function addNewWish() {
+            const title = prompt('Wish title:');
+            const description = prompt('Description:');
+            const price = prompt('Price ($):');
+            const category = prompt('Category (gifts/experiences/trips/dates):');
+            const priority = prompt('Priority (1-5 stars):');
+            
+            if (title && description && price && category && priority) {
+                const newWish = {
+                    id: Math.max(...wishlist.map(w => w.id)) + 1,
+                    title,
+                    description,
+                    category,
+                    price: parseInt(price),
+                    priority: parseInt(priority),
+                    completed: false,
+                    icon: '✨'
+                };
+                
+                wishlist.push(newWish);
+                renderWishlist();
+                updateStatistics();
+                showCelebration('New wish added! 🌟');
+            }
+        }
+        
+        function surpriseMe() {
+            const incompleteWishes = wishlist.filter(wish => !wish.completed);
+            if (incompleteWishes.length === 0) {
+                alert('All wishes completed! Time to add more dreams! 🎉');
+                return;
+            }
+            
+            const randomWish = incompleteWishes[Math.floor(Math.random() * incompleteWishes.length)];
+            showCelebration(`Surprise wish: "${randomWish.title}"! 🎁`);
+            
+            // Highlight the wish
+            setTimeout(() => {
+                const wishElements = document.querySelectorAll('.wish-item');
+                wishElements.forEach(el => {
+                    if (el.querySelector('.wish-title').textContent === randomWish.title) {
+                        el.style.animation = 'pulse 2s infinite';
+                        setTimeout(() => el.style.animation = '', 4000);
+                    }
+                });
+            }, 500);
+        }
+        
+        function exportWishlist() {
+            const exportData = wishlist.map(wish => ({
+                title: wish.title,
+                description: wish.description,
+                category: wish.category,
+                price: wish.price,
+                priority: wish.priority,
+                completed: wish.completed
+            }));
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'our-wishlist.json';
+            link.click();
+            
+            showCelebration('Wishlist exported! 📄');
+        }
+        
+        function shareWishlist() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Our Wish List',
+                    text: 'Check out our shared wish list!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showCelebration('Link copied to clipboard! 📋');
+            }
+        }
+        
+        function showCelebration(message) {
+            const celebration = document.createElement('div');
+            celebration.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 105, 180, 0.95);
+                color: white;
+                padding: 1.5rem 2rem;
+                border-radius: 15px;
+                z-index: 9999;
+                font-weight: bold;
+                font-size: 1.1rem;
+                box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            `;
+            celebration.textContent = message;
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => celebration.remove(), 3000);
+        }
+        
+        // Category tab event listeners
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchCategory(tab.dataset.category);
+            });
+        });
+          // Initialize
+        renderWishlist();
+        updateStatistics();
+    </script>
+
+    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Future Plans - Anniversary</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Dreams and goals as a couple - our shared vision for the future">
+    <meta name="keywords" content="anniversary, love, future plans, dreams, goals, couple">
+    <meta name="author" content="Anniversary Website">
+    
+    <!-- Theme and Icons -->
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="msapplication-navbutton-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        .vision-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .vision-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+        }
+        
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .vision-card:hover::before {
+            animation: shimmer 2s ease-in-out infinite;
+            opacity: 1;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .vision-icon {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .vision-title {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .vision-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .milestone-tracker {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .milestone {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #ff69b4;
+        }
+        
+        .milestone-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid #ff69b4;
+            position: relative;
+        }
+        
+        .milestone-status.completed {
+            background: #ff69b4;
+        }
+        
+        .milestone-status.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+        }
+        
+        .milestone-text {
+            color: #fff;
+            flex: 1;
+        }
+        
+        .milestone-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .bucket-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .bucket-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .bucket-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .bucket-item.completed {
+            background: rgba(255, 105, 180, 0.2);
+            border-color: #ff69b4;
+        }
+        
+        .bucket-item.completed .bucket-text {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .bucket-text {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bucket-priority {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .travel-map {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.2), rgba(138, 43, 226, 0.2));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        
+        .destination-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .destination-tag {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 105, 180, 0.5);
+        }
+        
+        .add-plan-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-plan-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .vision-board {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .bucket-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .milestone {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .milestone-status {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" data-aos="fade-down">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-heart"></i>
+                <span>Our Journey</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="countdown.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Countdown</span>
+                </a>
+                <a href="memories-timeline.html" class="nav-link">
+                    <i class="fas fa-timeline"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="future-plans.html" class="nav-link active">
+                    <i class="fas fa-rocket"></i>
+                    <span>Future</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-rocket"></i>
+                    Our Future Plans
+                </h1>
+                <p class="hero-subtitle">Dreams and goals we'll achieve together</p>
+            </div>
+        </section>
+        
+        <!-- Vision Board Section -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title">
+                <i class="fas fa-eye"></i>
+                Our Vision Board
+            </h2>
+            <div class="vision-board">
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="vision-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="vision-title">Dream Home</h3>
+                    <p class="vision-description">
+                        A cozy home with a garden where we can grow old together, 
+                        filled with laughter, love, and memories yet to be made.
+                    </p>
+                </div>
+                
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="vision-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="vision-title">World Adventures</h3>
+                    <p class="vision-description">
+                        Exploring the world hand in hand, creating unforgettable 
+                        experiences and discovering new cultures together.
+                    </p>
+                </div>
+                
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="vision-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3 class="vision-title">Growing Family</h3>
+                    <p class="vision-description">
+                        Building a beautiful family filled with love, teaching our 
+                        children about kindness, courage, and following their dreams.
+                    </p>
+                </div>
+                
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="vision-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="vision-title">Personal Growth</h3>
+                    <p class="vision-description">
+                        Supporting each other's dreams and ambitions, celebrating 
+                        achievements and learning from every challenge we face.
+                    </p>
+                </div>
+                
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="vision-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="vision-title">Health & Wellness</h3>
+                    <p class="vision-description">
+                        Maintaining a healthy lifestyle together, supporting each 
+                        other through all of life's seasons with love and care.
+                    </p>
+                </div>
+                
+                <div class="vision-card" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="vision-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="vision-title">Making a Difference</h3>
+                    <p class="vision-description">
+                        Contributing to our community and making the world a better 
+                        place through acts of kindness and charitable endeavors.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Milestone Tracker -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="section-title">
+                <i class="fas fa-flag-checkered"></i>
+                Relationship Milestones
+            </h2>
+            <div class="milestone-tracker">
+                <div class="milestone" data-aos="slide-right" data-aos-delay="500">
+                    <div class="milestone-status completed"></div>
+                    <div class="milestone-text">
+                        <strong>First Date</strong> - Where it all began
+                    </div>
+                    <div class="milestone-date">Completed ✓</div>
+                </div>
+                
+                <div class="milestone" data-aos="slide-right" data-aos-delay="600">
+                    <div class="milestone-status completed"></div>
+                    <div class="milestone-text">
+                        <strong>First Anniversary</strong> - Celebrating our love
+                    </div>
+                    <div class="milestone-date">Completed ✓</div>
+                </div>
+                
+                <div class="milestone" data-aos="slide-right" data-aos-delay="700">
+                    <div class="milestone-status"></div>
+                    <div class="milestone-text">
+                        <strong>Engagement</strong> - The next beautiful step
+                    </div>
+                    <div class="milestone-date">Coming Soon</div>
+                </div>
+                
+                <div class="milestone" data-aos="slide-right" data-aos-delay="800">
+                    <div class="milestone-status"></div>
+                    <div class="milestone-text">
+                        <strong>Wedding Day</strong> - Saying "I do" forever
+                    </div>
+                    <div class="milestone-date">Future Goal</div>
+                </div>
+                
+                <div class="milestone" data-aos="slide-right" data-aos-delay="900">
+                    <div class="milestone-status"></div>
+                    <div class="milestone-text">
+                        <strong>First Home</strong> - Our sanctuary together
+                    </div>
+                    <div class="milestone-date">Future Goal</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Travel Wishlist -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="section-title">
+                <i class="fas fa-map-marked-alt"></i>
+                Travel Wishlist
+            </h2>
+            <div class="travel-map">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Places We Want to Explore Together</h3>
+                <div class="map-placeholder">
+                    <i class="fas fa-globe" style="font-size: 3rem; margin-right: 1rem;"></i>
+                    Interactive World Map Coming Soon
+                </div>
+                <div class="destination-tags">
+                    <span class="destination-tag">🗼 Paris, France</span>
+                    <span class="destination-tag">🗾 Kyoto, Japan</span>
+                    <span class="destination-tag">🏝️ Maldives</span>
+                    <span class="destination-tag">🏔️ Swiss Alps</span>
+                    <span class="destination-tag">🗽 New York City</span>
+                    <span class="destination-tag">🏛️ Santorini, Greece</span>
+                    <span class="destination-tag">🦘 Australia</span>
+                    <span class="destination-tag">🌋 Iceland</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bucket List -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="800">
+            <h2 class="section-title">
+                <i class="fas fa-list-check"></i>
+                Our Bucket List
+            </h2>
+            <div class="bucket-list">
+                <div class="bucket-item completed" data-aos="flip-left" data-aos-delay="900">
+                    <div class="bucket-text">Watch sunrise together</div>
+                    <div class="bucket-priority">High Priority - ✓ Completed</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1000">
+                    <div class="bucket-text">Learn to dance together</div>
+                    <div class="bucket-priority">High Priority</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1100">
+                    <div class="bucket-text">Go on a hot air balloon ride</div>
+                    <div class="bucket-priority">Medium Priority</div>
+                </div>
+                
+                <div class="bucket-item completed" data-aos="flip-left" data-aos-delay="1200">
+                    <div class="bucket-text">Cook a meal together</div>
+                    <div class="bucket-priority">High Priority - ✓ Completed</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1300">
+                    <div class="bucket-text">Plant a garden together</div>
+                    <div class="bucket-priority">Medium Priority</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1400">
+                    <div class="bucket-text">Write a book about our love story</div>
+                    <div class="bucket-priority">Low Priority</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1500">
+                    <div class="bucket-text">Take a photography class</div>
+                    <div class="bucket-priority">Medium Priority</div>
+                </div>
+                
+                <div class="bucket-item" data-aos="flip-left" data-aos-delay="1600">
+                    <div class="bucket-text">Volunteer together for a cause</div>
+                    <div class="bucket-priority">High Priority</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Add Plan Button -->
+    <button class="add-plan-btn" onclick="addNewPlan()" title="Add New Plan">
+        <i class="fas fa-plus"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/utils/ui-controls.js"></script>
+    <script src="src/core/particles-config.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Initialize Enhanced Music Manager
+        const musicManager = window.musicManager;
+        
+        // Bucket list interaction
+        document.querySelectorAll('.bucket-item:not(.completed)').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('completed');
+                const text = this.querySelector('.bucket-text');
+                const priority = this.querySelector('.bucket-priority');
+                
+                if (this.classList.contains('completed')) {
+                    priority.innerHTML = priority.innerHTML.split(' - ')[0] + ' - ✓ Completed';
+                    // Celebration effect
+                    createCelebrationEffect(this);
+                } else {
+                    priority.innerHTML = priority.innerHTML.split(' - ')[0];
+                }
+            });
+        });
+        
+        function createCelebrationEffect(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'fixed';
+                heart.style.left = centerX + 'px';
+                heart.style.top = centerY + 'px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '9999';
+                heart.style.fontSize = '20px';
+                heart.style.transition = 'all 1s ease-out';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.style.transform = `translate(${(Math.random() - 0.5) * 200}px, ${-100 - Math.random() * 100}px)`;
+                    heart.style.opacity = '0';
+                }, 10);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+        }
+        
+        function addNewPlan() {
+            const plan = prompt('What new plan would you like to add to your future together?');
+            if (plan && plan.trim()) {
+                const bucketList = document.querySelector('.bucket-list');
+                const newItem = document.createElement('div');
+                newItem.className = 'bucket-item';
+                newItem.innerHTML = `
+                    <div class="bucket-text">${plan.trim()}</div>
+                    <div class="bucket-priority">New Goal</div>
+                `;
+                
+                newItem.addEventListener('click', function() {
+                    this.classList.toggle('completed');
+                    const priority = this.querySelector('.bucket-priority');
+                    
+                    if (this.classList.contains('completed')) {
+                        priority.innerHTML = 'New Goal - ✓ Completed';
+                        createCelebrationEffect(this);
+                    } else {
+                        priority.innerHTML = 'New Goal';
+                    }
+                });
+                
+                bucketList.appendChild(newItem);
+                
+                // Animate new item
+                newItem.style.opacity = '0';
+                newItem.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    newItem.style.transition = 'all 0.3s ease';
+                    newItem.style.opacity = '1';
+                    newItem.style.transform = 'scale(1)';
+                }, 10);
+            }
+        }
+        
+        // Milestone hover effects
+        document.querySelectorAll('.milestone').forEach(milestone => {
+            milestone.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.backgroundColor = 'rgba(255, 105, 180, 0.1)';
+            });
+            
+            milestone.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+                this.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';            });
+        });
+    </script>
+
+    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
+</body>
+</html>
+
+

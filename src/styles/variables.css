@@ -175,10 +175,10 @@
   --player-size: 60px;
   --player-background: rgba(255, 255, 255, 0.1);
   --player-backdrop-filter: blur(10px);
-    /* Bubble Animation Variables */
+    /* Bubble Animation Variables - Much slower for natural movement */
   --bubble-color: var(--color-primary);
   --bubble-size: 20px;
-  --bubble-animation-duration: 3s;
+  --bubble-animation-duration: 45s;
   
   /* === ANIMATION VARIABLES === */
   --animation-bounce: bounce 1s infinite;

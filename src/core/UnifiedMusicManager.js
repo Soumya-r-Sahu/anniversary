@@ -32,9 +32,13 @@ class UnifiedMusicManager {
 
         // Audio queue and management
         this.playlist = [
-            'music/song1.m4a',
-            'music/queue_song/01-anniversary-celebration.m4a',
-            'music/queue_song/02-love-story-theme.m4a'
+            'music/Arijitsingh.m4a',
+            'music/queue_song/01-nit-khair-manga.m4a',
+            'music/queue_song/02-Kahani-Suno.m4a',
+            'music/queue_song/03-champakali.m4a',
+            'music/queue_song/04-jo-tum-mere-ho.m4a',
+            'music/queue_song/05-paro.m4a',
+            'music/queue_song/06-Jugrafiyan.m4a'
         ];
 
         // Performance optimization
@@ -106,10 +110,23 @@ class UnifiedMusicManager {
      * Setup audio element with optimized configuration
      */
     setupAudio() {
-        this.audio = new Audio();
+        // Check if there's an existing audio element in the DOM
+        const existingAudio = document.getElementById('background-music');
+        if (existingAudio && existingAudio instanceof HTMLAudioElement) {
+            this.audio = existingAudio;
+            console.log('🎵 Using existing audio element');
+        } else {
+            this.audio = new Audio();
+            console.log('🎵 Created new audio element');
+        }
+
         this.audio.preload = this.performance.isLowPower ? 'none' : 'metadata';
         this.audio.volume = this.state.volume;
         this.audio.crossOrigin = 'anonymous';
+        this.audio.loop = true; // Enable looping
+
+        // Load the first song
+        this.loadSong(this.state.currentSongIndex);
 
         // Audio event listeners
         this.audio.addEventListener('play', this.boundHandlers.onPlay, { passive: true });
@@ -266,7 +283,7 @@ class UnifiedMusicManager {
      * Pause audio
      */
     pause() {
-        if (this.audio && !this.audio.paused) {
+        if (this.audio && this.audio instanceof HTMLAudioElement && !this.audio.paused) {
             this.audio.pause();
         }
     }
@@ -279,6 +296,58 @@ class UnifiedMusicManager {
             this.pause();
         } else {
             await this.play();
+        }
+    }
+
+    /**
+     * Load a song from the playlist
+     */
+    loadSong(index) {
+        if (!this.audio || !this.playlist || index >= this.playlist.length) {
+            console.warn('Cannot load song: invalid index or missing audio');
+            return;
+        }
+
+        const songPath = this.playlist[index];
+        console.log(`🎵 Loading song: ${songPath}`);
+
+        this.state.currentSongIndex = index;
+        this.audio.src = songPath;
+
+        // Reset error state
+        this.state.hasError = false;
+
+        // Save state
+        this.performance.saveStateThrottled();
+    }
+
+    /**
+     * Next song in playlist
+     */
+    nextSong() {
+        if (!this.config.enablePlaylist || !this.playlist) return;
+
+        const nextIndex = (this.state.currentSongIndex + 1) % this.playlist.length;
+        this.loadSong(nextIndex);
+
+        if (this.state.isPlaying) {
+            this.play();
+        }
+    }
+
+    /**
+     * Previous song in playlist
+     */
+    previousSong() {
+        if (!this.config.enablePlaylist || !this.playlist) return;
+
+        const prevIndex = this.state.currentSongIndex === 0
+            ? this.playlist.length - 1
+            : this.state.currentSongIndex - 1;
+        this.loadSong(prevIndex);
+
+        if (this.state.isPlaying) {
+            this.play();
         }
     }
 

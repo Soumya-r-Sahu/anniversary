@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="src/styles/ui-controls.css">
     <link rel="stylesheet" href="src/styles/variables.css">
     <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    <link rel="stylesheet" href="src/styles/music-popup-alignment.css">
 
     <style>
         /* Anniversary Page Specific Enhancements */
@@ -351,7 +353,7 @@
     <!-- Enhanced Components -->
     <script src="src/core/EnhancedMusicManager.js"></script>
     <script src="src/components/RomanticEffects.js"></script>
-    <script src="src/components/EnhancedThemeManager.js"></script>
+    <script src="src/components/ThemeManager.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>    <!-- Anniversary page initialization with enhanced features -->
     <script>
         // Enhanced anniversary page initialization
@@ -537,8 +539,21 @@
             }
         });    </script>
 
+    <!-- Music Player Cleanup - Must load first to prevent overlaps -->
+    <script src="src/utils/music-player-cleanup.js"></script>
+
+    <!-- Long Page Music Positioning - Must load first for long pages -->
+    <script src="src/utils/long-page-music-positioning.js"></script>
+
+    <!-- Music System Initializer - Must load first -->
+    <script type="module" src="./src/core/EnhancedMusicManager.js"></script>
+
     <!-- UI Polish Initializer - Must load first -->
-    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
+    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
@@ -547,3 +562,5 @@
     <script src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>
+
+

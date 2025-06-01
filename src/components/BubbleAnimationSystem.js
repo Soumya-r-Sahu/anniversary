@@ -15,7 +15,7 @@ class BubbleAnimationSystem {
             performance: options.performance || 'auto', // 'auto', 'high', 'low'
             pageType: options.pageType || 'default', // 'countdown', 'anniversary', 'love-story', 'gallery'
             maxBubbles: options.maxBubbles || 50,
-            animationDuration: options.animationDuration || { min: 3, max: 9 },
+            animationDuration: options.animationDuration || { min: 35, max: 70 },
             ...options
         };
 

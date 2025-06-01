@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="src/styles/ui-controls.css">
     <link rel="stylesheet" href="src/styles/variables.css">
     <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    <link rel="stylesheet" href="src/styles/music-popup-alignment.css">
 
     <style>
         /* Enhanced countdown styles */
@@ -79,26 +81,7 @@
             }
         }
 
-        /* Clear Previous Visits Button */
-        .clear-visits-btn {
-            position: fixed;
-            top: 20px;
-            right: 80px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            color: #ec4899;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }        .clear-visits-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 20px rgba(236, 72, 153, 0.3);
-        }        /* Enhanced Redirect Countdown Animations */
+        /* Clear visits functionality moved to settings page */        /* Enhanced Redirect Countdown Animations */
         @keyframes urgentPulse {
             0% { transform: scale(1.3); }
             100% { transform: scale(1.5); text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
@@ -504,10 +487,8 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scripts -->    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="src/utils/music-manager.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
 
     <script>
@@ -518,26 +499,7 @@
                 return;
             }
 
-            // Add clear previous visits functionality
-            const clearVisitsBtn = document.createElement('button');
-            clearVisitsBtn.innerHTML = '🔄';
-            clearVisitsBtn.className = 'clear-visits-btn';
-            clearVisitsBtn.title = 'Clear Previous Visits';
-            clearVisitsBtn.addEventListener('click', () => {
-                if (confirm('Clear all previous visit data? This will reset music and other saved states.')) {
-                    window.musicManager.clearPreviousVisits();
-                    window.location.reload();
-                }
-            });
-            clearVisitsBtn.addEventListener('mouseenter', () => {
-                clearVisitsBtn.style.transform = 'scale(1.1)';
-                clearVisitsBtn.style.boxShadow = '0 5px 20px rgba(236, 72, 153, 0.3)';
-            });
-            clearVisitsBtn.addEventListener('mouseleave', () => {
-                clearVisitsBtn.style.transform = 'scale(1)';
-                clearVisitsBtn.style.boxShadow = 'none';
-            });
-            document.body.appendChild(clearVisitsBtn);
+            // Clear visits functionality moved to settings page
             console.log('🎵 Enhanced music integration setup complete');
         }
 
@@ -1281,7 +1243,7 @@
         document.addEventListener('click', function(e) {
             // Don't create burst if clicking on buttons or interactive elements
             if (e.target.tagName === 'BUTTON' || e.target.closest('button') ||
-                e.target.closest('.enhanced-music-player') || e.target.closest('.clear-visits-btn')) {
+                e.target.closest('a')) {
                 return;
             }
             createCountdownBubbleBurst(e.clientX, e.clientY);
@@ -1290,7 +1252,7 @@
         // Add touch event listener for mobile
         document.addEventListener('touchend', function(e) {
             if (e.target.tagName === 'BUTTON' || e.target.closest('button') ||
-                e.target.closest('.enhanced-music-player') || e.target.closest('.clear-visits-btn')) {
+                e.target.closest('a')) {
                 return;
             }
             if (e.changedTouches && e.changedTouches[0]) {
@@ -1323,11 +1285,18 @@
                 border: 1px solid rgba(255, 255, 255, 0.3);
             }        `;
         document.head.appendChild(countdownBurstStyle);    </script>    <!-- Dark Theme Manager -->
-    <!-- UI Polish Initializer - Must load first -->
-    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
+    <!-- Music Player Cleanup - Must load first to prevent overlaps -->
+    <script src="src/utils/music-player-cleanup.js"></script>
 
-    <!-- UI Control System -->
+    <!-- Music System Initializer - Must load first -->
+    <script type="module" src="./src/core/EnhancedMusicManager.js"></script>
+
+    <!-- UI Polish Initializer - Must load first -->
+    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>    <!-- UI Control System -->
     <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
@@ -1336,3 +1305,5 @@
     <script src="src/utils/smooth-transitions.js"></script>
 </body>
 </html>
+
+

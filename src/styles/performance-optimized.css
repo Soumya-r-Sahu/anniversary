@@ -128,13 +128,31 @@ html, body {
     .performance-container {
         contain: layout style;
     }
-    
+
     .particle-optimized {
         animation-duration: 1s !important;
     }
-    
+
     .heart-optimized {
         animation-duration: 1.5s !important;
+    }
+
+    /* COMPREHENSIVE BUBBLE SLOWDOWN FOR MOBILE/ANDROID */
+    .bubble,
+    .floating-bubbles .bubble,
+    .bubble-burst,
+    [class*="bubble"] {
+        animation-duration: 60s !important;
+    }
+}
+
+/* Android specific - EXTRA SLOW BUBBLES */
+@media (max-width: 480px) {
+    .bubble,
+    .floating-bubbles .bubble,
+    .bubble-burst,
+    [class*="bubble"] {
+        animation-duration: 80s !important;
     }
 }
 

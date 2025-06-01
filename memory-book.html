@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Book - Anniversary</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Our collaborative digital scrapbook of memories and moments">
+    <meta name="keywords" content="anniversary, love, memory book, scrapbook, photos, memories">
+    <meta name="author" content="Anniversary Website">
+    
+    <!-- Theme and Icons -->
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="msapplication-navbutton-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        .memory-book-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .memory-sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .category-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-item:hover,
+        .category-item.active {
+            background: rgba(255, 105, 180, 0.3);
+            border-color: #ff69b4;
+            color: #fff;
+        }
+        
+        .category-count {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+        
+        .memory-main {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .memory-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .view-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .view-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn.active,
+        .view-btn:hover {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+        }
+        
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .memory-timeline {
+            display: none;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .memory-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+        }
+        
+        .memory-photo {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.3), rgba(138, 43, 226, 0.3));
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .memory-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .memory-photo.placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 3rem;
+        }
+        
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .memory-photo:hover .photo-overlay {
+            opacity: 1;
+        }
+        
+        .memory-date {
+            color: #ff69b4;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .memory-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .memory-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .memory-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .memory-tag {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 105, 180, 0.5);
+        }
+        
+        .memory-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .memory-btn {
+            background: rgba(255, 105, 180, 0.3);
+            border: 1px solid #ff69b4;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .memory-btn:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #ff69b4, rgba(255, 105, 180, 0.3));
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 0.5rem;
+            top: 1rem;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .add-memory-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-memory-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        .export-controls {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .export-btn {
+            background: rgba(255, 105, 180, 0.3);
+            border: 1px solid #ff69b4;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .export-btn:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+        
+        .memory-stats {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .stats-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .memory-book-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .memory-sidebar {
+                order: -1;
+                position: static;
+            }
+            
+            .category-list {
+                display: flex;
+                overflow-x: auto;
+                gap: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+            
+            .category-item {
+                white-space: nowrap;
+                margin-bottom: 0;
+                min-width: fit-content;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .memory-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: none;
+            }
+            
+            .timeline-item {
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" data-aos="fade-down">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-heart"></i>
+                <span>Our Journey</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="countdown.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Countdown</span>
+                </a>
+                <a href="memories-timeline.html" class="nav-link">
+                    <i class="fas fa-timeline"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="memory-book.html" class="nav-link active">
+                    <i class="fas fa-book"></i>
+                    <span>Memory Book</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-book"></i>
+                    Our Memory Book
+                </h1>
+                <p class="hero-subtitle">A collaborative digital scrapbook of our beautiful moments</p>
+            </div>
+        </section>
+        
+        <!-- Memory Book Container -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="memory-book-container">
+                <!-- Sidebar -->
+                <div class="memory-sidebar">
+                    <!-- Statistics -->
+                    <div class="memory-stats">
+                        <div class="stats-number" id="totalMemories">24</div>
+                        <div class="stats-label">Total Memories</div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem;">
+                        <i class="fas fa-folder"></i> Categories
+                    </h3>
+                    <ul class="category-list">
+                        <li class="category-item active" data-category="all">
+                            <i class="fas fa-list"></i>
+                            All Memories
+                            <span class="category-count">24</span>
+                        </li>
+                        <li class="category-item" data-category="dates">
+                            <i class="fas fa-heart"></i>
+                            Date Nights
+                            <span class="category-count">8</span>
+                        </li>
+                        <li class="category-item" data-category="travel">
+                            <i class="fas fa-plane"></i>
+                            Travel
+                            <span class="category-count">5</span>
+                        </li>
+                        <li class="category-item" data-category="celebrations">
+                            <i class="fas fa-birthday-cake"></i>
+                            Celebrations
+                            <span class="category-count">6</span>
+                        </li>
+                        <li class="category-item" data-category="everyday">
+                            <i class="fas fa-home"></i>
+                            Everyday Moments
+                            <span class="category-count">5</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Quick Actions -->
+                    <div style="margin-top: 2rem;">
+                        <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem;">
+                            <i class="fas fa-bolt"></i> Quick Actions
+                        </h3>
+                        <button class="memory-btn" style="width: 100%; margin-bottom: 0.5rem;" onclick="exportMemoryBook()">
+                            <i class="fas fa-download"></i> Export PDF
+                        </button>
+                        <button class="memory-btn" style="width: 100%; margin-bottom: 0.5rem;" onclick="shareMemoryBook()">
+                            <i class="fas fa-share"></i> Share Book
+                        </button>
+                        <button class="memory-btn" style="width: 100%;" onclick="printMemoryBook()">
+                            <i class="fas fa-print"></i> Print Book
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="memory-main">
+                    <!-- Controls -->
+                    <div class="memory-controls">
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid">
+                                <i class="fas fa-th"></i> Grid
+                            </button>
+                            <button class="view-btn" data-view="timeline">
+                                <i class="fas fa-list"></i> Timeline
+                            </button>
+                        </div>
+                        <input type="text" class="search-box" placeholder="Search memories..." id="searchMemories" oninput="filterMemories()">
+                    </div>
+                    
+                    <!-- Memory Grid View -->
+                    <div class="memory-grid" id="memoryGrid">
+                        <!-- Memory items will be generated by JavaScript -->
+                    </div>
+                    
+                    <!-- Timeline View -->
+                    <div class="memory-timeline" id="memoryTimeline">
+                        <!-- Timeline items will be generated by JavaScript -->
+                    </div>
+                    
+                    <!-- Export Controls -->
+                    <div class="export-controls">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">
+                            <i class="fas fa-download"></i> Export Options
+                        </h3>
+                        <button class="export-btn" onclick="exportAsJSON()">
+                            <i class="fas fa-file-code"></i> JSON
+                        </button>
+                        <button class="export-btn" onclick="exportAsPDF()">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                        <button class="export-btn" onclick="exportAsHTML()">
+                            <i class="fas fa-file-code"></i> HTML
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Add Memory Button -->
+    <button class="add-memory-btn" onclick="addNewMemory()" title="Add New Memory">
+        <i class="fas fa-plus"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/utils/ui-controls.js"></script>
+    <script src="src/core/particles-config.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Initialize Enhanced Music Manager
+        const musicManager = window.musicManager;
+        
+        // Memory database
+        let memories = [
+            {
+                id: 1,
+                title: "First Date at the Coffee Shop",
+                description: "Where we spent 4 hours talking and lost track of time. I knew you were special when you laughed at my terrible jokes.",
+                date: "2023-01-15",
+                category: "dates",
+                tags: ["first date", "coffee", "conversation", "love at first sight"],
+                image: null
+            },
+            {
+                id: 2,
+                title: "Weekend Getaway to the Mountains",
+                description: "Our first trip together. Hiking, stargazing, and falling deeper in love with nature and each other.",
+                date: "2023-03-20",
+                category: "travel",
+                tags: ["mountains", "hiking", "adventure", "stargazing"],
+                image: null
+            },
+            {
+                id: 3,
+                title: "Your Birthday Surprise",
+                description: "The look on your face when you saw the surprise party I planned was priceless. Worth every secret phone call!",
+                date: "2023-05-10",
+                category: "celebrations",
+                tags: ["birthday", "surprise", "party", "joy"],
+                image: null
+            },
+            {
+                id: 4,
+                title: "Cooking Disaster Turned Success",
+                description: "We tried to make fancy pasta and almost burned down the kitchen. Ended up ordering pizza and laughing all night.",
+                date: "2023-06-02",
+                category: "everyday",
+                tags: ["cooking", "funny", "pizza", "laughter"],
+                image: null
+            },
+            {
+                id: 5,
+                title: "Our First Anniversary",
+                description: "Dancing in the living room to our song, sharing dreams about the future, and promising forever.",
+                date: "2024-01-15",
+                category: "celebrations",
+                tags: ["anniversary", "dancing", "promises", "forever"],
+                image: null
+            },
+            {
+                id: 6,
+                title: "Beach Sunset Walk",
+                description: "That perfect evening when we walked hand in hand as the sun painted the sky in shades of our love.",
+                date: "2023-08-14",
+                category: "dates",
+                tags: ["beach", "sunset", "romantic", "peaceful"],
+                image: null
+            },
+            {
+                id: 7,
+                title: "Concert Under the Stars",
+                description: "Our favorite band playing our song while we held each other close. Magic in the night air.",
+                date: "2023-09-22",
+                category: "dates",
+                tags: ["concert", "music", "stars", "magical"],
+                image: null
+            },
+            {
+                id: 8,
+                title: "Lazy Sunday Morning",
+                description: "Pancakes in bed, crossword puzzles, and nowhere to be but here with you. Perfect simplicity.",
+                date: "2023-11-05",
+                category: "everyday",
+                tags: ["lazy", "pancakes", "morning", "peaceful"],
+                image: null
+            }
+        ];
+        
+        let currentCategory = 'all';
+        let currentView = 'grid';
+        
+        function renderMemories() {
+            let filteredMemories = memories;
+            
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filteredMemories = filteredMemories.filter(memory => memory.category === currentCategory);
+            }
+            
+            // Filter by search term
+            const searchTerm = document.getElementById('searchMemories').value.toLowerCase();
+            if (searchTerm) {
+                filteredMemories = filteredMemories.filter(memory => 
+                    memory.title.toLowerCase().includes(searchTerm) ||
+                    memory.description.toLowerCase().includes(searchTerm) ||
+                    memory.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            // Sort by date (newest first)
+            filteredMemories.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (currentView === 'grid') {
+                renderGridView(filteredMemories);
+            } else {
+                renderTimelineView(filteredMemories);
+            }
+        }
+        
+        function renderGridView(filteredMemories) {
+            const grid = document.getElementById('memoryGrid');
+            const timeline = document.getElementById('memoryTimeline');
+            
+            grid.style.display = 'grid';
+            timeline.style.display = 'none';
+            
+            grid.innerHTML = filteredMemories.map(memory => `
+                <div class="memory-item" data-aos="fade-up" data-aos-delay="${Math.random() * 500}">
+                    <div class="memory-photo placeholder" onclick="uploadPhoto(${memory.id})">
+                        ${memory.image ? `<img src="${memory.image}" alt="${memory.title}">` : '<i class="fas fa-camera"></i>'}
+                        <div class="photo-overlay">
+                            <i class="fas fa-upload"></i> Add Photo
+                        </div>
+                    </div>
+                    <div class="memory-date">${formatDate(memory.date)}</div>
+                    <h3 class="memory-title">${memory.title}</h3>
+                    <p class="memory-description">${memory.description}</p>
+                    <div class="memory-tags">
+                        ${memory.tags.map(tag => `<span class="memory-tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="memory-actions">
+                        <button class="memory-btn" onclick="editMemory(${memory.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="memory-btn" onclick="shareMemory(${memory.id})">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                        <button class="memory-btn" onclick="deleteMemory(${memory.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            AOS.refresh();
+        }
+        
+        function renderTimelineView(filteredMemories) {
+            const grid = document.getElementById('memoryGrid');
+            const timeline = document.getElementById('memoryTimeline');
+            
+            grid.style.display = 'none';
+            timeline.style.display = 'flex';
+            
+            timeline.innerHTML = filteredMemories.map((memory, index) => `
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="${index * 100}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="memory-date">${formatDate(memory.date)}</div>
+                        <h3 class="memory-title">${memory.title}</h3>
+                        <p class="memory-description">${memory.description}</p>
+                        <div class="memory-tags">
+                            ${memory.tags.map(tag => `<span class="memory-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            AOS.refresh();
+        }
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+        
+        function switchCategory(category) {
+            currentCategory = category;
+            
+            // Update active category
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            renderMemories();
+        }
+        
+        function switchView(view) {
+            currentView = view;
+            
+            // Update active view button
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-view="${view}"]`).classList.add('active');
+            
+            renderMemories();
+        }
+        
+        function filterMemories() {
+            renderMemories();
+        }
+        
+        function addNewMemory() {
+            const title = prompt('Memory title:');
+            const description = prompt('Memory description:');
+            const date = prompt('Date (YYYY-MM-DD):');
+            const category = prompt('Category (dates/travel/celebrations/everyday):');
+            const tags = prompt('Tags (comma-separated):');
+            
+            if (title && description && date && category) {
+                const newMemory = {
+                    id: Math.max(...memories.map(m => m.id)) + 1,
+                    title,
+                    description,
+                    date,
+                    category,
+                    tags: tags ? tags.split(',').map(tag => tag.trim()) : [],
+                    image: null
+                };
+                
+                memories.push(newMemory);
+                updateStatistics();
+                renderMemories();
+                showNotification('New memory added! 📸');
+            }
+        }
+        
+        function editMemory(id) {
+            const memory = memories.find(m => m.id === id);
+            if (memory) {
+                const newTitle = prompt('Edit title:', memory.title);
+                const newDescription = prompt('Edit description:', memory.description);
+                const newTags = prompt('Edit tags (comma-separated):', memory.tags.join(', '));
+                
+                if (newTitle && newDescription) {
+                    memory.title = newTitle;
+                    memory.description = newDescription;
+                    memory.tags = newTags ? newTags.split(',').map(tag => tag.trim()) : [];
+                    renderMemories();
+                    showNotification('Memory updated! ✏️');
+                }
+            }
+        }
+        
+        function deleteMemory(id) {
+            if (confirm('Are you sure you want to delete this memory?')) {
+                memories = memories.filter(m => m.id !== id);
+                updateStatistics();
+                renderMemories();
+                showNotification('Memory deleted! 🗑️');
+            }
+        }
+        
+        function shareMemory(id) {
+            const memory = memories.find(m => m.id === id);
+            if (memory && navigator.share) {
+                navigator.share({
+                    title: memory.title,
+                    text: memory.description,
+                    url: window.location.href
+                });
+            } else {
+                showNotification('Memory details copied to clipboard! 📋');
+            }
+        }
+        
+        function uploadPhoto(id) {
+            // Simulate photo upload
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const memory = memories.find(m => m.id === id);
+                        if (memory) {
+                            memory.image = e.target.result;
+                            renderMemories();
+                            showNotification('Photo added! 📷');
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+        
+        function updateStatistics() {
+            document.getElementById('totalMemories').textContent = memories.length;
+            
+            // Update category counts
+            const categories = ['dates', 'travel', 'celebrations', 'everyday'];
+            categories.forEach(category => {
+                const count = memories.filter(m => m.category === category).length;
+                const countElement = document.querySelector(`[data-category="${category}"] .category-count`);
+                if (countElement) {
+                    countElement.textContent = count;
+                }
+            });
+            
+            // Update "all" count
+            const allCountElement = document.querySelector('[data-category="all"] .category-count');
+            if (allCountElement) {
+                allCountElement.textContent = memories.length;
+            }
+        }
+        
+        function exportAsJSON() {
+            const dataStr = JSON.stringify(memories, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'memory-book.json';
+            link.click();
+            
+            showNotification('Memory book exported as JSON! 📄');
+        }
+        
+        function exportAsPDF() {
+            showNotification('PDF export feature coming soon! 📄');
+        }
+        
+        function exportAsHTML() {
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Our Memory Book</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 2rem; background: #f5f5f5; }
+                        .memory { background: white; padding: 2rem; margin: 1rem 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+                        .memory-title { color: #ff69b4; font-size: 1.5rem; margin-bottom: 0.5rem; }
+                        .memory-date { color: #666; margin-bottom: 1rem; }
+                        .memory-tags { margin-top: 1rem; }
+                        .tag { background: #ff69b4; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; margin-right: 0.5rem; font-size: 0.8rem; }
+                    </style>
+                </head>
+                <body>
+                    <h1 style="text-align: center; color: #ff69b4;">Our Memory Book</h1>
+                    ${memories.map(memory => `
+                        <div class="memory">
+                            <h2 class="memory-title">${memory.title}</h2>
+                            <div class="memory-date">${formatDate(memory.date)}</div>
+                            <p>${memory.description}</p>
+                            <div class="memory-tags">
+                                ${memory.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </body>
+                </html>
+            `;
+            
+            const dataBlob = new Blob([htmlContent], {type: 'text/html'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'memory-book.html';
+            link.click();
+            
+            showNotification('Memory book exported as HTML! 🌐');
+        }
+        
+        function exportMemoryBook() {
+            exportAsJSON();
+        }
+        
+        function shareMemoryBook() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Our Memory Book',
+                    text: 'Check out our beautiful collection of memories!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showNotification('Link copied to clipboard! 📋');
+            }
+        }
+        
+        function printMemoryBook() {
+            window.print();
+        }
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 2rem;
+                right: 2rem;
+                background: rgba(255, 105, 180, 0.95);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 9999;
+                font-weight: bold;
+                box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Add animation styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => {
+                notification.remove();
+                style.remove();
+            }, 3000);
+        }
+        
+        // Event listeners
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', () => {
+                switchCategory(item.dataset.category);
+            });
+        });
+        
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchView(btn.dataset.view);
+            });
+        });
+          // Initialize
+        renderMemories();
+        updateStatistics();
+    </script>
+
+    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
+</body>
+</html>
+
+

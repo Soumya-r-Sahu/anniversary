@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Dates - Anniversary</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Calendar of important dates and celebrations in our relationship">
+    <meta name="keywords" content="anniversary, love, special dates, calendar, celebrations, milestones">
+    <meta name="author" content="Anniversary Website">
+    
+    <!-- Theme and Icons -->
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="msapplication-navbutton-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+    <link rel="stylesheet" href="src/styles/90fps-optimized.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        .calendar-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+        
+        .calendar-nav {
+            background: none;
+            border: 2px solid #ff69b4;
+            color: #ff69b4;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-nav:hover {
+            background: #ff69b4;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .calendar-month {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .calendar-day-header {
+            background: rgba(255, 105, 180, 0.3);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .calendar-day {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            min-height: 80px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-day:hover {
+            background: rgba(255, 105, 180, 0.2);
+        }
+        
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+        
+        .calendar-day.special {
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.3), rgba(138, 43, 226, 0.3));
+            border: 2px solid #ff69b4;
+        }
+        
+        .calendar-day.today {
+            background: rgba(255, 105, 180, 0.5);
+            font-weight: bold;
+        }
+        
+        .day-number {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .day-event {
+            background: rgba(255, 105, 180, 0.6);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            margin-bottom: 0.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .special-dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .date-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .date-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+        }
+        
+        .date-icon {
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 1rem;
+        }
+        
+        .date-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .date-info {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+        
+        .countdown-display {
+            background: rgba(255, 105, 180, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .countdown-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .statistics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .weather-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .weather-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .weather-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        .add-date-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .add-date-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-grid {
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day {
+                min-height: 60px;
+                padding: 0.5rem;
+            }
+            
+            .special-dates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .statistics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav" data-aos="fade-down">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-heart"></i>
+                <span>Our Journey</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="countdown.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Countdown</span>
+                </a>
+                <a href="memories-timeline.html" class="nav-link">
+                    <i class="fas fa-timeline"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="special-dates.html" class="nav-link active">
+                    <i class="fas fa-calendar-heart"></i>
+                    <span>Dates</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-calendar-heart"></i>
+                    Special Dates
+                </h1>
+                <p class="hero-subtitle">Important moments and celebrations in our journey</p>
+            </div>
+        </section>
+        
+        <!-- Relationship Statistics -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                Our Love Statistics
+            </h2>
+            <div class="statistics-grid">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-number" id="daysCounter">0</div>
+                    <div class="stat-label">Days Together</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-number" id="monthsCounter">0</div>
+                    <div class="stat-label">Months of Love</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="stat-number" id="datesCounter">47</div>
+                    <div class="stat-label">Amazing Dates</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Love Level</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Calendar Section -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Our Special Calendar
+            </h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" onclick="previousMonth()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="calendar-month" id="currentMonth">January 2024</div>
+                    <button class="calendar-nav" onclick="nextMonth()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Dates Grid -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                Upcoming Special Dates
+            </h2>
+            <div class="special-dates-grid">
+                <div class="date-card" data-aos="flip-left" data-aos-delay="700">
+                    <div class="date-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="date-title">Our Anniversary</h3>
+                    <p class="date-info">The day we officially became "us"</p>
+                    <div class="countdown-display">
+                        <div class="countdown-number" id="anniversaryCountdown">0</div>
+                        <div class="countdown-label">Days Until Next Anniversary</div>
+                    </div>
+                </div>
+                
+                <div class="date-card" data-aos="flip-left" data-aos-delay="800">
+                    <div class="date-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3 class="date-title">Your Birthday</h3>
+                    <p class="date-info">Celebrating the day my world got brighter</p>
+                    <div class="countdown-display">
+                        <div class="countdown-number" id="birthdayCountdown">0</div>
+                        <div class="countdown-label">Days Until Your Special Day</div>
+                    </div>
+                </div>
+                
+                <div class="date-card" data-aos="flip-left" data-aos-delay="900">
+                    <div class="date-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="date-title">Valentine's Day</h3>
+                    <p class="date-info">Our annual celebration of love</p>
+                    <div class="countdown-display">
+                        <div class="countdown-number" id="valentinesCountdown">0</div>
+                        <div class="countdown-label">Days Until Valentine's</div>
+                    </div>
+                </div>
+                
+                <div class="date-card" data-aos="flip-left" data-aos-delay="1000">
+                    <div class="date-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3 class="date-title">Next Date Night</h3>
+                    <p class="date-info">Our planned romantic evening together</p>
+                    <div class="countdown-display">
+                        <div class="countdown-number">7</div>
+                        <div class="countdown-label">Days Until Date Night</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Weather on Special Dates -->
+        <section class="content-section" data-aos="fade-up" data-aos-delay="800">
+            <h2 class="section-title">
+                <i class="fas fa-cloud-sun"></i>
+                Weather on Our Special Days
+            </h2>
+            <div class="weather-card">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Historical Weather Data</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                    The weather on some of our most important days together
+                </p>
+                <div class="weather-info">
+                    <div class="weather-item" data-aos="slide-up" data-aos-delay="900">
+                        <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">First Date</h4>
+                        <p style="color: #fff;">☀️ Sunny, 72°F</p>
+                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Perfect weather for a perfect beginning</p>
+                    </div>
+                    
+                    <div class="weather-item" data-aos="slide-up" data-aos-delay="1000">
+                        <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">First Kiss</h4>
+                        <p style="color: #fff;">🌙 Clear night, 68°F</p>
+                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Stars witnessed our magical moment</p>
+                    </div>
+                    
+                    <div class="weather-item" data-aos="slide-up" data-aos-delay="1100">
+                        <h4 style="color: #ff69b4; margin-bottom: 0.5rem;">Anniversary</h4>
+                        <p style="color: #fff;">🌺 Partly cloudy, 75°F</p>
+                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Beautiful day for beautiful memories</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Add Date Button -->
+    <button class="add-date-btn" onclick="addSpecialDate()" title="Add Special Date">
+        <i class="fas fa-plus"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/utils/ui-controls.js"></script>
+    <script src="src/core/particles-config.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Initialize Enhanced Music Manager
+        const musicManager = window.musicManager;
+        
+        // Calendar functionality
+        let currentDate = new Date();
+        let displayDate = new Date();
+        
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        
+        // Special dates database
+        const specialDates = {
+            '2024-02-14': 'Valentine\'s Day ❤️',
+            '2024-01-15': 'Our Anniversary 💕',
+            '2024-03-10': 'Your Birthday 🎂',
+            '2024-04-01': 'First Date Anniversary 💖',
+            '2024-05-20': 'Date Night 🌹',
+            '2024-06-15': 'Summer Adventure 🌞'
+        };
+        
+        function generateCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const monthHeader = document.getElementById('currentMonth');
+            
+            // Clear existing content
+            grid.innerHTML = '';
+            
+            // Update month header
+            monthHeader.textContent = `${monthNames[displayDate.getMonth()]} ${displayDate.getFullYear()}`;
+            
+            // Add day headers
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                grid.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(displayDate.getFullYear(), displayDate.getMonth(), 1).getDay();
+            const daysInMonth = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0).getDate();
+            const daysInPrevMonth = new Date(displayDate.getFullYear(), displayDate.getMonth(), 0).getDate();
+            
+            // Add empty cells for previous month
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const dayCell = createDayCell(daysInPrevMonth - i, true);
+                grid.appendChild(dayCell);
+            }
+            
+            // Add days of current month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = createDayCell(day, false);
+                grid.appendChild(dayCell);
+            }
+            
+            // Add days from next month to fill grid
+            const totalCells = grid.children.length - 7; // Subtract day headers
+            const remainingCells = 42 - totalCells; // 6 rows * 7 days
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayCell = createDayCell(day, true);
+                grid.appendChild(dayCell);
+            }
+        }
+        
+        function createDayCell(dayNumber, isOtherMonth) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'calendar-day';
+            
+            if (isOtherMonth) {
+                dayCell.classList.add('other-month');
+            }
+            
+            // Check if it's today
+            const cellDate = new Date(displayDate.getFullYear(), displayDate.getMonth(), dayNumber);
+            if (!isOtherMonth && 
+                cellDate.toDateString() === currentDate.toDateString()) {
+                dayCell.classList.add('today');
+            }
+            
+            // Check for special dates
+            const dateKey = `${displayDate.getFullYear()}-${String(displayDate.getMonth() + 1).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
+            const specialEvent = specialDates[dateKey];
+            
+            if (specialEvent && !isOtherMonth) {
+                dayCell.classList.add('special');
+                dayCell.innerHTML = `
+                    <div class="day-number">${dayNumber}</div>
+                    <div class="day-event">${specialEvent}</div>
+                `;
+            } else {
+                dayCell.innerHTML = `<div class="day-number">${dayNumber}</div>`;
+            }
+            
+            return dayCell;
+        }
+        
+        function previousMonth() {
+            displayDate.setMonth(displayDate.getMonth() - 1);
+            generateCalendar();
+        }
+        
+        function nextMonth() {
+            displayDate.setMonth(displayDate.getMonth() + 1);
+            generateCalendar();
+        }
+        
+        function addSpecialDate() {
+            const date = prompt('Enter the date (YYYY-MM-DD):');
+            const event = prompt('Enter the event name:');
+            
+            if (date && event && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+                specialDates[date] = event;
+                generateCalendar();
+                
+                // Show success animation
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 105, 180, 0.9);
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 10px;
+                    z-index: 9999;
+                    font-weight: bold;
+                `;
+                successMsg.textContent = 'Special date added! ❤️';
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => successMsg.remove(), 2000);
+            } else {
+                alert('Please enter a valid date format (YYYY-MM-DD) and event name.');
+            }
+        }
+        
+        // Calculate countdowns
+        function updateCountdowns() {
+            const now = new Date();
+            
+            // Example anniversary date (adjust as needed)
+            const anniversaryDate = new Date(now.getFullYear() + (now > new Date(now.getFullYear(), 0, 15) ? 1 : 0), 0, 15);
+            const birthdayDate = new Date(now.getFullYear() + (now > new Date(now.getFullYear(), 2, 10) ? 1 : 0), 2, 10);
+            const valentinesDate = new Date(now.getFullYear() + (now > new Date(now.getFullYear(), 1, 14) ? 1 : 0), 1, 14);
+            
+            const anniversaryDays = Math.ceil((anniversaryDate - now) / (1000 * 60 * 60 * 24));
+            const birthdayDays = Math.ceil((birthdayDate - now) / (1000 * 60 * 60 * 24));
+            const valentinesDays = Math.ceil((valentinesDate - now) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('anniversaryCountdown').textContent = anniversaryDays;
+            document.getElementById('birthdayCountdown').textContent = birthdayDays;
+            document.getElementById('valentinesCountdown').textContent = valentinesDays;
+        }
+        
+        // Calculate relationship statistics
+        function updateStatistics() {
+            // Example start date (adjust as needed)
+            const startDate = new Date('2023-01-15');
+            const now = new Date();
+            
+            const timeDiff = now - startDate;
+            const daysTogether = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const monthsTogether = Math.floor(daysTogether / 30.44); // Average month length
+            
+            // Animate counters
+            animateCounter('daysCounter', daysTogether);
+            animateCounter('monthsCounter', monthsTogether);
+        }
+        
+        function animateCounter(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const duration = 2000;
+            const increment = targetValue / (duration / 16);
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    currentValue = targetValue;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(currentValue);
+            }, 16);
+        }
+        
+        // Initialize everything
+        generateCalendar();
+        updateCountdowns();
+        updateStatistics();
+          // Update countdowns every hour
+        setInterval(updateCountdowns, 3600000);
+    </script>
+
+    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
+
+    <!-- Page-Specific Music Popup Manager -->
+    <script type="module" src="./src/music-popup-initializer.js"></script>
+</body>
+</html>
+
+
