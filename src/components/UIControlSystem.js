@@ -6,18 +6,11 @@
 
 class UIControlSystem {
     constructor(options = {}) {
-        // Get current page to determine settings availability
-        const currentPage = window.location.pathname.toLowerCase();
-        const isIndexOrCountdown = currentPage.includes('index.html') || 
-                                  currentPage.includes('countdown.html') || 
-                                  currentPage === '/' || 
-                                  currentPage.endsWith('/');
-        
-        // Configuration
+        // Configuration (settings button removed from all pages)
         this.config = {
             enableThemeToggle: options.enableThemeToggle !== false,
             enableMusicControl: options.enableMusicControl !== false,
-            enableSettingsPanel: isIndexOrCountdown ? false : (options.enableSettingsPanel !== false),
+            enableSettingsPanel: false, // Settings button removed from all pages
             enableClearVisits: options.enableClearVisits || false, // Disabled by default, moved to settings
             position: options.position || 'top-right', // 'top-right', 'top-left', 'bottom-right', 'bottom-left'
             autoHide: options.autoHide || false,
@@ -40,7 +33,6 @@ class UIControlSystem {
             controlPanel: null,
             themeToggle: null,
             musicControl: null,
-            settingsButton: null,
             clearVisitsButton: null
         };
 
@@ -54,7 +46,6 @@ class UIControlSystem {
         this.boundHandlers = {
             onThemeToggle: this.onThemeToggle.bind(this),
             onMusicToggle: this.onMusicToggle.bind(this),
-            onSettingsToggle: this.onSettingsToggle.bind(this),
             onClearVisits: this.onClearVisits.bind(this),
             onMouseEnter: this.onMouseEnter.bind(this),
             onMouseLeave: this.onMouseLeave.bind(this)
@@ -118,11 +109,7 @@ class UIControlSystem {
             this.ui.controlPanel.appendChild(this.ui.musicControl);
         }
 
-        // Create settings button
-        if (this.config.enableSettingsPanel) {
-            this.ui.settingsButton = this.createSettingsButton();
-            this.ui.controlPanel.appendChild(this.ui.settingsButton);
-        }
+        // Settings button removed from all pages
 
         // Create clear visits button
         if (this.config.enableClearVisits) {
@@ -176,20 +163,7 @@ class UIControlSystem {
         return button;
     }
 
-    /**
-     * Create settings button
-     */
-    createSettingsButton() {
-        const button = document.createElement('button');
-        button.className = 'ui-control-btn settings-btn';
-        button.innerHTML = '⚙️';
-        button.title = 'Settings';
-        button.setAttribute('aria-label', 'Open settings panel');
-        
-        button.addEventListener('click', this.boundHandlers.onSettingsToggle);
-        
-        return button;
-    }
+    // Settings button method removed
 
     /**
      * Create clear visits button
@@ -334,10 +308,7 @@ class UIControlSystem {
         }
     }
 
-    onSettingsToggle() {
-        // Navigate to settings page
-        window.location.href = 'settings.html';
-    }
+    // Settings toggle method removed
 
     onClearVisits() {
         // Clear localStorage
@@ -579,9 +550,7 @@ class UIControlSystem {
         if (this.ui.musicControl) {
             this.ui.musicControl.removeEventListener('click', this.boundHandlers.onMusicToggle);
         }
-        if (this.ui.settingsButton) {
-            this.ui.settingsButton.removeEventListener('click', this.boundHandlers.onSettingsToggle);
-        }
+        // Settings button cleanup removed
         if (this.ui.clearVisitsButton) {
             this.ui.clearVisitsButton.removeEventListener('click', this.boundHandlers.onClearVisits);
         }

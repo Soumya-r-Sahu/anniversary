@@ -23,12 +23,16 @@ const STATIC_FILES = [
   '/src/styles/variables.css',
   '/src/styles/performance-optimized.css',
   '/src/styles/music-popup-alignment.css',
+  '/src/styles/compact-music-popup.css',
+  '/src/styles/single-row-layout.css',
   '/manifest.json',
   // Add core JavaScript files
   '/src/core/MusicSystemInitializer.js',
   '/src/utils/ui-polish-initializer.js',
   '/src/utils/music-player-cleanup.js',
   '/src/utils/long-page-music-positioning.js',
+  '/src/utils/popup-animation-controller.js',
+  '/src/utils/single-row-layout-helper.js',
   '/src/integrator.js',
   // Add essential images
   '/assets/images/hero-bg.jpg',

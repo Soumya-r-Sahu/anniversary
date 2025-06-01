@@ -260,8 +260,57 @@ class PageSpecificMusicManager {
         if (this.audio) {
             this.audio.volume = this.volume;
         }
+        this.updateVolumeIcon();
         this.updateUI();
         this.saveState();
+        console.log(`🔊 Volume set to ${Math.round(this.volume * 100)}%`);
+    }
+
+    /**
+     * Toggle mute/unmute
+     */
+    toggleMute() {
+        if (!this.audio) return;
+
+        if (this.audio.volume > 0) {
+            // Mute
+            this.previousVolume = this.volume;
+            this.setVolume(0);
+            console.log('🔇 Audio muted');
+        } else {
+            // Unmute
+            const restoreVolume = this.previousVolume || 0.3;
+            this.setVolume(restoreVolume);
+            console.log('🔊 Audio unmuted');
+        }
+
+        // Update volume slider
+        const volumeSlider = document.querySelector('.volume-slider');
+        if (volumeSlider) {
+            volumeSlider.value = this.volume * 100;
+        }
+    }
+
+    /**
+     * Update volume icon based on current volume
+     */
+    updateVolumeIcon() {
+        const volumeIcon = document.querySelector('.volume-icon');
+        if (!volumeIcon) return;
+
+        if (this.volume === 0) {
+            volumeIcon.textContent = '🔇';
+            volumeIcon.title = 'Click to unmute';
+        } else if (this.volume < 0.3) {
+            volumeIcon.textContent = '🔈';
+            volumeIcon.title = 'Click to mute';
+        } else if (this.volume < 0.7) {
+            volumeIcon.textContent = '🔉';
+            volumeIcon.title = 'Click to mute';
+        } else {
+            volumeIcon.textContent = '🔊';
+            volumeIcon.title = 'Click to mute';
+        }
     }
 
     /**
@@ -345,16 +394,16 @@ class PageSpecificMusicManager {
                     <button class="popup-close-btn" onclick="window.pageSpecificMusicManager.togglePopup()">×</button>
                 </div>
                 <div class="song-info">
-                    <div class="song-title">${this.currentPageSong.title}</div>
-                    <div class="song-artist">${this.currentPageSong.artist}</div>
+                    <div class="song-title">💕 ${this.getProperSongTitle()}</div>
+                    <div class="song-artist">${this.getProperArtistName()}</div>
                 </div>
                 <div class="music-controls">
                     <button class="popup-play-pause-btn" onclick="window.pageSpecificMusicManager.toggle()">▶️</button>
                 </div>
                 <div class="volume-control">
-                    <span class="volume-icon">🔊</span>
-                    <input type="range" class="volume-slider" min="0" max="100" value="${this.volume * 100}" 
-                           oninput="window.pageSpecificMusicManager.setVolume(this.value / 100)">
+                    <span class="volume-icon" onclick="window.pageSpecificMusicManager.toggleMute()" title="Click to mute/unmute">🔊</span>
+                    <input type="range" class="volume-slider" min="0" max="100" value="${this.volume * 100}"
+                           oninput="window.pageSpecificMusicManager.setVolume(this.value / 100)" title="Adjust volume">
                 </div>
                 <div class="progress-container">
                     <div class="progress-bar" onclick="window.pageSpecificMusicManager.seekTo(event)">
@@ -365,9 +414,7 @@ class PageSpecificMusicManager {
                         <span class="duration">0:00</span>
                     </div>
                 </div>
-                <div class="page-info">
-                    <small>🎯 Page-specific song for ${window.location.pathname.split('/').pop() || 'index.html'}</small>
-                </div>
+                <!-- Page info removed for compact design -->
             </div>
         `;        // Add styles
         const styles = document.createElement('style');
@@ -502,45 +549,83 @@ class PageSpecificMusicManager {
             }            .volume-control {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-                margin-bottom: 20px;
+                gap: 12px;
+                margin-bottom: 12px;
+                padding: 8px 12px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .volume-control:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(236, 72, 153, 0.3);
             }
 
             .volume-icon {
-                font-size: 18px;
-                width: 24px;
+                font-size: 16px;
+                width: 20px;
                 text-align: center;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(255, 255, 255, 0.9);
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .volume-icon:hover {
+                color: #ec4899;
+                transform: scale(1.1);
             }
 
             .volume-slider {
                 flex: 1;
-                height: 6px;
-                border-radius: 3px;
+                height: 4px;
+                border-radius: 2px;
                 background: rgba(255, 255, 255, 0.2);
                 outline: none;
                 -webkit-appearance: none;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .volume-slider:hover {
+                background: rgba(255, 255, 255, 0.3);
             }
 
             .volume-slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
                 appearance: none;
-                width: 20px;
-                height: 20px;
+                width: 16px;
+                height: 16px;
                 border-radius: 50%;
-                background: #ec4899;
+                background: linear-gradient(45deg, #ec4899, #f472b6);
                 cursor: pointer;
-                box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+                box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.2s ease;
+            }
+
+            .volume-slider::-webkit-slider-thumb:hover {
+                transform: scale(1.2);
+                box-shadow: 0 4px 12px rgba(236, 72, 153, 0.6);
+                border-color: rgba(255, 255, 255, 0.4);
             }
 
             .volume-slider::-moz-range-thumb {
-                border: none;
-                width: 20px;
-                height: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                width: 16px;
+                height: 16px;
                 border-radius: 50%;
-                background: #ec4899;
+                background: linear-gradient(45deg, #ec4899, #f472b6);
                 cursor: pointer;
-                box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+                box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
+                transition: all 0.2s ease;
+            }
+
+            .volume-slider::-moz-range-thumb:hover {
+                transform: scale(1.2);
+                box-shadow: 0 4px 12px rgba(236, 72, 153, 0.6);
+                border-color: rgba(255, 255, 255, 0.4);
             }
 
             .progress-container {
@@ -571,14 +656,7 @@ class PageSpecificMusicManager {
                 color: rgba(255, 255, 255, 0.7);
             }
 
-            .page-info {
-                text-align: center;
-                color: rgba(255, 255, 255, 0.5);
-                font-size: 11px;
-                margin-top: 10px;
-                padding-top: 10px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-            }            .music-control-btn.active {
+            /* Page info styles removed for compact design */            .music-control-btn.active {
                 background: linear-gradient(45deg, #ec4899, #f472b6) !important;
                 color: white !important;
                 transform: scale(1.1);
@@ -683,6 +761,9 @@ class PageSpecificMusicManager {
 
         document.head.appendChild(styles);
         document.body.appendChild(popup);
+
+        // Initialize volume icon
+        setTimeout(() => this.updateVolumeIcon(), 100);
     }
 
     /**
@@ -738,6 +819,85 @@ class PageSpecificMusicManager {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    /**
+     * Get proper song title with better formatting
+     */
+    getProperSongTitle() {
+        if (!this.currentPageSong || !this.currentPageSong.title) {
+            return 'Beautiful Love Song';
+        }
+
+        let title = this.currentPageSong.title;
+
+        // Remove file extensions
+        title = title.replace(/\.(mp3|m4a|wav|flac|ogg)$/i, '');
+
+        // Remove track numbers (01-, 02-, etc.)
+        title = title.replace(/^\d{2}-/, '');
+
+        // Replace hyphens and underscores with spaces
+        title = title.replace(/[-_]/g, ' ');
+
+        // Capitalize each word
+        title = title.replace(/\b\w+/g, word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        );
+
+        // Handle special cases
+        title = title.replace(/\bAnd\b/g, 'and');
+        title = title.replace(/\bThe\b/g, 'the');
+        title = title.replace(/\bOf\b/g, 'of');
+        title = title.replace(/\bIn\b/g, 'in');
+        title = title.replace(/\bOn\b/g, 'on');
+        title = title.replace(/\bAt\b/g, 'at');
+        title = title.replace(/\bTo\b/g, 'to');
+        title = title.replace(/\bFor\b/g, 'for');
+
+        return title.trim() || 'Beautiful Love Song';
+    }
+
+    /**
+     * Get proper artist name with better formatting
+     */
+    getProperArtistName() {
+        if (!this.currentPageSong || !this.currentPageSong.artist) {
+            return 'Arijit Singh';
+        }
+
+        let artist = this.currentPageSong.artist;
+
+        // Handle common artist name formats
+        const artistMappings = {
+            'arijit': 'Arijit Singh',
+            'arijit singh': 'Arijit Singh',
+            'atif': 'Atif Aslam',
+            'atif aslam': 'Atif Aslam',
+            'rahat': 'Rahat Fateh Ali Khan',
+            'rahat fateh ali khan': 'Rahat Fateh Ali Khan',
+            'shreya': 'Shreya Ghoshal',
+            'shreya ghoshal': 'Shreya Ghoshal',
+            'armaan': 'Armaan Malik',
+            'armaan malik': 'Armaan Malik',
+            'jubin': 'Jubin Nautiyal',
+            'jubin nautiyal': 'Jubin Nautiyal',
+            'darshan': 'Darshan Raval',
+            'darshan raval': 'Darshan Raval'
+        };
+
+        const lowerArtist = artist.toLowerCase().trim();
+
+        if (artistMappings[lowerArtist]) {
+            return artistMappings[lowerArtist];
+        }
+
+        // Capitalize each word if no mapping found
+        artist = artist.replace(/\b\w+/g, word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        );
+
+        return artist.trim() || 'Arijit Singh';
     }
 
     /**

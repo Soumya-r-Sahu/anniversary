@@ -182,9 +182,9 @@ class UIPolishInitializer {
                 window.uiControlSystem = new UIControlSystem({
                     enableThemeToggle: false, // Removed auto theme toggle
                     enableMusicControl: true,
-                    enableSettingsPanel: true,
+                    enableSettingsPanel: false, // Settings button removed from all pages
                     enableClearVisits: false, // Moved to settings page
-                    position: 'bottom-right' // Moved settings to bottom
+                    position: 'bottom-right'
                 });
             }
 

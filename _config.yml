@@ -92,8 +92,6 @@ navigation:
     url: "/countdown.html"
   - title: "Fireworks"
     url: "/fireworks.html"
-  - title: "Settings"
-    url: "/settings.html"
 
 # Theme settings
 theme_settings:
