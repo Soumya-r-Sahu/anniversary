@@ -243,29 +243,35 @@ class SmoothTransitions {
     }
 }
 
-// Auto-initialize when DOM is loaded
+// Initialize once when DOM is loaded
+let transitionsInstance = null;
+
 document.addEventListener('DOMContentLoaded', () => {
-    new SmoothTransitions();
+    if (!transitionsInstance) {
+        transitionsInstance = new SmoothTransitions();
+
+        // Enhanced performance monitoring
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                transitionsInstance.setupSmoothScrolling();
+
+                // Page-specific enhancements
+                const pageType = document.documentElement.getAttribute('data-page-type');
+                switch(pageType) {
+                    case 'countdown':
+                        transitionsInstance.enhanceCountdown();
+                        break;
+                    case 'photo-gallery':
+                        transitionsInstance.enhancePhotoGallery();
+                        break;
+                    case 'anniversary':
+                        transitionsInstance.enhanceAnniversary();
+                        break;
+                }
+            });
+        }
+    }
 });
 
-// Enhanced performance monitoring
-if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-        const transitions = new SmoothTransitions();
-        transitions.setupSmoothScrolling();
-        
-        // Page-specific enhancements
-        const pageType = document.documentElement.getAttribute('data-page-type');
-        switch(pageType) {
-            case 'countdown':
-                transitions.enhanceCountdown();
-                break;
-            case 'photo-gallery':
-                transitions.enhancePhotoGallery();
-                break;
-            case 'anniversary':
-                transitions.enhanceAnniversary();
-                break;
-        }
-    });
-}
+// Export for module systems
+export { SmoothTransitions };

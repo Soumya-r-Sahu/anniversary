@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "vite preview --port 3000",    "lint": "eslint src --ext .js --config config/eslint.json",
+    "serve": "vite preview --port 3000",
+    "lint": "eslint src --ext .js --config config/eslint.json",
     "lint:fix": "eslint src --ext .js --fix --config config/eslint.json",
     "format": "prettier --write \"src/**/*.{js,css,html}\" --config config/prettier.json",
     "analyze": "vite-bundle-analyzer",
@@ -27,20 +28,21 @@
   "author": "Love Story Developers",
   "license": "MIT",
   "devDependencies": {
-    "vite": "^5.0.0",
-    "vite-plugin-pwa": "^0.17.0",
-    "vite-plugin-eslint": "^1.8.1",
-    "vite-bundle-analyzer": "^0.7.0",
+    "@vitest/ui": "^1.0.0",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.0",
-    "prettier": "^3.1.0",
-    "vitest": "^1.0.0",
-    "@vitest/ui": "^1.0.0",
     "gh-pages": "^6.1.0",
-    "rollup-plugin-visualizer": "^5.9.2"
+    "prettier": "^3.1.0",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "vite": "^5.0.0",
+    "vite-bundle-analyzer": "^0.7.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-pwa": "^0.17.0",
+    "vitest": "^1.0.0"
   },
   "dependencies": {
+    "fireworks-js": "^2.10.8",
     "workbox-window": "^7.0.0"
   },
   "browserslist": [

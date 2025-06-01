@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-page-type="love-story">
+<html lang="en" data-theme="dark" data-page-type="love-story">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#ff6b9d">
+    <meta name="theme-color" content="#0f0f23">
     <title>Our Love Story Timeline 💕</title>
     <meta name="description" content="The beautiful journey of our love story - from first contact to forever">
 
@@ -20,6 +20,11 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
 
     <style>
         /* Enhanced love story specific styles */
@@ -409,16 +414,9 @@
             </h2>
             <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 From that first message to forever, you are my heart, my joy, my everything. Thank you for making every day feel like a beautiful dream come true.
-            </p>
-            <p class="text-lg opacity-80" data-aos="fade-up" data-aos-delay="400">
+            </p>            <p class="text-lg opacity-80" data-aos="fade-up" data-aos-delay="400">
                 Here's to all our memories and all the beautiful moments yet to come! 🌟✨
             </p>
-
-            <div class="mt-12" data-aos="fade-up" data-aos-delay="600">
-                <a href="anniversary.html" class="enhanced-button text-lg px-8 py-4 inline-block" aria-label="Back to Anniversary">
-                    💖 Back to Anniversary Page
-                </a>
-            </div>
         </div>
     </section>
 
@@ -432,11 +430,14 @@
         <source src="music/queue_song/02-love-story-theme.m4a" type="audio/mp4">
         <source src="music/song1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-    </audio>
-
-    <!-- Scripts -->
+    </audio>    <!-- Scripts -->
     <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Enhanced Components -->
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/components/RomanticEffects.js"></script>
+    <script src="src/components/EnhancedThemeManager.js"></script>
     <script type="module" src="src/components/BackgroundComponents.js"></script>
 
     <!-- Love story page initialization -->
@@ -455,11 +456,15 @@
                 });
             }
         });
-    </script>
+    </script>    <!-- UI Polish Initializer - Must load first -->
+    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
+
+    <!-- UI Control System -->
+    <script type="module" src="./src/components/UIControlSystem.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
-    
+
     <!-- Smooth Transitions Script -->
     <script src="src/utils/smooth-transitions.js"></script>
 </body>

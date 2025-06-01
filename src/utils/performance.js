@@ -5,48 +5,6 @@
  */
 
 class PerformanceUtils {
-    /**
-     * Throttle function execution
-     */
-    static throttle(func, limit) {
-        let inThrottle;
-        return function(...args) {
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-
-    /**
-     * Debounce function execution
-     */
-    static debounce(func, delay) {
-        let timeoutId;
-        return function(...args) {
-            const context = this;
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => func.apply(context, args), delay);
-        };
-    }
-
-    /**
-     * RAF throttle for animations
-     */
-    static rafThrottle(func) {
-        let rafId = null;
-        return function(...args) {
-            const context = this;
-            if (rafId === null) {
-                rafId = requestAnimationFrame(() => {
-                    func.apply(context, args);
-                    rafId = null;
-                });
-            }
-        };
-    }
 
     /**
      * Device capability detection
@@ -170,46 +128,6 @@ class PerformanceUtils {
     static estimateEventListeners() {
         const elementsWithEvents = document.querySelectorAll('*[onclick], *[onload], *[onmouseover]');
         return elementsWithEvents.length;
-    }
-
-    /**
-     * Intersection Observer for lazy loading
-     */
-    static createLazyLoader(options = {}) {
-        const defaults = {
-            rootMargin: '50px',
-            threshold: 0.1
-        };
-
-        const config = { ...defaults, ...options };
-
-        return new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-
-                    // Lazy load images
-                    if (target.dataset.src) {
-                        target.src = target.dataset.src;
-                        target.removeAttribute('data-src');
-                    }
-
-                    // Lazy load background images
-                    if (target.dataset.bgSrc) {
-                        target.style.backgroundImage = `url(${target.dataset.bgSrc})`;
-                        target.removeAttribute('data-bg-src');
-                    }
-
-                    // Execute lazy load callback
-                    if (target.dataset.lazyCallback && window[target.dataset.lazyCallback]) {
-                        window[target.dataset.lazyCallback](target);
-                    }
-
-                    // Remove from observer
-                    this.unobserve(target);
-                }
-            });
-        }, config);
     }
 
     /**

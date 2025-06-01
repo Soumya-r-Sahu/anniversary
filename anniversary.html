@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-page-type="anniversary">
+<html lang="en" data-theme="dark" data-page-type="anniversary">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Happy Anniversary, My Love ❤️</title>
-    <meta name="description" content="A romantic anniversary website celebrating our love story">
-
-    <!-- Mobile Chrome Optimization -->
-    <meta name="theme-color" content="#ec4899">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Anniversary Love">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ec4899">
+    <title>Happy Anniversary, My Sweet Jerry ❤️</title>
+    <meta name="description" content="Celebrating our beautiful love story - A romantic anniversary tribute">
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,110 +17,112 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://unpkg.com">
 
+    <!-- Preload important scripts -->
+    <link rel="preload" href="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js" as="script">
+
     <!-- Fonts with optimized loading -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/enhanced-romantic.css">
+    <link rel="stylesheet" href="src/styles/dark-theme.css">
+    <link rel="stylesheet" href="src/styles/ui-controls.css">
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/performance-optimized.css">
+
+    <style>
+        /* Anniversary Page Specific Enhancements */
+        .anniversary-hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow:
+                0 20px 60px rgba(255, 107, 157, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .memory-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+        }
+        
+        .anniversary-sparkle {
+            animation: sparkleRotate 2s infinite linear;
+        }
+        
+        @keyframes sparkleRotate {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
+        .love-quote {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        @media (max-width: 640px) {
+            .anniversary-hero {
+                padding: 2rem;
+            }
+            .memory-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
 </head>
 <body class="bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 overflow-x-hidden gradient-animation" data-page-type="anniversary">
 
-    <!-- Background components will be automatically injected by BackgroundComponents.js -->
+    <!-- Particles.js Background -->
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
 
-    <!-- Anniversary Hero Section with Futuristic Background -->
-    <section class="anniversary-hero min-h-screen relative overflow-hidden section-fade-in">
-        <!-- Futuristic Background -->
-        <div class="absolute inset-0">
-            <img 
-                src="https://images.unsplash.com/photo-1529903106315-911ea0b26e2e?w=1920&h=1080&fit=crop" 
-                alt="Romantic anniversary dinner setup" 
-                class="w-full h-full object-cover opacity-30"
-                loading="eager"
-            >
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-purple-900/60 to-pink-900/70"></div>
-            <!-- Animated Geometric Shapes -->
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_75%_75%,rgba(255,119,198,0.3),transparent_50%)] animate-pulse"></div>
-        </div>
-        
-        <!-- Futuristic Floating Anniversary Images -->
-        <div class="absolute top-16 right-8 hidden lg:block" data-aos="fade-left" data-aos-delay="800">
-            <div class="relative group">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                <img 
-                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=250&h=200&fit=crop" 
-                    alt="Anniversary cake celebration" 
-                    class="relative w-40 h-32 rounded-lg shadow-2xl border-2 border-cyan-400/50 backdrop-blur-sm"
-                >
-            </div>
-        </div>
-        <div class="absolute bottom-20 left-8 hidden lg:block" data-aos="fade-right" data-aos-delay="1000">
-            <div class="relative group">
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                <img 
-                    src="https://images.unsplash.com/photo-1520923465304-3b931a24bfbb?w=250&h=200&fit=crop" 
-                    alt="Love letters and roses" 
-                    class="relative w-40 h-32 rounded-lg shadow-2xl border-2 border-purple-400/50 backdrop-blur-sm"
-                >
-            </div>
-        </div>
-        <div class="absolute top-1/3 left-1/4 hidden md:block" data-aos="zoom-in" data-aos-delay="1200">
-            <div class="relative group">
-                <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full blur opacity-75 group-hover:opacity-100 transition-opacity animate-pulse"></div>
-                <img 
-                    src="https://images.unsplash.com/photo-1518621012118-1d2ff0beb2ae?w=150&h=150&fit=crop" 
-                    alt="Heart-shaped chocolates" 
-                    class="relative w-24 h-24 rounded-full shadow-2xl border-2 border-emerald-400/50"
-                >
-            </div>
-        </div>
+    <!-- Background components will be automatically injected by BackgroundComponents.js -->    <!-- Floating Bubbles Container for Burst Effects -->
+    <div id="floating-bubbles-container" class="fixed inset-0 pointer-events-none z-50"></div>
+    
+    <!-- UI Control System will be added by JavaScript -->
 
-    <!-- Futuristic Welcome Section -->
-    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <!-- Anniversary Welcome Section -->    <section id="welcome" class="min-h-screen flex items-center justify-center relative z-10 px-4">
         <div class="text-center w-full max-w-4xl">
-            <!-- Animated Quantum Hearts -->
-            <div class="floating-hearts">
-                <div class="heart animate-pulse" style="animation-delay: 0s;"></div>
-                <div class="heart animate-pulse" style="animation-delay: 0.5s;"></div>
-                <div class="heart animate-pulse" style="animation-delay: 1s;"></div>
-                <div class="heart animate-pulse" style="animation-delay: 1.5s;"></div>
-                <div class="heart animate-pulse" style="animation-delay: 2s;"></div>
+            <!-- Anniversary Icon -->
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-pink-400 via-red-400 to-rose-400 rounded-full mb-8 shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-pulse" data-aos="zoom-in">
+                <span class="text-4xl">💕</span>
             </div>
 
-            <!-- Futuristic Icon -->
-            <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 rounded-full mb-8 shadow-[0_0_40px_rgba(168,85,247,0.6)] animate-pulse" data-aos="zoom-in">
-                <span class="text-4xl">💫</span>
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 mb-6 font-dancing leading-tight" data-aos="fade-up">
-                🚀 Anniversary Quantum Portal ❤️
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-6 font-dancing leading-tight" data-aos="fade-up">
+                💕 Happy Anniversary, My Sweet Jerry 💕
             </h1>
-            <h2 class="text-xl sm:text-2xl md:text-3xl text-cyan-200 mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-                To my dearest <span class="text-pink-300 font-semibold glow-text">Pujuu (Champi)</span>, my sweet <span class="text-purple-300 font-semibold glow-text">Jerry</span> 💕
-            </h2>
-
-            <div class="text-lg md:text-xl text-slate-200 mb-8 max-w-2xl mx-auto leading-relaxed bg-slate-900/60 backdrop-blur-xl rounded-2xl p-6 border border-cyan-400/30 shadow-[0_8px_32px_rgba(31,38,135,0.37)]" data-aos="fade-up" data-aos-delay="400">
-                <span id="typed-text" class="border-r-2 border-cyan-400"></span>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="window.location.href='love-story.html'" class="relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-lg shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.8)] transition-all duration-500 hover:scale-105 group" data-aos="fade-up" data-aos-delay="600" aria-label="Explore Our Love Story">
-                    <span class="relative z-10">🌟 Explore Our Love Story 💕</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </button>
+            <h2 class="text-xl sm:text-2xl md:text-3xl text-pink-700 mb-8 font-dancing leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                To my dearest <span class="text-red-500 font-semibold">Pujuu (Champi)</span>, my sweet <span class="text-pink-600 font-semibold">Jerry</span> 💕
+            </h2>            <div class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed glassmorphism-bg rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
+                <span id="typed-text" class="border-r-2 border-pink-500"></span>
             </div>
         </div>
     </section>
-    </section>
 
-    <style>
-        .glow-text {
+    <style>        .glow-text {
             text-shadow: 0 0 10px currentColor;
             animation: text-glow 2s ease-in-out infinite alternate;
         }
@@ -131,126 +131,139 @@
             from { text-shadow: 0 0 10px currentColor; }
             to { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
         }
-    </style>
 
-    <!-- Anniversary Memories Section - Futuristic Gallery Style -->
-    <section class="py-20 bg-gradient-to-br from-slate-900/95 via-purple-900/90 to-pink-900/95 backdrop-blur-xl relative overflow-hidden section-fade-in">
-        <!-- Futuristic Background Elements -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.3),transparent_50%)]"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(255,255,255,0.05)_50%,transparent_70%)] animate-pulse"></div>
-        
+        /* Floating Hearts Styling */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float-heart 4s ease-in-out infinite;
+        }
+
+        .heart:before {
+            content: '💕';
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+        .heart:nth-child(5) { left: 80%; animation-delay: 0.5s; }
+
+        @keyframes float-heart {
+            0%, 100% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0; 
+            }
+            10%, 90% { 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translateY(-100px) rotate(180deg); 
+                opacity: 1; 
+            }
+        }
+    </style>    <!-- Anniversary Memories Section -->
+    <section class="py-20 bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 relative overflow-hidden section-fade-in">
         <div class="container mx-auto px-4 relative z-10">
-            <!-- Futuristic Header -->
+            <!-- Header -->
             <div class="text-center mb-16" data-aos="fade-up">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-cyan-400 to-pink-400 rounded-full mb-6 shadow-[0_0_30px_rgba(236,72,153,0.5)]">
-                    <span class="text-3xl">💫</span>
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-pink-400 to-red-400 rounded-full mb-6 shadow-[0_0_30px_rgba(236,72,153,0.5)]">
+                    <span class="text-3xl">💕</span>
                 </div>
-                <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-pink-300 to-purple-300 mb-4 font-dancing">
-                    🚀 Digital Love Archives 💕
+                <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-4 font-dancing">
+                    💕 Our Beautiful Memories 💕
                 </h2>
-                <p class="text-lg text-cyan-200/80 max-w-2xl mx-auto">
-                    Our love story preserved in the quantum realm of memories
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    Celebrating the precious moments that made our love story
                 </p>
             </div>
 
-            <!-- Futuristic Memory Grid -->
+            <!-- Memory Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Memory Card 1 -->
                 <div class="group relative" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/90 to-purple-900/90 backdrop-blur-sm border border-cyan-400/30 shadow-[0_8px_32px_rgba(31,38,135,0.37)] hover:shadow-[0_8px_32px_rgba(236,72,153,0.6)] transition-all duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="memory-card">
                         <img 
                             src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop" 
                             alt="Romantic proposal moment" 
-                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
                             <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <h3 class="font-bold text-lg text-cyan-300">Our First Date</h3>
+                                <h3 class="font-bold text-lg text-pink-300">Our First Date</h3>
                                 <p class="text-sm text-pink-200">June 16, 2024 - When it all began</p>
-                                <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 mt-2"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-pink-400 to-red-400 mt-2"></div>
                             </div>
-                        </div>
-                        <!-- Futuristic border glow -->
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-pink-400/0 p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <div class="w-full h-full rounded-2xl bg-transparent"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Memory Card 2 -->
                 <div class="group relative" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/90 to-purple-900/90 backdrop-blur-sm border border-cyan-400/30 shadow-[0_8px_32px_rgba(31,38,135,0.37)] hover:shadow-[0_8px_32px_rgba(236,72,153,0.6)] transition-all duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="memory-card">
                         <img 
                             src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop" 
                             alt="Couple holding hands" 
-                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
                             <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <h3 class="font-bold text-lg text-cyan-300">First "I Love You"</h3>
+                                <h3 class="font-bold text-lg text-pink-300">First "I Love You"</h3>
                                 <p class="text-sm text-pink-200">June 19, 2024 - 3-hour phone call</p>
-                                <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 mt-2"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-pink-400 to-red-400 mt-2"></div>
                             </div>
-                        </div>
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-pink-400/0 p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <div class="w-full h-full rounded-2xl bg-transparent"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Memory Card 3 -->
                 <div class="group relative" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/90 to-purple-900/90 backdrop-blur-sm border border-cyan-400/30 shadow-[0_8px_32px_rgba(31,38,135,0.37)] hover:shadow-[0_8px_32px_rgba(236,72,153,0.6)] transition-all duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="memory-card">
                         <img 
                             src="https://images.unsplash.com/photo-1518621012118-1d2ff0beb2ae?w=400&h=300&fit=crop" 
                             alt="Gift giving moment" 
-                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
                             <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <h3 class="font-bold text-lg text-cyan-300">Sweet Surprises</h3>
+                                <h3 class="font-bold text-lg text-pink-300">Sweet Surprises</h3>
                                 <p class="text-sm text-pink-200">Every day together</p>
-                                <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 mt-2"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-pink-400 to-red-400 mt-2"></div>
                             </div>
-                        </div>
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-pink-400/0 p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <div class="w-full h-full rounded-2xl bg-transparent"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Memory Card 4 -->
                 <div class="group relative" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/90 to-purple-900/90 backdrop-blur-sm border border-cyan-400/30 shadow-[0_8px_32px_rgba(31,38,135,0.37)] hover:shadow-[0_8px_32px_rgba(236,72,153,0.6)] transition-all duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="memory-card">
                         <img 
                             src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop" 
                             alt="Romantic sunset together" 
-                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                            class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-lg"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
                             <div class="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <h3 class="font-bold text-lg text-cyan-300">Forever Promise</h3>
+                                <h3 class="font-bold text-lg text-pink-300">Forever Promise</h3>
                                 <p class="text-sm text-pink-200">Our beautiful future</p>
-                                <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 mt-2"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-pink-400 to-red-400 mt-2"></div>
                             </div>
-                        </div>
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-pink-400/0 p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <div class="w-full h-full rounded-2xl bg-transparent"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Futuristic CTA -->
-            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="500">
-                <button onclick="window.location.href='photo-gallery.html'" class="relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-full text-white font-semibold text-lg shadow-[0_0_30px_rgba(236,72,153,0.5)] hover:shadow-[0_0_40px_rgba(236,72,153,0.8)] transition-all duration-500 hover:scale-105 group">
-                    <span class="relative z-10">🌟 Explore Full Memory Archive 🌟</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-400 rounded-full blur opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -289,9 +302,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Final Message Section -->
+    </section>    <!-- Final Message Section -->
     <section id="final" class="py-20 bg-gradient-to-r from-pink-500 to-red-500 text-white relative z-10">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-6xl font-bold font-dancing mb-8" data-aos="fade-up">
@@ -306,12 +317,26 @@
         </div>
     </section>
 
+    <!-- Enhanced Navigation Section -->
+    <section class="py-16 bg-gradient-to-br from-slate-900/95 via-purple-900/90 to-pink-900/95 backdrop-blur-xl relative overflow-hidden">
+        <!-- Futuristic Background Elements -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.3),transparent_50%)]"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-pink-300 to-purple-300 mb-4 font-dancing">
+                    🌟 Explore Our Love Universe 🌟
+                </h2>
+                <p class="text-cyan-200/80 text-lg">
+                    Discover more chapters of our beautiful journey together            </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Floating Hearts Container (Dynamic) -->
     <div class="floating-hearts" id="floating-hearts-container">
         <!-- Hearts will be dynamically generated for burst effects -->
-    </div>
-
-    <!-- Audio Element for Background Music -->
+    </div>    <!-- Audio Element for Background Music -->
     <audio id="background-music" preload="auto" loop>
         <source src="music/queue_song/01-anniversary-celebration.m4a" type="audio/mp4">
         <source src="music/song1.mp3" type="audio/mpeg">
@@ -322,28 +347,202 @@
     <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.12/lib/typed.min.js"></script>
-    <script type="module" src="src/components/BackgroundComponents.js"></script>
-
-    <!-- Anniversary page initialization -->
+    
+    <!-- Enhanced Components -->
+    <script src="src/core/EnhancedMusicManager.js"></script>
+    <script src="src/components/RomanticEffects.js"></script>
+    <script src="src/components/EnhancedThemeManager.js"></script>
+    <script type="module" src="src/components/BackgroundComponents.js"></script>    <!-- Anniversary page initialization with enhanced features -->
     <script>
-        // Simple anniversary page initialization
+        // Enhanced anniversary page initialization
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // ✨ PAGE TRANSITION CONFIGURATION ✨
+        const TRANSITION_CONFIG = {
+            navigationDelay: 2000,      // Delay before navigation (milliseconds)
+            fadeOutDuration: 500,       // Fade out animation duration (milliseconds)
+            sparkleInterval: 200,       // Interval between sparkle effects (milliseconds)
+            burstIntensity: 15,         // Number of bubbles in click burst
+            hoverBurstIntensity: 5      // Number of bubbles in hover burst
+        };
+        
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎯 Anniversary page loaded - unified components will handle initialization');
+            console.log('🎯 Anniversary page loaded - enhanced components initialized');
 
-            // Initialize AOS if available
+            // Initialize AOS with mobile optimizations
             if (typeof AOS !== 'undefined') {
                 AOS.init({
-                    duration: 800,
+                    duration: isMobile ? 600 : 1000,
                     easing: 'ease-in-out',
-                    once: true
+                    once: true,
+                    mirror: false,
+                    offset: isMobile ? 50 : 120,
+                    delay: isMobile ? 50 : 100
                 });
             }
-        });
-    </script>
+
+            // Initialize Typed.js for anniversary messages
+            if (typeof Typed !== 'undefined') {
+                var typed = new Typed("#typed-text", {
+                    strings: [
+                        "On this special day, celebrating 5 magical months together... 💕",
+                        "From our first sweet message to endless conversations... 📱💕",
+                        "Through your caring words and loving gestures... 🌟",
+                        "My heart found its home with you, my sweet Jerry... 🐒💕",
+                        "Here's to our beautiful journey and forever more... ❤️✨"
+                    ],
+                    typeSpeed: 40,
+                    backSpeed: 20,
+                    backDelay: 3000,
+                    startDelay: 1000,
+                    fadeOut: true,
+                    loop: true,
+                    cursorChar: '|',
+                    autoInsertCss: true
+                });
+            }
+
+            // Initialize Particles.js with anniversary theme
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: isMobile ? 10 : 18, // Optimized for 60+ FPS
+                            density: {
+                                enable: true,
+                                value_area: 1200
+                            }
+                        },
+                        color: {
+                            value: ["#ff6b9d", "#ffa8cc", "#ffb3d6", "#c084fc", "#60a5fa"]
+                        },
+                        shape: {
+                            type: "circle",
+                            stroke: {
+                                width: 0,
+                                color: "#000000"
+                            }
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: false,
+                            anim: {
+                                enable: false,
+                                speed: 1,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 3,
+                            random: true,
+                            anim: {
+                                enable: false,
+                                speed: 2,
+                                size_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: false
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: "none",
+                            random: false,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false,
+                            attract: {
+                                enable: false,
+                                rotateX: 600,
+                                rotateY: 1200
+                            }
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "bubble"
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "repulse"
+                            },
+                            resize: true
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                line_linked: {
+                                    opacity: 1
+                                }
+                            },
+                            bubble: {
+                                distance: 400,
+                                size: 40,
+                                duration: 2,
+                                opacity: 8,
+                                speed: 3
+                            },
+                            repulse: {
+                                distance: 200,
+                                duration: 0.4
+                            },
+                            push: {
+                                particles_nb: 4
+                            },
+                            remove: {
+                                particles_nb: 2
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+
+            // Add anniversary-specific click effects
+            document.addEventListener('click', function(e) {
+                if (typeof window.createBubbleBurst === 'function') {
+                    window.createBubbleBurst(e.clientX, e.clientY, TRANSITION_CONFIG.burstIntensity);
+                }
+            });
+
+            // Add surprise button functionality
+            const surpriseBtn = document.getElementById('surprise-btn');
+            if (surpriseBtn) {
+                surpriseBtn.addEventListener('click', function() {
+                    // Create special anniversary effects
+                    if (typeof window.createHeartExplosion === 'function') {
+                        window.createHeartExplosion();
+                    }
+                    
+                    // Show surprise message
+                    alert("🎉 Surprise! Every day with you is a celebration, my beautiful Puja! 💕🐒");
+                    
+                    // Create multiple bubble bursts
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            const x = Math.random() * window.innerWidth;
+                            const y = Math.random() * window.innerHeight;
+                            if (typeof window.createBubbleBurst === 'function') {
+                                window.createBubbleBurst(x, y, 20);
+                            }
+                        }, i * 300);
+                    }
+                });
+            }
+        });    </script>
+
+    <!-- UI Polish Initializer - Must load first -->
+    <script type="module" src="./src/utils/ui-polish-initializer.js"></script>
 
     <!-- Integration Script - Loads unified components -->
     <script type="module" src="./src/integrator.js"></script>
-    
+
     <!-- Smooth Transitions Script -->
     <script src="src/utils/smooth-transitions.js"></script>
 </body>

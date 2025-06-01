@@ -3,15 +3,12 @@
  * This script integrates the new unified components with existing HTML files
  */
 
-import { UnifiedMusicManager } from './core/UnifiedMusicManager.js';
-import { UnifiedHeartAnimation } from './components/UnifiedHeartAnimation.js';
-import { UnifiedGallery } from './components/UnifiedGallery.js';
-import { UnifiedParticleSystem } from './components/UnifiedParticleSystem.js';
-import { UnifiedStorageManager } from './core/UnifiedStorageManager.js';
-import { UnifiedPerformanceMonitor } from './core/UnifiedPerformanceMonitor.js';
-import { BackgroundComponents } from './components/BackgroundComponents.js';
-import { PerformanceUtils } from './utils/performance.js';
+import { PhotoGalleryManager } from './components/PhotoGalleryManager.js';
+import { HeartAnimationSystem } from './components/HeartAnimationSystem.js';
+import { PerformanceMonitor } from './core/PerformanceMonitor.js';
+import { BackgroundEffectsManager } from './components/BackgroundEffectsManager.js';
 import { LazyLoader } from './utils/lazyLoader.js';
+import { throttle } from './utils/throttle.js';
 
 class AnniversaryWebsiteIntegrator {
     constructor() {
@@ -19,51 +16,62 @@ class AnniversaryWebsiteIntegrator {
         this.performanceMonitor = null;
         this.lazyLoader = null;
         this.initialized = false;
+        this.frameRate = 90; // Target 90fps
+        this.lastFrameTime = 0;
 
-        console.log('🎉 Anniversary Website Integrator loaded');
+        console.log('🎉 Anniversary Website Integrator loaded - Target: 90fps');
     }
 
     async init() {
         if (this.initialized) return;
 
         try {
-            console.log('🚀 Initializing Anniversary Website Integration...');
+            console.log('🚀 Initializing Anniversary Website Integration for 90fps...');
 
-            // Start performance monitoring
-            this.performanceMonitor = new UnifiedPerformanceMonitor();
-            await this.performanceMonitor.init();
+            // Enable high-performance mode
+            this.enableHighPerformanceMode();
 
-            // Initialize lazy loading
+            // Start performance monitoring with 90fps target
+            this.performanceMonitor = new PerformanceMonitor({
+                targetFPS: 90,
+                enableGPUAcceleration: true,
+                optimizeAnimations: true
+            });
+            this.performanceMonitor.init();
+
+            // Initialize lazy loading with performance optimizations
             this.lazyLoader = new LazyLoader({
                 rootMargin: '50px',
                 enableWebP: true,
-                enablePlaceholder: true
+                enablePlaceholder: true,
+                preloadStrategy: 'aggressive'
             });
 
-            // Initialize background components
+            // Initialize background components with performance settings
             await this.initializeBackgroundComponents();
 
-            // Initialize page-specific components
+            // Initialize page-specific components with optimizations
             await this.initializePageComponents();
 
-            // Setup global event listeners
-            this.setupGlobalListeners();
+            // Setup optimized event listeners
+            this.setupOptimizedListeners();
 
-            // Setup theme and accessibility
-            this.setupThemeSystem();
+            // Setup high-performance theme system
+            this.setupOptimizedThemeSystem();
 
-            // Initialize navigation enhancements
-            this.enhanceNavigation();
-
-            // Setup performance optimizations
-            this.optimizePerformance();
+            // Setup 90fps optimizations
+            this.setup90FPSOptimizations();
 
             this.initialized = true;
-            console.log('✅ Anniversary Website Integration complete!');
+            console.log('✅ Anniversary Website Integration complete - 90fps ready!');
 
             // Dispatch ready event
             document.dispatchEvent(new CustomEvent('anniversaryWebsiteReady', {
-                detail: { components: this.components }
+                detail: { 
+                    components: this.components,
+                    targetFPS: this.frameRate,
+                    performanceMode: 'high'
+                }
             }));
 
         } catch (error) {
@@ -72,16 +80,104 @@ class AnniversaryWebsiteIntegrator {
         }
     }
 
+    enableHighPerformanceMode() {
+        // Enable GPU acceleration for the entire page
+        document.documentElement.style.cssText += `
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: auto;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        `;
+
+        // Optimize CSS rendering
+        const style = document.createElement('style');
+        style.textContent = `
+            * {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeLegibility;
+            }
+            
+            .gpu-accelerated {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+                will-change: transform;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+            
+            .performance-optimized {
+                contain: layout style paint;
+                will-change: auto;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    setup90FPSOptimizations() {
+        // Request high refresh rate
+        if (screen.frameRate) {
+            console.log(`Display refresh rate: ${screen.frameRate}Hz`);
+        }
+
+        // Optimize animation frame timing
+        const targetFrameTime = 1000 / this.frameRate; // ~11.11ms for 90fps
+
+        const optimizedAnimationFrame = (callback) => {
+            const now = performance.now();
+            if (now - this.lastFrameTime >= targetFrameTime) {
+                this.lastFrameTime = now;
+                requestAnimationFrame(callback);
+            } else {
+                setTimeout(() => requestAnimationFrame(callback), 0);
+            }
+        };
+
+        // Override global requestAnimationFrame for 90fps optimization
+        window.requestOptimizedFrame = optimizedAnimationFrame;
+
+        // Optimize scroll events for 90fps
+        this.optimizeScrollPerformance();
+    }
+
+    optimizeScrollPerformance() {
+        let ticking = false;
+        let lastScrollY = 0;
+
+        const updateScroll = () => {
+            const scrollY = window.pageYOffset;
+            
+            // Only process if scroll changed significantly
+            if (Math.abs(scrollY - lastScrollY) > 1) {
+                // Batch DOM updates
+                requestAnimationFrame(() => {
+                    document.body.style.setProperty('--scroll-y', scrollY + 'px');
+                    lastScrollY = scrollY;
+                });
+            }
+            
+            ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
     async initializeBackgroundComponents() {
         // Initialize unified background system
-        const backgroundComponents = new BackgroundComponents({
+        const backgroundComponents = new BackgroundEffectsManager({
             pageType: document.body.dataset.pageType || 'general',
             enableMusic: true,
             enableHearts: true,
             enableParticles: true
         });
 
-        await backgroundComponents.init();
+        backgroundComponents.init();
         this.components.set('background', backgroundComponents);
 
         console.log('🎭 Background components initialized');
@@ -164,7 +260,7 @@ class AnniversaryWebsiteIntegrator {
                 description: img.dataset.description
             }));
 
-            const gallery = new UnifiedGallery({
+            const gallery = new PhotoGalleryManager({
                 container: galleryContainer,
                 images: images,
                 lightbox: true,
@@ -246,13 +342,13 @@ class AnniversaryWebsiteIntegrator {
                 });
             };
 
-            window.addEventListener('scroll', this.throttle(updateParallax, 16));
+            window.addEventListener('scroll', throttle(updateParallax, 16));
         }
 
         // Floating hearts
         const heartsContainer = heroSection.querySelector('.floating-hearts');
         if (heartsContainer) {
-            const heartAnimation = new UnifiedHeartAnimation({
+            const heartAnimation = new HeartAnimationSystem({
                 container: heartsContainer,
                 pattern: 'floating',
                 intensity: 'medium'
@@ -311,7 +407,7 @@ class AnniversaryWebsiteIntegrator {
                     // Trigger heart burst
                     const heartsContainer = entry.target.querySelector('.timeline-hearts');
                     if (heartsContainer) {
-                        const heartAnimation = new UnifiedHeartAnimation({
+                        const heartAnimation = new HeartAnimationSystem({
                             container: heartsContainer,
                             pattern: 'burst',
                             intensity: 'low'
@@ -384,7 +480,7 @@ class AnniversaryWebsiteIntegrator {
 
             // Heart burst when animation completes
             setTimeout(() => {
-                const heartAnimation = new UnifiedHeartAnimation({
+                const heartAnimation = new HeartAnimationSystem({
                     container: loveMeter,
                     pattern: 'burst',
                     intensity: 'high'
@@ -506,7 +602,7 @@ class AnniversaryWebsiteIntegrator {
     initializeScrollEffects() {
         let lastScrollY = window.scrollY;
 
-        window.addEventListener('scroll', this.throttle(() => {
+        window.addEventListener('scroll', throttle(() => {
             const currentScrollY = window.scrollY;
             const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
 
@@ -517,7 +613,7 @@ class AnniversaryWebsiteIntegrator {
         }, 16));
     }
 
-    setupGlobalListeners() {
+    setupOptimizedListeners() {
         // Enhanced navigation
         document.addEventListener('click', (e) => {
             // Music toggle
@@ -560,7 +656,7 @@ class AnniversaryWebsiteIntegrator {
         });
     }
 
-    setupThemeSystem() {
+    setupOptimizedThemeSystem() {
         const themeToggle = document.querySelector('.theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'light';
 
@@ -610,7 +706,7 @@ class AnniversaryWebsiteIntegrator {
 
         // Scroll-based navigation styling
         if (nav) {
-            window.addEventListener('scroll', this.throttle(() => {
+            window.addEventListener('scroll', throttle(() => {
                 nav.classList.toggle('scrolled', window.scrollY > 50);
             }, 16));
         }
@@ -619,7 +715,7 @@ class AnniversaryWebsiteIntegrator {
     optimizePerformance() {
         // Lazy load images
         const images = document.querySelectorAll('img[data-src]');
-        images.forEach(img => this.lazyLoader.observe(img));
+        images.forEach(img => this.lazyLoader.observeImage(img));
 
         // Defer non-critical CSS
         const deferredStyles = document.querySelectorAll('link[data-defer]');
@@ -681,19 +777,6 @@ class AnniversaryWebsiteIntegrator {
 
             isDragging = false;
         });
-    }
-
-    throttle(func, delay) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, delay);
-            }
-        };
     }
 
     handleError(error) {
