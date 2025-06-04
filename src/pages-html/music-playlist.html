@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="🎵 Music Playlist 🎵">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ec4899">
+    
+    <title>🎵 Music Playlist 🎵 - Jerry & Soumya</title>
+    <meta name="description" content="Our favorite songs and melodies">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎵%3C/text%3E%3C/svg%3E">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../styles/shared.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        .coming-soon {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(25px);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 2rem 0;
+        }
+        
+        .page-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .construction-icon {
+            font-size: 2rem;
+            margin: 0 0.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="../../index.html" class="nav-logo">💕 Jerry & Soumya</a>
+            <ul class="nav-links">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                
+                <li><a href="anniversary.html" class="nav-link">Anniversary</a></li>
+                <li><a href="love-story.html" class="nav-link">Our Story</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌓</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float">
+                    🎵 Music Playlist 🎵
+                </h1>
+                <p class="text-xl text-pink-700 font-dancing">
+                    Our favorite songs and melodies
+                </p>
+            </div>
+
+            <!-- Coming Soon Section -->
+            <div class="coming-soon max-w-2xl mx-auto">
+                <div class="page-icon">🎵</div>
+                <h2 class="text-2xl font-dancing text-pink-600 mb-4">
+                    <span class="construction-icon">🚧</span>
+                    Coming Soon!
+                    <span class="construction-icon">🚧</span>
+                </h2>
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    This page is being crafted with love to showcase songs that define our love story. 
+                    Check back soon for amazing content that will make our love story even more special!
+                </p>
+                
+                <div class="text-center">
+                    <a href="../../index.html" 
+                       class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
+                        🏠 Back to Home
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
+                
+                <a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+                    <div class="text-2xl mb-2">🎉</div>
+                    <div class="text-sm font-medium text-pink-700">Anniversary</div>
+                </a>
+                <a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+                    <div class="text-2xl mb-2">📸</div>
+                    <div class="text-sm font-medium text-pink-700">Gallery</div>
+                </a>
+                <a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+                    <div class="text-2xl mb-2">🎵</div>
+                    <div class="text-sm font-medium text-pink-700">Music</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Music Player -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <div class="glassmorphism p-4 rounded-xl shadow-lg">
+            <div class="flex items-center space-x-3">
+                <button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors">
+                    ▶️
+                </button>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm">🔊</span>
+                    <input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5" 
+                           class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+            </div>
+            <div class="mt-2 text-xs text-gray-600 text-center">
+                🎵 Our Love Song
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="text-pink-600 font-dancing text-lg mb-2">
+            "Every love story is beautiful, but ours is my favorite" 💕
+        </p>
+        <p class="text-sm text-gray-500">
+            Made with ❤️ for Jerry by Soumya
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/shared.js"></script>
+    <script>
+        // Page-specific JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show coming soon notification
+            setTimeout(() => {
+                if (window.notificationManager) {
+                    window.notificationManager.show(
+                        'info',
+                        'Page Under Construction 🚧',
+                        'This page is being built with love! Check back soon for updates.'
+                    );
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
