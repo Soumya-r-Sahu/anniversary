@@ -136,22 +136,178 @@
             from { opacity: 1; transform: scale(1); }
             to { opacity: 0; transform: scale(0.9); }
         }
+
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b9d, #ffa8cc, #ffb3d6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .loading-screen.active {
+            display: flex;
+        }
+
+        .loading-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .loading-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+            animation: floatUp 4s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .loading-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .loading-heart-icon {
+            font-size: 4rem;
+            color: #ec4899;
+            margin-bottom: 2rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .loading-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #be185d;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading-subtitle {
+            font-size: 1.3rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .loading-message {
+            font-style: italic;
+            color: #be185d;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ec4899, #f472b6, #fbbf24);
+            background-size: 200% 100%;
+            border-radius: 3px;
+            animation: progressShine 2s ease-in-out infinite;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes progressShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="../../index.html" class="nav-logo">💕 Jerry & Soumya</a>
-            <ul class="nav-links">
-                <li><a href="../../index.html" class="nav-link">Home</a></li>
-                <li><a href="anniversary.html" class="nav-link">Anniversary</a></li>
-                <li><a href="love-story.html" class="nav-link">Our Story</a></li>
-                <li><a href="photo-gallery.html" class="nav-link">Gallery</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌓</button>
-        </div>
-    </nav>
+    <!-- No Navigation Bar - Clean Surprise Experience -->
 
     <!-- Main Content -->
     <main class="main-content">
@@ -241,24 +397,43 @@
         </div>
     </main>
 
-    <!-- Music Player -->
-    <div class="fixed bottom-4 right-4 z-50">
-        <div class="glassmorphism p-4 rounded-xl shadow-lg">
-            <div class="flex items-center space-x-3">
-                <button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors">
-                    ▶️
-                </button>
-                <div class="flex items-center space-x-2">
-                    <span class="text-sm">🔊</span>
-                    <input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5" 
-                           class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer">
+    <!-- Loading Screen (Hidden by default) -->
+    <div class="loading-screen" id="loadingScreen">
+        <!-- Animated background -->
+        <div class="loading-background"></div>
+
+        <!-- Floating hearts -->
+        <div class="loading-hearts" id="loadingHearts"></div>
+
+        <!-- Loading content -->
+        <div class="loading-content">
+            <div class="loading-card">
+                <!-- Beating heart -->
+                <div class="loading-heart-icon">💕</div>
+
+                <!-- Loading title -->
+                <h1 class="loading-title">Happy Anniversary!</h1>
+
+                <!-- Loading subtitle -->
+                <p class="loading-subtitle">
+                    Preparing your special surprise...
+                </p>
+
+                <!-- Loading message -->
+                <p class="loading-message" id="loadingMessage">
+                    "Every moment with you is a celebration of love 💕"
+                </p>
+
+                <!-- Progress bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
                 </div>
-            </div>
-            <div class="mt-2 text-xs text-gray-600 text-center">
-                🎵 Our Love Song
+                <p class="progress-text" id="progressText">Loading... 0%</p>
             </div>
         </div>
     </div>
+
+    <!-- Clean surprise experience - no music player -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -364,10 +539,108 @@
                     redirectMsg.style.animation = 'fadeIn 0.5s ease-in';
                 }, 500);
 
-                // Redirect after showing message
+                // Show loading screen after redirect message
                 setTimeout(() => {
-                    window.location.href = '../../loading.html';
+                    showLoadingScreen();
                 }, 2000);
+            }
+
+            // Loading screen functionality
+            function showLoadingScreen() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.classList.add('active');
+
+                // Start floating hearts
+                createFloatingHearts();
+
+                // Start progress animation
+                setTimeout(() => {
+                    animateProgress();
+                }, 1000);
+
+                // Start loading messages
+                setTimeout(() => {
+                    showLoadingMessages();
+                }, 2000);
+            }
+
+            function createFloatingHearts() {
+                const container = document.getElementById('loadingHearts');
+                const heartSymbols = ['💕', '💖', '💗', '💝', '💞'];
+
+                const heartInterval = setInterval(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+
+                    container.appendChild(heart);
+
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    }, 6000);
+                }, 800);
+
+                // Store interval to clear later
+                window.heartInterval = heartInterval;
+            }
+
+            function animateProgress() {
+                const progressBar = document.getElementById('progressBar');
+                const progressText = document.getElementById('progressText');
+                let progress = 0;
+
+                const interval = setInterval(() => {
+                    progress += Math.random() * 15 + 5; // Random increment between 5-20
+
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        clearInterval(window.heartInterval);
+
+                        // Redirect to main site after completion
+                        setTimeout(() => {
+                            // Mark surprise as completed
+                            localStorage.setItem('anniversary-surprise-completed', 'true');
+                            window.location.href = '../../index.html';
+                        }, 1000);
+                    }
+
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = `Loading... ${Math.round(progress)}%`;
+                }, 200);
+            }
+
+            function showLoadingMessages() {
+                const messages = [
+                    "Gathering all our beautiful memories...",
+                    "Preparing your favorite moments...",
+                    "Adding extra love and care...",
+                    "Almost ready for you, my dear Jerry...",
+                    "Welcome to our love story! 💕"
+                ];
+
+                const messageElement = document.getElementById('loadingMessage');
+                let currentMessage = 0;
+
+                const messageInterval = setInterval(() => {
+                    if (currentMessage < messages.length) {
+                        messageElement.style.opacity = '0';
+
+                        setTimeout(() => {
+                            messageElement.textContent = messages[currentMessage];
+                            messageElement.style.opacity = '1';
+                            currentMessage++;
+                        }, 300);
+                    } else {
+                        clearInterval(messageInterval);
+                    }
+                }, 1500);
             }
 
             updateCountdown();
