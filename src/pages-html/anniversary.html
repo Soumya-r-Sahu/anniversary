@@ -2,100 +2,315 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Happy Anniversary">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#ec4899">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
     
-    <title>🎉 Happy Anniversary - Jerry & Soumya 🎉</title>
+    <title>Happy Anniversary - Jerry & Soumya</title>
     <meta name="description" content="Celebrating our beautiful love story and anniversary">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎉%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='20' r='8' fill='%23fbbf24'/%3E%3Cpath d='M25,40 L75,40 Q80,40 80,45 L80,70 Q80,80 70,80 L30,80 Q20,80 20,70 L20,45 Q20,40 25,40 Z' fill='%23ec4899'/%3E%3Cpath d='M35,50 L65,50 M35,60 L65,60 M35,70 L55,70' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
     
     <!-- Shared Styles -->
     <link rel="stylesheet" href="../styles/shared.css">
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="../styles/pages/anniversary.css">
     
-    <!-- Page-specific styles -->
+    <!-- Page-specific styles with Advanced 3D Effects -->
     <style>
+        /* Anniversary Hero Section with 3D Effects */
+        .anniversary-hero {
+            position: relative;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, 
+                rgba(236, 72, 153, 0.1) 0%, 
+                rgba(244, 114, 182, 0.1) 50%, 
+                rgba(251, 207, 232, 0.1) 100%);
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        
+        .anniversary-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" fill="%23ec4899" opacity="0.1">♥</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+            animation: float-hearts 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes float-hearts {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        /* Enhanced Time Calculator with 3D Cards */
         .time-calculator {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            perspective: 1200px;
         }
         
         .time-stat {
+            position: relative;
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.25), 
+                rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(30px);
+            border-radius: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        
+        .time-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(236, 72, 153, 0.1), 
+                rgba(244, 114, 182, 0.1));
+            border-radius: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .time-stat:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.2);
+            transform: rotateY(15deg) rotateX(10deg) translateY(-10px) scale(1.05);
+            box-shadow: 
+                0 20px 60px rgba(236, 72, 153, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .time-stat:hover::before {
+            opacity: 1;
         }
         
         .time-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ec4899, #f472b6);
+            background: linear-gradient(135deg, #ec4899, #f472b6, #fbbf24);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 0.75rem;
+            animation: pulse-glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+            transform: translateZ(20px);
+        }
+        
+        @keyframes pulse-glow {
+            0% { filter: brightness(1) drop-shadow(0 0 5px rgba(236, 72, 153, 0.5)); }
+            100% { filter: brightness(1.2) drop-shadow(0 0 15px rgba(236, 72, 153, 0.8)); }
         }
         
         .time-label {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #6b7280;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transform: translateZ(10px);
         }
         
+        /* Enhanced Love Message with 3D Depth */
         .love-message {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(25px);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .navigation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .nav-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(40px);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 15px 60px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transform-style: preserve-3d;
             transition: all 0.3s ease;
         }
         
+        .love-message::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(236, 72, 153, 0.5), 
+                rgba(244, 114, 182, 0.5), 
+                rgba(251, 207, 232, 0.5));
+            border-radius: 2rem;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .love-message:hover::before {
+            opacity: 1;
+        }
+        
+        /* Enhanced Navigation Grid with 3D Cards */
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            perspective: 1500px;
+        }
+        
+        .nav-card {
+            position: relative;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(30px);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transition: left 0.6s ease;
+        }
+        
         .nav-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
-            background: rgba(255, 255, 255, 0.25);
+            transform: rotateY(12deg) rotateX(8deg) translateY(-12px) scale(1.05);
+            box-shadow: 
+                0 25px 80px rgba(236, 72, 153, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.3), 
+                rgba(255, 255, 255, 0.15));
+        }
+        
+        .nav-card:hover::before {
+            left: 100%;
         }
         
         .nav-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             display: block;
+            transition: all 0.3s ease;
+            transform: translateZ(20px);
+            filter: drop-shadow(0 5px 15px rgba(236, 72, 153, 0.3));
+        }
+        
+        .nav-card:hover .nav-icon {
+            transform: translateZ(30px) scale(1.1) rotateY(15deg);
+            filter: drop-shadow(0 10px 25px rgba(236, 72, 153, 0.5));
+        }
+        
+        .nav-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+            transform: translateZ(15px);
+        }
+        
+        .nav-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            transform: translateZ(10px);
+        }
+        
+        /* Enhanced Music Player */
+        .music-player-3d {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            perspective: 800px;
+        }
+        
+        .music-player-3d .glassmorphism {
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .music-player-3d:hover .glassmorphism {
+            transform: rotateY(10deg) rotateX(5deg) translateZ(10px);
+        }
+        
+        /* Romantic particle effects */
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            font-size: 1rem;
+            color: rgba(236, 72, 153, 0.6);
+            animation: float-particle 8s linear infinite;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
         
         .nav-title {
@@ -123,44 +338,135 @@
                 gap: 1rem;
             }
         }
+
+        /* Mobile Responsiveness Fixes */
+        @media (max-width: 768px) {
+            .anniversary-hero {
+                padding: 2rem 0;
+            }
+            
+            .time-calculator {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .time-stat {
+                padding: 1.5rem 1rem;
+            }
+            
+            .time-number {
+                font-size: 2rem;
+            }
+            
+            .time-label {
+                font-size: 0.875rem;
+            }
+            
+            .love-message {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            /* Touch-friendly interactions */
+            .time-stat:hover {
+                transform: scale(1.02);
+                box-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .time-calculator {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .time-stat {
+                padding: 1.25rem 1rem;
+            }
+            
+            .time-number {
+                font-size: 1.75rem;
+            }
+            
+            .love-message {
+                padding: 1.5rem 1rem;
+                border-radius: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="../../index.html" class="nav-logo">💕 Jerry & Soumya</a>
-            <ul class="nav-links">
-                <li><a href="../../index.html" class="nav-link">Home</a></li>
-                
-                <li><a href="love-story.html" class="nav-link">Our Story</a></li>
-                <li><a href="photo-gallery.html" class="nav-link">Gallery</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌓</button>
-        </div>
-    </nav>
+    <!-- Romantic Particle Effects -->
+    <div class="particle-container" id="particle-container"></div>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <!-- Shared Header -->
+    <header class="shared-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-love">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    <i class="fas fa-heart"></i> Anniversary Website
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="anniversary.html">Countdown</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="music-playlist.html">Music</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Anniversary Hero Section -->
+    <header class="anniversary-hero">
         <div class="container mx-auto px-4 py-8">
             <!-- Header -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-6 animate-float">
-                    💕 Happy Anniversary, My Sweet Jerry 💕
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-6 animate-shimmer">
+                    Happy Anniversary
                 </h1>
-                <h2 class="text-xl md:text-3xl text-pink-700 mb-8 font-dancing">
+                <h2 class="text-xl md:text-3xl text-pink-700 mb-8 font-dancing card-3d-hover">
                     To my dearest <span class="text-red-500 font-semibold">Pujuu (Champi)</span>, 
-                    my sweet <span class="text-pink-600 font-semibold">Jerry</span> 💕
+                    my sweet <span class="text-pink-600 font-semibold">Jerry</span>
                 </h2>
             </div>
+        </div>
+    </header>
 
-            <!-- Time Calculator -->
+    <!-- Breadcrumbs -->
+    <!-- Duplicate navigation removed -->
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Navigate
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="wish-list.html">Wish List</a></li>
+            <li><a class="dropdown-item" href="special-dates.html">Special Dates</a></li>
+            <li><a class="dropdown-item" href="photo-gallery.html">Photo Gallery</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container mx-auto px-4 py-8" -->
             <div class="glassmorphism p-8 mb-12">
                 <h3 class="text-2xl font-dancing text-pink-600 mb-6 text-center">
-                    ⏰ Our Time Together ⏰
+                    <i data-lucide="alarm-clock" class="icon-alarm"></i> Our Time Together <i data-lucide="alarm-clock" class="icon-alarm"></i>
                 </h3>
                 <p class="text-center text-pink-600 font-medium mb-6">
-                    📅 Since June 16, 2024 💕
+                    <i data-lucide="calendar" class="icon-calendar"></i> Since June 16, 2024 <i data-lucide="heart" class="icon-heart"></i>
                 </p>
                 
                 <div id="time-calculator" class="time-calculator">
@@ -203,7 +509,7 @@
                         Here's to many more months and years of love, laughter, and beautiful memories together.
                     </p>
                     <p class="text-center font-dancing text-xl text-pink-600">
-                        Forever yours, Mankada (Soumya) 💖
+                        Forever yours, Mankada (Soumya) <i data-lucide="heart" class="icon-heart-filled"></i>
                     </p>
                 </div>
             </div>
@@ -211,19 +517,19 @@
             <!-- Navigation Grid -->
             <div class="navigation-grid">
                 <a href="love-story.html" class="nav-card">
-                    <span class="nav-icon">📖</span>
+                    <span class="nav-icon"><i data-lucide="book-open" class="icon-book"></i></span>
                     <div class="nav-title">Our Love Story</div>
                     <div class="nav-description">Journey together</div>
                 </a>
                 
                 <a href="photo-gallery.html" class="nav-card">
-                    <span class="nav-icon">📸</span>
+                    <span class="nav-icon"><i data-lucide="camera" class="icon-photo"></i></span>
                     <div class="nav-title">Photo Gallery</div>
                     <div class="nav-description">Beautiful memories</div>
                 </a>
                 
                 <a href="music-playlist.html" class="nav-card">
-                    <span class="nav-icon">🎵</span>
+                    <span class="nav-icon"><i data-lucide="music" class="icon-music"></i></span>
                     <div class="nav-title">Our Playlist</div>
                     <div class="nav-description">Songs of love</div>
                 </a>
@@ -235,13 +541,13 @@
                 </a>
                 
                 <a href="special-dates.html" class="nav-card">
-                    <span class="nav-icon">📅</span>
+                    <span class="nav-icon"><i data-lucide="calendar" class="icon-calendar"></i></span>
                     <div class="nav-title">Special Dates</div>
                     <div class="nav-description">Important moments</div>
                 </a>
                 
                 <a href="fireworks.html" class="nav-card">
-                    <span class="nav-icon">🎆</span>
+                    <span class="nav-icon"><i data-lucide="zap" class="icon-fireworks"></i></span>
                     <div class="nav-title">Celebration</div>
                     <div class="nav-description">Fireworks show</div>
                 </a>
@@ -251,46 +557,96 @@
             <div class="text-center mt-12">
                 <a href="../../index.html" 
                    class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
-                    🏠 Back to Home
+                    <i data-lucide="home" class="icon-home"></i> Back to Home
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- Music Player -->
-    <div class="fixed bottom-4 right-4 z-50">
+    <!-- Enhanced 3D Music Player -->
+    <div class="music-player-3d">
         <div class="glassmorphism p-4 rounded-xl shadow-lg">
             <div class="flex items-center space-x-3">
-                <button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors">
-                    ▶️
+                <button id="music-play" class="btn-3d-romantic text-white p-2 rounded-full transition-colors">
+                    <i data-lucide="play" class="icon-play"></i>
                 </button>
                 <div class="flex items-center space-x-2">
-                    <span class="text-sm">🔊</span>
+                    <span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span>
                     <input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5" 
                            class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer">
                 </div>
             </div>
-            <div class="mt-2 text-xs text-gray-600 text-center">
-                🎵 Our Love Song
+            <div class="mt-2 text-xs text-gray-600 text-center animate-pulse">
+                <i data-lucide="music" class="icon-music"></i> Our Love Song
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="text-pink-600 font-dancing text-lg mb-2">
-            "Every love story is beautiful, but ours is my favorite" 💕
-        </p>
-        <p class="text-sm text-gray-500">
-            Made with ❤️ for Jerry by Soumya
-        </p>
+    <!-- Shared Footer -->
+    <footer class="shared-footer bg-gradient-love text-white text-center py-4">
+        <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p>
+        <small>&copy; 2025 Anniversary Website. All rights reserved.</small>
     </footer>
 
     <!-- Scripts -->
     <script type="module" src="../scripts/shared.js"></script>
     <script>
-        // Page-specific JavaScript
+        // Enhanced 3D Effects and Particle System
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize romantic particle effects
+            function createParticle() {
+                const particles = ['<i data-lucide="heart" class="icon-heart"></i>', '<i data-lucide="heart" class="icon-heart-filled"></i>', '<i data-lucide="heart" class="icon-heart-pulse"></i>', '💓', '<i data-lucide="gift" class="icon-gift"></i>', '<i data-lucide="heart" class="icon-heart-red"></i>', '<i data-lucide="flower-2" class="icon-rose"></i>', '<i data-lucide="sparkles" class="icon-sparkles"></i>', '💫'];
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                const container = document.getElementById('particle-container');
+                if (container) {
+                    container.appendChild(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 8000);
+                }
+            }
+            
+            // Create particles periodically
+            setInterval(createParticle, 800);
+            
+            // Enhanced 3D card interactions
+            const cards = document.querySelectorAll('.time-stat, .nav-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    card.style.transformOrigin = `${centerX}px ${centerY}px`;
+                });
+                
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 5;
+                    const rotateY = (centerX - x) / 5;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
+                });
+            });
+            
             // Start real-time time calculator updates
             if (window.timeCalculator) {
                 window.timeCalculator.startRealTimeUpdates((timeData) => {
@@ -301,16 +657,37 @@
                 });
             }
             
-            // Show welcome notification
+            // Show welcome notification with enhanced styling
             setTimeout(() => {
                 if (window.notificationManager) {
                     window.notificationManager.show(
                         'love',
-                        'Welcome to Our Anniversary! 🎉',
-                        'Celebrating our beautiful love story together 💕'
+                        'Welcome to Our Anniversary!',
+                        'Celebrating our beautiful love story together'
                     );
                 }
             }, 1000);
+            
+            // Enhanced music player interactions
+            const musicPlayer = document.querySelector('.music-player-3d');
+            if (musicPlayer) {
+                musicPlayer.addEventListener('mouseenter', () => {
+                    musicPlayer.style.transform = 'scale(1.05)';
+                });
+                
+                musicPlayer.addEventListener('mouseleave', () => {
+                    musicPlayer.style.transform = 'scale(1)';
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>

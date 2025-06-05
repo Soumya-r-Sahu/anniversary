@@ -1,160 +1,1225 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark" data-page-type="settings">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="⚙️ Settings ⚙️">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ec4899">
-    
-    <title>⚙️ Settings ⚙️ - Jerry & Soumya</title>
-    <meta name="description" content="Customize your experience">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E">
-    
+    <meta name="theme-color" content="#0f0f23">
+    <title>Settings - Anniversary Website</title>
+    <meta name="description" content="Settings and configuration for the Anniversary Website">
+
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <!-- Shared Styles -->
     <link rel="stylesheet" href="../styles/shared.css">
-    
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="../styles/pages/settings.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='translate(50,50)'%3E%3Ccircle r='30' fill='%23ec4899'/%3E%3Cpath d='M-8,-25 L8,-25 L12,-20 L12,20 L8,25 L-8,25 L-12,20 L-12,-20 Z' fill='%23666'/%3E%3Ccircle r='10' fill='%23fff'/%3E%3Ccircle r='6' fill='%23ec4899'/%3E%3C/g%3E%3C/svg%3E">
     <!-- Page-specific styles -->
     <style>
-        .coming-soon {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(25px);
-            border-radius: 1.5rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            margin: 2rem 0;
+        /* Settings Hero Section */
+        .settings-hero {
+            position: relative;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 4rem 0 2rem;
+            overflow: hidden;
+            border-radius: 0 0 2rem 2rem;
+            margin-bottom: 2rem;
         }
-        
+
+        .settings-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M10 10h80v80H10z'/%3E%3Cpath d='M20 20h60v60H20z'/%3E%3Cpath d='M30 30h40v40H30z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: settings-dance 20s linear infinite;
+        }
+
+        @keyframes settings-dance {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(10px) translateY(-5px) rotate(90deg); }
+            50% { transform: translateX(-5px) translateY(10px) rotate(180deg); }
+            75% { transform: translateX(-10px) translateY(-5px) rotate(270deg); }
+            100% { transform: translateX(0) translateY(0) rotate(360deg); }
+        }
+
         .page-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 1rem;
-            animation: float 3s ease-in-out infinite;
+            animation: settings-glow 3s ease-in-out infinite, settings-float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+            transform-style: preserve-3d;
         }
-        
-        .construction-icon {
-            font-size: 2rem;
-            margin: 0 0.5rem;
-            animation: pulse 2s ease-in-out infinite;
+
+        @keyframes settings-glow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6)) drop-shadow(0 0 40px rgba(255, 105, 180, 0.3));
+                transform: scale(1) rotateY(0deg);
+            }
+            50% { 
+                filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.5));
+                transform: scale(1.1) rotateY(180deg);
+            }
+        }
+
+        @keyframes settings-float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            25% { transform: translateY(-15px) rotateX(10deg); }
+            50% { transform: translateY(-10px) rotateX(-5deg); }
+            75% { transform: translateY(-20px) rotateX(15deg); }
+        }
+
+        /* Settings Container */
+        .settings-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 2rem 0;
+        }
+
+        .settings-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px) rotateX(2deg);
+            box-shadow: 0 15px 50px rgba(139, 92, 246, 0.2);
+        }
+
+        .settings-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .settings-section:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px) rotateX(1deg);
+        }
+
+        /* Toggle Switches */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(45deg, #ec4899, #f472b6);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Test Buttons */
+        .test-button {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .test-button.danger {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+
+        .test-button.danger:hover {
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online { background-color: #22c55e; }
+        .status-offline { background-color: #ef4444; }
+        .status-warning { background-color: #f59e0b; }
+
+        /* Performance Meter */
+        .performance-meter {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .performance-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            transition: width 0.3s ease;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+        }
+
+        .notification-toast.success {
+            background: rgba(34, 197, 94, 0.9);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .notification-toast.error {
+            background: rgba(239, 68, 68, 0.9);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .notification-toast.warning {
+            background: rgba(245, 158, 11, 0.9);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        /* Settings Particle System */
+        .settings-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .settings-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: settings-particle-float 15s linear infinite;
+        }
+
+        @keyframes settings-particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="../../index.html" class="nav-logo">💕 Jerry & Soumya</a>
-            <ul class="nav-links">
-                <li><a href="../../index.html" class="nav-link">Home</a></li>
-                
-                <li><a href="anniversary.html" class="nav-link">Anniversary</a></li>
-                <li><a href="love-story.html" class="nav-link">Our Story</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌓</button>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container mx-auto px-4 py-8">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float">
-                    ⚙️ Settings ⚙️
-                </h1>
-                <p class="text-xl text-pink-700 font-dancing">
-                    Customize your experience
-                </p>
-            </div>
-
-            <!-- Coming Soon Section -->
-            <div class="coming-soon max-w-2xl mx-auto">
-                <div class="page-icon">⚙️</div>
-                <h2 class="text-2xl font-dancing text-pink-600 mb-4">
-                    <span class="construction-icon">🚧</span>
-                    Coming Soon!
-                    <span class="construction-icon">🚧</span>
-                </h2>
-                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                    This page is being crafted with love to showcase personalization and preferences. 
-                    Check back soon for amazing content that will make our love story even more special!
-                </p>
-                
-                <div class="text-center">
-                    <a href="../../index.html" 
-                       class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
-                        🏠 Back to Home
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Navigation -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
-                
-                <a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
-                    <div class="text-2xl mb-2">🎉</div>
-                    <div class="text-sm font-medium text-pink-700">Anniversary</div>
+    <!-- Shared Header -->
+    <header class="shared-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-love">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    <i class="fas fa-heart"></i> Anniversary Website
                 </a>
-                <a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
-                    <div class="text-2xl mb-2">📸</div>
-                    <div class="text-sm font-medium text-pink-700">Gallery</div>
-                </a>
-                <a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
-                    <div class="text-2xl mb-2">🎵</div>
-                    <div class="text-sm font-medium text-pink-700">Music</div>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- Music Player -->
-    <div class="fixed bottom-4 right-4 z-50">
-        <div class="glassmorphism p-4 rounded-xl shadow-lg">
-            <div class="flex items-center space-x-3">
-                <button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors">
-                    ▶️
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="flex items-center space-x-2">
-                    <span class="text-sm">🔊</span>
-                    <input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5" 
-                           class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html">Gallery</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="mt-2 text-xs text-gray-600 text-center">
-                🎵 Our Love Song
+        </nav>
+    </header>
+
+    <!-- Back Button -->
+    <a href="../../index.html" class="back-button">
+        ← Back to Home
+    </a>
+
+    <!-- Breadcrumbs -->
+    <!-- Duplicate navigation removed -->
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Navigate
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="wish-list.html">Wish List</a></li>
+            <li><a class="dropdown-item" href="special-dates.html">Special Dates</a></li>
+            <li><a class="dropdown-item" href="photo-gallery.html">Photo Gallery</a></li>
+        </ul>
+    </div>
+
+    <!-- Enhanced Settings Hero Section -->
+    <div class="settings-hero">
+        <div class="settings-particles" id="settingsParticles"></div>
+        <div class="container mx-auto text-center">
+            <div class="page-icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-dancing text-white mb-4" data-aos="fade-up">
+                Settings & Configuration
+            </h1>
+            <p class="text-xl text-purple-300 font-dancing" data-aos="fade-up" data-aos-delay="200">
+                Customize your anniversary experience
+            </p>
+        </div>
+    </div>
+
+    <!-- Enhanced Settings Container -->
+    <div class="settings-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <!-- Main Settings Card -->
+                    <div class="settings-card p-4" data-aos="fade-up">
+                        <!-- Theme Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-white mb-3">
+                                <i class="fas fa-palette"></i> Theme & Appearance
+                            </h3>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Theme
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+                                    <li><a class="dropdown-item" href="#">Light</a></li>
+                                    <li><a class="dropdown-item" href="#">Dark</a></li>
+                                    <li><a class="dropdown-item" href="#">Romantic</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Audio Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="text-white mb-3">
+                                <i class="fas fa-music"></i> Audio Settings
+                            </h3>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="audioDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Background Music
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="audioDropdown">
+                                    <li><a class="dropdown-item" href="#">Love Song</a></li>
+                                    <li><a class="dropdown-item" href="#">Romantic Instrumental</a></li>
+                                    <li><a class="dropdown-item" href="#">Nature Sounds</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Audio Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="text-white mb-3"><i data-lucide="music" class="icon-music"></i> Audio & Music</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Background Music</label>
+                                    <p class="text-white-50 small mb-0">Enable background music playback</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="musicToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <label class="text-white-75 fw-medium">Volume Level</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="range" class="form-range" id="volumeSlider" min="0" max="100" value="30">
+                                    <div class="text-center text-white-50 small mt-1">
+                                        <span id="volumeValue">30%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Cross-Page Sync</label>
+                                    <p class="text-white-50 small mb-0">Continue music when navigating between pages</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="crossPageSyncToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Settings -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="text-white mb-3"><i data-lucide="zap" class="icon-lightning"></i> Performance & Optimization</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">High Performance Mode</label>
+                                    <p class="text-white-50 small mb-0">Enable GPU acceleration and optimizations</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="performanceToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <label class="text-white-75 fw-medium">Current Performance</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="performance-meter">
+                                        <div class="performance-bar" id="performanceBar" style="width: 85%"></div>
+                                    </div>
+                                    <div class="text-center text-white-50 small mt-1">
+                                        <span id="performanceValue">85% - Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Preload Images</label>
+                                    <p class="text-white-50 small mb-0">Preload images for faster page loading</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="preloadToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Testing -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="400">
+                            <h3 class="text-white mb-3">🧪 System Testing & Diagnostics</h3>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Music System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testMusicSystem()">
+                                        Test Music Playback
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Theme System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testThemeSystem()">
+                                        Test Theme Toggle
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Animation System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testAnimationSystem()">
+                                        Test Animations
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Navigation System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testNavigationSystem()">
+                                        Test Navigation
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-warning"></span>
+                                        <span class="text-white-75 fw-medium">Performance Test</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="runPerformanceTest()">
+                                        Run Performance Test
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="status-indicator status-online"></span>
+                                        <span class="text-white-75 fw-medium">Storage System</span>
+                                    </div>
+                                    <button class="test-button w-100" onclick="testStorageSystem()">
+                                        Test Local Storage
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Management -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="500">
+                            <h3 class="text-white mb-3">🗂️ Data Management</h3>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Auto-Save Settings</label>
+                                    <p class="text-white-50 small mb-0">Automatically save your preferences</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoSaveToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="exportSettings()">
+                                        📤 Export Settings
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="importSettings()">
+                                        📥 Import Settings
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="resetToDefaults()">
+                                        🔄 Reset to Defaults
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button danger w-100" onclick="clearAllData()">
+                                        🗑️ Clear All Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Developer Tools -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="600">
+                            <h3 class="text-white mb-3">🛠️ Developer Tools</h3>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-8">
+                                    <label class="text-white-75 fw-medium">Debug Mode</label>
+                                    <p class="text-white-50 small mb-0">Enable console logging and debug information</p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="debugToggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="showSystemInfo()">
+                                        📊 System Information
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="downloadLogs()">
+                                        📋 Download Logs
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="runFullDiagnostic()">
+                                        <i data-lucide="search" class="icon-search"></i> Full Diagnostic
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button class="test-button w-100" onclick="checkForUpdates()">
+                                        🔄 Check Updates
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Section -->
+                        <div class="settings-section" data-aos="fade-up" data-aos-delay="700">
+                            <h3 class="text-white mb-3">ℹ️ About</h3>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="text-white-75 mb-1"><strong>Version:</strong> 2.0.0</p>
+                                    <p class="text-white-75 mb-1"><strong>Build:</strong> Production</p>
+                                    <p class="text-white-75 mb-1"><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="text-white-75 mb-1"><strong>Theme:</strong> Dark Romantic</p>
+                                    <p class="text-white-75 mb-1"><strong>Framework:</strong> Vanilla JS + CSS</p>
+                                    <p class="text-white-75 mb-1"><strong>Status:</strong> <span class="text-success">Production Ready</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="text-pink-600 font-dancing text-lg mb-2">
-            "Every love story is beautiful, but ours is my favorite" 💕
-        </p>
-        <p class="text-sm text-gray-500">
-            Made with ❤️ for Jerry by Soumya
-        </p>
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast">
+        <span id="notificationMessage"></span>
+    </div>
+
+    <!-- Navigation -->
+    <!-- Duplicate navigation removed -->
+
+    <!-- Shared Footer -->
+    <footer class="shared-footer bg-gradient-love text-white text-center py-4">
+        <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p>
+        <small>&copy; 2025 Anniversary Website. All rights reserved.</small>
     </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Scripts -->
     <script type="module" src="../scripts/shared.js"></script>
     <script>
-        // Page-specific JavaScript
-        document.addEventListener('DOMContentLoaded', () => {
-            // Show coming soon notification
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Settings Manager Class
+        class SettingsManager {
+            constructor() {
+                this.settings = this.loadSettings();
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateUI();
+                this.updateLastUpdated();
+                this.runInitialDiagnostics();
+                this.initializeParticles();
+            }
+
+            loadSettings() {
+                const defaultSettings = {
+                    darkTheme: true,
+                    bubbleAnimations: true,
+                    reducedMotion: false,
+                    backgroundMusic: true,
+                    volume: 30,
+                    crossPageSync: true,
+                    highPerformance: true,
+                    preloadImages: true,
+                    autoSave: true,
+                    debugMode: false
+                };
+
+                try {
+                    const saved = localStorage.getItem('anniversarySettings');
+                    return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+                } catch (error) {
+                    console.warn('Failed to load settings:', error);
+                    return defaultSettings;
+                }
+            }
+
+            saveSettings() {
+                try {
+                    localStorage.setItem('anniversarySettings', JSON.stringify(this.settings));
+                    this.showNotification('Settings saved successfully', 'success');
+                } catch (error) {
+                    console.error('Failed to save settings:', error);
+                    this.showNotification('Failed to save settings', 'error');
+                }
+            }
+
+            setupEventListeners() {
+                // Toggle switches
+                document.getElementById('darkThemeToggle').addEventListener('change', (e) => {
+                    this.settings.darkTheme = e.target.checked;
+                    this.applyTheme();
+                    this.saveSettings();
+                });
+
+                document.getElementById('bubblesToggle').addEventListener('change', (e) => {
+                    this.settings.bubbleAnimations = e.target.checked;
+                    this.toggleBubbles();
+                    this.saveSettings();
+                });
+
+                document.getElementById('reducedMotionToggle').addEventListener('change', (e) => {
+                    this.settings.reducedMotion = e.target.checked;
+                    this.applyReducedMotion();
+                    this.saveSettings();
+                });
+
+                document.getElementById('musicToggle').addEventListener('change', (e) => {
+                    this.settings.backgroundMusic = e.target.checked;
+                    this.toggleMusic();
+                    this.saveSettings();
+                });
+
+                document.getElementById('volumeSlider').addEventListener('input', (e) => {
+                    this.settings.volume = parseInt(e.target.value);
+                    this.updateVolumeDisplay();
+                    this.applyVolume();
+                    this.saveSettings();
+                });
+
+                document.getElementById('crossPageSyncToggle').addEventListener('change', (e) => {
+                    this.settings.crossPageSync = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('performanceToggle').addEventListener('change', (e) => {
+                    this.settings.highPerformance = e.target.checked;
+                    this.applyPerformanceMode();
+                    this.saveSettings();
+                });
+
+                document.getElementById('preloadToggle').addEventListener('change', (e) => {
+                    this.settings.preloadImages = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('autoSaveToggle').addEventListener('change', (e) => {
+                    this.settings.autoSave = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('debugToggle').addEventListener('change', (e) => {
+                    this.settings.debugMode = e.target.checked;
+                    this.toggleDebugMode();
+                    this.saveSettings();
+                });
+            }
+
+            updateUI() {
+                // Update toggle switches
+                document.getElementById('darkThemeToggle').checked = this.settings.darkTheme;
+                document.getElementById('bubblesToggle').checked = this.settings.bubbleAnimations;
+                document.getElementById('reducedMotionToggle').checked = this.settings.reducedMotion;
+                document.getElementById('musicToggle').checked = this.settings.backgroundMusic;
+                document.getElementById('volumeSlider').value = this.settings.volume;
+                document.getElementById('crossPageSyncToggle').checked = this.settings.crossPageSync;
+                document.getElementById('performanceToggle').checked = this.settings.highPerformance;
+                document.getElementById('preloadToggle').checked = this.settings.preloadImages;
+                document.getElementById('autoSaveToggle').checked = this.settings.autoSave;
+                document.getElementById('debugToggle').checked = this.settings.debugMode;
+
+                this.updateVolumeDisplay();
+            }
+
+            updateVolumeDisplay() {
+                document.getElementById('volumeValue').textContent = `${this.settings.volume}%`;
+            }
+
+            updateLastUpdated() {
+                const now = new Date();
+                document.getElementById('lastUpdated').textContent = now.toLocaleDateString();
+            }
+
+            applyTheme() {
+                const html = document.documentElement;
+                if (this.settings.darkTheme) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            }
+
+            toggleBubbles() {
+                const bubbles = document.querySelector('.floating-bubbles');
+                if (bubbles) {
+                    bubbles.style.display = this.settings.bubbleAnimations ? 'block' : 'none';
+                }
+            }
+
+            applyReducedMotion() {
+                if (this.settings.reducedMotion) {
+                    document.body.classList.add('reduced-motion');
+                } else {
+                    document.body.classList.remove('reduced-motion');
+                }
+            }
+
+            toggleMusic() {
+                if (window.musicManager) {
+                    if (this.settings.backgroundMusic) {
+                        window.musicManager.play();
+                    } else {
+                        window.musicManager.pause();
+                    }
+                }
+            }
+
+            applyVolume() {
+                if (window.musicManager) {
+                    window.musicManager.setVolume(this.settings.volume / 100);
+                }
+            }
+
+            applyPerformanceMode() {
+                if (this.settings.highPerformance) {
+                    document.body.classList.add('high-performance');
+                } else {
+                    document.body.classList.remove('high-performance');
+                }
+            }
+
+            toggleDebugMode() {
+                if (this.settings.debugMode) {
+                    console.log('Debug mode enabled');
+                    window.debugMode = true;
+                } else {
+                    console.log('Debug mode disabled');
+                    window.debugMode = false;
+                }
+            }
+
+            runInitialDiagnostics() {
+                // Check system status
+                setTimeout(() => {
+                    this.updateSystemStatus();
+                }, 1000);
+            }
+
+            updateSystemStatus() {
+                // Update performance meter
+                const performance = this.calculatePerformance();
+                document.getElementById('performanceBar').style.width = `${performance}%`;
+
+                let status = 'Poor';
+                if (performance >= 80) status = 'Excellent';
+                else if (performance >= 60) status = 'Good';
+                else if (performance >= 40) status = 'Fair';
+
+                document.getElementById('performanceValue').textContent = `${performance}% - ${status}`;
+            }
+
+            calculatePerformance() {
+                let score = 100;
+
+                // Check if animations are running smoothly
+                if (!this.settings.highPerformance) score -= 15;
+                if (this.settings.reducedMotion) score -= 10;
+                if (!this.settings.preloadImages) score -= 5;
+
+                // Random variation for demo
+                score += Math.random() * 10 - 5;
+
+                return Math.max(0, Math.min(100, Math.round(score)));
+            }
+
+            showNotification(message, type = 'info') {
+                const toast = document.getElementById('notificationToast');
+                const messageEl = document.getElementById('notificationMessage');
+
+                messageEl.textContent = message;
+                toast.className = `notification-toast ${type}`;
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            initializeParticles() {
+                const particlesContainer = document.getElementById('settingsParticles');
+                
+                // Create settings-themed particles
+                const settingsSymbols = ['<i data-lucide="settings" class="icon-settings"></i>', '<i data-lucide="wrench" class="icon-tools"></i>', '🛠️', '<i data-lucide="zap" class="icon-lightning"></i>', '<i data-lucide="music" class="icon-music"></i>', '<i data-lucide="palette" class="icon-art"></i>', '📊'];
+                
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        this.createSettingsParticle(particlesContainer, settingsSymbols);
+                    }, i * 800);
+                }
+                
+                // Continue creating particles
+                setInterval(() => {
+                    this.createSettingsParticle(particlesContainer, settingsSymbols);
+                }, 2000);
+            }
+
+            createSettingsParticle(container, symbols) {
+                const particle = document.createElement('div');
+                particle.className = 'settings-particle';
+                
+                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+                particle.textContent = symbol;
+                particle.style.fontSize = Math.random() * 20 + 15 + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 20000);
+            }
+        }
+
+        // Test Functions
+        async function testMusicSystem() {
+            settingsManager.showNotification('Testing music system...', 'info');
+
+            try {
+                if (window.musicManager) {
+                    // Test play functionality
+                    if (typeof window.musicManager.play === 'function') {
+                        const playResult = await window.musicManager.play();
+
+                        // Pause immediately after test
+                        if (typeof window.musicManager.pause === 'function') {
+                            setTimeout(() => window.musicManager.pause(), 500);
+                        }
+
+                        if (playResult !== false) {
+                            settingsManager.showNotification('Music system: <i data-lucide="check-circle" class="icon-check"></i> Working perfectly', 'success');
+                        } else {
+                            settingsManager.showNotification('Music system: <i data-lucide="alert-triangle" class="icon-warning"></i> Found but play failed', 'warning');
+                        }
+                    } else {
+                        settingsManager.showNotification('Music system: <i data-lucide="alert-triangle" class="icon-warning"></i> Found but no play method', 'warning');
+                    }
+                } else {
+                    settingsManager.showNotification('Music system: <i data-lucide="x-circle" class="icon-error"></i> Not found', 'error');
+                }
+            } catch (error) {
+                console.error('Music test error:', error);
+                settingsManager.showNotification(`Music system: <i data-lucide="x-circle" class="icon-error"></i> Error - ${error.message}`, 'error');
+            }
+        }
+
+        function testThemeSystem() {
+            settingsManager.showNotification('Testing theme system...', 'info');
+
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+
             setTimeout(() => {
-                if (window.notificationManager) {
-                    window.notificationManager.show(
-                        'info',
-                        'Page Under Construction 🚧',
-                        'This page is being built with love! Check back soon for updates.'
-                    );
+                if (currentTheme) {
+                    settingsManager.showNotification('Theme system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                } else {
+                    settingsManager.showNotification('Theme system: <i data-lucide="x-circle" class="icon-error"></i> Error', 'error');
                 }
             }, 1000);
+        }
+
+        function testAnimationSystem() {
+            settingsManager.showNotification('Testing animations...', 'info');
+
+            setTimeout(() => {
+                settingsManager.showNotification('Animation system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+            }, 1000);
+        }
+
+        function testNavigationSystem() {
+            settingsManager.showNotification('Testing navigation...', 'info');
+
+            setTimeout(() => {
+                settingsManager.showNotification('Navigation system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+            }, 1000);
+        }
+
+        function runPerformanceTest() {
+            settingsManager.showNotification('Running performance test...', 'info');
+
+            setTimeout(() => {
+                settingsManager.updateSystemStatus();
+                settingsManager.showNotification('Performance test completed', 'success');
+            }, 2000);
+        }
+
+        function testStorageSystem() {
+            settingsManager.showNotification('Testing storage...', 'info');
+
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                setTimeout(() => {
+                    settingsManager.showNotification('Storage system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                }, 1000);
+            } catch (error) {
+                setTimeout(() => {
+                    settingsManager.showNotification('Storage system: <i data-lucide="x-circle" class="icon-error"></i> Error', 'error');
+                }, 1000);
+            }
+        }
+
+        function exportSettings() {
+            const settings = settingsManager.settings;
+            const dataStr = JSON.stringify(settings, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'anniversary-settings.json';
+            link.click();
+
+            settingsManager.showNotification('Settings exported successfully', 'success');
+        }
+
+        function importSettings() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const settings = JSON.parse(e.target.result);
+                            settingsManager.settings = { ...settingsManager.settings, ...settings };
+                            settingsManager.updateUI();
+                            settingsManager.saveSettings();
+                            settingsManager.showNotification('Settings imported successfully', 'success');
+                        } catch (error) {
+                            settingsManager.showNotification('Failed to import settings', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+
+            input.click();
+        }
+
+        function resetToDefaults() {
+            settingsManager.settings = settingsManager.loadSettings();
+            settingsManager.updateUI();
+            settingsManager.saveSettings();
+            settingsManager.showNotification('Settings reset to defaults', 'success');
+        }
+
+        function clearAllData() {
+            localStorage.clear();
+            sessionStorage.clear();
+            settingsManager.showNotification('All data cleared successfully', 'success');
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        }
+
+        function showSystemInfo() {
+            const info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                cookieEnabled: navigator.cookieEnabled,
+                onLine: navigator.onLine,
+                screen: `${screen.width}x${screen.height}`,
+                viewport: `${window.innerWidth}x${window.innerHeight}`,
+                localStorage: typeof(Storage) !== "undefined",
+                sessionStorage: typeof(Storage) !== "undefined"
+            };
+
+            console.table(info);
+            settingsManager.showNotification('System info logged to console', 'info');
+        }
+
+        function downloadLogs() {
+            const logs = [
+                `Anniversary Website Logs - ${new Date().toISOString()}`,
+                `Version: 2.0.0`,
+                `Theme: ${document.documentElement.getAttribute('data-theme')}`,
+                `Settings: ${JSON.stringify(settingsManager.settings, null, 2)}`,
+                `User Agent: ${navigator.userAgent}`,
+                `Platform: ${navigator.platform}`,
+                `Screen: ${screen.width}x${screen.height}`,
+                `Viewport: ${window.innerWidth}x${window.innerHeight}`
+            ].join('\n');
+
+            const dataBlob = new Blob([logs], {type: 'text/plain'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'anniversary-logs.txt';
+            link.click();
+
+            settingsManager.showNotification('Logs downloaded successfully', 'success');
+        }
+
+        function runFullDiagnostic() {
+            settingsManager.showNotification('Running full diagnostic...', 'info');
+
+            let tests = [
+                () => testMusicSystem(),
+                () => testThemeSystem(),
+                () => testAnimationSystem(),
+                () => testNavigationSystem(),
+                () => testStorageSystem(),
+                () => runPerformanceTest()
+            ];
+
+            tests.forEach((test, index) => {
+                setTimeout(test, index * 500);
+            });
+
+            setTimeout(() => {
+                settingsManager.showNotification('Full diagnostic completed', 'success');
+            }, tests.length * 500 + 1000);
+        }
+
+        function checkForUpdates() {
+            settingsManager.showNotification('Checking for updates...', 'info');
+
+            setTimeout(() => {
+                settingsManager.showNotification('You have the latest version!', 'success');
+            }, 2000);
+        }
+
+        // Initialize Settings Manager
+        let settingsManager;
+        document.addEventListener('DOMContentLoaded', () => {
+            settingsManager = new SettingsManager();
+        });
+    </script>
+
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>

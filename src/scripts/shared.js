@@ -345,6 +345,25 @@ class MusicPlayer {
   }
 }
 
+// Global Error Handling
+window.addEventListener('error', (event) => {
+    console.error('Global Error:', event.message);
+    const errorToast = document.createElement('div');
+    errorToast.className = 'notification-toast error show';
+    errorToast.innerText = 'An unexpected error occurred. Please try again later.';
+    document.body.appendChild(errorToast);
+    setTimeout(() => errorToast.remove(), 5000);
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('Unhandled Promise Rejection:', event.reason);
+    const errorToast = document.createElement('div');
+    errorToast.className = 'notification-toast error show';
+    errorToast.innerText = 'A network error occurred. Please check your connection.';
+    document.body.appendChild(errorToast);
+    setTimeout(() => errorToast.remove(), 5000);
+});
+
 // Initialize global instances
 let themeManager, timeCalculator, notificationManager, musicPlayer;
 
