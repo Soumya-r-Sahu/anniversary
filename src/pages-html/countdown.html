@@ -41,7 +41,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="20" font-size="20" fill="rgba(255,255,255,0.1)"><i data-lucide="alarm-clock" class="icon-alarm"></i></text><text x="30" y="50" font-size="15" fill="rgba(255,255,255,0.08)"><i data-lucide="heart" class="icon-heart"></i></text><text x="60" y="30" font-size="18" fill="rgba(255,255,255,0.1)">⏳</text><text x="20" y="80" font-size="16" fill="rgba(255,255,255,0.09)"><i data-lucide="heart" class="icon-heart-filled"></i></text><text x="70" y="70" font-size="14" fill="rgba(255,255,255,0.07)">⌛</text></svg>') repeat;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="20" font-size="20" fill="rgba(255,255,255,0.1)">⏰</text><text x="30" y="50" font-size="15" fill="rgba(255,255,255,0.08)">💕</text><text x="60" y="30" font-size="18" fill="rgba(255,255,255,0.1)">⏳</text><text x="20" y="80" font-size="16" fill="rgba(255,255,255,0.09)">💖</text><text x="70" y="70" font-size="14" fill="rgba(255,255,255,0.07)">⌛</text></svg>') repeat;
             animation: timePattern 15s linear infinite;
             z-index: 1;
         }
@@ -278,7 +278,7 @@
     <div class="countdown-hero">
         <div class="hero-content">
             <h1 class="hero-title gradient-text">
-                <i data-lucide="alarm-clock" class="icon-alarm"></i> Counting Down to Forever <i data-lucide="alarm-clock" class="icon-alarm"></i>
+                ⏰ Counting Down to Forever ⏰
             </h1>
             <p class="hero-subtitle">
                 Every second brings us closer to our special moment
@@ -326,7 +326,7 @@
                 <!-- Celebration Message (hidden by default) -->
                 <div id="celebration-message" class="text-center mt-8" style="display: none;">
                     <h2 class="text-4xl font-dancing gradient-text mb-4 celebration">
-                        <i data-lucide="party-popper" class="icon-celebration"></i> Happy Anniversary! <i data-lucide="party-popper" class="icon-celebration"></i>
+                        🎉 Happy Anniversary! 🎉
                     </h2>
                     <p class="text-xl text-pink-600">
                         The day has finally arrived!
@@ -338,7 +338,7 @@
             <div class="text-center" id="navigationLinks">
                 <div class="glassmorphism p-6 rounded-2xl max-w-md mx-auto">
                     <p class="text-lg text-pink-600 font-dancing mb-4">
-                        <i data-lucide="sparkles" class="icon-sparkles"></i> The countdown is almost over... <i data-lucide="sparkles" class="icon-sparkles"></i>
+                        ✨ The countdown is almost over... ✨
                     </p>
                     <p class="text-gray-600">
                         Your surprise will be revealed when the time is right!
@@ -357,7 +357,7 @@
     <script>
         // Enhanced Countdown Page JavaScript
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('<i data-lucide="alarm-clock" class="icon-alarm"></i> Countdown page loaded');
+            console.log('⏰ Countdown page loaded');
             
             // Initialize countdown functionality
             initializeCountdown();
@@ -448,15 +448,15 @@
                 if (navigationLinks) {
                     let message;
                     if (days > 7) {
-                        message = "<i data-lucide="sparkles" class="icon-sparkles"></i> We still have time to prepare something amazing... <i data-lucide="sparkles" class="icon-sparkles"></i>";
+                        message = "✨ We still have time to prepare something amazing... ✨";
                     } else if (days > 1) {
-                        message = "<i data-lucide="sparkles" class="icon-sparkles"></i> Just a few more days until our special moment! <i data-lucide="sparkles" class="icon-sparkles"></i>";
+                        message = "✨ Just a few more days until our special moment! ✨";
                     } else if (days === 1) {
-                        message = "<i data-lucide="sparkles" class="icon-sparkles"></i> Tomorrow is our special day! <i data-lucide="sparkles" class="icon-sparkles"></i>";
+                        message = "✨ Tomorrow is our special day! ✨";
                     } else if (hours > 1) {
-                        message = "<i data-lucide="sparkles" class="icon-sparkles"></i> Only hours remain until our celebration! <i data-lucide="sparkles" class="icon-sparkles"></i>";
+                        message = "✨ Only hours remain until our celebration! ✨";
                     } else {
-                        message = "<i data-lucide="sparkles" class="icon-sparkles"></i> The countdown is almost over... <i data-lucide="sparkles" class="icon-sparkles"></i>";
+                        message = "✨ The countdown is almost over... ✨";
                     }
                     
                     const messageEl = navigationLinks.querySelector('.text-pink-600');
@@ -485,7 +485,7 @@
                 for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
                         const sparkle = document.createElement('div');
-                        sparkle.textContent = '<i data-lucide="sparkles" class="icon-sparkles"></i>';
+                        sparkle.textContent = '✨';
                         sparkle.style.cssText = `
                             position: absolute;
                             left: ${Math.random() * 100}%;
@@ -519,7 +519,7 @@
                     navigationLinks.innerHTML = `
                         <div class="glassmorphism p-6 rounded-2xl max-w-md mx-auto">
                             <p class="text-lg text-pink-600 font-dancing mb-4">
-                                <i data-lucide="cake" class="icon-cake"></i> It's time to celebrate! <i data-lucide="cake" class="icon-cake"></i>
+                                🎂 It's time to celebrate! 🎂
                             </p>
                             <button id="goToAnniversary" class="px-6 py-3 bg-gradient-love text-white rounded-full 
                                     font-semibold shadow-lg hover:shadow-xl transition-all transform 
@@ -586,7 +586,7 @@
             
             // Music toggle button
             const musicButton = document.createElement('button');
-            musicButton.innerHTML = '<i data-lucide="music" class="icon-music"></i>';
+            musicButton.innerHTML = '🎵';
             musicButton.title = 'Toggle Music';
             musicButton.style.cssText = `
                 background: none;
@@ -612,7 +612,7 @@
                     if (isPlaying) {
                         audioElement.pause();
                         isPlaying = false;
-                        musicButton.innerHTML = '<i data-lucide="music" class="icon-music"></i>';
+                        musicButton.innerHTML = '🎵';
                         musicButton.title = 'Play Music';
                     } else {
                         await audioElement.play();

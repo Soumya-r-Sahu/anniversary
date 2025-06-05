@@ -10,7 +10,7 @@ const ChallengesPage = () => {
       <div className="max-w-4xl mx-auto z-10 relative">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4 font-dancing">
-            <i data-lucide="gamepad-2" class="icon-game"></i> Challenges <i data-lucide="gamepad-2" class="icon-game"></i>
+            🎮 Challenges 🎮
           </h1>
           <p className="text-xl text-pink-700 font-dancing">
             Fun relationship games and challenges

@@ -424,10 +424,10 @@
                     <canvas id="fireworksCanvas" width="800" height="400"></canvas>
                     <div class="fireworks-controls">
                         <button id="launch-firework" class="btn-3d-romantic">
-                            <span class="btn-icon"><i data-lucide="rocket" class="icon-rocket"></i></span> Launch Firework
+                            <span class="btn-icon">🚀</span> Launch Firework
                         </button>
                         <button id="auto-show" class="btn-3d-romantic">
-                            <span class="btn-icon"><i data-lucide="sparkles" class="icon-sparkles"></i></span> Auto Show
+                            <span class="btn-icon">✨</span> Auto Show
                         </button>
                         <button id="clear-fireworks" class="btn-3d-romantic">
                             <span class="btn-icon">🧹</span> Clear
@@ -640,7 +640,7 @@
                 this.autoShow = !this.autoShow;
                 const btn = document.getElementById('auto-show');
                 if (btn) {
-                    btn.textContent = this.autoShow ? '<i data-lucide="pause" class="icon-pause"></i> Stop Show' : '<i data-lucide="sparkles" class="icon-sparkles"></i> Auto Show';
+                    btn.textContent = this.autoShow ? '<i data-lucide="pause" class="icon-pause"></i> Stop Show' : '✨ Auto Show';
                     btn.classList.toggle('active', this.autoShow);
                 }
             }
@@ -846,7 +846,7 @@
 
         // Page initialization
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('<i data-lucide="zap" class="icon-fireworks"></i> Fireworks page loaded with full interactive features');
+            console.log('🎆 Fireworks page loaded with full interactive features');
             
             // Initialize fireworks engine
             const canvas = document.getElementById('fireworksCanvas');
@@ -1276,7 +1276,7 @@
                 if (window.notificationManager) {
                     window.notificationManager.show(
                         'success',
-                        'Fireworks Ready! <i data-lucide="zap" class="icon-fireworks"></i>',
+                        'Fireworks Ready! 🎆',
                         'Click anywhere on the display to launch beautiful fireworks!'
                     );
                 }

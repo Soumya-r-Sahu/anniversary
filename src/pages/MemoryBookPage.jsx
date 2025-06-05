@@ -10,7 +10,7 @@ const MemoryBookPage = () => {
       <div className="max-w-4xl mx-auto z-10 relative">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4 font-dancing">
-            <i data-lucide="library" class="icon-library"></i> Memory Book <i data-lucide="library" class="icon-library"></i>
+            📚 Memory Book 📚
           </h1>
           <p className="text-xl text-pink-700 font-dancing">
             Collection of our precious memories
