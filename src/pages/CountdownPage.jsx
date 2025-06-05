@@ -33,7 +33,16 @@ const CountdownPage = () => {
     };
 
     updateCountdown();
+
+    // Store interval reference for cleanup
     const interval = setInterval(updateCountdown, 1000);
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    });
 
     return () => clearInterval(interval);
   }, []);

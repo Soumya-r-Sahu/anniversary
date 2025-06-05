@@ -1,32 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [isVisible, setIsVisible] = useState(true);
   const audioRef = useRef(null);
-
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     audio.volume = volume;
-    
     const handleCanPlay = () => {
       // Auto-play is restricted, so we'll wait for user interaction
     };
-
     audio.addEventListener('canplay', handleCanPlay);
-    
     return () => {
       audio.removeEventListener('canplay', handleCanPlay);
     };
   }, [volume]);
-
   const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio) return;
-
     try {
       if (isPlaying) {
         audio.pause();
@@ -36,10 +28,8 @@ const MusicPlayer = () => {
         setIsPlaying(true);
       }
     } catch (error) {
-      console.log('Audio play failed:', error);
-    }
+      }
   };
-
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
@@ -47,7 +37,6 @@ const MusicPlayer = () => {
       audioRef.current.volume = newVolume;
     }
   };
-
   if (!isVisible) {
     return (
       <button
@@ -58,7 +47,6 @@ const MusicPlayer = () => {
       </button>
     );
   }
-
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <div className="glassmorphism p-4 rounded-xl shadow-lg">
@@ -70,7 +58,6 @@ const MusicPlayer = () => {
           >
             {isPlaying ? '⏸️' : '▶️'}
           </button>
-
           {/* Volume Control */}
           <div className="flex items-center space-x-2">
             <span className="text-sm">🔊</span>
@@ -84,7 +71,6 @@ const MusicPlayer = () => {
               className="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"
             />
           </div>
-
           {/* Minimize Button */}
           <button
             onClick={() => setIsVisible(false)}
@@ -93,13 +79,11 @@ const MusicPlayer = () => {
             ➖
           </button>
         </div>
-
         {/* Song Info */}
         <div className="mt-2 text-xs text-gray-600 text-center">
           🎵 Our Love Song
         </div>
       </div>
-
       {/* Audio Element */}
       <audio
         ref={audioRef}
@@ -113,5 +97,4 @@ const MusicPlayer = () => {
     </div>
   );
 };
-
 export default MusicPlayer;

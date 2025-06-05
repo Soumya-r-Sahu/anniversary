@@ -1,525 +1,430 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark-romantic">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!DOCTYPE html><html lang="en" data-theme="dark-romantic"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Jerry & Soumya Anniversary"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><meta name="msapplication-TileColor" content="#ec4899"><meta name="msapplication-navbutton-color" content="#ec4899"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Anniversary Website - Jerry & Soumya</title><meta name="description" content="A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive features, photo galleries, countdown timer, and romantic surprises."><meta name="keywords" content="anniversary, love story, Jerry, Soumya, romance, celebration, memories, photos, countdown"><meta name="author" content="Soumya"><meta name="robots" content="index, follow"><meta property="og:title" content="Jerry & Soumya - Our Love Story Anniversary"><meta property="og:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises."><meta property="og:type" content="website"><meta property="og:url" content="https://username.github.io/anniversary/"><meta property="og:image" content="https://username.github.io/anniversary/assets/images/og-image.jpg"><meta property="og:site_name" content="Jerry & Soumya Anniversary"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Jerry & Soumya - Our Love Story Anniversary"><meta name="twitter:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises."><meta name="twitter:image" content="https://username.github.io/anniversary/assets/images/twitter-card.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E"><link rel="manifest" href="/manifest.json"><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script><style>
+/* CSS Variables for theming */
+:root {
+--primary-color: #ec4899;
+--primary-light: #f472b6;
+--primary-dark: #be185d;
+--secondary-color: #fbbf24;
+--background-light: #fef7ff;
+--background-dark: #1a1a2e;
+--text-light: #374151;
+--text-dark: #f9fafb;
+--glass-bg: rgba(255, 255, 255, 0.1);
+--glass-border: rgba(255, 255, 255, 0.2);
+--shadow-light: 0 10px 25px rgba(236, 72, 153, 0.1);
+--shadow-heavy: 0 25px 50px rgba(236, 72, 153, 0.2);
+}
 
-    <!-- Enhanced Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Jerry & Soumya Anniversary">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ec4899">
-    <meta name="msapplication-TileColor" content="#ec4899">
-    <meta name="msapplication-navbutton-color" content="#ec4899">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+/* Reset and base styles */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-    <!-- SEO Meta Tags -->
-    <title>Jerry & Soumya - Our Love Story Anniversary Website</title>
-    <meta name="description" content="A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive features, photo galleries, countdown timer, and romantic surprises.">
-    <meta name="keywords" content="anniversary, love story, Jerry, Soumya, romance, celebration, memories, photos, countdown">
-    <meta name="author" content="Soumya">
-    <meta name="robots" content="index, follow">
+html {
+scroll-behavior: smooth;
+font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Jerry & Soumya - Our Love Story Anniversary">
-    <meta property="og:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://username.github.io/anniversary/">
-    <meta property="og:image" content="https://username.github.io/anniversary/assets/images/og-image.jpg">
-    <meta property="og:site_name" content="Jerry & Soumya Anniversary">
-    <meta property="og:locale" content="en_US">
+body {
+font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+background: linear-gradient(135deg, #1a0b2e 0%, #2d1b3d 50%, #3d2a4d 100%);
+color: #f8e8ff;
+min-height: 100vh;
+overflow-x: hidden;
+position: relative;
+}
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jerry & Soumya - Our Love Story Anniversary">
-    <meta name="twitter:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises.">
-    <meta name="twitter:image" content="https://username.github.io/anniversary/assets/images/twitter-card.jpg">
+/* Enhanced loading screen - Dark Romantic */
+.app-loading {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, #1a0b2e, #2d1b3d, #8b5a8c);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+.app-loading.hidden {
+opacity: 0;
+visibility: hidden;
+}
 
-    <!-- Enhanced Font Loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+.loading-content {
+text-align: center;
+color: white;
+animation: fadeInUp 1s ease-out;
+}
 
-    <!-- Enhanced Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E">
+.loading-heart {
+font-size: 4rem;
+margin-bottom: 1rem;
+animation: heartbeat 1.5s ease-in-out infinite;
+}
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+.loading-title {
+font-family: 'Dancing Script', cursive;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+.loading-subtitle {
+font-size: 1.1rem;
+opacity: 0.9;
+margin-bottom: 2rem;
+}
 
-    <!-- Enhanced Styling -->
-    <style>
-        /* CSS Variables for theming */
-        :root {
-            --primary-color: #ec4899;
-            --primary-light: #f472b6;
-            --primary-dark: #be185d;
-            --secondary-color: #fbbf24;
-            --background-light: #fef7ff;
-            --background-dark: #1a1a2e;
-            --text-light: #374151;
-            --text-dark: #f9fafb;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --shadow-light: 0 10px 25px rgba(236, 72, 153, 0.1);
-            --shadow-heavy: 0 25px 50px rgba(236, 72, 153, 0.2);
-        }
+.loading-spinner {
+width: 40px;
+height: 40px;
+border: 3px solid rgba(255, 255, 255, 0.3);
+border-top: 3px solid white;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+margin: 0 auto;
+}
 
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Animations */
+@keyframes heartbeat {
+0% { transform: scale(1); }
+14% { transform: scale(1.3); }
+28% { transform: scale(1); }
+42% { transform: scale(1.3); }
+70% { transform: scale(1); }
+}
 
-        html {
-            scroll-behavior: smooth;
-            font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
 
-        body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b3d 50%, #3d2a4d 100%);
-            color: #f8e8ff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
 
-        /* Enhanced loading screen - Dark Romantic */
-        .app-loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a0b2e, #2d1b3d, #8b5a8c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+@keyframes float {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+}
 
-        .app-loading.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+/* Background effects */
+.background-effects {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: -1;
+}
 
-        .loading-content {
-            text-align: center;
-            color: white;
-            animation: fadeInUp 1s ease-out;
-        }
+.floating-particle {
+position: absolute;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 70%, transparent 100%);
+box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+animation: floatUp 8s ease-in-out infinite;
+pointer-events: none;
+}
 
-        .loading-heart {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
+@keyframes floatUp {
+0% {
+opacity: 0;
+transform: translateY(100vh) rotate(0deg) scale(0.5);
+}
+10% {
+opacity: 1;
+transform: translateY(90vh) rotate(36deg) scale(1);
+}
+90% {
+opacity: 1;
+transform: translateY(10vh) rotate(324deg) scale(1);
+}
+100% {
+opacity: 0;
+transform: translateY(-100px) rotate(360deg) scale(0.5);
+}
+}
 
-        .loading-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* Root container enhancement */
+#root {
+min-height: 100vh;
+position: relative;
+z-index: 1;
+}
 
-        .loading-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
+/* Responsive design */
+@media (max-width: 768px) {
+.loading-heart {
+font-size: 3rem;
+}
 
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
+.loading-title {
+font-size: 2rem;
+}
 
-        /* Animations */
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.3); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.3); }
-            70% { transform: scale(1); }
-        }
+.loading-subtitle {
+font-size: 1rem;
+}
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* Enhanced focus styles */
+*:focus {
+outline: 2px solid var(--primary-color);
+outline-offset: 2px;
+}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+/* Smooth transitions for theme changes */
+* {
+transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+</style><link rel="stylesheet" href="src/styles/variables.css"><link rel="stylesheet" href="src/styles/theme-integration.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E"></head><body><div class="app-loading" id="appLoading"><div class="loading-content"><div class="loading-heart">💕</div><h1 class="loading-title">Jerry & Soumya</h1><p class="loading-subtitle">Loading our love story...</p><div class="loading-spinner"></div></div></div><div class="background-effects" id="backgroundEffects"></div><div id="root"></div><script>
+// Initialize Lucide icons when available
+document.addEventListener('DOMContentLoaded', () => {
+if (typeof lucide !== 'undefined') {
+lucide.createIcons();
+}
+});
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
+// Enhanced loading screen management
+function hideLoadingScreen() {
+const loadingScreen = document.getElementById('appLoading');
+if (loadingScreen) {
+loadingScreen.classList.add('hidden');
+setTimeout(() => {
+loadingScreen.style.display = 'none';
+}, 500);
+}
+}
 
-        /* Background effects */
-        .background-effects {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+// Create floating particle background effect
+function createFloatingParticles() {
+const container = document.getElementById('backgroundEffects');
+if (!container) return;
 
-        .floating-particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 70%, transparent 100%);
-            box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
-            animation: floatUp 8s ease-in-out infinite;
-            pointer-events: none;
-        }
+const colors = ['#ec4899', '#f472b6', '#fbbf24', '#a855f7', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
 
-        @keyframes floatUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
-            }
-            10% {
-                opacity: 1;
-                transform: translateY(90vh) rotate(36deg) scale(1);
-            }
-            90% {
-                opacity: 1;
-                transform: translateY(10vh) rotate(324deg) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) rotate(360deg) scale(0.5);
-            }
-        }
+setInterval(() => {
+const particle = document.createElement('div');
+particle.className = 'floating-particle';
+particle.style.left = Math.random() * 100 + '%';
+particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+particle.style.animationDelay = Math.random() * 2 + 's';
+particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+particle.style.width = (Math.random() * 8 + 4) + 'px';
+particle.style.height = particle.style.width;
 
-        /* Root container enhancement */
-        #root {
-            min-height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
+container.appendChild(particle);
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .loading-heart {
-                font-size: 3rem;
-            }
+// Remove particle after animation
+setTimeout(() => {
+if (particle.parentNode) {
+particle.parentNode.removeChild(particle);
+}
+}, 10000);
+}, 3000);
+}
 
-            .loading-title {
-                font-size: 2rem;
-            }
+// Enhanced app initialization
+function initializeApp() {
+// Start background effects
+createFloatingParticles();
 
-            .loading-subtitle {
-                font-size: 1rem;
-            }
-        }
+// Hide loading screen after React app loads
+setTimeout(() => {
+hideLoadingScreen();
+}, 2000);
 
-        /* Enhanced focus styles */
-        *:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
+// Show surprise first, then redirect to anniversary page
+const surpriseShown = sessionStorage.getItem('surprise-shown');
+if (!surpriseShown) {
+// First-time visitors see the surprise
+setTimeout(() => {
+// Show surprise content directly in this page
+document.querySelector('.app-loading').classList.add('hidden');
+initSurpriseContent();
+}, 2000);
+} else {
+// Return visitors go directly to anniversary page
+setTimeout(() => {
+window.location.href = 'src/pages-html/anniversary.html';
+}, 2000);
+}
+}
 
-        /* Smooth transitions for theme changes */
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-    </style>
+// Performance optimization
+if ('requestIdleCallback' in window) {
+requestIdleCallback(initializeApp);
+} else {
+setTimeout(initializeApp, 100);
+}
 
-    <!-- Enhanced Theme System -->
-    <link rel="stylesheet" href="src/styles/variables.css">
-    <link rel="stylesheet" href="src/styles/theme-integration.css">
-</head>
-<body>
-    <!-- Enhanced Loading Screen -->
-    <div class="app-loading" id="appLoading">
-        <div class="loading-content">
-            <div class="loading-heart">💕</div>
-            <h1 class="loading-title">Jerry & Soumya</h1>
-            <p class="loading-subtitle">Loading our love story...</p>
-            <div class="loading-spinner"></div>
-        </div>
-    </div>
+// Enhanced error handling
+window.addEventListener('error', (e) => {
+console.error('App error:', e.error);
+hideLoadingScreen();
+});
 
-    <!-- Background Effects -->
-    <div class="background-effects" id="backgroundEffects"></div>
+// Service Worker registration for PWA
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('/sw.js')
+.then((registration) => {
+console.log('SW registered: ', registration);
+})
+.catch((registrationError) => {
+console.log('SW registration failed: ', registrationError);
+});
+});
+}
 
-    <!-- React App Root -->
-    <div id="root"></div>
+// Theme detection and application - Dark Romantic Default
+function applyTheme() {
+const savedTheme = localStorage.getItem('anniversary-theme');
+const theme = savedTheme || 'dark-romantic'; // Default to dark romantic
 
-    <!-- Enhanced JavaScript -->
-    <script>
-        // Initialize Lucide icons when available
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
+document.documentElement.setAttribute('data-theme', theme);
+}
 
-        // Enhanced loading screen management
-        function hideLoadingScreen() {
-            const loadingScreen = document.getElementById('appLoading');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }
-        }
+// Apply theme immediately
+applyTheme();
 
-        // Create floating particle background effect
-        function createFloatingParticles() {
-            const container = document.getElementById('backgroundEffects');
-            if (!container) return;
+// Listen for theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
 
-            const colors = ['#ec4899', '#f472b6', '#fbbf24', '#a855f7', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+// Initialize surprise content
+function initSurpriseContent() {
+const root = document.getElementById('root');
+root.innerHTML = `
+<div class="surprise-container"><div class="surprise-content"><div class="surprise-icon">🎁</div><h1 class="surprise-title">A Special Surprise Awaits!</h1><p class="surprise-subtitle">I've prepared something beautiful to celebrate our journey together.</p><p class="surprise-message">"Every moment with you is a gift I cherish deeply."</p><button class="surprise-button" onclick="openSurprise()">
+Unwrap Your Surprise
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></div></div>
+`;
 
-            setInterval(() => {
-                const particle = document.createElement('div');
-                particle.className = 'floating-particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.width = (Math.random() * 8 + 4) + 'px';
-                particle.style.height = particle.style.width;
+// Add surprise-specific styles
+const style = document.createElement('style');
+style.textContent = `
+.surprise-container {
+position: relative;
+z-index: 10;
+text-align: center;
+max-width: 500px;
+padding: 2rem;
+margin: 0 auto;
+}
 
-                container.appendChild(particle);
+.surprise-content {
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid rgba(255, 255, 255, 0.25);
+border-radius: 2rem;
+padding: 3rem 2rem;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+animation: slideIn 1s ease-out;
+}
 
-                // Remove particle after animation
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 10000);
-            }, 3000);
-        }
+@keyframes slideIn {
+from { transform: translateY(50px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
 
-        // Enhanced app initialization
-        function initializeApp() {
-            // Start background effects
-            createFloatingParticles();
+.surprise-icon {
+font-size: 4rem;
+margin-bottom: 1.5rem;
+animation: bounce 2s ease-in-out infinite;
+}
 
-            // Hide loading screen after React app loads
-            setTimeout(() => {
-                hideLoadingScreen();
-            }, 2000);
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+40% { transform: translateY(-20px); }
+60% { transform: translateY(-10px); }
+}
 
-            // Show surprise first, then redirect to anniversary page
-            const surpriseShown = sessionStorage.getItem('surprise-shown');
-            if (!surpriseShown) {
-                // First-time visitors see the surprise
-                setTimeout(() => {
-                    // Show surprise content directly in this page
-                    document.querySelector('.app-loading').classList.add('hidden');
-                    initSurpriseContent();
-                }, 2000);
-            } else {
-                // Return visitors go directly to anniversary page
-                setTimeout(() => {
-                    window.location.href = 'src/pages-html/anniversary.html';
-                }, 2000);
-            }
-        }
+.surprise-title {
+font-family: 'Dancing Script', cursive;
+font-size: 2.5rem;
+font-weight: 700;
+color: #be185d;
+margin-bottom: 1rem;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        // Performance optimization
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(initializeApp);
-        } else {
-            setTimeout(initializeApp, 100);
-        }
+.surprise-subtitle {
+font-size: 1.2rem;
+color: #6b7280;
+margin-bottom: 2rem;
+line-height: 1.6;
+}
 
-        // Enhanced error handling
-        window.addEventListener('error', (e) => {
-            console.error('App error:', e.error);
-            hideLoadingScreen();
-        });
+.surprise-message {
+font-style: italic;
+color: #be185d;
+margin-bottom: 2rem;
+font-size: 1.1rem;
+}
 
-        // Service Worker registration for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch((registrationError) => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
+.surprise-button {
+background: linear-gradient(135deg, #ec4899, #f472b6);
+color: white;
+border: none;
+padding: 1rem 2.5rem;
+font-size: 1.2rem;
+font-weight: 600;
+border-radius: 50px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+position: relative;
+overflow: hidden;
+}
 
-        // Theme detection and application - Dark Romantic Default
-        function applyTheme() {
-            const savedTheme = localStorage.getItem('anniversary-theme');
-            const theme = savedTheme || 'dark-romantic'; // Default to dark romantic
+.surprise-button:hover {
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
+}
 
-            document.documentElement.setAttribute('data-theme', theme);
-        }
+.surprise-button:active {
+transform: translateY(0) scale(0.98);
+}
+`;
+document.head.appendChild(style);
+}
 
-        // Apply theme immediately
-        applyTheme();
+// Open surprise function
+function openSurprise() {
+// Mark that surprise has been shown
+sessionStorage.setItem('surprise-shown', 'true');
 
-        // Listen for theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
-        
-        // Initialize surprise content
-        function initSurpriseContent() {
-            const root = document.getElementById('root');
-            root.innerHTML = `
-                <div class="surprise-container">
-                    <div class="surprise-content">
-                        <div class="surprise-icon">🎁</div>
-                        <h1 class="surprise-title">A Special Surprise Awaits!</h1>
-                        <p class="surprise-subtitle">I've prepared something beautiful to celebrate our journey together.</p>
-                        <p class="surprise-message">"Every moment with you is a gift I cherish deeply."</p>
-                        <button class="surprise-button" onclick="openSurprise()">
-                            Unwrap Your Surprise
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // Add surprise-specific styles
-            const style = document.createElement('style');
-            style.textContent = `
-                .surprise-container {
-                    position: relative;
-                    z-index: 10;
-                    text-align: center;
-                    max-width: 500px;
-                    padding: 2rem;
-                    margin: 0 auto;
-                }
-                
-                .surprise-content {
-                    background: rgba(255, 255, 255, 0.15);
-                    backdrop-filter: blur(25px);
-                    -webkit-backdrop-filter: blur(25px);
-                    border: 1px solid rgba(255, 255, 255, 0.25);
-                    border-radius: 2rem;
-                    padding: 3rem 2rem;
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                    animation: slideIn 1s ease-out;
-                }
-                
-                @keyframes slideIn {
-                    from { transform: translateY(50px); opacity: 0; }
-                    to { transform: translateY(0); opacity: 1; }
-                }
-                
-                .surprise-icon {
-                    font-size: 4rem;
-                    margin-bottom: 1.5rem;
-                    animation: bounce 2s ease-in-out infinite;
-                }
-                
-                @keyframes bounce {
-                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-                    40% { transform: translateY(-20px); }
-                    60% { transform: translateY(-10px); }
-                }
-                
-                .surprise-title {
-                    font-family: 'Dancing Script', cursive;
-                    font-size: 2.5rem;
-                    font-weight: 700;
-                    color: #be185d;
-                    margin-bottom: 1rem;
-                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-                
-                .surprise-subtitle {
-                    font-size: 1.2rem;
-                    color: #6b7280;
-                    margin-bottom: 2rem;
-                    line-height: 1.6;
-                }
-                
-                .surprise-message {
-                    font-style: italic;
-                    color: #be185d;
-                    margin-bottom: 2rem;
-                    font-size: 1.1rem;
-                }
-                
-                .surprise-button {
-                    background: linear-gradient(135deg, #ec4899, #f472b6);
-                    color: white;
-                    border: none;
-                    padding: 1rem 2.5rem;
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    border-radius: 50px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    position: relative;
-                    overflow: hidden;
-                }
-                
-                .surprise-button:hover {
-                    transform: translateY(-3px) scale(1.05);
-                    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
-                }
-                
-                .surprise-button:active {
-                    transform: translateY(0) scale(0.98);
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        // Open surprise function
-        function openSurprise() {
-            // Mark that surprise has been shown
-            sessionStorage.setItem('surprise-shown', 'true');
-            
-            // Add a loading effect to the button
-            const button = document.querySelector('.surprise-button');
-            button.innerHTML = 'Opening your surprise...';
-            button.classList.add('loading');
-            
-            // Redirect to anniversary page after brief delay
-            setTimeout(() => {
-                window.location.href = 'src/pages-html/anniversary.html';
-            }, 1500);
-        }
-    </script>
+// Add a loading effect to the button
+const button = document.querySelector('.surprise-button');
+button.innerHTML = 'Opening your surprise...';
+button.classList.add('loading');
 
-    <!-- React App Module -->
-    <script type="module" src="/src/main.tsx"></script>
-</body>
-</html>
+// Redirect to anniversary page after brief delay
+setTimeout(() => {
+window.location.href = 'src/pages-html/anniversary.html';
+}, 1500);
+}
+</script><script type="module" src="/src/main.tsx"></script></body></html>

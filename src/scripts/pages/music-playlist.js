@@ -2,7 +2,6 @@
  * Music Playlist Page Manager
  * Handles music player functionality, playlist management, and audio controls
  */
-
 class MusicPlaylistManager {
     constructor() {
         this.currentSong = null;
@@ -11,19 +10,15 @@ class MusicPlaylistManager {
         this.currentCategory = 'all';
         this.playlist = [];
         this.audioElement = null;
-        
         this.init();
     }
-
     init() {
         this.setupAudioElement();
         this.loadPlaylist();
         this.setupEventListeners();
         this.initializePlayer();
         this.startStatsAnimation();
-        console.log('MusicPlaylistManager initialized');
-    }
-
+        }
     setupAudioElement() {
         this.audioElement = new Audio();
         this.audioElement.volume = 0.7;
@@ -31,7 +26,6 @@ class MusicPlaylistManager {
         this.audioElement.addEventListener('timeupdate', () => this.updateProgress());
         this.audioElement.addEventListener('ended', () => this.nextSong());
     }
-
     loadPlaylist() {
         this.playlist = [
             {
@@ -107,23 +101,19 @@ class MusicPlaylistManager {
                 file: "first-dance.mp3"
             }
         ];
-        
         this.renderPlaylist();
     }
-
     setupEventListeners() {
         // Play/Pause button
         const playBtn = document.getElementById('playBtn');
         if (playBtn) {
             playBtn.addEventListener('click', () => this.togglePlay());
         }
-
         // Previous/Next buttons
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         if (prevBtn) prevBtn.addEventListener('click', () => this.previousSong());
         if (nextBtn) nextBtn.addEventListener('click', () => this.nextSong());
-
         // Volume control
         const volumeSlider = document.getElementById('volumeSlider');
         if (volumeSlider) {
@@ -131,13 +121,11 @@ class MusicPlaylistManager {
                 this.audioElement.volume = e.target.value / 100;
             });
         }
-
         // Progress bar
         const progressBar = document.getElementById('progressBar');
         if (progressBar) {
             progressBar.addEventListener('click', (e) => this.seekTo(e));
         }
-
         // Category filters
         const categoryBtns = document.querySelectorAll('.category-btn');
         categoryBtns.forEach(btn => {
@@ -146,21 +134,18 @@ class MusicPlaylistManager {
                 this.filterByCategory(category);
             });
         });
-
         // Add song form
         const addSongForm = document.getElementById('addSongForm');
         if (addSongForm) {
             addSongForm.addEventListener('submit', (e) => this.addCustomSong(e));
         }
     }
-
     initializePlayer() {
         if (this.playlist.length > 0) {
             this.currentSong = this.playlist[0];
             this.updatePlayerDisplay();
         }
     }
-
     togglePlay() {
         if (this.isPlaying) {
             this.pause();
@@ -168,7 +153,6 @@ class MusicPlaylistManager {
             this.play();
         }
     }
-
     play() {
         if (this.currentSong) {
             // Note: In a real implementation, you'd load the actual audio file
@@ -176,17 +160,13 @@ class MusicPlaylistManager {
             this.isPlaying = true;
             this.updatePlayButton();
             this.simulatePlayback();
-            console.log(`Playing: ${this.currentSong.title} by ${this.currentSong.artist}`);
-        }
+            }
     }
-
     pause() {
         this.isPlaying = false;
         this.audioElement.pause();
         this.updatePlayButton();
-        console.log('Playback paused');
-    }
-
+        }
     nextSong() {
         if (this.currentIndex < this.playlist.length - 1) {
             this.currentIndex++;
@@ -199,7 +179,6 @@ class MusicPlaylistManager {
             this.play();
         }
     }
-
     previousSong() {
         if (this.currentIndex > 0) {
             this.currentIndex--;
@@ -212,11 +191,9 @@ class MusicPlaylistManager {
             this.play();
         }
     }
-
     updatePlayerDisplay() {
         const songTitle = document.getElementById('currentSongTitle');
         const songArtist = document.getElementById('currentSongArtist');
-        
         if (songTitle && this.currentSong) {
             songTitle.textContent = this.currentSong.title;
         }
@@ -224,14 +201,12 @@ class MusicPlaylistManager {
             songArtist.textContent = this.currentSong.artist;
         }
     }
-
     updatePlayButton() {
         const playBtn = document.getElementById('playBtn');
         if (playBtn) {
             playBtn.innerHTML = this.isPlaying ? '⏸️' : '▶️';
         }
     }
-
     simulatePlayback() {
         // Simulate audio playback for demo purposes
         if (this.isPlaying) {
@@ -242,14 +217,12 @@ class MusicPlaylistManager {
             }, 1000);
         }
     }
-
     updateDuration() {
         const duration = document.getElementById('duration');
         if (duration && this.currentSong) {
             duration.textContent = this.currentSong.duration;
         }
     }
-
     updateProgress() {
         // In a real implementation, this would update based on actual audio progress
         const progressBar = document.getElementById('progressBar');
@@ -257,34 +230,26 @@ class MusicPlaylistManager {
             // Simulate progress for demo
         }
     }
-
     seekTo(event) {
         // In a real implementation, this would seek to the clicked position
-        console.log('Seeking to position...');
-    }
-
+        }
     filterByCategory(category) {
         this.currentCategory = category;
-        
         // Update active button
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.classList.remove('active');
         });
         document.querySelector(`[data-category="${category}"]`).classList.add('active');
-        
         this.renderPlaylist();
     }
-
     renderPlaylist() {
         const songList = document.getElementById('songList');
         if (!songList) return;
-
-        const filteredSongs = this.currentCategory === 'all' 
-            ? this.playlist 
+        const filteredSongs = this.currentCategory === 'all'
+            ? this.playlist
             : this.playlist.filter(song => song.category === this.currentCategory);
-
         songList.innerHTML = filteredSongs.map((song, index) => `
-            <div class="song-item ${this.currentSong && this.currentSong.id === song.id ? 'active' : ''}" 
+            <div class="song-item ${this.currentSong && this.currentSong.id === song.id ? 'active' : ''}"
                  data-song-id="${song.id}" onclick="musicManager.playSong(${song.id})">
                 <div class="song-info">
                     <div class="song-title">${song.title}</div>
@@ -292,7 +257,7 @@ class MusicPlaylistManager {
                 </div>
                 <div class="song-controls">
                     <span class="song-duration">${song.duration}</span>
-                    <button class="favorite-btn ${song.favorite ? 'active' : ''}" 
+                    <button class="favorite-btn ${song.favorite ? 'active' : ''}"
                             onclick="event.stopPropagation(); musicManager.toggleFavorite(${song.id})">
                         ${song.favorite ? '❤️' : '🤍'}
                     </button>
@@ -300,7 +265,6 @@ class MusicPlaylistManager {
             </div>
         `).join('');
     }
-
     playSong(songId) {
         const songIndex = this.playlist.findIndex(song => song.id === songId);
         if (songIndex !== -1) {
@@ -311,7 +275,6 @@ class MusicPlaylistManager {
             this.play();
         }
     }
-
     toggleFavorite(songId) {
         const song = this.playlist.find(s => s.id === songId);
         if (song) {
@@ -320,10 +283,8 @@ class MusicPlaylistManager {
             this.updateMusicStats();
         }
     }
-
     addCustomSong(event) {
         event.preventDefault();
-        
         const formData = new FormData(event.target);
         const newSong = {
             id: this.playlist.length + 1,
@@ -334,16 +295,13 @@ class MusicPlaylistManager {
             favorite: false,
             file: null
         };
-
         this.playlist.push(newSong);
         this.renderPlaylist();
         this.updateMusicStats();
         event.target.reset();
-        
         // Show success message
         this.showNotification('Song added to playlist!');
     }
-
     startStatsAnimation() {
         const stats = [
             { id: 'totalSongs', target: this.playlist.length },
@@ -351,16 +309,13 @@ class MusicPlaylistManager {
             { id: 'totalPlaytime', target: 32 }, // Simulated total minutes
             { id: 'songsThisMonth', target: 15 }
         ];
-
         stats.forEach(stat => {
             this.animateCounter(stat.id, stat.target);
         });
     }
-
     animateCounter(elementId, target) {
         const element = document.getElementById(elementId);
         if (!element) return;
-
         let current = 0;
         const increment = Math.ceil(target / 50);
         const timer = setInterval(() => {
@@ -372,18 +327,14 @@ class MusicPlaylistManager {
             element.textContent = current;
         }, 30);
     }
-
     updateMusicStats() {
         const favoriteCount = this.playlist.filter(s => s.favorite).length;
         const totalSongs = this.playlist.length;
-        
         const favElement = document.getElementById('favoriteSongs');
         const totalElement = document.getElementById('totalSongs');
-        
         if (favElement) favElement.textContent = favoriteCount;
         if (totalElement) totalElement.textContent = totalSongs;
     }
-
     showNotification(message) {
         // Create and show a notification
         const notification = document.createElement('div');
@@ -400,16 +351,13 @@ class MusicPlaylistManager {
             z-index: 10000;
             animation: slideIn 0.3s ease-out;
         `;
-        
         document.body.appendChild(notification);
-        
         setTimeout(() => {
             notification.style.animation = 'slideOut 0.3s ease-in';
             setTimeout(() => notification.remove(), 300);
         }, 3000);
     }
 }
-
 // Utility functions
 const MusicUtils = {
     formatDuration(seconds) {
@@ -417,7 +365,6 @@ const MusicUtils = {
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     },
-
     shuffleArray(array) {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -426,7 +373,6 @@ const MusicUtils = {
         }
         return shuffled;
     },
-
     getCategoryIcon(category) {
         const icons = {
             romantic: '💕',
@@ -437,14 +383,11 @@ const MusicUtils = {
         return icons[category] || '🎵';
     }
 };
-
 // Initialize when DOM is loaded
 let musicManager;
-
 document.addEventListener('DOMContentLoaded', () => {
     musicManager = new MusicPlaylistManager();
 });
-
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { MusicPlaylistManager, MusicUtils };

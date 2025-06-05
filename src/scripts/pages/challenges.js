@@ -2,7 +2,6 @@
  * Challenges Page Manager - Enhanced Interactive Challenges System
  * Handles challenge tracking, filtering, creation, and 3D effects
  */
-
 export class ChallengesManager {
     constructor() {
         this.challenges = [
@@ -85,7 +84,6 @@ export class ChallengesManager {
                 reward: "Memory book creation"
             }
         ];
-        
         this.templates = {
             'love-letter': {
                 title: "Love Letter Challenge",
@@ -120,11 +118,9 @@ export class ChallengesManager {
                 reward: "Kindness celebration dinner"
             }
         };
-        
         this.currentFilter = 'all';
         this.init();
     }
-    
     init() {
         this.initializeParticleSystem();
         this.initialize3DEffects();
@@ -134,16 +130,11 @@ export class ChallengesManager {
         this.initializeChallengeActions();
         this.renderChallenges();
         this.showWelcomeMessage();
-        
-        console.log('🎮 Challenges Manager initialized with enhanced 3D effects');
-    }
-    
+        }
     initializeParticleSystem() {
         const container = document.getElementById('challengesParticles');
         if (!container) return;
-        
         const gameEmojis = ['🎮', '🏆', '🎯', '🎲', '🃏', '🎪', '🎨', '🏅', '⭐', '🎊'];
-        
         const createParticle = () => {
             const particle = document.createElement('div');
             particle.style.cssText = `
@@ -159,46 +150,40 @@ export class ChallengesManager {
             `;
             particle.textContent = gameEmojis[Math.floor(Math.random() * gameEmojis.length)];
             particle.style.filter = `drop-shadow(0 0 15px rgba(16, 185, 129, 0.6)) brightness(1.3)`;
-            
             container.appendChild(particle);
-            
             setTimeout(() => {
                 if (particle.parentNode) {
                     particle.parentNode.removeChild(particle);
                 }
             }, 15000);
         };
-        
         // Create initial particles
         for (let i = 0; i < 25; i++) {
             setTimeout(() => createParticle(), i * 200);
         }
-        
         // Continuous particle generation
         setInterval(createParticle, 800);
-        
         this.addParticleAnimations();
     }
-    
     addParticleAnimations() {
         if (!document.querySelector('#challengeParticleStyle')) {
             const style = document.createElement('style');
             style.id = 'challengeParticleStyle';
             style.textContent = `
                 @keyframes challengeParticleFloat {
-                    0%, 100% { 
+                    0%, 100% {
                         transform: translateY(0) rotateZ(0deg) scale(1);
                         filter: brightness(1) hue-rotate(0deg) drop-shadow(0 0 15px rgba(16, 185, 129, 0.6));
                     }
-                    25% { 
+                    25% {
                         transform: translateY(-30px) rotateZ(90deg) scale(1.2);
                         filter: brightness(1.4) hue-rotate(90deg) drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
                     }
-                    50% { 
+                    50% {
                         transform: translateY(-50px) rotateZ(180deg) scale(1.4);
                         filter: brightness(1.6) hue-rotate(180deg) drop-shadow(0 0 25px rgba(139, 92, 246, 1));
                     }
-                    75% { 
+                    75% {
                         transform: translateY(-30px) rotateZ(270deg) scale(1.2);
                         filter: brightness(1.4) hue-rotate(270deg) drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
                     }
@@ -207,85 +192,68 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     initialize3DEffects() {
         const challengeCards = document.querySelectorAll('.challenge-card');
         challengeCards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.15}s`;
-            
             card.addEventListener('mouseenter', (e) => {
                 e.target.style.transform = 'perspective(1000px) rotateX(-10deg) rotateY(15deg) translateY(-20px) scale(1.08)';
                 e.target.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.2)';
                 this.createSparkleEffect(e.target);
             });
-            
             card.addEventListener('mouseleave', (e) => {
                 e.target.style.transform = 'perspective(1000px) rotateX(10deg) rotateY(0deg) translateY(0) scale(1)';
                 e.target.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
             });
-            
             card.addEventListener('click', (e) => {
                 e.target.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(720deg) scale(1.15)';
                 setTimeout(() => {
                     e.target.style.transform = 'perspective(1000px) rotateX(10deg) rotateY(0deg) scale(1)';
                 }, 800);
-                
                 this.createAchievementEffect(e.target);
             });
         });
-        
         // Mouse movement parallax effect
         document.addEventListener('mousemove', (e) => {
             const cards = document.querySelectorAll('.challenge-card');
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
-            
             cards.forEach((card, index) => {
                 const intensity = (index % 2 === 0) ? 1 : -1;
                 const xRotation = (mouseY - 0.5) * 8 * intensity;
                 const yRotation = (mouseX - 0.5) * 8 * intensity;
-                
                 if (!card.matches(':hover')) {
                     card.style.transform = `perspective(1000px) rotateX(${10 + xRotation}deg) rotateY(${yRotation}deg)`;
                 }
             });
         });
     }
-    
     initializeFilterSystem() {
         const filterButtons = document.querySelectorAll('.challenge-filter-btn');
-        
         filterButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                
                 // Add active class to clicked button
                 e.target.classList.add('active');
-                
                 // Update current filter
                 this.currentFilter = e.target.dataset.category;
-                
                 // Re-render challenges with filter
                 this.renderChallenges();
-                
                 // Create filter effect
                 this.createFilterEffect(e.target);
             });
         });
     }
-    
     initializeFormHandlers() {
         const form = document.querySelector('.challenge-form');
         const descriptionTextarea = document.getElementById('challengeDescription');
         const descCounter = document.getElementById('descCounter');
-        
         // Character counter for description
         if (descriptionTextarea && descCounter) {
             descriptionTextarea.addEventListener('input', (e) => {
                 const length = e.target.value.length;
                 descCounter.textContent = length;
-                
                 if (length > 450) {
                     descCounter.style.color = '#ef4444';
                 } else if (length > 350) {
@@ -295,7 +263,6 @@ export class ChallengesManager {
                 }
             });
         }
-        
         // Form submission
         if (form) {
             form.addEventListener('submit', (e) => {
@@ -304,10 +271,8 @@ export class ChallengesManager {
             });
         }
     }
-    
     initializeTemplateHandlers() {
         const templateButtons = document.querySelectorAll('.use-template');
-        
         templateButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 const templateType = e.target.dataset.template;
@@ -316,7 +281,6 @@ export class ChallengesManager {
             });
         });
     }
-    
     initializeChallengeActions() {
         // Event delegation for dynamically created buttons
         document.addEventListener('click', (e) => {
@@ -329,27 +293,21 @@ export class ChallengesManager {
             }
         });
     }
-    
     renderChallenges() {
         const grid = document.querySelector('.challenges-grid');
         if (!grid) return;
-        
         // Filter challenges
-        const filteredChallenges = this.currentFilter === 'all' 
-            ? this.challenges 
+        const filteredChallenges = this.currentFilter === 'all'
+            ? this.challenges
             : this.challenges.filter(challenge => challenge.category === this.currentFilter);
-        
         // Clear existing content
         grid.innerHTML = '';
-        
         // Render filtered challenges
         filteredChallenges.forEach((challenge, index) => {
             const challengeCard = this.createChallengeCard(challenge);
             challengeCard.style.opacity = '0';
             challengeCard.style.transform = 'perspective(1000px) rotateX(60deg) translateY(80px) scale(0.8)';
-            
             grid.appendChild(challengeCard);
-            
             // Staggered animation
             setTimeout(() => {
                 challengeCard.style.transition = 'all 1s ease-out';
@@ -358,16 +316,13 @@ export class ChallengesManager {
             }, index * 150);
         });
     }
-    
     createChallengeCard(challenge) {
         const card = document.createElement('div');
         card.className = 'challenge-card';
         card.dataset.category = challenge.category;
         card.dataset.id = challenge.id;
-        
         const statusClass = challenge.status;
         const statusText = challenge.status.charAt(0).toUpperCase() + challenge.status.slice(1);
-        
         card.innerHTML = `
             <div class="challenge-status">
                 <span class="status-badge ${statusClass}">${statusText}</span>
@@ -385,10 +340,8 @@ export class ChallengesManager {
                 ${this.getChallengeActionButtons(challenge)}
             </div>
         `;
-        
         return card;
     }
-    
     getChallengeActionButtons(challenge) {
         switch (challenge.status) {
             case 'completed':
@@ -412,11 +365,9 @@ export class ChallengesManager {
                 `;
         }
     }
-    
     handleChallengeCreation() {
         const formData = new FormData(document.querySelector('.challenge-form'));
         const challengeData = Object.fromEntries(formData);
-        
         // Create new challenge
         const newChallenge = {
             id: this.challenges.length + 1,
@@ -431,25 +382,19 @@ export class ChallengesManager {
             duration: parseInt(challengeData.challengeDuration) || 7,
             reward: challengeData.challengeReward || 'Special celebration'
         };
-        
         this.challenges.push(newChallenge);
         this.renderChallenges();
-        
         // Clear form
         document.querySelector('.challenge-form').reset();
         document.getElementById('descCounter').textContent = '0';
-        
         // Show success message
         this.showNotification('success', 'Challenge Created!', 'Your new challenge has been added successfully!');
-        
         // Create celebration effect
         this.createCelebrationEffect();
     }
-    
     useTemplate(templateType) {
         const template = this.templates[templateType];
         if (!template) return;
-        
         // Fill form with template data
         document.getElementById('challengeTitle').value = template.title;
         document.getElementById('challengeCategory').value = template.category;
@@ -457,22 +402,18 @@ export class ChallengesManager {
         document.getElementById('challengeDuration').value = template.duration;
         document.getElementById('challengeDifficulty').value = template.difficulty;
         document.getElementById('challengeReward').value = template.reward;
-        
         // Update character counter
         const descCounter = document.getElementById('descCounter');
         if (descCounter) {
             descCounter.textContent = template.description.length;
         }
-        
         // Scroll to form
-        document.querySelector('.challenge-creator').scrollIntoView({ 
+        document.querySelector('.challenge-creator').scrollIntoView({
             behavior: 'smooth',
             block: 'center'
         });
-        
         this.showNotification('info', 'Template Applied!', `${template.title} template has been loaded into the form.`);
     }
-    
     getCategoryIcon(category) {
         const icons = {
             communication: '💬',
@@ -483,47 +424,38 @@ export class ChallengesManager {
         };
         return icons[category] || '🌟';
     }
-    
     completeChallenge(button) {
         const card = button.closest('.challenge-card');
         const challengeId = parseInt(card.dataset.id);
         const challenge = this.challenges.find(c => c.id === challengeId);
-        
         if (challenge) {
             challenge.status = 'completed';
             challenge.progress = 100;
             challenge.progressText = 'Completed! ✨';
-            
             this.renderChallenges();
             this.createCompletionEffect(card);
             this.showNotification('success', 'Challenge Completed!', `Congratulations on completing "${challenge.title}"!`);
         }
     }
-    
     startChallenge(button) {
         const card = button.closest('.challenge-card');
         const challengeId = parseInt(card.dataset.id);
         const challenge = this.challenges.find(c => c.id === challengeId);
-        
         if (challenge) {
             challenge.status = 'active';
-            
             this.renderChallenges();
             this.createStartEffect(card);
             this.showNotification('info', 'Challenge Started!', `Good luck with "${challenge.title}"!`);
         }
     }
-    
     viewChallengeDetails(button) {
         const card = button.closest('.challenge-card');
         const challengeId = parseInt(card.dataset.id);
         const challenge = this.challenges.find(c => c.id === challengeId);
-        
         if (challenge) {
             this.showChallengeModal(challenge);
         }
     }
-    
     showChallengeModal(challenge) {
         // Create modal overlay
         const modal = document.createElement('div');
@@ -541,7 +473,6 @@ export class ChallengesManager {
             z-index: 1000;
             backdrop-filter: blur(10px);
         `;
-        
         modal.innerHTML = `
             <div class="challenge-modal" style="
                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
@@ -557,7 +488,6 @@ export class ChallengesManager {
                 <div style="font-size: 3rem; margin-bottom: 1rem;">${challenge.icon}</div>
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #374151; font-family: 'Dancing Script', cursive;">${challenge.title}</h2>
                 <p style="color: #6b7280; margin-bottom: 1.5rem; line-height: 1.6;">${challenge.description}</p>
-                
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
                     <div>
                         <strong style="color: #374151;">Category:</strong><br>
@@ -576,14 +506,12 @@ export class ChallengesManager {
                         <span style="color: #6b7280;">${challenge.reward}</span>
                     </div>
                 </div>
-                
                 <div style="margin-bottom: 1.5rem;">
                     <div style="background: rgba(156, 163, 175, 0.3); height: 10px; border-radius: 10px; overflow: hidden; margin-bottom: 0.5rem;">
                         <div style="height: 100%; background: linear-gradient(90deg, #10b981, #059669); border-radius: 10px; width: ${challenge.progress}%; transition: width 0.8s ease;"></div>
                     </div>
                     <span style="color: #6b7280; font-weight: 500;">${challenge.progressText}</span>
                 </div>
-                
                 <button onclick="this.closest('.challenge-modal-overlay').remove()" style="
                     background: linear-gradient(135deg, #10b981, #059669);
                     color: white;
@@ -596,9 +524,7 @@ export class ChallengesManager {
                 ">Close</button>
             </div>
         `;
-        
         document.body.appendChild(modal);
-        
         // Close on outside click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -606,12 +532,10 @@ export class ChallengesManager {
             }
         });
     }
-    
     // Effect Methods
     createSparkleEffect(element) {
         const sparkles = ['🌟', '⭐', '✨', '🎊', '🎉'];
         const rect = element.getBoundingClientRect();
-        
         for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('div');
@@ -625,9 +549,7 @@ export class ChallengesManager {
                     z-index: 1000;
                     animation: sparkleFloat 2s ease-out forwards;
                 `;
-                
                 document.body.appendChild(sparkle);
-                
                 setTimeout(() => {
                     if (sparkle.parentNode) {
                         sparkle.parentNode.removeChild(sparkle);
@@ -635,16 +557,13 @@ export class ChallengesManager {
                 }, 2000);
             }, i * 80);
         }
-        
         this.addSparkleAnimations();
     }
-    
     createAchievementEffect(element) {
         const achievements = ['🏆', '🏅', '🎖️', '👑', '🥇'];
         const rect = element.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        
         const popup = document.createElement('div');
         popup.innerHTML = `
             <div style="font-size: 3rem;">${achievements[Math.floor(Math.random() * achievements.length)]}</div>
@@ -669,29 +588,23 @@ export class ChallengesManager {
             animation: achievementPop 3s ease-out forwards;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         `;
-        
         document.body.appendChild(popup);
-        
         setTimeout(() => {
             if (popup.parentNode) {
                 popup.parentNode.removeChild(popup);
             }
         }, 3000);
-        
         this.addAchievementAnimations();
     }
-    
     createCompletionEffect(element) {
         const confetti = ['🎉', '🎊', '✨', '🌟', '🎈'];
         const rect = element.getBoundingClientRect();
-        
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
                 const piece = document.createElement('div');
                 piece.textContent = confetti[Math.floor(Math.random() * confetti.length)];
                 const angle = (i * 18) * Math.PI / 180;
                 const distance = 200;
-                
                 piece.style.cssText = `
                     position: fixed;
                     left: ${rect.left + rect.width / 2}px;
@@ -703,9 +616,7 @@ export class ChallengesManager {
                     --end-x: ${Math.cos(angle) * distance}px;
                     --end-y: ${Math.sin(angle) * distance}px;
                 `;
-                
                 document.body.appendChild(piece);
-                
                 setTimeout(() => {
                     if (piece.parentNode) {
                         piece.parentNode.removeChild(piece);
@@ -713,13 +624,10 @@ export class ChallengesManager {
                 }, 3000);
             }, i * 50);
         }
-        
         this.addConfettiAnimations();
     }
-    
     createCelebrationEffect() {
         const celebration = ['🎉', '🎊', '🎈', '🎁', '🌟'];
-        
         for (let i = 0; i < 15; i++) {
             setTimeout(() => {
                 const element = document.createElement('div');
@@ -733,9 +641,7 @@ export class ChallengesManager {
                     z-index: 1000;
                     animation: celebrationFall 4s ease-out forwards;
                 `;
-                
                 document.body.appendChild(element);
-                
                 setTimeout(() => {
                     if (element.parentNode) {
                         element.parentNode.removeChild(element);
@@ -743,10 +649,8 @@ export class ChallengesManager {
                 }, 4000);
             }, i * 100);
         }
-        
         this.addCelebrationAnimations();
     }
-    
     addSparkleAnimations() {
         if (!document.querySelector('#sparkleAnimations')) {
             const style = document.createElement('style');
@@ -761,7 +665,6 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     addAchievementAnimations() {
         if (!document.querySelector('#achievementAnimations')) {
             const style = document.createElement('style');
@@ -777,7 +680,6 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     addConfettiAnimations() {
         if (!document.querySelector('#confettiAnimations')) {
             const style = document.createElement('style');
@@ -792,7 +694,6 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     addCelebrationAnimations() {
         if (!document.querySelector('#celebrationAnimations')) {
             const style = document.createElement('style');
@@ -806,11 +707,9 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     createFilterEffect(button) {
         const rect = button.getBoundingClientRect();
         const ripple = document.createElement('div');
-        
         ripple.style.cssText = `
             position: fixed;
             left: ${rect.left + rect.width / 2}px;
@@ -823,15 +722,12 @@ export class ChallengesManager {
             z-index: 1000;
             animation: rippleEffect 0.8s ease-out forwards;
         `;
-        
         document.body.appendChild(ripple);
-        
         setTimeout(() => {
             if (ripple.parentNode) {
                 ripple.parentNode.removeChild(ripple);
             }
         }, 800);
-        
         if (!document.querySelector('#rippleAnimations')) {
             const style = document.createElement('style');
             style.id = 'rippleAnimations';
@@ -844,11 +740,9 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     createTemplateEffect(button) {
         const rect = button.getBoundingClientRect();
         const magic = ['✨', '🌟', '⭐', '💫'];
-        
         for (let i = 0; i < 6; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('div');
@@ -862,9 +756,7 @@ export class ChallengesManager {
                     z-index: 1000;
                     animation: magicSparkle 1.5s ease-out forwards;
                 `;
-                
                 document.body.appendChild(sparkle);
-                
                 setTimeout(() => {
                     if (sparkle.parentNode) {
                         sparkle.parentNode.removeChild(sparkle);
@@ -872,7 +764,6 @@ export class ChallengesManager {
                 }, 1500);
             }, i * 100);
         }
-        
         if (!document.querySelector('#magicAnimations')) {
             const style = document.createElement('style');
             style.id = 'magicAnimations';
@@ -885,11 +776,9 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     createStartEffect(element) {
         const startSymbols = ['🚀', '⚡', '🔥', '💪', '🎯'];
         const rect = element.getBoundingClientRect();
-        
         const symbol = document.createElement('div');
         symbol.textContent = startSymbols[Math.floor(Math.random() * startSymbols.length)];
         symbol.style.cssText = `
@@ -901,15 +790,12 @@ export class ChallengesManager {
             z-index: 1000;
             animation: startPulse 2s ease-out forwards;
         `;
-        
         document.body.appendChild(symbol);
-        
         setTimeout(() => {
             if (symbol.parentNode) {
                 symbol.parentNode.removeChild(symbol);
             }
         }, 2000);
-        
         if (!document.querySelector('#startAnimations')) {
             const style = document.createElement('style');
             style.id = 'startAnimations';
@@ -923,13 +809,11 @@ export class ChallengesManager {
             document.head.appendChild(style);
         }
     }
-    
     showNotification(type, title, message) {
         if (window.notificationManager) {
             window.notificationManager.show(type, title, message);
         }
     }
-    
     showWelcomeMessage() {
         setTimeout(() => {
             this.showNotification(
@@ -940,11 +824,9 @@ export class ChallengesManager {
         }, 1500);
     }
 }
-
 // Auto-initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.challengesManager = new ChallengesManager();
 });
-
 // Export for use in other modules
 export default ChallengesManager;

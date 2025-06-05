@@ -2,24 +2,19 @@
  * Special Dates Page Manager
  * Handles timeline functionality, date management, and interactive features
  */
-
 class SpecialDatesManager {
     constructor() {
         this.specialDates = [];
         this.currentFilter = 'all';
         this.relationshipStartDate = new Date('2020-02-14');
-        
         this.init();
     }
-
     init() {
         this.loadSpecialDates();
         this.setupEventListeners();
         this.startCounterAnimation();
         this.initializeTimeline();
-        console.log('SpecialDatesManager initialized');
-    }
-
+        }
     loadSpecialDates() {
         this.specialDates = [
             {
@@ -78,7 +73,6 @@ class SpecialDatesManager {
             }
         ];
     }
-
     setupEventListeners() {
         // Category filter buttons
         const categoryCards = document.querySelectorAll('.category-card');
@@ -88,17 +82,14 @@ class SpecialDatesManager {
                 this.filterByCategory(category);
             });
         });
-
         // Add date form
         const addDateForm = document.getElementById('addDateForm');
         if (addDateForm) {
             addDateForm.addEventListener('submit', (e) => this.addSpecialDate(e));
         }
-
         // Timeline item interactions
         this.setupTimelineInteractions();
     }
-
     setupTimelineInteractions() {
         // Add click handlers to timeline items for enhanced interaction
         const timelineItems = document.querySelectorAll('.timeline-item');
@@ -106,16 +97,13 @@ class SpecialDatesManager {
             item.addEventListener('click', () => this.highlightTimelineItem(item));
         });
     }
-
     highlightTimelineItem(item) {
         // Remove previous highlights
         document.querySelectorAll('.timeline-item').forEach(el => {
             el.classList.remove('highlighted');
         });
-        
         // Add highlight to clicked item
         item.classList.add('highlighted');
-        
         // Add highlight styles dynamically
         const style = document.createElement('style');
         style.textContent = `
@@ -129,37 +117,29 @@ class SpecialDatesManager {
                 box-shadow: 0 0 25px rgba(236, 72, 153, 0.5) !important;
             }
         `;
-        
         // Remove existing highlight style and add new one
         const existingStyle = document.getElementById('timeline-highlight-style');
         if (existingStyle) existingStyle.remove();
         style.id = 'timeline-highlight-style';
         document.head.appendChild(style);
     }
-
     filterByCategory(category) {
         this.currentFilter = category;
-        
         // Update category card active states
         document.querySelectorAll('.category-card').forEach(card => {
             card.classList.remove('active');
         });
-        
         if (category !== 'all') {
             const activeCard = document.querySelector(`[data-category="${category}"]`);
             if (activeCard) activeCard.classList.add('active');
         }
-        
         this.updateTimelineDisplay();
     }
-
     updateTimelineDisplay() {
         const timelineItems = document.querySelectorAll('.timeline-item');
-        
         timelineItems.forEach((item, index) => {
             const itemDate = this.specialDates[index];
             if (!itemDate) return;
-            
             if (this.currentFilter === 'all' || itemDate.category === this.currentFilter) {
                 item.style.display = 'block';
                 item.style.animation = `timelineSlideIn 0.8s ease-out ${index * 0.2}s forwards`;
@@ -168,7 +148,6 @@ class SpecialDatesManager {
             }
         });
     }
-
     startCounterAnimation() {
         const counters = [
             { id: 'daysCounter', target: this.calculateDaysTogether() },
@@ -176,27 +155,22 @@ class SpecialDatesManager {
             { id: 'memoriesCounter', target: 247 }, // Beautiful memories count
             { id: 'milestonesCounter', target: this.specialDates.filter(d => d.category === 'milestone').length }
         ];
-
         counters.forEach(counter => {
             this.animateCounter(counter.id, counter.target);
         });
     }
-
     calculateDaysTogether() {
         const today = new Date();
         const timeDifference = today.getTime() - this.relationshipStartDate.getTime();
         return Math.floor(timeDifference / (1000 * 3600 * 24));
     }
-
     animateCounter(elementId, target) {
         const element = document.getElementById(elementId);
         if (!element) return;
-
         let current = 0;
         const increment = Math.ceil(target / 100);
         const duration = 2000; // 2 seconds
         const stepTime = duration / (target / increment);
-
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
@@ -206,10 +180,8 @@ class SpecialDatesManager {
             element.textContent = current.toLocaleString();
         }, stepTime);
     }
-
     addSpecialDate(event) {
         event.preventDefault();
-        
         const formData = new FormData(event.target);
         const newDate = {
             id: this.specialDates.length + 1,
@@ -220,19 +192,15 @@ class SpecialDatesManager {
             tags: [`🆕 New Memory`],
             icon: this.getCategoryIcon(formData.get('dateCategory'))
         };
-
         this.specialDates.push(newDate);
         this.addToTimeline(newDate);
         this.updateCategoryCounts();
         this.startCounterAnimation(); // Refresh counters
-        
         // Reset form
         event.target.reset();
-        
         // Show success notification
         this.showNotification('Special date added successfully! 💕');
     }
-
     getCategoryIcon(category) {
         const icons = {
             romantic: '💕',
@@ -242,11 +210,9 @@ class SpecialDatesManager {
         };
         return icons[category] || '📅';
     }
-
     addToTimeline(dateData) {
         const timelineContainer = document.querySelector('.timeline-container');
         if (!timelineContainer) return;
-
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
         timelineItem.innerHTML = `
@@ -260,9 +226,7 @@ class SpecialDatesManager {
                 </div>
             </div>
         `;
-
         timelineContainer.appendChild(timelineItem);
-        
         // Animate the new item
         setTimeout(() => {
             timelineItem.style.opacity = '0';
@@ -270,16 +234,14 @@ class SpecialDatesManager {
             timelineItem.style.animation = 'timelineSlideIn 0.8s ease-out forwards';
         }, 100);
     }
-
     formatDate(dateString) {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         });
     }
-
     updateCategoryCounts() {
         const categoryCounts = {
             romantic: this.specialDates.filter(d => d.category === 'romantic').length,
@@ -287,7 +249,6 @@ class SpecialDatesManager {
             milestone: this.specialDates.filter(d => d.category === 'milestone').length,
             surprise: this.specialDates.filter(d => d.category === 'surprise').length
         };
-
         Object.keys(categoryCounts).forEach(category => {
             const countElement = document.querySelector(`[data-category="${category}"] .category-count`);
             if (countElement) {
@@ -295,7 +256,6 @@ class SpecialDatesManager {
             }
         });
     }
-
     initializeTimeline() {
         // Add intersection observer for timeline animations
         const observer = new IntersectionObserver((entries) => {
@@ -309,12 +269,10 @@ class SpecialDatesManager {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         });
-
         document.querySelectorAll('.timeline-item').forEach(item => {
             observer.observe(item);
         });
     }
-
     showNotification(message) {
         const notification = document.createElement('div');
         notification.className = 'notification success';
@@ -332,7 +290,6 @@ class SpecialDatesManager {
             box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
             animation: slideInNotification 0.3s ease-out;
         `;
-        
         // Add animation styles
         const style = document.createElement('style');
         style.textContent = `
@@ -358,9 +315,7 @@ class SpecialDatesManager {
             }
         `;
         document.head.appendChild(style);
-        
         document.body.appendChild(notification);
-        
         setTimeout(() => {
             notification.style.animation = 'slideOutNotification 0.3s ease-in';
             setTimeout(() => {
@@ -370,54 +325,43 @@ class SpecialDatesManager {
         }, 3000);
     }
 }
-
 // Utility functions
 const DateUtils = {
     formatRelativeTime(date) {
         const now = new Date();
         const diffTime = Math.abs(now - new Date(date));
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
         if (diffDays === 1) return 'Yesterday';
         if (diffDays < 7) return `${diffDays} days ago`;
         if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
         if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
         return `${Math.floor(diffDays / 365)} years ago`;
     },
-
     getNextAnniversary(startDate) {
         const now = new Date();
         const thisYear = now.getFullYear();
         const anniversary = new Date(startDate);
         anniversary.setFullYear(thisYear);
-        
         if (anniversary < now) {
             anniversary.setFullYear(thisYear + 1);
         }
-        
         return anniversary;
     },
-
     calculateTimeTogether(startDate) {
         const now = new Date();
         const start = new Date(startDate);
         const diffTime = Math.abs(now - start);
-        
         const years = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365));
         const months = Math.floor((diffTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
         const days = Math.floor((diffTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-        
         return { years, months, days };
     }
 };
-
 // Initialize when DOM is loaded
 let specialDatesManager;
-
 document.addEventListener('DOMContentLoaded', () => {
     specialDatesManager = new SpecialDatesManager();
 });
-
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { SpecialDatesManager, DateUtils };

@@ -387,3 +387,32 @@
         padding-left: 2rem;
     }
 }
+
+/* Text Shadow Utilities for Dark Romantic Theme */
+.text-shadow-dark {
+    text-shadow: 0 1px 3px rgba(26, 11, 46, 0.8);
+}
+
+.text-shadow-glow {
+    text-shadow: 0 0 10px rgba(139, 90, 140, 0.6);
+}
+
+.text-shadow-strong {
+    text-shadow: 0 2px 4px rgba(26, 11, 46, 0.9), 0 0 8px rgba(139, 90, 140, 0.4);
+}
+
+/* Enhanced text contrast for dark romantic theme */
+.text-high-contrast {
+    color: var(--text-primary, #f8e8ff);
+    text-shadow: 0 1px 3px rgba(26, 11, 46, 0.8);
+}
+
+.text-medium-contrast {
+    color: var(--text-secondary, #d1a3d1);
+    text-shadow: 0 1px 2px rgba(26, 11, 46, 0.6);
+}
+
+.text-low-contrast {
+    color: var(--text-tertiary, #b794b7);
+    text-shadow: 0 1px 2px rgba(26, 11, 46, 0.4);
+}

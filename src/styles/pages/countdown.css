@@ -1,11 +1,7 @@
-/**
- * Countdown Page Specific Styles
- * Enhanced countdown styles with dynamic box removal animations
- * Version: 3.0.0 - Extracted from HTML inline styles
- */
+
 
 /* Enhanced countdown styles */
-.countdown-container {
+.countdown-container  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -21,7 +17,7 @@
     justify-content: center;
 }
 
-.countdown-number {
+.countdown-number  {
     background: linear-gradient(135deg, #ec4899, #f472b6);
     background-clip: text;
     -webkit-background-clip: text;
@@ -31,7 +27,7 @@
     text-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
 }
 
-.countdown-label {
+.countdown-label  {
     color: #ec4899;
     font-weight: 600;
     text-transform: uppercase;
@@ -39,7 +35,7 @@
     font-size: 0.875rem;
 }
 
-.countdown-item {
+.countdown-item  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -49,84 +45,99 @@
     will-change: transform, opacity;
 }
 
-.countdown-item:hover {
+.countdown-item:hover  {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(236, 72, 153, 0.3);
 }
 
 /* Enhanced container transitions */
-.countdown-container .grid {
+.countdown-container .grid  {
     transition: all 0.3s ease-in-out;
 }
 
 /* Enhanced Redirect Countdown Animations */
-@keyframes urgentPulse {
-    0% { transform: scale(1.3); }
-    100% { transform: scale(1.5); text-shadow: 0 0 30px rgba(255, 255, 255, 1); }
+@keyframes urgentPulse  {
+    0%  {
+    transform: scale(1.3);
+}
+
+    100%  {
+    transform: scale(1.5);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+}
+
 }
 
 /* Blast Animation for Counter Box Removal */
-@keyframes blastAnimation {
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-        filter: blur(0px) brightness(1);
-    }
-    25% {
-        transform: scale(1.2) rotate(5deg);
-        opacity: 0.9;
-        filter: blur(1px) brightness(1.5);
-        box-shadow:
+@keyframes blastAnimation  {
+    0%  {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+}
+
+    25%  {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.9;
+    filter: blur(1px) brightness(1.5);
+    box-shadow:
             0 0 30px rgba(236, 72, 153, 0.8),
             inset 0 0 20px rgba(255, 255, 255, 0.5);
-    }
-    50% {
-        transform: scale(1.5) rotate(-10deg);
-        opacity: 0.7;
-        filter: blur(3px) brightness(2);
-        box-shadow:
+}
+
+    50%  {
+    transform: scale(1.5) rotate(-10deg);
+    opacity: 0.7;
+    filter: blur(3px) brightness(2);
+    box-shadow:
             0 0 50px rgba(236, 72, 153, 1),
             0 0 100px rgba(255, 107, 157, 0.6),
             inset 0 0 30px rgba(255, 255, 255, 0.7);
-    }
-    75% {
-        transform: scale(0.8) rotate(15deg);
-        opacity: 0.4;
-        filter: blur(5px) brightness(3);
-        box-shadow:
+}
+
+    75%  {
+    transform: scale(0.8) rotate(15deg);
+    opacity: 0.4;
+    filter: blur(5px) brightness(3);
+    box-shadow:
             0 0 80px rgba(236, 72, 153, 0.8),
             0 0 150px rgba(255, 107, 157, 0.4);
-    }
-    100% {
-        transform: scale(0) rotate(180deg);
-        opacity: 0;
-        filter: blur(10px) brightness(5);
-        box-shadow: none;
-    }
 }
 
-@keyframes blastParticles {
-    0% {
-        transform: scale(0) translate(0, 0);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1) translate(var(--dx), var(--dy));
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(0) translate(calc(var(--dx) * 2), calc(var(--dy) * 2));
-        opacity: 0;
-    }
+    100%  {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+    filter: blur(10px) brightness(5);
+    box-shadow: none;
 }
 
-.removing {
+}
+
+@keyframes blastParticles  {
+    0%  {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+}
+
+    50%  {
+    transform: scale(1) translate(var(--dx), var(--dy));
+    opacity: 0.8;
+}
+
+    100%  {
+    transform: scale(0) translate(calc(var(--dx) * 2), calc(var(--dy) * 2));
+    opacity: 0;
+}
+
+}
+
+.removing  {
     animation: blastAnimation 1s ease-out forwards;
     z-index: 100;
     position: relative;
 }
 
-.blast-particle {
+.blast-particle  {
     position: absolute;
     width: 8px;
     height: 8px;
@@ -137,77 +148,89 @@
     animation: blastParticles 1.5s ease-out forwards;
 }
 
-@keyframes rippleBlast {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
-        border-width: 6px;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(5);
-        opacity: 0.6;
-        border-width: 3px;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(10);
-        opacity: 0;
-        border-width: 1px;
-    }
+@keyframes rippleBlast  {
+    0%  {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    border-width: 6px;
+}
+
+    50%  {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0.6;
+    border-width: 3px;
+}
+
+    100%  {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+    border-width: 1px;
+}
+
 }
 
 /* Countdown burst animation styles */
-@keyframes countdownBubbleBurstAnimation {
-    0% {
-        transform: translate(0, 0) rotate(0deg) scale(0.4);
-        opacity: 1;
-    }
-    35% {
-        transform: translate(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh)) rotate(calc(var(--rotation) * 0.35)) scale(1.2);
-        opacity: 1;
-    }
-    75% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translate(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh)) rotate(var(--rotation)) scale(0.1);
-        opacity: 0;
-    }
+@keyframes countdownBubbleBurstAnimation  {
+    0%  {
+    transform: translate(0, 0) rotate(0deg) scale(0.4);
+    opacity: 1;
 }
 
-.countdown-burst-bubble {
+    35%  {
+    transform: translate(calc(var(--endX) - 50vw), calc(var(--endY) - 50vh)) rotate(calc(var(--rotation) * 0.35)) scale(1.2);
+    opacity: 1;
+}
+
+    75%  {
+    opacity: 0.8;
+}
+
+    100%  {
+    transform: translate(calc(var(--endX) - 50vw), calc(var(--finalY) - 50vh)) rotate(var(--rotation)) scale(0.1);
+    opacity: 0;
+}
+
+}
+
+.countdown-burst-bubble  {
     user-select: none;
     will-change: transform, opacity;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-@keyframes enhanced-confetti-fall {
-    0% {
-        transform: translateY(-10px) rotateZ(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(50vh) rotateZ(180deg);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100vh) rotateZ(360deg);
-        opacity: 0;
-    }
+@keyframes enhanced-confetti-fall  {
+    0%  {
+    transform: translateY(-10px) rotateZ(0deg);
+    opacity: 1;
 }
 
-@keyframes confetti-fall {
-    0% {
-        transform: translateY(-10px) rotateZ(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotateZ(360deg);
-        opacity: 0;
-    }
+    50%  {
+    transform: translateY(50vh) rotateZ(180deg);
+    opacity: 0.8;
+}
+
+    100%  {
+    transform: translateY(100vh) rotateZ(360deg);
+    opacity: 0;
+}
+
+}
+
+@keyframes confetti-fall  {
+    0%  {
+    transform: translateY(-10px) rotateZ(0deg);
+    opacity: 1;
+}
+
+    100%  {
+    transform: translateY(100vh) rotateZ(360deg);
+    opacity: 0;
+}
+
 }
 
 /* Completion celebration styles */
-.completion-celebration {
+.completion-celebration  {
     position: fixed;
     top: 0;
     left: 0;
@@ -221,27 +244,27 @@
     animation: celebrationFadeIn 0.5s ease-out;
 }
 
-.celebration-content {
+.celebration-content  {
     text-align: center;
     color: white;
     max-width: 600px;
     padding: 2rem;
 }
 
-.celebration-content h1 {
+.celebration-content h1  {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     animation: bounce 1s infinite alternate;
 }
 
-.celebration-content p {
+.celebration-content p  {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-.redirect-info {
+.redirect-info  {
     background: rgba(255,255,255,0.2);
     padding: 1.5rem;
     border-radius: 15px;
@@ -249,19 +272,19 @@
     margin-top: 2rem;
 }
 
-.redirect-info p {
+.redirect-info p  {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
-#redirect-countdown {
+#redirect-countdown  {
     font-weight: bold;
     font-size: 1.5em;
     color: #ffeb3b;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.redirect-button {
+.redirect-button  {
     background: linear-gradient(45deg, #ff4081, #e91e63);
     color: white;
     border: none;
@@ -273,234 +296,260 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.redirect-button:hover {
+.redirect-button:hover  {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     background: linear-gradient(45deg, #e91e63, #ad1457);
 }
 
-@keyframes celebrationFadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes celebrationFadeIn  {
+    from  {
+    opacity: 0;
+    transform: scale(0.8);
 }
 
-@keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10px); }
+    to  {
+    opacity: 1;
+    transform: scale(1);
+}
+
+}
+
+@keyframes bounce  {
+    from  {
+    transform: translateY(0);
+}
+
+    to  {
+    transform: translateY(-10px);
+}
+
 }
 
 /* Mobile Responsive Styles */
-@media (max-width: 640px) {
-    .countdown-number {
-        font-size: 2.5rem;
-    }
-    .countdown-container {
-        padding: 2rem;
-    }
+@media (max-width: 640px)  {
+    .countdown-number  {
+    font-size: 2.5rem;
+}
+
+    .countdown-container  {
+    padding: 2rem;
+}
+
 }
 
 /* Responsive fixes for countdown layout */
-@media (max-width: 768px) {
-    .countdown-container .grid {
-        gap: 1rem;
-    }
-    .countdown-item {
-        padding: 1rem;
-    }
-    .countdown-number {
-        font-size: 2rem;
-    }
-    .blast-particle {
-        width: 6px;
-        height: 6px;
-    }
-
-    /* Mobile-specific grid layouts */
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: repeat(2, 1fr);
-    }
-
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3 {
-        grid-template-columns: repeat(3, 1fr) !important;
-        grid-template-rows: 1fr;
-    }
-
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: 1fr;
-    }
-
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1 {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: 1fr;
-    }
-
-    /* Enhanced mobile-layout rules with higher specificity */
-    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3 {
-        /* Force single row for 3 boxes on mobile */
-        grid-template-columns: repeat(3, 1fr) !important;
-        grid-template-rows: 1fr !important;
-        justify-items: center;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4 {
-        /* 2x2 grid for 4 boxes on mobile */
-        grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: repeat(2, 1fr) !important;
-        gap: 1rem;
-    }
-
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2 {
-        /* Single row for 2 boxes on mobile */
-        grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: 1fr !important;
-        justify-items: center;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .countdown-container .grid.mobile-layout.grid-cols-1.md\\:grid-cols-1 {
-        /* Centered single box on mobile */
-        grid-template-columns: 1fr !important;
-        grid-template-rows: 1fr !important;
-        justify-items: center;
-        align-items: center;
-    }
-
-    .countdown-container .grid.mobile-layout .countdown-item {
-        min-width: 0; /* Prevent overflow */
-        max-width: 100%;
-        flex-shrink: 1;
-    }
+@media (max-width: 768px)  {
+    .countdown-container .grid  {
+    gap: 1rem;
 }
 
-@media (max-width: 480px) {
-    .countdown-container {
-        padding: 1.5rem;
-    }
-    .countdown-container .grid {
-        gap: 0.75rem;
-    }
-    .countdown-item {
-        padding: 0.75rem;
-    }
-    .countdown-number {
-        font-size: 1.5rem;
-    }
-    .countdown-label {
-        font-size: 0.75rem;
-    }
-    .blast-particle {
-        width: 4px;
-        height: 4px;
-    }
+    .countdown-item  {
+    padding: 1rem;
+}
+
+    .countdown-number  {
+    font-size: 2rem;
+}
+
+    .blast-particle  {
+    width: 6px;
+    height: 6px;
+}
+
+    /* Mobile-specific grid layouts */
+    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: 1fr;
+}
+
+    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: 1fr;
+}
+
+    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr;
+}
+
+    /* Enhanced mobile-layout rules with higher specificity */
+    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
+    /* Force single row for 3 boxes on mobile */
+        grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: 1fr !important;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: 1rem;
+}
+
+    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2  {
+    /* Single row for 2 boxes on mobile */
+        grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: 1fr !important;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .countdown-container .grid.mobile-layout.grid-cols-1.md\\:grid-cols-1  {
+    /* Centered single box on mobile */
+        grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+    justify-items: center;
+    align-items: center;
+}
+
+    .countdown-container .grid.mobile-layout .countdown-item  {
+    min-width: 0;
+    /* Prevent overflow */
+        max-width: 100%;
+    flex-shrink: 1;
+}
+
+}
+
+@media (max-width: 480px)  {
+    .countdown-container  {
+    padding: 1.5rem;
+}
+
+    .countdown-container .grid  {
+    gap: 0.75rem;
+}
+
+    .countdown-item  {
+    padding: 0.75rem;
+}
+
+    .countdown-number  {
+    font-size: 1.5rem;
+}
+
+    .countdown-label  {
+    font-size: 0.75rem;
+}
+
+    .blast-particle  {
+    width: 4px;
+    height: 4px;
+}
 
     /* Ultra-mobile specific adjustments */
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3 {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.5rem;
-    }
+    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem;
+}
 
     /* Enhanced mobile-layout rules for small screens - Higher specificity */
-    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3 {
-        gap: 0.5rem !important;
-    }
+    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
+    gap: 0.5rem !important;
+}
 
     .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2,
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4 {
-        gap: 0.75rem !important;
-    }
+    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
+    gap: 0.75rem !important;
+}
 
-    .countdown-container .grid.mobile-layout .countdown-item {
-        padding: 0.75rem !important;
-        min-width: auto !important;
-    }
+    .countdown-container .grid.mobile-layout .countdown-item  {
+    padding: 0.75rem !important;
+    min-width: auto !important;
+}
 
-    .countdown-container .grid.mobile-layout .countdown-number {
-        font-size: 1.5rem !important;
-    }
+    .countdown-container .grid.mobile-layout .countdown-number  {
+    font-size: 1.5rem !important;
+}
 
-    .countdown-container .grid.mobile-layout .countdown-label {
-        font-size: 0.75rem !important;
-    }
+    .countdown-container .grid.mobile-layout .countdown-label  {
+    font-size: 0.75rem !important;
+}
+
 }
 
 /* Desktop-specific layout: Always use row-style layout */
-@media (min-width: 769px) {
+@media (min-width: 769px)  {
     .countdown-container .grid.grid-cols-2.md\\:grid-cols-4,
     .countdown-container .grid.grid-cols-3.md\\:grid-cols-3,
     .countdown-container .grid.grid-cols-2.md\\:grid-cols-2,
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1 {
-        /* Force single row layout for all configurations on desktop */
+    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    /* Force single row layout for all configurations on desktop */
         grid-template-rows: 1fr !important;
-        justify-items: center;
-        align-items: center;
-        gap: 1.5rem;
-    }
+    justify-items: center;
+    align-items: center;
+    gap: 1.5rem;
+}
 
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4 {
-        /* 4 boxes in a single row on desktop */
-        grid-template-columns: repeat(4, 1fr) !important;
-    }
+    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
+    grid-template-columns: repeat(4, 1fr) !important;
+}
 
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3 {
-        /* 3 boxes in a single row on desktop */
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
+    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
 
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2 {
-        /* 2 boxes in a single row on desktop */
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
+    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
 
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1 {
-        /* 1 box centered on desktop */
-        grid-template-columns: 1fr !important;
-    }
+    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    grid-template-columns: 1fr !important;
+}
 
     /* Enhanced spacing for desktop row layout */
-    .countdown-container .countdown-item {
-        padding: 1.75rem;
-        min-width: 120px;
-        max-width: 200px;
-    }
+    .countdown-container .countdown-item  {
+    padding: 1.75rem;
+    min-width: 120px;
+    max-width: 200px;
+}
+
 }
 
 /* Large desktop optimizations */
-@media (min-width: 1200px) {
-    .countdown-container .grid {
-        gap: 2rem;
-    }
+@media (min-width: 1200px)  {
+    .countdown-container .grid  {
+    gap: 2rem;
+}
 
-    .countdown-container .countdown-item {
-        padding: 2rem;
-        min-width: 140px;
-        max-width: 220px;
-    }
+    .countdown-container .countdown-item  {
+    padding: 2rem;
+    min-width: 140px;
+    max-width: 220px;
+}
 
-    .countdown-number {
-        font-size: 4rem;
-    }
+    .countdown-number  {
+    font-size: 4rem;
+}
 
-    .countdown-label {
-        font-size: 1rem;
-    }
+    .countdown-label  {
+    font-size: 1rem;
+}
+
 }
 
 /* Ultra-wide desktop optimizations */
-@media (min-width: 1600px) {
-    .countdown-container .grid {
-        gap: 2.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .countdown-container .countdown-item {
-        padding: 2.5rem;
-        min-width: 160px;
-        max-width: 250px;
-    }
+@media (min-width: 1600px)  {
+    .countdown-container .grid  {
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+    .countdown-container .countdown-item  {
+    padding: 2.5rem;
+    min-width: 160px;
+    max-width: 250px;
+}
+
+}
+
