@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fireworks">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ec4899">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <title>Fireworks - Jerry & Soumya</title>
+    <meta name="description" content="Celebration and fireworks display">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ec4899'/%3E%3Ccircle cx='35' cy='35' r='8' fill='%23fbbf24'/%3E%3Ccircle cx='65' cy='35' r='6' fill='%23f472b6'/%3E%3Ccircle cx='50' cy='65' r='10' fill='%23a855f7'/%3E%3C/svg%3E">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../styles/shared.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        /* Fireworks Hero Section */
+        .fireworks-hero {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(147, 51, 234, 0.8), rgba(239, 68, 68, 0.8));
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .fireworks-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 2px, transparent 3px),
+                        radial-gradient(circle at 60% 70%, rgba(255,255,255,0.08) 1px, transparent 2px),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12) 1.5px, transparent 2.5px),
+                        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.09) 1px, transparent 2px);
+            background-size: 200px 200px, 150px 150px, 300px 300px, 250px 250px;
+            animation: fireworksPattern 25s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes fireworksPattern {
+            0% { transform: translateX(0) translateY(0) scale(1); }
+            50% { transform: translateX(-50px) translateY(-50px) scale(1.1); }
+            100% { transform: translateX(-100px) translateY(-100px) scale(1); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fireworksGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes fireworksGlow {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1) drop-shadow(0 0 20px rgba(79, 70, 229, 0.5));
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: brightness(1.2) drop-shadow(0 0 30px rgba(147, 51, 234, 0.8));
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .coming-soon {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+            backdrop-filter: blur(30px);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            margin: 2rem 0;
+            position: relative;
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .coming-soon:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .page-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: fireworks-burst 4s ease-in-out infinite;
+            display: inline-block;
+            transform-style: preserve-3d;
+        }
+        
+        @keyframes fireworks-burst {
+            0%, 100% { 
+                transform: scale(1) rotateZ(0deg); 
+                filter: brightness(1) hue-rotate(0deg);
+            }
+            25% { 
+                transform: scale(1.3) rotateZ(90deg); 
+                filter: brightness(1.5) hue-rotate(90deg) drop-shadow(0 0 20px rgba(79, 70, 229, 0.8));
+            }
+            50% { 
+                transform: scale(1.5) rotateZ(180deg); 
+                filter: brightness(1.8) hue-rotate(180deg) drop-shadow(0 0 30px rgba(147, 51, 234, 1));
+            }
+            75% { 
+                transform: scale(1.3) rotateZ(270deg); 
+                filter: brightness(1.5) hue-rotate(270deg) drop-shadow(0 0 20px rgba(239, 68, 68, 0.8));
+            }
+        }
+        
+        .construction-icon {
+            font-size: 2rem;
+            margin: 0 0.5rem;
+            animation: construction-spark 2.5s ease-in-out infinite;
+            display: inline-block;
+            transform-style: preserve-3d;
+        }
+        
+        @keyframes construction-spark {
+            0%, 100% { 
+                transform: scale(1) rotateY(0deg); 
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.2) rotateY(180deg); 
+                filter: brightness(1.4) drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+            }
+        }
+        
+        /* Fireworks Display Grid */
+        .fireworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .fireworks-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .firework-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transform: perspective(1000px) rotateX(10deg);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .firework-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .firework-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .firework-card:hover::before {
+            opacity: 1;
+            animation: shimmer-fireworks 1.5s ease-in-out;
+        }
+        
+        @keyframes shimmer-fireworks {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* Celebration Stage */
+        .celebration-stage {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.05));
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(79, 70, 229, 0.3);
+        }
+        
+        .celebration-stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer-stage 3.5s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer-stage {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .firework-icon {
+            font-size: 3rem;
+            margin: 0.5rem;
+            animation: firework-dance 5s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        .firework-icon:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        
+        .firework-icon:nth-child(even) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes firework-dance {
+            0%, 100% { 
+                transform: translateY(0) scale(1) rotate(0deg);
+                filter: brightness(1);
+            }
+            25% { 
+                transform: translateY(-15px) scale(1.2) rotate(90deg);
+                filter: brightness(1.3) hue-rotate(90deg);
+            }
+            50% { 
+                transform: translateY(-25px) scale(1.4) rotate(180deg);
+                filter: brightness(1.6) hue-rotate(180deg);
+            }
+            75% { 
+                transform: translateY(-15px) scale(1.2) rotate(270deg);
+                filter: brightness(1.3) hue-rotate(270deg);
+            }
+        }
+        
+        /* Particle Effects */
+        .fireworks-particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Mobile Responsiveness Fixes */
+        @media (max-width: 768px) {
+            .fireworks-hero {
+                min-height: 50vh;
+                padding: 2rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            /* Reduce animation intensity on mobile */
+            @keyframes fireworksGlow {
+                0%, 100% { 
+                    transform: scale(1);
+                    filter: brightness(1) drop-shadow(0 0 10px rgba(79, 70, 229, 0.3));
+                }
+                50% { 
+                    transform: scale(1.02);
+                    filter: brightness(1.1) drop-shadow(0 0 15px rgba(147, 51, 234, 0.5));
+                }
+            }
+            
+            /* Optimize fireworks pattern for mobile performance */
+            .fireworks-hero::before {
+                animation-duration: 30s;
+                background-size: 100px 100px, 75px 75px, 150px 150px, 125px 125px;
+            }
+            
+            @keyframes fireworksPattern {
+                0% { transform: translateX(0) translateY(0); }
+                100% { transform: translateX(-50px) translateY(-50px); }
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fireworks-hero {
+                min-height: 40vh;
+                padding: 1.5rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Further reduce animation complexity */
+            .fireworks-hero::before {
+                background-size: 80px 80px, 60px 60px, 120px 120px, 100px 100px;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .fireworks-hero {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Shared Header -->
+    <header class="shared-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-love">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">
+                    <i class="fas fa-heart"></i> Anniversary Website
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="photo-gallery.html">Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <!-- Duplicate navigation removed -->
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Navigate
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="wish-list.html">Wish List</a></li>
+            <li><a class="dropdown-item" href="special-dates.html">Special Dates</a></li>
+            <li><a class="dropdown-item" href="photo-gallery.html">Photo Gallery</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Fireworks Hero Section -->
+        <section class="fireworks-hero">
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h1 class="text-5xl md:text-7xl font-dancing text-white mb-4 animate-float">
+                    Fireworks Celebration
+                </h1>
+                <p class="text-xl text-white/90 font-dancing">
+                    Spectacular displays for our special moments
+                </p>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-4 py-8">
+            <!-- Interactive Fireworks Display -->
+            <div class="celebration-stage max-w-4xl mx-auto mb-8">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-dancing text-purple-600 mb-4">
+                        Launch Your Own Fireworks!
+                    </h2>
+                    <p class="text-gray-600 mb-6">
+                        Click anywhere in the display area to create beautiful fireworks!
+                    </p>
+                </div>
+                
+                <div id="fireworks-canvas" class="fireworks-display-area">
+                    <canvas id="fireworksCanvas" width="800" height="400"></canvas>
+                    <div class="fireworks-controls">
+                        <button id="launch-firework" class="btn-3d-romantic">
+                            <span class="btn-icon"><i data-lucide="rocket" class="icon-rocket"></i></span> Launch Firework
+                        </button>
+                        <button id="auto-show" class="btn-3d-romantic">
+                            <span class="btn-icon"><i data-lucide="sparkles" class="icon-sparkles"></i></span> Auto Show
+                        </button>
+                        <button id="clear-fireworks" class="btn-3d-romantic">
+                            <span class="btn-icon">🧹</span> Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fireworks Features -->
+            <div class="fireworks-features max-w-4xl mx-auto">
+                <div class="firework-card">
+                    <div class="firework-icon-display">
+                        <div class="particle-burst colorful-burst"></div>
+                    </div>
+                    <h3 class="text-xl font-dancing text-purple-600 mb-2">Colorful Bursts</h3>
+                    <p class="text-gray-600">Experience vibrant colors exploding in the sky</p>
+                </div>
+                <div class="firework-card">
+                    <div class="firework-icon-display">
+                        <div class="particle-burst sparkle-burst"></div>
+                    </div>
+                    <h3 class="text-xl font-dancing text-purple-600 mb-2">Sparkle Effects</h3>
+                    <p class="text-gray-600">Watch magical sparkles light up the night</p>
+                </div>
+                <div class="firework-card">
+                    <div class="firework-icon-display">
+                        <div class="particle-burst star-burst"></div>
+                    </div>
+                    <h3 class="text-xl font-dancing text-purple-600 mb-2">Star Patterns</h3>
+                    <p class="text-gray-600">Beautiful star formations in celebration</p>
+                </div>
+            </div>
+
+            <!-- Special Occasions Fireworks -->
+            <div class="celebration-occasions max-w-3xl mx-auto text-center">
+                <h3 class="text-2xl font-dancing text-purple-600 mb-6">Special Celebration Moments</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="occasion-card">
+                        <div class="occasion-icon heart-icon"></div>
+                        <h4 class="font-semibold text-pink-600">Anniversary Fireworks</h4>
+                        <p class="text-sm text-gray-600">Romantic displays for our special day</p>
+                    </div>
+                    <div class="occasion-card">
+                        <div class="occasion-icon cake-icon"></div>
+                        <h4 class="font-semibold text-pink-600">Birthday Celebrations</h4>
+                        <p class="text-sm text-gray-600">Bright bursts for birthday joy</p>
+                    </div>
+                    <div class="occasion-card">
+                        <div class="occasion-icon party-icon"></div>
+                        <h4 class="font-semibold text-pink-600">Achievement Moments</h4>
+                        <p class="text-sm text-gray-600">Victory celebrations together</p>
+                    </div>
+                    <div class="occasion-card">
+                        <div class="occasion-icon love-icon"></div>
+                        <h4 class="font-semibold text-pink-600">Love Declarations</h4>
+                        <p class="text-sm text-gray-600">Expressing our love with light</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
+                <a href="anniversary.html" class="card-3d-hover glassmorphism p-4 rounded-xl text-center text-decoration-none">
+                    <div class="nav-icon celebration-icon"></div>
+                    <div class="text-sm font-medium text-pink-700">Anniversary</div>
+                </a>
+                <a href="photo-gallery.html" class="card-3d-hover glassmorphism p-4 rounded-xl text-center text-decoration-none">
+                    <div class="nav-icon camera-icon"></div>
+                    <div class="text-sm font-medium text-pink-700">Gallery</div>
+                </a>
+                <a href="music-playlist.html" class="card-3d-hover glassmorphism p-4 rounded-xl text-center text-decoration-none">
+                    <div class="nav-icon music-icon"></div>
+                    <div class="text-sm font-medium text-pink-700">Music</div>
+                </a>
+                <a href="countdown.html" class="card-3d-hover glassmorphism p-4 rounded-xl text-center text-decoration-none">
+                    <div class="nav-icon clock-icon"></div>
+                    <div class="text-sm font-medium text-pink-700">Countdown</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Fireworks Particle Container -->
+        <div class="fireworks-particle-container" id="fireworksParticles"></div>
+    </main>
+
+    <!-- Shared Footer -->
+    <footer class="shared-footer bg-gradient-love text-white text-center py-4">
+        <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p>
+        <small>&copy; 2025 Anniversary Website. All rights reserved.</small>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/shared.js"></script>
+    <script>
+        // Enhanced Fireworks Page JavaScript with Full Interactive Fireworks
+        class FireworksEngine {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.fireworks = [];
+                this.particles = [];
+                this.autoShow = false;
+                this.colors = [
+                    '#ff6b9d', '#c2185b', '#e91e63', '#f06292',
+                    '#9c27b0', '#673ab7', '#3f51b5', '#2196f3',
+                    '#00bcd4', '#009688', '#4caf50', '#8bc34a',
+                    '#ffc107', '#ff9800', '#ff5722', '#e91e63'
+                ];
+                
+                this.init();
+            }
+
+            init() {
+                this.resize();
+                this.animate();
+                this.setupEvents();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.width = rect.width;
+                this.canvas.height = Math.max(400, rect.height);
+            }
+
+            setupEvents() {
+                // Click to launch firework
+                this.canvas.addEventListener('click', (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    this.launchFirework(x, y);
+                });
+
+                // Control buttons
+                document.getElementById('launch-firework')?.addEventListener('click', () => {
+                    this.launchRandomFirework();
+                });
+
+                document.getElementById('auto-show')?.addEventListener('click', () => {
+                    this.toggleAutoShow();
+                });
+
+                document.getElementById('clear-fireworks')?.addEventListener('click', () => {
+                    this.clear();
+                });
+            }
+
+            launchFirework(targetX, targetY) {
+                const startX = Math.random() * this.canvas.width;
+                const startY = this.canvas.height;
+                
+                this.fireworks.push({
+                    x: startX,
+                    y: startY,
+                    targetX: targetX || Math.random() * this.canvas.width,
+                    targetY: targetY || Math.random() * this.canvas.height * 0.6,
+                    velocityX: 0,
+                    velocityY: 0,
+                    exploded: false,
+                    trail: [],
+                    color: this.colors[Math.floor(Math.random() * this.colors.length)]
+                });
+            }
+
+            launchRandomFirework() {
+                this.launchFirework(
+                    Math.random() * this.canvas.width,
+                    Math.random() * this.canvas.height * 0.6
+                );
+            }
+
+            explode(firework) {
+                const particleCount = Math.random() * 50 + 50;
+                for (let i = 0; i < particleCount; i++) {
+                    const angle = (Math.PI * 2 * i) / particleCount;
+                    const velocity = Math.random() * 6 + 2;
+                    
+                    this.particles.push({
+                        x: firework.targetX,
+                        y: firework.targetY,
+                        velocityX: Math.cos(angle) * velocity,
+                        velocityY: Math.sin(angle) * velocity,
+                        life: 1,
+                        decay: Math.random() * 0.02 + 0.01,
+                        size: Math.random() * 3 + 1,
+                        color: firework.color,
+                        gravity: 0.1
+                    });
+                }
+
+                // Add sparkle particles
+                for (let i = 0; i < 20; i++) {
+                    this.particles.push({
+                        x: firework.targetX + (Math.random() - 0.5) * 50,
+                        y: firework.targetY + (Math.random() - 0.5) * 50,
+                        velocityX: (Math.random() - 0.5) * 4,
+                        velocityY: (Math.random() - 0.5) * 4,
+                        life: 1,
+                        decay: Math.random() * 0.03 + 0.02,
+                        size: Math.random() * 2 + 0.5,
+                        color: '#ffffff',
+                        gravity: 0.05,
+                        sparkle: true
+                    });
+                }
+            }
+
+            toggleAutoShow() {
+                this.autoShow = !this.autoShow;
+                const btn = document.getElementById('auto-show');
+                if (btn) {
+                    btn.textContent = this.autoShow ? '<i data-lucide="pause" class="icon-pause"></i> Stop Show' : '<i data-lucide="sparkles" class="icon-sparkles"></i> Auto Show';
+                    btn.classList.toggle('active', this.autoShow);
+                }
+            }
+
+            clear() {
+                this.fireworks = [];
+                this.particles = [];
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            update() {
+                // Update fireworks
+                for (let i = this.fireworks.length - 1; i >= 0; i--) {
+                    const firework = this.fireworks[i];
+                    
+                    if (!firework.exploded) {
+                        // Calculate trajectory
+                        const distance = Math.sqrt(
+                            Math.pow(firework.targetX - firework.x, 2) + 
+                            Math.pow(firework.targetY - firework.y, 2)
+                        );
+
+                        if (distance < 5) {
+                            this.explode(firework);
+                            firework.exploded = true;
+                        } else {
+                            const angle = Math.atan2(
+                                firework.targetY - firework.y,
+                                firework.targetX - firework.x
+                            );
+                            const speed = distance * 0.1;
+                            firework.velocityX = Math.cos(angle) * speed;
+                            firework.velocityY = Math.sin(angle) * speed;
+
+                            firework.x += firework.velocityX;
+                            firework.y += firework.velocityY;
+
+                            // Add trail
+                            firework.trail.push({ x: firework.x, y: firework.y });
+                            if (firework.trail.length > 20) {
+                                firework.trail.shift();
+                            }
+                        }
+                    } else {
+                        // Remove exploded fireworks
+                        this.fireworks.splice(i, 1);
+                    }
+                }
+
+                // Update particles
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    const particle = this.particles[i];
+                    
+                    particle.x += particle.velocityX;
+                    particle.y += particle.velocityY;
+                    particle.velocityY += particle.gravity;
+                    particle.life -= particle.decay;
+
+                    if (particle.life <= 0) {
+                        this.particles.splice(i, 1);
+                    }
+                }
+
+                // Auto show
+                if (this.autoShow && Math.random() < 0.03) {
+                    this.launchRandomFirework();
+                }
+            }
+
+            draw() {
+                // Clear with fade effect
+                this.ctx.fillStyle = 'rgba(0, 0, 20, 0.1)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Draw fireworks trails
+                this.fireworks.forEach(firework => {
+                    if (!firework.exploded && firework.trail.length > 1) {
+                        this.ctx.strokeStyle = firework.color;
+                        this.ctx.lineWidth = 2;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(firework.trail[0].x, firework.trail[0].y);
+                        
+                        for (let i = 1; i < firework.trail.length; i++) {
+                            this.ctx.lineTo(firework.trail[i].x, firework.trail[i].y);
+                        }
+                        this.ctx.stroke();
+
+                        // Draw firework head
+                        this.ctx.fillStyle = firework.color;
+                        this.ctx.beginPath();
+                        this.ctx.arc(firework.x, firework.y, 3, 0, Math.PI * 2);
+                        this.ctx.fill();
+                    }
+                });
+
+                // Draw particles
+                this.particles.forEach(particle => {
+                    this.ctx.save();
+                    this.ctx.globalAlpha = particle.life;
+                    this.ctx.fillStyle = particle.color;
+                    
+                    if (particle.sparkle) {
+                        // Draw sparkle
+                        this.ctx.fillRect(
+                            particle.x - particle.size / 2,
+                            particle.y - particle.size / 2,
+                            particle.size,
+                            particle.size
+                        );
+                    } else {
+                        // Draw circle
+                        this.ctx.beginPath();
+                        this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                        this.ctx.fill();
+                    }
+                    this.ctx.restore();
+                });
+            }
+
+            animate() {
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // CSS-based Particle System for background (no emoji)
+        class FireworksParticleSystem {
+            constructor() {
+                this.container = document.getElementById('fireworksParticles');
+                this.particles = [];
+                this.colors = ['#ff6b9d', '#c2185b', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#ffc107'];
+                this.init();
+            }
+
+            init() {
+                this.createParticles();
+                setInterval(() => this.createParticles(), 2000);
+            }
+
+            createParticles() {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => this.createParticle(), i * 250);
+                }
+            }
+
+            createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                
+                const size = Math.random() * 4 + 2;
+                const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+                
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: radial-gradient(circle, ${color}, transparent);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}vw;
+                    top: ${Math.random() * 100}vh;
+                    opacity: ${Math.random() * 0.8 + 0.3};
+                    pointer-events: none;
+                    z-index: 1;
+                    animation: particleFloat ${Math.random() * 8 + 6}s ease-in-out infinite;
+                    box-shadow: 0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}40;
+                `;
+                
+                this.container.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 12000);
+            }
+        }
+
+        // 3D Card Interactions
+        function init3DCards() {
+            const cards = document.querySelectorAll('.firework-card, .card-3d-hover, .occasion-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+        }
+
+        // Page initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('<i data-lucide="zap" class="icon-fireworks"></i> Fireworks page loaded with full interactive features');
+            
+            // Initialize fireworks engine
+            const canvas = document.getElementById('fireworksCanvas');
+            if (canvas) {
+                const fireworksEngine = new FireworksEngine(canvas);
+                
+                // Launch welcome fireworks
+                setTimeout(() => {
+                    for (let i = 0; i < 3; i++) {
+                        setTimeout(() => fireworksEngine.launchRandomFirework(), i * 500);
+                    }
+                }, 1000);
+            }
+            
+            // Initialize particle system
+            const particleSystem = new FireworksParticleSystem();
+            
+            // Initialize 3D effects
+            init3DCards();
+            
+            // Add optimized particle animation with mobile considerations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes particleFloat {
+                    0%, 100% { 
+                        transform: translateY(0) translateX(0) scale(1);
+                        opacity: 0.3;
+                    }
+                    25% { 
+                        transform: translateY(-30px) translateX(10px) scale(1.2);
+                        opacity: 0.8;
+                    }
+                    50% { 
+                        transform: translateY(-60px) translateX(-5px) scale(1.5);
+                        opacity: 1;
+                    }
+                    75% { 
+                        transform: translateY(-30px) translateX(-15px) scale(1.2);
+                        opacity: 0.8;
+                    }
+                }
+                
+                /* Mobile optimizations */
+                @media (max-width: 768px) {
+                    .fireworks-hero {
+                        min-height: 50vh;
+                        padding: 1rem;
+                    }
+                    
+                    .hero-title {
+                        font-size: 2.5rem !important;
+                    }
+                    
+                    .hero-subtitle {
+                        font-size: 1.2rem;
+                    }
+                    
+                    .fireworks-grid {
+                        grid-template-columns: 1fr;
+                        gap: 1rem;
+                    }
+                    
+                    .firework-card {
+                        padding: 1.5rem;
+                        transform: none;
+                    }
+                    
+                    #fireworksCanvas {
+                        height: 300px;
+                    }
+                    
+                    .fireworks-controls {
+                        gap: 0.5rem;
+                    }
+                    
+                    .btn-3d-romantic {
+                        padding: 0.75rem 1rem;
+                        font-size: 0.9rem;
+                    }
+                    
+                    /* Reduce particles on mobile for performance */
+                    .firework-particle {
+                        animation-duration: 4s !important;
+                    }
+                }
+                
+                /* High performance mode for older devices */
+                @media (prefers-reduced-motion: reduce) {
+                    .firework-particle,
+                    .firework-card,
+                    .hero-title {
+                        animation: none !important;
+                        transform: none !important;
+                    }
+                }
+                
+                .occasion-card {
+                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+                    backdrop-filter: blur(15px);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 1rem;
+                    padding: 1.5rem;
+                    transition: all 0.3s ease;
+                    transform: perspective(800px) rotateX(5deg);
+                }
+                
+                .occasion-card:hover {
+                    transform: perspective(800px) rotateX(0deg) translateY(-5px);
+                    box-shadow: 0 15px 30px rgba(147, 51, 234, 0.2);
+                }
+                
+                .fireworks-display-area {
+                    background: linear-gradient(135deg, rgba(0, 0, 20, 0.9), rgba(25, 25, 50, 0.8));
+                    border-radius: 1.5rem;
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    position: relative;
+                    overflow: hidden;
+                    border: 2px solid rgba(147, 51, 234, 0.3);
+                }
+                
+                #fireworksCanvas {
+                    width: 100%;
+                    max-width: 800px;
+                    height: 400px;
+                    border-radius: 1rem;
+                    background: linear-gradient(135deg, rgba(0, 0, 30, 1), rgba(20, 20, 60, 1));
+                    cursor: crosshair;
+                    touch-action: manipulation;
+                }
+                
+                .fireworks-controls {
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    margin-top: 1.5rem;
+                    flex-wrap: wrap;
+                }
+                
+                .btn-3d-romantic {
+                    padding: 1rem 1.5rem;
+                    background: linear-gradient(135deg, #ec4899, #be185d);
+                    color: white;
+                    border: none;
+                    border-radius: 0.75rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 8px 16px rgba(236, 72, 153, 0.3);
+                    transform: translateY(0);
+                }
+                
+                .btn-3d-romantic:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 12px 24px rgba(236, 72, 153, 0.4);
+                }
+                
+                .btn-3d-romantic.active {
+                    background: linear-gradient(135deg, #9333ea, #7c3aed);
+                    transform: translateY(2px);
+                    box-shadow: 0 4px 8px rgba(147, 51, 234, 0.3);
+                }
+                
+                .btn-icon {
+                    display: inline-block;
+                    margin-right: 0.5rem;
+                }
+                
+                /* Performance optimizations */
+                .firework-particle {
+                    will-change: transform, opacity;
+                    backface-visibility: hidden;
+                }
+                
+                .firework-card {
+                    will-change: transform;
+                    backface-visibility: hidden;
+                }
+                
+                /* GitHub Pages optimization - preload critical resources */
+                .fireworks-hero::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    pointer-events: none;
+                }
+                
+                /* Visual replacements for emoji */
+                .firework-icon-display {
+                    width: 4rem;
+                    height: 4rem;
+                    margin: 0 auto 1rem;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .particle-burst {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    position: relative;
+                    animation: burstPulse 3s ease-in-out infinite;
+                }
+                
+                .colorful-burst {
+                    background: radial-gradient(circle, #ff6b9d, #e91e63, #9c27b0);
+                    box-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+                }
+                
+                .sparkle-burst {
+                    background: radial-gradient(circle, #ffc107, #ff9800, #f57c00);
+                    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+                }
+                
+                .star-burst {
+                    background: radial-gradient(circle, #3f51b5, #2196f3, #00bcd4);
+                    box-shadow: 0 0 20px rgba(63, 81, 181, 0.6);
+                }
+                
+                .particle-burst::before,
+                .particle-burst::after {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: white;
+                    border-radius: 50%;
+                    animation: sparkle 2s ease-in-out infinite;
+                }
+                
+                .particle-burst::before {
+                    top: 10%;
+                    left: 20%;
+                    animation-delay: 0.5s;
+                }
+                
+                .particle-burst::after {
+                    bottom: 15%;
+                    right: 25%;
+                    animation-delay: 1s;
+                }
+                
+                @keyframes burstPulse {
+                    0%, 100% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.2); opacity: 1; }
+                }
+                
+                @keyframes sparkle {
+                    0%, 100% { opacity: 0; transform: scale(0.5); }
+                    50% { opacity: 1; transform: scale(1.5); }
+                }
+                
+                /* Occasion card icons */
+                .occasion-icon {
+                    width: 3rem;
+                    height: 3rem;
+                    margin: 0 auto 0.5rem;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+                
+                .heart-icon {
+                    background: linear-gradient(135deg, #ff6b9d, #e91e63);
+                    box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+                }
+                
+                .cake-icon {
+                    background: linear-gradient(135deg, #ffc107, #ff9800);
+                    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+                }
+                
+                .party-icon {
+                    background: linear-gradient(135deg, #9c27b0, #673ab7);
+                    box-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
+                }
+                
+                .love-icon {
+                    background: linear-gradient(135deg, #e91e63, #c2185b);
+                    box-shadow: 0 0 15px rgba(233, 30, 99, 0.5);
+                }
+                
+                .heart-icon::before {
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    background: white;
+                    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                    transform: rotate(-45deg);
+                }
+                
+                .cake-icon::before {
+                    content: '';
+                    width: 16px;
+                    height: 12px;
+                    background: white;
+                    border-radius: 2px 2px 8px 8px;
+                }
+                
+                .party-icon::before {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-bottom: 12px solid white;
+                }
+                
+                .love-icon::before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 4px 0 0 white, -4px 0 0 white;
+                }
+                
+                /* Navigation icons */
+                .nav-icon {
+                    width: 2rem;
+                    height: 2rem;
+                    margin: 0 auto 0.5rem;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+                
+                .celebration-icon {
+                    background: linear-gradient(135deg, #ff6b9d, #e91e63);
+                }
+                
+                .camera-icon {
+                    background: linear-gradient(135deg, #2196f3, #1976d2);
+                }
+                
+                .music-icon {
+                    background: linear-gradient(135deg, #9c27b0, #673ab7);
+                }
+                
+                .clock-icon {
+                    background: linear-gradient(135deg, #ff9800, #f57c00);
+                }
+                
+                .celebration-icon::before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 4px 0 0 white, -4px 0 0 white, 0 4px 0 white, 0 -4px 0 white;
+                }
+                
+                .camera-icon::before {
+                    content: '';
+                    width: 12px;
+                    height: 8px;
+                    background: white;
+                    border-radius: 2px;
+                    box-shadow: 0 0 0 2px white, 3px -3px 0 0 white;
+                }
+                
+                .music-icon::before {
+                    content: '';
+                    width: 6px;
+                    height: 12px;
+                    background: white;
+                    border-radius: 3px 3px 50% 50%;
+                    box-shadow: 4px 0 0 white;
+                }
+                
+                .clock-icon::before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    border: 2px solid white;
+                    border-radius: 50%;
+                    position: relative;
+                }
+                
+                .clock-icon::after {
+                    content: '';
+                    width: 2px;
+                    height: 4px;
+                    background: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -100%);
+                }
+                
+                /* Volume icon */
+                .volume-icon {
+                    display: inline-block;
+                    width: 1rem;
+                    height: 1rem;
+                    background: linear-gradient(135deg, #9c27b0, #673ab7);
+                    -webkit-mask: radial-gradient(circle at 30% 50%, transparent 30%, black 32%);
+                    mask: radial-gradient(circle at 30% 50%, transparent 30%, black 32%);
+                    border-radius: 2px;
+                }
+                
+                .volume-icon::before {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: currentColor;
+                    border-radius: 50%;
+                    margin-left: 2px;
+                    margin-top: 2px;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Show success notification
+            setTimeout(() => {
+                if (window.notificationManager) {
+                    window.notificationManager.show(
+                        'success',
+                        'Fireworks Ready! <i data-lucide="zap" class="icon-fireworks"></i>',
+                        'Click anywhere on the display to launch beautiful fireworks!'
+                    );
+                }
+            }, 1500);
+        });
+    </script>
+
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+/* Future Plans Page Styles */
+/* Vision Board Layout */
+.vision-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+    will-change: transform, opacity;
+}
+
+.vision-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    will-change: transform, box-shadow;
+}
+
+.vision-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+}
+
+.vision-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+    will-change: left, opacity;
+}
+
+.vision-card:hover::before {
+    animation: shimmer 2s ease-in-out infinite;
+    opacity: 1;
+}
+
+/* Performance-optimized shimmer animation */
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Vision Card Content */
+.vision-icon {
+    font-size: 3rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.vision-title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.vision-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Milestone Tracker */
+.milestone-tracker {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    will-change: transform;
+}
+
+.milestone {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid #ff69b4;
+    transition: all 0.3s ease;
+    will-change: transform, background-color;
+}
+
+.milestone:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+.milestone-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid #ff69b4;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.milestone-status.completed {
+    background: #ff69b4;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.milestone-status.completed::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.milestone-text {
+    color: #fff;
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.milestone-date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Bucket List */
+.bucket-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.bucket-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    will-change: transform, box-shadow;
+}
+
+.bucket-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+}
+
+.bucket-item.completed {
+    background: rgba(255, 105, 180, 0.2);
+    border-color: #ff69b4;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+}
+
+.bucket-item.completed .bucket-text {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.bucket-text {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.bucket-priority {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* Travel Map Section */
+.travel-map {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.2), rgba(138, 43, 226, 0.2));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Destination Tags */
+.destination-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.destination-tag {
+    background: rgba(255, 105, 180, 0.3);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    will-change: transform, background-color;
+}
+
+.destination-tag:hover {
+    background: rgba(255, 105, 180, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+/* Add Plan Button */
+.add-plan-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(45deg, #ff69b4, #8a2be2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    will-change: transform, box-shadow;
+}
+
+.add-plan-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+}
+
+/* Celebration Hearts Animation */
+.celebration-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 20px;
+    transition: all 1s ease-out;
+    will-change: transform, opacity;
+}
+
+/* Future Plans Hero Section */
+.future-plans-hero {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+    border-radius: 0 0 2rem 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .vision-board {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .bucket-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-board {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .bucket-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .milestone {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .milestone-status {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+    
+    .milestone-text {
+        margin-bottom: 0.5rem;
+    }
+    
+    .map-placeholder {
+        height: 200px;
+        font-size: 1rem;
+    }
+    
+    .destination-tags {
+        gap: 0.3rem;
+    }
+    
+    .destination-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .add-plan-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vision-card,
+    .milestone-tracker,
+    .travel-map {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .vision-icon {
+        font-size: 2.5rem;
+    }
+    
+    .vision-title {
+        font-size: 1.3rem;
+    }
+    
+    .bucket-item {
+        padding: 1rem;
+    }
+    
+    .milestone {
+        padding: 1rem;
+    }
+}
+
+/* Performance Optimizations */
+.vision-card,
+.bucket-item,
+.milestone,
+.destination-tag,
+.add-plan-btn {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* 90fps Optimized Animations */
+@media (prefers-reduced-motion: no-preference) {
+    .vision-card:hover,
+    .bucket-item:hover,
+    .destination-tag:hover,
+    .add-plan-btn:hover {
+        will-change: transform;
+    }
+}
+
+/* Dark theme compatibility */
+@media (prefers-color-scheme: dark) {
+    .vision-card,
+    .milestone-tracker,
+    .travel-map,
+    .bucket-item {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}

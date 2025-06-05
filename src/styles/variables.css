@@ -5,23 +5,39 @@
  */
 
 :root {
-  /* === COLOR SYSTEM === */
-  /* Primary Love Theme Colors */
-  --color-primary: #ff6b9d;
-  --color-primary-light: #ff8cc8;
-  --color-primary-dark: #e65a8a;
-  --color-primary-alpha: rgba(255, 107, 157, 0.1);
+  /* === ENHANCED COLOR SYSTEM === */  /* Primary Love Theme Colors - Darker Light Theme */
+  --color-primary: #c44b83;
+  --color-primary-light: #d66ba0;
+  --color-primary-dark: #a13e6b;
+  --color-primary-alpha: rgba(196, 75, 131, 0.15);
+    /* Enhanced Pink Palette - Darker Light Theme */
+  --pink-50: #f8e8f0;
+  --pink-100: #f0d1e0;
+  --pink-200: #e8b4cc;
+  --pink-300: #df8bb5;
+  --pink-400: #d6629e;
+  --pink-500: #cd3987;
+  --pink-600: #b8336f;
+  --pink-700: #a52d57;
+    /* Enhanced Red Palette - Darker Light Theme */
+  --red-50: #f5e0e0;
+  --red-100: #ebc0c0;
+  --red-200: #de9999;
+  --red-300: #d17272;
+  --red-400: #c44b4b;
+  --red-500: #b72424;
+  --red-600: #a42020;
+  --red-700: #911c1c;
+    /* Secondary Colors - Darker Light Theme */
+  --color-secondary: #d66ba0;
+  --color-secondary-light: #e287b8;
+  --color-secondary-dark: #c44b83;
+  --color-secondary-alpha: rgba(214, 107, 160, 0.15);
   
-  /* Secondary Colors */
-  --color-secondary: #ffa8cc;
-  --color-secondary-light: #ffb3d6;
-  --color-secondary-dark: #ff95c2;
-  --color-secondary-alpha: rgba(255, 168, 204, 0.1);
-  
-  /* Accent Colors */
-  --color-accent: #ffcce0;
-  --color-accent-light: #ffe0ec;
-  --color-accent-dark: #ffb8d6;
+  /* Accent Colors - Darker Light Theme */
+  --color-accent: #b8669a;
+  --color-accent-light: #d084af;
+  --color-accent-dark: #a15285;
   
   /* Neutral Colors */
   --color-white: #ffffff;
@@ -42,22 +58,28 @@
   --color-warning: #ff9800;
   --color-error: #f44336;
   --color-info: #2196f3;
-  
-  /* === GRADIENTS === */
+    /* === ENHANCED GRADIENTS === */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
-  --gradient-love: linear-gradient(45deg, #ff6b9d, #ffa8cc, #ffcce0);
+  --gradient-love: linear-gradient(45deg, #c44b83, #d66ba0, #b8669a);
+  --gradient-romantic: linear-gradient(135deg, var(--pink-600), var(--red-600));
+  --gradient-romantic-hover: linear-gradient(135deg, var(--pink-700), var(--red-700));
   --gradient-bubbles: radial-gradient(circle, var(--color-primary-alpha), transparent);
   --gradient-overlay: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   
-  /* === TYPOGRAPHY === */
-  /* Font Families */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-secondary: 'Playfair Display', Georgia, serif;
-  --font-accent: 'Dancing Script', cursive;
-  --font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  /* Enhanced Glassmorphism Effects */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* === TYPOGRAPHY === */
+  /* Font Families - Enhanced Readability */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-accent: 'Dancing Script', 'Brush Script MT', cursive;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
   
-  /* Font Sizes */
+  /* Enhanced Font Sizes for Better Hierarchy */
   --font-size-xs: 0.75rem;   /* 12px */
   --font-size-sm: 0.875rem;  /* 14px */
   --font-size-base: 1rem;    /* 16px */
@@ -69,20 +91,36 @@
   --font-size-5xl: 3rem;     /* 48px */
   --font-size-6xl: 3.75rem;  /* 60px */
   
-  /* Font Weights */
+  /* Font Weights - Enhanced Hierarchy */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  
-  /* Line Heights */
+  --font-weight-black: 900;
+    /* Line Heights - Optimized for Readability */
+  --line-height-none: 1;
   --line-height-tight: 1.25;
   --line-height-snug: 1.375;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.625;
   --line-height-loose: 2;
+  
+  /* Font Rendering Optimization */
+  --font-smoothing: antialiased;
+  --text-rendering: optimizeLegibility;
+  --font-feature-settings: "liga" 1, "kern" 1;
+  
+  /* Letter Spacing for Better Readability */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
   
   /* === SPACING SYSTEM === */
   --space-0: 0;
@@ -109,16 +147,17 @@
   --radius-xl: 1.5rem;    /* 24px */
   --radius-2xl: 2rem;     /* 32px */
   --radius-full: 50%;
-  
-  /* === SHADOWS === */
+    /* === ENHANCED SHADOWS === */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --shadow-love: 0 10px 25px rgba(255, 107, 157, 0.3);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);  --shadow-love: 0 10px 25px rgba(196, 75, 131, 0.3);
+  --shadow-glow: 0 0 20px rgba(196, 75, 131, 0.4);
+  --shadow-romantic: 0 8px 25px rgba(196, 75, 131, 0.25);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.12);
   
   /* === TRANSITIONS === */
   --transition-fast: 150ms ease-in-out;
@@ -198,9 +237,15 @@
   --will-change-auto: auto;
 }
 
-/* === DARK MODE SUPPORT === */
+/* === ENHANCED DARK MODE SUPPORT === */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Dark Theme Color Variables */
+    --color-primary: #dd90a2;
+    --color-secondary: #dd9090;
+    --color-accent: #f3a5ba;
+    
+    /* Dark Neutral Colors */
     --color-gray-50: #18181b;
     --color-gray-100: #27272a;
     --color-gray-200: #3f3f46;
@@ -212,8 +257,44 @@
     --color-gray-800: #f4f4f5;
     --color-gray-900: #fafafa;
     
-    --card-background: var(--color-gray-100);
+    /* Dark Background Colors */
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --bg-card: #1e1e1e;
+      /* Dark Text Colors - Enhanced Contrast */
+    --text-primary: #ffffff;
+    --text-secondary: #e2e2e2;
+    --text-muted: #c0c0c0;
+    
+    /* Dark Glassmorphism */
+    --glass-bg: rgba(30, 30, 30, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    /* Dark Shadows */
     --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-love: 0 10px 25px rgba(221, 144, 162, 0.3);
+    --shadow-glow: 0 0 20px rgba(221, 144, 162, 0.4);
+      /* Card and Component Updates */
+    --card-background: var(--bg-card);
+    
+    /* Enhanced Dark Theme Typography */
+    --text-contrast-high: #ffffff;
+    --text-contrast-medium: #f0f0f0;
+    --text-contrast-low: #e0e0e0;
+    --text-accent-bright: #ff8cc8;
+    --text-accent-soft: #ffb3d6;
+    
+    /* Dark Theme Text Shadows for Better Readability */
+    --text-shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --text-shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.7);
+    --text-shadow-strong: 0 2px 8px rgba(0, 0, 0, 0.8);
+    
+    /* Enhanced Font Rendering for Dark Theme */
+    --font-smoothing-dark: antialiased;
+    --text-rendering-dark: optimizeLegibility;
   }
 }
 
@@ -243,29 +324,64 @@
   }
 }
 
-/* === HIGH CONTRAST SUPPORT === */
+/* === ENHANCED HIGH CONTRAST SUPPORT === */
 @media (prefers-contrast: high) {
   :root {
     --color-primary: #d91a5b;
     --color-secondary: #e54980;
+    --pink-600: #be185d;
+    --pink-700: #9f1239;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
     --shadow-base: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-love: 0 10px 25px rgba(217, 26, 91, 0.5);
+    --shadow-glow: 0 0 20px rgba(217, 26, 91, 0.6);
   }
 }
 
-/* === UTILITY CLASSES USING CUSTOM PROPERTIES === */
+/* === ENHANCED UTILITY CLASSES === */
 .bg-primary { background-color: var(--color-primary); }
 .bg-secondary { background-color: var(--color-secondary); }
 .bg-gradient-love { background: var(--gradient-love); }
+.bg-gradient-romantic { background: var(--gradient-romantic); }
+.bg-gradient-glass { background: var(--gradient-glass); }
+
+/* Pink Palette Utilities */
+.bg-pink-50 { background-color: var(--pink-50); }
+.bg-pink-100 { background-color: var(--pink-100); }
+.bg-pink-200 { background-color: var(--pink-200); }
+.bg-pink-300 { background-color: var(--pink-300); }
+.bg-pink-400 { background-color: var(--pink-400); }
+.bg-pink-500 { background-color: var(--pink-500); }
+.bg-pink-600 { background-color: var(--pink-600); }
+.bg-pink-700 { background-color: var(--pink-700); }
+
+/* Red Palette Utilities */
+.bg-red-50 { background-color: var(--red-50); }
+.bg-red-100 { background-color: var(--red-100); }
+.bg-red-200 { background-color: var(--red-200); }
+.bg-red-300 { background-color: var(--red-300); }
+.bg-red-400 { background-color: var(--red-400); }
+.bg-red-500 { background-color: var(--red-500); }
+.bg-red-600 { background-color: var(--red-600); }
+.bg-red-700 { background-color: var(--red-700); }
 
 .text-primary { color: var(--color-primary); }
 .text-secondary { color: var(--color-secondary); }
 .text-gray-500 { color: var(--color-gray-500); }
+.text-pink-600 { color: var(--pink-600); }
+.text-pink-700 { color: var(--pink-700); }
+.text-red-600 { color: var(--red-600); }
+.text-red-700 { color: var(--red-700); }
 
 .shadow-sm { box-shadow: var(--shadow-sm); }
 .shadow-base { box-shadow: var(--shadow-base); }
 .shadow-lg { box-shadow: var(--shadow-lg); }
 .shadow-love { box-shadow: var(--shadow-love); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+.shadow-romantic { box-shadow: var(--shadow-romantic); }
+.shadow-glass { box-shadow: var(--shadow-glass); }
 
 .rounded-sm { border-radius: var(--radius-sm); }
 .rounded-base { border-radius: var(--radius-base); }
@@ -284,6 +400,22 @@
 .font-primary { font-family: var(--font-primary); }
 .font-secondary { font-family: var(--font-secondary); }
 .font-accent { font-family: var(--font-accent); }
+
+/* Enhanced Typography Utilities */
+.font-optimized {
+  -webkit-font-smoothing: var(--font-smoothing);
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: var(--text-rendering);
+  font-feature-settings: var(--font-feature-settings);
+}
+
+.text-contrast-high { color: var(--text-contrast-high, var(--color-gray-900)); }
+.text-contrast-medium { color: var(--text-contrast-medium, var(--color-gray-700)); }
+.text-contrast-low { color: var(--text-contrast-low, var(--color-gray-600)); }
+
+.letter-spacing-tight { letter-spacing: var(--letter-spacing-tight); }
+.letter-spacing-normal { letter-spacing: var(--letter-spacing-normal); }
+.letter-spacing-wide { letter-spacing: var(--letter-spacing-wide); }
 
 .text-sm { font-size: var(--font-size-sm); }
 .text-base { font-size: var(--font-size-base); }
@@ -319,7 +451,7 @@
 .scroll-snap-x { scroll-snap-type: x mandatory; }
 .scroll-snap-y { scroll-snap-type: y mandatory; }
 
-/* === COMPONENT BASE CLASSES === */
+/* === ENHANCED COMPONENT BASE CLASSES === */
 .btn {
   padding: var(--btn-padding-y) var(--btn-padding-x);
   border-radius: var(--btn-border-radius);
@@ -341,6 +473,18 @@
   transform: translateY(0);
 }
 
+.btn-romantic {
+  background: var(--gradient-romantic);
+  color: white;
+  box-shadow: var(--shadow-romantic);
+}
+
+.btn-romantic:hover {
+  background: var(--gradient-romantic-hover);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
 .card {
   background: var(--card-background);
   padding: var(--card-padding);
@@ -352,6 +496,21 @@
 .card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+}
+
+.card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.romantic-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.romantic-glow:hover {
+  box-shadow: var(--shadow-glow), 0 0 30px rgba(255, 107, 157, 0.5);
 }
 
 /* === RESPONSIVE TYPOGRAPHY === */

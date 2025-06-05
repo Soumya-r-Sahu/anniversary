@@ -1,0 +1,237 @@
+/**
+ * Anniversary Page Specific Styles
+ * Enhanced romantic styling for the anniversary celebration page
+ */
+
+/* Anniversary Hero Section */
+.anniversary-hero {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+    border-radius: 0 0 2rem 2rem;
+}
+
+/* Memory Cards */
+.memory-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    will-change: transform, box-shadow;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+}
+
+/* Anniversary Sparkle Animation */
+.anniversary-sparkle {
+    animation: sparkleRotate 2s infinite linear;
+}
+
+@keyframes sparkleRotate {
+    from { 
+        transform: rotate(0deg) scale(1); 
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.2); 
+    }
+    to { 
+        transform: rotate(360deg) scale(1); 
+    }
+}
+
+/* Love Quote Styling */
+.love-quote {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Glow Text Effect */
+.glow-text {
+    text-shadow: 0 0 10px currentColor;
+    animation: text-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes text-glow {
+    from { 
+        text-shadow: 0 0 10px currentColor; 
+    }
+    to { 
+        text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
+    }
+}
+
+/* Floating Hearts Animation */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    color: #ff6b9d;
+    font-size: 20px;
+    animation: float-heart 4s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.heart:before {
+    content: '<i data-lucide="heart" class="icon-heart"></i>';
+}
+
+.heart:nth-child(1) { 
+    left: 10%; 
+    animation-delay: 0s; 
+}
+
+.heart:nth-child(2) { 
+    left: 20%; 
+    animation-delay: 1s; 
+}
+
+.heart:nth-child(3) { 
+    left: 30%; 
+    animation-delay: 2s; 
+}
+
+.heart:nth-child(4) { 
+    left: 70%; 
+    animation-delay: 1.5s; 
+}
+
+.heart:nth-child(5) { 
+    left: 80%; 
+    animation-delay: 0.5s; 
+}
+
+@keyframes float-heart {
+    0%, 100% { 
+        transform: translateY(100vh) rotate(0deg); 
+        opacity: 0; 
+    }
+    10%, 90% { 
+        opacity: 1; 
+    }
+    50% { 
+        transform: translateY(-100px) rotate(180deg); 
+        opacity: 1; 
+    }
+}
+
+/* Memory Card Image Hover Effects */
+.memory-card .group:hover img {
+    transition: transform 0.7s ease;
+}
+
+.memory-card .group img {
+    will-change: transform;
+}
+
+/* Love Letter Section */
+.love-letter {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.love-letter:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(236, 72, 153, 0.2);
+}
+
+/* Anniversary Icon Pulse Animation */
+.anniversary-icon-pulse {
+    animation: anniversaryPulse 2s ease-in-out infinite;
+}
+
+@keyframes anniversaryPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(236, 72, 153, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 60px rgba(236, 72, 153, 0.8);
+    }
+}
+
+/* Memory Grid Responsive Enhancements */
+@media (max-width: 1024px) {
+    .memory-card {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .anniversary-hero {
+        padding: 2rem;
+        border-radius: 20px;
+    }
+    
+    .memory-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .love-quote {
+        font-size: 1.25rem;
+    }
+    
+    .heart {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .anniversary-hero {
+        padding: 1.5rem;
+    }
+    
+    .memory-card {
+        padding: 1rem;
+    }
+    
+    .love-quote {
+        font-size: 1.1rem;
+    }
+}
+
+/* Performance Optimizations */
+.memory-card,
+.anniversary-hero,
+.love-letter {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Smooth scroll behavior for anniversary anchors */
+html[data-page-type="anniversary"] {
+    scroll-behavior: smooth;
+}
+
+/* Anniversary specific loading animation */
+.anniversary-loading {
+    background: linear-gradient(45deg, #ec4899, #f472b6, #fbbf24);
+    background-size: 300% 300%;
+    animation: anniversaryGradient 3s ease infinite;
+}
+
+@keyframes anniversaryGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
