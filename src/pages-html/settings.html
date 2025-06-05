@@ -423,7 +423,7 @@
 
                         <!-- Audio Settings -->
                         <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
-                            <h3 class="text-white mb-3"><i data-lucide="music" class="icon-music"></i> Audio & Music</h3>
+                            <h3 class="text-white mb-3">🎵 Audio & Music</h3>
                             
                             <div class="row align-items-center mb-3">
                                 <div class="col-md-8">
@@ -466,7 +466,7 @@
 
                         <!-- Performance Settings -->
                         <div class="settings-section" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="text-white mb-3"><i data-lucide="zap" class="icon-lightning"></i> Performance & Optimization</h3>
+                            <h3 class="text-white mb-3">⚡ Performance & Optimization</h3>
                             
                             <div class="row align-items-center mb-3">
                                 <div class="col-md-8">
@@ -654,7 +654,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <button class="test-button w-100" onclick="runFullDiagnostic()">
-                                        <i data-lucide="search" class="icon-search"></i> Full Diagnostic
+                                        🔍 Full Diagnostic
                                     </button>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -960,7 +960,7 @@
                 const particlesContainer = document.getElementById('settingsParticles');
                 
                 // Create settings-themed particles
-                const settingsSymbols = ['<i data-lucide="settings" class="icon-settings"></i>', '<i data-lucide="wrench" class="icon-tools"></i>', '🛠️', '<i data-lucide="zap" class="icon-lightning"></i>', '<i data-lucide="music" class="icon-music"></i>', '<i data-lucide="palette" class="icon-art"></i>', '📊'];
+                const settingsSymbols = ['<i data-lucide="settings" class="icon-settings"></i>', '<i data-lucide="wrench" class="icon-tools"></i>', '🛠️', '⚡', '🎵', '🎨', '📊'];
                 
                 for (let i = 0; i < 8; i++) {
                     setTimeout(() => {
@@ -1012,19 +1012,19 @@
                         }
 
                         if (playResult !== false) {
-                            settingsManager.showNotification('Music system: <i data-lucide="check-circle" class="icon-check"></i> Working perfectly', 'success');
+                            settingsManager.showNotification('Music system: ✅ Working perfectly', 'success');
                         } else {
-                            settingsManager.showNotification('Music system: <i data-lucide="alert-triangle" class="icon-warning"></i> Found but play failed', 'warning');
+                            settingsManager.showNotification('Music system: ⚠️ Found but play failed', 'warning');
                         }
                     } else {
-                        settingsManager.showNotification('Music system: <i data-lucide="alert-triangle" class="icon-warning"></i> Found but no play method', 'warning');
+                        settingsManager.showNotification('Music system: ⚠️ Found but no play method', 'warning');
                     }
                 } else {
-                    settingsManager.showNotification('Music system: <i data-lucide="x-circle" class="icon-error"></i> Not found', 'error');
+                    settingsManager.showNotification('Music system: ❌ Not found', 'error');
                 }
             } catch (error) {
                 console.error('Music test error:', error);
-                settingsManager.showNotification(`Music system: <i data-lucide="x-circle" class="icon-error"></i> Error - ${error.message}`, 'error');
+                settingsManager.showNotification(`Music system: ❌ Error - ${error.message}`, 'error');
             }
         }
 
@@ -1035,9 +1035,9 @@
 
             setTimeout(() => {
                 if (currentTheme) {
-                    settingsManager.showNotification('Theme system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                    settingsManager.showNotification('Theme system: ✅ Working', 'success');
                 } else {
-                    settingsManager.showNotification('Theme system: <i data-lucide="x-circle" class="icon-error"></i> Error', 'error');
+                    settingsManager.showNotification('Theme system: ❌ Error', 'error');
                 }
             }, 1000);
         }
@@ -1046,7 +1046,7 @@
             settingsManager.showNotification('Testing animations...', 'info');
 
             setTimeout(() => {
-                settingsManager.showNotification('Animation system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                settingsManager.showNotification('Animation system: ✅ Working', 'success');
             }, 1000);
         }
 
@@ -1054,7 +1054,7 @@
             settingsManager.showNotification('Testing navigation...', 'info');
 
             setTimeout(() => {
-                settingsManager.showNotification('Navigation system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                settingsManager.showNotification('Navigation system: ✅ Working', 'success');
             }, 1000);
         }
 
@@ -1074,11 +1074,11 @@
                 localStorage.setItem('test', 'test');
                 localStorage.removeItem('test');
                 setTimeout(() => {
-                    settingsManager.showNotification('Storage system: <i data-lucide="check-circle" class="icon-check"></i> Working', 'success');
+                    settingsManager.showNotification('Storage system: ✅ Working', 'success');
                 }, 1000);
             } catch (error) {
                 setTimeout(() => {
-                    settingsManager.showNotification('Storage system: <i data-lucide="x-circle" class="icon-error"></i> Error', 'error');
+                    settingsManager.showNotification('Storage system: ❌ Error', 'error');
                 }, 1000);
             }
         }
