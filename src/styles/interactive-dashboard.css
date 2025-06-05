@@ -1,11 +1,7 @@
-/**
- * Interactive Dashboard Styles
- * Enhanced styling for the anniversary data management dashboard
- * Version: 1.0.0 - Complete interactive UI styles
- */
+
 
 /* Dashboard Buttons */
-.interactive-btn {
+.interactive-btn  {
     position: relative;
     overflow: hidden;
     transform: translateY(0);
@@ -13,12 +9,12 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.interactive-btn:hover {
+.interactive-btn:hover  {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.interactive-btn::before {
+.interactive-btn::before  {
     content: '';
     position: absolute;
     top: 0;
@@ -29,12 +25,12 @@
     transition: left 0.6s;
 }
 
-.interactive-btn:hover::before {
+.interactive-btn:hover::before  {
     left: 100%;
 }
 
 /* Quick Action Buttons */
-.quick-action-btn {
+.quick-action-btn  {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -43,17 +39,17 @@
     transition: all 0.3s ease;
 }
 
-.quick-action-btn:hover {
+.quick-action-btn:hover  {
     transform: scale(1.05);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-.quick-action-btn:active {
+.quick-action-btn:active  {
     transform: scale(0.98);
 }
 
 /* Dashboard Cards */
-.dashboard-card {
+.dashboard-card  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -63,7 +59,7 @@
     overflow: hidden;
 }
 
-.dashboard-card::before {
+.dashboard-card::before  {
     content: '';
     position: absolute;
     top: 0;
@@ -73,27 +69,27 @@
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
 }
 
-.dashboard-card:hover {
+.dashboard-card:hover  {
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Statistics Cards */
-.stats-card {
+.stats-card  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
 
-.stats-card:hover {
+.stats-card:hover  {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Modal Styles for Interactive Elements */
-.anniversary-modal {
+.anniversary-modal  {
     position: fixed;
     top: 0;
     left: 0;
@@ -110,12 +106,12 @@
     transition: all 0.3s ease;
 }
 
-.anniversary-modal.active {
+.anniversary-modal.active  {
     opacity: 1;
     visibility: visible;
 }
 
-.anniversary-modal-content {
+.anniversary-modal-content  {
     background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(255, 20, 147, 0.95));
     border-radius: 20px;
     padding: 2rem;
@@ -128,18 +124,18 @@
     transition: transform 0.3s ease;
 }
 
-.anniversary-modal.active .anniversary-modal-content {
+.anniversary-modal.active .anniversary-modal-content  {
     transform: scale(1);
 }
 
 /* Form Styles */
-.anniversary-form {
+.anniversary-form  {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.anniversary-input {
+.anniversary-input  {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -149,18 +145,18 @@
     transition: all 0.3s ease;
 }
 
-.anniversary-input:focus {
+.anniversary-input:focus  {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-.anniversary-input::placeholder {
+.anniversary-input::placeholder  {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.anniversary-textarea {
+.anniversary-textarea  {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -172,7 +168,7 @@
     transition: all 0.3s ease;
 }
 
-.anniversary-textarea:focus {
+.anniversary-textarea:focus  {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.15);
@@ -180,12 +176,12 @@
 }
 
 /* Search Interface */
-.search-container {
+.search-container  {
     position: relative;
     margin-bottom: 2rem;
 }
 
-.search-input {
+.search-input  {
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -196,14 +192,14 @@
     transition: all 0.3s ease;
 }
 
-.search-input:focus {
+.search-input:focus  {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-.search-icon {
+.search-icon  {
     position: absolute;
     left: 1rem;
     top: 50%;
@@ -213,14 +209,14 @@
 }
 
 /* Results Display */
-.search-results {
+.search-results  {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-top: 2rem;
 }
 
-.result-item {
+.result-item  {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
@@ -229,14 +225,14 @@
     cursor: pointer;
 }
 
-.result-item:hover {
+.result-item:hover  {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
 }
 
 /* Notification System */
-.anniversary-notification {
+.anniversary-notification  {
     position: fixed;
     top: 2rem;
     right: 2rem;
@@ -252,27 +248,27 @@
     backdrop-filter: blur(10px);
 }
 
-.anniversary-notification.show {
+.anniversary-notification.show  {
     transform: translateX(0);
 }
 
-.anniversary-notification.error {
+.anniversary-notification.error  {
     background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.anniversary-notification.warning {
+.anniversary-notification.warning  {
     background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
 /* Timeline View Specific */
-.timeline-item {
+.timeline-item  {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 2rem;
     border-left: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.timeline-item::before {
+.timeline-item::before  {
     content: '';
     position: absolute;
     left: -6px;
@@ -284,7 +280,7 @@
     border: 2px solid white;
 }
 
-.timeline-content {
+.timeline-content  {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
@@ -293,14 +289,14 @@
 }
 
 /* Photo Gallery Grid */
-.photo-grid {
+.photo-grid  {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-top: 2rem;
 }
 
-.photo-item {
+.photo-item  {
     position: relative;
     aspect-ratio: 1;
     border-radius: 15px;
@@ -309,17 +305,17 @@
     transition: transform 0.3s ease;
 }
 
-.photo-item:hover {
+.photo-item:hover  {
     transform: scale(1.05);
 }
 
-.photo-item img {
+.photo-item img  {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.photo-overlay {
+.photo-overlay  {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -331,12 +327,12 @@
     transition: transform 0.3s ease;
 }
 
-.photo-item:hover .photo-overlay {
+.photo-item:hover .photo-overlay  {
     transform: translateY(0);
 }
 
 /* Love Letters Display */
-.letter-item {
+.letter-item  {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
@@ -346,25 +342,25 @@
     transition: all 0.3s ease;
 }
 
-.letter-item:hover {
+.letter-item:hover  {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-.letter-date {
+.letter-date  {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }
 
-.letter-content {
+.letter-content  {
     color: white;
     line-height: 1.6;
     font-style: italic;
 }
 
 /* Loading States */
-.loading-spinner {
+.loading-spinner  {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -374,62 +370,71 @@
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+@keyframes spin  {
+    to  {
+    transform: rotate(360deg);
+}
+
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .anniversary-modal-content {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .search-results {
-        grid-template-columns: 1fr;
-    }
-    
-    .photo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-    
-    .anniversary-notification {
-        top: 1rem;
-        right: 1rem;
-        left: 1rem;
-        transform: translateY(-200px);
-    }
-    
-    .anniversary-notification.show {
-        transform: translateY(0);
-    }
+@media (max-width: 768px)  {
+    .anniversary-modal-content  {
+    margin: 1rem;
+    padding: 1.5rem;
+}
+
+    .search-results  {
+    grid-template-columns: 1fr;
+}
+
+    .photo-grid  {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+    .anniversary-notification  {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    transform: translateY(-200px);
+}
+
+    .anniversary-notification.show  {
+    transform: translateY(0);
+}
+
 }
 
 /* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fadeInUp  {
+    from  {
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-.fade-in-up {
+    to  {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+}
+
+.fade-in-up  {
     animation: fadeInUp 0.6s ease forwards;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+@keyframes pulse  {
+    0%, 100%  {
+    transform: scale(1);
 }
 
-.pulse-animation {
+    50%  {
+    transform: scale(1.05);
+}
+
+}
+
+.pulse-animation  {
     animation: pulse 2s ease-in-out infinite;
 }
+
