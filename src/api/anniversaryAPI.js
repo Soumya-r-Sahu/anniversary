@@ -4,6 +4,8 @@
  * Version: 1.0.0 - Complete API for GitHub Pages compatibility
  */
 
+import globalConfig from '../config/globalConfig';
+
 class AnniversaryAPI {
     constructor() {
         // Wait for data manager to be available
@@ -271,7 +273,7 @@ class AnniversaryAPI {
      * Get anniversary countdown
      */
     getAnniversaryCountdown() {
-        const anniversaryDate = new Date(this.dataManager.data.couple.anniversaryDate);
+        const anniversaryDate = new Date(globalConfig.importantDates.anniversary);
         const today = new Date();
         
         // If anniversary passed this year, calculate for next year
@@ -285,12 +287,6 @@ class AnniversaryAPI {
         return {
             date: anniversaryDate.toISOString().split('T')[0],
             daysRemaining: diffDays,
-            months: Math.floor(diffDays / 30),
-            weeks: Math.floor(diffDays / 7),
-            hours: Math.ceil(diffTime / (1000 * 60 * 60)),
-            message: diffDays === 1 ? "Tomorrow is our anniversary!" : 
-                     diffDays === 0 ? "Today is our anniversary!" : 
-                     `${diffDays} days until our anniversary!`
         };
     }
 

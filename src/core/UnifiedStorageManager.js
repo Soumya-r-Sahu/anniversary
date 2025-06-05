@@ -1,3 +1,5 @@
+import globalConfig from '../config/globalConfig';
+
 /**
  * Unified Storage Manager - Optimized localStorage operations
  * Centralizes all storage operations with performance optimization and error handling
@@ -8,7 +10,7 @@ class UnifiedStorageManager {
     constructor(options = {}) {
         // Core configuration
         this.config = {
-            prefix: options.prefix || 'anniversary_',
+            prefix: options.prefix || `${globalConfig.siteName}_`,
             maxAge: options.maxAge || 30 * 24 * 60 * 60 * 1000, // 30 days
             compressionEnabled: options.compressionEnabled !== false,
             encryptionEnabled: options.encryptionEnabled || false,
@@ -30,8 +32,7 @@ class UnifiedStorageManager {
         this.performance = {
             writeQueue: new Map(),
             readCache: new Map(),
-            writeThrottled: this.throttle(this.flushWriteQueue.bind(this), 1000),
-            cleanupThrottled: this.throttle(this.cleanup.bind(this), 5000)
+            writeThrottled: this.throttle(this.flushWriteQueue.bind(this), 1000)
         };
 
         // Metrics tracking

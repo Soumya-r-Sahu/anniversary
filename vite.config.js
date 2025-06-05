@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   // Base configuration for GitHub Pages
-  base: './',
+  base: '/anniversary-website/',
   root: '.',
   publicDir: 'public',
 

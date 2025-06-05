@@ -1,3 +1,5 @@
+import globalConfig from '../config/globalConfig';
+
 /**
  * Surprise Flow Manager - Handles the surprise system logic
  */
@@ -9,7 +11,7 @@ class SurpriseFlowManager {
       LOADING: 'loading',       // loading.html
       MAIN: 'main'             // index.html
     };
-    this.storageKey = 'anniversary-surprise-completed';
+    this.storageKey = `${globalConfig.siteName}-surprise-completed`;
     this.init();
   }
   init() {
@@ -46,7 +48,7 @@ class SurpriseFlowManager {
       // Add special class to body to indicate surprise completion
       document.body.classList.add('surprise-completed');
       // Update page title
-      document.title = '💕 Happy Anniversary - Jerry & Soumya 💕';
+      document.title = `💕 Happy Anniversary - ${globalConfig.author} 💕`;
       // Show special welcome message
       this.showWelcomeMessage();
     }

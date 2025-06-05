@@ -12,8 +12,8 @@ class LazyLoader {
             enableWebP: options.enableWebP !== false,
             enablePlaceholder: options.enablePlaceholder !== false,
             fadeDuration: options.fadeDuration || 300,
-            quality: options.quality || 'auto', // 'auto', 'high', 'medium', 'low'
-            ...options
+            quality: options.quality || 'auto',
+            ...options,
         };
 
         this.observers = new Map();
@@ -67,10 +67,10 @@ class LazyLoader {
             });
         }, {
             rootMargin: this.config.rootMargin,
-            threshold: this.config.threshold
+            threshold: this.config.threshold,
         });
 
-        this.observers.set('images', imageObserver);
+        this.observers.set('image', imageObserver);
     }
 
     /**
@@ -86,7 +86,7 @@ class LazyLoader {
             });
         }, {
             rootMargin: this.config.rootMargin,
-            threshold: this.config.threshold
+            threshold: this.config.threshold,
         });
 
         this.observers.set('content', contentObserver);
@@ -115,7 +115,7 @@ class LazyLoader {
             this.createPlaceholder(img);
         }
 
-        this.observers.get('images').observe(img);
+        this.observers.get('image').observe(img);
     }
 
     /**
@@ -128,48 +128,18 @@ class LazyLoader {
     /**
      * Load image with optimization
      */
-    async loadImage(img) {
-        const src = img.dataset.src || img.dataset.bgSrc;
-        if (!src || this.loadedImages.has(src)) return;
+    loadImage(img) {
+        const src = img.dataset.src;
+        if (!src) return;
 
-        try {
-            // Create optimized URL
-            const optimizedSrc = this.optimizeImageURL(src);
-
-            // Preload image
-            const imageElement = new Image();
-            imageElement.src = optimizedSrc;
-
-            await new Promise((resolve, reject) => {
-                imageElement.onload = resolve;
-                imageElement.onerror = reject;
-            });
-
-            // Apply image
-            if (img.dataset.src) {
-                img.src = optimizedSrc;
-                img.removeAttribute('data-src');
-            } else if (img.dataset.bgSrc) {
-                img.style.backgroundImage = `url(${optimizedSrc})`;
-                img.removeAttribute('data-bg-src');
-            }
-
-            // Apply fade effect
-            if (this.config.fadeDuration > 0) {
-                this.applyFadeEffect(img);
-            }
-
-            // Mark as loaded
-            this.loadedImages.add(src);
-            img.classList.add('lazy-loaded');
-
-            // Fire custom event
-            img.dispatchEvent(new CustomEvent('lazy-loaded', { detail: { src: optimizedSrc } }));
-
-        } catch (error) {
-            console.error('Failed to load image:', src, error);
-            this.handleImageError(img, src);
-        }
+        img.src = src;
+        img.onload = () => {
+            img.classList.add('loaded');
+            this.loadedImages.add(img);
+        };
+        img.onerror = () => {
+            console.error('Failed to load image:', src);
+        };
     }
 
     /**

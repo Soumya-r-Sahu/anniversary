@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingBubbles from '../components/effects/FloatingBubbles';
+import globalConfig from '../config/globalConfig';
 
 const CountdownPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -13,10 +14,15 @@ const CountdownPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const targetDate = new Date('June 16, 2025 00:00:00').getTime();
+    const targetDate = new Date(globalConfig.importantDates.anniversary);
+
+    if (isNaN(targetDate)) {
+      console.error('Invalid target date');
+      return;
+    }
 
     const updateCountdown = () => {
-      const now = new Date().getTime();
+      const now = Date.now(); // Use Date.now() for better performance
       const distance = targetDate - now;
 
       if (distance < 0) {
@@ -24,27 +30,21 @@ const CountdownPage = () => {
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setTimeLeft({ days, hours, minutes, seconds });
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
     };
 
     updateCountdown();
-
-    // Store interval reference for cleanup
     const interval = setInterval(updateCountdown, 1000);
 
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    });
-
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('beforeunload', () => clearInterval(interval));
+    };
   }, []);
 
   const handleComplete = () => {
@@ -158,7 +158,7 @@ const TypewriterText = () => {
     "Every second ⏳ draws us closer to our day 💑",
     "Time slows 🕰️ when love ❤️ is near",
     "Each moment ⌛ counts on the way to forever ♾️",
-    "Our hearts 💓 beat with the countdown ⏰"
+    "Our hearts 💓 beat with the countdown ⏰",
   ];
 
   useEffect(() => {
@@ -171,10 +171,10 @@ const TypewriterText = () => {
       setIsDeleting(false);
       setCurrentIndex((prev) => (prev + 1) % messages.length);
     } else {
-      const nextText = isDeleting 
+      const nextText = isDeleting
         ? currentMessage.substring(0, text.length - 1)
         : currentMessage.substring(0, text.length + 1);
-      
+
       timeout = setTimeout(() => setText(nextText), isDeleting ? 30 : 50);
     }
 

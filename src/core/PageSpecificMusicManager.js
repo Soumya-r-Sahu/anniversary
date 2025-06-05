@@ -1,19 +1,15 @@
+import { BaseAudioManager } from './BaseAudioManager.js';
+
 /**
  * Page-Specific Music Manager with Popup UI
  * Each page has a designated song that plays in sync across pages
+ * Version: 3.0.0 - Now extends BaseAudioManager
  */
 
-class PageSpecificMusicManager {
-    constructor() {
-        this.isInitialized = false;
-        this.audio = null;
-        this.isPlaying = false;
-        this.volume = 0.3;
-        this.userInteracted = false;
-        this.popupVisible = false;
-        
+class PageSpecificMusicManager extends BaseAudioManager {
+    constructor(options = {}) {
         // Page-specific song mapping
-        this.pageSongs = {
+        const pageSongs = {
             'index.html': {
                 title: "Arijit Singh Collection",
                 src: "music/Arijitsingh.m4a",
@@ -91,179 +87,77 @@ class PageSpecificMusicManager {
             }
         };
 
-        // Storage key for cross-page sync
-        this.storageKey = 'anniversaryPageMusicState';
-        this.currentPageSong = null;
-        
-        // Bind methods
-        this.play = this.play.bind(this);
-        this.pause = this.pause.bind(this);
-        this.setVolume = this.setVolume.bind(this);
-        this.togglePopup = this.togglePopup.bind(this);
-        this.handleUserInteraction = this.handleUserInteraction.bind(this);
-    }
-
-    /**
-     * Initialize the music manager
-     */
-    async init() {
-        if (this.isInitialized) {
-            return;
-        }
-
-        console.log('🎵 Initializing Page-Specific Music Manager...');
-
-        try {
-            // Get current page song
-            this.getCurrentPageSong();
-            
-            // Create audio element
-            this.createAudioElement();
-            
-            // Setup event listeners
-            this.setupEventListeners();
-            
-            // Restore previous state
-            this.restoreState();
-            
-            // Create popup UI
-            this.createPopupUI();
-            
-            // Setup music control button
-            this.setupMusicControlButton();
-            
-            // Setup cross-page sync
-            this.setupCrossPageSync();
-            
-            // Setup user interaction detection
-            this.setupUserInteractionDetection();
-            
-            this.isInitialized = true;
-            console.log('✅ Page-Specific Music Manager initialized successfully');
-            
-            // Try to restore playback if user previously interacted
-            if (this.userInteracted) {
-                this.attemptAutoplay();
-            }
-            
-        } catch (error) {
-            console.error('❌ Failed to initialize Page-Specific Music Manager:', error);
-        }
-    }
-
-    /**
-     * Get the designated song for current page
-     */
-    getCurrentPageSong() {
+        // Get current page song
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        this.currentPageSong = this.pageSongs[currentPage] || this.pageSongs['index.html'];
+        const currentPageSong = pageSongs[currentPage] || pageSongs['index.html'];
+
+        super({
+            ...options,
+            playlist: [currentPageSong.src], // Single song playlist for current page
+            storageKey: 'anniversaryPageMusicState',
+            audioId: 'anniversary-page-audio',
+            enableLoop: true, // Loop the designated song
+            enableShuffle: false // No shuffle for page-specific songs
+        });
+
+        // Store page-specific data
+        this.pageSongs = pageSongs;
+        this.currentPageSong = currentPageSong;
+        this.popupVisible = false;
+
         console.log(`🎵 Current page song: ${this.currentPageSong.title}`);
+
+        // Initialize with parent's init method
+        this.onInitialized(() => {
+            this.initializePageSpecificExtended();
+        });
     }
 
     /**
-     * Create audio element
+     * Extended initialization specific to PageSpecificMusicManager
      */
-    createAudioElement() {
-        // Remove existing audio if any
-        const existingAudio = document.getElementById('anniversary-page-audio');
-        if (existingAudio) {
-            existingAudio.remove();
-        }
-
-        this.audio = document.createElement('audio');
-        this.audio.id = 'anniversary-page-audio';
-        this.audio.preload = 'metadata';
-        this.audio.volume = this.volume;
-        this.audio.loop = true; // Loop the designated song
+    initializePageSpecificExtended() {
+        console.log('🎵 Initializing Page-Specific Music Manager Extended Features');
         
-        // Set the page-specific song
-        this.audio.src = this.currentPageSong.src;
-        this.audio.load();
+        // Create popup UI
+        this.createPopupUI();
         
-        document.body.appendChild(this.audio);
-    }
-
-    /**
-     * Setup event listeners for audio element
-     */
-    setupEventListeners() {
-        if (!this.audio) return;
-
-        this.audio.addEventListener('play', () => {
-            this.isPlaying = true;
-            this.updateUI();
-            this.saveState();
+        // Setup music control button
+        this.setupMusicControlButton();
+        
+        // Setup progress update for popup UI
+        this.onProgressUpdate(() => {
+            this.updateProgressDisplay();
         });
-
-        this.audio.addEventListener('pause', () => {
-            this.isPlaying = false;
-            this.updateUI();
-            this.saveState();
-        });
-
-        this.audio.addEventListener('error', (e) => {
-            console.error('Audio error:', e);
-        });
-
-        this.audio.addEventListener('timeupdate', () => {
-            this.updateProgress();
-        });
-
-        this.audio.addEventListener('loadedmetadata', () => {
+        
+        // Setup play state change for popup UI
+        this.onPlayStateChange(() => {
             this.updateUI();
         });
+        
+        console.log('🎵 Page-Specific Music Manager fully initialized');
     }
 
     /**
-     * Play music
-     */
-    async play() {
-        if (!this.audio || !this.userInteracted) {
-            console.log('⚠️ Cannot play: User interaction required');
-            return;
-        }
-
-        try {
-            await this.audio.play();
-            console.log(`▶️ Playing: ${this.currentPageSong.title}`);
-        } catch (error) {
-            console.error('❌ Play failed:', error);
-        }
-    }
-
-    /**
-     * Pause music
-     */
-    pause() {
-        if (this.audio) {
-            this.audio.pause();
-            console.log('⏸️ Music paused');
-        }
-    }
-
-    /**
-     * Toggle play/pause
+     * Override toggle to add popup support
      */
     toggle() {
-        if (this.isPlaying) {
-            this.pause();
-        } else {
-            this.play();
-        }
+        this.handleUserInteraction(); // Ensure user interaction is recorded
+        super.toggle(); // Use parent's toggle functionality
     }
 
     /**
-     * Set volume
+     * Override setVolume to update popup UI
      */
     setVolume(vol) {
-        this.volume = Math.max(0, Math.min(1, vol));
-        if (this.audio) {
-            this.audio.volume = this.volume;
-        }
+        super.setVolume(vol);
         this.updateVolumeIcon();
-        this.updateUI();
-        this.saveState();
-        console.log(`🔊 Volume set to ${Math.round(this.volume * 100)}%`);
+        
+        // Update volume slider in popup
+        const volumeSlider = document.querySelector('.volume-slider');
+        if (volumeSlider) {
+            volumeSlider.value = this.state.volume * 100;
+        }
     }
 
     /**
@@ -274,7 +168,7 @@ class PageSpecificMusicManager {
 
         if (this.audio.volume > 0) {
             // Mute
-            this.previousVolume = this.volume;
+            this.previousVolume = this.state.volume;
             this.setVolume(0);
             console.log('🔇 Audio muted');
         } else {
@@ -287,7 +181,7 @@ class PageSpecificMusicManager {
         // Update volume slider
         const volumeSlider = document.querySelector('.volume-slider');
         if (volumeSlider) {
-            volumeSlider.value = this.volume * 100;
+            volumeSlider.value = this.state.volume * 100;
         }
     }
 
@@ -298,13 +192,13 @@ class PageSpecificMusicManager {
         const volumeIcon = document.querySelector('.volume-icon');
         if (!volumeIcon) return;
 
-        if (this.volume === 0) {
+        if (this.state.volume === 0) {
             volumeIcon.textContent = '🔇';
             volumeIcon.title = 'Click to unmute';
-        } else if (this.volume < 0.3) {
+        } else if (this.state.volume < 0.3) {
             volumeIcon.textContent = '🔈';
             volumeIcon.title = 'Click to mute';
-        } else if (this.volume < 0.7) {
+        } else if (this.state.volume < 0.7) {
             volumeIcon.textContent = '🔉';
             volumeIcon.title = 'Click to mute';
         } else {
@@ -335,28 +229,6 @@ class PageSpecificMusicManager {
     }
 
     /**
-     * Handle user interaction (required for autoplay)
-     */
-    handleUserInteraction() {
-        this.userInteracted = true;
-        this.saveState();
-        console.log('✅ User interaction detected - music can now play');
-    }
-
-    /**
-     * Attempt autoplay after user interaction
-     */
-    attemptAutoplay() {
-        if (this.userInteracted && this.audio) {
-            // Check if we should continue playing based on saved state
-            const savedState = this.getSavedState();
-            if (savedState && savedState.isPlaying && savedState.currentSong === this.currentPageSong.src) {
-                this.play();
-            }
-        }
-    }
-
-    /**
      * Setup music control button
      */
     setupMusicControlButton() {
@@ -371,6 +243,34 @@ class PageSpecificMusicManager {
         } else {
             console.log('⚠️ Music control button not found');
         }
+    }
+
+    /**
+     * Get proper song title for display
+     */
+    getProperSongTitle() {
+        return this.currentPageSong ? this.currentPageSong.title : 'Unknown Song';
+    }
+
+    /**
+     * Get proper artist name for display
+     */
+    getProperArtistName() {
+        return this.currentPageSong ? this.currentPageSong.artist : 'Unknown Artist';
+    }
+
+    /**
+     * Seek to specific position in song
+     */
+    seekTo(event) {
+        if (!this.audio || !this.audio.duration) return;
+
+        const progressBar = event.target.closest('.progress-bar');
+        if (!progressBar) return;
+
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (event.clientX - rect.left) / rect.width;
+        this.audio.currentTime = percent * this.audio.duration;
     }
 
     /**
@@ -784,14 +684,17 @@ class PageSpecificMusicManager {
     updateUI() {
         const playPauseBtn = document.querySelector('.popup-play-pause-btn');
         if (playPauseBtn) {
-            playPauseBtn.textContent = this.isPlaying ? '⏸️' : '▶️';
+            playPauseBtn.textContent = this.state.isPlaying ? '⏸️' : '▶️';
         }
+        
+        // Update progress bar using parent's progress tracking
+        this.updateProgressDisplay();
     }
 
     /**
-     * Update progress bar
+     * Update progress display using BaseAudioManager's formatTime
      */
-    updateProgress() {
+    updateProgressDisplay() {
         if (!this.audio) return;
 
         const progressFill = document.querySelector('.progress-fill');
@@ -804,22 +707,15 @@ class PageSpecificMusicManager {
         }
 
         if (currentTimeEl) {
-            currentTimeEl.textContent = this.formatTime(this.audio.currentTime || 0);
+            currentTimeEl.textContent = super.formatTime(this.audio.currentTime || 0);
         }
 
         if (durationEl) {
-            durationEl.textContent = this.formatTime(this.audio.duration || 0);
+            durationEl.textContent = super.formatTime(this.audio.duration || 0);
         }
     }
 
-    /**
-     * Format time in mm:ss
-     */
-    formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
+    // Progress tracking and time formatting are handled by BaseAudioManager
 
     /**
      * Get proper song title with better formatting
@@ -900,143 +796,28 @@ class PageSpecificMusicManager {
         return artist.trim() || 'Arijit Singh';
     }
 
-    /**
-     * Setup cross-page sync
-     */
-    setupCrossPageSync() {
-        window.addEventListener('storage', (e) => {
-            if (e.key === this.storageKey) {
-                this.restoreState();
-            }
-        });
-
-        window.addEventListener('beforeunload', () => {
-            this.saveState();
-        });
-
-        // Sync with other tabs/windows playing the same song
-        setInterval(() => {
-            const savedState = this.getSavedState();
-            if (savedState && savedState.currentSong === this.currentPageSong.src) {
-                if (savedState.isPlaying && !this.isPlaying && this.userInteracted) {
-                    this.play();
-                } else if (!savedState.isPlaying && this.isPlaying) {
-                    this.pause();
-                }
-            }
-        }, 1000);
-    }
+    // Cross-page sync, user interaction detection, and state management
+    // are all handled by BaseAudioManager
 
     /**
-     * Setup user interaction detection
-     */
-    setupUserInteractionDetection() {
-        const events = ['click', 'touchstart', 'keydown'];
-        const handler = () => {
-            this.handleUserInteraction();
-            events.forEach(event => {
-                document.removeEventListener(event, handler);
-            });
-        };
-
-        events.forEach(event => {
-            document.addEventListener(event, handler, { once: true });
-        });
-    }
-
-    /**
-     * Save state to localStorage
-     */
-    saveState() {
-        const state = {
-            currentSong: this.currentPageSong.src,
-            isPlaying: this.isPlaying,
-            volume: this.volume,
-            userInteracted: this.userInteracted,
-            currentTime: this.audio ? this.audio.currentTime : 0,
-            lastUpdated: Date.now()
-        };
-
-        localStorage.setItem(this.storageKey, JSON.stringify(state));
-    }
-
-    /**
-     * Get saved state
-     */
-    getSavedState() {
-        try {
-            const saved = localStorage.getItem(this.storageKey);
-            return saved ? JSON.parse(saved) : null;
-        } catch (error) {
-            console.error('❌ Failed to get saved state:', error);
-            return null;
-        }
-    }
-
-    /**
-     * Restore state from localStorage
-     */
-    restoreState() {
-        try {
-            const savedState = this.getSavedState();
-            if (savedState) {
-                // Only restore if it's the same song as current page
-                if (savedState.currentSong === this.currentPageSong.src) {
-                    this.volume = savedState.volume || 0.3;
-                    this.userInteracted = savedState.userInteracted || false;
-
-                    if (this.audio) {
-                        this.audio.volume = this.volume;
-                        // Sync playback position across pages
-                        if (savedState.currentTime) {
-                            this.audio.currentTime = savedState.currentTime;
-                        }
-                    }
-
-                    console.log('🔄 Music state restored for current page song');
-                }
-            }
-        } catch (error) {
-            console.error('❌ Failed to restore music state:', error);
-        }
-    }
-
-    /**
-     * Get current song info
+     * Override getCurrentSong to return page-specific song metadata
      */
     getCurrentSong() {
         return this.currentPageSong;
     }
 
     /**
-     * Check if music is playing
-     */
-    getIsPlaying() {
-        return this.isPlaying;
-    }
-
-    /**
-     * Get current volume
-     */
-    getVolume() {
-        return this.volume;
-    }
-
-    /**
-     * Destroy the music manager
+     * Override destroy to cleanup popup UI
      */
     destroy() {
-        if (this.audio) {
-            this.audio.pause();
-            this.audio.remove();
-        }
-
         const popup = document.getElementById('music-popup-player');
         if (popup) {
             popup.remove();
         }
-
-        this.isInitialized = false;
+        
+        // Call parent destroy method
+        super.destroy();
+        
         console.log('🔥 Page-Specific Music Manager destroyed');
     }
 }

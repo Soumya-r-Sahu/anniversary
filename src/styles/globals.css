@@ -455,6 +455,47 @@ body.dark  {
 
 }
 
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .container {
+    padding: var(--space-sm);
+  }
+
+  .header {
+    font-size: 1.25rem;
+  }
+
+  .button {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .container {
+    padding: var(--space-xs);
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .button {
+    padding: var(--space-xs);
+    font-size: 0.75rem;
+  }
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce)  {
     *, *::before, *::after  {
