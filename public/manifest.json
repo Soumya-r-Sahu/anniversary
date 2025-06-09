@@ -1,0 +1,75 @@
+{
+  "name": "Jerry & Soumya Anniversary Website",
+  "short_name": "Anniversary",
+  "description": "A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive features, photo galleries, countdown timer, and romantic surprises.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a0b2e",
+  "theme_color": "#ec4899",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["lifestyle", "entertainment"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'%3E%3Crect width='540' height='720' fill='%23purple'/%3E%3Ctext x='270' y='360' text-anchor='middle' fill='white' font-size='24'%3EAnniversary Website%3C/text%3E%3C/svg%3E",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Love Story",
+      "short_name": "Story",
+      "description": "View our love story timeline",
+      "url": "/src/pages/html/love-story.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='18' font-size='18'%3E📖%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Photo Gallery",
+      "short_name": "Photos",
+      "description": "Browse our photo memories",
+      "url": "/src/pages/html/photo-gallery.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='18' font-size='18'%3E📸%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Countdown",
+      "short_name": "Timer",
+      "description": "Anniversary countdown timer",
+      "url": "/src/pages/html/countdown.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='18' font-size='18'%3E⏰%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
