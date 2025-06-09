@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 Message Wall - Anniversary Website</title>
+    
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="A beautiful wall of heartfelt messages and love notes">
+    <meta name="keywords" content="messages, love notes, wall, anniversary, romantic">
+    <meta name="author" content="Jerry & Soumya">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../css/message-wall.css">
+    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💌%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        .message-wall-hero {
+            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-wall-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 75%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            animation: gentleGlow 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes gentleGlow {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .wall-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .message-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .message-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(147, 51, 234, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 1.5rem;
+        }
+        
+        .message-card:hover::before {
+            opacity: 1;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 157, 0.5);
+        }
+        
+        .message-card.revealed {
+            background: rgba(255, 107, 157, 0.2);
+            border-color: #ff6b9d;
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+        }
+        
+        .message-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+        
+        .message-text {
+            color: #e9d5ff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            text-align: center;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message-card.revealed .message-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .message-author {
+            text-align: center;
+            color: #ff6b9d;
+            font-weight: 600;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.2s;
+        }
+        
+        .message-card.revealed .message-author {
+            opacity: 1;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .message-card:hover .glow-effect {
+            opacity: 1;
+        }
+        
+        .unlock-notice {
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(147, 51, 234, 0.5);
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 600px;
+            color: #e9d5ff;
+        }
+        
+        .unlock-button {
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .unlock-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.4);
+        }
+        
+        .progress-indicator {
+            text-align: center;
+            margin: 2rem 0;
+            color: #e9d5ff;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            height: 8px;
+            overflow: hidden;
+            margin: 1rem auto;
+            max-width: 400px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 1rem;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.4);
+            font-size: 1.5rem;
+            animation: floatUp 8s infinite linear;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .message-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .message-card {
+                padding: 1.5rem;
+            }
+            
+            .wall-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body style="padding-top: 90px;">
+    <!-- Navigation will be loaded dynamically -->
+    
+    <main class="main-content">
+        <section class="message-wall-hero">
+            <div class="floating-hearts" id="floatingHearts"></div>
+            
+            <div class="wall-container">
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
+                        💌 Message Wall 💌
+                    </h1>
+                    <p class="text-xl text-white/90 font-dancing mb-4">
+                        Hover over each message to reveal heartfelt notes and loving words
+                    </p>
+                </div>
+                
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <p class="text-lg mb-2">Messages Revealed: <span id="revealedCount">0</span> of <span id="totalMessages">12</span></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Message Grid -->
+                <div class="message-grid" id="messageGrid">
+                    <!-- Messages will be generated by JavaScript -->
+                </div>
+                
+                <!-- Unlock Notice -->
+                <div class="unlock-notice" id="unlockNotice" style="display: none;">
+                    <h3 class="text-3xl font-dancing mb-3">📦 Memory Box Unlocked!</h3>
+                    <p class="text-lg">
+                        You've discovered all our heartfelt messages! Now dive deeper into our 
+                        treasure box of precious memories and keepsakes.
+                    </p>
+                    <button class="unlock-button" onclick="unlockMemoryBox()">
+                        📦 Open Memory Box
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        class MessageWall {
+            constructor() {
+                this.messages = [
+                    {
+                        emoji: "💕",
+                        text: "From the moment I met you, I knew my heart had found its home. Every day with you feels like a beautiful dream come true.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "🌟",
+                        text: "You light up my world in ways I never thought possible. Your smile is my favorite sunrise, your laugh my favorite song.",
+                        author: "Soumya to Jerry"
+                    },
+                    {
+                        emoji: "🌹",
+                        text: "In a garden full of flowers, you'd still be the one I'd pick. You're not just my love, you're my entire universe.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "✨",
+                        text: "Every moment spent with you is a moment I treasure. You make ordinary days feel extraordinary just by being in them.",
+                        author: "Soumya to Jerry"
+                    },
+                    {
+                        emoji: "🎈",
+                        text: "You're the reason I believe in forever. With you, every day is Valentine's Day, every night is magical.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "🦋",
+                        text: "You gave me butterflies from day one, and they still haven't settled. I hope they never do because loving you feels like flying.",
+                        author: "Soumya to Jerry"
+                    },
+                    {
+                        emoji: "🌙",
+                        text: "I love you to the moon and back, but that's not far enough. I love you to the edge of the universe and beyond.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "☀️",
+                        text: "You're my sunshine on cloudy days, my strength when I'm weak, and my happiness when I'm sad. You complete me.",
+                        author: "Soumya to Jerry"
+                    },
+                    {
+                        emoji: "🎭",
+                        text: "Life with you is the greatest adventure. Every chapter we write together is better than the last.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "🎨",
+                        text: "You paint my world in the most beautiful colors. Before you, everything was black and white. Now it's a masterpiece.",
+                        author: "Soumya to Jerry"
+                    },
+                    {
+                        emoji: "🎵",
+                        text: "You're the melody to my heart's song, the rhythm to my soul's dance. Together we create the most beautiful music.",
+                        author: "Jerry to Soumya"
+                    },
+                    {
+                        emoji: "🏠",
+                        text: "Home isn't a place when you're with me; it's a feeling. Wherever you are, that's where I belong, that's where I'm home.",
+                        author: "Soumya to Jerry"
+                    }
+                ];
+                
+                this.revealedCount = 0;
+                this.totalMessages = this.messages.length;
+                
+                this.init();
+            }
+            
+            init() {
+                this.createMessageCards();
+                this.updateProgress();
+                this.startFloatingHearts();
+            }
+            
+            createMessageCards() {
+                const grid = document.getElementById('messageGrid');
+                
+                this.messages.forEach((message, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'message-card';
+                    card.dataset.index = index;
+                    
+                    card.innerHTML = `
+                        <div class="glow-effect"></div>
+                        <div class="message-emoji">${message.emoji}</div>
+                        <div class="message-text">${message.text}</div>
+                        <div class="message-author">- ${message.author}</div>
+                    `;
+                    
+                    // Add hover event listener
+                    card.addEventListener('mouseenter', () => this.revealMessage(card, index));
+                    
+                    grid.appendChild(card);
+                });
+            }
+            
+            revealMessage(card, index) {
+                if (!card.classList.contains('revealed')) {
+                    card.classList.add('revealed');
+                    this.revealedCount++;
+                    this.updateProgress();
+                    
+                    // Create sparkle effect
+                    this.createSparkleEffect(card);
+                    
+                    // Check if all messages are revealed
+                    if (this.revealedCount === this.totalMessages) {
+                        setTimeout(() => this.showUnlockNotice(), 1000);
+                    }
+                }
+            }
+            
+            createSparkleEffect(card) {
+                const sparkles = ['✨', '💫', '⭐', '🌟'];
+                
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                        sparkle.style.cssText = `
+                            position: absolute;
+                            top: ${Math.random() * 100}%;
+                            left: ${Math.random() * 100}%;
+                            font-size: 1.5rem;
+                            pointer-events: none;
+                            animation: sparkleFloat 2s ease-out forwards;
+                            z-index: 100;
+                        `;
+                        
+                        card.appendChild(sparkle);
+                        
+                        setTimeout(() => sparkle.remove(), 2000);
+                    }, i * 200);
+                }
+            }
+            
+            updateProgress() {
+                const progress = (this.revealedCount / this.totalMessages) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('revealedCount').textContent = this.revealedCount;
+                document.getElementById('totalMessages').textContent = this.totalMessages;
+            }
+            
+            showUnlockNotice() {
+                document.getElementById('unlockNotice').style.display = 'block';
+                document.getElementById('unlockNotice').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Save unlock state
+                localStorage.setItem('message-wall-completed', 'true');
+                localStorage.setItem('memory-box-unlocked', 'true');
+            }
+            
+            startFloatingHearts() {
+                setInterval(() => {
+                    this.createFloatingHeart();
+                }, 3000);
+                
+                // Initial hearts
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => this.createFloatingHeart(), i * 1000);
+                }
+            }
+            
+            createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = ['💕', '💖', '💗', '💝'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.getElementById('floatingHearts').appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }
+        }
+        
+        // Add sparkle animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleFloat {
+                0% {
+                    transform: translateY(0) scale(0);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translateY(-30px) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-60px) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Global function for unlock button
+        function unlockMemoryBox() {
+            const button = event.target;
+            button.innerHTML = 'Opening Memory Box... 📦';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                window.location.href = 'memory-box.html';
+            }, 1000);
+        }
+        
+        // Check if page is unlocked
+        function checkAccess() {
+            const messageWallUnlocked = localStorage.getItem('message-wall-unlocked');
+            if (!messageWallUnlocked) {
+                window.location.href = 'puzzle.html';
+                return;
+            }
+        }
+        
+        // Initialize message wall
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAccess();
+            window.messageWall = new MessageWall();
+            
+            console.log('💌 Message wall initialized');
+        });
+        
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+    
+    <!-- Navigation Loader -->
+    <script type="module" src="../scripts/navigation-loader.js"></script>
+    <!-- Unified Navigation & Data Management System -->
+    <script type="module" src="../../utils/unifiedNavigation.js"></script>
+    <script type="module" src="../../utils/dataManager.js"></script>
+    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script>
+        // Initialize unified systems when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Unified systems loaded for message-wall');
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "anniversary-website",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A beautiful, optimized anniversary website with React.js, TypeScript, and advanced features",
   "main": "index.html",
   "type": "module",

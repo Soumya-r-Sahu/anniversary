@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Bucket List - Anniversary Website</title>
+    
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="Our shared bucket list of dreams and adventures we want to experience together">
+    <meta name="keywords" content="bucket list, dreams, adventures, together, future plans">
+    <meta name="author" content="Jerry & Soumya">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../css/bucket-list.css">
+    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📝%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        .bucket-list-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+        
+        .floating-dreams {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .dream-item {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: dreamFloat 8s infinite ease-in-out;
+            font-size: 2rem;
+        }
+        
+        @keyframes dreamFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+                opacity: 0.8;
+            }
+        }
+        
+        .bucket-list-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .dual-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .bucket-column {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .column-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .column-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .column-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+        
+        .bucket-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .bucket-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .bucket-item:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .completed-column .bucket-item {
+            border-left-color: #00c851;
+            background: linear-gradient(135deg, rgba(0, 200, 81, 0.1), rgba(255, 255, 255, 0.9));
+        }
+        
+        .todo-column .bucket-item {
+            border-left-color: #ff6b9d;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 255, 255, 0.9));
+        }
+        
+        .item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .item-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .item-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .completed-column .item-status {
+            color: #00c851;
+        }
+        
+        .todo-column .item-status {
+            color: #ff6b9d;
+        }
+        
+        .heart-check {
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .add-item-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            width: 100%;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .add-item-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+        
+        .progress-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .unlock-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .unlock-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .unlock-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        .unlock-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        @media (max-width: 768px) {
+            .dual-column-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .progress-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .column-title {
+                font-size: 2rem;
+            }
+            
+            .bucket-item {
+                padding: 1rem;
+            }
+            
+            .item-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body style="padding-top: 90px;">
+    <!-- Navigation will be loaded dynamically -->
+    
+    <main class="main-content">
+        <section class="bucket-list-hero">
+            <div class="floating-dreams" id="floatingDreams"></div>
+            
+            <div class="bucket-list-container">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
+                        📝 Our Bucket List 📝
+                    </h1>
+                    <p class="text-xl text-white/90 font-dancing mb-8">
+                        Dreams we've achieved and adventures still waiting for us
+                    </p>
+                </div>
+                
+                <!-- Dual Column Layout -->
+                <div class="dual-column-layout">
+                    <!-- Already Done Column -->
+                    <div class="bucket-column completed-column">
+                        <div class="column-header">
+                            <div class="column-title">✅ Already Done</div>
+                            <div class="column-subtitle">Amazing memories we've created together</div>
+                        </div>
+                        
+                        <div class="bucket-items" id="completedItems">
+                            <div class="bucket-item" data-completed="true">
+                                <span class="item-icon">🎬</span>
+                                <div class="item-title">First Movie Date</div>
+                                <div class="item-description">
+                                    Our magical first movie date where we shared popcorn and stolen glances. 
+                                    The movie was good, but watching you was even better.
+                                </div>
+                                <div class="item-status">
+                                    <span class="heart-check">💚</span>
+                                    <span>Completed with so much joy!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="true">
+                                <span class="item-icon">🌅</span>
+                                <div class="item-title">Watch Sunrise Together</div>
+                                <div class="item-description">
+                                    That beautiful morning when we woke up early just to watch the sun rise 
+                                    together, holding hands in comfortable silence.
+                                </div>
+                                <div class="item-status">
+                                    <span class="heart-check">💚</span>
+                                    <span>Pure magic achieved!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="true">
+                                <span class="item-icon">🍳</span>
+                                <div class="item-title">Cook Together</div>
+                                <div class="item-description">
+                                    Our first attempt at cooking together - it was messy, chaotic, 
+                                    and absolutely perfect. The food was okay, but the memories were incredible.
+                                </div>
+                                <div class="item-status">
+                                    <span class="heart-check">💚</span>
+                                    <span>Deliciously accomplished!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="true">
+                                <span class="item-icon">💌</span>
+                                <div class="item-title">Write Love Letters</div>
+                                <div class="item-description">
+                                    Handwritten letters expressing our deepest feelings - old-fashioned 
+                                    romance in a digital world. Each letter is a treasure.
+                                </div>
+                                <div class="item-status">
+                                    <span class="heart-check">💚</span>
+                                    <span>Hearts poured onto paper!</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="add-item-btn" onclick="addCompletedItem()">
+                            ✨ Add Another Achievement ✨
+                        </button>
+                    </div>
+                    
+                    <!-- To Do Column -->
+                    <div class="bucket-column todo-column">
+                        <div class="column-header">
+                            <div class="column-title">🎯 To Do Together</div>
+                            <div class="column-subtitle">Exciting adventures awaiting us</div>
+                        </div>
+                        
+                        <div class="bucket-items" id="todoItems">
+                            <div class="bucket-item" data-completed="false">
+                                <span class="item-icon">✈️</span>
+                                <div class="item-title">Travel to Paris</div>
+                                <div class="item-description">
+                                    Walk along the Seine River, visit the Eiffel Tower at sunset, 
+                                    and share a kiss on the Pont des Arts bridge.
+                                </div>
+                                <div class="item-status">
+                                    <span>💭</span>
+                                    <span>Dream destination awaiting us!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="false">
+                                <span class="item-icon">🏡</span>
+                                <div class="item-title">Build Our Dream Home</div>
+                                <div class="item-description">
+                                    Create our perfect sanctuary with a garden, cozy reading nooks, 
+                                    and a kitchen where we'll make countless memories.
+                                </div>
+                                <div class="item-status">
+                                    <span>💭</span>
+                                    <span>Future home sweet home!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="false">
+                                <span class="item-icon">🌌</span>
+                                <div class="item-title">Stargaze in the Desert</div>
+                                <div class="item-description">
+                                    Escape to a remote desert location to see the Milky Way in all its glory, 
+                                    just us and the infinite universe above.
+                                </div>
+                                <div class="item-status">
+                                    <span>💭</span>
+                                    <span>Stars are waiting for us!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="false">
+                                <span class="item-icon">🎭</span>
+                                <div class="item-title">Learn to Dance</div>
+                                <div class="item-description">
+                                    Take dance lessons together - maybe salsa, waltz, or swing dancing. 
+                                    Creating magic through movement and music.
+                                </div>
+                                <div class="item-status">
+                                    <span>💭</span>
+                                    <span>Ready to dance through life!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bucket-item" data-completed="false">
+                                <span class="item-icon">📚</span>
+                                <div class="item-title">Write Our Love Story</div>
+                                <div class="item-description">
+                                    Document our journey from the very beginning - a book about us, 
+                                    for us, and maybe for the world to see how beautiful love can be.
+                                </div>
+                                <div class="item-status">
+                                    <span>💭</span>
+                                    <span>Our story deserves to be told!</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="add-item-btn" onclick="addTodoItem()">
+                            🎯 Add New Dream 🎯
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <h3 class="text-2xl font-dancing text-white mb-4">
+                        🎉 Our Bucket List Progress 🎉
+                    </h3>
+                    
+                    <div class="progress-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="completedCount">4</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="todoCount">5</div>
+                            <div class="stat-label">To Do</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="progressPercentage">44%</div>
+                            <div class="stat-label">Progress</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Unlock Next Page Section -->
+                <div class="unlock-section">
+                    <h3 class="text-2xl font-dancing text-white mb-4">
+                        🌟 Bucket List Explored! 🌟
+                    </h3>
+                    <p class="text-white/80 mb-6">
+                        You've reviewed our dreams and achievements! Ready for a fun quiz about us?
+                    </p>
+                    <button class="unlock-btn" id="unlockBtn" onclick="unlockNextPage()">
+                        🧠 Continue to Quiz 🧠
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Navigation Loader -->
+    <script type="module" src="../scripts/navigation-loader.js"></script>
+    
+    <!-- Page Script -->
+    <script>
+        // Check if user has access to this page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check unlock status
+            const memoryBoxUnlocked = localStorage.getItem('memoryBoxCompleted') === 'true';
+            const futurePlansUnlocked = localStorage.getItem('futurePlansCompleted') === 'true';
+            
+            if (!memoryBoxUnlocked && !futurePlansUnlocked) {
+                // Redirect if neither prerequisite is completed
+                alert('🔒 Please complete the Memory Box or Future Plans first to access the Bucket List!');
+                window.location.href = 'memory-box.html';
+                return;
+            }
+            
+            initializeBucketList();
+        });
+        
+        let itemsViewed = 0;
+        const totalItems = 9; // 4 completed + 5 todo
+        
+        function initializeBucketList() {
+            // Create floating dreams
+            createFloatingDreams();
+            
+            // Setup item click handlers
+            const bucketItems = document.querySelectorAll('.bucket-item');
+            bucketItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    viewItem(item);
+                });
+            });
+            
+            // Update initial counts
+            updateStats();
+        }
+        
+        function createFloatingDreams() {
+            const dreamsContainer = document.getElementById('floatingDreams');
+            const dreamEmojis = ['✨', '🌟', '💫', '🎯', '💭', '🌈', '⭐', '🎪', '🎨', '🎵'];
+            
+            for (let i = 0; i < 30; i++) {
+                const dream = document.createElement('div');
+                dream.className = 'dream-item';
+                dream.innerHTML = dreamEmojis[Math.floor(Math.random() * dreamEmojis.length)];
+                dream.style.left = Math.random() * 100 + '%';
+                dream.style.top = Math.random() * 100 + '%';
+                dream.style.animationDelay = Math.random() * 8 + 's';
+                dream.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                dreamsContainer.appendChild(dream);
+            }
+        }
+        
+        function viewItem(item) {
+            // Add viewed class if not already viewed
+            if (!item.classList.contains('viewed')) {
+                item.classList.add('viewed');
+                itemsViewed++;
+                
+                // Add sparkle effect
+                createSparkleEffect(item);
+                
+                // Check if all items viewed
+                if (itemsViewed >= totalItems) {
+                    enableUnlockButton();
+                }
+            }
+        }
+        
+        function createSparkleEffect(element) {
+            const sparkles = ['✨', '⭐', '💫', '🌟'];
+            
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.position = 'absolute';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.fontSize = '1.5rem';
+                sparkle.style.color = '#FFD700';
+                sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '100';
+                
+                element.style.position = 'relative';
+                element.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 2000);
+            }
+        }
+        
+        function addCompletedItem() {
+            const title = prompt('🎉 What amazing thing did you two accomplish together?');
+            if (title) {
+                const description = prompt('💫 Tell us more about this beautiful achievement:');
+                if (description) {
+                    addNewItem('completed', title, description, '🎊');
+                }
+            }
+        }
+        
+        function addTodoItem() {
+            const title = prompt('🎯 What dream would you like to add to your bucket list?');
+            if (title) {
+                const description = prompt('✨ Describe this exciting future adventure:');
+                if (description) {
+                    addNewItem('todo', title, description, '🌟');
+                }
+            }
+        }
+        
+        function addNewItem(type, title, description, icon) {
+            const container = type === 'completed' ? 
+                document.getElementById('completedItems') : 
+                document.getElementById('todoItems');
+            
+            const item = document.createElement('div');
+            item.className = 'bucket-item';
+            item.dataset.completed = type === 'completed' ? 'true' : 'false';
+            
+            item.innerHTML = `
+                <span class="item-icon">${icon}</span>
+                <div class="item-title">${title}</div>
+                <div class="item-description">${description}</div>
+                <div class="item-status">
+                    <span>${type === 'completed' ? '💚' : '💭'}</span>
+                    <span>${type === 'completed' ? 'Custom achievement unlocked!' : 'Personal dream added!'}</span>
+                </div>
+            `;
+            
+            item.addEventListener('click', function() {
+                viewItem(item);
+            });
+            
+            // Insert before the add button
+            const addBtn = container.nextElementSibling;
+            container.appendChild(item);
+            
+            // Update stats
+            updateStats();
+            
+            // Show success effect
+            createSparkleEffect(item);
+            
+            // Save to localStorage
+            saveBucketListData();
+        }
+        
+        function updateStats() {
+            const completedItems = document.querySelectorAll('.completed-column .bucket-item').length;
+            const todoItems = document.querySelectorAll('.todo-column .bucket-item').length;
+            const totalItems = completedItems + todoItems;
+            const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+            
+            document.getElementById('completedCount').textContent = completedItems;
+            document.getElementById('todoCount').textContent = todoItems;
+            document.getElementById('progressPercentage').textContent = percentage + '%';
+        }
+        
+        function saveBucketListData() {
+            // Save bucket list data to localStorage
+            const bucketListData = {
+                completed: [],
+                todo: [],
+                lastUpdated: new Date().toISOString()
+            };
+            
+            document.querySelectorAll('.completed-column .bucket-item').forEach(item => {
+                bucketListData.completed.push({
+                    title: item.querySelector('.item-title').textContent,
+                    description: item.querySelector('.item-description').textContent,
+                    icon: item.querySelector('.item-icon').textContent
+                });
+            });
+            
+            document.querySelectorAll('.todo-column .bucket-item').forEach(item => {
+                bucketListData.todo.push({
+                    title: item.querySelector('.item-title').textContent,
+                    description: item.querySelector('.item-description').textContent,
+                    icon: item.querySelector('.item-icon').textContent
+                });
+            });
+            
+            localStorage.setItem('bucketListData', JSON.stringify(bucketListData));
+        }
+        
+        function enableUnlockButton() {
+            const unlockBtn = document.getElementById('unlockBtn');
+            unlockBtn.style.background = 'linear-gradient(135deg, #00c851, #007e33)';
+            unlockBtn.innerHTML = '🎉 All Items Explored - Continue to Quiz! 🎉';
+        }
+        
+        function unlockNextPage() {
+            if (itemsViewed >= totalItems) {
+                // Mark bucket list as completed
+                localStorage.setItem('bucketListCompleted', 'true');
+                
+                // Show completion effect
+                createCompletionEffect();
+                
+                // Redirect to quiz after animation
+                setTimeout(() => {
+                    window.location.href = 'quiz.html';
+                }, 2000);
+            } else {
+                alert('📝 Please click on all bucket list items first! (' + itemsViewed + '/' + totalItems + ' viewed)');
+            }
+        }
+        
+        function createCompletionEffect() {
+            const dreams = ['🎯', '✨', '🌟', '💫', '🎉', '💖'];
+            const container = document.body;
+            
+            for (let i = 0; i < 30; i++) {
+                const dream = document.createElement('div');
+                dream.innerHTML = dreams[Math.floor(Math.random() * dreams.length)];
+                dream.style.position = 'fixed';
+                dream.style.left = Math.random() * 100 + 'vw';
+                dream.style.top = '100vh';
+                dream.style.fontSize = '2rem';
+                dream.style.animation = 'dreamFloat 3s ease-out forwards';
+                dream.style.pointerEvents = 'none';
+                dream.style.zIndex = '10000';
+                
+                container.appendChild(dream);
+                
+                setTimeout(() => {
+                    dream.remove();
+                }, 3000);
+            }
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-50px) scale(1.5);
+                }
+            }
+            
+            @keyframes dreamFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100vh) rotate(360deg);
+                }
+            }
+            
+            .bucket-item.viewed {
+                border: 2px solid #FFD700;
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+    <!-- Unified Navigation & Data Management System -->
+    <script type="module" src="../../utils/unifiedNavigation.js"></script>
+    <script type="module" src="../../utils/dataManager.js"></script>
+    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script>
+        // Initialize unified systems when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Unified systems loaded for bucket-list');
+        });
+    </script>
+</body>
+</html>

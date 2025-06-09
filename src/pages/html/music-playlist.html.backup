@@ -1,0 +1,811 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="🎵 Music Playlist 🎵"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><title>Music Playlist - Jerry & Soumya</title><meta name="description" content="Our favorite songs and melodies"><link rel="stylesheet" href="../styles/shared.css"><style>
+/* Music Playlist Hero Section */
+.music-hero {
+position: relative;
+padding: 4rem 0;
+background: linear-gradient(135deg,
+rgba(147, 51, 234, 0.08) 0%,
+rgba(236, 72, 153, 0.08) 50%,
+rgba(244, 114, 182, 0.08) 100%);
+perspective: 1200px;
+overflow: hidden;
+}
+
+.music-hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="music-notes" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><text x="15" y="20" text-anchor="middle" font-size="16" fill="%23ec4899" opacity="0.1">🎵</text></pattern></defs><rect width="100" height="100" fill="url(%23music-notes)"/></svg>');
+animation: float-music-notes 30s linear infinite;
+pointer-events: none;
+}
+
+@keyframes float-music-notes {
+0% { transform: translateX(-30px) translateY(0); }
+100% { transform: translateX(-30px) translateY(-120px); }
+}
+
+/* Enhanced Coming Soon with Music Theme */
+.coming-soon {
+position: relative;
+background: linear-gradient(145deg,
+rgba(255, 255, 255, 0.25),
+rgba(255, 255, 255, 0.1));
+backdrop-filter: blur(40px);
+border-radius: 2rem;
+padding: 4rem 3rem;
+text-align: center;
+border: 2px solid rgba(255, 255, 255, 0.3);
+margin: 3rem 0;
+box-shadow:
+0 20px 60px rgba(0, 0, 0, 0.1),
+inset 0 1px 0 rgba(255, 255, 255, 0.5);
+transform-style: preserve-3d;
+transition: all 0.3s ease;
+overflow: hidden;
+}
+
+.coming-soon::before {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(45deg,
+rgba(147, 51, 234, 0.3),
+rgba(236, 72, 153, 0.3),
+rgba(244, 114, 182, 0.3));
+border-radius: 2rem;
+z-index: -1;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.coming-soon:hover::before {
+opacity: 1;
+}
+
+.coming-soon:hover {
+transform: translateY(-5px) scale(1.02);
+box-shadow:
+0 30px 80px rgba(147, 51, 234, 0.2),
+inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Enhanced Music Icon with 3D Effects */
+.page-icon {
+font-size: 5rem;
+margin-bottom: 2rem;
+display: inline-block;
+animation: music-dance 3s ease-in-out infinite;
+filter: drop-shadow(0 10px 20px rgba(147, 51, 234, 0.3));
+transform-style: preserve-3d;
+}
+
+@keyframes music-dance {
+0%, 100% {
+transform: translateY(0) rotateZ(0deg) scale(1);
+filter: drop-shadow(0 10px 20px rgba(147, 51, 234, 0.3));
+}
+25% {
+transform: translateY(-15px) rotateZ(-5deg) scale(1.1);
+filter: drop-shadow(0 15px 30px rgba(147, 51, 234, 0.4));
+}
+50% {
+transform: translateY(-10px) rotateZ(0deg) scale(1.05);
+filter: drop-shadow(0 20px 40px rgba(147, 51, 234, 0.5));
+}
+75% {
+transform: translateY(-15px) rotateZ(5deg) scale(1.1);
+filter: drop-shadow(0 15px 30px rgba(147, 51, 234, 0.4));
+}
+}
+
+/* Enhanced Construction Icons */
+.construction-icon {
+font-size: 2.5rem;
+margin: 0 1rem;
+display: inline-block;
+animation: construction-bounce 2s ease-in-out infinite;
+filter: drop-shadow(0 5px 10px rgba(251, 146, 60, 0.4));
+}
+
+@keyframes construction-bounce {
+0%, 100% {
+transform: scale(1) translateY(0);
+filter: drop-shadow(0 5px 10px rgba(251, 146, 60, 0.4));
+}
+25% {
+transform: scale(1.2) translateY(-5px);
+filter: drop-shadow(0 8px 15px rgba(251, 146, 60, 0.6));
+}
+50% {
+transform: scale(1.1) translateY(-10px);
+filter: drop-shadow(0 10px 20px rgba(251, 146, 60, 0.5));
+}
+75% {
+transform: scale(1.15) translateY(-5px);
+filter: drop-shadow(0 8px 15px rgba(251, 146, 60, 0.6));
+}
+}
+
+/* Music Features Grid */
+.music-features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+margin: 3rem 0;
+perspective: 1500px;
+}
+
+.music-feature-card {
+position: relative;
+background: linear-gradient(145deg,
+rgba(255, 255, 255, 0.2),
+rgba(255, 255, 255, 0.05));
+backdrop-filter: blur(30px);
+border-radius: 1.5rem;
+padding: 2.5rem 2rem;
+text-align: center;
+border: 2px solid rgba(255, 255, 255, 0.25);
+box-shadow:
+0 15px 50px rgba(0, 0, 0, 0.1),
+inset 0 1px 0 rgba(255, 255, 255, 0.5);
+transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+transform-style: preserve-3d;
+overflow: hidden;
+}
+
+.music-feature-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg,
+transparent,
+rgba(255, 255, 255, 0.3),
+transparent);
+transition: left 0.6s ease;
+}
+
+.music-feature-card:hover {
+transform: rotateY(8deg) rotateX(4deg) translateY(-10px) scale(1.02);
+box-shadow:
+0 25px 70px rgba(147, 51, 234, 0.2),
+inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.music-feature-card:hover::before {
+left: 100%;
+}
+
+.music-icon {
+font-size: 3.5rem;
+margin-bottom: 1.5rem;
+display: block;
+transition: all 0.3s ease;
+transform: translateZ(20px);
+filter: drop-shadow(0 5px 15px rgba(147, 51, 234, 0.3));
+}
+
+.music-feature-card:hover .music-icon {
+transform: translateZ(30px) scale(1.2) rotateY(15deg);
+animation: music-pulse 1s ease-in-out infinite;
+}
+
+@keyframes music-pulse {
+0%, 100% { filter: drop-shadow(0 5px 15px rgba(147, 51, 234, 0.3)); }
+50% { filter: drop-shadow(0 10px 25px rgba(147, 51, 234, 0.6)); }
+}
+
+/* Music Preview Section */
+.music-preview {
+position: relative;
+background: linear-gradient(145deg,
+rgba(255, 255, 255, 0.15),
+rgba(255, 255, 255, 0.05));
+backdrop-filter: blur(35px);
+border-radius: 1.5rem;
+padding: 2.5rem;
+margin: 2rem 0;
+border: 2px solid rgba(255, 255, 255, 0.2);
+overflow: hidden;
+}
+
+.music-preview::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(45deg,
+rgba(147, 51, 234, 0.05),
+rgba(236, 72, 153, 0.05),
+rgba(244, 114, 182, 0.05));
+animation: shimmer-music 4s linear infinite;
+}
+
+@keyframes shimmer-music {
+0% { transform: translateX(-100%) rotate(45deg); }
+100% { transform: translateX(200%) rotate(45deg); }
+}
+
+/* Enhanced Navigation Back Button */
+.nav-back-music {
+display: inline-block;
+background: linear-gradient(135deg, #9333ea, #ec4899);
+color: white;
+font-weight: 600;
+padding: 1rem 2rem;
+border-radius: 2rem;
+text-decoration: none;
+box-shadow:
+0 10px 30px rgba(147, 51, 234, 0.3),
+inset 0 1px 0 rgba(255, 255, 255, 0.3);
+transition: all 0.3s ease;
+transform-style: preserve-3d;
+position: relative;
+overflow: hidden;
+}
+
+.nav-back-music::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg,
+transparent,
+rgba(255, 255, 255, 0.3),
+transparent);
+transition: left 0.5s ease;
+}
+
+.nav-back-music:hover {
+transform: translateY(-3px) scale(1.05);
+box-shadow:
+0 15px 40px rgba(147, 51, 234, 0.4),
+inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.nav-back-music:hover::before {
+left: 100%;
+}
+
+/* Music Particle Effects */
+.music-particle-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 1;
+overflow: hidden;
+}
+
+.music-particle {
+position: absolute;
+font-size: 1.5rem;
+color: rgba(147, 51, 234, 0.7);
+animation: float-music-particle 12s linear infinite;
+}
+
+@keyframes float-music-particle {
+0% {
+transform: translateY(100vh) rotate(0deg) scale(0.5);
+opacity: 0;
+}
+10% {
+opacity: 1;
+transform: scale(1);
+}
+90% {
+opacity: 1;
+}
+100% {
+transform: translateY(-100px) rotate(360deg) scale(0.8);
+opacity: 0;
+}
+}
+
+/* Equalizer Animation */
+.equalizer {
+display: flex;
+justify-content: center;
+align-items: end;
+height: 40px;
+gap: 3px;
+margin: 1rem 0;
+}
+
+.eq-bar {
+width: 4px;
+background: linear-gradient(to top, #9333ea, #ec4899);
+border-radius: 2px;
+animation: equalizer-bounce 1.5s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(1) { animation-delay: 0s; height: 10px; }
+.eq-bar:nth-child(2) { animation-delay: 0.1s; height: 20px; }
+.eq-bar:nth-child(3) { animation-delay: 0.2s; height: 15px; }
+.eq-bar:nth-child(4) { animation-delay: 0.3s; height: 25px; }
+.eq-bar:nth-child(5) { animation-delay: 0.4s; height: 18px; }
+.eq-bar:nth-child(6) { animation-delay: 0.5s; height: 30px; }
+.eq-bar:nth-child(7) { animation-delay: 0.6s; height: 22px; }
+
+@keyframes equalizer-bounce {
+0%, 100% { transform: scaleY(0.5); }
+50% { transform: scaleY(1.5); }
+}
+
+/* Music Playlist Specific Styles */
+.music-hero {
+text-align: center;
+padding: 2rem 0;
+margin-bottom: 3rem;
+}
+
+.music-player-section {
+margin: 3rem 0;
+display: flex;
+justify-content: center;
+}
+
+.main-music-player {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(30px);
+border-radius: 2rem;
+padding: 2rem;
+border: 1px solid rgba(147, 51, 234, 0.3);
+max-width: 600px;
+width: 100%;
+}
+
+.player-controls {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.now-playing {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.album-art {
+width: 60px;
+height: 60px;
+background: linear-gradient(135deg, #9333ea, #ec4899);
+border-radius: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+}
+
+.track-info {
+flex: 1;
+}
+
+.track-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: #9333ea;
+font-family: 'Dancing Script', cursive;
+}
+
+.track-artist {
+color: #6b7280;
+font-size: 0.875rem;
+}
+
+.player-buttons {
+display: flex;
+justify-content: center;
+gap: 1rem;
+}
+
+.player-btn {
+background: rgba(147, 51, 234, 0.2);
+border: 1px solid rgba(147, 51, 234, 0.3);
+border-radius: 50%;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.25rem;
+cursor: pointer;
+transition: all 0.3s ease;
+transform-style: preserve-3d;
+}
+
+.play-btn {
+width: 60px;
+height: 60px;
+font-size: 1.5rem;
+background: linear-gradient(135deg, #9333ea, #ec4899);
+border: none;
+}
+
+.player-btn:hover {
+transform: scale(1.1) translateY(-2px);
+box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+}
+
+.player-progress {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.progress-bar {
+width: 100%;
+height: 6px;
+background: rgba(147, 51, 234, 0.2);
+border-radius: 3px;
+overflow: hidden;
+}
+
+.progress-fill {
+height: 100%;
+background: linear-gradient(90deg, #9333ea, #ec4899);
+width: 35%;
+transition: width 0.3s ease;
+}
+
+.time-display {
+display: flex;
+justify-content: space-between;
+font-size: 0.875rem;
+color: #6b7280;
+}
+
+.player-volume {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.volume-icon {
+font-size: 1.25rem;
+}
+
+.volume-slider {
+flex: 1;
+height: 4px;
+background: rgba(147, 51, 234, 0.2);
+border-radius: 2px;
+appearance: none;
+cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+appearance: none;
+width: 16px;
+height: 16px;
+background: linear-gradient(135deg, #9333ea, #ec4899);
+border-radius: 50%;
+cursor: pointer;
+}
+
+/* Playlist Categories */
+.playlist-categories {
+margin: 3rem 0;
+}
+
+.music-category-btn {
+padding: 0.75rem 1.5rem;
+background: rgba(147, 51, 234, 0.1);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(147, 51, 234, 0.3);
+border-radius: 2rem;
+color: #9333ea;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+margin: 0.5rem;
+}
+
+.music-category-btn:hover, .music-category-btn.active {
+background: rgba(147, 51, 234, 0.2);
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Music Playlist */
+.music-playlist {
+margin: 3rem 0;
+}
+
+.song-item {
+display: flex;
+align-items: center;
+gap: 1rem;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(20px);
+border-radius: 1rem;
+padding: 1.5rem;
+margin: 1rem 0;
+border: 1px solid rgba(147, 51, 234, 0.2);
+transition: all 0.5s ease;
+transform-style: preserve-3d;
+}
+
+.song-item:hover {
+background: rgba(147, 51, 234, 0.1);
+transform: translateY(-3px) scale(1.01);
+box-shadow: 0 15px 30px rgba(147, 51, 234, 0.2);
+}
+
+.song-number {
+width: 40px;
+height: 40px;
+background: linear-gradient(135deg, #9333ea, #ec4899);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+color: white;
+}
+
+.special-song .song-number {
+background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.song-info {
+flex: 1;
+}
+
+.song-title {
+font-size: 1.125rem;
+font-weight: 600;
+color: #9333ea;
+margin-bottom: 0.25rem;
+font-family: 'Dancing Script', cursive;
+}
+
+.song-artist {
+color: #6b7280;
+font-size: 0.875rem;
+margin-bottom: 0.5rem;
+}
+
+.song-description {
+color: #9ca3af;
+font-size: 0.875rem;
+line-height: 1.4;
+font-style: italic;
+}
+
+.song-duration {
+color: #6b7280;
+font-size: 0.875rem;
+min-width: 50px;
+}
+
+.song-actions {
+display: flex;
+gap: 0.5rem;
+}
+
+.song-play-btn, .song-favorite-btn {
+background: rgba(147, 51, 234, 0.2);
+border: 1px solid rgba(147, 51, 234, 0.3);
+border-radius: 50%;
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 1rem;
+}
+
+.song-favorite-btn.favorited {
+background: rgba(236, 72, 153, 0.3);
+border-color: rgba(236, 72, 153, 0.5);
+}
+
+.song-play-btn:hover, .song-favorite-btn:hover {
+transform: scale(1.1);
+box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);
+}
+
+/* Music Creation Section */
+.music-creation-section {
+margin: 4rem 0;
+text-align: center;
+}
+
+.creation-tools {
+max-width: 600px;
+margin: 0 auto;
+}
+
+.add-song-form {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(20px);
+border-radius: 1.5rem;
+padding: 2rem;
+border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+.song-input, .mood-select {
+padding: 1rem;
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(147, 51, 234, 0.3);
+border-radius: 1rem;
+color: #374151;
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+
+.song-input:focus, .mood-select:focus {
+outline: none;
+border-color: rgba(147, 51, 234, 0.5);
+box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+.add-song-btn {
+background: linear-gradient(135deg, #9333ea, #ec4899);
+color: white;
+border: none;
+padding: 1rem 2rem;
+border-radius: 2rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.add-song-btn:hover {
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Music Statistics */
+.music-stats-section {
+margin: 4rem 0;
+}
+
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 2rem;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.stat-card {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(25px);
+border-radius: 1.5rem;
+padding: 2.5rem 2rem;
+text-align: center;
+border: 1px solid rgba(147, 51, 234, 0.2);
+transition: all 0.5s ease;
+transform-style: preserve-3d;
+}
+
+.stat-card:hover {
+transform: rotateY(5deg) rotateX(3deg) translateY(-5px);
+box-shadow: 0 15px 30px rgba(147, 51, 234, 0.2);
+}
+
+.stat-number {
+font-size: 3rem;
+font-weight: bold;
+color: #9333ea;
+margin-bottom: 0.5rem;
+font-family: 'Dancing Script', cursive;
+}
+
+.stat-label {
+font-size: 1.125rem;
+font-weight: 600;
+color: #4b5563;
+margin-bottom: 0.5rem;
+}
+
+.stat-description {
+font-size: 0.875rem;
+color: #9ca3af;
+line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+.music-features-grid {
+grid-template-columns: 1fr;
+gap: 1.5rem;
+}
+
+.page-icon {
+font-size: 4rem;
+}
+
+.construction-icon {
+font-size: 2rem;
+margin: 0 0.5rem;
+}
+
+.music-icon {
+font-size: 3rem;
+}
+
+.song-item {
+flex-direction: column;
+text-align: center;
+gap: 1rem;
+}
+
+.song-actions {
+justify-content: center;
+}
+
+.main-music-player {
+margin: 1rem;
+}
+}
+🎵 Music Playlist 🎵
+</h1><p class="text-xl text-pink-700 font-dancing card-3d-hover">
+Our favorite songs and melodies
+</p><div class="equalizer"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div></div></div></header><main class="main-content"><div class="container mx-auto px-4 py-8"><div class="music-hero"><div class="page-icon">🎵</div><h1 class="text-4xl md:text-5xl font-dancing text-purple-600 mb-4 text-center">
+Our Music Playlist
+</h1><p class="text-xl text-gray-700 text-center max-w-2xl mx-auto mb-8">
+The soundtrack to our love story - every song tells our tale 🎶
+</p></div><div class="music-player-section"><div class="main-music-player"><div class="player-controls"><div class="now-playing"><div class="album-art">🎵</div><div class="track-info"><div class="track-title">Our Song</div><div class="track-artist">Jerry & Soumya</div></div></div><div class="player-buttons"><button class="player-btn" id="prevBtn"><i data-lucide="skip-back" class="icon-previous"></i></button><button class="player-btn play-btn" id="playBtn"><i data-lucide="play" class="icon-play"></i></button><button class="player-btn" id="nextBtn"><i data-lucide="skip-forward" class="icon-next"></i></button></div><div class="player-progress"><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div><div class="time-display"><span id="currentTime">0:00</span><span id="totalTime">3:45</span></div></div><div class="player-volume"><span class="volume-icon"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70"></div></div></div></div><div class="playlist-categories"><h2 class="text-3xl font-dancing text-purple-600 mb-6 text-center">
+Music Moods
+</h2><div class="category-filters"><button class="music-category-btn active" data-mood="all">All Songs</button><button class="music-category-btn" data-mood="romantic">Romantic</button><button class="music-category-btn" data-mood="upbeat">Happy</button><button class="music-category-btn" data-mood="nostalgic">Nostalgic</button><button class="music-category-btn" data-mood="special">Our Specials</button></div></div><div class="music-playlist" id="musicPlaylist"><div class="song-item" data-mood="romantic" data-aos="fade-right" data-aos-delay="100"><div class="song-number">01</div><div class="song-info"><div class="song-title">Perfect</div><div class="song-artist">Ed Sheeran</div><div class="song-description">The song that perfectly describes how we feel about each other</div></div><div class="song-duration">4:23</div><div class="song-actions"><button class="song-play-btn" data-song="perfect"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="perfect">💖</button></div></div><div class="song-item" data-mood="romantic" data-aos="fade-right" data-aos-delay="200"><div class="song-number">02</div><div class="song-info"><div class="song-title">All of Me</div><div class="song-artist">John Legend</div><div class="song-description">Every curve, every edge, every perfect imperfection - this is us</div></div><div class="song-duration">4:29</div><div class="song-actions"><button class="song-play-btn" data-song="allofme"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="allofme">💖</button></div></div><div class="song-item" data-mood="upbeat" data-aos="fade-right" data-aos-delay="300"><div class="song-number">03</div><div class="song-info"><div class="song-title">Happy</div><div class="song-artist">Pharrell Williams</div><div class="song-description">Because happiness is being with you every single day</div></div><div class="song-duration">3:53</div><div class="song-actions"><button class="song-play-btn" data-song="happy"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="happy">💖</button></div></div><div class="song-item" data-mood="upbeat" data-aos="fade-right" data-aos-delay="400"><div class="song-number">04</div><div class="song-info"><div class="song-title">Count on Me</div><div class="song-artist">Bruno Mars</div><div class="song-description">You can always count on me, like one, two, three</div></div><div class="song-duration">3:17</div><div class="song-actions"><button class="song-play-btn" data-song="countonme"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="countonme">💖</button></div></div><div class="song-item" data-mood="nostalgic" data-aos="fade-right" data-aos-delay="500"><div class="song-number">05</div><div class="song-info"><div class="song-title">Thinking Out Loud</div><div class="song-artist">Ed Sheeran</div><div class="song-description">Thinking out loud about our beautiful future together</div></div><div class="song-duration">4:41</div><div class="song-actions"><button class="song-play-btn" data-song="thinking"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="thinking">💖</button></div></div><div class="song-item" data-mood="nostalgic" data-aos="fade-right" data-aos-delay="600"><div class="song-number">06</div><div class="song-info"><div class="song-title">A Thousand Years</div><div class="song-artist">Christina Perri</div><div class="song-description">I have loved you for a thousand years, I'll love you for a thousand more</div></div><div class="song-duration">4:45</div><div class="song-actions"><button class="song-play-btn" data-song="thousand"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn" data-song="thousand">💖</button></div></div><div class="song-item special-song" data-mood="special" data-aos="fade-right" data-aos-delay="700"><div class="song-number">💫</div><div class="song-info"><div class="song-title">Our First Dance Song</div><div class="song-artist">Just for Us</div><div class="song-description">The song that was playing during our first slow dance together</div></div><div class="song-duration">4:12</div><div class="song-actions"><button class="song-play-btn" data-song="firstdance"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn favorited" data-song="firstdance">💖</button></div></div><div class="song-item special-song" data-mood="special" data-aos="fade-right" data-aos-delay="800"><div class="song-number">⭐</div><div class="song-info"><div class="song-title">The Song We Hummed Together</div><div class="song-artist">Our Memory</div><div class="song-description">That melody we created together on a quiet evening</div></div><div class="song-duration">3:28</div><div class="song-actions"><button class="song-play-btn" data-song="hummed"><i data-lucide="play" class="icon-play"></i></button><button class="song-favorite-btn favorited" data-song="hummed">💖</button></div></div></div><div class="music-creation-section"><h2 class="text-3xl font-dancing text-purple-600 mb-6 text-center">
+Create Our Playlist
+</h2><div class="creation-tools"><div class="add-song-form"><input type="text" placeholder="Song Title" class="song-input" id="songTitle"><input type="text" placeholder="Artist" class="song-input" id="songArtist"><input type="text" placeholder="Why this song is special to us..." class="song-input" id="songDescription"><select class="mood-select" id="songMood"><option value="romantic">Romantic</option><option value="upbeat">Happy</option><option value="nostalgic">Nostalgic</option><option value="special">Our Special</option></select><button class="add-song-btn" id="addSongBtn">Add to Our Playlist 🎵</button></div></div></div><div class="music-stats-section"><h2 class="text-3xl font-dancing text-purple-600 mb-8 text-center">
+Our Music in Numbers
+</h2><div class="stats-grid"><div class="stat-card" data-aos="zoom-in" data-aos-delay="100"><div class="stat-number" id="totalSongs">24</div><div class="stat-label">Total Songs</div><div class="stat-description">In our love playlist</div></div><div class="stat-card" data-aos="zoom-in" data-aos-delay="200"><div class="stat-number" id="favoriteSongs">8</div><div class="stat-label">Favorite Songs</div><div class="stat-description">Extra special to our hearts</div></div><div class="stat-card" data-aos="zoom-in" data-aos-delay="300"><div class="stat-number" id="playlistHours">2.5</div><div class="stat-label">Hours of Music</div><div class="stat-description">Of pure romantic vibes</div></div><div class="stat-card" data-aos="zoom-in" data-aos-delay="400"><div class="stat-number">∞</div><div class="stat-label">Love in Every Note</div><div class="stat-description">Music that brings us together</div></div></div></div><div class="text-center mt-12"><a href="anniversary.html" class="nav-back-music">
+← Back to Anniversary
+</a></div></div></main><p class="text-lg text-gray-700 mb-6 leading-relaxed">
+This page is being crafted with love to showcase songs that define our love story.
+Check back soon for amazing content that will make our love story even more special!
+</p><div class="text-center"><a href="../../index.html"
+class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
+🏠 Back to Home
+</a></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"><a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎉</div><div class="text-sm font-medium text-pink-700">Anniversary</div></a><a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">📸</div><div class="text-sm font-medium text-pink-700">Gallery</div></a><a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎵</div><div class="text-sm font-medium text-pink-700">Music</div></a></div></div></main><div class="fixed bottom-4 right-4 z-50"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
+class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"></div></div><div class="mt-2 text-xs text-gray-600 text-center">
+🎵 Our Love Song
+</div></div></div><footer class="footer"><p class="text-pink-600 font-dancing text-lg mb-2">
+"Every love story is beautiful, but ours is my favorite" 💕
+</p><p class="text-sm text-gray-500">
+Made with ❤️ for Jerry by Soumya
+</p></footer><script type="module" src="../../scripts/shared.js"></script><script type="module" src="../js/music-playlist.js"></script><script>
+// Initialize Lucide icons
+document.addEventListener('DOMContentLoaded', function() {
+if (typeof lucide !== 'undefined') {
+lucide.createIcons();
+}
+});
+</script>
+<!-- Navigation Loader -->
+<script type="module" src="../scripts/navigation-loader.js"></script>
+<!-- Unified Navigation & Data Management System -->
+<script type="module" src="../../utils/unifiedNavigation.js"></script>
+<script type="module" src="../../utils/dataManager.js"></script>
+<script type="module" src="../../utils/jsonDatabase.js"></script>
+<script>
+// Initialize unified systems when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🚀 Unified systems loaded for music-playlist');
+});
+</script>

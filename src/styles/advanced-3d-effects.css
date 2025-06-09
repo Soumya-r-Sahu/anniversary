@@ -1,5 +1,3 @@
-
-
 :root  {
     --perspective-base: 1000px;
     --perspective-close: 800px;
@@ -43,19 +41,19 @@
     background: var(--glass-bg);
     backdrop-filter: blur(25px);
     border: 1px solid var(--glass-border);
-    box-shadow: 
+    box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .card-3d:hover .card-3d-inner  {
-    transform: 
+    transform:
     translateY(-var(--depth-level-3))
     rotateX(var(--rotate-x-medium))
     rotateY(var(--rotate-y-light))
     scale(1.02);
-    box-shadow: 
+    box-shadow:
     0 40px 80px rgba(236, 72, 153, 0.2),
     0 0 0 1px rgba(255, 255, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -91,10 +89,10 @@
 }
 
 .card-hover-lift:hover  {
-    transform: 
-    translateY(-25px) 
-    rotateX(8deg) 
-    rotateY(4deg) 
+    transform:
+    translateY(-25px)
+    rotateX(8deg)
+    rotateY(4deg)
     scale(1.03);
     filter: drop-shadow(0 30px 60px rgba(236, 72, 153, 0.3));
 }
@@ -112,7 +110,7 @@
     cursor: pointer;
     overflow: hidden;
     transition: all 0.4s var(--ease-back);
-    box-shadow: 
+    box-shadow:
     0 8px 25px rgba(236, 72, 153, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
@@ -125,9 +123,9 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(
-    90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
     transparent
   );
     transition: left 0.6s ease;
@@ -138,11 +136,11 @@
 }
 
 .btn-3d-romantic:hover  {
-    transform: 
-    translateY(-8px) 
-    rotateX(10deg) 
+    transform:
+    translateY(-8px)
+    rotateX(10deg)
     scale(1.05);
-    box-shadow: 
+    box-shadow:
     0 20px 40px rgba(236, 72, 153, 0.4),
     0 0 30px rgba(236, 72, 153, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -150,9 +148,9 @@
 }
 
 .btn-3d-romantic:active  {
-    transform: 
-    translateY(-4px) 
-    rotateX(5deg) 
+    transform:
+    translateY(-4px)
+    rotateX(5deg)
     scale(0.98);
     transition: all 0.1s ease;
 }
@@ -238,7 +236,7 @@
     backdrop-filter: blur(30px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
-    box-shadow: 
+    box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -268,7 +266,7 @@
     rgba(255, 255, 255, 0.02)
   );
     border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 
+    box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -286,7 +284,7 @@
 
 .text-3d-romantic:hover  {
     transform: translateZ(10px) rotateX(10deg);
-    text-shadow: 
+    text-shadow:
     0 8px 16px rgba(236, 72, 153, 0.4),
     0 0 30px rgba(236, 72, 153, 0.2);
 }
@@ -414,15 +412,15 @@
 
 @media (max-width: 768px)  {
     .card-3d:hover .card-3d-inner  {
-    transform: 
+    transform:
       translateY(-15px)
       rotateX(5deg)
       scale(1.01);
 }
 
   .btn-3d-romantic:hover  {
-    transform: 
-      translateY(-4px) 
+    transform:
+      translateY(-4px)
       scale(1.02);
 }
 

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Anniversary Website</title>
+    <link rel="stylesheet" href="../css/thankyou.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="thankyou-container">
+        <!-- Navigation Header -->
+        <header class="page-header">
+            <nav class="navigation">
+                <a href="../../index.html" class="nav-home">🏠 Home</a>
+                <h1 class="page-title">Thank You</h1>
+                <div class="nav-controls">
+                    <button class="credits-toggle" id="creditsToggle">👥 Credits</button>
+                    <button class="music-toggle" id="musicToggle">🎵 Music</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Thank You Section -->
+        <div class="thankyou-main">
+            <div class="gratitude-section">
+                <div class="heart-animation">
+                    <div class="floating-heart">💕</div>
+                    <div class="floating-heart">💖</div>
+                    <div class="floating-heart">💝</div>
+                </div>
+                
+                <div class="main-message">
+                    <h2 class="gratitude-title">Thank You for Being Part of Our Story</h2>
+                    <div class="message-content">
+                        <p class="primary-message">
+                            Every click, every smile, every moment you spent exploring our love story means the world to us. 
+                            You've been a witness to our journey, and that makes you special.
+                        </p>
+                        
+                        <div class="appreciation-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="visitTime">0</span>
+                                <span class="stat-label">Minutes Spent</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="pagesVisited">0</span>
+                                <span class="stat-label">Pages Explored</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="memoriesViewed">0</span>
+                                <span class="stat-label">Memories Shared</span>
+                            </div>
+                        </div>
+
+                        <div class="special-thanks">
+                            <h3>Special Thanks To:</h3>
+                            <div class="thanks-list">
+                                <div class="thanks-item">
+                                    <span class="thanks-icon">💝</span>
+                                    <span class="thanks-text">You, for celebrating love with us</span>
+                                </div>
+                                <div class="thanks-item">
+                                    <span class="thanks-icon">👨‍💻</span>
+                                    <span class="thanks-text">All the developers who made this possible</span>
+                                </div>
+                                <div class="thanks-item">
+                                    <span class="thanks-icon">🎵</span>
+                                    <span class="thanks-text">Musicians who provided the soundtrack to love</span>
+                                </div>
+                                <div class="thanks-item">
+                                    <span class="thanks-icon">📸</span>
+                                    <span class="thanks-text">Everyone who captured our precious moments</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Thank You Cards -->
+            <div class="thank-you-cards">
+                <div class="card" data-card="visitor">
+                    <div class="card-front">
+                        <h3>For You, Our Visitor</h3>
+                        <p>Click to see our message</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Thank You!</h3>
+                        <p>Your presence in our digital love story adds meaning to every pixel and every line of code. Thank you for taking this journey with us.</p>
+                    </div>
+                </div>
+
+                <div class="card" data-card="love">
+                    <div class="card-front">
+                        <h3>For Love Itself</h3>
+                        <p>Click to see our gratitude</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Grateful for Love</h3>
+                        <p>To the universe for bringing us together, to love for making life beautiful, and to time for giving us these precious moments.</p>
+                    </div>
+                </div>
+
+                <div class="card" data-card="future">
+                    <div class="card-front">
+                        <h3>For Tomorrow</h3>
+                        <p>Click to see our hopes</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Looking Forward</h3>
+                        <p>Thank you to all the moments yet to come, the adventures waiting, and the love that will continue to grow with each passing day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credits Scroll Section -->
+        <div class="credits-section" id="creditsSection">
+            <div class="credits-overlay">
+                <button class="close-credits" id="closeCredits">✕</button>
+                <div class="credits-scroll">
+                    <div class="credits-content">
+                        <h2 class="credits-title">Credits</h2>
+                        
+                        <div class="credits-category">
+                            <h3>Development & Design</h3>
+                            <div class="credit-item">
+                                <span class="role">Lead Developer</span>
+                                <span class="name">Anniversary Team</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">UI/UX Design</span>
+                                <span class="name">Love-Inspired Design</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Animation Effects</span>
+                                <span class="name">CSS Magic Studio</span>
+                            </div>
+                        </div>
+
+                        <div class="credits-category">
+                            <h3>Technology Stack</h3>
+                            <div class="credit-item">
+                                <span class="role">Frontend Framework</span>
+                                <span class="name">React.js & Vanilla JS</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Styling</span>
+                                <span class="name">CSS3 & Tailwind CSS</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Build Tool</span>
+                                <span class="name">Vite</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Audio System</span>
+                                <span class="name">Web Audio API</span>
+                            </div>
+                        </div>
+
+                        <div class="credits-category">
+                            <h3>Special Features</h3>
+                            <div class="credit-item">
+                                <span class="role">Timeline System</span>
+                                <span class="name">Interactive Journey Builder</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Memory Box</span>
+                                <span class="name">3D CSS Animation Engine</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Puzzle Game</span>
+                                <span class="name">Drag & Drop Mechanics</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Star Map</span>
+                                <span class="name">Canvas Constellation Renderer</span>
+                            </div>
+                        </div>
+
+                        <div class="credits-category">
+                            <h3>Audio & Visual</h3>
+                            <div class="credit-item">
+                                <span class="role">Background Music</span>
+                                <span class="name">Romantic Instrumental Collection</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Sound Effects</span>
+                                <span class="name">Love-themed Audio Library</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Visual Effects</span>
+                                <span class="name">Particle.js & Custom Animations</span>
+                            </div>
+                        </div>
+
+                        <div class="credits-category">
+                            <h3>Inspiration</h3>
+                            <div class="credit-item">
+                                <span class="role">Love Story</span>
+                                <span class="name">Our Beautiful Journey Together</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Memories</span>
+                                <span class="name">Every Precious Moment Shared</span>
+                            </div>
+                            <div class="credit-item">
+                                <span class="role">Future Dreams</span>
+                                <span class="name">All the Adventures Yet to Come</span>
+                            </div>
+                        </div>
+
+                        <div class="final-message">
+                            <h3>Made with 💕 Love</h3>
+                            <p>This website is a testament to love, creativity, and the magic that happens when technology meets emotion.</p>
+                            <div class="signature">
+                                <span>~ With endless love and gratitude ~</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Message Overlay -->
+        <div class="final-message-overlay" id="finalMessageOverlay">
+            <div class="final-message-content">
+                <div class="message-animation">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
+                <h2>Until We Meet Again...</h2>
+                <p>Thank you for being part of our love story. May your own journey be filled with as much joy and love as you've brought to ours.</p>
+                <div class="farewell-actions">
+                    <button class="action-btn" id="shareStoryBtn">💌 Share Our Story</button>
+                    <button class="action-btn" id="createOwnBtn">💕 Create Your Own</button>
+                    <button class="action-btn" id="backHomeBtn">🏠 Return Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Share Modal -->
+        <div class="share-modal" id="shareModal">
+            <div class="share-content">
+                <h3>Share Our Love Story</h3>
+                <p>Spread the love by sharing our anniversary website</p>
+                <div class="share-options">
+                    <button class="share-btn" data-platform="twitter">🐦 Twitter</button>
+                    <button class="share-btn" data-platform="facebook">📘 Facebook</button>
+                    <button class="share-btn" data-platform="email">📧 Email</button>
+                    <button class="share-btn" data-platform="copy">📋 Copy Link</button>
+                </div>
+                <button class="close-share" id="closeShare">✕</button>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-thank-you">Thank You! 💕</div>
+            <div class="floating-thank-you">Merci! 🌟</div>
+            <div class="floating-thank-you">Gracias! ✨</div>
+            <div class="floating-thank-you">Danke! 💖</div>
+            <div class="floating-thank-you">ありがとう! 🌸</div>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="thankYouMusic" loop>
+            <source src="../audio/thank-you-ambient.mp3" type="audio/mpeg">
+            <source src="../audio/thank-you-ambient.ogg" type="audio/ogg">
+        </audio>
+        
+        <audio id="cardFlipSound">
+            <source src="../audio/card-flip.mp3" type="audio/mpeg">
+            <source src="../audio/card-flip.wav" type="audio/wav">
+        </audio>
+
+        <audio id="gratitudeSound">
+            <source src="../audio/gratitude-chime.mp3" type="audio/mpeg">
+            <source src="../audio/gratitude-chime.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/thankyou.js"></script>
+    <script src="../js/common.js"></script>
+</body>
+</html>

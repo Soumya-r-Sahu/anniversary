@@ -1,7 +1,7 @@
 /**
  * Navigation Loader for GitHub Pages
  * Dynamically loads navigation.html into pages
- * Version: 1.0.0
+ * Version: 4.0.0
  */
 
 async function loadNavigation() {
@@ -11,23 +11,23 @@ async function loadNavigation() {
     if (!response.ok) {
       throw new Error(`Failed to load navigation: ${response.status}`);
     }
-    
+
     const navigationHTML = await response.text();
-    
+
     // Insert navigation at the beginning of body
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = navigationHTML;
     const navElement = tempDiv.querySelector('nav');
-    
+
     if (navElement) {
       document.body.insertBefore(navElement, document.body.firstChild);
       console.log('✅ Navigation loaded successfully');
-      
+
       // Initialize navigation functionality
       if (window.UnifiedNavigationManager) {
         new window.UnifiedNavigationManager();
       }
-      
+
       // Initialize Lucide icons
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -37,7 +37,7 @@ async function loadNavigation() {
     }
   } catch (error) {
     console.error('❌ Failed to load navigation:', error);
-    
+
     // Fallback: Create basic navigation
     createFallbackNavigation();
   }
@@ -56,7 +56,7 @@ function createFallbackNavigation() {
       </ul>
     </div>
   `;
-  
+
   document.body.insertBefore(nav, document.body.firstChild);
   console.log('⚠️ Fallback navigation created');
 }

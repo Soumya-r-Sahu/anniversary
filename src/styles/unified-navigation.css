@@ -286,7 +286,7 @@
         background: rgba(26, 11, 46, 0.95);
         border-bottom-color: var(--text-primary, #f8e8ff);
     }
-    
+
     .nav-link {
         border-color: var(--text-secondary, #d1a3d1);
     }

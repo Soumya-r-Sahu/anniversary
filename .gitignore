@@ -104,6 +104,7 @@ jspm_packages/
 .env.local
 
 # Cache files
+.backup/
 .cache/
 .temp/
 temp/

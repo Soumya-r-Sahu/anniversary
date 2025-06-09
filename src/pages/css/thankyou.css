@@ -1,0 +1,805 @@
+/* Thank You Page Styles */
+
+.thankyou-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    position: relative;
+    overflow-x: hidden;
+    color: #ffffff;
+}
+
+/* Header Styles */
+.page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-home {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.nav-home:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.page-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.credits-toggle,
+.music-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.credits-toggle:hover,
+.music-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Thank You Section */
+.thankyou-main {
+    padding: 120px 2rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.gratitude-section {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/* Floating Hearts Animation */
+.heart-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float-heart 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.floating-heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-heart:nth-child(3) {
+    left: 60%;
+    animation-delay: 4s;
+}
+
+@keyframes float-heart {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-40px) rotate(-5deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-20px) rotate(3deg);
+        opacity: 1;
+    }
+}
+
+/* Main Message */
+.main-message {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gratitude-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.message-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.primary-message {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Appreciation Stats */
+.appreciation-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2.5rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Special Thanks */
+.special-thanks {
+    margin-top: 2.5rem;
+}
+
+.special-thanks h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.thanks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.thanks-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thanks-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.thanks-icon {
+    font-size: 1.5rem;
+    min-width: 30px;
+}
+
+.thanks-text {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Interactive Thank You Cards */
+.thank-you-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+    perspective: 1000px;
+}
+
+.card {
+    height: 250px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-back {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 192, 203, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: rotateY(180deg);
+}
+
+.card-front h3,
+.card-back h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-front p,
+.card-back p {
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Credits Section */
+.credits-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: none;
+}
+
+.credits-section.active {
+    display: block;
+}
+
+.credits-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.close-credits {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2001;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.close-credits:hover {
+    opacity: 1;
+}
+
+.credits-scroll {
+    height: 100vh;
+    overflow-y: auto;
+    padding: 60px 2rem 2rem;
+}
+
+.credits-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.credits-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: 3rem;
+    text-shadow: 0 3px 15px rgba(255, 215, 0, 0.3);
+}
+
+.credits-category {
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.credits-category h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.credit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.credit-item:last-child {
+    border-bottom: none;
+}
+
+.role {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.name {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+.final-message {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 192, 203, 0.2));
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.final-message h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.final-message p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.signature {
+    font-style: italic;
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+/* Final Message Overlay */
+.final-message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 2500;
+    backdrop-filter: blur(10px);
+}
+
+.final-message-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-message-content {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 30px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.message-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+    top: 30%;
+    right: 25%;
+    animation-delay: 0.7s;
+}
+
+.sparkle:nth-child(3) {
+    bottom: 25%;
+    left: 30%;
+    animation-delay: 1.4s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.final-message-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.final-message-content p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.farewell-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Share Modal */
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 3000;
+    backdrop-filter: blur(5px);
+}
+
+.share-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share-content {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.share-content h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.share-content p {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.share-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.share-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.share-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.close-share {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.close-share:hover {
+    opacity: 1;
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.floating-thank-you {
+    position: absolute;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    animation: float-thanks 8s linear infinite;
+}
+
+.floating-thank-you:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-thank-you:nth-child(2) {
+    left: 30%;
+    animation-delay: 1.6s;
+}
+
+.floating-thank-you:nth-child(3) {
+    left: 50%;
+    animation-delay: 3.2s;
+}
+
+.floating-thank-you:nth-child(4) {
+    left: 70%;
+    animation-delay: 4.8s;
+}
+
+.floating-thank-you:nth-child(5) {
+    left: 90%;
+    animation-delay: 6.4s;
+}
+
+@keyframes float-thanks {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navigation {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .nav-controls {
+        justify-content: center;
+    }
+
+    .thankyou-main {
+        padding: 100px 1rem 2rem;
+    }
+
+    .gratitude-title {
+        font-size: 2.5rem;
+    }
+
+    .message-content {
+        padding: 2rem;
+    }
+
+    .primary-message {
+        font-size: 1.1rem;
+    }
+
+    .appreciation-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .thanks-list {
+        grid-template-columns: 1fr;
+    }
+
+    .thank-you-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .credits-title {
+        font-size: 3rem;
+    }
+
+    .credits-category {
+        padding: 1.5rem;
+    }
+
+    .credit-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .farewell-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .share-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .gratitude-title {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .message-content {
+        padding: 1.5rem;
+    }
+
+    .card {
+        height: 200px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 1.5rem;
+    }
+
+    .final-message-content {
+        padding: 2rem;
+    }
+
+    .credits-scroll {
+        padding: 40px 1rem 2rem;
+    }
+
+    .floating-thank-you {
+        font-size: 1rem;
+    }
+}

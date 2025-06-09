@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Star Map - Anniversary Website</title>
+    <link rel="stylesheet" href="../css/starmap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="starmap-container">
+        <!-- Navigation Header -->
+        <header class="page-header">
+            <nav class="navigation">
+                <a href="../../index.html" class="nav-home">🏠 Home</a>
+                <h1 class="page-title">Our Star Map</h1>
+                <div class="nav-controls">
+                    <button class="constellation-toggle" id="constellationToggle">✨ Constellations</button>
+                    <button class="date-picker-btn" id="datePickerBtn">📅 Date</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Star Map Canvas Container -->
+        <div class="star-canvas-container">
+            <canvas id="starCanvas" class="star-canvas"></canvas>
+            
+            <!-- Date Selection Overlay -->
+            <div class="date-overlay" id="dateOverlay">
+                <div class="date-picker-card">
+                    <h3>Choose a Special Date</h3>
+                    <input type="date" id="specialDate" class="date-input">
+                    <div class="special-dates-grid">
+                        <button class="special-date-btn" data-date="2023-02-14">First Valentine's Day</button>
+                        <button class="special-date-btn" data-date="2023-06-15">Anniversary</button>
+                        <button class="special-date-btn" data-date="2023-12-25">First Christmas</button>
+                        <button class="special-date-btn" data-date="2024-01-01">New Year Together</button>
+                    </div>
+                    <button class="close-overlay" id="closeDateOverlay">✕</button>
+                </div>
+            </div>
+
+            <!-- Constellation Information Panel -->
+            <div class="constellation-info" id="constellationInfo">
+                <div class="info-card">
+                    <h3 id="constellationName">Click a constellation to learn more</h3>
+                    <p id="constellationDescription">Explore the stars that witnessed our love story...</p>
+                    <div class="constellation-stats">
+                        <div class="stat">
+                            <span class="stat-label">Stars:</span>
+                            <span class="stat-value" id="starCount">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Brightness:</span>
+                            <span class="stat-value" id="brightness">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Star Details Tooltip -->
+            <div class="star-tooltip" id="starTooltip">
+                <div class="tooltip-content">
+                    <h4 id="tooltipTitle">Star Name</h4>
+                    <p id="tooltipDescription">Star description</p>
+                    <div class="tooltip-coordinates">
+                        <span id="tooltipCoords">RA: 00h 00m, Dec: +00°</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="control-section">
+                <h3>Time Controls</h3>
+                <div class="time-controls">
+                    <button class="control-btn" id="timeBack">⏪ Back</button>
+                    <button class="control-btn" id="timePlay" data-playing="false">▶️ Play</button>
+                    <button class="control-btn" id="timeForward">⏩ Forward</button>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">Now</span>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>View Controls</h3>
+                <div class="view-controls">
+                    <label class="control-label">
+                        <input type="range" id="zoomSlider" min="0.5" max="3" step="0.1" value="1">
+                        <span>Zoom</span>
+                    </label>
+                    <label class="control-label">
+                        <input type="range" id="brightnessSlider" min="0.3" max="2" step="0.1" value="1">
+                        <span>Brightness</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>Special Features</h3>
+                <div class="feature-controls">
+                    <button class="feature-btn" id="loveConstellationBtn">💕 Our Love</button>
+                    <button class="feature-btn" id="shootingStarsBtn">🌠 Shooting Stars</button>
+                    <button class="feature-btn" id="planetaryBtn">🪐 Planets</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Overlay -->
+        <div class="memory-overlay" id="memoryOverlay">
+            <div class="memory-card">
+                <div class="memory-header">
+                    <h3>Memory from the Stars</h3>
+                    <button class="close-memory" id="closeMemory">✕</button>
+                </div>
+                <div class="memory-content">
+                    <div class="memory-image">
+                        <div class="star-pattern" id="memoryStarPattern"></div>
+                    </div>
+                    <div class="memory-text">
+                        <h4 id="memoryTitle">A Special Moment</h4>
+                        <p id="memoryDescription">Under these very stars, we shared a moment that became part of our love story...</p>
+                        <div class="memory-date">
+                            <span id="memoryDate">February 14, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-animation">
+                    <div class="loading-star"></div>
+                    <div class="loading-star"></div>
+                    <div class="loading-star"></div>
+                </div>
+                <h3>Mapping the Stars...</h3>
+                <p>Preparing your celestial journey</p>
+                <div class="loading-progress">
+                    <div class="progress-bar" id="loadingProgress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="ambientSound" loop>
+            <source src="../audio/space-ambient.mp3" type="audio/mpeg">
+            <source src="../audio/space-ambient.ogg" type="audio/ogg">
+        </audio>
+        
+        <audio id="starClickSound">
+            <source src="../audio/star-click.mp3" type="audio/mpeg">
+            <source src="../audio/star-click.wav" type="audio/wav">
+        </audio>
+
+        <audio id="constellationSound">
+            <source src="../audio/constellation.mp3" type="audio/mpeg">
+            <source src="../audio/constellation.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/starmap.js"></script>
+    <script src="../js/common.js"></script>
+</body>
+</html>

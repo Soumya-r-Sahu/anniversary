@@ -1,0 +1,79 @@
+<!-- Unified Navigation System Template -->
+<nav class="unified-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <!-- Brand/Logo -->
+        <a href="../../index.html" class="nav-brand nav-glow">
+            💕 Jerry & Soumya
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <!-- Anniversary Section -->
+            <li class="nav-item">
+                <a href="anniversary.html" class="nav-link nav-glow">
+                    <i data-lucide="heart" class="nav-icon"></i>
+                    Anniversary
+                </a>
+            </li>
+
+            <!-- Memories Dropdown -->
+            <li class="nav-item">
+                <a href="#" class="nav-link nav-glow">
+                    <i data-lucide="camera" class="nav-icon"></i>
+                    Memories
+                    <i data-lucide="chevron-down" class="nav-icon"></i>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="photo-gallery.html" class="dropdown-item">📸 Photo Gallery</a>
+                    <a href="memory-book.html" class="dropdown-item">📖 Memory Book</a>
+                    <a href="love-story.html" class="dropdown-item">💕 Love Story</a>
+                    <a href="love-letters.html" class="dropdown-item">💌 Love Letters</a>
+                </div>
+            </li>
+
+            <!-- Activities Dropdown -->
+            <li class="nav-item">
+                <a href="#" class="nav-link nav-glow">
+                    <i data-lucide="gamepad-2" class="nav-icon"></i>
+                    Activities
+                    <i data-lucide="chevron-down" class="nav-icon"></i>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="challenges.html" class="dropdown-item">🎯 Challenges</a>
+                    <a href="music-playlist.html" class="dropdown-item">🎵 Music Playlist</a>
+                    <a href="fireworks.html" class="dropdown-item">🎆 Fireworks</a>
+                    <a href="countdown.html" class="dropdown-item">⏰ Countdown</a>
+                </div>
+            </li>
+
+            <!-- Planning Dropdown -->
+            <li class="nav-item">
+                <a href="#" class="nav-link nav-glow">
+                    <i data-lucide="calendar" class="nav-icon"></i>
+                    Planning
+                    <i data-lucide="chevron-down" class="nav-icon"></i>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="future-plans.html" class="dropdown-item">🌟 Future Plans</a>
+                    <a href="special-dates.html" class="dropdown-item">📅 Special Dates</a>
+                    <a href="wish-list.html" class="dropdown-item">🎁 Wish List</a>
+                </div>
+            </li>
+
+            <!-- Settings -->
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link nav-glow">
+                    <i data-lucide="settings" class="nav-icon"></i>
+                    Settings
+                </a>
+            </li>
+        </ul>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+        </button>
+    </div>
+</nav>

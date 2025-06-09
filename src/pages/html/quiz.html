@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❓ Love Quiz - Anniversary Website</title>
+    
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="Test how well you know each other with our fun couple trivia quiz">
+    <meta name="keywords" content="quiz, trivia, couple, love, relationship, knowledge">
+    <meta name="author" content="Jerry & Soumya">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E❓%3C/text%3E%3C/svg%3E">
+    
+
+</head>
+<body style="padding-top: 90px;">
+    <!-- Navigation will be loaded dynamically -->
+    
+    <main class="main-content">
+        <section class="quiz-hero">
+            <div class="floating-questions" id="floatingQuestions"></div>
+            
+            <div class="quiz-container">
+                <div class="quiz-card">
+                    <div class="text-center mb-4">
+                        <h1 class="text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float">
+                            ❓ Love Quiz ❓
+                        </h1>
+                        <p class="text-xl text-white/90 font-dancing">
+                            How well do you really know each other? Let's find out!
+                        </p>
+                    </div>
+                    
+                    <!-- Quiz Progress -->
+                    <div class="quiz-progress">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    
+                    <!-- Quiz Content -->
+                    <div class="quiz-content" id="quizContent">
+                        <!-- Question Container -->
+                        <div class="question-container" id="questionContainer">
+                            <div class="question-number" id="questionNumber">Question 1 of 10</div>
+                            <div class="question-text" id="questionText">
+                                Loading your first question...
+                            </div>
+                            <div class="answers-grid" id="answersGrid">
+                                <!-- Answers will be populated dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Quiz Controls -->
+                        <div class="quiz-controls">
+                            <button class="control-btn" id="nextBtn" onclick="nextQuestion()" disabled>
+                                Next Question ➡️
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quiz Results -->
+                    <div class="quiz-results" id="quizResults">
+                        <h2 class="text-3xl font-dancing text-white mb-4">
+                            🎉 Quiz Complete! 🎉
+                        </h2>
+                        <div class="score-display" id="scoreDisplay">
+                            0/10
+                        </div>
+                        <div class="score-message" id="scoreMessage">
+                            <!-- Dynamic message based on score -->
+                        </div>
+                        <div class="score-breakdown" id="scoreBreakdown">
+                            <!-- Detailed breakdown -->
+                        </div>
+                        
+                        <!-- Unlock Next Page Section -->
+                        <div class="unlock-section">
+                            <h3 class="text-2xl font-dancing text-white mb-4">
+                                🌟 Quiz Completed! 🌟
+                            </h3>
+                            <p class="text-white/80 mb-6">
+                                You've tested your knowledge about each other! Ready to explore the stars?
+                            </p>
+                            <button class="unlock-btn" id="unlockBtn" onclick="unlockNextPage()">
+                                🌌 Continue to Star Map 🌌
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Navigation Loader -->
+    <script type="module" src="../scripts/navigation-loader.js"></script>
+    
+    <!-- Page Script -->
+    <script src="../js/quiz.js"></script>
+    
+    <!-- Unified Navigation & Data Management System -->
+    <script type="module" src="../../utils/unifiedNavigation.js"></script>
+    <script type="module" src="../../utils/dataManager.js"></script>
+    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script>
+        // Initialize unified systems when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Unified systems loaded for quiz');
+        });
+    </script>
+</body>
+</html>
