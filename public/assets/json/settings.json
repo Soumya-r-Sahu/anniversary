@@ -1,0 +1,67 @@
+{
+  "application": {
+    "version": "4.0.0",
+    "buildDate": "2024-12-28",
+    "environment": "production",
+    "githubPages": true
+  },
+  "features": {
+    "countdown": {
+      "enabled": true,
+      "showMilliseconds": false,
+      "autoRefresh": true,
+      "refreshInterval": 1000,
+      "animations": true
+    },
+    "anniversary": {
+      "enabled": true,
+      "autoRedirect": true,
+      "celebrationMode": true,
+      "confettiEnabled": true
+    },
+    "memories": {
+      "enabled": true,
+      "photoGallery": true,
+      "timeline": true,
+      "autoSlideshow": false
+    },
+    "music": {
+      "enabled": true,
+      "autoplay": false,
+      "volume": 0.5,
+      "playlist": ["romantic", "anniversary"]
+    }
+  },
+  "theme": {
+    "primaryColors": ["#FF69B4", "#9D4EDD", "#EC4899"],
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "animations": {
+      "enabled": true,
+      "duration": "medium",
+      "easing": "ease-in-out"
+    },
+    "effects": {
+      "particles": true,
+      "bubbles": true,
+      "hearts": true,
+      "glitter": false
+    }
+  },
+  "navigation": {
+    "smoothScroll": true,
+    "autoHide": false,
+    "mobileOptimized": true,
+    "breadcrumbs": true
+  },
+  "analytics": {
+    "enabled": false,
+    "trackPageViews": false,
+    "trackUserInteractions": false
+  },
+  "performance": {
+    "lazyLoading": true,
+    "imageOptimization": true,
+    "caching": true,
+    "preloadCritical": true
+  }
+}

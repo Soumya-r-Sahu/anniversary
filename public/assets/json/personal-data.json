@@ -1,0 +1,55 @@
+{
+  "couple": {
+    "girl": {
+      "name": "Soumya",
+      "nickname": "My Soul",
+      "role": "The Artist",
+      "favoriteColor": "#9D4EDD",
+      "emoji": "✨"
+    },
+    "boy": {
+      "name": "Jerry", 
+      "nickname": "My Heart",
+      "role": "The Dreamer",
+      "favoriteColor": "#FF69B4",
+      "emoji": "💕"
+    }
+  },
+  "relationship": {
+    "anniversary": {
+      "date": "2025-06-16T00:00:00",
+      "title": "Our Forever Anniversary",
+      "description": "The day our hearts became one",
+      "countdownActive": true
+    },
+    "firstInteraction": {
+      "date": "2024-06-16T00:00:00",
+      "location": "Online",
+      "description": "The first spark that started it all",
+      "significance": "Our very first conversation"
+    },
+    "firstMeet": {
+      "date": "2023-12-01T00:00:00",
+      "location": "College Campus",
+      "description": "When destiny brought us together"
+    },
+    "firstDate": {
+      "date": "2024-01-15T00:00:00", 
+      "location": "City Park Cafe",
+      "description": "Our first official date"
+    },
+    "status": "Together Forever",
+    "duration": "1+ Years Strong"
+  },
+  "shared": {
+    "motto": "Two hearts, one soul, infinite love",
+    "theme": "Love Transcends Time",
+    "mainColors": ["#FF69B4", "#9D4EDD", "#EC4899"],
+    "goals": [
+      "Build a beautiful life together",
+      "Travel the world hand in hand", 
+      "Create countless memories",
+      "Support each other's dreams"
+    ]
+  }
+}

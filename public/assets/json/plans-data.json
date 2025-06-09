@@ -1,0 +1,229 @@
+{
+  "future_plans": [
+    {
+      "id": "plan_001",
+      "title": "Dream Honeymoon in Paris",
+      "description": "A romantic week in the City of Love, visiting cafes, museums, and watching sunsets from the Eiffel Tower",
+      "category": "travel",
+      "priority": "high",
+      "timeframe": "2025-2026",
+      "status": "planning",
+      "budget": {
+        "estimated": 5000,
+        "saved": 1200,
+        "currency": "USD"
+      },
+      "details": [
+        "Visit the Louvre Museum together",
+        "Picnic by the Seine River",
+        "Dinner at a cozy Montmartre bistro",
+        "Sunrise hot air balloon ride"
+      ],
+      "inspiration": "We've always dreamed of walking hand in hand through Parisian streets",
+      "tags": ["honeymoon", "paris", "romantic", "travel"],
+      "created": "2024-01-01T00:00:00",
+      "featured": true
+    },
+    {
+      "id": "plan_002",
+      "title": "Build Our Dream Home",
+      "description": "Design and build a cozy home with a garden where we can grow old together",
+      "category": "lifestyle",
+      "priority": "high",
+      "timeframe": "2027-2030",
+      "status": "researching",
+      "budget": {
+        "estimated": 350000,
+        "saved": 15000,
+        "currency": "USD"
+      },
+      "details": [
+        "Large kitchen for cooking together",
+        "Reading nook by the window",
+        "Garden for growing our own vegetables",
+        "Home office spaces for both of us"
+      ],
+      "inspiration": "A place where every corner holds memories of our love",
+      "tags": ["home", "family", "future", "investment"],
+      "created": "2024-02-14T00:00:00",
+      "featured": true
+    },
+    {
+      "id": "plan_003",
+      "title": "Learn to Dance Together",
+      "description": "Take ballroom dancing lessons and learn the waltz, tango, and swing",
+      "category": "hobbies",
+      "priority": "medium",
+      "timeframe": "2024-2025",
+      "status": "ready_to_start",
+      "budget": {
+        "estimated": 800,
+        "saved": 200,
+        "currency": "USD"
+      },
+      "details": [
+        "Find a local dance studio",
+        "Start with basic waltz",
+        "Progress to tango",
+        "Practice at home regularly"
+      ],
+      "inspiration": "So we can dance at every celebration for the rest of our lives",
+      "tags": ["dance", "hobby", "together", "skills"],
+      "created": "2024-03-10T00:00:00",
+      "featured": false
+    },
+    {
+      "id": "plan_004",
+      "title": "Annual Adventure Tradition",
+      "description": "Take one big adventure together every year to explore new places and create memories",
+      "category": "travel",
+      "priority": "medium",
+      "timeframe": "ongoing",
+      "status": "in_progress",
+      "budget": {
+        "estimated": 3000,
+        "saved": 800,
+        "currency": "USD"
+      },
+      "details": [
+        "2024: Mountain cabin retreat",
+        "2025: Beach vacation in Hawaii",
+        "2026: European backpacking trip",
+        "2027: Japan cultural experience"
+      ],
+      "inspiration": "Life is an adventure best shared with your soulmate",
+      "tags": ["travel", "annual", "adventure", "tradition"],
+      "created": "2024-01-15T00:00:00",
+      "featured": true
+    }
+  ],
+  "wish_list": [
+    {
+      "id": "wish_001",
+      "title": "Matching Promise Rings",
+      "description": "Simple, elegant rings as a symbol of our commitment",
+      "category": "jewelry",
+      "priority": "high",
+      "price": {
+        "estimated": 400,
+        "currency": "USD"
+      },
+      "for_whom": "both",
+      "occasion": "6-month anniversary",
+      "status": "wishlist",
+      "link": "https://example.com/rings",
+      "notes": "Something simple but meaningful, maybe with our initials engraved",
+      "added": "2024-01-01T00:00:00",
+      "featured": true
+    },
+    {
+      "id": "wish_002",
+      "title": "Professional Couple Photoshoot",
+      "description": "Capture this beautiful time in our relationship with professional photos",
+      "category": "experience",
+      "priority": "medium",
+      "price": {
+        "estimated": 600,
+        "currency": "USD"
+      },
+      "for_whom": "both",
+      "occasion": "spring 2024",
+      "status": "researching",
+      "link": "",
+      "notes": "Looking for a photographer who specializes in natural, candid shots",
+      "added": "2024-02-01T00:00:00",
+      "featured": false
+    },
+    {
+      "id": "wish_003",
+      "title": "Custom Star Map",
+      "description": "A map of the stars from the night we first said 'I love you'",
+      "category": "keepsake",
+      "priority": "low",
+      "price": {
+        "estimated": 80,
+        "currency": "USD"
+      },
+      "for_whom": "both",
+      "occasion": "anniversary",
+      "status": "wishlist",
+      "link": "https://example.com/starmap",
+      "notes": "From the night of March 15, 2024 - our special moment",
+      "added": "2024-03-16T00:00:00",
+      "featured": true
+    }
+  ],
+  "special_dates": [
+    {
+      "id": "date_001",
+      "title": "Monthly Anniversary",
+      "date": "16th of every month",
+      "type": "monthly",
+      "description": "Celebrating the 16th of every month as our mini anniversary",
+      "tradition": "Exchange small gifts or notes",
+      "importance": "high",
+      "recurring": true,
+      "next_occurrence": "2024-11-16T00:00:00",
+      "celebration_ideas": [
+        "Write each other letters",
+        "Cook a special dinner",
+        "Watch our favorite movie",
+        "Take a walk down memory lane"
+      ]
+    },
+    {
+      "id": "date_002",
+      "title": "Jerry's Birthday",
+      "date": "1995-08-22T00:00:00",
+      "type": "birthday",
+      "description": "Celebrating the day my favorite person was born",
+      "tradition": "Surprise breakfast and a day of his favorite activities",
+      "importance": "high",
+      "recurring": true,
+      "next_occurrence": "2025-08-22T00:00:00",
+      "celebration_ideas": [
+        "Homemade chocolate cake",
+        "Movie marathon day",
+        "Visit to his favorite bookstore",
+        "Sunset picnic"
+      ]
+    },
+    {
+      "id": "date_003",
+      "title": "Soumya's Birthday",
+      "date": "1996-03-14T00:00:00",
+      "type": "birthday",
+      "description": "Celebrating the day my soulmate entered this world",
+      "tradition": "Art supplies and a creative day together",
+      "importance": "high",
+      "recurring": true,
+      "next_occurrence": "2025-03-14T00:00:00",
+      "celebration_ideas": [
+        "Art museum visit",
+        "Painting session together",
+        "Handmade gifts",
+        "Garden picnic with fairy lights"
+      ]
+    }
+  ],
+  "goals": {
+    "short_term": [
+      "Save $500/month for future plans",
+      "Take monthly mini adventures",
+      "Learn a new recipe together each week",
+      "Write in our shared journal daily"
+    ],
+    "long_term": [
+      "Travel to 10 countries together",
+      "Buy our dream home",
+      "Start a family",
+      "Create a foundation to help other couples"
+    ],
+    "relationship": [
+      "Communicate openly about everything",
+      "Support each other's individual dreams",
+      "Create new traditions together",
+      "Never go to bed angry"
+    ]
+  }
+}

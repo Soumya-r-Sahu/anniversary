@@ -1,0 +1,742 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Anniversary Countdown"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><meta name="apple-touch-fullscreen" content="yes"><meta name="format-detection" content="telephone=no"><title>Anniversary Countdown - Jerry & Soumya</title><meta name="description" content="Counting down to our special anniversary moment"><link rel="stylesheet" href="../styles/shared.css"><style>
+/* Countdown Hero Section */
+.countdown-hero {
+background: linear-gradient(135deg, rgba(236, 72, 153, 0.8), rgba(244, 114, 182, 0.8), rgba(251, 191, 36, 0.8));
+min-height: 50vh;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+margin-bottom: 2rem;
+}
+
+<!-- Navigation bar starts here -->
+💕 Jerry & Soumya
+</a><ul class="nav-menu" id="navMenu"><li class="nav-item"><a href="anniversary.html" class="nav-link nav-glow"><i data-lucide="heart" class="nav-icon"></i>
+Anniversary
+</a></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="camera" class="nav-icon"></i>
+Memories
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="photo-gallery.html" class="dropdown-item">📸 Photo Gallery</a><a href="memory-book.html" class="dropdown-item">📖 Memory Book</a><a href="love-story.html" class="dropdown-item">💕 Love Story</a><a href="love-letters.html" class="dropdown-item">💌 Love Letters</a></div></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="gamepad-2" class="nav-icon"></i>
+Activities
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="challenges.html" class="dropdown-item">🎯 Challenges</a><a href="music-playlist.html" class="dropdown-item">🎵 Music Playlist</a><a href="fireworks.html" class="dropdown-item">🎆 Fireworks</a><a href="countdown.html" class="dropdown-item">⏰ Countdown</a></div></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="calendar" class="nav-icon"></i>
+Planning
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="future-plans.html" class="dropdown-item">🌟 Future Plans</a><a href="special-dates.html" class="dropdown-item">📅 Special Dates</a><a href="wish-list.html" class="dropdown-item">🎁 Wish List</a></div></li><li class="nav-item"><a href="settings.html" class="nav-link nav-glow"><i data-lucide="settings" class="nav-icon"></i>
+Settings
+</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span></button></div></nav><!-- Navigation script replaced with unified system --><header class="shared-header"></header><div class="countdown-hero"><div class="hero-content"><h1 class="hero-title gradient-text">
+⏰ Counting Down to Forever ⏰
+</h1><p class="hero-subtitle">
+Every second brings us closer to our special moment
+</p></div></div><main class="main-content"><div class="container mx-auto px-4 py-8"><div class="text-center mb-12"><div class="glassmorphism rounded-2xl p-6 max-w-2xl mx-auto mb-8"><p id="typewriter-text" class="text-lg text-gray-700 typewriter"></p></div></div><div class="glassmorphism p-8 mb-12 max-w-4xl mx-auto"><h2 class="text-2xl font-dancing text-pink-600 mb-6 text-center">
+Until Our Next Special Moment
+</h2><div id="countdown-display" class="countdown-container"><div class="countdown-item"><div id="days" class="countdown-number">0</div><div class="countdown-label">Days</div></div><div class="countdown-item"><div id="hours" class="countdown-number">0</div><div class="countdown-label">Hours</div></div><div class="countdown-item"><div id="minutes" class="countdown-number">0</div><div class="countdown-label">Minutes</div></div><div class="countdown-item"><div id="seconds" class="countdown-number">0</div><div class="countdown-label">Seconds</div></div></div><div id="celebration-message" class="text-center mt-8" style="display: none;"><h2 class="text-4xl font-dancing gradient-text mb-4 celebration">
+🎉 Happy Anniversary! 🎉
+</h2><p class="text-xl text-pink-600">
+The day has finally arrived!
+</p></div></div><div class="text-center" id="navigationLinks"><div class="glassmorphism p-6 rounded-2xl max-w-md mx-auto"><p class="text-lg text-pink-600 font-dancing mb-4">
+✨ The countdown is almost over... ✨
+</p><p class="text-gray-600">
+Your surprise will be revealed when the time is right!
+</p></div></div></div></main><footer class="shared-footer bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../scripts/shared.js"></script><script>
+// Enhanced Countdown Page JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+console.log('⏰ Countdown page loaded');
+
+// Initialize countdown functionality
+initializeCountdown();
+
+// Create and initialize music system
+createMusicSystem();
+});
+
+// Initialize countdown with proper date calculations
+function initializeCountdown() {
+// Set target date - June 16, 2025 00:00:00
+
+// Enhanced target date calculation with timezone handling
+let targetDate = new Date(2025, 5, 16, 0, 0, 0); // June 16, 2025 (month is 0-indexed)
+
+// If target date has passed, calculate next anniversary
+const now = new Date();
+if (targetDate.getTime() < now.getTime()) {
+const currentYear = now.getFullYear();
+targetDate = new Date(currentYear + 1, 5, 16, 0, 0, 0);
+}
+
+const typewriterMessages = [
+"Every moment with you is precious...",
+"Counting down to our special day...",
+"Love grows stronger with each passing second...",
+"Together, we make beautiful memories...",
+"Our love story continues to unfold..."
+];
+
+let messageIndex = 0;
+const typewriterElement = document.getElementById('typewriter-text');
+
+function typeMessage(message, callback) {
+typewriterElement.textContent = '';
+let charIndex = 0;
+
+const typingInterval = setInterval(() => {
+if (charIndex < message.length) {
+typewriterElement.textContent += message[charIndex];
+charIndex++;
+} else {
+clearInterval(typingInterval);
+if (callback) callback();
+}
+}, 50);
+}
+
+function cycleMessages() {
+typeMessage(typewriterMessages[messageIndex], () => {
+messageIndex = (messageIndex + 1) % typewriterMessages.length;
+setTimeout(cycleMessages, 3000);
+});
+}
+
+// Start typewriter effect
+setTimeout(() => {
+cycleMessages();
+}, 1000);
+
+function updateCountdown() {
+try {
+const now = new Date().getTime();
+const distance = targetDate.getTime() - now;
+
+if (distance> 0) {
+// Calculate time components with proper rounding
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+// Ensure non-negative values
+const safeDays = Math.max(0, days);
+const safeHours = Math.max(0, hours);
+const safeMinutes = Math.max(0, minutes);
+const safeSeconds = Math.max(0, seconds);
+
+// Update countdown display with animation
+updateCountdownNumber('days', safeDays);
+updateCountdownNumber('hours', safeHours);
+updateCountdownNumber('minutes', safeMinutes);
+updateCountdownNumber('seconds', safeSeconds);
+
+// Create sparkle effect on seconds change
+if (safeSeconds === 0 && (safeMinutes> 0 || safeHours> 0 || safeDays> 0)) {
+createCountdownSparkle();
+}
+
+// Update the navigation message based on remaining time
+updateNavigationMessage(safeDays, safeHours);
+
+// Check if we're very close to completion (within 5 seconds)
+if (distance <= 5000 && distance> 0) {
+console.log('⏰ Countdown almost complete, preparing for redirect...');
+}
+} else {
+// Time's up! Show celebration and redirect
+console.log('🎉 Countdown completed! Redirecting to anniversary page...');
+showCelebrationAndRedirect();
+}
+} catch (error) {
+console.error('❌ Error in countdown update:', error);
+// Fallback: continue with basic countdown
+}
+}
+
+.countdown-hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="20" font-size="20" fill="rgba(255,255,255,0.1)">⏰</text><text x="30" y="50" font-size="15" fill="rgba(255,255,255,0.08)">💕</text><text x="60" y="30" font-size="18" fill="rgba(255,255,255,0.1)">⏳</text><text x="20" y="80" font-size="16" fill="rgba(255,255,255,0.09)">💖</text><text x="70" y="70" font-size="14" fill="rgba(255,255,255,0.07)">⌛</text></svg>') repeat;
+animation: timePattern 15s linear infinite;
+z-index: 1;
+}
+
+@keyframes timePattern {
+0% { transform: translateX(0) translateY(0); }
+100% { transform: translateX(-100px) translateY(-100px); }
+}
+
+.hero-content {
+text-align: center;
+z-index: 2;
+position: relative;
+}
+
+.hero-title {
+font-size: 3.5rem;
+font-weight: bold;
+margin-bottom: 1rem;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+animation: clockTick 2s ease-in-out infinite;
+}
+
+@keyframes clockTick {
+0%, 100% { transform: scale(1) rotate(0deg); }
+50% { transform: scale(1.05) rotate(2deg); }
+}
+
+.hero-subtitle {
+font-size: 1.3rem;
+color: rgba(255, 255, 255, 0.9);
+font-family: 'Dancing Script', cursive;
+}
+
+.countdown-container {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.5rem;
+max-width: 800px;
+margin: 0 auto;
+padding: 0 1rem;
+}
+.countdown-item {
+text-align: center;
+padding: 2rem 1rem;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+backdrop-filter: blur(30px);
+-webkit-backdrop-filter: blur(30px); /* Safari support */
+border-radius: 1.5rem;
+border: 2px solid rgba(255, 255, 255, 0.3);
+transition: all 0.4s ease;
+position: relative;
+transform: perspective(1000px) rotateX(5deg);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+min-height: 150px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.countdown-item:hover {
+transform: perspective(1000px) rotateX(0deg) translateY(-10px) scale(1.05);
+box-shadow: 0 25px 50px rgba(236, 72, 153, 0.2);
+}
+
+.countdown-number {
+font-size: 3rem;
+font-weight: 700;
+background: linear-gradient(135deg, #ec4899, #ef4444);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 0.5rem;
+animation: numberPulse 2s ease-in-out infinite;
+transform-style: preserve-3d;
+transition: transform 0.3s ease;
+}
+
+@keyframes numberPulse {
+0%, 100% {
+transform: scale(1) rotateY(0deg);
+filter: brightness(1);
+}
+50% {
+transform: scale(1.1) rotateY(10deg);
+filter: brightness(1.2) drop-shadow(0 0 10px rgba(236, 72, 153, 0.5));
+}
+}
+
+.countdown-label {
+font-size: 0.875rem;
+font-weight: 600;
+color: #6b7280;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+
+.typewriter {
+border-right: 2px solid #ec4899;
+animation: blink 1s infinite;
+}
+
+@keyframes blink {
+0%, 50% { border-color: transparent; }
+51%, 100% { border-color: #ec4899; }
+}
+
+.celebration {
+animation: celebration 2s ease-in-out infinite;
+}
+
+@keyframes celebration {
+0%, 100% { transform: scale(1) rotate(0deg); }
+25% { transform: scale(1.1) rotate(-5deg); }
+50% { transform: scale(1.2) rotate(5deg); }
+75% { transform: scale(1.1) rotate(-2deg); }
+}
+.glassmorphism {
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px); /* Safari support */
+border: 1px solid rgba(255, 255, 255, 0.3);
+border-radius: 16px; /* Ensuring consistent border radius */
+}        /* Additional browser prefixes for better compatibility */
+.backdrop-blur {
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.countdown-hero {
+min-height: 40vh;
+padding: 2rem 1rem;
+}
+
+.hero-title {
+font-size: 2.5rem;
+}
+
+.hero-subtitle {
+font-size: 1.1rem;
+}
+
+.countdown-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 1rem;
+max-width: 400px;
+}
+
+.countdown-item {
+padding: 1.5rem 1rem;
+min-height: 120px;
+}
+
+.countdown-number {
+font-size: 2.5rem;
+}
+}
+
+@media (max-width: 480px) {
+.countdown-hero {
+min-height: 35vh;
+padding: 1.5rem 1rem;
+}
+
+.hero-title {
+font-size: 2rem;
+}
+
+.countdown-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.75rem;
+max-width: 320px;
+}
+
+.countdown-item {
+padding: 1rem 0.5rem;
+min-height: 100px;
+}
+
+.countdown-number {
+font-size: 2rem;
+}
+}
+
+/* Sparkle Animation */
+@keyframes sparkleFloat {
+0% {
+opacity: 1;
+transform: scale(0) rotate(0deg);
+}
+50% {
+opacity: 1;
+transform: scale(1.5) rotate(180deg);
+}
+100% {
+opacity: 0;
+transform: scale(0) rotate(360deg);
+}
+}
+</style><link rel="stylesheet" href="../styles/unified-navigation.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⏰%3C/text%3E%3C/svg%3E"></head><body style="padding-top: 90px;"><nav class="unified-nav" role="navigation" aria-label="Main navigation"><div class="nav-container"><a href="../../index.html" class="nav-brand nav-glow">
+💕 Jerry & Soumya
+</a><ul class="nav-menu" id="navMenu"><li class="nav-item"><a href="anniversary.html" class="nav-link nav-glow"><i data-lucide="heart" class="nav-icon"></i>
+Anniversary
+</a></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="camera" class="nav-icon"></i>
+Memories
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="photo-gallery.html" class="dropdown-item">📸 Photo Gallery</a><a href="memory-book.html" class="dropdown-item">📖 Memory Book</a><a href="love-story.html" class="dropdown-item">💕 Love Story</a><a href="love-letters.html" class="dropdown-item">💌 Love Letters</a></div></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="gamepad-2" class="nav-icon"></i>
+Activities
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="challenges.html" class="dropdown-item">🎯 Challenges</a><a href="music-playlist.html" class="dropdown-item">🎵 Music Playlist</a><a href="fireworks.html" class="dropdown-item">🎆 Fireworks</a><a href="countdown.html" class="dropdown-item">⏰ Countdown</a></div></li><li class="nav-item"><a href="#" class="nav-link nav-glow"><i data-lucide="calendar" class="nav-icon"></i>
+Planning
+<i data-lucide="chevron-down" class="nav-icon"></i></a><div class="nav-dropdown"><a href="future-plans.html" class="dropdown-item">🌟 Future Plans</a><a href="special-dates.html" class="dropdown-item">📅 Special Dates</a><a href="wish-list.html" class="dropdown-item">🎁 Wish List</a></div></li><li class="nav-item"><a href="settings.html" class="nav-link nav-glow"><i data-lucide="settings" class="nav-icon"></i>
+Settings
+</a></li></ul><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span></button></div></nav><!-- Navigation script replaced with unified system --><header class="shared-header"></header><div class="countdown-hero"><div class="hero-content"><h1 class="hero-title gradient-text">
+⏰ Counting Down to Forever ⏰
+</h1><p class="hero-subtitle">
+Every second brings us closer to our special moment
+</p></div></div><main class="main-content"><div class="container mx-auto px-4 py-8"><div class="text-center mb-12"><div class="glassmorphism rounded-2xl p-6 max-w-2xl mx-auto mb-8"><p id="typewriter-text" class="text-lg text-gray-700 typewriter"></p></div></div><div class="glassmorphism p-8 mb-12 max-w-4xl mx-auto"><h2 class="text-2xl font-dancing text-pink-600 mb-6 text-center">
+Until Our Next Special Moment
+</h2><div id="countdown-display" class="countdown-container"><div class="countdown-item"><div id="days" class="countdown-number">0</div><div class="countdown-label">Days</div></div><div class="countdown-item"><div id="hours" class="countdown-number">0</div><div class="countdown-label">Hours</div></div><div class="countdown-item"><div id="minutes" class="countdown-number">0</div><div class="countdown-label">Minutes</div></div><div class="countdown-item"><div id="seconds" class="countdown-number">0</div><div class="countdown-label">Seconds</div></div></div><div id="celebration-message" class="text-center mt-8" style="display: none;"><h2 class="text-4xl font-dancing gradient-text mb-4 celebration">
+🎉 Happy Anniversary! 🎉
+</h2><p class="text-xl text-pink-600">
+The day has finally arrived!
+</p></div></div><div class="text-center" id="navigationLinks"><div class="glassmorphism p-6 rounded-2xl max-w-md mx-auto"><p class="text-lg text-pink-600 font-dancing mb-4">
+✨ The countdown is almost over... ✨
+</p><p class="text-gray-600">
+Your surprise will be revealed when the time is right!
+</p></div></div></div></main><footer class="shared-footer bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../scripts/shared.js"></script><script>
+// Enhanced Countdown Page JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+console.log('⏰ Countdown page loaded');
+
+// Initialize countdown functionality
+initializeCountdown();
+
+// Create and initialize music system
+createMusicSystem();
+});
+
+// Initialize countdown with proper date calculations
+function initializeCountdown() {
+// Set target date - June 16, 2025 00:00:00
+
+// Enhanced target date calculation with timezone handling
+let targetDate = new Date(2025, 5, 16, 0, 0, 0); // June 16, 2025 (month is 0-indexed)
+
+// If target date has passed, calculate next anniversary
+const now = new Date();
+if (targetDate.getTime() < now.getTime()) {
+const currentYear = now.getFullYear();
+targetDate = new Date(currentYear + 1, 5, 16, 0, 0, 0);
+}
+
+const typewriterMessages = [
+"Every moment with you is precious...",
+"Counting down to our special day...",
+"Love grows stronger with each passing second...",
+"Together, we make beautiful memories...",
+"Our love story continues to unfold..."
+];
+
+let messageIndex = 0;
+const typewriterElement = document.getElementById('typewriter-text');
+
+function typeMessage(message, callback) {
+typewriterElement.textContent = '';
+let charIndex = 0;
+
+const typingInterval = setInterval(() => {
+if (charIndex < message.length) {
+typewriterElement.textContent += message[charIndex];
+charIndex++;
+} else {
+clearInterval(typingInterval);
+if (callback) callback();
+}
+}, 50);
+}
+
+function cycleMessages() {
+typeMessage(typewriterMessages[messageIndex], () => {
+messageIndex = (messageIndex + 1) % typewriterMessages.length;
+setTimeout(cycleMessages, 3000);
+});
+}
+
+// Start typewriter effect
+setTimeout(() => {
+cycleMessages();
+}, 1000);
+function updateCountdown() {
+const now = new Date().getTime();
+const distance = targetDate.getTime() - now;
+
+if (distance> 0) {
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+// Update countdown display with animation
+updateCountdownNumber('days', days);
+updateCountdownNumber('hours', hours);
+updateCountdownNumber('minutes', minutes);
+updateCountdownNumber('seconds', seconds);
+
+// Create sparkle effect on seconds change
+if (seconds === 0) {
+createCountdownSparkle();
+}
+
+// Update the navigation message based on remaining time
+updateNavigationMessage(days, hours);
+} else {
+// Time's up! Show celebration and redirect
+showCelebrationAndRedirect();
+}
+}
+
+function updateNavigationMessage(days, hours) {
+const navigationLinks = document.getElementById('navigationLinks');
+if (navigationLinks) {
+let message;
+if (days> 7) {
+message = "✨ We still have time to prepare something amazing... ✨";
+} else if (days> 1) {
+message = "✨ Just a few more days until our special moment! ✨";
+} else if (days === 1) {
+message = "✨ Tomorrow is our special day! ✨";
+} else if (hours> 1) {
+message = "✨ Only hours remain until our celebration! ✨";
+} else {
+message = "✨ The countdown is almost over... ✨";
+}
+
+const messageEl = navigationLinks.querySelector('.text-pink-600');
+if (messageEl) {
+messageEl.textContent = message;
+}
+}
+}
+}
+
+function updateCountdownNumber(id, value) {
+const element = document.getElementById(id);
+if (element && element.textContent !== value.toString()) {
+element.style.transform = 'scale(1.2)';
+element.textContent = value;
+setTimeout(() => {
+element.style.transform = 'scale(1)';
+}, 200);
+}
+}
+
+function createCountdownSparkle() {
+const container = document.getElementById('countdown-display');
+if (!container) return;
+
+for (let i = 0; i < 5; i++) {
+setTimeout(() => {
+const sparkle = document.createElement('div');
+sparkle.textContent = '✨';
+sparkle.style.cssText = `
+position: absolute;
+left: ${Math.random() * 100}%;
+top: ${Math.random() * 100}%;
+font-size: 20px;
+pointer-events: none;
+animation: sparkleFloat 2s ease-out forwards;
+z-index: 10;
+`;
+container.appendChild(sparkle);
+
+setTimeout(() => {
+if (sparkle.parentNode) {
+sparkle.parentNode.removeChild(sparkle);
+}
+}, 2000);
+}, i * 100);
+}
+}
+function showCelebrationAndRedirect() {
+const countdownDisplay = document.getElementById('countdown-display');
+const celebrationMessage = document.getElementById('celebration-message');
+const navigationLinks = document.getElementById('navigationLinks');
+
+// Hide countdown, show celebration and update navigation
+countdownDisplay.style.display = 'none';
+celebrationMessage.style.display = 'block';
+
+// Update navigation links with a button
+if (navigationLinks) {
+navigationLinks.innerHTML = `
+<div class="glassmorphism p-6 rounded-2xl max-w-md mx-auto"><p class="text-lg text-pink-600 font-dancing mb-4">
+    🎂 It's time to celebrate! 🎂
+</p><button id="goToAnniversary" class="px-6 py-3 bg-gradient-love text-white rounded-full
+font-semibold shadow-lg hover:shadow-xl transition-all transform
+hover:scale-105 active:scale-95">
+Go to Anniversary Page
+</button></div>
+`;
+
+// Add click event to button
+setTimeout(() => {
+const button = document.getElementById('goToAnniversary');
+if (button) {
+button.addEventListener('click', () => {
+window.location.href = 'anniversary.html';
+});
+}
+}, 100);
+}
+
+// Start redirect process to anniversary page after 5 seconds
+setTimeout(() => {
+window.location.href = 'anniversary.html';
+}, 5000);
+}
+
+// Start countdown
+updateCountdown();
+
+// Store interval reference for cleanup
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+if (countdownInterval) {
+clearInterval(countdownInterval);
+}
+});
+}
+// Enhanced music system for countdown page with page-specific tracks
+function initializeMusicSystem() {
+// Create audio element
+const audioElement = document.createElement('audio');
+audioElement.id = 'background-music';
+audioElement.loop = true;
+audioElement.volume = 0.5;
+audioElement.preload = 'auto';
+
+// Add the countdown-specific music
+const source = document.createElement('source');
+source.src = '../../public/assets/music/queue_song/01-nit-khair-manga.m4a';
+source.type = 'audio/mp4';
+audioElement.appendChild(source);
+
+document.body.appendChild(audioElement);
+
+// Create music controls container
+const musicContainer = document.createElement('div');
+musicContainer.style.cssText = `                position: fixed;
+bottom: 20px;
+right: 20px;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 15px;
+padding: 15px;
+display: flex;
+align-items: center;
+gap: 10px;
+z-index: 1000;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+`;
+
+// Music toggle button
+const musicButton = document.createElement('button');
+musicButton.innerHTML = '🎵';
+musicButton.title = 'Toggle Music';
+musicButton.style.cssText = `
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+padding: 5px;
+border-radius: 50%;
+transition: transform 0.3s ease;
+`;
+
+// Current status
+let isPlaying = false;
+
+// Handle music toggle
+musicButton.addEventListener('click', async () => {
+musicButton.style.transform = 'scale(1.2)';
+setTimeout(() => {
+musicButton.style.transform = 'scale(1)';
+}, 200);
+
+try {
+if (isPlaying) {
+audioElement.pause();
+isPlaying = false;
+musicButton.innerHTML = '🎵';
+musicButton.title = 'Play Music';
+} else {
+await audioElement.play();
+isPlaying = true;
+musicButton.innerHTML = '<i data-lucide="volume-2" class="icon-volume-high"></i>';
+musicButton.title = 'Pause Music';
+}
+} catch (error) {
+console.error('Music playback failed:', error);
+// Show notification about the error
+const notification = document.createElement('div');
+notification.style.cssText = `
+position: fixed;
+bottom: 80px;
+right: 20px;
+background: rgba(255, 255, 255, 0.9);
+color: #d32f2f;
+padding: 10px 15px;
+border-radius: 8px;
+font-size: 14px;
+z-index: 1000;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+`;
+notification.textContent = 'Music playback requires user interaction first.';
+document.body.appendChild(notification);
+setTimeout(() => notification.remove(), 3000);
+}
+});
+
+// Volume slider
+const volumeSlider = document.createElement('input');
+volumeSlider.type = 'range';
+volumeSlider.min = '0';
+volumeSlider.max = '1';
+volumeSlider.step = '0.1';
+volumeSlider.value = '0.5';
+volumeSlider.style.cssText = `
+width: 80px;
+height: 4px;
+-webkit-appearance: none;
+background: rgba(255, 255, 255, 0.5);
+border-radius: 2px;
+outline: none;
+`;
+
+volumeSlider.addEventListener('input', (e) => {
+audioElement.volume = parseFloat(e.target.value);
+});
+
+// Append controls
+musicContainer.appendChild(musicButton);
+musicContainer.appendChild(volumeSlider);
+document.body.appendChild(musicContainer);
+
+// Try to autoplay if possible (this might be blocked by browsers)
+document.addEventListener('click', async () => {
+if (!isPlaying) {
+try {
+await audioElement.play();
+isPlaying = true;
+musicButton.innerHTML = '<i data-lucide="volume-2" class="icon-volume-high"></i>';
+musicButton.title = 'Pause Music';
+} catch (error) {
+console.log('Autoplay failed - user interaction needed');
+}
+}
+}, { once: true });
+}
+</script><script>
+// Initialize Lucide icons
+document.addEventListener('DOMContentLoaded', function() {
+if (typeof lucide !== 'undefined') {
+lucide.createIcons();
+}
+});
+</script>
+<!-- Unified Navigation & Data Management System -->
+<script type="module" src="../../utils/unifiedNavigation.js"></script>
+<script type="module" src="../../utils/dataManager.js"></script>
+<script type="module" src="../../utils/jsonDatabase.js"></script>
+<script>
+// Initialize unified systems when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🚀 Unified systems loaded for countdown');
+});
+</script>
+</body></html>

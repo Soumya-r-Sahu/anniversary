@@ -1,0 +1,38 @@
+{
+  "config": {
+    "apiResponse": {
+      "fastMode": true,
+      "cacheEnabled": true,
+      "maxResponseTime": 100,
+      "fallbackEnabled": true
+    },
+    "dataSync": {
+      "autoRefresh": false,
+      "refreshInterval": 3600000,
+      "lastUpdated": "2024-12-28T00:00:00Z"
+    }
+  },
+  "endpoints": {
+    "personalData": "/assets/json/personal-data.json",
+    "memories": "/assets/json/memories.json", 
+    "timeline": "/assets/json/timeline.json",
+    "messages": "/assets/json/messages.json",
+    "settings": "/assets/json/settings.json"
+  },
+  "dataSources": {
+    "primary": "local_json",
+    "backup": "localStorage",
+    "emergency": "hardcoded_fallback"
+  },
+  "performance": {
+    "preloadData": true,
+    "lazyLoadImages": true,
+    "compressionEnabled": false,
+    "minifyResponses": false
+  },
+  "security": {
+    "validateJsonStructure": true,
+    "sanitizeUserInputs": true,
+    "allowCORS": true
+  }
+}

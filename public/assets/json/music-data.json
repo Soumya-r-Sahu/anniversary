@@ -1,0 +1,115 @@
+{
+  "playlists": [
+    {
+      "id": "our_song_playlist",
+      "title": "Our Love Songs",
+      "description": "The soundtrack to our love story",
+      "totalTracks": 20,
+      "duration": "1h 23m",
+      "mood": "romantic",
+      "featured": true,
+      "created": "2024-01-01T00:00:00",
+      "updated": "2024-10-15T00:00:00"
+    },
+    {
+      "id": "dance_together",
+      "title": "Dance With Me",
+      "description": "Songs that make us want to dance in the kitchen",
+      "totalTracks": 15,
+      "duration": "58m",
+      "mood": "upbeat",
+      "featured": false,
+      "created": "2024-03-10T00:00:00",
+      "updated": "2024-09-20T00:00:00"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "track_001",
+      "title": "Perfect",
+      "artist": "Ed Sheeran",
+      "album": "÷ (Divide)",
+      "duration": "4:23",
+      "playlistIds": ["our_song_playlist"],
+      "significance": "Our first dance song",
+      "memory": "Playing softly during our first slow dance in the living room",
+      "mood": "romantic",
+      "featured": true,
+      "dateAdded": "2024-01-15T00:00:00",
+      "playCount": 47,
+      "lastPlayed": "2024-10-20T19:30:00"
+    },
+    {
+      "id": "track_002",
+      "title": "All of Me",
+      "artist": "John Legend",
+      "album": "Love in the Future",
+      "duration": "4:29",
+      "playlistIds": ["our_song_playlist"],
+      "significance": "Jerry's dedication to Soumya",
+      "memory": "Jerry sang this while cooking breakfast on a Sunday morning",
+      "mood": "loving",
+      "featured": true,
+      "dateAdded": "2024-02-14T00:00:00",
+      "playCount": 32,
+      "lastPlayed": "2024-10-18T08:15:00"
+    },
+    {
+      "id": "track_003",
+      "title": "Can't Help Myself",
+      "artist": "Four Tops",
+      "album": "Four Tops Second Album",
+      "duration": "2:57",
+      "playlistIds": ["dance_together"],
+      "significance": "Our kitchen dance anthem",
+      "memory": "The song that started our tradition of kitchen dance parties",
+      "mood": "joyful",
+      "featured": false,
+      "dateAdded": "2024-03-22T00:00:00",
+      "playCount": 28,
+      "lastPlayed": "2024-10-19T20:45:00"
+    },
+    {
+      "id": "track_004",
+      "title": "Make You Feel My Love",
+      "artist": "Adele",
+      "album": "19",
+      "duration": "3:32",
+      "playlistIds": ["our_song_playlist"],
+      "significance": "Comfort song",
+      "memory": "Played during difficult times to remind us of our strength together",
+      "mood": "comforting",
+      "featured": true,
+      "dateAdded": "2024-04-05T00:00:00",
+      "playCount": 19,
+      "lastPlayed": "2024-10-15T21:20:00"
+    }
+  ],
+  "music_memories": [
+    {
+      "id": "memory_001",
+      "date": "2024-01-15T20:30:00",
+      "description": "First slow dance in the living room to 'Perfect'",
+      "trackId": "track_001",
+      "emotion": "magical",
+      "location": "Living Room"
+    },
+    {
+      "id": "memory_002",
+      "date": "2024-03-22T18:00:00", 
+      "description": "Kitchen dance party that lasted 2 hours",
+      "trackId": "track_003",
+      "emotion": "euphoric",
+      "location": "Kitchen"
+    }
+  ],
+  "settings": {
+    "autoplay": true,
+    "repeat": false,
+    "shuffle": false,
+    "volume": 0.7,
+    "crossfade": 3,
+    "show_lyrics": true,
+    "background_music": false
+  }
+}

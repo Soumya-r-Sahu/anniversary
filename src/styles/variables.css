@@ -1,30 +1,33 @@
 
 
 :root  {
-    /* Primary Dark Romantic Colors - Deep Midnight Purple Creates Intimacy */
-  --color-primary: #8b5a8c;
-    --color-primary-light: #a67ba8;
-    --color-primary-dark: #6b2c5f;
-    --color-primary-alpha: rgba(139, 90, 140, 0.15);
-    /* Dark Romantic Background System */
-  --bg-primary: #1a0b2e;
-    /* Deep midnight purple - creates intimacy */
-  --bg-secondary: #2d1b3d;
-    /* Rich burgundy purple - adds warmth */
-  --bg-tertiary: #3d2a4d;
-    /* Deeper purple for cards */
-  --bg-card: #2d1b3d;
-    /* Rich burgundy for elevated elements */
+    /* Anniversary Website v4.0.0 - System-Wide Color Palette */
+  --bg-base: #2D1B2F;           /* Background base */
+  --accent-1: #650021;          /* Accent 1 */
+  --accent-2: #D4A5A5;          /* Accent 2 */
+  --highlight-text: #FADCD9;    /* Highlight Text */
+  --glow-active: #FF6B6B;       /* Glow/Active Button */
+  --secondary-text: #AAA2BF;    /* Secondary Text */
+  --music-player-bg: #1C1427;   /* Music player background */
+  --firework-video-bg: #121212; /* Firework/video background */
 
-  /* Dark Romantic Text Hierarchy */
-  --text-primary: #f8e8ff;
-    /* Light lavender for primary text */
-  --text-secondary: #d1a3d1;
-    /* Soft pink for secondary text */
-  --text-tertiary: #b794b7;
-    /* Muted pink for tertiary text */
-  --text-muted: #9a7a9b;
-    /* Subtle purple for muted text */
+    /* Legacy Dark Romantic Colors - Backwards Compatibility */
+  --color-primary: var(--accent-1);
+    --color-primary-light: var(--accent-2);
+    --color-primary-dark: var(--accent-1);
+    --color-primary-alpha: rgba(101, 0, 33, 0.15);
+    
+    /* Updated Background System */
+  --bg-primary: var(--bg-base);
+  --bg-secondary: var(--bg-base);
+  --bg-tertiary: var(--music-player-bg);
+  --bg-card: var(--bg-base);
+
+  /* Updated Text Hierarchy */
+  --text-primary: var(--highlight-text);
+  --text-secondary: var(--secondary-text);
+  --text-tertiary: var(--secondary-text);
+  --text-muted: var(--secondary-text);
 
   /* Enhanced Pink Palette - Dark Romantic */
   --pink-50: #f8e8ff;

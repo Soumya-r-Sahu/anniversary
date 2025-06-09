@@ -1,28 +1,16 @@
-/* Anniversary Website v3.0.0 - Shared Styles for HTML Pages */
+/* Anniversary Website v4.0.0 - Shared Styles for HTML Pages */
 
 /* Enhanced Theme System */
 @import url('./variables.css');
-    @import url('./theme-integration.css');
-    @import url('./advanced-3d-effects.css');
-    @import url('./professional-icons.css');
-    /* Import Google Fonts - Enhanced Typography */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;
-    600;
-    700&family=Poppins:wght@300;
-    400;
-    500;
-    600;
-    700&family=Inter:wght@300;
-    400;
-    500;
-    600;
-    700&family=Playfair+Display:wght@400;
-    500;
-    600;
-    700&display=swap');
-    /* Lucide Icons CDN */
-@import url('https://unpkg.com/lucide@latest/dist/umd/lucide.js');
-    /* Container and Layout Utilities */
+@import url('./color-palette.css');
+@import url('./theme-integration.css');
+@import url('./advanced-3d-effects.css');
+@import url('./professional-icons.css');
+
+/* Import Google Fonts - Enhanced Typography */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Container and Layout Utilities */
 .container  {
     width: 100%;
     max-width: 1200px;

@@ -243,31 +243,113 @@ particle.parentNode.removeChild(particle);
 }, 3000);
 }
 
-// Enhanced app initialization
+// Anniversary Website v4.0.0 - Intelligent Redirection System
+function determineRedirection() {
+// Target anniversary date: June 16, 2025 at midnight
+const targetDate = new Date('2025-06-16T00:00:00');
+const currentDate = new Date();
+const timeRemaining = targetDate.getTime() - currentDate.getTime();
+
+console.log('🎯 Anniversary Date Check:', {
+target: targetDate.toISOString(),
+current: currentDate.toISOString(),
+timeRemaining: timeRemaining,
+daysRemaining: Math.ceil(timeRemaining / (1000 * 60 * 60 * 24))
+});
+
+// Get current surprise state
+const surpriseState = getSurpriseState();
+
+if (timeRemaining > 0) {
+// Countdown is still active - redirect to countdown page
+console.log('⏰ Countdown active - redirecting to countdown page');
+return {
+page: 'countdown',
+path: 'src/pages/html/countdown.html',
+reason: 'countdown_active'
+};
+} else {
+// Anniversary date has passed
+if (!surpriseState.hasSeenSurprise) {
+// First visit after anniversary - show surprise
+console.log('🎁 First visit after anniversary - showing surprise');
+return {
+page: 'surprise',
+path: null, // Show inline surprise
+reason: 'first_visit_post_anniversary'
+};
+} else {
+// Return visitor - go to anniversary page
+console.log('🎉 Returning visitor - redirecting to anniversary page');
+return {
+page: 'anniversary', 
+path: 'src/pages/html/anniversary.html',
+reason: 'returning_visitor'
+};
+}
+}
+}
+
+function getSurpriseState() {
+const state = localStorage.getItem('anniversary-surprise-state');
+if (state) {
+try {
+return JSON.parse(state);
+} catch (e) {
+console.warn('Failed to parse surprise state:', e);
+}
+}
+return {
+hasSeenSurprise: false,
+firstVisitDate: null,
+surpriseViewCount: 0
+};
+}
+
+function updateSurpriseState(updates) {
+const currentState = getSurpriseState();
+const newState = { ...currentState, ...updates };
+localStorage.setItem('anniversary-surprise-state', JSON.stringify(newState));
+return newState;
+}
+
+function executeRedirection(redirectInfo) {
+console.log('🚀 Executing redirection:', redirectInfo);
+
+// Update analytics
+const analytics = JSON.parse(localStorage.getItem('anniversary-analytics') || '{}');
+analytics.lastRedirection = {
+...redirectInfo,
+timestamp: new Date().toISOString()
+};
+localStorage.setItem('anniversary-analytics', JSON.stringify(analytics));
+
+if (redirectInfo.page === 'surprise') {
+// Show inline surprise content
+hideLoadingScreen();
+initSurpriseContent();
+} else {
+// Redirect to specific page
+setTimeout(() => {
+window.location.href = redirectInfo.path;
+}, 1500);
+}
+}
+
+// Enhanced app initialization with intelligent redirection
 function initializeApp() {
 // Start background effects
 createFloatingParticles();
 
-// Hide loading screen after React app loads
-setTimeout(() => {
-hideLoadingScreen();
-}, 2000);
+// Determine where to redirect based on current state
+const redirectInfo = determineRedirection();
 
-// Show surprise first, then redirect to anniversary page
-const surpriseShown = sessionStorage.getItem('surprise-shown');
-if (!surpriseShown) {
-// First-time visitors see the surprise
+console.log('🎯 Anniversary Website v4.0.0 - Intelligent Redirection:', redirectInfo);
+
+// Execute redirection after brief loading
 setTimeout(() => {
-// Show surprise content directly in this page
-document.querySelector('.app-loading').classList.add('hidden');
-initSurpriseContent();
+executeRedirection(redirectInfo);
 }, 2000);
-} else {
-// Return visitors go directly to anniversary page
-setTimeout(() => {
-window.location.href = 'src/pages-html/anniversary.html';
-}, 2000);
-}
 }
 
 // Performance optimization
@@ -412,19 +494,25 @@ transform: translateY(0) scale(0.98);
 document.head.appendChild(style);
 }
 
-// Open surprise function
+// Open surprise function - Updated for v4.0.0 structure
 function openSurprise() {
-// Mark that surprise has been shown
-sessionStorage.setItem('surprise-shown', 'true');
+// Update surprise state
+updateSurpriseState({
+hasSeenSurprise: true,
+firstVisitDate: new Date().toISOString(),
+surpriseViewCount: getSurpriseState().surpriseViewCount + 1
+});
 
 // Add a loading effect to the button
 const button = document.querySelector('.surprise-button');
+if (button) {
 button.innerHTML = 'Opening your surprise...';
 button.classList.add('loading');
+}
 
-// Redirect to anniversary page after brief delay
+// Redirect to anniversary page after brief delay (updated path for v4.0.0)
 setTimeout(() => {
-window.location.href = 'src/pages-html/anniversary.html';
+window.location.href = 'src/pages/html/anniversary.html';
 }, 1500);
 }
 </script><script type="module" src="/src/main.tsx"></script></body></html>

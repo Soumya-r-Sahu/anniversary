@@ -1,0 +1,380 @@
+/* Fireworks Page Natural Scenery - Mountains and Trees */
+
+.fireworks-scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--firework-video-bg);
+  overflow: hidden;
+}
+
+/* Mountain Layers */
+.mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mountain-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Back Mountain Range (Furthest) */
+.mountain-back {
+  height: 25vh;
+  background: linear-gradient(
+    to top,
+    rgba(30, 30, 30, 0.9) 0%,
+    rgba(45, 45, 45, 0.7) 50%,
+    rgba(60, 60, 60, 0.5) 100%
+  );
+  clip-path: polygon(
+    0% 100%,
+    15% 60%,
+    25% 45%,
+    35% 55%,
+    45% 35%,
+    55% 50%,
+    65% 30%,
+    75% 45%,
+    85% 25%,
+    100% 40%,
+    100% 100%
+  );
+  z-index: 1;
+}
+
+/* Middle Mountain Range */
+.mountain-middle {
+  height: 35vh;
+  background: linear-gradient(
+    to top,
+    rgba(25, 25, 25, 0.95) 0%,
+    rgba(40, 40, 40, 0.8) 60%,
+    rgba(55, 55, 55, 0.6) 100%
+  );
+  clip-path: polygon(
+    0% 100%,
+    10% 70%,
+    20% 50%,
+    30% 65%,
+    40% 40%,
+    50% 55%,
+    60% 35%,
+    70% 50%,
+    80% 30%,
+    90% 45%,
+    100% 35%,
+    100% 100%
+  );
+  z-index: 2;
+}
+
+/* Front Mountain Range (Closest) */
+.mountain-front {
+  height: 45vh;
+  background: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(35, 35, 35, 0.9) 70%,
+    rgba(50, 50, 50, 0.7) 100%
+  );
+  clip-path: polygon(
+    0% 100%,
+    8% 75%,
+    18% 55%,
+    28% 70%,
+    38% 45%,
+    48% 60%,
+    58% 40%,
+    68% 55%,
+    78% 35%,
+    88% 50%,
+    100% 40%,
+    100% 100%
+  );
+  z-index: 3;
+}
+
+/* Tree Silhouettes */
+.trees {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60vh;
+  z-index: 4;
+}
+
+/* Individual Tree Groups */
+.tree-group {
+  position: absolute;
+  bottom: 0;
+}
+
+.tree-group-1 {
+  left: 5%;
+  width: 15%;
+  height: 40vh;
+}
+
+.tree-group-2 {
+  left: 25%;
+  width: 20%;
+  height: 35vh;
+}
+
+.tree-group-3 {
+  right: 15%;
+  width: 18%;
+  height: 38vh;
+}
+
+.tree-group-4 {
+  right: 2%;
+  width: 12%;
+  height: 32vh;
+}
+
+/* Pine Tree Shapes */
+.pine-tree {
+  position: absolute;
+  bottom: 0;
+}
+
+.pine-tree-1 {
+  left: 20%;
+  width: 8px;
+  height: 80%;
+  background: linear-gradient(to top, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.pine-tree-1::before {
+  content: '';
+  position: absolute;
+  bottom: 60%;
+  left: -15px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 40px solid #1a1a1a;
+}
+
+.pine-tree-1::after {
+  content: '';
+  position: absolute;
+  bottom: 75%;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 25px solid #1a1a1a;
+}
+
+.pine-tree-2 {
+  left: 60%;
+  width: 6px;
+  height: 70%;
+  background: linear-gradient(to top, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.pine-tree-2::before {
+  content: '';
+  position: absolute;
+  bottom: 55%;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 35px solid #1a1a1a;
+}
+
+.pine-tree-2::after {
+  content: '';
+  position: absolute;
+  bottom: 70%;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 20px solid #1a1a1a;
+}
+
+/* Deciduous Tree Shapes using CSS */
+.deciduous-tree {
+  position: absolute;
+  bottom: 0;
+}
+
+.deciduous-tree-1 {
+  left: 40%;
+  width: 4px;
+  height: 25%;
+  background: #1a1a1a;
+}
+
+.deciduous-tree-1::before {
+  content: '';
+  position: absolute;
+  bottom: 70%;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #1a1a1a 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.deciduous-tree-2 {
+  left: 80%;
+  width: 5px;
+  height: 30%;
+  background: #1a1a1a;
+}
+
+.deciduous-tree-2::before {
+  content: '';
+  position: absolute;
+  bottom: 65%;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle, #1a1a1a 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Ground/Grass Line */
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+  background: linear-gradient(
+    to top,
+    rgba(15, 15, 15, 1) 0%,
+    rgba(25, 25, 25, 0.8) 50%,
+    transparent 100%
+  );
+  z-index: 5;
+}
+
+/* Small grass details */
+.grass-details {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3vh;
+  z-index: 6;
+}
+
+.grass-blade {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to top, #1a1a1a 0%, transparent 100%);
+}
+
+.grass-blade:nth-child(1) { left: 10%; height: 15px; }
+.grass-blade:nth-child(2) { left: 15%; height: 12px; }
+.grass-blade:nth-child(3) { left: 22%; height: 18px; }
+.grass-blade:nth-child(4) { left: 28%; height: 10px; }
+.grass-blade:nth-child(5) { left: 35%; height: 16px; }
+.grass-blade:nth-child(6) { left: 42%; height: 14px; }
+.grass-blade:nth-child(7) { left: 48%; height: 11px; }
+.grass-blade:nth-child(8) { left: 55%; height: 17px; }
+.grass-blade:nth-child(9) { left: 62%; height: 13px; }
+.grass-blade:nth-child(10) { left: 68%; height: 15px; }
+.grass-blade:nth-child(11) { left: 75%; height: 12px; }
+.grass-blade:nth-child(12) { left: 82%; height: 19px; }
+.grass-blade:nth-child(13) { left: 88%; height: 14px; }
+.grass-blade:nth-child(14) { left: 94%; height: 11px; }
+
+/* Subtle mist/fog effect */
+.mist {
+  position: absolute;
+  bottom: 15vh;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(
+    to top,
+    rgba(40, 40, 40, 0.1) 0%,
+    rgba(60, 60, 60, 0.05) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+  animation: mistFlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes mistFlow {
+  from {
+    opacity: 0.3;
+    transform: translateX(-2%);
+  }
+  to {
+    opacity: 0.1;
+    transform: translateX(2%);
+  }
+}
+
+/* Stars in the sky */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--highlight-text);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+.star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.star:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 8%; left: 50%; animation-delay: 1s; }
+.star:nth-child(4) { top: 20%; left: 70%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 12%; left: 85%; animation-delay: 2s; }
+.star:nth-child(6) { top: 25%; left: 20%; animation-delay: 2.5s; }
+.star:nth-child(7) { top: 18%; left: 60%; animation-delay: 3s; }
+.star:nth-child(8) { top: 22%; left: 80%; animation-delay: 0.3s; }
+
+@keyframes twinkle {
+  from {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mountain-back { height: 20vh; }
+  .mountain-middle { height: 30vh; }
+  .mountain-front { height: 40vh; }
+  .trees { height: 50vh; }
+  .ground { height: 6vh; }
+}
+
+@media (max-width: 480px) {
+  .mountain-back { height: 18vh; }
+  .mountain-middle { height: 25vh; }
+  .mountain-front { height: 35vh; }
+  .trees { height: 45vh; }
+  .ground { height: 5vh; }
+}

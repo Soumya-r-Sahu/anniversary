@@ -1,0 +1,139 @@
+{
+  "memories": [
+    {
+      "id": "memory_001",
+      "title": "The Day We Met",
+      "date": "2023-12-01T14:30:00",
+      "category": "milestone",
+      "description": "It was a crisp December afternoon when our eyes first met across the college courtyard. I remember thinking how your smile could light up the entire campus...",
+      "location": "College Campus - Main Courtyard",
+      "mood": "magical",
+      "participants": ["Jerry", "Soumya"],
+      "tags": ["first_meeting", "destiny", "college", "smile"],
+      "significance": 10,
+      "photoId": "photo_first_meeting",
+      "weather": "crisp and clear",
+      "featured": true,
+      "page": 1
+    },
+    {
+      "id": "memory_002", 
+      "title": "First Coffee Together",
+      "date": "2023-12-08T16:00:00",
+      "category": "date",
+      "description": "Our first unofficial date at the campus coffee shop. We talked for 4 hours straight about everything and nothing. I knew then that I wanted to know everything about you...",
+      "location": "Campus Coffee Shop",
+      "mood": "excited",
+      "participants": ["Jerry", "Soumya"],
+      "tags": ["first_coffee", "conversation", "connection", "time_flying"],
+      "significance": 9,
+      "photoId": "photo_first_coffee",
+      "weather": "cozy inside, cold outside",
+      "featured": true,
+      "page": 2
+    },
+    {
+      "id": "memory_003",
+      "title": "The Flour Fight",
+      "date": "2024-04-10T19:00:00",
+      "category": "funny",
+      "description": "What started as an attempt to bake cookies turned into the Great Flour War of 2024. We ended up with more flour on us than in the bowl, but our laughter echoed through the kitchen for hours...",
+      "location": "Our Kitchen",
+      "mood": "playful",
+      "participants": ["Jerry", "Soumya"],
+      "tags": ["baking", "flour_fight", "laughter", "mess", "domestic"],
+      "significance": 8,
+      "photoId": "photo_003",
+      "weather": "rainy evening, warm inside",
+      "featured": false,
+      "page": 3
+    },
+    {
+      "id": "memory_004",
+      "title": "Midnight Stargazing",
+      "date": "2024-07-20T23:30:00",
+      "category": "romantic",
+      "description": "Lying on a blanket under the stars, your head on my shoulder, talking about our dreams and future. You pointed out constellations while I got lost in the constellation of freckles on your cheek...",
+      "location": "Hilltop Park",
+      "mood": "romantic",
+      "participants": ["Jerry", "Soumya"],
+      "tags": ["stargazing", "dreams", "future", "blanket", "constellations"],
+      "significance": 10,
+      "photoId": "photo_stargazing",
+      "weather": "clear starry night",
+      "featured": true,
+      "page": 4
+    },
+    {
+      "id": "memory_005",
+      "title": "Rainy Day Couch Fort",
+      "date": "2024-09-15T13:00:00",
+      "category": "cozy",
+      "description": "When the power went out during the storm, we built the most elaborate couch fort and spent the day telling stories by candlelight. Sometimes the best adventures happen at home...",
+      "location": "Living Room",
+      "mood": "cozy",
+      "participants": ["Jerry", "Soumya"],
+      "tags": ["rainy_day", "couch_fort", "candlelight", "stories", "power_outage"],
+      "significance": 8,
+      "photoId": "photo_couch_fort",
+      "weather": "thunderstorm",
+      "featured": false,
+      "page": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": "milestone",
+      "name": "Milestones",
+      "description": "Important moments that shaped our journey",
+      "color": "#FF69B4",
+      "icon": "🎯"
+    },
+    {
+      "id": "date",
+      "name": "Dates",
+      "description": "Special times we spent together",
+      "color": "#9D4EDD",
+      "icon": "💕"
+    },
+    {
+      "id": "funny",
+      "name": "Funny Moments",
+      "description": "Times that made us laugh until our stomachs hurt",
+      "color": "#F59E0B",
+      "icon": "😂"
+    },
+    {
+      "id": "romantic",
+      "name": "Romantic",
+      "description": "Moments that took our breath away",
+      "color": "#EF4444",
+      "icon": "💖"
+    },
+    {
+      "id": "cozy",
+      "name": "Cozy Times",
+      "description": "Quiet, intimate moments at home",
+      "color": "#10B981",
+      "icon": "🏠"
+    }
+  ],
+  "book_settings": {
+    "pages_per_view": 2,
+    "auto_flip": false,
+    "flip_duration": 800,
+    "page_turn_sound": true,
+    "background_music": false,
+    "show_dates": true,
+    "show_weather": true,
+    "font_size": "medium"
+  },
+  "stats": {
+    "total_memories": 5,
+    "featured_memories": 3,
+    "categories_used": 5,
+    "average_significance": 8.6,
+    "most_active_month": "April 2024",
+    "memory_streak_days": 15
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "specialMoments": [
+    {
+      "id": "first_interaction",
+      "date": "2024-06-16T00:00:00",
+      "title": "First Hello",
+      "description": "The conversation that started our beautiful journey",
+      "category": "milestone",
+      "emotion": "excited",
+      "location": "Online",
+      "tags": ["first", "beginning", "special"]
+    },
+    {
+      "id": "first_meet",
+      "date": "2023-12-01T00:00:00",
+      "title": "First Meeting",
+      "description": "When we met face to face for the first time",
+      "category": "milestone",
+      "emotion": "nervous_excited",
+      "location": "College Campus",
+      "tags": ["meeting", "campus", "destiny"]
+    },
+    {
+      "id": "first_date",
+      "date": "2024-01-15T00:00:00",
+      "title": "Our First Date",
+      "description": "The perfect beginning of our romantic journey",
+      "category": "date",
+      "emotion": "romantic",
+      "location": "City Park Cafe",
+      "tags": ["date", "cafe", "romantic"]
+    }
+  ],
+  "monthlyHighlights": {
+    "2024-06": [
+      {
+        "event": "First Interaction",
+        "date": "2024-06-16",
+        "significance": "The spark that started everything"
+      }
+    ],
+    "2024-01": [
+      {
+        "event": "First Date",
+        "date": "2024-01-15",
+        "significance": "Our romantic journey begins"
+      }
+    ],
+    "2023-12": [
+      {
+        "event": "First Meeting",
+        "date": "2023-12-01",
+        "significance": "Destiny brought us together"
+      }
+    ]
+  },
+  "photoAlbums": [
+    {
+      "albumId": "first_moments",
+      "title": "Our Beginning",
+      "description": "The precious early moments of our love story",
+      "coverImage": "/assets/images/memories/first-moments-cover.jpg",
+      "photoCount": 12,
+      "dateRange": "2023-12 to 2024-02"
+    },
+    {
+      "albumId": "special_dates",
+      "title": "Date Nights",
+      "description": "All our wonderful dates and adventures",
+      "coverImage": "/assets/images/memories/dates-cover.jpg",
+      "photoCount": 24,
+      "dateRange": "2024-01 to Present"
+    }
+  ]
+}

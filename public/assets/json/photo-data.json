@@ -1,0 +1,119 @@
+{
+  "galleries": {
+    "main": {
+      "id": "main_gallery",
+      "title": "Our Love Story in Pictures",
+      "description": "Every photo tells a piece of our beautiful journey",
+      "totalPhotos": 24,
+      "categories": ["dates", "adventures", "everyday_moments", "special_occasions"]
+    }
+  },
+  "photos": [
+    {
+      "id": "photo_001",
+      "filename": "first-date.jpg",
+      "title": "Our First Date",
+      "description": "The nervous excitement, the shy smiles - our first official date at the City Park Cafe",
+      "date": "2024-01-15T00:00:00",
+      "location": "City Park Cafe",
+      "category": "dates",
+      "tags": ["first_date", "milestone", "nervous_excitement"],
+      "people": ["Jerry", "Soumya"],
+      "mood": "excited", 
+      "featured": true,
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "alt": "Jerry and Soumya on their first date at a cozy cafe"
+    },
+    {
+      "id": "photo_002",
+      "filename": "sunset-walk.jpg", 
+      "title": "Golden Hour Magic",
+      "description": "Walking hand in hand as the sun painted the sky in our favorite colors",
+      "date": "2024-03-20T18:30:00",
+      "location": "Riverside Park",
+      "category": "adventures",
+      "tags": ["sunset", "romantic", "golden_hour"],
+      "people": ["Jerry", "Soumya"],
+      "mood": "romantic",
+      "featured": true,
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      },
+      "alt": "Couple silhouette against beautiful sunset"
+    },
+    {
+      "id": "photo_003",
+      "filename": "cooking-together.jpg",
+      "title": "Kitchen Adventures",
+      "description": "Flour everywhere, laughter filling the air - our attempt at making homemade pasta",
+      "date": "2024-04-10T19:00:00",
+      "location": "Our Kitchen",
+      "category": "everyday_moments",
+      "tags": ["cooking", "fun", "domestic_bliss"],
+      "people": ["Jerry", "Soumya"],
+      "mood": "playful",
+      "featured": false,
+      "dimensions": {
+        "width": 1080,
+        "height": 1350
+      },
+      "alt": "Couple cooking together in a flour-dusted kitchen"
+    },
+    {
+      "id": "photo_004",
+      "filename": "anniversary-celebration.jpg",
+      "title": "Six Month Milestone",
+      "description": "Celebrating our 6-month anniversary with cake, candles, and countless dreams",
+      "date": "2024-06-16T20:00:00",
+      "location": "Home",
+      "category": "special_occasions",
+      "tags": ["anniversary", "celebration", "milestone"],
+      "people": ["Jerry", "Soumya"],
+      "mood": "joyful",
+      "featured": true,
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "alt": "Anniversary celebration with cake and candles"
+    }
+  ],
+  "albums": [
+    {
+      "id": "album_dates",
+      "title": "Our Dates",
+      "description": "Special moments from our romantic dates",
+      "cover": "photo_001",
+      "photoCount": 8,
+      "photoIds": ["photo_001"]
+    },
+    {
+      "id": "album_adventures", 
+      "title": "Adventures Together",
+      "description": "Exploring the world hand in hand",
+      "cover": "photo_002",
+      "photoCount": 6,
+      "photoIds": ["photo_002"]
+    },
+    {
+      "id": "album_everyday",
+      "title": "Everyday Magic",
+      "description": "Beautiful ordinary moments that make life extraordinary",
+      "cover": "photo_003",
+      "photoCount": 10,
+      "photoIds": ["photo_003"]
+    }
+  ],
+  "display_settings": {
+    "grid_layout": "masonry",
+    "photos_per_page": 12,
+    "show_metadata": true,
+    "enable_lightbox": true,
+    "auto_slideshow": false,
+    "slideshow_interval": 5000
+  }
+}

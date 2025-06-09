@@ -1,0 +1,206 @@
+/* Anniversary Website v4.0.0 - System-Wide Color Palette */
+
+:root {
+  /* Base Colors */
+  --bg-base: #2D1B2F;
+  --accent-1: #650021;
+  --accent-2: #D4A5A5;
+  --highlight-text: #FADCD9;
+  --glow-active: #FF6B6B;
+  --secondary-text: #AAA2BF;
+  --music-player-bg: #1C1427;
+  --firework-video-bg: #121212;
+
+  /* Derived Colors for Better UX */
+  --accent-1-hover: #7a0027;
+  --accent-1-light: rgba(101, 0, 33, 0.1);
+  --accent-2-hover: #e2b8b8;
+  --accent-2-light: rgba(212, 165, 165, 0.1);
+  --glow-active-hover: #ff5252;
+  --glow-active-light: rgba(255, 107, 107, 0.2);
+  --highlight-text-dim: rgba(250, 220, 217, 0.8);
+  --secondary-text-light: rgba(170, 162, 191, 0.6);
+
+  /* Shadow and Border Colors */
+  --shadow-primary: rgba(101, 0, 33, 0.3);
+  --shadow-glow: rgba(255, 107, 107, 0.4);
+  --border-subtle: rgba(212, 165, 165, 0.2);
+  --border-accent: rgba(255, 107, 107, 0.3);
+
+  /* Gradient Combinations */
+  --gradient-primary: linear-gradient(135deg, var(--bg-base) 0%, var(--accent-1) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-2) 0%, var(--highlight-text) 100%);
+  --gradient-glow: linear-gradient(135deg, var(--glow-active) 0%, var(--accent-1) 100%);
+  --gradient-music: linear-gradient(135deg, var(--music-player-bg) 0%, var(--bg-base) 100%);
+}
+
+/* Global Base Styling */
+body {
+  background-color: var(--bg-base);
+  color: var(--highlight-text);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Typography Colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--highlight-text);
+}
+
+p, span, div {
+  color: var(--secondary-text);
+}
+
+/* Link Colors */
+a {
+  color: var(--accent-2);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--glow-active);
+}
+
+/* Button Base Styles */
+.btn-primary {
+  background: var(--gradient-glow);
+  color: var(--highlight-text);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 4px 12px var(--shadow-glow);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--glow-active-hover);
+  box-shadow: 0 6px 20px var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--accent-1);
+  color: var(--highlight-text);
+  border: 1px solid var(--accent-1-hover);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-1-hover);
+  box-shadow: 0 4px 12px var(--shadow-primary);
+}
+
+/* Input and Form Elements */
+input, textarea, select {
+  background: rgba(45, 27, 47, 0.8);
+  border: 1px solid var(--border-subtle);
+  color: var(--highlight-text);
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--glow-active);
+  box-shadow: 0 0 10px var(--glow-active-light);
+  outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--secondary-text-light);
+}
+
+/* Card and Container Styles */
+.card {
+  background: rgba(45, 27, 47, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Navigation Styles */
+.nav-item {
+  color: var(--secondary-text);
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--glow-active);
+}
+
+.nav-background {
+  background: rgba(45, 27, 47, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Music Player Specific */
+.music-player {
+  background: var(--music-player-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.music-controls {
+  background: var(--gradient-music);
+}
+
+/* Fireworks Page Specific */
+.fireworks-container {
+  background: var(--firework-video-bg);
+}
+
+/* Utility Classes */
+.text-primary { color: var(--highlight-text); }
+.text-secondary { color: var(--secondary-text); }
+.text-accent { color: var(--accent-2); }
+.text-glow { color: var(--glow-active); }
+
+.bg-primary { background-color: var(--bg-base); }
+.bg-accent-1 { background-color: var(--accent-1); }
+.bg-accent-2 { background-color: var(--accent-2); }
+.bg-music { background-color: var(--music-player-bg); }
+.bg-firework { background-color: var(--firework-video-bg); }
+
+.border-accent { border-color: var(--border-accent); }
+.border-subtle { border-color: var(--border-subtle); }
+
+/* Glow Effects */
+.glow-soft {
+  box-shadow: 0 0 20px var(--glow-active-light);
+}
+
+.glow-strong {
+  box-shadow: 0 0 30px var(--shadow-glow);
+}
+
+/* Animation Classes */
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 10px var(--glow-active-light);
+  }
+  to {
+    box-shadow: 0 0 25px var(--shadow-glow);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  input, textarea, select {
+    padding: 8px 12px;
+  }
+}

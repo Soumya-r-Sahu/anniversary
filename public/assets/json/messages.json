@@ -1,0 +1,62 @@
+{
+  "messages": {
+    "countdown": {
+      "welcome": [
+        "Every heartbeat brings us closer to forever 💕",
+        "Our love story is about to reach its perfect chapter ✨",
+        "Time may be counting down, but our love is infinite 💖"
+      ],
+      "daily": [
+        "Another day closer to our special moment",
+        "Each sunrise brings us nearer to our anniversary",
+        "Today is one day closer to forever with you"
+      ],
+      "milestone": [
+        "Look how far we've come together! 🌟",
+        "Every moment with you has been magical ✨",
+        "Our journey to this day has been incredible 💕"
+      ]
+    },
+    "anniversary": {
+      "celebration": [
+        "Today is the day we've been waiting for! 🎉",
+        "Our anniversary has finally arrived! 💖",
+        "This moment is everything we dreamed it would be ✨"
+      ],
+      "reflection": [
+        "Look at all the beautiful memories we've created 💕",
+        "From our first hello to this special day 🌟",
+        "Every step of our journey led us here 💫"
+      ]
+    },
+    "encouragement": [
+      "You make every day feel like a celebration 💕",
+      "With you, every moment is a precious memory ✨",
+      "Our love story keeps getting more beautiful 💖",
+      "Together, we can conquer anything 🌟"
+    ]
+  },
+  "quotes": {
+    "love": [
+      "In you, I've found the love of my life and my closest, truest friend.",
+      "Every love story is beautiful, but ours is my favorite.",
+      "You are my today and all of my tomorrows."
+    ],
+    "anniversary": [
+      "An anniversary is a time to celebrate the joys of today, the memories of yesterday, and the hopes of tomorrow.",
+      "The best thing to hold onto in life is each other.",
+      "Love is not about how many days, months, or years you have been together, it's about how much you love each other every single day."
+    ],
+    "future": [
+      "Together is a wonderful place to be.",
+      "The best is yet to come.",
+      "Forever isn't long enough when I'm with you."
+    ]
+  },
+  "seasonalMessages": {
+    "spring": "Like flowers blooming, our love grows stronger each day 🌸",
+    "summer": "Our love shines as bright as the summer sun ☀️",
+    "autumn": "Like autumn leaves, our love is beautiful in every season 🍂",
+    "winter": "Even in winter, your love keeps my heart warm ❄️💕"
+  }
+}

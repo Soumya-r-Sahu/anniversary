@@ -1,0 +1,82 @@
+{
+  "messages": [
+    {
+      "id": "msg_001",
+      "type": "love_letter",
+      "title": "To My Dearest Jerry",
+      "from": "Soumya",
+      "to": "Jerry",
+      "date": "2024-01-01T00:00:00",
+      "content": "My beloved Jerry, every day with you feels like a beautiful dream that I never want to wake up from. Your love illuminates my world in ways I never thought possible...",
+      "tags": ["romantic", "heartfelt", "new_year"],
+      "mood": "loving",
+      "featured": true
+    },
+    {
+      "id": "msg_002", 
+      "type": "love_letter",
+      "title": "My Heart's Home",
+      "from": "Jerry",
+      "to": "Soumya",
+      "date": "2024-02-14T00:00:00",
+      "content": "Dearest Soumya, you are not just my valentine, you are my heart's permanent address. In your eyes, I found my home...",
+      "tags": ["valentine", "romantic", "poetic"],
+      "mood": "passionate",
+      "featured": true
+    },
+    {
+      "id": "msg_003",
+      "type": "sweet_note",
+      "title": "Good Morning Sunshine",
+      "from": "Jerry",
+      "to": "Soumya", 
+      "date": "2024-03-01T07:00:00",
+      "content": "Good morning, my beautiful sunshine! I hope your day is as wonderful as you make my life every single day. 💕",
+      "tags": ["morning", "sweet", "daily"],
+      "mood": "cheerful",
+      "featured": false
+    },
+    {
+      "id": "msg_004",
+      "type": "anniversary_message",
+      "title": "One Year of Magic",
+      "from": "Soumya",
+      "to": "Jerry",
+      "date": "2024-06-16T00:00:00",
+      "content": "One year ago, we promised to write our love story together. Today, I can say it's the most beautiful story I've ever been part of...",
+      "tags": ["anniversary", "milestone", "reflection"],
+      "mood": "grateful",
+      "featured": true
+    }
+  ],
+  "love_quotes": [
+    {
+      "id": "quote_001",
+      "text": "In a sea of people, my eyes will always search for you",
+      "author": "Jerry & Soumya",
+      "category": "devotion",
+      "featured": true
+    },
+    {
+      "id": "quote_002",
+      "text": "You are my today and all of my tomorrows",
+      "author": "Anonymous",
+      "category": "future",
+      "featured": true
+    },
+    {
+      "id": "quote_003",
+      "text": "Love is not about how many days, months or years you have been together. It's about how much you love each other every single day",
+      "author": "Jerry & Soumya",
+      "category": "daily_love",
+      "featured": false
+    }
+  ],
+  "daily_affirmations": [
+    "We choose love every day",
+    "Our bond grows stronger with each moment",
+    "We are perfect for each other",
+    "Our love story is unique and beautiful",
+    "We support each other's dreams unconditionally"
+  ]
+}

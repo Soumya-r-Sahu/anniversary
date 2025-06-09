@@ -1,0 +1,58 @@
+{
+  "timeline": {
+    "currentPhase": "countdown",
+    "phases": {
+      "countdown": {
+        "active": true,
+        "title": "Counting Down to Forever",
+        "description": "Every second brings us closer to our special day",
+        "targetDate": "2025-06-16T00:00:00",
+        "theme": "anticipation"
+      },
+      "anniversary": {
+        "active": false,
+        "title": "Our Anniversary Celebration",
+        "description": "The day we've been waiting for has arrived!",
+        "theme": "celebration"
+      },
+      "post_anniversary": {
+        "active": false,
+        "title": "Forever After",
+        "description": "Our journey continues beyond the special day",
+        "theme": "continuation"
+      }
+    }
+  },
+  "milestones": {
+    "daysTogetherSince": "2024-06-16",
+    "specialMoments": 15,
+    "memoriesCreated": 47,
+    "photosShared": 156,
+    "messagesExchanged": 2847,
+    "laughsShared": "Countless"
+  },
+  "countdownSettings": {
+    "targetDate": "2025-06-16T00:00:00",
+    "timezone": "UTC",
+    "displayFormat": "days_hours_minutes_seconds",
+    "showMilliseconds": false,
+    "animationSpeed": "medium",
+    "soundEnabled": true
+  },
+  "achievements": [
+    {
+      "id": "first_month",
+      "title": "First Month Together",
+      "description": "We made it through our first month!",
+      "unlockedDate": "2024-07-16",
+      "icon": "🌟"
+    },
+    {
+      "id": "six_months",
+      "title": "Half a Year of Love",
+      "description": "Six beautiful months together",
+      "unlockedDate": "2024-12-16",
+      "icon": "💫"
+    }
+  ]
+}

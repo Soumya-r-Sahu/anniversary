@@ -8,21 +8,21 @@ import MusicPlayer from './components/media/MusicPlayer'
 import ThemeProvider from './contexts/ThemeContext'
 import NotificationProvider from './contexts/NotificationContext'
 
-// Lazy load pages for better performance
-const HomePage = lazy(() => import('./pages/HomePage'))
-const CountdownPage = lazy(() => import('./pages/CountdownPage'))
-const AnniversaryPage = lazy(() => import('./pages/AnniversaryPage'))
-const LoveStoryPage = lazy(() => import('./pages/LoveStoryPage'))
-const PhotoGalleryPage = lazy(() => import('./pages/PhotoGalleryPage'))
-const MusicPlaylistPage = lazy(() => import('./pages/MusicPlaylistPage'))
-const MemoryBookPage = lazy(() => import('./pages/MemoryBookPage'))
-const SpecialDatesPage = lazy(() => import('./pages/SpecialDatesPage'))
-const FuturePlansPage = lazy(() => import('./pages/FuturePlansPage'))
-const LoveLettersPage = lazy(() => import('./pages/LoveLettersPage'))
-const ChallengesPage = lazy(() => import('./pages/ChallengesPage'))
-const WishListPage = lazy(() => import('./pages/WishListPage'))
-const FireworksPage = lazy(() => import('./pages/FireworksPage'))
-const SettingsPage = lazy(() => import('./pages/SettingsPage'))
+// Lazy load pages for better performance - Updated for v4.0.0 structure
+const HomePage = lazy(() => import('./pages/react/HomePage'))
+const CountdownPage = lazy(() => import('./pages/react/CountdownPage'))
+const AnniversaryPage = lazy(() => import('./pages/react/AnniversaryPage'))
+const LoveStoryPage = lazy(() => import('./pages/react/LoveStoryPage'))
+const PhotoGalleryPage = lazy(() => import('./pages/react/PhotoGalleryPage'))
+const MusicPlaylistPage = lazy(() => import('./pages/react/MusicPlaylistPage'))
+const MemoryBookPage = lazy(() => import('./pages/react/MemoryBookPage'))
+const SpecialDatesPage = lazy(() => import('./pages/react/SpecialDatesPage'))
+const FuturePlansPage = lazy(() => import('./pages/react/FuturePlansPage'))
+const LoveLettersPage = lazy(() => import('./pages/react/LoveLettersPage'))
+const ChallengesPage = lazy(() => import('./pages/react/ChallengesPage'))
+const WishListPage = lazy(() => import('./pages/react/WishListPage'))
+const FireworksPage = lazy(() => import('./pages/react/FireworksPage'))
+const SettingsPage = lazy(() => import('./pages/react/SettingsPage'))
 
 // Page transition variants
 const pageVariants = {
