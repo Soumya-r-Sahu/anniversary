@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Social -->
+    <title>Jerry & Soumya - Our Love Story Anniversary</title>
+    <meta name="description" content="A beautiful interactive anniversary website celebrating Jerry and Soumya's love story with stunning effects, memories, and surprises.">
+    <meta name="keywords" content="anniversary, love story, Jerry, Soumya, romance, celebration, interactive">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Jerry & Soumya - Anniversary Love Story">
+    <meta property="og:description" content="An interactive celebration of our beautiful love story">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/images/og-love.jpg">
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#ec4899">
+    <link rel="manifest" href="./public/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/core.css">
+    <link rel="stylesheet" href="./assets/css/effects.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particle-canvas" class="particle-canvas"></div>
+    
+    <!-- Aurora Background -->
+    <div class="aurora-background">
+        <div class="aurora-layer aurora-layer-1"></div>
+        <div class="aurora-layer aurora-layer-2"></div>
+        <div class="aurora-layer aurora-layer-3"></div>
+    </div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-heart">
+                <div class="heart-pulse">💕</div>
+            </div>
+            <h1 class="loading-title">Jerry & Soumya</h1>
+            <p class="loading-subtitle">Loading our love story...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Application -->
+    <div id="app" class="app-container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                
+                <!-- Floating Hearts -->
+                <div class="floating-hearts">
+                    <div class="heart heart-1">💖</div>
+                    <div class="heart heart-2">💕</div>
+                    <div class="heart heart-3">💗</div>
+                    <div class="heart heart-4">💝</div>
+                    <div class="heart heart-5">❤️</div>
+                </div>
+                
+                <!-- Main Title -->
+                <div class="hero-title-container">
+                    <h1 class="hero-title">
+                        <span class="title-line">Jerry</span>
+                        <span class="title-divider">💕</span>
+                        <span class="title-line">Soumya</span>
+                    </h1>
+                    <div class="hero-subtitle">
+                        <span class="subtitle-text">Our Beautiful Love Story</span>
+                        <div class="subtitle-decoration"></div>
+                    </div>
+                </div>
+                
+                <!-- Anniversary Counter -->
+                <div class="anniversary-counter">
+                    <div class="counter-title">Together for</div>
+                    <div class="counter-stats">
+                        <div class="stat-item">
+                            <div id="days-count" class="stat-number">0</div>
+                            <div class="stat-label">Days</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="hours-count" class="stat-number">0</div>
+                            <div class="stat-label">Hours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="minutes-count" class="stat-number">0</div>
+                            <div class="stat-label">Minutes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Cards -->
+                <div class="navigation-grid">
+                    
+                    <div class="nav-card" data-page="countdown">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">⏰</div>
+                            <h3 class="nav-card-title">Countdown</h3>
+                            <p class="nav-card-description">Days until our next anniversary</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card" data-page="anniversary">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">🎉</div>
+                            <h3 class="nav-card-title">Anniversary</h3>
+                            <p class="nav-card-description">Celebrate our special day</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card" data-page="love-story">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">📖</div>
+                            <h3 class="nav-card-title">Our Story</h3>
+                            <p class="nav-card-description">The timeline of our love</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card" data-page="photo-gallery">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">📸</div>
+                            <h3 class="nav-card-title">Memories</h3>
+                            <p class="nav-card-description">Our beautiful moments</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card" data-page="music-playlist">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">🎵</div>
+                            <h3 class="nav-card-title">Our Songs</h3>
+                            <p class="nav-card-description">The soundtrack of love</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card" data-page="love-letters">
+                        <div class="nav-card-inner">
+                            <div class="nav-card-icon">💌</div>
+                            <h3 class="nav-card-title">Love Letters</h3>
+                            <p class="nav-card-description">Words from the heart</p>
+                            <div class="nav-card-glow"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Special Message -->
+                <div class="special-message">
+                    <div class="message-card">
+                        <div class="message-icon">💝</div>
+                        <p class="message-text">
+                            "Every moment with you is a gift I cherish deeply. Here's to our beautiful journey together."
+                        </p>
+                        <div class="message-signature">- Your Soumya 💖</div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+    
+    <!-- Music Player -->
+    <div class="music-player-widget">
+        <div class="music-controls">
+            <button id="music-toggle" class="music-btn">
+                <i data-lucide="play" class="music-icon"></i>
+            </button>
+            <div class="music-info">
+                <div class="music-title">Our Love Song</div>
+                <div class="music-artist">Playing softly...</div>
+            </div>
+            <div class="music-volume">
+                <input type="range" id="volume-slider" min="0" max="100" value="30">
+            </div>
+        </div>
+        <div class="music-visualizer">
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="./assets/js/core.js"></script>
+    <script src="./assets/js/effects.js"></script>
+    <script src="./assets/js/interactions.js"></script>
+    <script>
+        // Initialize the magical anniversary experience
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('💕 Welcome to Jerry & Soumya\'s Love Story! 💕');
+            
+            // Initialize core systems
+            AnniversaryApp.init();
+            
+            // Start loading sequence
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('fade-out');
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('app').classList.add('visible');
+                }, 1000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

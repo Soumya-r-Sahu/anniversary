@@ -1,518 +1,913 @@
-<!DOCTYPE html><html lang="en" data-theme="dark-romantic"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Jerry & Soumya Anniversary"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><meta name="msapplication-TileColor" content="#ec4899"><meta name="msapplication-navbutton-color" content="#ec4899"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Anniversary Website - Jerry & Soumya</title><meta name="description" content="A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive features, photo galleries, countdown timer, and romantic surprises."><meta name="keywords" content="anniversary, love story, Jerry, Soumya, romance, celebration, memories, photos, countdown"><meta name="author" content="Soumya"><meta name="robots" content="index, follow"><meta property="og:title" content="Jerry & Soumya - Our Love Story Anniversary"><meta property="og:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises."><meta property="og:type" content="website"><meta property="og:url" content="https://username.github.io/anniversary-website/"><meta property="og:image" content="https://username.github.io/anniversary-website/assets/images/og-image.jpg"><meta property="og:site_name" content="Jerry & Soumya Anniversary"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Jerry & Soumya - Our Love Story Anniversary"><meta name="twitter:description" content="A beautiful anniversary website celebrating our love story with interactive features and romantic surprises."><meta name="twitter:image" content="https://username.github.io/anniversary-website/assets/images/twitter-card.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='35' r='15' fill='%23ec4899'/%3E%3Ccircle cx='70' cy='35' r='15' fill='%23ec4899'/%3E%3Cpath d='M15,50 Q50,85 85,50 Q70,35 50,60 Q30,35 15,50' fill='%23ec4899'/%3E%3C/svg%3E"><link rel="manifest" href="/manifest.json"><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script><style>
-/* CSS Variables for theming */
-:root {
---primary-color: #ec4899;
---primary-light: #f472b6;
---primary-dark: #be185d;
---secondary-color: #fbbf24;
---background-light: #fef7ff;
---background-dark: #1a1a2e;
---text-light: #374151;
---text-dark: #f9fafb;
---glass-bg: rgba(255, 255, 255, 0.1);
---glass-border: rgba(255, 255, 255, 0.2);
---shadow-light: 0 10px 25px rgba(236, 72, 153, 0.1);
---shadow-heavy: 0 25px 50px rgba(236, 72, 153, 0.2);
-}
-
-/* Reset and base styles */
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-html {
-scroll-behavior: smooth;
-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-text-rendering: optimizeLegibility;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-}
-
-body {
-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-background: linear-gradient(135deg, #1a0b2e 0%, #2d1b3d 50%, #3d2a4d 100%);
-color: #f8e8ff;
-min-height: 100vh;
-overflow-x: hidden;
-position: relative;
-}
-
-/* Enhanced loading screen - Dark Romantic */
-.app-loading {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(135deg, #1a0b2e, #2d1b3d, #8b5a8c);
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 9999;
-transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.app-loading.hidden {
-opacity: 0;
-visibility: hidden;
-}
-
-.loading-content {
-text-align: center;
-color: white;
-animation: fadeInUp 1s ease-out;
-}
-
-.loading-heart {
-font-size: 4rem;
-margin-bottom: 1rem;
-animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.loading-title {
-font-family: 'Dancing Script', cursive;
-font-size: 2.5rem;
-font-weight: 700;
-margin-bottom: 0.5rem;
-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.loading-subtitle {
-font-size: 1.1rem;
-opacity: 0.9;
-margin-bottom: 2rem;
-}
-
-.loading-spinner {
-width: 40px;
-height: 40px;
-border: 3px solid rgba(255, 255, 255, 0.3);
-border-top: 3px solid white;
-border-radius: 50%;
-animation: spin 1s linear infinite;
-margin: 0 auto;
-}
-
-/* Animations */
-@keyframes heartbeat {
-0% { transform: scale(1); }
-14% { transform: scale(1.3); }
-28% { transform: scale(1); }
-42% { transform: scale(1.3); }
-70% { transform: scale(1); }
-}
-
-@keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-
-@keyframes float {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-10px); }
-}
-
-/* Background effects */
-.background-effects {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: -1;
-}
-
-.floating-particle {
-position: absolute;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 70%, transparent 100%);
-box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
-animation: floatUp 8s ease-in-out infinite;
-pointer-events: none;
-}
-
-@keyframes floatUp {
-0% {
-opacity: 0;
-transform: translateY(100vh) rotate(0deg) scale(0.5);
-}
-10% {
-opacity: 1;
-transform: translateY(90vh) rotate(36deg) scale(1);
-}
-90% {
-opacity: 1;
-transform: translateY(10vh) rotate(324deg) scale(1);
-}
-100% {
-opacity: 0;
-transform: translateY(-100px) rotate(360deg) scale(0.5);
-}
-}
-
-/* Root container enhancement */
-#root {
-min-height: 100vh;
-position: relative;
-z-index: 1;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-.loading-heart {
-font-size: 3rem;
-}
-
-.loading-title {
-font-size: 2rem;
-}
-
-.loading-subtitle {
-font-size: 1rem;
-}
-}
-
-/* Enhanced focus styles */
-*:focus {
-outline: 2px solid var(--primary-color);
-outline-offset: 2px;
-}
-
-/* Smooth transitions for theme changes */
-* {
-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-</style><link rel="stylesheet" href="src/styles/variables.css"><link rel="stylesheet" href="src/styles/theme-integration.css"><link rel="stylesheet" href="ui-enhancement-master.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E"></head><body><div class="app-loading" id="appLoading"><div class="loading-content"><div class="loading-heart">💕</div><h1 class="loading-title">Jerry & Soumya</h1><p class="loading-subtitle">Loading our love story...</p><div class="loading-spinner"></div></div></div><div class="background-effects" id="backgroundEffects"></div><div id="root"></div><script>
-// Initialize Lucide icons when available
-document.addEventListener('DOMContentLoaded', () => {
-if (typeof lucide !== 'undefined') {
-lucide.createIcons();
-}
-});
-
-// Enhanced loading screen management
-function hideLoadingScreen() {
-const loadingScreen = document.getElementById('appLoading');
-if (loadingScreen) {
-loadingScreen.classList.add('hidden');
-setTimeout(() => {
-loadingScreen.style.display = 'none';
-}, 500);
-}
-}
-
-// Create floating particle background effect
-function createFloatingParticles() {
-const container = document.getElementById('backgroundEffects');
-if (!container) return;
-
-const colors = ['#ec4899', '#f472b6', '#fbbf24', '#a855f7', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
-
-setInterval(() => {
-const particle = document.createElement('div');
-particle.className = 'floating-particle';
-particle.style.left = Math.random() * 100 + '%';
-particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-particle.style.animationDelay = Math.random() * 2 + 's';
-particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-particle.style.width = (Math.random() * 8 + 4) + 'px';
-particle.style.height = particle.style.width;
-
-container.appendChild(particle);
-
-// Remove particle after animation
-setTimeout(() => {
-if (particle.parentNode) {
-particle.parentNode.removeChild(particle);
-}
-}, 10000);
-}, 3000);
-}
-
-// Anniversary Website v4.0.0 - Intelligent Redirection System
-function determineRedirection() {
-// Target anniversary date: June 16, 2025 at midnight
-const targetDate = new Date('2025-06-16T00:00:00');
-const currentDate = new Date();
-const timeRemaining = targetDate.getTime() - currentDate.getTime();
-
-console.log('🎯 Anniversary Date Check:', {
-target: targetDate.toISOString(),
-current: currentDate.toISOString(),
-timeRemaining: timeRemaining,
-daysRemaining: Math.ceil(timeRemaining / (1000 * 60 * 60 * 24))
-});
-
-// Get current surprise state
-const surpriseState = getSurpriseState();
-
-if (timeRemaining > 0) {
-// Countdown is still active - redirect to countdown page
-console.log('⏰ Countdown active - redirecting to countdown page');
-return {
-page: 'countdown',
-path: 'src/pages/html/countdown.html',
-reason: 'countdown_active'
-};
-} else {
-// Anniversary date has passed
-if (!surpriseState.hasSeenSurprise) {
-// First visit after anniversary - show surprise
-console.log('🎁 First visit after anniversary - showing surprise');
-return {
-page: 'surprise',
-path: null, // Show inline surprise
-reason: 'first_visit_post_anniversary'
-};
-} else {
-// Return visitor - go to anniversary page
-console.log('🎉 Returning visitor - redirecting to anniversary page');
-return {
-page: 'anniversary', 
-path: 'src/pages/html/anniversary.html',
-reason: 'returning_visitor'
-};
-}
-}
-}
-
-function getSurpriseState() {
-const state = localStorage.getItem('anniversary-surprise-state');
-if (state) {
-try {
-return JSON.parse(state);
-} catch (e) {
-console.warn('Failed to parse surprise state:', e);
-}
-}
-return {
-hasSeenSurprise: false,
-firstVisitDate: null,
-surpriseViewCount: 0
-};
-}
-
-function updateSurpriseState(updates) {
-const currentState = getSurpriseState();
-const newState = { ...currentState, ...updates };
-localStorage.setItem('anniversary-surprise-state', JSON.stringify(newState));
-return newState;
-}
-
-function executeRedirection(redirectInfo) {
-console.log('🚀 Executing redirection:', redirectInfo);
-
-// Update analytics
-const analytics = JSON.parse(localStorage.getItem('anniversary-analytics') || '{}');
-analytics.lastRedirection = {
-...redirectInfo,
-timestamp: new Date().toISOString()
-};
-localStorage.setItem('anniversary-analytics', JSON.stringify(analytics));
-
-if (redirectInfo.page === 'surprise') {
-// Show inline surprise content
-hideLoadingScreen();
-initSurpriseContent();
-} else {
-// Redirect to specific page
-setTimeout(() => {
-window.location.href = redirectInfo.path;
-}, 1500);
-}
-}
-
-// Enhanced app initialization with intelligent redirection
-function initializeApp() {
-// Start background effects
-createFloatingParticles();
-
-// Determine where to redirect based on current state
-const redirectInfo = determineRedirection();
-
-console.log('🎯 Anniversary Website v4.0.0 - Intelligent Redirection:', redirectInfo);
-
-// Execute redirection after brief loading
-setTimeout(() => {
-executeRedirection(redirectInfo);
-}, 2000);
-}
-
-// Performance optimization
-if ('requestIdleCallback' in window) {
-requestIdleCallback(initializeApp);
-} else {
-setTimeout(initializeApp, 100);
-}
-
-// Enhanced error handling
-window.addEventListener('error', (e) => {
-console.error('App error:', e.error);
-hideLoadingScreen();
-});
-
-// Service Worker registration for PWA
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('/sw.js')
-.then((registration) => {
-console.log('SW registered: ', registration);
-})
-.catch((registrationError) => {
-console.log('SW registration failed: ', registrationError);
-});
-});
-}
-
-// Theme detection and application - Dark Romantic Default
-function applyTheme() {
-const savedTheme = localStorage.getItem('anniversary-theme');
-const theme = savedTheme || 'dark-romantic'; // Default to dark romantic
-
-document.documentElement.setAttribute('data-theme', theme);
-}
-
-// Apply theme immediately
-applyTheme();
-
-// Listen for theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
-
-// Initialize surprise content
-function initSurpriseContent() {
-const root = document.getElementById('root');
-root.innerHTML = `
-<div class="surprise-content-sanctuary"><div class="surprise-content"><div class="surprise-icon">🎁</div><h1 class="surprise-title">A Special Surprise Awaits!</h1><p class="surprise-subtitle">I've prepared something beautiful to celebrate our journey together.</p><p class="surprise-tender-feeling-communication">"Every moment with you is a gift I cherish deeply."</p><button class="surprise-action-heart" onclick="openSurprise()">
-Unwrap Your Surprise
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button></div></div>
-`;
-
-// Add surprise-specific styles
-const style = document.createElement('style');
-style.textContent = `
-.surprise-container {
-position: relative;
-z-index: 10;
-text-align: center;
-max-width: 500px;
-padding: 2rem;
-margin: 0 auto;
-}
-
-.surprise-content {
-background: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(25px);
--webkit-backdrop-filter: blur(25px);
-border: 1px solid rgba(255, 255, 255, 0.25);
-border-radius: 2rem;
-padding: 3rem 2rem;
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-animation: slideIn 1s ease-out;
-}
-
-@keyframes slideIn {
-from { transform: translateY(50px); opacity: 0; }
-to { transform: translateY(0); opacity: 1; }
-}
-
-.surprise-icon {
-font-size: 4rem;
-margin-bottom: 1.5rem;
-animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-40% { transform: translateY(-20px); }
-60% { transform: translateY(-10px); }
-}
-
-.surprise-title {
-font-family: 'Dancing Script', cursive;
-font-size: 2.5rem;
-font-weight: 700;
-color: #be185d;
-margin-bottom: 1rem;
-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.surprise-subtitle {
-font-size: 1.2rem;
-color: #6b7280;
-margin-bottom: 2rem;
-line-height: 1.6;
-}
-
-.surprise-message {
-font-style: italic;
-color: #be185d;
-margin-bottom: 2rem;
-font-size: 1.1rem;
-}
-
-.surprise-button {
-background: linear-gradient(135deg, #ec4899, #f472b6);
-color: white;
-border: none;
-padding: 1rem 2.5rem;
-font-size: 1.2rem;
-font-weight: 600;
-border-radius: 50px;
-cursor: pointer;
-transition: all 0.3s ease;
-box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-position: relative;
-overflow: hidden;
-}
-
-.surprise-button:hover {
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
-}
-
-.surprise-button:active {
-transform: translateY(0) scale(0.98);
-}
-`;
-document.head.appendChild(style);
-}
-
-// Open surprise function - Updated for v4.0.0 structure
-function openSurprise() {
-// Update surprise state
-updateSurpriseState({
-hasSeenSurprise: true,
-firstVisitDate: new Date().toISOString(),
-surpriseViewCount: getSurpriseState().surpriseViewCount + 1
-});
-
-// Add a loading effect to the button
-const button = document.querySelector('.surprise-button');
-if (button) {
-button.innerHTML = 'Opening your surprise...';
-button.classList.add('loading');
-}
-
-// Redirect to anniversary page after brief delay (updated path for v4.0.0)
-setTimeout(() => {
-window.location.href = 'src/pages/html/anniversary.html';
-}, 1500);
-}
-</script><script type="module" src="/src/main.tsx"></script></body></html>
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- ✨ Anniversary Website v5.0 - Ultimate Romantic Experience -->
+    <title>🎉 Jerry & Soumya - Forever Love Story</title>
+    <meta name="description" content="An enchanting interactive anniversary website celebrating Jerry and Soumya's eternal love with magical effects, animations, and surprises.">
+    <meta name="keywords" content="Jerry, Soumya, anniversary, love story, romantic, interactive, celebration">
+    
+    <!-- 🎨 PWA Configuration -->
+    <meta name="theme-color" content="#e91e63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Jerry & Soumya Love">
+    
+    <!-- 🌟 Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 💎 Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- 🎭 Icons & Effects -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 🎨 Core Styles -->
+    <style>
+        /* ================================
+           💎 ANNIVERSARY WEBSITE V5.0
+           MAGICAL ROMANTIC EXPERIENCE
+        ================================ */
+        
+        /* 🌟 CSS Variables - Romantic Color Palette */
+        :root {
+            /* Primary Colors */
+            --romantic-primary: #e91e63;
+            --romantic-secondary: #ff1744;
+            --romantic-accent: #ffc107;
+            --romantic-purple: #9c27b0;
+            --romantic-indigo: #3f51b5;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --text-accent: #ff6b9d;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* 🔄 Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* 💫 Magical Loading Screen */
+        .magical-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .magical-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-heart {
+            font-size: 4rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px var(--romantic-primary));
+        }
+        
+        .loader-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .loader-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+        
+        .loader-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loader-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            animation: loadingProgress 3s ease-out forwards;
+        }
+        
+        /* 🌟 Particle Background System */
+        .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: floatUp 8s linear infinite;
+            pointer-events: none;
+        }
+        
+        /* 🎭 Main Content Container */
+        .app-container {
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* 🌈 Magical Welcome Screen */
+        .welcome-experience {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-hero {
+            max-width: 800px;
+            opacity: 0;
+            animation: welcomeEntry 2s ease-out 1s forwards;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(233, 30, 99, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        
+        .hero-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--romantic-accent);
+            margin: 2rem 0;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+        }
+        
+        /* 🎯 Interactive Action Buttons */
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .hero-button {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+            border-color: var(--romantic-primary);
+        }
+        
+        .hero-button:hover::before {
+            left: 0;
+        }
+        
+        .hero-button.primary {
+            background: var(--gradient-primary);
+            border-color: var(--romantic-primary);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+        }
+        
+        /* 📱 Responsive Design */
+        @media (max-width: 768px) {
+            .welcome-experience {
+                padding: 1rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        /* 🎨 Animations */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes loadingProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        
+        @keyframes welcomeEntry {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 💫 Glowing Effects */
+        .glow {
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+    
+    <!-- 🎵 Audio Context Setup -->
+    <style>
+        .audio-permission {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            box-shadow: var(--glass-shadow);
+            z-index: 1000;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+        
+        .audio-permission.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .audio-permission button {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .audio-permission button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+    </style>
+    
+    <!-- 🌟 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- 💫 Magical Loading Screen -->
+    <div class="magical-loader" id="magicalLoader">
+        <div class="loader-heart">💕</div>
+        <div class="loader-text">Jerry & Soumya</div>
+        <div class="loader-subtitle">Crafting magical moments...</div>
+        <div class="loader-progress"></div>
+    </div>
+
+    <!-- 🌟 Particle Canvas Background -->
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    
+    <!-- 💎 Floating Particles Container -->
+    <div class="floating-particles" id="floatingParticles"></div>
+
+    <!-- 🎭 Main Application Container -->
+    <div class="app-container">
+        <!-- 🌈 Magical Welcome Experience -->
+        <section class="welcome-experience" id="welcomeExperience">
+            <div class="welcome-hero">
+                <h1 class="hero-title">Forever in Love</h1>
+                <div class="hero-names">Jerry & Soumya</div>
+                <p class="hero-subtitle">
+                    Welcome to our enchanted anniversary celebration - a magical journey through time, 
+                    filled with love, memories, and beautiful surprises crafted just for us.
+                </p>
+                
+                <!-- 🎯 Interactive Navigation -->
+                <div class="hero-actions">
+                    <a href="src/pages/html/anniversary.html" class="hero-button primary">
+                        <i class="fas fa-heart"></i>
+                        Our Love Story
+                    </a>
+                    <a href="src/pages/html/countdown.html" class="hero-button">
+                        <i class="fas fa-clock"></i>
+                        Anniversary Countdown
+                    </a>
+                    <a href="src/pages/html/photo-gallery.html" class="hero-button">
+                        <i class="fas fa-camera"></i>
+                        Memory Gallery
+                    </a>
+                    <a href="src/pages/html/music-playlist.html" class="hero-button">
+                        <i class="fas fa-music"></i>
+                        Our Soundtrack
+                    </a>
+                    <a href="src/pages/html/love-letters.html" class="hero-button">
+                        <i class="fas fa-envelope-heart"></i>
+                        Love Letters
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 🎵 Audio Permission Prompt -->
+    <div class="audio-permission" id="audioPermission">
+        <p><i class="fas fa-music"></i> Experience our website with beautiful background music?</p>
+        <button onclick="enableAudio()">Enable Audio</button>
+        <button onclick="dismissAudio()" style="background: transparent; border: 1px solid var(--glass-border);">Maybe Later</button>
+    </div>
+
+    <!-- 🎭 Anniversary Website v5.0 - Interactive Magic System -->
+    <script>
+        // ================================
+        // 🌟 ANNIVERSARY WEBSITE V5.0
+        // MAGICAL INTERACTIVE EXPERIENCE
+        // ================================
+        
+        class AnniversaryMagic {
+            constructor() {
+                this.isAudioEnabled = false;
+                this.particles = [];
+                this.canvas = null;
+                this.ctx = null;
+                this.mousePosition = { x: 0, y: 0 };
+                this.backgroundMusic = null;
+                
+                this.init();
+            }
+            
+            async init() {
+                await this.initializeApp();
+                this.setupEventListeners();
+                this.startMagicalEffects();
+                this.showAudioPermission();
+            }
+            
+            async initializeApp() {
+                // Initialize Lucide icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                // Setup particle canvas
+                this.setupParticleCanvas();
+                
+                // Hide loading screen after brief delay
+                setTimeout(() => {
+                    this.hideLoadingScreen();
+                }, 2500);
+                
+                // Start floating particles
+                this.startFloatingParticles();
+            }
+            
+            setupEventListeners() {
+                // Mouse tracking for interactive effects
+                document.addEventListener('mousemove', (e) => {
+                    this.mousePosition.x = e.clientX;
+                    this.mousePosition.y = e.clientY;
+                    this.createMouseTrail();
+                });
+                
+                // Touch support for mobile
+                document.addEventListener('touchmove', (e) => {
+                    if (e.touches[0]) {
+                        this.mousePosition.x = e.touches[0].clientX;
+                        this.mousePosition.y = e.touches[0].clientY;
+                        this.createMouseTrail();
+                    }
+                });
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === ' ') {
+                        e.preventDefault();
+                        this.createHeartExplosion();
+                    }
+                });
+                
+                // Button hover effects
+                document.querySelectorAll('.hero-button').forEach(button => {
+                    button.addEventListener('mouseenter', () => {
+                        this.createButtonSparkles(button);
+                    });
+                });
+                
+                // Window resize handler
+                window.addEventListener('resize', () => {
+                    this.resizeCanvas();
+                });
+            }
+            
+            hideLoadingScreen() {
+                const loader = document.getElementById('magicalLoader');
+                if (loader) {
+                    loader.classList.add('hidden');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 800);
+                }
+            }
+            
+            setupParticleCanvas() {
+                this.canvas = document.getElementById('particleCanvas');
+                if (!this.canvas) return;
+                
+                this.ctx = this.canvas.getContext('2d');
+                this.resizeCanvas();
+            }
+            
+            resizeCanvas() {
+                if (!this.canvas) return;
+                
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+            
+            startMagicalEffects() {
+                this.animateParticles();
+                this.createPeriodicHearts();
+            }
+            
+            startFloatingParticles() {
+                const container = document.getElementById('floatingParticles');
+                if (!container) return;
+                
+                const emojis = ['💕', '💖', '💗', '💘', '💝', '💞', '💟', '❤️', '💯', '✨', '🌟', '💫'];
+                
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 13000);
+                }, 2000);
+            }
+            
+            animateParticles() {
+                if (!this.ctx) return;
+                
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Draw magical particle effects
+                this.particles = this.particles.filter(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    particle.opacity -= 0.01;
+                    
+                    if (particle.opacity > 0) {
+                        this.ctx.save();
+                        this.ctx.globalAlpha = particle.opacity;
+                        this.ctx.fillStyle = particle.color;
+                        this.ctx.beginPath();
+                        this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                        this.ctx.fill();
+                        this.ctx.restore();
+                        return true;
+                    }
+                    return false;
+                });
+                
+                requestAnimationFrame(() => this.animateParticles());
+            }
+            
+            createMouseTrail() {
+                if (!this.ctx) return;
+                
+                const colors = ['#e91e63', '#ff1744', '#9c27b0', '#ffc107'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.particles.push({
+                    x: this.mousePosition.x,
+                    y: this.mousePosition.y,
+                    radius: Math.random() * 3 + 1,
+                    color: color,
+                    opacity: 1,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2
+                });
+            }
+            
+            createHeartExplosion() {
+                const container = document.getElementById('floatingParticles');
+                if (!container) return;
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.textContent = '💖';
+                        heart.style.position = 'fixed';
+                        heart.style.left = Math.random() * 100 + '%';
+                        heart.style.top = '50%';
+                        heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                        heart.style.pointerEvents = 'none';
+                        heart.style.zIndex = '1000';
+                        heart.style.animation = 'heartExplosion 3s ease-out forwards';
+                        
+                        container.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            if (heart.parentNode) {
+                                heart.parentNode.removeChild(heart);
+                            }
+                        }, 3000);
+                    }, i * 100);
+                }
+            }
+            
+            createButtonSparkles(button) {
+                const rect = button.getBoundingClientRect();
+                const container = document.getElementById('floatingParticles');
+                if (!container) return;
+                
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = '✨';
+                        sparkle.style.position = 'fixed';
+                        sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+                        sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+                        sparkle.style.fontSize = '1rem';
+                        sparkle.style.pointerEvents = 'none';
+                        sparkle.style.zIndex = '1000';
+                        sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                        
+                        container.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.parentNode.removeChild(sparkle);
+                            }
+                        }, 1000);
+                    }, i * 50);
+                }
+            }
+            
+            createPeriodicHearts() {
+                setInterval(() => {
+                    if (Math.random() < 0.3) {
+                        this.createRandomHeart();
+                    }
+                }, 5000);
+            }
+            
+            createRandomHeart() {
+                const container = document.getElementById('floatingParticles');
+                if (!container) return;
+                
+                const heart = document.createElement('div');
+                heart.textContent = '💕';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = '100%';
+                heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '999';
+                heart.style.animation = 'floatUp ' + (Math.random() * 3 + 8) + 's linear forwards';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 12000);
+            }
+            
+            showAudioPermission() {
+                setTimeout(() => {
+                    const audioPrompt = document.getElementById('audioPermission');
+                    if (audioPrompt) {
+                        audioPrompt.classList.add('show');
+                    }
+                }, 3000);
+            }
+            
+            setupBackgroundMusic() {
+                // Create audio context for background music
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    // Background music would be loaded here
+                    console.log('🎵 Audio context ready for romantic background music');
+                } catch (error) {
+                    console.log('Audio not supported:', error);
+                }
+            }
+        }
+        
+        // 🎵 Audio Functions
+        function enableAudio() {
+            const audioPrompt = document.getElementById('audioPermission');
+            if (audioPrompt) {
+                audioPrompt.classList.remove('show');
+                setTimeout(() => {
+                    audioPrompt.style.display = 'none';
+                }, 300);
+            }
+            
+            // Initialize audio system
+            anniversaryMagic.isAudioEnabled = true;
+            anniversaryMagic.setupBackgroundMusic();
+            
+            console.log('🎵 Audio enabled - romantic experience enhanced!');
+        }
+        
+        function dismissAudio() {
+            const audioPrompt = document.getElementById('audioPermission');
+            if (audioPrompt) {
+                audioPrompt.classList.remove('show');
+                setTimeout(() => {
+                    audioPrompt.style.display = 'none';
+                }, 300);
+            }
+        }
+        
+        // 🌟 Additional Animation Styles
+        const additionalStyles = `
+            @keyframes heartExplosion {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.5) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes sparkle {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1) rotate(180deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            
+            .floating-particle {
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                pointer-events: none;
+                animation: floatUp 8s linear infinite;
+            }
+            
+            .app-loading .loading-spinner {
+                width: 40px;
+                height: 40px;
+                border: 3px solid rgba(255, 255, 255, 0.1);
+                border-top: 3px solid var(--romantic-primary);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin: 2rem auto;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        
+        // Inject additional styles
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+        
+        // ✨ Initialize Anniversary Magic System
+        let anniversaryMagic;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            anniversaryMagic = new AnniversaryMagic();
+        });
+        
+        // 🔧 Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('🔄 SW registered:', registration))
+                    .catch(error => console.log('❌ SW registration failed:', error));
+            });
+        }
+        
+        // 🎯 Performance Monitoring
+        window.addEventListener('load', () => {
+            const performanceData = {
+                loadTime: performance.now(),
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+            console.log('📊 Anniversary Website v5.0 Performance:', performanceData);
+        });
+        
+        // 🛡️ Error Handling
+        window.addEventListener('error', (e) => {
+            console.error('🚨 Anniversary Website Error:', e.error);
+            // Graceful fallback for any errors
+        });
+        
+        // 🌓 Theme Detection
+        function applyTheme() {
+            const savedTheme = localStorage.getItem('anniversary-theme') || 'romantic-dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        applyTheme();
+        
+        console.log('🎉 Anniversary Website v5.0 - Magical Interactive Experience Loaded!');
+    </script>
+</body>
+</html>

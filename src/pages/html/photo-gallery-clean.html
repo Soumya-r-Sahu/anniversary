@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-romantic">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Photo Gallery - Jerry & Soumya</title>
+    <meta name="description" content="Our beautiful memories captured in pictures - a collection of our love story moments.">
+    <meta name="keywords" content="photo gallery, Jerry, Soumya, memories, love story, photos">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/variables.css">
+    <link rel="stylesheet" href="../../styles/theme-integration.css">
+    <link rel="stylesheet" href="../css/photo-gallery.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation-bar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-brand">
+                <span class="nav-brand-icon">💕</span>
+                <span class="nav-brand-text">Jerry & Soumya</span>
+            </a>
+            <div class="nav-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="anniversary.html" class="nav-link">Anniversary</a>
+                <a href="countdown.html" class="nav-link">Countdown</a>
+                <a href="music-playlist.html" class="nav-link">Music</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="captured-memories-hero">
+        <div class="hero-content">
+            <div class="page-icon">
+                <i class="fas fa-camera"></i>
+            </div>
+            <h1 class="hero-title">
+                📸 Our Photo Gallery 📸
+            </h1>
+            <p class="hero-subtitle">
+                Every picture tells a story, and every story is filled with love
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="love-story-content">
+        <div class="content-sanctuary">
+
+            <!-- Category Filters -->
+            <div class="photo-categories">
+                <div class="category-filters">
+                    <button class="category-button active" data-category="all">
+                        <i class="fas fa-images"></i> All Photos
+                    </button>
+                    <button class="category-button" data-category="dates">
+                        <i class="fas fa-calendar-alt"></i> Date Nights
+                    </button>
+                    <button class="category-button" data-category="travel">
+                        <i class="fas fa-plane"></i> Adventures
+                    </button>
+                    <button class="category-button" data-category="candid">
+                        <i class="fas fa-smile"></i> Candid Moments
+                    </button>
+                    <button class="category-button" data-category="special">
+                        <i class="fas fa-star"></i> Special Events
+                    </button>
+                </div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="photo-grid" id="photoGrid">
+                
+                <!-- Date Nights -->
+                <div class="treasured-photo" data-category="dates">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">First Date Night</div>
+                            <div class="photo-description">That magical evening when everything felt perfect</div>
+                            <div class="photo-date">February 14, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="date1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="treasured-photo" data-category="dates">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Romantic Dinner</div>
+                            <div class="photo-description">Candlelit dinner and endless conversation</div>
+                            <div class="photo-date">March 20, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="date2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Travel Adventures -->
+                <div class="treasured-photo" data-category="travel">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Beach Getaway</div>
+                            <div class="photo-description">Sun, sand, and endless smiles together</div>
+                            <div class="photo-date">April 15, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="travel1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="treasured-photo" data-category="travel">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Mountain Adventure</div>
+                            <div class="photo-description">Reaching new heights together</div>
+                            <div class="photo-date">May 10, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="travel2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Candid Moments -->
+                <div class="treasured-photo" data-category="candid">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Spontaneous Laughter</div>
+                            <div class="photo-description">When you made that silly joke that had us both crying laughing</div>
+                            <div class="photo-date">March 5, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="candid1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="treasured-photo" data-category="candid">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Cozy Home Morning</div>
+                            <div class="photo-description">Coffee, pajamas, and your beautiful smile</div>
+                            <div class="photo-date">June 12, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="candid2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Special Events -->
+                <div class="treasured-photo" data-category="special">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Anniversary Celebration</div>
+                            <div class="photo-description">One year of amazing memories and countless more to come</div>
+                            <div class="photo-date">June 16, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="special1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="treasured-photo" data-category="special">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Spring Walk</div>
+                            <div class="photo-description">Hand in hand through blooming flowers</div>
+                            <div class="photo-date">April 30, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="special2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Upload Section -->
+            <div class="photo-upload-section">
+                <h2 class="section-title">
+                    📤 Add New Memories
+                </h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📤</div>
+                    <div class="upload-text">
+                        <div class="upload-title">Drop your photos here</div>
+                        <div class="upload-subtitle">or click to browse</div>
+                    </div>
+                    <input type="file" id="photoUpload" multiple accept="image/*" hidden>
+                </div>
+            </div>
+
+            <!-- Photo Statistics -->
+            <div class="photo-stats-section">
+                <h2 class="section-title">
+                    📊 Our Memories in Numbers
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalPhotos">47</div>
+                        <div class="stat-label">Total Photos</div>
+                        <div class="stat-description">Beautiful moments captured</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="favoriteMoments">12</div>
+                        <div class="stat-label">Favorite Moments</div>
+                        <div class="stat-description">Extra special memories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="monthsDocumented">12</div>
+                        <div class="stat-label">Months Documented</div>
+                        <div class="stat-description">Our journey in pictures</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Love Captured</div>
+                        <div class="stat-description">In every single frame</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div class="quick-navigation">
+                <a href="anniversary.html" class="quick-nav-item">
+                    <div class="nav-icon">🎉</div>
+                    <div class="nav-label">Anniversary</div>
+                </a>
+                <a href="music-playlist.html" class="quick-nav-item">
+                    <div class="nav-icon">🎵</div>
+                    <div class="nav-label">Music</div>
+                </a>
+                <a href="love-letters.html" class="quick-nav-item">
+                    <div class="nav-icon">💌</div>
+                    <div class="nav-label">Love Letters</div>
+                </a>
+                <a href="timeline.html" class="quick-nav-item">
+                    <div class="nav-icon">📅</div>
+                    <div class="nav-label">Timeline</div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Music Player -->
+    <div class="melody-heart-3d">
+        <div class="glassmorphism music-player">
+            <div class="music-controls">
+                <button id="music-play" class="play-button">
+                    <i data-lucide="play" class="icon-play"></i>
+                </button>
+                <div class="volume-control">
+                    <span class="volume-icon">
+                        <i data-lucide="volume-2" class="icon-volume"></i>
+                    </span>
+                    <input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5" class="volume-slider">
+                </div>
+            </div>
+            <div class="music-label">
+                🎵 Our Love Song
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="shared-story-closing">
+        <p>Made with <i class="fas fa-heart text-danger"></i> by Soumya</p>
+        <small>&copy; 2025 Anniversary Website. All rights reserved.</small>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Photo Gallery Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const photos = document.querySelectorAll('.treasured-photo');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter photos
+                    photos.forEach(photo => {
+                        if (category === 'all' || photo.dataset.category === category) {
+                            photo.style.display = 'block';
+                            photo.style.animation = 'fadeInUp 0.5s ease-out';
+                        } else {
+                            photo.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Photo upload functionality
+            const uploadArea = document.getElementById('uploadArea');
+            const photoUpload = document.getElementById('photoUpload');
+
+            uploadArea.addEventListener('click', () => {
+                photoUpload.click();
+            });
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('drag-over');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('drag-over');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+                const files = e.dataTransfer.files;
+                handleFileUpload(files);
+            });
+
+            photoUpload.addEventListener('change', (e) => {
+                handleFileUpload(e.target.files);
+            });
+
+            function handleFileUpload(files) {
+                console.log('Files uploaded:', files.length);
+                // Here you would typically handle the file upload
+                // For now, just show a success message
+                alert(`${files.length} photo(s) selected for upload!`);
+            }
+
+            // View photo buttons
+            const viewButtons = document.querySelectorAll('.view-photo-button');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const photoId = button.dataset.photo;
+                    console.log('Viewing photo:', photoId);
+                    // Here you would open a modal or lightbox
+                    alert(`Opening photo: ${photoId}`);
+                });
+            });
+
+            // Photo stats animation
+            function animateNumbers() {
+                const numbers = document.querySelectorAll('.stat-number');
+                numbers.forEach(number => {
+                    if (number.textContent !== '∞') {
+                        const target = parseInt(number.textContent);
+                        let current = 0;
+                        const increment = target / 20;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            number.textContent = Math.floor(current);
+                        }, 50);
+                    }
+                });
+            }
+
+            // Start number animation when page loads
+            setTimeout(animateNumbers, 1000);
+        });
+    </script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+</body>
+</html>

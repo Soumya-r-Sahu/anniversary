@@ -1,33 +1,2043 @@
-<link rel="stylesheet" href="../styles/navigation.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- ✨ Anniversary Website v5.0 - Magical Photo Gallery -->
+    <title>📸 Memory Gallery - Jerry & Soumya Forever</title>
+    <meta name="description" content="Our beautiful love story captured in stunning photographs - an enchanting gallery of magical moments, adventures, and cherished memories.">
+    <meta name="keywords" content="Jerry, Soumya, photo gallery, memories, love story, romantic, magical, pictures">
+    
+    <!-- 🎨 PWA Configuration -->
+    <meta name="theme-color" content="#e91e63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 🌟 Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 💎 Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Sacramento&family=Orbitron:wght@400;500;600;700;800;900&family=Alex+Brush&display=swap" rel="stylesheet">
+    
+    <!-- 🎭 Icons & Effects -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 🎨 Core v5.0 Styles -->
+    <style>
+        /* ================================
+           📸 MAGICAL PHOTO GALLERY V5.0
+           ENCHANTING MEMORY EXPERIENCE
+        ================================ */
+        
+        /* 🌟 Enhanced Romantic Palette */
+        :root {
+            /* Primary Colors */
+            --romantic-primary: #e91e63;
+            --romantic-secondary: #ff1744;
+            --romantic-accent: #ffc107;
+            --romantic-purple: #9c27b0;
+            --romantic-indigo: #3f51b5;
+            --romantic-gold: #ffb300;
+            --romantic-rose: #ff69b4;
+            --romantic-coral: #ff6b6b;
+            --romantic-cyan: #00bcd4;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-hero: rgba(233, 30, 99, 0.1);
+            --bg-gallery: rgba(255, 255, 255, 0.03);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --text-accent: #ff6b9d;
+            --text-photo: #ffd54f;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-photo: rgba(255, 255, 255, 0.1);
+            --glass-lightbox: rgba(0, 0, 0, 0.9);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            --gradient-hero: linear-gradient(135deg, rgba(233,30,99,0.2), rgba(156,39,176,0.2), rgba(63,81,181,0.1));
+            --gradient-photo: linear-gradient(45deg, rgba(255,213,79,0.2), rgba(255,105,180,0.2));
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-3d: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            --transition-photo: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* 🔄 Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* 🌟 3D Particle Gallery System */
+        .gallery-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .photo-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: photoFloat 18s linear infinite;
+            pointer-events: none;
+        }
+        
+        .floating-cameras {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .camera-3d {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: camera3DFloat 25s linear infinite;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(255, 213, 79, 0.8);
+        }
+        
+        /* 🎭 Enhanced Navigation */
+        .magical-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .nav-brand-icon {
+            font-size: 1.5rem;
+            animation: cameraShutter 3s ease-in-out infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+        
+        /* 🌈 Gallery Hero Section */
+        .gallery-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: heroEntry 2s ease-out 0.5s forwards;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px var(--romantic-gold));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient-photo);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 50px rgba(255, 213, 79, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* 🎯 Main Gallery Container */
+        .gallery-sanctuary {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* 🎨 Category Filter System */
+        .category-system {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+        
+        .filter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-button {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .category-button:hover,
+        .category-button.active {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .category-button:hover::before,
+        .category-button.active::before {
+            opacity: 1;
+        }
+        
+        /* 💎 Masonry Photo Grid */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+        
+        .photo-card {
+            background: var(--glass-photo);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-3d);
+            cursor: pointer;
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .photo-card:hover {
+            transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateZ(20px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(233, 30, 99, 0.3);
+        }
+        
+        .photo-placeholder {
+            aspect-ratio: 4/3;
+            background: var(--gradient-card);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-photo);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .photo-icon {
+            font-size: 3rem;
+            color: var(--text-photo);
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px var(--romantic-gold));
+        }
+        
+        .photo-content {
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .photo-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5rem;
+            color: var(--romantic-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .photo-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .photo-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+        
+        .view-photo-button {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .view-photo-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.5);
+        }
+        
+        /* 🖼️ Lightbox System */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-lightbox);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-photo);
+        }
+        
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            transform: scale(0.5);
+            transition: var(--transition-photo);
+        }
+        
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+        }
+        
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+        }
+        
+        /* 📊 Gallery Statistics */
+        .gallery-stats {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        
+        .stats-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--glass-photo);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-3d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .stat-card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.4);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--romantic-accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-description {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+        
+        /* 📱 Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .category-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .masonry-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+        
+        /* 🎨 Magical Animations */
+        @keyframes heroEntry {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes cameraShutter {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes photoFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes camera3DFloat {
+            0% {
+                transform: translateY(100vh) rotateX(0deg) rotateY(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotateX(360deg) rotateY(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 💫 Special Photo Effects */
+        .photo-shimmer {
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1) saturate(1); }
+            50% { filter: brightness(1.2) saturate(1.3); }
+        }
+        
+        /* 🌟 Enhanced Photo Particles */
+        .gallery-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .photo-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: photoFloat 12s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .floating-cameras {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .camera-3d {
+            position: absolute;
+            font-size: 2rem;
+            animation: camera3DFloat 20s linear infinite;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6));
+        }
+        
+        /* 📤 Upload Section Styles */
+        .upload-sanctuary {
+            padding: 4rem 2rem;
+            background: var(--gradient-section);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .upload-area {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px dashed var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-3d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .upload-area:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--romantic-accent);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.3);
+        }
+        
+        .upload-area:hover::before {
+            opacity: 0.1;
+        }
+        
+        .upload-area.drag-over {
+            border-color: var(--romantic-accent);
+            background: rgba(233, 30, 99, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px var(--romantic-gold));
+        }
+        
+        .upload-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+        
+        /* 🎭 Enhanced Navigation Grid */
+        .gallery-navigation {
+            padding: 4rem 2rem;
+            background: var(--gradient-section-alt);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .nav-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition-3d);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(233, 30, 99, 0.4);
+            color: white;
+        }
+        
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+        
+        .nav-card .nav-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 15px var(--romantic-gold));
+        }
+        
+        .nav-content {
+            flex: 1;
+        }
+        
+        .nav-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 🖼️ Enhanced Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-lightbox);
+            backdrop-filter: blur(20px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: var(--transition-photo);
+        }
+        
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            transform: scale(0.5);
+            transition: var(--transition-photo);
+        }
+        
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+        }
+        
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+        }
+        
+        .lightbox-info {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .lightbox-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--romantic-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .lightbox-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .photo-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .lightbox-navigation {
+            position: absolute;
+            top: 50%;
+            left: -60px;
+            right: -60px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        
+        .lightbox-nav {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+            pointer-events: all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-nav:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+        }
+        
+        /* 💎 Romantic Footer */
+        .romantic-footer {
+            background: var(--gradient-footer);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-heart {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        .footer-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-sparkles {
+            font-size: 1rem;
+            color: var(--romantic-accent);
+            opacity: 0.8;
+        }
+    </style>
+    
+    <!-- 🌟 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
 </head>
-<body style="padding-top: 90px;">
-<!-- Navigation will be loaded dynamically -->
-<main class="love-story-content"><div class="content-sanctuary mx-auto px-4 py-8"><div class="text-center mb-12"><h1 class="text-high-contrast"text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float" class="text-high-contrast">
-Photo Gallery
-</h1><p class="text-xl text-pink-700 font-dancing">
-Our beautiful memories captured
-</p></div><div class="captured-memories-hero"><div class="content-sanctuary mx-auto text-center"><div class="page-icon"><i class="fas fa-camera"></i></div><h1 class="text-high-contrast"text-5xl md:text-7xl font-dancing text-white mb-4" data-aos="fade-up" class="text-high-contrast">
-Our Photo Gallery
-</h1><p class="text-xl text-pink-300 font-dancing" data-aos="fade-up" data-aos-delay="200">
-Every picture tells a story, and every story is filled with love
-</p></div></div><div class="photo-categories mb-8"><div class="category-filters"><button class="category-love-action active" data-category="all"><i class="fas fa-images"></i> All Photos
-</button><button class="category-love-action" data-category="dates"><i class="fas fa-calendar-alt"></i> Date Nights
-</button><button class="category-love-action" data-category="travel"><i class="fas fa-plane"></i> Adventures
-</button><button class="category-love-action" data-category="candid"><i class="fas fa-smile"></i> Candid Moments
-</button><button class="category-love-action" data-category="special"><i class="fas fa-star"></i> Special Events
-</button></div></div><div class="photo-grid" id="photoGrid"><div class="treasured-photo" data-category="dates" data-aos="zoom-in" data-aos-delay="100"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">First Date Night</div><div class="photo-description">That magical evening when everything felt perfect</div><div class="photo-date">February 14, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="date1">View</button></div></div><div class="treasured-photo" data-category="dates" data-aos="zoom-in" data-aos-delay="200"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Romantic Dinner</div><div class="photo-description">Candlelit dinner and endless conversation</div><div class="photo-date">March 20, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="date2">View</button></div></div><div class="treasured-photo" data-category="travel" data-aos="zoom-in" data-aos-delay="300"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Beach Getaway</div><div class="photo-description">Sun, sand, and endless smiles together</div><div class="photo-date">June 15, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="travel1">View</button></div></div><div class="treasured-photo" data-category="travel" data-aos="zoom-in" data-aos-delay="400"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Mountain Adventure</div><div class="photo-description">Reaching new heights together</div><div class="photo-date">August 10, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="travel2">View</button></div></div><div class="treasured-photo" data-category="candid" data-aos="zoom-in" data-aos-delay="500"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Spontaneous Laughter</div><div class="photo-description">When you made that silly joke that had us both crying laughing</div><div class="photo-date">April 5, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="candid1">View</button></div></div><div class="treasured-photo" data-category="candid" data-aos="zoom-in" data-aos-delay="600"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Cozy Home Morning</div><div class="photo-description">Coffee, pajamas, and your beautiful smile</div><div class="photo-date">May 12, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="candid2">View</button></div></div><div class="treasured-photo" data-category="special" data-aos="zoom-in" data-aos-delay="700"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Birthday Celebration</div><div class="photo-description">Making your special day even more special</div><div class="photo-date">July 25, 2023</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="special1">View</button></div></div><div class="treasured-photo" data-category="special" data-aos="zoom-in" data-aos-delay="800"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Anniversary Celebration</div><div class="photo-description">One year of amazing memories and countless more to come</div><div class="photo-date">January 15, 2024</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="special2">View</button></div></div><div class="treasured-photo" data-category="candid" data-aos="zoom-in" data-aos-delay="900"><div class="photo-placeholder"><div class="icon-camera" aria-label="Camera Icon"></div><div class="photo-title">Spring Walk</div><div class="photo-description">Hand in hand through blooming flowers</div><div class="photo-date">March 30, 2024</div></div><div class="photo-overlay"><button class="view-photo-love-action" data-photo="recent1">View</button></div></div></div><div class="photo-upload-story-chapter"><h2 class="text-high-contrast"text-3xl font-dancing text-pink-600 mb-6 text-center" class="text-high-contrast">
-Add New Memories
-</h2><div class="upload-area" id="uploadArea"><div class="upload-icon">📤</div><div class="upload-text"><div class="upload-title">Drop your photos here</div><div class="upload-subtitle">or click to browse</div></div><input type="file" id="photoUpload" multiple accept="image/*" hidden></div></div><div class="photo-stats-story-chapter"><h2 class="text-high-contrast"text-3xl font-dancing text-pink-600 mb-8 text-center" class="text-high-contrast">
-Our Memories in Numbers
-</h2><div class="stats-grid"><div class="stat-precious-moment-display" data-aos="fade-up" data-aos-delay="100"><div class="stat-number" id="totalPhotos">47</div><div class="stat-label">Total Photos</div><div class="stat-description">Beautiful moments captured</div></div><div class="stat-precious-moment-display" data-aos="fade-up" data-aos-delay="200"><div class="stat-number" id="favoriteMoments">12</div><div class="stat-label">Favorite Moments</div><div class="stat-description">Extra special memories</div></div><div class="stat-precious-moment-display" data-aos="fade-up" data-aos-delay="300"><div class="stat-number" id="monthsDocumented">18</div><div class="stat-label">Months Documented</div><div class="stat-description">Our journey in pictures</div></div><div class="stat-precious-moment-display" data-aos="fade-up" data-aos-delay="400"><div class="stat-number">∞</div><div class="stat-label">Love Captured</div><div class="stat-description">In every single frame</div></div></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"><a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎉</div><div class="text-sm font-medium text-pink-700">Anniversary</div></a><a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">📸</div><div class="text-sm font-medium text-pink-700">Gallery</div></a><a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎵</div><div class="text-sm font-medium text-pink-700">Music</div></a></div></div></main><div class="fixed bottom-4 right-4 z-50"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
-class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"></div></div><div class="mt-2 text-xs text-gray-600 text-center">
-🎵 Our Love Song
-</div></div></div><footer class="shared-story-closing bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><noscript><div class="fallback-bg text-center py-4"><p class="fallback-text">JavaScript is disabled in your browser. Please enable it to view the photo gallery.</p></div></noscript><script type="module" src="../../scripts/shared.js"></script><script type="module" src="../js/photo-gallery.js"></script><script type="module" src="../js/photo-gallery-page.js"></script>
-<!-- Navigation Loader -->
-<script type="module" src="../scripts/navigation-loader.js"></script>
-<!-- Unified Navigation & Data Management System -->
-<script type="module" src="../../utils/Navigation.js"></script>
-<script type="module" src="../../data/DataManager.js"></script>
-<script type="module" src="../../utils/Database.js"></script>
-</body></html>
+<body>
+    <!-- 🌟 3D Particle Gallery System -->
+    <div class="gallery-particles" id="galleryParticles"></div>
+    
+    <!-- 💎 Floating Camera Elements -->
+    <div class="floating-cameras" id="floatingCameras"></div>
+
+    <!-- 🎭 Enhanced Navigation -->
+    <nav class="magical-nav">
+        <div class="nav-container">
+            <a href="../../../index.html" class="nav-brand">
+                <span class="nav-brand-icon">📸</span>
+                <span class="nav-brand-text">Jerry & Soumya</span>
+            </a>
+            <div class="nav-menu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="anniversary.html" class="nav-link">Anniversary</a>
+                <a href="countdown.html" class="nav-link">Countdown</a>
+                <a href="music-playlist.html" class="nav-link">Music</a>
+                <a href="love-letters.html" class="nav-link">Letters</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🌈 Gallery Hero Section -->
+    <header class="gallery-hero">
+        <div class="hero-content">
+            <div class="hero-icon">📸</div>
+            <h1 class="hero-title">📸 Our Memory Gallery 📸</h1>
+            <p class="hero-subtitle">Every picture tells a story, and every story is filled with love</p>
+        </div>
+    </header>
+
+    <!-- 🎯 Main Gallery Content -->
+    <main class="gallery-sanctuary">
+        <div class="content-container">
+            
+            <!-- 🎨 Category Filter System -->
+            <section class="category-system">
+                <h3 class="filter-title">✨ Memory Categories ✨</h3>
+                <div class="category-filters">
+                    <button class="category-button active" data-category="all">
+                        <i class="fas fa-images"></i> All Photos
+                    </button>
+                    <button class="category-button" data-category="dates">
+                        <i class="fas fa-calendar-alt"></i> Date Nights
+                    </button>
+                    <button class="category-button" data-category="travel">
+                        <i class="fas fa-plane"></i> Adventures
+                    </button>
+                    <button class="category-button" data-category="candid">
+                        <i class="fas fa-smile"></i> Candid Moments
+                    </button>
+                    <button class="category-button" data-category="special">
+                        <i class="fas fa-star"></i> Special Events
+                    </button>
+                </div>
+            </section>
+
+            <!-- 💎 Masonry Photo Grid -->
+            <section class="masonry-grid" id="photoGrid">
+                
+                <!-- Date Nights Category -->
+                <div class="photo-card" data-category="dates">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">First Date Night</div>
+                            <div class="photo-description">That magical evening when everything felt perfect</div>
+                            <div class="photo-date">February 14, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="date1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-category="dates">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Romantic Dinner</div>
+                            <div class="photo-description">Candlelight, love, and endless conversations</div>
+                            <div class="photo-date">March 20, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="date2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Travel Adventures -->
+                <div class="photo-card" data-category="travel">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Beach Adventure</div>
+                            <div class="photo-description">Sun, sand, and endless love</div>
+                            <div class="photo-date">May 15, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="travel1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-category="travel">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Mountain Hike</div>
+                            <div class="photo-description">Reaching new heights together</div>
+                            <div class="photo-date">April 8, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="travel2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Candid Moments -->
+                <div class="photo-card" data-category="candid">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Morning Coffee</div>
+                            <div class="photo-description">Perfect start to a perfect day</div>
+                            <div class="photo-date">Daily Bliss</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="candid1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-category="candid">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Spontaneous Laughter</div>
+                            <div class="photo-description">Those unguarded moments of pure joy</div>
+                            <div class="photo-date">Everyday Magic</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="candid2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Special Events -->
+                <div class="photo-card" data-category="special">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">Anniversary Celebration</div>
+                            <div class="photo-description">One year of amazing memories and countless more to come</div>
+                            <div class="photo-date">June 16, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="special1">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-category="special">
+                    <div class="photo-placeholder">
+                        <div class="photo-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="photo-content">
+                            <div class="photo-title">First "I Love You"</div>
+                            <div class="photo-description">The moment that changed everything</div>
+                            <div class="photo-date">July 4, 2024</div>
+                        </div>
+                    </div>
+                    <div class="photo-overlay">
+                        <button class="view-photo-button" data-photo="special2">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 📊 Gallery Statistics -->
+            <section class="gallery-stats">
+                <h3 class="stats-title">📊 Our Memories in Numbers</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalPhotos">47</div>
+                        <div class="stat-label">Total Photos</div>
+                        <div class="stat-description">Beautiful moments captured</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="favoriteMoments">12</div>
+                        <div class="stat-label">Favorite Moments</div>
+                        <div class="stat-description">Extra special memories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="monthsDocumented">12</div>
+                        <div class="stat-label">Months Documented</div>
+                        <div class="stat-description">Our journey in pictures</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Love Captured</div>
+                        <div class="stat-description">In every single frame</div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- 🖼️ Enhanced Lightbox System -->
+    <div class="lightbox-overlay" id="photoLightbox">
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Photo">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle" class="lightbox-title"></h3>
+                <div id="lightboxDescription" class="lightbox-description"></div>
+            </div>
+            <div class="lightbox-navigation">
+                <button class="lightbox-nav" id="lightboxPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-nav" id="lightboxNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📤 Photo Upload Section -->
+    <section class="upload-sanctuary">
+        <div class="content-container">
+            <h3 class="filter-title">📤 Add New Memories</h3>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📤</div>
+                <div class="upload-text">
+                    <div class="upload-title">Drop your photos here</div>
+                    <div class="upload-subtitle">or click to browse</div>
+                </div>
+                <input type="file" id="photoUpload" multiple accept="image/*" hidden>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎭 Enhanced Navigation Grid -->
+    <section class="gallery-navigation">
+        <div class="content-container">
+            <div class="nav-grid">
+                <a href="anniversary.html" class="nav-card">
+                    <div class="nav-icon">🎉</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Anniversary</div>
+                        <div class="nav-subtitle">Celebrate our love</div>
+                    </div>
+                </a>
+                <a href="music-playlist.html" class="nav-card">
+                    <div class="nav-icon">🎵</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Music</div>
+                        <div class="nav-subtitle">Our romantic playlist</div>
+                    </div>
+                </a>
+                <a href="love-letters.html" class="nav-card">
+                    <div class="nav-icon">💌</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Love Letters</div>
+                        <div class="nav-subtitle">Words from the heart</div>
+                    </div>
+                </a>
+                <a href="countdown.html" class="nav-card">
+                    <div class="nav-icon">⏰</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Countdown</div>
+                        <div class="nav-subtitle">Time until forever</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💎 Romantic Footer -->
+    <footer class="romantic-footer">
+        <div class="content-container">
+            <div class="footer-content">
+                <div class="footer-heart">💕</div>
+                <p class="footer-text">Made with endless love by Jerry for Soumya</p>
+                <div class="footer-sparkles">✨ Forever & Always ✨</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✨ Enhanced JavaScript for Photo Gallery v5.0 -->
+    <script>
+        /* ================================
+           📸 MAGICAL PHOTO GALLERY V5.0
+           COMPLETE INTERACTIVE SYSTEM
+        ================================ */
+        
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Photo Gallery System - Complete Interactive Experience
+        document.addEventListener('DOMContentLoaded', () => {
+            // Photo data with placeholder content
+            const photoData = {
+                date1: {
+                    src: 'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=800&h=600&fit=crop',
+                    title: 'First Date Night',
+                    description: 'That magical evening when everything felt perfect. The beginning of our beautiful journey together.',
+                    date: 'February 14, 2024',
+                    location: 'Romantic Restaurant',
+                    category: 'dates'
+                },
+                date2: {
+                    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop',
+                    title: 'Romantic Dinner',
+                    description: 'Candlelight, love, and endless conversations that lasted until dawn.',
+                    date: 'March 20, 2024',
+                    location: 'Cozy Café',
+                    category: 'dates'
+                },
+                travel1: {
+                    src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop',
+                    title: 'Beach Adventure',
+                    description: 'Sun, sand, and endless love. Walking hand in hand along the shore.',
+                    date: 'May 15, 2024',
+                    location: 'Tropical Paradise',
+                    category: 'travel'
+                },
+                travel2: {
+                    src: 'https://images.unsplash.com/photo-1464822759844-d150baec7450?w=800&h=600&fit=crop',
+                    title: 'Mountain Hike',
+                    description: 'Reaching new heights together, both literally and metaphorically.',
+                    date: 'April 8, 2024',
+                    location: 'Scenic Mountains',
+                    category: 'travel'
+                },
+                candid1: {
+                    src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=600&fit=crop',
+                    title: 'Morning Coffee',
+                    description: 'Perfect start to a perfect day, sharing quiet moments together.',
+                    date: 'Daily Bliss',
+                    location: 'Our Kitchen',
+                    category: 'candid'
+                },
+                candid2: {
+                    src: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop',
+                    title: 'Spontaneous Laughter',
+                    description: 'Those unguarded moments of pure joy that make life beautiful.',
+                    date: 'Everyday Magic',
+                    location: 'Anywhere Together',
+                    category: 'candid'
+                },
+                special1: {
+                    src: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=600&fit=crop',
+                    title: 'Anniversary Celebration',
+                    description: 'Celebrating our love and the journey we\'ve shared together.',
+                    date: 'Our Special Day',
+                    location: 'Elegant Venue',
+                    category: 'special'
+                },
+                special2: {
+                    src: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&h=600&fit=crop',
+                    title: 'Surprise Moment',
+                    description: 'When love surprises us in the most wonderful ways.',
+                    date: 'Unexpected Joy',
+                    location: 'Secret Garden',
+                    category: 'special'
+                }
+            };
+
+            // Enhanced Category Filtering System
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const photoCards = document.querySelectorAll('.photo-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+                    
+                    // Add magical ripple effect
+                    createRippleEffect(button);
+                    
+                    // Update active button with smooth transition
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.transform = 'scale(1)';
+                    });
+                    button.classList.add('active');
+                    button.style.transform = 'scale(1.1)';
+                    
+                    // Filter photos with staggered animation
+                    photoCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            if (category === 'all' || card.dataset.category === category) {
+                                card.style.display = 'block';
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(30px) scale(0.9)';
+                                
+                                setTimeout(() => {
+                                    card.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0) scale(1)';
+                                }, 50);
+                                
+                                // Add hover heart effect
+                                addHoverHeartEffect(card);
+                            } else {
+                                card.style.transition = 'all 0.4s ease-out';
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(-20px) scale(0.8)';
+                                setTimeout(() => {
+                                    card.style.display = 'none';
+                                }, 400);
+                            }
+                        }, index * 100);
+                    });
+                    
+                    // Update photo count
+                    updatePhotoCount(category);
+                });
+            });
+
+            // Enhanced Lightbox System
+            const lightbox = document.getElementById('photoLightbox');
+            const lightboxImg = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDescription = document.getElementById('lightboxDescription');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const viewButtons = document.querySelectorAll('.view-photo-button');
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const photoId = button.dataset.photo;
+                    openLightbox(photoId);
+                });
+            });
+
+            function openLightbox(photoId) {
+                const photo = photoData[photoId];
+                if (!photo) return;
+
+                // Set lightbox content
+                lightboxImg.src = photo.src;
+                lightboxImg.alt = photo.title;
+                lightboxTitle.textContent = photo.title;
+                lightboxDescription.innerHTML = `
+                    <p>${photo.description}</p>
+                    <div class="photo-meta">
+                        <span><i class="fas fa-calendar"></i> ${photo.date}</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ${photo.location}</span>
+                    </div>
+                `;
+
+                // Show lightbox with animation
+                lightbox.style.display = 'flex';
+                lightbox.style.opacity = '0';
+                setTimeout(() => {
+                    lightbox.style.transition = 'opacity 0.4s ease-out';
+                    lightbox.style.opacity = '1';
+                }, 10);
+
+                // Animate image
+                lightboxImg.style.transform = 'scale(0.8) rotate(5deg)';
+                setTimeout(() => {
+                    lightboxImg.style.transition = 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                    lightboxImg.style.transform = 'scale(1) rotate(0deg)';
+                }, 100);
+
+                // Create floating hearts
+                createFloatingHearts();
+                
+                // Disable body scroll
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightboxImg.style.transition = 'transform 0.4s ease-out';
+                lightboxImg.style.transform = 'scale(0.8) rotate(-5deg)';
+                
+                setTimeout(() => {
+                    lightbox.style.transition = 'opacity 0.3s ease-out';
+                    lightbox.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        lightbox.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }, 300);
+                }, 100);
+            }
+
+            // Close lightbox events
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                }
+                
+                // Magical effects
+                if (e.key === ' ') {
+                    e.preventDefault();
+                    createHeartExplosion();
+                } else if (e.key === 'Enter') {
+                    createPhotoFlash();
+                }
+            });
+
+            // Enhanced Photo Upload System
+            const uploadArea = document.getElementById('uploadArea');
+            const photoUpload = document.getElementById('photoUpload');
+
+            if (uploadArea && photoUpload) {
+                uploadArea.addEventListener('click', () => {
+                    photoUpload.click();
+                });
+
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('drag-over');
+                    uploadArea.style.transform = 'scale(1.05)';
+                });
+
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('drag-over');
+                    uploadArea.style.transform = 'scale(1)';
+                });
+
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('drag-over');
+                    uploadArea.style.transform = 'scale(1)';
+                    const files = e.dataTransfer.files;
+                    handleFileUpload(files);
+                });
+
+                photoUpload.addEventListener('change', (e) => {
+                    handleFileUpload(e.target.files);
+                });
+            }
+
+            function handleFileUpload(files) {
+                if (files.length > 0) {
+                    // Create upload success animation
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'upload-success';
+                    successMsg.innerHTML = `
+                        <div class="success-content">
+                            <i class="fas fa-check-circle"></i>
+                            <span>${files.length} photo(s) ready to upload!</span>
+                        </div>
+                    `;
+                    successMsg.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(0);
+                        background: linear-gradient(135deg, #4caf50, #45a049);
+                        color: white;
+                        padding: 1.5rem 2rem;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+                        z-index: 10000;
+                        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    `;
+                    
+                    document.body.appendChild(successMsg);
+                    
+                    setTimeout(() => {
+                        successMsg.style.transform = 'translate(-50%, -50%) scale(1)';
+                    }, 10);
+                    
+                    setTimeout(() => {
+                        successMsg.style.transform = 'translate(-50%, -50%) scale(0)';
+                        setTimeout(() => {
+                            document.body.removeChild(successMsg);
+                        }, 400);
+                    }, 2000);
+                    
+                    createConfetti();
+                }
+            }
+
+            // Enhanced Photo Statistics Animation
+            function animateNumbers() {
+                const numbers = document.querySelectorAll('.stat-number');
+                numbers.forEach((number, index) => {
+                    if (number.textContent !== '∞') {
+                        const target = parseInt(number.textContent);
+                        let current = 0;
+                        const increment = target / 30;
+                        
+                        setTimeout(() => {
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                    // Add sparkle effect when complete
+                                    createSparkleEffect(number);
+                                }
+                                number.textContent = Math.floor(current);
+                            }, 50);
+                        }, index * 200);
+                    } else {
+                        // Animate infinity symbol
+                        setTimeout(() => {
+                            number.style.animation = 'pulse 2s infinite';
+                            createSparkleEffect(number);
+                        }, index * 200);
+                    }
+                });
+            }
+
+            // Magical Effect Functions
+            function createRippleEffect(element) {
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                    top: 50%;
+                    left: 50%;
+                    margin: -50px 0 0 -50px;
+                `;
+                
+                element.style.position = 'relative';
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+
+            function addHoverHeartEffect(card) {
+                card.addEventListener('mouseenter', () => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.cssText = `
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        font-size: 1.5rem;
+                        animation: heartPulse 1s ease-in-out infinite;
+                        pointer-events: none;
+                        z-index: 10;
+                    `;
+                    card.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 2000);
+                });
+            }
+
+            function createFloatingHearts() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = ['💖', '💕', '💗', '💘'][Math.floor(Math.random() * 4)];
+                        heart.style.cssText = `
+                            position: fixed;
+                            font-size: ${Math.random() * 20 + 15}px;
+                            left: ${Math.random() * 100}vw;
+                            top: 100vh;
+                            pointer-events: none;
+                            z-index: 9999;
+                            animation: floatUpHeart 4s ease-out forwards;
+                        `;
+                        document.body.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            if (heart.parentNode) {
+                                heart.remove();
+                            }
+                        }, 4000);
+                    }, i * 100);
+                }
+            }
+
+            function createHeartExplosion() {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.cssText = `
+                        position: fixed;
+                        left: ${centerX}px;
+                        top: ${centerY}px;
+                        font-size: 1.5rem;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: heartExplode 1.5s ease-out forwards;
+                        --angle: ${(360 / 20) * i}deg;
+                    `;
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 1500);
+                }
+            }
+
+            function createPhotoFlash() {
+                const flash = document.createElement('div');
+                flash.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(255, 255, 255, 0.8);
+                    pointer-events: none;
+                    z-index: 9998;
+                    animation: photoFlash 0.3s ease-out;
+                `;
+                document.body.appendChild(flash);
+                
+                setTimeout(() => {
+                    flash.remove();
+                }, 300);
+            }
+
+            function createConfetti() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed;
+                            width: 10px;
+                            height: 10px;
+                            background: ${['#ff6b9d', '#ffc107', '#e91e63', '#9c27b0'][Math.floor(Math.random() * 4)]};
+                            left: ${Math.random() * 100}vw;
+                            top: -10px;
+                            pointer-events: none;
+                            z-index: 9999;
+                            animation: confettiFall 3s linear forwards;
+                            transform: rotate(${Math.random() * 360}deg);
+                        `;
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            if (confetti.parentNode) {
+                                confetti.remove();
+                            }
+                        }, 3000);
+                    }, i * 50);
+                }
+            }
+
+            function createSparkleEffect(element) {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.innerHTML = '✨';
+                        sparkle.style.cssText = `
+                            position: absolute;
+                            font-size: 1rem;
+                            left: ${Math.random() * 100}%;
+                            top: ${Math.random() * 100}%;
+                            pointer-events: none;
+                            animation: sparkle 1s ease-out;
+                        `;
+                        element.style.position = 'relative';
+                        element.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.remove();
+                            }
+                        }, 1000);
+                    }, i * 200);
+                }
+            }
+
+            function updatePhotoCount(category) {
+                const visiblePhotos = document.querySelectorAll(
+                    category === 'all' 
+                        ? '.photo-card' 
+                        : `.photo-card[data-category="${category}"]`
+                );
+                
+                const countElement = document.getElementById('totalPhotos');
+                if (countElement) {
+                    countElement.textContent = visiblePhotos.length;
+                }
+            }
+
+            // Initialize particle systems
+            initPhotoParticles();
+            initCamera3DFloat();
+
+            // Start animations
+            setTimeout(animateNumbers, 1000);
+            
+            // Add initial hover effects
+            photoCards.forEach(addHoverHeartEffect);
+        });
+
+        // 3D Particle Systems
+        function initPhotoParticles() {
+            const particleContainer = document.querySelector('.gallery-particles');
+            if (!particleContainer) return;
+
+            const particles = ['📸', '💖', '🌟', '✨', '💕', '📷', '💗', '⭐'];
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'photo-particle';
+                particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particleContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 20000);
+            }
+            
+            // Create initial particles
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createParticle, i * 500);
+            }
+            
+            // Continuously create new particles
+            setInterval(createParticle, 2000);
+        }
+
+        function initCamera3DFloat() {
+            const cameraContainer = document.querySelector('.floating-cameras');
+            if (!cameraContainer) return;
+
+            const cameras = ['📷', '📸', '📹', '🎥'];
+            
+            function createCamera() {
+                const camera = document.createElement('div');
+                camera.className = 'camera-3d';
+                camera.innerHTML = cameras[Math.floor(Math.random() * cameras.length)];
+                camera.style.left = Math.random() * 100 + 'vw';
+                camera.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                camera.style.animationDelay = Math.random() * 8 + 's';
+                cameraContainer.appendChild(camera);
+                
+                setTimeout(() => {
+                    if (camera.parentNode) {
+                        camera.remove();
+                    }
+                }, 30000);
+            }
+            
+            // Create initial cameras
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createCamera, i * 1000);
+            }
+            
+            // Continuously create new cameras
+            setInterval(createCamera, 4000);
+        }
+
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes photoFloat {
+                0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+                10% { opacity: 0.6; }
+                90% { opacity: 0.6; }
+                100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            }
+            
+            @keyframes camera3DFloat {
+                0% { transform: translateY(100vh) rotateX(0deg) rotateY(0deg); opacity: 0; }
+                10% { opacity: 0.7; }
+                50% { transform: translateY(50vh) rotateX(180deg) rotateY(180deg); }
+                90% { opacity: 0.7; }
+                100% { transform: translateY(-100px) rotateX(360deg) rotateY(360deg); opacity: 0; }
+            }
+            
+            @keyframes heartPulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+            }
+            
+            @keyframes floatUpHeart {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            }
+            
+            @keyframes heartExplode {
+                0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+                100% { 
+                    transform: translate(-50%, -50%) translateX(calc(cos(var(--angle)) * 200px)) 
+                              translateY(calc(sin(var(--angle)) * 200px)) scale(1) rotate(720deg); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes photoFlash {
+                0% { opacity: 0; }
+                50% { opacity: 0.8; }
+                100% { opacity: 0; }
+            }
+            
+            @keyframes confettiFall {
+                0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            }
+            
+            @keyframes sparkle {
+                0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                50% { transform: scale(1) rotate(180deg); opacity: 1; }
+                100% { transform: scale(0) rotate(360deg); opacity: 0; }
+            }
+            
+            @keyframes ripple {
+                0% { transform: scale(0); opacity: 1; }
+                100% { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+</body>
+</html>

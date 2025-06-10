@@ -343,3 +343,490 @@ html[data-page-type="anniversary"]  {
 
 }
 
+/* Anniversary Page Enhanced Styles */
+/* Anniversary Website v4.0.0 - Updated for clean HTML structure */
+
+/* Navigation Bar */
+.navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 11, 46, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #f8e8ff;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.nav-brand-icon {
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #f8e8ff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(236, 72, 153, 0.2);
+    color: #f472b6;
+}
+
+/* Hero Section Enhancement */
+.love-milestone-hero {
+    margin-top: 80px; /* Account for fixed nav */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.highlight-name {
+    color: #fbbf24;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content */
+.love-story-content {
+    background: linear-gradient(135deg, #1a0b2e 0%, #2d1b3d 50%, #3d2a4d 100%);
+    min-height: 100vh;
+    padding: 4rem 0;
+}
+
+.content-sanctuary {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Glassmorphism Base */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Time Together Section */
+.time-together-section {
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #f472b6;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.anniversary-date {
+    font-size: 1.2rem;
+    color: #f472b6;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* Time Calculator */
+.time-calculator {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.time-stat {
+    background: rgba(236, 72, 153, 0.1);
+    border: 1px solid rgba(244, 114, 182, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.time-stat:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+    background: rgba(236, 72, 153, 0.2);
+}
+
+.time-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #f472b6;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.time-label {
+    font-size: 1rem;
+    color: #f8e8ff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Love Message */
+.love-tender-feeling-communication {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+}
+
+.love-message-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #f8e8ff;
+    text-align: center;
+}
+
+.love-message-content p {
+    margin-bottom: 1.5rem;
+}
+
+.love-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #f472b6;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+/* Navigation Grid */
+.navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.story-navigation-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: #f8e8ff;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.story-navigation-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.3),
+        rgba(236, 72, 153, 0.3),
+        rgba(255, 154, 158, 0.3));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.story-navigation-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 107, 157, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1);
+    color: #f8e8ff;
+}
+
+.story-navigation-card:hover::before {
+    opacity: 1;
+}
+
+.story-navigation-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.story-navigation-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #f472b6;
+}
+
+.story-navigation-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: #f8e8ff;
+}
+
+/* Back to Home */
+.back-to-home {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.home-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+}
+
+.home-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
+    color: white;
+}
+
+/* Music Player */
+.melody-heart-3d {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+
+.music-player {
+    padding: 1rem;
+    border-radius: 16px;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.play-button {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.volume-icon {
+    color: #f472b6;
+}
+
+.volume-slider {
+    width: 60px;
+    height: 4px;
+    background: rgba(244, 114, 182, 0.3);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.music-label {
+    font-size: 0.8rem;
+    color: #f8e8ff;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Particle Effects */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: floatUp 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(360deg);
+    }
+}
+
+/* Footer */
+.shared-story-closing {
+    background: linear-gradient(135deg, #1a0b2e, #2d1b3d);
+    color: #f8e8ff;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .content-sanctuary {
+        padding: 0 1rem;
+    }
+
+    .time-together-section,
+    .love-tender-feeling-communication {
+        padding: 2rem;
+    }
+
+    .time-calculator {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .time-number {
+        font-size: 2rem;
+    }
+
+    .navigation-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .story-navigation-card {
+        padding: 1.5rem;
+    }
+
+    .melody-heart-3d {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .time-calculator {
+        grid-template-columns: 1fr;
+    }
+}
+

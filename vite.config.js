@@ -1,21 +1,20 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   // Base configuration for GitHub Pages
-  base: '/anniversary-website/',
+  base: './',
   root: '.',
   publicDir: 'public',
 
-  // Build configuration
+  // Build configuration  
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
+    sourcemap: false,
     minify: 'terser',
     target: 'es2015',
 
-    // Rollup options for React SPA + Surprise pages
+    // Rollup options for vanilla JavaScript + HTML pages
     rollupOptions: {
       input: {
         main: 'index.html',
@@ -29,56 +28,29 @@ export default defineConfig({
       }
     },
 
-    // Terser options for better minification
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.debug'],
-        passes: 2
-      },
-      mangle: {
-        safari10: true
-      },
-      format: {
-        comments: false
-      }
-    },
-
-    // CSS code splitting
+    // Build optimizations
     cssCodeSplit: true,
-
-    // Chunk size warning limit
-    chunkSizeWarningLimit: 500
+    reportCompressedSize: false
   },
 
   // Development server
   server: {
     port: 3000,
     open: true,
-    cors: true,
-    host: true
+    host: true,
+    hmr: {
+      overlay: false
+    }
   },
 
-  // Preview server
-  preview: {
-    port: 3000,
-    open: true
-  },
-
-  // CSS configuration
+  // CSS processing
   css: {
     postcss: './postcss.config.js',
     devSourcemap: true
   },
 
-  // Asset optimization
-  assetsInclude: ['**/*.webp', '**/*.avif'],
-  // Plugins
-  plugins: [
-    // React plugin
-    react()
-  ],
+  // File handling
+  assetsInclude: ['**/*.m4a', '**/*.mp3', '**/*.wav'],
 
   // Optimization
   optimizeDeps: {
@@ -86,22 +58,20 @@ export default defineConfig({
     exclude: []
   },
 
-  // Environment variables
+  // Define global constants
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    __APP_VERSION__: JSON.stringify('4.0.0'),
     __BUILD_TIME__: JSON.stringify(new Date().toISOString())
   },
 
-  // Resolve configuration
+  // Path resolution
   resolve: {
     alias: {
       '@': '/src',
       '@components': '/src/components',
-      '@core': '/src/core',
-      '@utils': '/src/utils',
-      '@pages': '/src/pages',
       '@styles': '/src/styles',
-      '@templates': '/src/templates'
+      '@utils': '/src/utils',
+      '@assets': '/public/assets'
     }
   }
 });

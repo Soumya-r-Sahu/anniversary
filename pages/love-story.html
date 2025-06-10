@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Social -->
+    <title>📖 Our Love Story - Jerry & Soumya</title>
+    <meta name="description" content="The beautiful timeline of Jerry and Soumya's love story">
+    <meta name="keywords" content="love story, timeline, Jerry, Soumya, romance, journey">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Our Love Story - Jerry & Soumya">
+    <meta property="og:description" content="Follow our beautiful journey through time">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/core.css">
+    <link rel="stylesheet" href="../assets/css/effects.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        .love-story-container {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .story-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+
+        .story-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-pink), var(--text-accent), var(--primary-purple));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease-in-out infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(236, 72, 153, 0.3);
+        }
+
+        .story-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-pink), var(--primary-purple));
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            transform: translateY(30px) translateX(-20px);
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateY(30px) translateX(20px);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50%;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-pink);
+            border: 4px solid var(--bg-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-marker::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: marker-pulse 2s ease-in-out infinite;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.2);
+            border-color: rgba(236, 72, 153, 0.4);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .timeline-description {
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-emotions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .emotion-tag {
+            background: rgba(236, 72, 153, 0.2);
+            color: var(--primary-pink);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: -10px;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .chapter-divider {
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .chapter-title {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            padding: 1rem 2rem;
+            display: inline-block;
+            color: var(--primary-pink);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .love-quotes {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            color: var(--primary-pink);
+            font-weight: 600;
+            font-family: var(--font-heading);
+        }
+
+        @keyframes marker-pulse {
+            0%, 100% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 2rem;
+            }
+            
+            .timeline-marker {
+                left: 2rem;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 4rem;
+                margin-right: 0;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📖%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particle-canvas" class="particle-canvas"></div>
+    
+    <!-- Aurora Background -->
+    <div class="aurora-background">
+        <div class="aurora-layer aurora-layer-1"></div>
+        <div class="aurora-layer aurora-layer-2"></div>
+        <div class="aurora-layer aurora-layer-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="nav-content">
+            <a href="../index-v5.html" class="nav-brand">
+                <span class="brand-icon">💕</span>
+                <span class="brand-text">Jerry & Soumya</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index-v5.html" class="nav-link">
+                    <i data-lucide="home"></i>
+                    Home
+                </a>
+                <a href="countdown.html" class="nav-link">
+                    <i data-lucide="clock"></i>
+                    Countdown
+                </a>
+                <a href="anniversary.html" class="nav-link">
+                    <i data-lucide="heart"></i>
+                    Anniversary
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="love-story-container">
+        <!-- Hero Section -->
+        <section class="story-hero">
+            <h1 class="story-title">📖 Our Love Story 📖</h1>
+            <p class="story-subtitle">
+                A beautiful journey through time, capturing every precious moment that brought us together 
+                and made our love story uniquely ours. 💕
+            </p>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <!-- Chapter 1: The Beginning -->
+            <div class="chapter-divider">
+                <div class="chapter-title">💫 Chapter 1: The Beginning 💫</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🌟</div>
+                    <div class="timeline-date">June 16, 2024</div>
+                    <h3 class="timeline-title">The Day Everything Changed</h3>
+                    <p class="timeline-description">
+                        Our eyes met, and in that magical moment, time seemed to stop. Little did we know, 
+                        this was the beginning of the most beautiful love story ever written. The universe 
+                        conspired to bring two hearts together, and our journey of love began. ✨
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">🦋 Butterflies</span>
+                        <span class="emotion-tag">✨ Magic</span>
+                        <span class="emotion-tag">💫 Destiny</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💬</div>
+                    <div class="timeline-date">First Week</div>
+                    <h3 class="timeline-title">First Conversations</h3>
+                    <p class="timeline-description">
+                        Hours spent talking, getting to know each other's dreams, fears, and hopes. 
+                        Every word exchanged was like discovering a new star in our personal galaxy. 
+                        We found ourselves staying up late, not wanting the conversations to end.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">🌙 Late Nights</span>
+                        <span class="emotion-tag">💭 Deep Talks</span>
+                        <span class="emotion-tag">🔗 Connection</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💝</div>
+                    <div class="timeline-date">First Month</div>
+                    <h3 class="timeline-title">Growing Closer</h3>
+                    <p class="timeline-description">
+                        With each passing day, our bond grew stronger. Small gestures, shared laughs, 
+                        and the way you made me feel special in the simplest ways. I started looking 
+                        forward to every moment we spent together.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">🌱 Growing</span>
+                        <span class="emotion-tag">😊 Joy</span>
+                        <span class="emotion-tag">🤗 Comfort</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2: Falling in Love -->
+            <div class="chapter-divider">
+                <div class="chapter-title">💕 Chapter 2: Falling in Love 💕</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💖</div>
+                    <div class="timeline-date">That Special Moment</div>
+                    <h3 class="timeline-title">When I Knew I Loved You</h3>
+                    <p class="timeline-description">
+                        It wasn't a grand gesture or a perfect movie moment. It was in the quiet 
+                        in-between, watching you laugh at something silly, seeing your kindness 
+                        shine through in small actions. That's when I knew my heart belonged to you.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">💓 Realization</span>
+                        <span class="emotion-tag">🥰 Adoration</span>
+                        <span class="emotion-tag">💝 Heart Full</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🗣️</div>
+                    <div class="timeline-date">The Three Words</div>
+                    <h3 class="timeline-title">"I Love You"</h3>
+                    <p class="timeline-description">
+                        The first time those three little words left my lips, they carried the weight 
+                        of everything I felt. Your smile in response told me everything I needed to know. 
+                        In that moment, we both knew we had found something extraordinary.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">💫 Vulnerability</span>
+                        <span class="emotion-tag">🌈 Joy</span>
+                        <span class="emotion-tag">🔐 Security</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3: Building Our Love -->
+            <div class="chapter-divider">
+                <div class="chapter-title">🏗️ Chapter 3: Building Our Love 🏗️</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🎭</div>
+                    <div class="timeline-date">Creating Memories</div>
+                    <h3 class="timeline-title">Our Special Moments</h3>
+                    <p class="timeline-description">
+                        From inside jokes that only we understand to traditions we started together. 
+                        Every shared experience became a building block in the foundation of our love. 
+                        We created our own little world, filled with laughter and understanding.
+                    </p>
+                    <div class="memory-gallery">
+                        <div class="memory-card" onclick="createMemoryEffect(this)">📸</div>
+                        <div class="memory-card" onclick="createMemoryEffect(this)">🎵</div>
+                        <div class="memory-card" onclick="createMemoryEffect(this)">🍕</div>
+                        <div class="memory-card" onclick="createMemoryEffect(this)">🌅</div>
+                    </div>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">😂 Laughter</span>
+                        <span class="emotion-tag">🏠 Home</span>
+                        <span class="emotion-tag">📚 Stories</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🌱</div>
+                    <div class="timeline-date">Growing Together</div>
+                    <h3 class="timeline-title">Supporting Each Other</h3>
+                    <p class="timeline-description">
+                        Through challenges and celebrations, we learned that love isn't just about 
+                        the good times. It's about being there for each other, growing together, 
+                        and becoming better people because of the love we share.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">💪 Strength</span>
+                        <span class="emotion-tag">🤝 Partnership</span>
+                        <span class="emotion-tag">🌿 Growth</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4: Our Future -->
+            <div class="chapter-divider">
+                <div class="chapter-title">🔮 Chapter 4: Our Forever 🔮</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🌟</div>
+                    <div class="timeline-date">Today & Always</div>
+                    <h3 class="timeline-title">Our Love Today</h3>
+                    <p class="timeline-description">
+                        Every day with you feels like a new chapter in our love story. You continue 
+                        to amaze me with your kindness, your strength, and the way you love me. 
+                        Our story is still being written, and I can't wait to see what adventures await us.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">🌈 Happiness</span>
+                        <span class="emotion-tag">🚀 Adventure</span>
+                        <span class="emotion-tag">♾️ Forever</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💍</div>
+                    <div class="timeline-date">The Future</div>
+                    <h3 class="timeline-title">To Be Continued...</h3>
+                    <p class="timeline-description">
+                        This is just the beginning of our beautiful story. I dream of all the 
+                        tomorrows we'll share, the memories we'll create, and the love that will 
+                        only grow stronger with time. Here's to forever with you, my love.
+                    </p>
+                    <div class="timeline-emotions">
+                        <span class="emotion-tag">💫 Dreams</span>
+                        <span class="emotion-tag">🌅 Tomorrow</span>
+                        <span class="emotion-tag">💕 Forever</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Quotes Section -->
+        <section class="love-quotes">
+            <div class="quote-text" id="rotating-quote">
+                "In your eyes, I found my home. In your heart, I found my love. 
+                In your soul, I found my mate. With you, I am complete."
+            </div>
+            <div class="quote-author">- Jerry to Soumya 💕</div>
+        </section>
+
+        <!-- Back Home Button -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn btn-primary" onclick="location.href='../index-v5.html'">
+                <i data-lucide="home"></i>
+                Back to Our Love
+            </button>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../assets/js/core.js"></script>
+    <script src="../assets/js/effects.js"></script>
+    <script src="../assets/js/interactions.js"></script>
+    
+    <script>
+        // Love Story Page Logic
+        class LoveStoryPage {
+            constructor() {
+                this.observedElements = new Set();
+                this.quotes = [
+                    "In your eyes, I found my home. In your heart, I found my love. 💕",
+                    "Every love story is beautiful, but ours is my favorite. 📖",
+                    "You are the poetry my heart writes every day. 🖋️",
+                    "With you, every moment is a beautiful memory in the making. ✨",
+                    "Our love story is my favorite fairy tale come true. 🧚‍♀️",
+                    "In a world full of temporary things, you are my forever. ♾️"
+                ];
+                this.currentQuoteIndex = 0;
+            }
+
+            init() {
+                console.log('📖 Initializing love story page...');
+                
+                this.setupScrollAnimations();
+                this.setupTimelineInteractions();
+                this.startQuoteRotation();
+                this.createStoryEffects();
+                
+                console.log('💕 Love story page ready!');
+            }
+
+            setupScrollAnimations() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !this.observedElements.has(entry.target)) {
+                            this.animateTimelineItem(entry.target);
+                            this.observedElements.add(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    observer.observe(item);
+                });
+            }
+
+            animateTimelineItem(item) {
+                item.classList.add('visible');
+                
+                // Add sparkle effect
+                setTimeout(() => {
+                    this.createTimelineSparkles(item);
+                }, 300);
+                
+                // Animate marker
+                const marker = item.querySelector('.timeline-marker');
+                if (marker) {
+                    marker.style.transform = 'translateX(-50%) scale(1.2)';
+                    marker.style.boxShadow = '0 0 30px rgba(236, 72, 153, 0.8)';
+                    
+                    setTimeout(() => {
+                        marker.style.transform = 'translateX(-50%) scale(1)';
+                        marker.style.boxShadow = '0 0 20px rgba(236, 72, 153, 0.6)';
+                    }, 500);
+                }
+            }
+
+            createTimelineSparkles(item) {
+                const rect = item.getBoundingClientRect();
+                const content = item.querySelector('.timeline-content');
+                
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.innerHTML = '✨';
+                        sparkle.style.cssText = `
+                            position: fixed;
+                            left: ${rect.left + Math.random() * rect.width}px;
+                            top: ${rect.top + Math.random() * rect.height}px;
+                            font-size: 16px;
+                            pointer-events: none;
+                            z-index: 1000;
+                            animation: sparkle-timeline 1.5s ease-out forwards;
+                        `;
+                        
+                        document.body.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.remove();
+                            }
+                        }, 1500);
+                    }, i * 200);
+                }
+            }
+
+            setupTimelineInteractions() {
+                document.querySelectorAll('.timeline-content').forEach(content => {
+                    content.addEventListener('click', () => {
+                        this.createHeartBurst(content);
+                    });
+                });
+
+                // Add hover effects to emotion tags
+                document.querySelectorAll('.emotion-tag').forEach(tag => {
+                    tag.addEventListener('mouseenter', () => {
+                        tag.style.transform = 'scale(1.1)';
+                        tag.style.boxShadow = '0 4px 15px rgba(236, 72, 153, 0.3)';
+                    });
+                    
+                    tag.addEventListener('mouseleave', () => {
+                        tag.style.transform = 'scale(1)';
+                        tag.style.boxShadow = 'none';
+                    });
+                });
+            }
+
+            createHeartBurst(element) {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        this.createFloatingHeart(centerX, centerY);
+                    }, i * 100);
+                }
+                
+                // Add temporary glow
+                element.style.borderColor = 'rgba(236, 72, 153, 0.8)';
+                element.style.boxShadow = '0 0 30px rgba(236, 72, 153, 0.4)';
+                
+                setTimeout(() => {
+                    element.style.borderColor = '';
+                    element.style.boxShadow = '';
+                }, 1000);
+            }
+
+            createFloatingHeart(x, y) {
+                const hearts = ['💕', '💖', '💗', '💓', '💘'];
+                const heart = document.createElement('div');
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 80 + 40;
+                const endX = x + Math.cos(angle) * distance;
+                const endY = y + Math.sin(angle) * distance;
+                
+                heart.style.cssText = `
+                    position: fixed;
+                    left: ${x}px;
+                    top: ${y}px;
+                    font-size: 20px;
+                    pointer-events: none;
+                    z-index: 1000;
+                    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                `;
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.style.left = endX + 'px';
+                    heart.style.top = endY + 'px';
+                    heart.style.opacity = '0';
+                    heart.style.transform = 'scale(1.5) rotate(360deg)';
+                }, 100);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.remove();
+                    }
+                }, 1600);
+            }
+
+            startQuoteRotation() {
+                setInterval(() => {
+                    this.rotateQuote();
+                }, 8000);
+            }
+
+            rotateQuote() {
+                const quoteElement = document.getElementById('rotating-quote');
+                if (!quoteElement) return;
+                
+                quoteElement.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    this.currentQuoteIndex = (this.currentQuoteIndex + 1) % this.quotes.length;
+                    quoteElement.textContent = this.quotes[this.currentQuoteIndex];
+                    quoteElement.style.opacity = '1';
+                }, 500);
+            }
+
+            createStoryEffects() {
+                // Create floating book pages
+                setInterval(() => {
+                    this.createFloatingPage();
+                }, 12000);
+                
+                // Add reading progress indicator
+                this.addReadingProgress();
+            }
+
+            createFloatingPage() {
+                const page = document.createElement('div');
+                page.innerHTML = '📄';
+                page.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * 100}vw;
+                    bottom: -50px;
+                    font-size: ${Math.random() * 15 + 20}px;
+                    opacity: 0.3;
+                    pointer-events: none;
+                    z-index: 5;
+                    animation: page-float ${Math.random() * 8 + 12}s linear forwards;
+                    color: var(--text-secondary);
+                `;
+                
+                document.body.appendChild(page);
+                
+                setTimeout(() => {
+                    if (page.parentNode) {
+                        page.remove();
+                    }
+                }, 20000);
+            }
+
+            addReadingProgress() {
+                const progressBar = document.createElement('div');
+                progressBar.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 0%;
+                    height: 3px;
+                    background: linear-gradient(to right, var(--primary-pink), var(--primary-purple));
+                    z-index: 1000;
+                    transition: width 0.3s ease;
+                `;
+                
+                document.body.appendChild(progressBar);
+                
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset;
+                    const docHeight = document.body.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    
+                    progressBar.style.width = scrollPercent + '%';
+                });
+            }
+        }
+
+        // Global function for memory cards
+        function createMemoryEffect(card) {
+            const memories = {
+                '📸': 'Our first photo together! 📸💕',
+                '🎵': 'The song that became "ours" 🎵💖',
+                '🍕': 'Late night food adventures! 🍕😋',
+                '🌅': 'Watching sunrises together 🌅✨'
+            };
+            
+            const emoji = card.textContent;
+            const message = memories[emoji] || 'A beautiful memory! 💕';
+            
+            // Create memory bubble
+            const bubble = document.createElement('div');
+            bubble.innerHTML = message;
+            bubble.style.cssText = `
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 20px;
+                z-index: 10000;
+                animation: memory-bubble 3s ease-in-out forwards;
+                border: 2px solid var(--primary-pink);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            `;
+            
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                if (bubble.parentNode) {
+                    bubble.remove();
+                }
+            }, 3000);
+            
+            // Add sparkle effect to card
+            card.style.transform = 'scale(1.2) rotate(10deg)';
+            card.style.boxShadow = '0 15px 30px rgba(236, 72, 153, 0.5)';
+            
+            setTimeout(() => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            }, 500);
+        }
+
+        // Initialize love story page
+        const loveStoryPage = new LoveStoryPage();
+
+        // Start when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                loveStoryPage.init();
+            });
+        } else {
+            loveStoryPage.init();
+        }
+
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Add extra CSS animations
+        const storyCSS = `
+            @keyframes sparkle-timeline {
+                0% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.5) rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.5) rotate(360deg);
+                }
+            }
+
+            @keyframes page-float {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.3;
+                }
+                90% {
+                    opacity: 0.3;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes memory-bubble {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0);
+                }
+                20%, 80% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.8);
+                }
+            }
+        `;
+
+        const style = document.createElement('style');
+        style.textContent = storyCSS;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
