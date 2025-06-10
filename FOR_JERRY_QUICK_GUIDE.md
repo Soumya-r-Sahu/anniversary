@@ -1,4 +1,4 @@
-# 💕 For Jerry - Anniversary Website Quick Guide
+# 💕 For Jerry - Anniversary Website Quick Guide v5.0.0
 
 ## 🌟 Your Anniversary Website is Ready!
 
@@ -19,7 +19,8 @@ You can also go directly to any page:
 - `/#/music-playlist` - Our romantic music collection  
 - `/#/special-dates` - Calendar of our precious moments
 - `/#/love-story` - Our complete love story timeline
-- `/#/photo-gallery` - All our beautiful memories
+- `/#/games` - Play our special interactive games
+- `/#/surprises` - Discover and unlock special surprises
 
 ---
 
@@ -64,6 +65,18 @@ You can also go directly to any page:
 - Important dates and milestones
 - Interactive calendar view
 - Special memory highlights
+
+### **🎮 Interactive Games**
+- Fun games celebrating our love
+- Playable on any device
+- High scores and achievements
+- Special game-themed surprises
+
+### **🎁 Surprise Reveals**
+- Unlock surprises as you explore
+- Special messages and gifts
+- Hidden features and animations
+- Time-sensitive surprise events
 
 ---
 
@@ -126,6 +139,20 @@ All our beautiful memories:
 - Full-screen photo viewing
 - Story context for photos
 
+### **6. Interactive Games** 🎮
+Fun games to enjoy:
+- Playable directly on the website
+- High scores and achievements
+- Special game-related surprises
+- Romantic and fun themes
+
+### **7. Surprise Reveals** 🎁
+Discover hidden surprises:
+- Unlockable content as you explore
+- Special messages and gifts
+- Time-sensitive surprise events
+- Interactive and engaging surprises
+
 ---
 
 ## 💡 Pro Tips
@@ -154,6 +181,8 @@ All our beautiful memories:
 - 📸 **Memory galleries** showcasing our journey
 - ⏰ **Smart timing** that celebrates special dates
 - 💖 **Love-focused design** that tells our story
+- 🎮 **Interactive games** for fun and engagement
+- 🎁 **Surprise reveals** that add excitement
 
 ---
 
@@ -163,5 +192,5 @@ All our beautiful memories:
 
 ---
 
-*Anniversary Website v4.0.0 - JavaScript-First Edition*  
+*Anniversary Website v5.0.0 - JavaScript-First Edition*  
 *Made with 💖 for Jerry & Soumya's Love Story*

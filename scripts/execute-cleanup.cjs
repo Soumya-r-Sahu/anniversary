@@ -34,40 +34,19 @@ function safeDelete(filePath) {
 
 // Delete duplicate files
 console.log('\n🔄 Deleting Duplicate Files...');
-safeDelete('scripts/reorganize-files.js'); // Keep: scripts/reorganize-files.cjs
-safeDelete('src/scripts/pages/challenges.js'); // Keep: src/pages/js/challenges.js
-safeDelete('src/scripts/pages/future-plans.js'); // Keep: src/pages/js/future-plans.js
-safeDelete('src/scripts/pages/love-letters.js'); // Keep: src/pages/js/love-letters.js
-safeDelete('src/scripts/pages/love-story.js'); // Keep: src/pages/js/love-story.js
-safeDelete('src/scripts/pages/memory-book.js'); // Keep: src/pages/js/memory-book.js
-safeDelete('src/scripts/pages/music-playlist.js'); // Keep: src/pages/js/music-playlist.js
-safeDelete('src/scripts/pages/photo-gallery.js'); // Keep: src/pages/js/photo-gallery.js
-safeDelete('src/scripts/pages/settings.js'); // Keep: src/pages/js/settings.js
-safeDelete('src/scripts/pages/special-dates.js'); // Keep: src/pages/js/special-dates.js
-safeDelete('src/scripts/pages/wish-list.js'); // Keep: src/pages/js/wish-list.js
-safeDelete('src/styles/pages/anniversary.css'); // Keep: src/pages/css/anniversary.css
-safeDelete('src/styles/pages/challenges.css'); // Keep: src/pages/css/challenges.css
-safeDelete('src/styles/pages/countdown.css'); // Keep: src/pages/css/countdown.css
-safeDelete('src/styles/pages/fireworks.css'); // Keep: src/pages/css/fireworks.css
-safeDelete('src/styles/pages/future-plans.css'); // Keep: src/pages/css/future-plans.css
-safeDelete('src/styles/pages/love-letters.css'); // Keep: src/pages/css/love-letters.css
-safeDelete('src/styles/pages/love-story.css'); // Keep: src/pages/css/love-story.css
-safeDelete('src/styles/pages/memory-book.css'); // Keep: src/pages/css/memory-book.css
-safeDelete('src/styles/pages/music-playlist.css'); // Keep: src/pages/css/music-playlist.css
-safeDelete('src/styles/pages/photo-gallery.css'); // Keep: src/pages/css/photo-gallery.css
-safeDelete('src/styles/pages/settings.css'); // Keep: src/pages/css/settings.css
-safeDelete('src/styles/pages/special-dates.css'); // Keep: src/pages/css/special-dates.css
-safeDelete('src/styles/pages/wish-list.css'); // Keep: src/pages/css/wish-list.css
+safeDelete('final-deployment-verification.sh'); // Keep: cleanup-archive/temp-files/FINAL_CLEANUP_INTEGRATION_COMPLETE.md
+safeDelete('src/data/UnifiedDataManager.js'); // Keep: src/data/DataManager.js
+safeDelete('surprise.html'); // Keep: src/pages/html/surprises.html
 
 // Delete obsolete files and directories
 console.log('\n🗑️  Deleting Obsolete Files...');
-safeDelete('test-music-system.js'); // Obsolete pattern match
-safeDelete('src/styles/pages'); // Obsolete directory - functionality moved
-safeDelete('src/scripts/pages'); // Obsolete directory - functionality moved
+safeDelete('cleanup-archive/temp-cleanup-v5-backup.tar.gz'); // Obsolete pattern match
+safeDelete('cleanup-archive/temp-files/index-corrupted-backup.html'); // Obsolete pattern match
 
 // Delete empty files
 console.log('\n📄 Deleting Empty Files...');
-safeDelete('Prd.md'); // Empty file
+safeDelete('cleanup-archive/temp-files/FINAL_CLEANUP_INTEGRATION_COMPLETE.md'); // Empty file
+safeDelete('final-deployment-verification.sh'); // Empty file
 
 console.log('\n🎉 Cleanup Complete!');
 console.log(`✅ Deleted ${deletedCount} files/directories`);

@@ -1,7 +1,7 @@
 {
-  "name": "Jerry & Soumya Anniversary Website",
+  "name": "Jerry & Soumya Anniversary Website v5.0.0",
   "short_name": "Anniversary",
-  "description": "A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive features, photo galleries, countdown timer, and romantic surprises.",
+  "description": "A beautiful anniversary website celebrating Jerry and Soumya's love story with interactive games, surprises, photo galleries, countdown timer, and romantic features.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a0b2e",

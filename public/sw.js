@@ -1,9 +1,9 @@
 /**
- * Anniversary Website v4.0.0 - Service Worker
+ * Anniversary Website v5.0.0 - Service Worker
  * Provides offline functionality and caching for the anniversary website
  */
 
-const CACHE_NAME = 'anniversary-website-v4-0-0';
+const CACHE_NAME = 'anniversary-website-v5-0-0';
 const STATIC_CACHE_URLS = [
   '/',
   '/index.html',
@@ -20,6 +20,8 @@ const STATIC_CACHE_URLS = [
   '/src/pages/html/wish-list.html',
   '/src/pages/html/fireworks.html',
   '/src/pages/html/settings.html',
+  '/src/pages/html/games.html',
+  '/src/pages/html/surprises.html',
   '/src/styles/shared.css',
   '/src/styles/variables.css',
   '/src/styles/theme-integration.css',

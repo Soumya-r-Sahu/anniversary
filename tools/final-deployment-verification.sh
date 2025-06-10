@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 🎉 Anniversary Website v4.0.0 - Final Deployment Verification
+# 🎉 Anniversary Website v5.0.0 - Final Deployment Verification
 # Comprehensive check before GitHub Pages deployment
 
 echo "🚀 Starting Final Deployment Verification..."
@@ -138,11 +138,11 @@ echo -e "\n============================================="
 # Final verification result
 if [ "$VERIFICATION_PASSED" = true ]; then
     echo -e "${GREEN}🎉 VERIFICATION PASSED! 🎉${NC}"
-    echo -e "${GREEN}✅ Anniversary Website v4.0.0 is ready for deployment!${NC}"
+    echo -e "${GREEN}✅ Anniversary Website v5.0.0 is ready for deployment!${NC}"
     echo -e "${BLUE}📝 Next steps:${NC}"
     echo -e "   1. Initialize git repository: ${YELLOW}git init${NC}"
     echo -e "   2. Add files: ${YELLOW}git add .${NC}"
-    echo -e "   3. Commit: ${YELLOW}git commit -m 'Anniversary Website v4.0.0 - Complete'${NC}"
+    echo -e "   3. Commit: ${YELLOW}git commit -m 'Anniversary Website v5.0.0 - Complete'${NC}"
     echo -e "   4. Push to GitHub and enable Pages${NC}"
     echo -e "\n${GREEN}🌟 Ready to celebrate Jerry & Soumya's love story! 💕${NC}"
 else

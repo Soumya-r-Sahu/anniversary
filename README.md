@@ -1,15 +1,18 @@
-# 💕 Anniversary Website v4.0.0 - Jerry & Soumya
+# 💕 Anniversary Website v5.0.0 - Jerry & Soumya
 
-**A beautifully crafted anniversary website celebrating Jerry & Soumya's love story with 13 interactive pages, premium UI polish, and deployment-ready architecture.**
+**A beautifully crafted anniversary website celebrating Jerry & Soumya's love story with 15 interactive pages, interactive games, surprise systems, premium UI polish, and deployment-ready architecture.**
 
 ## 🌟 **Features**
 
-✅ **13 Interactive Pages** - Complete love story experience  
+✅ **15 Interactive Pages** - Complete love story experience  
+✅ **6 Interactive Games** - Fun games to celebrate your love  
+✅ **8 Progressive Surprises** - Unlock special moments and gifts  
 ✅ **Professional UI** - Advanced micro-interactions and animations  
 ✅ **Mobile Perfect** - Responsive design optimized for all devices  
 ✅ **Music Integration** - Romantic background music throughout  
 ✅ **Dark Romantic Theme** - Beautiful pink/purple gradient design  
 ✅ **GitHub Pages Ready** - Configured for instant deployment  
+✅ **PWA Support** - Install as an app on mobile devices
 
 ## 🚀 **Quick Start**
 
