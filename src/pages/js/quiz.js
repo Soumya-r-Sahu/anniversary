@@ -323,8 +323,8 @@ function unlockNextPage() {
         // Mark quiz as completed
         localStorage.setItem('quizCompleted', 'true');
         
-        // Redirect to star map
-        window.location.href = 'starmap.html';
+        // Redirect to surprises page
+        window.location.href = 'surprises.html';
     } else {
         alert('🔒 Please complete the quiz first!');
     }

@@ -1,88 +1,1338 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="📖 Our Love Story 📖"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><title>Our Love Story - Jerry & Soumya</title><meta name="description" content="The beautiful journey of Jerry & Soumya"><link rel="stylesheet" href="../styles/shared.css"><link rel="stylesheet" href="../css/love-story.css">
-<link rel="stylesheet" href="../styles/navigation.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- ✨ Anniversary Website v5.0 - Interactive Love Story -->
+    <title>📖 Our Love Story - Jerry & Soumya Forever</title>
+    <meta name="description" content="The beautiful journey of Jerry & Soumya - an interactive timeline of love, growth, and endless romance.">
+    <meta name="keywords" content="Jerry, Soumya, love story, timeline, romance, journey, relationship">
+    
+    <!-- 🎨 PWA Configuration -->
+    <meta name="theme-color" content="#e91e63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 🌟 Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 💎 Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Sacramento&family=Orbitron:wght@400;500;600;700;800;900&family=Alex+Brush&family=Allura&display=swap" rel="stylesheet">
+    
+    <!-- 🎭 Icons & Effects -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 🎨 Core v5.0 Styles -->
+    <style>
+        /* ================================
+           📖 MAGICAL LOVE STORY V5.0
+           INTERACTIVE TIMELINE EXPERIENCE
+        ================================ */
+        
+        /* 🌟 Enhanced Romantic Palette */
+        :root {
+            /* Primary Colors */
+            --romantic-primary: #e91e63;
+            --romantic-secondary: #ff1744;
+            --romantic-accent: #ffc107;
+            --romantic-purple: #9c27b0;
+            --romantic-indigo: #3f51b5;
+            --romantic-gold: #ffb300;
+            --romantic-rose: #ff69b4;
+            --romantic-coral: #ff6b6b;
+            --romantic-cyan: #00bcd4;
+            --romantic-story: #ff6b9d;
+            --romantic-timeline: #8e24aa;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-hero: rgba(233, 30, 99, 0.1);
+            --bg-timeline: rgba(255, 255, 255, 0.03);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --text-accent: #ff6b9d;
+            --text-story: #ffd54f;
+            --text-romantic: #ffab91;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-story: rgba(255, 255, 255, 0.1);
+            --glass-timeline: rgba(255, 248, 225, 0.95);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            --gradient-hero: linear-gradient(135deg, rgba(233,30,99,0.2), rgba(156,39,176,0.2), rgba(63,81,181,0.1));
+            --gradient-story: linear-gradient(45deg, rgba(255,107,157,0.2), rgba(142,36,170,0.2));
+            --gradient-timeline: linear-gradient(135deg, #fff8e1, #ffecb3, #ffe0b2);
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-3d: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            --transition-story: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* 🔄 Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* 🌟 Story Particle System */
+        .story-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .story-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: storyFloat 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .heart-3d {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: heart3DFloat 25s linear infinite;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+        }
+        
+        /* 🎭 Enhanced Navigation */
+        .magical-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .nav-brand-icon {
+            font-size: 1.5rem;
+            animation: storyPulse 3s ease-in-out infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+        
+        /* 🌈 Story Hero */
+        .story-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: heroEntry 2s ease-out 0.5s forwards;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px var(--romantic-gold));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient-story);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 50px rgba(255, 213, 79, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* 🎯 Main Story Sanctuary */
+        .story-sanctuary {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 📖 Interactive Timeline */
+        .love-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.6);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: timelineEntry 1s ease-out forwards;
+        }
+        
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+        
+        .timeline-content {
+            background: var(--glass-story);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2rem;
+            position: relative;
+            width: 45%;
+            transition: var(--transition-3d);
+            cursor: pointer;
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-content:hover {
+            transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateZ(20px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(233, 30, 99, 0.3);
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 10;
+            transition: var(--transition-bounce);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.6);
+        }
+        
+        .timeline-marker:hover {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 50px rgba(233, 30, 99, 0.8);
+        }
+        
+        .timeline-date {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            color: var(--romantic-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+        }
+        
+        .timeline-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-tag {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* 💕 Love Statistics */
+        .love-stats {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 4rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        
+        .stats-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--glass-story);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-3d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .stat-card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.4);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--romantic-accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-description {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+        
+        /* 🎭 Enhanced Navigation Grid */
+        .story-navigation {
+            padding: 4rem 2rem;
+            background: var(--gradient-section-alt);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .nav-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition-3d);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(233, 30, 99, 0.4);
+            color: white;
+        }
+        
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+        
+        .nav-card .nav-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 15px var(--romantic-gold));
+        }
+        
+        .nav-content {
+            flex: 1;
+        }
+        
+        .nav-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 💎 Romantic Footer */
+        .romantic-footer {
+            background: var(--gradient-footer);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-heart {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        .footer-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-sparkles {
+            font-size: 1rem;
+            color: var(--romantic-accent);
+            opacity: 0.8;
+        }
+        
+        /* 📱 Responsive Design */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+        
+        /* 🎨 Magical Animations */
+        @keyframes heroEntry {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes timelineEntry {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes storyPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(-5deg); }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes storyFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes heart3DFloat {
+            0% {
+                transform: translateY(100vh) rotateX(0deg) rotateY(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotateX(360deg) rotateY(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+    </style>
+    
+    <!-- 🌟 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📖%3C/text%3E%3C/svg%3E">
 </head>
-<body style="padding-top: 90px;">
-<!-- Navigation will be loaded dynamically -->
-<main class="love-story-content">
-<div class="content-sanctuary mx-auto px-4 py-8">
-<div class="text-center mb-12">
-<h1 class="text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float">
-📖 Our Love Story 📖
-</h1><p class="text-xl text-pink-700 font-dancing precious-moment-display-3d-hover">
-The beautiful journey of Jerry & Soumya
-Our Love Story
-</h1><p class="text-xl text-gray-700 text-center max-w-2xl mx-auto mb-8">
-Every love story is beautiful, but ours is our favorite ✨
-</p></div><div class="love-journey-content-sanctuary"><div class="love-journey-story-opening"><h2 class="text-3xl font-dancing text-pink-600 mb-6 text-center">
-Our Journey Together
-</h2></div><div class="love-journey"><div class="love-journey-story-piece" data-aos="fade-right"><div class="love-journey-marker">💕</div><div class="love-journey-content"><div class="love-journey-date">Beginning of Forever</div><h3 class="love-journey-title">First Meeting</h3><p class="love-journey-description">
-The day our paths crossed and changed our lives forever. What started as a simple conversation
-became the foundation of something beautiful.
-</p><div class="love-journey-photo-placeholder">
-📸 First Photo Together
-</div></div></div><div class="journey-moment love-journey-story-piece-right" data-aos="fade-left"><div class="love-journey-marker">💌</div><div class="love-journey-content"><div class="love-journey-date">Growing Closer</div><h3 class="love-journey-title">First Date</h3><p class="love-journey-description">
-Our first official date - nervous excitement, endless conversations, and the realization
-that we had found something special in each other.
-</p><div class="love-journey-photo-placeholder">
-🌹 Our First Date
-</div></div></div><div class="love-journey-story-piece" data-aos="fade-right"><div class="love-journey-marker">❤️</div><div class="love-journey-content"><div class="love-journey-date">Love Declaration</div><h3 class="love-journey-title">First "I Love You"</h3><p class="love-journey-description">
-The moment when words finally caught up with our hearts. Three little words that changed everything
-and marked the beginning of our forever.
-</p><div class="love-journey-photo-placeholder">
-💖 Love Confession
-</div></div></div><div class="journey-moment love-journey-story-piece-right" data-aos="fade-left"><div class="love-journey-marker">🎉</div><div class="love-journey-content"><div class="love-journey-date">Milestone Celebration</div><h3 class="love-journey-title">First Anniversary</h3><p class="love-journey-description">
-Celebrating our first year together - 365 days of laughter, growth, understanding,
-and falling deeper in love with each passing day.
-</p><div class="love-journey-photo-placeholder">
-🎂 Anniversary Celebration
-</div></div></div><div class="love-journey-story-piece" data-aos="fade-right"><div class="love-journey-marker">🌟</div><div class="love-journey-content"><div class="love-journey-date">Present Day</div><h3 class="love-journey-title">Our Story Continues</h3><p class="love-journey-description">
-Today and every day forward - writing new chapters, creating new memories,
-and building our beautiful future together.
-</p><div class="love-journey-photo-placeholder">
-💫 Our Journey Continues
-</div></div></div></div></div><div class="love-quotes-story-chapter"><h2 class="text-3xl font-dancing text-pink-600 mb-8 text-center">
-Words of Love
-</h2><div class="quotes-grid"><div class="quote-precious-moment-display" data-aos="zoom-in" data-aos-delay="100"><div class="quote-content">
-"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
-</div><div class="quote-author">- Our Promise to Each Other</div></div><div class="quote-precious-moment-display" data-aos="zoom-in" data-aos-delay="200"><div class="quote-content">
-"Every love story is beautiful, but ours is my favorite because it's real, it's ours, and it's growing stronger every day."
-</div><div class="quote-author">- From Our Hearts</div></div><div class="quote-precious-moment-display" data-aos="zoom-in" data-aos-delay="300"><div class="quote-content">
-"You are my today and all of my tomorrows. Together we are creating a love story that will inspire generations."
-</div><div class="quote-author">- Our Eternal Promise</div></div></div></div><div class="precious-moment-moments-story-chapter"><h2 class="text-3xl font-dancing text-pink-600 mb-8 text-center">
-Special Moments
-</h2><div class="moments-grid"><div class="moment-precious-moment-display" data-aos="flip-left" data-aos-delay="100"><div class="moment-icon">🌅</div><h3 class="moment-title">First Sunrise Together</h3><p class="moment-description">Watching the world wake up while holding hands, knowing this was just the beginning of our beautiful journey.</p></div><div class="moment-precious-moment-display" data-aos="flip-left" data-aos-delay="200"><div class="moment-icon">🍽️</div><h3 class="moment-title">Cooking Adventures</h3><p class="moment-description">From kitchen disasters to perfect meals, every cooking session became a beautiful memory of teamwork and laughter.</p></div><div class="moment-precious-moment-display" data-aos="flip-left" data-aos-delay="300"><div class="moment-icon">🎵</div><h3 class="moment-title">Our Song</h3><p class="moment-description">That magical moment when a random song became 'our song', and every time we hear it, we remember why we fell in love.</p></div><div class="moment-precious-moment-display" data-aos="flip-left" data-aos-delay="400"><div class="moment-icon">💫</div><h3 class="moment-title">Stargazing Nights</h3><p class="moment-description">Under the infinite sky, making wishes on stars while realizing that our greatest wish had already come true - finding each other.</p></div></div></div><div class="love-stats-story-chapter"><h2 class="text-3xl font-dancing text-pink-600 mb-8 text-center">
-Our Love in Numbers
-</h2><div class="stats-grid"><div class="stat-precious-moment-display" data-aos="zoom-in" data-aos-delay="100"><div class="stat-number" id="daysTogether">0</div><div class="stat-label">Days Together</div><div class="stat-description">Every day more beautiful than the last</div></div><div class="stat-precious-moment-display" data-aos="zoom-in" data-aos-delay="200"><div class="stat-number" id="memoriesCreated">0</div><div class="stat-label">Memories Created</div><div class="stat-description">Countless moments of joy and love</div></div><div class="stat-precious-moment-display" data-aos="zoom-in" data-aos-delay="300"><div class="stat-number" id="laughsShared">0</div><div class="stat-label">Laughs Shared</div><div class="stat-description">Infinite moments of happiness</div></div><div class="stat-precious-moment-display" data-aos="zoom-in" data-aos-delay="400"><div class="stat-number">∞</div><div class="stat-label">Love Multiplier</div><div class="stat-description">Growing stronger every moment</div></div></div></div><h3 class="text-lg font-semibold text-pink-600 mb-2">Sweet Messages</h3><p class="text-gray-700 text-sm">Collection of our most heartfelt conversations</p></div><article class="feature-precious-moment-display"><span class="feature-icon">🌟</span><h3 class="text-lg font-semibold text-pink-600 mb-2">Special Moments</h3><p class="text-gray-700 text-sm">Highlighting the moments that made us who we are</p></div></div><div class="text-center mt-12"><a href="anniversary.html" class="story-navigation-back-enhanced">
-← Back to Anniversary
-</a></div></div></main><div class="coming-soon"><div class="content-sanctuary mx-auto px-4 py-8"><h2 class="text-3xl font-dancing text-pink-600 mb-6 text-center">
-Stay Tuned for Our Beautiful Content
-</h2><p class="text-lg text-gray-700 mb-6 leading-relaxed">
-This page is being crafted with love to showcase our beautiful love story timeline and memories.
-Check back soon for amazing content that will make our love story even more special!
-</p><div class="text-center"><a href="../../index.html"
-class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
-🏠 Back to Home
-</a></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"><a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎉</div><div class="text-sm font-medium text-pink-700">Anniversary</div></a><a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">📸</div><div class="text-sm font-medium text-pink-700">Gallery</div></a><a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎵</div><div class="text-sm font-medium text-pink-700">Music</div></a></div></div><div class="fixed bottom-4 right-4 z-50"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
-class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"></div></div><div class="mt-2 text-xs text-gray-600 text-center">
-🎵 Our Love Song
-</div></div></div><footer class="shared-story-closing bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../../scripts/shared.js"></script><script type="module" src="../js/love-story.js"></script><script>
-// Initialize Lucide icons
-document.addEventListener('DOMContentLoaded', function() {
-if (typeof lucide !== 'undefined') {
-lucide.createIcons();
-}
-});
-</script>
-<!-- Navigation Loader -->
-<script type="module" src="../scripts/navigation-loader.js"></script>
-<!-- Unified Navigation & Data Management System -->
-<script type="module" src="../../utils/Navigation.js"></script>
-<script type="module" src="../../data/DataManager.js"></script>
-<script type="module" src="../../utils/Database.js"></script>
-<script>
-// Initialize unified systems when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Unified systems loaded for love-story');
-});
-</script>
+<body>
+    <!-- 🌟 Story Particle System -->
+    <div class="story-particles" id="storyParticles"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- 🎭 Enhanced Navigation -->
+    <nav class="magical-nav">
+        <div class="nav-container">
+            <a href="../../../index.html" class="nav-brand">
+                <span class="nav-brand-icon">📖</span>
+                <span class="nav-brand-text">Jerry & Soumya</span>
+            </a>
+            <div class="nav-menu">
+                <a href="../../../index.html" class="nav-link">Home</a>
+                <a href="anniversary.html" class="nav-link">Anniversary</a>
+                <a href="countdown.html" class="nav-link">Countdown</a>
+                <a href="photo-gallery.html" class="nav-link">Gallery</a>
+                <a href="music-playlist.html" class="nav-link">Music</a>
+                <a href="love-letters.html" class="nav-link">Letters</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🌈 Story Hero -->
+    <header class="story-hero">
+        <div class="hero-content">
+            <div class="hero-icon">📖</div>
+            <h1 class="hero-title">📖 Our Love Story 📖</h1>
+            <p class="hero-subtitle">The beautiful journey of Jerry & Soumya - written in the stars</p>
+        </div>
+    </header>
+
+    <!-- 🎯 Main Story Sanctuary -->
+    <main class="story-sanctuary">
+        <div class="content-container">
+            
+            <!-- 📖 Interactive Timeline -->
+            <section class="love-timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- First Meeting -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">💕</div>
+                    <div class="timeline-content" data-story="first-meeting">
+                        <div class="timeline-date">June 15, 2024</div>
+                        <h3 class="timeline-title">First Meeting</h3>
+                        <p class="timeline-description">
+                            The day our paths crossed and changed our lives forever. What started as a simple conversation became the foundation of something beautiful. That sparkle in your eyes, that gentle smile - I knew this was the beginning of something magical.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">💕 First Meeting</span>
+                            <span class="timeline-tag">✨ Destiny</span>
+                            <span class="timeline-tag">🌟 Magic</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- First Date -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">💌</div>
+                    <div class="timeline-content" data-story="first-date">
+                        <div class="timeline-date">June 20, 2024</div>
+                        <h3 class="timeline-title">First Date</h3>
+                        <p class="timeline-description">
+                            Our first official date - nervous excitement, endless conversations, and the realization that we had found something special in each other. The way you laughed at my jokes, how time seemed to stop when we talked - pure magic.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">🌹 First Date</span>
+                            <span class="timeline-tag">☕ Coffee</span>
+                            <span class="timeline-tag">💫 Connection</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- First Month -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">❤️</div>
+                    <div class="timeline-content" data-story="first-month">
+                        <div class="timeline-date">July 16, 2024</div>
+                        <h3 class="timeline-title">One Month Together</h3>
+                        <p class="timeline-description">
+                            Celebrating our first month of being together. Every day brought new discoveries about each other, new reasons to smile, and new depths of connection. You made every ordinary moment feel extraordinary.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">🎉 Milestone</span>
+                            <span class="timeline-tag">💖 Growing Love</span>
+                            <span class="timeline-tag">🌈 Joy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Love Declaration -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">💍</div>
+                    <div class="timeline-content" data-story="love-declaration">
+                        <div class="timeline-date">August 10, 2024</div>
+                        <h3 class="timeline-title">First "I Love You"</h3>
+                        <p class="timeline-description">
+                            The moment when words finally caught up with our hearts. Three little words that changed everything and marked the beginning of our forever. The way your eyes lit up, the happy tears - I'll treasure that moment always.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">💖 Love Declaration</span>
+                            <span class="timeline-tag">🎊 Forever</span>
+                            <span class="timeline-tag">✨ Eternal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Moments -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">🎉</div>
+                    <div class="timeline-content" data-story="special-moments">
+                        <div class="timeline-date">September - November 2024</div>
+                        <h3 class="timeline-title">Beautiful Memories</h3>
+                        <p class="timeline-description">
+                            Months filled with adventures, quiet moments, celebrations, and everything in between. Each memory we created together became a precious gem in the treasure chest of our love story.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">🎒 Adventures</span>
+                            <span class="timeline-tag">🏠 Home</span>
+                            <span class="timeline-tag">💝 Memories</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Anniversary -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">🌟</div>
+                    <div class="timeline-content" data-story="anniversary">
+                        <div class="timeline-date">November 16, 2024</div>
+                        <h3 class="timeline-title">5 Month Anniversary</h3>
+                        <p class="timeline-description">
+                            Celebrating five wonderful months together - 150 days of laughter, growth, understanding, and falling deeper in love with each passing day. Looking back at how far we've come and forward to our beautiful future.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">🎂 Anniversary</span>
+                            <span class="timeline-tag">🏆 Milestone</span>
+                            <span class="timeline-tag">💕 Celebration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Future Dreams -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">🚀</div>
+                    <div class="timeline-content" data-story="future">
+                        <div class="timeline-date">Today & Forever</div>
+                        <h3 class="timeline-title">Our Story Continues</h3>
+                        <p class="timeline-description">
+                            Today and every day forward - writing new chapters, creating new memories, and building our beautiful future together. With you, every day feels like a new adventure waiting to unfold.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">🚀 Future</span>
+                            <span class="timeline-tag">💫 Dreams</span>
+                            <span class="timeline-tag">♾️ Forever</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+
+            <!-- 💕 Love Statistics -->
+            <section class="love-stats">
+                <h3 class="stats-title">💕 Our Journey in Numbers</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="daysCounter">154</div>
+                        <div class="stat-label">Days Together</div>
+                        <div class="stat-description">Each one more beautiful</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="memoriesCounter">847</div>
+                        <div class="stat-label">Memories Created</div>
+                        <div class="stat-description">Treasured moments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="laughsCounter">2,456</div>
+                        <div class="stat-label">Laughs Shared</div>
+                        <div class="stat-description">Joy in every moment</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Love Multiplied</div>
+                        <div class="stat-description">Growing stronger daily</div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- 🎭 Enhanced Navigation Grid -->
+    <section class="story-navigation">
+        <div class="content-container">
+            <div class="nav-grid">
+                <a href="anniversary.html" class="nav-card">
+                    <div class="nav-icon">🎉</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Anniversary</div>
+                        <div class="nav-subtitle">Celebrate our love</div>
+                    </div>
+                </a>
+                <a href="photo-gallery.html" class="nav-card">
+                    <div class="nav-icon">📸</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Photo Gallery</div>
+                        <div class="nav-subtitle">Precious memories</div>
+                    </div>
+                </a>
+                <a href="music-playlist.html" class="nav-card">
+                    <div class="nav-icon">🎵</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Music</div>
+                        <div class="nav-subtitle">Our love songs</div>
+                    </div>
+                </a>
+                <a href="love-letters.html" class="nav-card">
+                    <div class="nav-icon">💌</div>
+                    <div class="nav-content">
+                        <div class="nav-title">Love Letters</div>
+                        <div class="nav-subtitle">Heartfelt words</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💎 Romantic Footer -->
+    <footer class="romantic-footer">
+        <div class="content-container">
+            <div class="footer-content">
+                <div class="footer-heart">💕</div>
+                <p class="footer-text">Written with endless love by Jerry & Soumya</p>
+                <div class="footer-sparkles">✨ Forever & Always ✨</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✨ Enhanced JavaScript for Love Story v5.0 -->
+    <script>
+        /* ================================
+           📖 MAGICAL LOVE STORY V5.0
+           COMPLETE INTERACTIVE SYSTEM
+        ================================ */
+        
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Love Story System - Complete Interactive Experience
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Timeline interaction system
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            timelineItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    // Add click animation
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        item.style.transform = '';
+                    }, 150);
+                    
+                    // Create story sparkles
+                    createStorySparkles(item);
+                    
+                    // Show story details
+                    showStoryDetails(item.dataset.story);
+                });
+                
+                // Add entrance animation delay
+                item.style.animationDelay = `${index * 0.3}s`;
+                item.classList.add('timeline-entry');
+            });
+
+            // Story details system
+            function showStoryDetails(storyId) {
+                const storyDetails = {
+                    'first-meeting': {
+                        title: 'The Day Everything Changed',
+                        content: 'It was a beautiful day when our eyes first met. The world seemed to pause, and in that moment, I knew my life was about to become infinitely more beautiful with you in it.'
+                    },
+                    'first-date': {
+                        title: 'Coffee, Laughter, and Magic',
+                        content: 'Our first date at that cozy little café where we talked for hours. You ordered your favorite drink, I was nervous, but your smile melted all my worries away.'
+                    },
+                    'first-month': {
+                        title: 'Growing Closer Every Day',
+                        content: 'Thirty days of discovering each other, sharing dreams, and realizing that what we had was truly special. Each conversation brought us closer.'
+                    },
+                    'love-declaration': {
+                        title: 'Three Words That Changed Everything',
+                        content: 'The moment I finally found the courage to say those three words. Your reaction, the joy in your eyes, made me realize I was exactly where I belonged.'
+                    },
+                    'special-moments': {
+                        title: 'Building Our Story Together',
+                        content: 'Every adventure, every quiet evening, every shared meal - all becoming the beautiful tapestry of our love story. Each moment more precious than the last.'
+                    },
+                    'anniversary': {
+                        title: 'Five Months of Pure Joy',
+                        content: 'Looking back at five incredible months and forward to forever. Celebrating not just the time passed, but the love grown and the future dreamed.'
+                    },
+                    'future': {
+                        title: 'Forever Starts Now',
+                        content: 'Our story is far from over. With each passing day, we write new chapters filled with love, laughter, and endless possibilities. The best is yet to come.'
+                    }
+                };
+                
+                const story = storyDetails[storyId];
+                if (story) {
+                    // Create floating story popup
+                    const popup = document.createElement('div');
+                    popup.className = 'story-popup';
+                    popup.innerHTML = `
+                        <div class="popup-content">
+                            <button class="popup-close">&times;</button>
+                            <h3 class="popup-title">${story.title}</h3>
+                            <p class="popup-text">${story.content}</p>
+                            <div class="popup-hearts">💕 💖 💕</div>
+                        </div>
+                    `;
+                    
+                    // Style the popup
+                    popup.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        backdrop-filter: blur(10px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    `;
+                    
+                    const popupContent = popup.querySelector('.popup-content');
+                    popupContent.style.cssText = `
+                        background: var(--glass-bg);
+                        backdrop-filter: blur(20px);
+                        border: 1px solid var(--glass-border);
+                        border-radius: 25px;
+                        padding: 3rem;
+                        max-width: 500px;
+                        text-align: center;
+                        position: relative;
+                        transform: scale(0.5);
+                        transition: transform 0.3s ease;
+                    `;
+                    
+                    document.body.appendChild(popup);
+                    
+                    // Show popup with animation
+                    setTimeout(() => {
+                        popup.style.opacity = '1';
+                        popupContent.style.transform = 'scale(1)';
+                    }, 10);
+                    
+                    // Close popup functionality
+                    const closeBtn = popup.querySelector('.popup-close');
+                    closeBtn.addEventListener('click', () => {
+                        popup.style.opacity = '0';
+                        popupContent.style.transform = 'scale(0.5)';
+                        setTimeout(() => {
+                            document.body.removeChild(popup);
+                        }, 300);
+                    });
+                    
+                    popup.addEventListener('click', (e) => {
+                        if (e.target === popup) {
+                            closeBtn.click();
+                        }
+                    });
+                }
+            }
+
+            // Enhanced Statistics Animation
+            function animateNumbers() {
+                const numbers = document.querySelectorAll('.stat-number');
+                numbers.forEach((number, index) => {
+                    if (number.textContent !== '∞') {
+                        const target = parseInt(number.textContent.replace(/,/g, ''));
+                        let current = 0;
+                        const increment = target / 50;
+                        
+                        setTimeout(() => {
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                    // Add sparkle effect when complete
+                                    createSparkleEffect(number);
+                                }
+                                number.textContent = Math.floor(current).toLocaleString();
+                            }, 40);
+                        }, index * 200);
+                    } else {
+                        // Animate infinity symbol
+                        setTimeout(() => {
+                            number.style.animation = 'heartPulse 2s infinite';
+                            createSparkleEffect(number);
+                        }, index * 200);
+                    }
+                });
+            }
+
+            // Magical Effect Functions
+            function createStorySparkles(element) {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.innerHTML = '✨';
+                        sparkle.style.cssText = `
+                            position: absolute;
+                            font-size: 1.2rem;
+                            left: ${Math.random() * 100}%;
+                            top: ${Math.random() * 100}%;
+                            pointer-events: none;
+                            animation: sparkle 1.5s ease-out;
+                            z-index: 100;
+                        `;
+                        element.style.position = 'relative';
+                        element.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.remove();
+                            }
+                        }, 1500);
+                    }, i * 100);
+                }
+            }
+
+            function createSparkleEffect(element) {
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.innerHTML = ['✨', '💫', '⭐'][Math.floor(Math.random() * 3)];
+                        sparkle.style.cssText = `
+                            position: absolute;
+                            font-size: 1rem;
+                            left: ${Math.random() * 100}%;
+                            top: ${Math.random() * 100}%;
+                            pointer-events: none;
+                            animation: sparkle 1.5s ease-out;
+                        `;
+                        element.style.position = 'relative';
+                        element.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.remove();
+                            }
+                        }, 1500);
+                    }, i * 200);
+                }
+            }
+
+            function createFloatingHearts() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = ['💕', '💖', '💗', '💘', '💝'][Math.floor(Math.random() * 5)];
+                        heart.style.cssText = `
+                            position: fixed;
+                            font-size: ${Math.random() * 20 + 15}px;
+                            left: ${Math.random() * 100}vw;
+                            top: 100vh;
+                            pointer-events: none;
+                            z-index: 9999;
+                            animation: floatUpHeart 6s ease-out forwards;
+                        `;
+                        document.body.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            if (heart.parentNode) {
+                                heart.remove();
+                            }
+                        }, 6000);
+                    }, i * 150);
+                }
+            }
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ') {
+                    e.preventDefault();
+                    createFloatingHearts();
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    createStoryRain();
+                }
+            });
+
+            function createStoryRain() {
+                for (let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        const story = document.createElement('div');
+                        story.innerHTML = ['📖', '💕', '✨', '🌟'][Math.floor(Math.random() * 4)];
+                        story.style.cssText = `
+                            position: fixed;
+                            font-size: ${Math.random() * 18 + 12}px;
+                            left: ${Math.random() * 100}vw;
+                            top: -50px;
+                            pointer-events: none;
+                            z-index: 9999;
+                            animation: storyRain 4s linear forwards;
+                            transform: rotate(${Math.random() * 360}deg);
+                        `;
+                        document.body.appendChild(story);
+                        
+                        setTimeout(() => {
+                            if (story.parentNode) {
+                                story.remove();
+                            }
+                        }, 4000);
+                    }, i * 80);
+                }
+            }
+
+            // Initialize particle systems
+            initStoryParticles();
+            initFloatingHearts();
+
+            // Start animations
+            setTimeout(animateNumbers, 1500);
+            
+        });
+
+        // Particle Systems
+        function initStoryParticles() {
+            const particleContainer = document.querySelector('.story-particles');
+            if (!particleContainer) return;
+
+            const particles = ['📖', '💕', '✨', '💫', '🌟', '💖', '📝', '💝'];
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'story-particle';
+                particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particleContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 30000);
+            }
+            
+            // Create initial particles
+            for (let i = 0; i < 12; i++) {
+                setTimeout(createParticle, i * 1000);
+            }
+            
+            // Continuously create new particles
+            setInterval(createParticle, 3500);
+        }
+
+        function initFloatingHearts() {
+            const heartContainer = document.querySelector('.floating-hearts');
+            if (!heartContainer) return;
+
+            const hearts = ['💕', '💖', '💗', '💘'];
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart-3d';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 20 + 25) + 's';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heartContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.remove();
+                    }
+                }, 40000);
+            }
+            
+            // Create initial hearts
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createHeart, i * 1500);
+            }
+            
+            // Continuously create new hearts
+            setInterval(createHeart, 5000);
+        }
+
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUpHeart {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+            }
+            
+            @keyframes storyRain {
+                0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            }
+            
+            .timeline-entry {
+                opacity: 0;
+                transform: translateY(30px);
+                animation: timelineEntry 1s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('📖 Love Story v5.0 - Interactive Timeline Experience Loaded! ✨💕');
+    </script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+</body>
+</html>

@@ -340,7 +340,7 @@ function showHintMessage(index) {
 }
 
 function proceedToMessageWall() {
-    window.location.href = 'message-wall.html';
+    window.location.href = 'games.html';
 }
 
 // Add CSS animations

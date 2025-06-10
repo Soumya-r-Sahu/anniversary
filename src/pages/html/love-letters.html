@@ -301,6 +301,40 @@
             margin-bottom: 3rem;
         }
         
+        /* Category Filter Buttons */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .category-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            font-size: 0.9rem;
+        }
+        
+        .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+        }
+        
+        .category-btn.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+        
         .letters-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -1056,10 +1090,19 @@
             <section class="letter-collection">
                 <h3 class="collection-title">✨ Our Beautiful Correspondence ✨</h3>
                 
+                <!-- Category Filter Buttons -->
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">All Letters</button>
+                    <button class="category-btn" data-category="romantic">Romantic</button>
+                    <button class="category-btn" data-category="special">Special Moments</button>
+                    <button class="category-btn" data-category="anniversary">Anniversary</button>
+                    <button class="category-btn" data-category="future">Future Dreams</button>
+                </div>
+                
                 <div class="letters-grid">
                     
                     <!-- First Letter -->
-                    <article class="love-letter" data-letter="first">
+                    <article class="love-letter" data-letter="first" data-id="first" data-category="romantic">
                         <div class="letter-envelope">
                             <div class="letter-header">
                                 <div class="letter-from">From Jerry to Soumya</div>
@@ -1097,7 +1140,7 @@
                     </article>
 
                     <!-- Anniversary Letter -->
-                    <article class="love-letter" data-letter="anniversary">
+                    <article class="love-letter" data-letter="anniversary" data-id="anniversary" data-category="anniversary">
                         <div class="letter-envelope">
                             <div class="letter-header">
                                 <div class="letter-from">From Soumya to Jerry</div>
@@ -1135,7 +1178,7 @@
                     </article>
 
                     <!-- Special Moment Letter -->
-                    <article class="love-letter" data-letter="special">
+                    <article class="love-letter" data-letter="special" data-id="special" data-category="special">
                         <div class="letter-envelope">
                             <div class="letter-header">
                                 <div class="letter-from">From Jerry to Soumya</div>
@@ -1173,7 +1216,7 @@
                     </article>
 
                     <!-- Future Dreams Letter -->
-                    <article class="love-letter" data-letter="future">
+                    <article class="love-letter" data-letter="future" data-id="future" data-category="future">
                         <div class="letter-envelope">
                             <div class="letter-header">
                                 <div class="letter-from">From Soumya to Jerry</div>
@@ -1216,7 +1259,7 @@
             <!-- ✍️ Compose New Letter Section -->
             <section class="compose-section">
                 <h3 class="compose-title">✍️ Write a New Love Letter</h3>
-                <form class="compose-form" id="composeForm">
+                <form class="compose-form" id="letterForm">
                     <div class="form-group">
                         <label class="form-label" for="letterTo">To:</label>
                         <input type="text" id="letterTo" class="form-input" placeholder="Your beloved's name" required>
@@ -1793,5 +1836,6 @@ Your Soumya ✨💍`
     </script>
     <script type="module" src="../../utils/Navigation.js"></script>
     <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../js/love-letters.js"></script>
 </body>
 </html>

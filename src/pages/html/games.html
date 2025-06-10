@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- ✨ Anniversary Website v5.0 - Interactive Games Hub -->
+    <title>🎮 Love Games - Jerry & Soumya Forever</title>
+    <meta name="description" content="Interactive romantic games and challenges designed to celebrate Jerry & Soumya's love with fun puzzles, quizzes, and surprises.">
+    <meta name="keywords" content="Jerry, Soumya, games, puzzle, quiz, love challenges, interactive, romantic">
+    
+    <!-- 🎨 PWA Configuration -->
+    <meta name="theme-color" content="#e91e63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 🌟 Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 💎 Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Sacramento&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- 🎭 Icons & Effects -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 🎨 Core v5.0 Styles -->
+    <style>
+        /* ================================
+           🎮 INTERACTIVE GAMES HUB V5.0
+           ROMANTIC GAMING EXPERIENCE
+        ================================ */
+        
+        /* 🌟 Enhanced Romantic Palette */
+        :root {
+            /* Primary Colors */
+            --romantic-primary: #e91e63;
+            --romantic-secondary: #ff1744;
+            --romantic-accent: #ffc107;
+            --romantic-purple: #9c27b0;
+            --romantic-indigo: #3f51b5;
+            --romantic-gold: #ffb300;
+            --romantic-rose: #ff69b4;
+            --romantic-coral: #ff6b6b;
+            --romantic-cyan: #00bcd4;
+            --romantic-game: #ff8a95;
+            --romantic-fun: #8e24aa;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-hero: rgba(233, 30, 99, 0.1);
+            --bg-game: rgba(255, 255, 255, 0.03);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --text-accent: #ff6b9d;
+            --text-game: #ffd54f;
+            --text-romantic: #ffab91;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-game: rgba(255, 255, 255, 0.1);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            --gradient-hero: linear-gradient(135deg, rgba(233,30,99,0.2), rgba(156,39,176,0.2), rgba(63,81,181,0.1));
+            --gradient-game: linear-gradient(45deg, rgba(255,138,149,0.2), rgba(142,36,170,0.2));
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-3d: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        /* 🔄 Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 🌟 Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .nav-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .brand-emoji {
+            font-size: 1.5rem;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            opacity: 1;
+        }
+        
+        /* 🎮 Games Hero Section */
+        .games-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: heroEntry 2s ease-out 0.5s forwards;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px var(--romantic-gold));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient-game);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 50px rgba(255, 213, 79, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* 🎯 Games Collection */
+        .games-collection {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .collection-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .game-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-3d);
+            cursor: pointer;
+            box-shadow: var(--glass-shadow);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .game-card:hover {
+            transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateZ(20px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(233, 30, 99, 0.3);
+        }
+        
+        .game-header {
+            background: var(--gradient-primary);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .game-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="gamePattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" font-size="12" fill="rgba(255,255,255,0.1)">🎮</text></pattern></defs><rect width="100" height="100" fill="url(%23gamePattern)"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        }
+        
+        .game-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .game-content {
+            padding: 2rem;
+            background: var(--glass-game);
+            color: var(--text-secondary);
+        }
+        
+        .game-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .game-features {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-tag {
+            background: rgba(233, 30, 99, 0.2);
+            color: var(--romantic-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(233, 30, 99, 0.3);
+        }
+        
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+        
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--romantic-accent);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+        
+        .play-button {
+            width: 100%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.5);
+        }
+        
+        .play-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--text-muted);
+        }
+        
+        /* 🏆 Achievement System */
+        .achievements-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .achievements-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .achievement-badge {
+            background: var(--glass-game);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition-3d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-badge.unlocked {
+            border-color: var(--romantic-gold);
+            box-shadow: 0 0 20px rgba(255, 179, 0, 0.3);
+        }
+        
+        .achievement-badge.locked {
+            opacity: 0.5;
+            filter: grayscale(1);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .achievement-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        /* 🎭 Particle Effects */
+        .particle-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        /* 📱 Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .game-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 🎨 Animations */
+        @keyframes heroEntry {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes gameFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+    </style>
+    
+    <!-- 🌟 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎮%3C/text%3E%3C/svg%3E">
+</head>
+<body style="padding-top: 90px;">
+    <!-- 🌟 Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-brand">
+                <span class="brand-emoji">💕</span>
+                <span class="brand-text">Jerry & Soumya</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="anniversary.html" class="nav-link">Anniversary</a>
+                <a href="photo-gallery.html" class="nav-link">Gallery</a>
+                <a href="music-playlist.html" class="nav-link">Music</a>
+                <a href="love-letters.html" class="nav-link">Letters</a>
+                <a href="memory-book.html" class="nav-link">Memories</a>
+                <a href="games.html" class="nav-link active">Games</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🎭 Particle Systems -->
+    <div class="particle-system game-particles" id="gameParticles"></div>
+
+    <!-- 🌈 Hero Section -->
+    <section class="games-hero">
+        <div class="hero-content">
+            <div class="hero-icon">🎮</div>
+            <h1 class="hero-title">Love Games Collection</h1>
+            <p class="hero-subtitle">Interactive challenges designed with love</p>
+        </div>
+    </section>
+
+    <!-- 🎯 Main Games Collection -->
+    <main class="games-collection">
+        <div class="content-container">
+            <!-- Games Grid -->
+            <section>
+                <h2 class="collection-title">🎯 Choose Your Adventure</h2>
+                
+                <div class="games-grid">
+                    <!-- Love Puzzle Game -->
+                    <div class="game-card" data-game="puzzle">
+                        <div class="game-header">
+                            <div class="game-icon">🧩</div>
+                            <h3 class="game-title">Love Puzzle</h3>
+                            <p class="game-subtitle">Piece together our memories</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">Solve the romantic photo puzzle to reveal hidden messages about our love story. Each piece represents a special moment we've shared.</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Visual</span>
+                                <span class="feature-tag">Memory</span>
+                                <span class="feature-tag">Relaxing</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">16</div>
+                                    <div class="stat-label">Pieces</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">5-15</div>
+                                    <div class="stat-label">Minutes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐⭐⭐</div>
+                                    <div class="stat-label">Difficulty</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('puzzle')">
+                                <i class="fa fa-play"></i>
+                                Play Puzzle
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Love Quiz Game -->
+                    <div class="game-card" data-game="quiz">
+                        <div class="game-header">
+                            <div class="game-icon">❓</div>
+                            <h3 class="game-title">Love Quiz</h3>
+                            <p class="game-subtitle">Test how well you know each other</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">Answer romantic questions about your relationship. Discover how well you truly know each other's hearts and dreams.</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Knowledge</span>
+                                <span class="feature-tag">Fun</span>
+                                <span class="feature-tag">Romantic</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">10</div>
+                                    <div class="stat-label">Questions</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">5</div>
+                                    <div class="stat-label">Minutes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐⭐</div>
+                                    <div class="stat-label">Difficulty</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('quiz')">
+                                <i class="fa fa-brain"></i>
+                                Start Quiz
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Memory Match Game -->
+                    <div class="game-card" data-game="memory">
+                        <div class="game-header">
+                            <div class="game-icon">🧠</div>
+                            <h3 class="game-title">Memory Match</h3>
+                            <p class="game-subtitle">Match pairs of love symbols</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">Flip cards to find matching pairs of romantic symbols. Train your memory while celebrating love in all its beautiful forms.</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Memory</span>
+                                <span class="feature-tag">Quick</span>
+                                <span class="feature-tag">Addictive</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">16</div>
+                                    <div class="stat-label">Cards</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">3-8</div>
+                                    <div class="stat-label">Minutes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐⭐⭐⭐</div>
+                                    <div class="stat-label">Difficulty</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('memory')">
+                                <i class="fa fa-cards"></i>
+                                Play Memory
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Star Map Explorer -->
+                    <div class="game-card" data-game="starmap">
+                        <div class="game-header">
+                            <div class="game-icon">🌌</div>
+                            <h3 class="game-title">Star Map</h3>
+                            <p class="game-subtitle">Explore the stars of our special dates</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">Navigate through an interactive star map showing the night sky from our most important dates. Find constellations that witnessed our love.</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Interactive</span>
+                                <span class="feature-tag">Beautiful</span>
+                                <span class="feature-tag">Romantic</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">∞</div>
+                                    <div class="stat-label">Stars</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">10+</div>
+                                    <div class="stat-label">Minutes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐⭐</div>
+                                    <div class="stat-label">Difficulty</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('starmap')">
+                                <i class="fa fa-star"></i>
+                                Explore Stars
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Love Calculator -->
+                    <div class="game-card" data-game="calculator">
+                        <div class="game-header">
+                            <div class="game-icon">💕</div>
+                            <h3 class="game-title">Love Calculator</h3>
+                            <p class="game-subtitle">Calculate your love compatibility</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">A fun tool to calculate love compatibility based on names, birthdates, and shared interests. Spoiler alert: You're always 100% compatible!</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Fun</span>
+                                <span class="feature-tag">Quick</span>
+                                <span class="feature-tag">Sweet</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">Result</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">2</div>
+                                    <div class="stat-label">Minutes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐</div>
+                                    <div class="stat-label">Difficulty</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('calculator')">
+                                <i class="fa fa-heart"></i>
+                                Calculate Love
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Surprise Challenge -->
+                    <div class="game-card" data-game="surprise">
+                        <div class="game-header">
+                            <div class="game-icon">🎁</div>
+                            <h3 class="game-title">Mystery Surprise</h3>
+                            <p class="game-subtitle">Unlock hidden romantic surprises</p>
+                        </div>
+                        <div class="game-content">
+                            <p class="game-description">Complete special challenges to unlock secret romantic surprises. Each achievement reveals something beautiful about your love story.</p>
+                            
+                            <div class="game-features">
+                                <span class="feature-tag">Mystery</span>
+                                <span class="feature-tag">Rewards</span>
+                                <span class="feature-tag">Surprise</span>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">?</div>
+                                    <div class="stat-label">Surprises</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">?</div>
+                                    <div class="stat-label">Time</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">⭐⭐⭐⭐⭐</div>
+                                    <div class="stat-label">Fun Level</div>
+                                </div>
+                            </div>
+                            
+                            <button class="play-button" onclick="playGame('surprise')">
+                                <i class="fa fa-gift"></i>
+                                Discover Surprises
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievement System -->
+            <section class="achievements-section">
+                <h2 class="achievements-title">🏆 Love Achievements</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-badge unlocked" data-achievement="first-game">
+                        <div class="achievement-icon">🎮</div>
+                        <div class="achievement-name">First Player</div>
+                        <div class="achievement-description">Played your first love game</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked" data-achievement="puzzle-master">
+                        <div class="achievement-icon">🧩</div>
+                        <div class="achievement-name">Puzzle Master</div>
+                        <div class="achievement-description">Complete the love puzzle in under 5 minutes</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked" data-achievement="quiz-champion">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-name">Quiz Champion</div>
+                        <div class="achievement-description">Get 100% on the love quiz</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked" data-achievement="memory-expert">
+                        <div class="achievement-icon">🧠</div>
+                        <div class="achievement-name">Memory Expert</div>
+                        <div class="achievement-description">Complete memory match without mistakes</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked" data-achievement="star-gazer">
+                        <div class="achievement-icon">⭐</div>
+                        <div class="achievement-name">Star Gazer</div>
+                        <div class="achievement-description">Find all constellations in the star map</div>
+                    </div>
+                    
+                    <div class="achievement-badge locked" data-achievement="love-guru">
+                        <div class="achievement-icon">💘</div>
+                        <div class="achievement-name">Love Guru</div>
+                        <div class="achievement-description">Complete all games and unlock all surprises</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 💝 Footer -->
+    <footer class="romantic-footer">
+        <div class="footer-content">
+            <p>Made with 💖 by Jerry for Soumya</p>
+            <small>&copy; 2025 Our Love Story. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <!-- 🎆 JavaScript -->
+    <script>
+        // Games Hub Interactive Features
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGamesHub();
+            createParticleEffects();
+            loadAchievements();
+            setupGameCards();
+        });
+
+        function initializeGamesHub() {
+            console.log('🎮 Games Hub v5.0 initialized');
+            
+            // Add hover effects to game cards
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    createSparkleEffect(card);
+                });
+            });
+        }
+
+        function createParticleEffects() {
+            const gameContainer = document.getElementById('gameParticles');
+            createFloatingGameItems(gameContainer);
+        }
+
+        function createFloatingGameItems(container) {
+            const gameEmojis = ['🎮', '🎯', '🏆', '⭐', '🎲', '🃏', '🎪', '🎨'];
+            
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const gameItem = document.createElement('div');
+                    gameItem.className = 'floating-game-item';
+                    gameItem.innerHTML = gameEmojis[Math.floor(Math.random() * gameEmojis.length)];
+                    gameItem.style.cssText = `
+                        position: fixed;
+                        font-size: ${Math.random() * 1.5 + 1}rem;
+                        left: ${Math.random() * 100}vw;
+                        top: 100vh;
+                        pointer-events: none;
+                        z-index: 1;
+                        animation: gameFloat ${Math.random() * 3 + 10}s linear infinite;
+                        opacity: 0.6;
+                    `;
+                    
+                    container.appendChild(gameItem);
+                    
+                    setTimeout(() => {
+                        if (gameItem.parentNode) {
+                            gameItem.remove();
+                        }
+                    }, 13000);
+                }, i * 1000);
+            }
+        }
+
+        function setupGameCards() {
+            const gameCards = document.querySelectorAll('.game-card');
+            
+            gameCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.play-button')) {
+                        const gameType = card.dataset.game;
+                        showGamePreview(gameType);
+                    }
+                });
+            });
+        }
+
+        function playGame(gameType) {
+            // Create play effect
+            createPlayEffect();
+            
+            // Show loading animation
+            showGameLoading(gameType);
+            
+            // Navigate to game after animation
+            setTimeout(() => {
+                switch(gameType) {
+                    case 'puzzle':
+                        window.location.href = 'puzzle.html';
+                        break;
+                    case 'quiz':
+                        window.location.href = 'quiz.html';
+                        break;
+                    case 'memory':
+                        startMemoryGame();
+                        break;
+                    case 'starmap':
+                        window.location.href = 'starmap.html';
+                        break;
+                    case 'calculator':
+                        startLoveCalculator();
+                        break;
+                    case 'surprise':
+                        window.location.href = 'surprises.html';
+                        break;
+                    default:
+                        showNotification('🎮 Game coming soon!', 'info');
+                }
+            }, 1500);
+        }
+
+        function showGamePreview(gameType) {
+            const modal = createModal();
+            const gameData = getGameData(gameType);
+            
+            modal.innerHTML = `
+                <div class="game-preview-modal">
+                    <div class="modal-header">
+                        <h2>${gameData.icon} ${gameData.title}</h2>
+                        <button class="close-modal" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>${gameData.fullDescription}</p>
+                        <div class="preview-features">
+                            ${gameData.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                        <div class="modal-actions">
+                            <button class="play-button" onclick="playGame('${gameType}')">
+                                <i class="fa fa-play"></i>
+                                Start Playing
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function getGameData(gameType) {
+            const gameData = {
+                puzzle: {
+                    icon: '🧩',
+                    title: 'Love Puzzle',
+                    fullDescription: 'Piece together a beautiful romantic photo while uncovering hidden messages about your love story. Each completed section reveals a special memory or sweet message.',
+                    features: ['Visual Memory', 'Relaxing', 'Romantic Messages', '16 Pieces']
+                },
+                quiz: {
+                    icon: '❓',
+                    title: 'Love Quiz',
+                    fullDescription: 'Test how well you know each other with romantic questions about your relationship, dreams, and favorite moments together.',
+                    features: ['10 Questions', 'Timed Challenge', 'Score System', 'Relationship Insights']
+                },
+                memory: {
+                    icon: '🧠',
+                    title: 'Memory Match',
+                    fullDescription: 'Flip cards to find matching pairs of romantic symbols and love-themed icons. Train your memory while celebrating love.',
+                    features: ['16 Cards', 'Multiple Levels', 'Time Tracking', 'High Scores']
+                },
+                starmap: {
+                    icon: '🌌',
+                    title: 'Star Map Explorer',
+                    fullDescription: 'Explore an interactive star map showing the night sky from your most important dates. Discover constellations and their romantic meanings.',
+                    features: ['Interactive Map', 'Date Selection', 'Constellation Info', 'Beautiful Graphics']
+                },
+                calculator: {
+                    icon: '💕',
+                    title: 'Love Calculator',
+                    fullDescription: 'A fun compatibility calculator that analyzes your names, birthdates, and shared interests to calculate your love percentage.',
+                    features: ['Name Analysis', 'Compatibility Score', 'Fun Results', 'Instant Calculation']
+                },
+                surprise: {
+                    icon: '🎁',
+                    title: 'Mystery Surprise',
+                    fullDescription: 'Unlock hidden romantic surprises by completing special challenges. Each achievement reveals beautiful messages and special content.',
+                    features: ['Hidden Content', 'Achievement System', 'Romantic Surprises', 'Progressive Unlocks']
+                }
+            };
+            
+            return gameData[gameType] || gameData.puzzle;
+        }
+
+        function createModal() {
+            const modal = document.createElement('div');
+            modal.className = 'game-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                animation: modalFadeIn 0.3s ease-out;
+            `;
+            
+            return modal;
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.game-modal');
+            if (modal) {
+                modal.style.animation = 'modalFadeOut 0.3s ease-out';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+
+        function createPlayEffect() {
+            const effect = document.createElement('div');
+            effect.innerHTML = '🎮';
+            effect.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 4rem;
+                pointer-events: none;
+                z-index: 1000;
+                animation: playEffect 1.5s ease-out;
+            `;
+            
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                if (effect.parentNode) {
+                    effect.remove();
+                }
+            }, 1500);
+        }
+
+        function showGameLoading(gameType) {
+            const loading = document.createElement('div');
+            loading.className = 'game-loading';
+            loading.innerHTML = `
+                <div class="loading-content">
+                    <div class="loading-icon">🎮</div>
+                    <div class="loading-text">Loading ${gameType}...</div>
+                    <div class="loading-bar">
+                        <div class="loading-progress"></div>
+                    </div>
+                </div>
+            `;
+            loading.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: var(--gradient-bg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                text-align: center;
+                color: white;
+            `;
+            
+            document.body.appendChild(loading);
+            
+            setTimeout(() => {
+                if (loading.parentNode) {
+                    loading.remove();
+                }
+            }, 1400);
+        }
+
+        function loadAchievements() {
+            const achievements = JSON.parse(localStorage.getItem('gameAchievements') || '{}');
+            
+            Object.keys(achievements).forEach(achievementId => {
+                if (achievements[achievementId]) {
+                    unlockAchievement(achievementId);
+                }
+            });
+        }
+
+        function unlockAchievement(achievementId) {
+            const badge = document.querySelector(`[data-achievement="${achievementId}"]`);
+            if (badge) {
+                badge.classList.remove('locked');
+                badge.classList.add('unlocked');
+                
+                // Save to localStorage
+                const achievements = JSON.parse(localStorage.getItem('gameAchievements') || '{}');
+                achievements[achievementId] = true;
+                localStorage.setItem('gameAchievements', JSON.stringify(achievements));
+            }
+        }
+
+        function createSparkleEffect(element) {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = ['✨', '💫', '⭐'][Math.floor(Math.random() * 3)];
+                    sparkle.style.cssText = `
+                        position: absolute;
+                        font-size: 1rem;
+                        left: ${Math.random() * 100}%;
+                        top: ${Math.random() * 100}%;
+                        pointer-events: none;
+                        animation: sparkle 1.5s ease-out;
+                        z-index: 10;
+                    `;
+                    element.style.position = 'relative';
+                    element.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 1500);
+                }, i * 200);
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--gradient-primary);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+                z-index: 1000;
+                animation: notificationSlide 3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Quick game implementations for memory and calculator
+        function startMemoryGame() {
+            // Redirect to a simple memory game implementation
+            showNotification('🧠 Memory game starting soon!', 'info');
+        }
+
+        function startLoveCalculator() {
+            // Create quick love calculator modal
+            const modal = createModal();
+            modal.innerHTML = `
+                <div class="calculator-modal">
+                    <div class="modal-header">
+                        <h2>💕 Love Calculator</h2>
+                        <button class="close-modal" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="calculator-form">
+                            <input type="text" placeholder="First name" id="name1" value="Jerry">
+                            <input type="text" placeholder="Second name" id="name2" value="Soumya">
+                            <button onclick="calculateLove()" class="play-button">Calculate Love 💕</button>
+                        </div>
+                        <div id="loveResult" class="love-result"></div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function calculateLove() {
+            const result = document.getElementById('loveResult');
+            result.innerHTML = `
+                <div class="love-score">
+                    <div class="score-display">100%</div>
+                    <div class="score-message">Perfect Match! 💕</div>
+                    <p>Jerry and Soumya are meant to be together forever! Your love is written in the stars. ✨</p>
+                </div>
+            `;
+            
+            // Add celebration effect
+            createHeartExplosion();
+        }
+
+        function createHeartExplosion() {
+            const hearts = ['💕', '💖', '💗', '💘', '💝', '💞', '💟', '❤️'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.cssText = `
+                        position: fixed;
+                        font-size: 2rem;
+                        left: 50%;
+                        top: 50%;
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: heartExplosion 2s ease-out;
+                    `;
+                    
+                    const angle = (i / 20) * 2 * Math.PI;
+                    const distance = 200;
+                    const endX = 50 + Math.cos(angle) * distance / window.innerWidth * 100;
+                    const endY = 50 + Math.sin(angle) * distance / window.innerHeight * 100;
+                    
+                    heart.style.setProperty('--end-x', `${endX}%`);
+                    heart.style.setProperty('--end-y', `${endY}%`);
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+            
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key.toLowerCase()) {
+                    case 'g':
+                        e.preventDefault();
+                        window.location.reload();
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        createHeartExplosion();
+                        break;
+                }
+            }
+        });
+
+        // Additional CSS animations
+        const additionalStyles = `
+            @keyframes modalFadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            
+            @keyframes modalFadeOut {
+                from { opacity: 1; transform: scale(1); }
+                to { opacity: 0; transform: scale(0.9); }
+            }
+            
+            @keyframes playEffect {
+                0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+                50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+                100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+            }
+            
+            @keyframes heartExplosion {
+                0% { transform: scale(1); opacity: 1; }
+                100% { 
+                    transform: translateX(calc(var(--end-x) - 50%)) translateY(calc(var(--end-y) - 50%)) scale(0); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes notificationSlide {
+                0% { transform: translateX(100%); opacity: 0; }
+                10% { transform: translateX(0); opacity: 1; }
+                90% { transform: translateX(0); opacity: 1; }
+                100% { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .game-preview-modal, .calculator-modal {
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border);
+                border-radius: 25px;
+                max-width: 500px;
+                width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .modal-header {
+                background: var(--gradient-primary);
+                color: white;
+                padding: 1.5rem;
+                border-radius: 25px 25px 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .modal-body {
+                padding: 2rem;
+                color: var(--text-secondary);
+            }
+            
+            .close-modal {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 50%;
+                transition: var(--transition-smooth);
+            }
+            
+            .close-modal:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+            
+            .preview-features {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin: 1rem 0;
+            }
+            
+            .modal-actions {
+                margin-top: 2rem;
+            }
+            
+            .calculator-form {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .calculator-form input {
+                background: var(--glass-bg);
+                border: 1px solid var(--glass-border);
+                border-radius: 15px;
+                padding: 1rem;
+                color: var(--text-primary);
+                font-size: 1rem;
+            }
+            
+            .love-result {
+                text-align: center;
+                margin-top: 2rem;
+            }
+            
+            .score-display {
+                font-size: 3rem;
+                font-weight: bold;
+                color: var(--romantic-accent);
+                margin-bottom: 1rem;
+            }
+            
+            .score-message {
+                font-size: 1.5rem;
+                color: var(--romantic-primary);
+                margin-bottom: 1rem;
+            }
+            
+            .loading-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .loading-icon {
+                font-size: 4rem;
+                animation: iconPulse 1s ease-in-out infinite;
+            }
+            
+            .loading-text {
+                font-size: 1.5rem;
+                color: var(--text-secondary);
+            }
+            
+            .loading-bar {
+                width: 200px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            
+            .loading-progress {
+                width: 100%;
+                height: 100%;
+                background: var(--gradient-primary);
+                border-radius: 2px;
+                animation: loadingProgress 1.5s ease-in-out;
+            }
+            
+            @keyframes loadingProgress {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

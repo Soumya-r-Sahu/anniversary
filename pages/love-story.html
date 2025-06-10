@@ -5,150 +5,815 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Social -->
-    <title>📖 Our Love Story - Jerry & Soumya</title>
-    <meta name="description" content="The beautiful timeline of Jerry and Soumya's love story">
-    <meta name="keywords" content="love story, timeline, Jerry, Soumya, romance, journey">
+    <title>📖 Our Love Story v5.0 - Jerry & Soumya</title>
+    <meta name="description" content="The magical interactive timeline of Jerry and Soumya's love story with v5.0 enchantments">
+    <meta name="keywords" content="love story, timeline, Jerry, Soumya, romance, journey, interactive, v5.0">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Our Love Story - Jerry & Soumya">
-    <meta property="og:description" content="Follow our beautiful journey through time">
+    <meta property="og:title" content="Our Love Story v5.0 - Jerry & Soumya">
+    <meta property="og:description" content="Follow our magical journey through an interactive timeline">
     <meta property="og:type" content="website">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Styles -->
+    <!-- v5.0 Enhanced Styles -->
     <link rel="stylesheet" href="../assets/css/core.css">
     <link rel="stylesheet" href="../assets/css/effects.css">
     <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/glassmorphism.css">
+    <link rel="stylesheet" href="../assets/css/particles.css">
     
-    <!-- Page-specific styles -->
+    <!-- v5.0 Love Story Enhanced Styles -->
     <style>
-        .love-story-container {
+        /* ================================
+           📖 LOVE STORY V5.0 MAGICAL EXPERIENCE
+           Interactive Timeline with Auto-Play & 3D Effects
+        ================================ */
+        
+        /* v5.0 Enhanced Romantic Palette */
+        :root {
+            /* Primary Colors - v5.0 Enhanced */
+            --story-primary: #e91e63;
+            --story-secondary: #ff1744;
+            --story-accent: #ffc107;
+            --story-purple: #9c27b0;
+            --story-gold: #ffb300;
+            --story-rose: #ff69b4;
+            --story-timeline: #8e24aa;
+            
+            /* Background Colors - v5.0 */
+            --bg-story-primary: #0a0a0f;
+            --bg-story-secondary: #1a1a2e;
+            --bg-story-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            
+            /* Text Colors - v5.0 */
+            --text-story-primary: #ffffff;
+            --text-story-secondary: #e0e0e0;
+            --text-story-accent: #ff6b9d;
+            --text-story-gold: #ffd54f;
+            
+            /* Glass Effects - v5.0 Enhanced */
+            --glass-story-bg: rgba(255, 255, 255, 0.08);
+            --glass-story-border: rgba(255, 255, 255, 0.12);
+            --glass-story-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-story-timeline: rgba(255, 248, 225, 0.95);
+            
+            /* Gradients - v5.0 */
+            --gradient-story-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-story-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-story-hero: linear-gradient(135deg, rgba(233,30,99,0.2), rgba(156,39,176,0.2), rgba(63,81,181,0.1));
+            
+            /* Transitions - v5.0 Enhanced */
+            --transition-story: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-story-3d: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-story-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        /* Reset & Enhanced Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-story-gradient);
+            color: var(--text-story-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
             min-height: 100vh;
-            padding: 2rem 1rem;
             position: relative;
         }
-
-        .story-hero {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 2rem 0;
+        
+        /* v5.0 Enhanced Story Particle System */
+        .story-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
         }
-
-        .story-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        
+        .story-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: storyFloat 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .heart-3d {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: heart3DFloat 25s linear infinite;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+        }
+        
+        /* v5.0 Enhanced Story Hero */
+        .story-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            background: var(--gradient-story-hero);
+            overflow: hidden;
+        }
+        
+        .story-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="story-pattern" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><text x="12.5" y="18" text-anchor="middle" font-size="14" fill="%23ec4899" opacity="0.1">📖</text></pattern></defs><rect width="100" height="100" fill="url(%23story-pattern)"/></svg>');
+            animation: float-books 25s linear infinite;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: heroEntry 2s ease-out 0.5s forwards;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 30px var(--story-gold));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-pink), var(--text-accent), var(--primary-purple));
+            background: var(--gradient-story-primary);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradient-shift 4s ease-in-out infinite;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 40px rgba(236, 72, 153, 0.3);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 50px rgba(255, 213, 79, 0.8);
         }
-
-        .story-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text-story-secondary);
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 3rem;
         }
-
-        .timeline-container {
-            max-width: 900px;
-            margin: 0 auto;
+        
+        /* v5.0 Auto-Play Controls */
+        .story-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .control-button {
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-story-border);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            color: var(--text-story-primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-story-bounce);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+        
+        .control-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px var(--glass-story-shadow);
+            border-color: var(--story-accent);
+        }
+        
+        .control-button.active {
+            background: var(--gradient-story-primary);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.6);
+        }
+        
+        .button-icon {
+            font-size: 1.2rem;
+        }
+        
+        .chapter-indicator {
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-story-border);
+            border-radius: 25px;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-story-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* v5.0 Enhanced Timeline Container */
+        .story-sanctuary {
+            padding: 4rem 2rem;
             position: relative;
+            z-index: 2;
         }
-
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* v5.0 Interactive Timeline */
+        .love-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+        
         .timeline-line {
             position: absolute;
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary-pink), var(--primary-purple));
+            width: 6px;
+            background: var(--gradient-story-primary);
             transform: translateX(-50%);
-            border-radius: 2px;
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+            border-radius: 3px;
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.6);
+            z-index: 1;
         }
-
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--story-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
+        }
+        
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-story-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 1);
+        }
+        
+        /* v5.0 Enhanced Timeline Items */
         .timeline-item {
             position: relative;
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
             opacity: 0;
-            transition: all 0.6s ease;
+            transition: var(--transition-story);
         }
-
+        
         .timeline-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         .timeline-item:nth-child(odd) {
-            transform: translateY(30px) translateX(-20px);
+            transform: translateY(50px) translateX(-30px);
         }
-
+        
         .timeline-item:nth-child(even) {
-            transform: translateY(30px) translateX(20px);
+            transform: translateY(50px) translateX(30px);
         }
-
+        
         .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 50%;
-            padding-right: 3rem;
+            margin-right: 52%;
+            padding-right: 2rem;
         }
-
+        
         .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 50%;
-            padding-left: 3rem;
+            margin-left: 52%;
+            padding-left: 2rem;
         }
-
+        
+        /* v5.0 Enhanced Timeline Markers */
         .timeline-marker {
             position: absolute;
             left: 50%;
-            top: 2rem;
-            width: 20px;
-            height: 20px;
-            background: var(--primary-pink);
-            border: 4px solid var(--bg-primary);
+            top: 2.5rem;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-story-primary);
+            border: 4px solid var(--bg-story-primary);
             border-radius: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+            box-shadow: 0 0 40px rgba(233, 30, 99, 0.8);
             z-index: 10;
-            transition: all 0.3s ease;
+            transition: var(--transition-story-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
         }
-
+        
         .timeline-marker::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent);
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.4), transparent);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            animation: marker-pulse 2s ease-in-out infinite;
+            animation: marker-pulse 3s ease-in-out infinite;
         }
-
+        
+        .timeline-marker:hover {
+            transform: translateX(-50%) scale(1.2) rotate(360deg);
+            box-shadow: 0 0 60px rgba(233, 30, 99, 1);
+        }
+        
+        /* v5.0 Enhanced Timeline Content */
         .timeline-content {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(25px);
+            border: 2px solid var(--glass-story-border);
+            border-radius: 25px;
+            padding: 2.5rem;
+            position: relative;
+            transition: var(--transition-story-3d);
+            cursor: pointer;
+            box-shadow: var(--glass-story-shadow);
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: perspective(1000px) rotateY(8deg) rotateX(4deg) translateZ(30px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(233, 30, 99, 0.4);
+            border-color: var(--story-accent);
+        }
+        
+        .timeline-content:hover::before {
+            left: 100%;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background: var(--gradient-story-primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        .timeline-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-story-primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(233, 30, 99, 0.3);
+        }
+        
+        .timeline-description {
+            color: var(--text-story-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-emotions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .emotion-tag {
+            background: rgba(233, 30, 99, 0.2);
+            color: var(--story-accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition-story-bounce);
+            border: 1px solid rgba(233, 30, 99, 0.3);
+        }
+        
+        .emotion-tag:hover {
+            transform: scale(1.1);
+            background: rgba(233, 30, 99, 0.4);
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        /* Chapter Dividers */
+        .chapter-divider {
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+        }
+        
+        .chapter-title {
+            background: var(--glass-story-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--glass-story-border);
+            border-radius: 50px;
+            padding: 1.5rem 3rem;
+            display: inline-block;
+            color: var(--story-accent);
+            font-weight: 700;
+            font-size: 1.4rem;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.2);
+        }
+        
+        /* v5.0 Love Statistics */
+        .love-stats {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 3rem 0;
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            border: 2px solid var(--glass-story-border);
+        }
+        
+        .stats-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--story-accent);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-story-border);
             border-radius: 20px;
             padding: 2rem;
+            text-align: center;
+            transition: var(--transition-story-3d);
             position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-story-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .stat-card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.4);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--story-accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-story-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-description {
+            font-size: 0.9rem;
+            color: var(--text-story-secondary);
+            opacity: 0.8;
+        }
+        
+        /* v5.0 Navigation Grid */
+        .story-navigation {
+            margin: 6rem 0 4rem;
+            padding: 3rem 0;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .nav-card {
+            background: var(--glass-story-bg);
+            backdrop-filter: blur(25px);
+            border: 2px solid var(--glass-story-border);
+            border-radius: 25px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-story-primary);
+            transition: var(--transition-story-3d);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .nav-card:hover {
+            transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateZ(20px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(233, 30, 99, 0.3);
+            border-color: var(--story-accent);
+        }
+        
+        .nav-card:hover::before {
+            left: 100%;
+        }
+        
+        .nav-icon {
+            font-size: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .nav-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--story-accent);
+        }
+        
+        .nav-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-story-secondary);
+        }
+        
+        /* v5.0 Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 90px;
+                margin-right: 0;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .story-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .control-button {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* v5.0 Enhanced Animations */
+        @keyframes heroEntry {
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes marker-pulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: translate(-50%, 0) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1.1);
+            }
+        }
+        
+        @keyframes storyFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes heart3DFloat {
+            0% {
+                transform: translateY(100vh) rotateX(0deg) rotateY(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-120vh) rotateX(360deg) rotateY(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes float-books {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+    
+    <!-- v5.0 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📖%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- v5.0 Enhanced Particle System -->
+    <canvas id="story-particle-canvas" class="particle-canvas"></canvas>
+    <div class="story-particles" id="storyParticles"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- v5.0 Magical Story Hero -->
+    <section class="story-hero">
+        <div class="hero-content">
+            <div class="hero-icon">📖</div>
+            <h1 class="hero-title">Our Love Story v5.0</h1>
+            <p class="hero-subtitle">
+                The magical interactive timeline of Jerry & Soumya - where every moment comes alive with enchantment ✨
+            </p>
+            
+            <!-- v5.0 Auto-Play Controls -->
+            <div class="story-controls">
+                <button class="control-button" id="auto-play-btn">
+                    <span class="button-icon">▶️</span>
+                    Auto Play Story
+                </button>
+                <button class="control-button" id="restart-story-btn">
+                    <span class="button-icon">🔄</span>
+                    Restart Journey
+                </button>
+                <div class="chapter-indicator">
+                    Chapter <span id="current-chapter">1</span> of <span id="total-chapters">7</span>
+                </div>
+            </div>
+        </div>
+    </section>
         }
 
         .timeline-content:hover {

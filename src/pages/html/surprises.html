@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- ✨ Anniversary Website v5.0 - Ultimate Surprise System -->
+    <title>🎁 Magical Surprises - Jerry & Soumya Forever</title>
+    <meta name="description" content="A collection of romantic surprises, hidden treasures, and special unlockable content designed to celebrate Jerry & Soumya's love with delightful discoveries.">
+    <meta name="keywords" content="Jerry, Soumya, surprises, romantic gifts, hidden content, unlockables, love treasures">
+    
+    <!-- 🎨 PWA Configuration -->
+    <meta name="theme-color" content="#e91e63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 🌟 Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    
+    <!-- 💎 Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Sacramento&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- 🎭 Icons & Effects -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 🎨 Core v5.0 Styles -->
+    <style>
+        /* ================================
+           🎁 MAGICAL SURPRISE SYSTEM V5.0
+           INTERACTIVE ROMANTIC DISCOVERIES
+        ================================ */
+        
+        /* 🌟 Enhanced Romantic Palette */
+        :root {
+            /* Primary Colors */
+            --romantic-primary: #e91e63;
+            --romantic-secondary: #ff1744;
+            --romantic-accent: #ffc107;
+            --romantic-purple: #9c27b0;
+            --romantic-indigo: #3f51b5;
+            --romantic-gold: #ffb300;
+            --romantic-rose: #ff69b4;
+            --romantic-coral: #ff6b6b;
+            --romantic-cyan: #00bcd4;
+            --romantic-surprise: #ff8a95;
+            --romantic-magic: #8e24aa;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-hero: rgba(233, 30, 99, 0.1);
+            --bg-surprise: rgba(255, 255, 255, 0.03);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --text-accent: #ff6b9d;
+            --text-surprise: #ffd54f;
+            --text-romantic: #ffab91;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-surprise: rgba(255, 255, 255, 0.1);
+            --glass-magic: rgba(255, 215, 0, 0.1);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #e91e63, #ff1744, #9c27b0);
+            --gradient-secondary: linear-gradient(45deg, #ffc107, #ff5722, #e91e63);
+            --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            --gradient-hero: linear-gradient(135deg, rgba(233,30,99,0.2), rgba(156,39,176,0.2), rgba(63,81,181,0.1));
+            --gradient-surprise: linear-gradient(45deg, rgba(255,138,149,0.2), rgba(142,36,170,0.2));
+            --gradient-magic: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,105,180,0.2));
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-3d: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            --transition-magic: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* 🔄 Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 🌟 Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .nav-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .brand-emoji {
+            font-size: 1.5rem;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            opacity: 1;
+        }
+        
+        /* 🎁 Surprise Hero Section */
+        .surprise-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: heroEntry 2s ease-out 0.5s forwards;
+        }
+        
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 40px var(--romantic-gold));
+            animation: magicalPulse 3s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            background: var(--gradient-surprise);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 50px rgba(255, 213, 79, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .unlock-progress {
+            background: var(--glass-surprise);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .progress-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5rem;
+            color: var(--romantic-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+            width: 0%;
+        }
+        
+        .progress-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* 🎯 Surprise Collection */
+        .surprise-collection {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .collection-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--romantic-accent);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .surprises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .surprise-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-3d);
+            cursor: pointer;
+            box-shadow: var(--glass-shadow);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .surprise-box.locked {
+            opacity: 0.6;
+            filter: grayscale(1);
+            cursor: not-allowed;
+        }
+        
+        .surprise-box.unlocked:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(30px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(233, 30, 99, 0.4);
+            border-color: var(--romantic-gold);
+        }
+        
+        .surprise-header {
+            background: var(--gradient-primary);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .surprise-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="surprisePattern" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><text x="12" y="18" font-size="15" fill="rgba(255,255,255,0.1)">🎁</text></pattern></defs><rect width="100" height="100" fill="url(%23surprisePattern)"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .surprise-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        
+        .surprise-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .surprise-status {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .surprise-content {
+            padding: 2rem;
+            background: var(--glass-surprise);
+            color: var(--text-secondary);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .surprise-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .surprise-requirements {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .requirements-title {
+            font-weight: 600;
+            color: var(--romantic-accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .requirements-list li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .requirements-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--romantic-primary);
+            font-weight: bold;
+        }
+        
+        .requirements-list li.incomplete::before {
+            content: '○';
+            color: var(--text-muted);
+        }
+        
+        .unlock-button {
+            width: 100%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .unlock-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.5);
+        }
+        
+        .unlock-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--text-muted);
+        }
+        
+        /* 🎭 Unlocked Surprise Content */
+        .surprise-reveal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: revealFadeIn 0.5s ease-out;
+        }
+        
+        .reveal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--romantic-gold);
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+        }
+        
+        .reveal-header {
+            background: var(--gradient-magic);
+            color: white;
+            padding: 2rem;
+            border-radius: 30px 30px 0 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reveal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="magicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" font-size="12" fill="rgba(255,255,255,0.2)">✨</text></pattern></defs><rect width="100" height="100" fill="url(%23magicPattern)"/></svg>');
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .reveal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: celebrationPulse 1s ease-in-out infinite;
+        }
+        
+        .reveal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .reveal-body {
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .surprise-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .surprise-gift {
+            background: var(--glass-magic);
+            border: 1px solid var(--romantic-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .gift-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--romantic-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .gift-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .close-reveal {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .close-reveal:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        /* 🎭 Particle Effects */
+        .particle-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        /* 🏆 Achievement Toast */
+        .achievement-toast {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+            z-index: 1500;
+            transform: translateX(100%);
+            transition: transform 0.5s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 350px;
+        }
+        
+        .achievement-toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-icon {
+            font-size: 1.5rem;
+            animation: iconPulse 1s ease-in-out infinite;
+        }
+        
+        .toast-content {
+            flex: 1;
+        }
+        
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .toast-message {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* 📱 Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .surprises-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .reveal-content {
+                width: 95%;
+                margin: 20px;
+            }
+            
+            .hero-icon {
+                font-size: 4rem;
+            }
+            
+            .surprise-icon {
+                font-size: 3rem;
+            }
+        }
+        
+        /* 🎨 Animations */
+        @keyframes heroEntry {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes magicalPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 40px var(--romantic-gold)); 
+            }
+            50% { 
+                transform: scale(1.1); 
+                filter: drop-shadow(0 0 60px var(--romantic-gold)); 
+            }
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes celebrationPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes revealFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confettiDrop {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+    
+    <!-- 🌟 Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎁%3C/text%3E%3C/svg%3E">
+</head>
+<body style="padding-top: 90px;">
+    <!-- 🌟 Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-brand">
+                <span class="brand-emoji">💕</span>
+                <span class="brand-text">Jerry & Soumya</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="anniversary.html" class="nav-link">Anniversary</a>
+                <a href="photo-gallery.html" class="nav-link">Gallery</a>
+                <a href="music-playlist.html" class="nav-link">Music</a>
+                <a href="love-letters.html" class="nav-link">Letters</a>
+                <a href="memory-book.html" class="nav-link">Memories</a>
+                <a href="surprises.html" class="nav-link active">Surprises</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🎭 Particle Systems -->
+    <div class="particle-system surprise-particles" id="surpriseParticles"></div>
+
+    <!-- 🌈 Hero Section -->
+    <section class="surprise-hero">
+        <div class="hero-content">
+            <div class="hero-icon">🎁</div>
+            <h1 class="hero-title">Magical Surprise Collection</h1>
+            <p class="hero-subtitle">Unlock hidden treasures and romantic discoveries</p>
+            
+            <div class="unlock-progress">
+                <div class="progress-title">✨ Discovery Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">0 of 8 surprises unlocked</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎯 Main Surprise Collection -->
+    <main class="surprise-collection">
+        <div class="content-container">
+            <h2 class="collection-title">🎭 Hidden Treasures Await</h2>
+            
+            <div class="surprises-grid">
+                <!-- Love Letter Surprise -->
+                <div class="surprise-box unlocked" data-surprise="love-letter">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">💌</div>
+                        <h3 class="surprise-title">Secret Love Letter</h3>
+                        <p class="surprise-status">✅ Ready to Open</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A heartfelt love letter written especially for you, filled with all the reasons why you make my world brighter every single day.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Already Unlocked!</div>
+                            <ul class="requirements-list">
+                                <li>Visit the website ✓</li>
+                                <li>Feel the love ✓</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" onclick="revealSurprise('love-letter')">
+                            <i class="fa fa-heart"></i>
+                            Read Love Letter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Photo Memory Surprise -->
+                <div class="surprise-box locked" data-surprise="photo-memory">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">📸</div>
+                        <h3 class="surprise-title">Hidden Photo Memory</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A collection of secret photos and memories that capture our most precious moments together.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Visit Photo Gallery</li>
+                                <li class="incomplete">View 10 photos</li>
+                                <li class="incomplete">Add a favorite photo</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Complete Gallery First
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Music Surprise -->
+                <div class="surprise-box locked" data-surprise="secret-song">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">🎵</div>
+                        <h3 class="surprise-title">Our Secret Song</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A special song compilation created just for us, with hidden messages and romantic meanings.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Listen to 3 songs</li>
+                                <li class="incomplete">Use music player controls</li>
+                                <li class="incomplete">Discover the playlist</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Explore Music First
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game Achievement Surprise -->
+                <div class="surprise-box locked" data-surprise="game-achievement">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">🏆</div>
+                        <h3 class="surprise-title">Gaming Champion Reward</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A special reward for mastering our love games, including exclusive content and romantic achievements.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Complete Love Puzzle</li>
+                                <li class="incomplete">Score 80%+ on Quiz</li>
+                                <li class="incomplete">Play 3 different games</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Master Games First
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Memory Book Surprise -->
+                <div class="surprise-box locked" data-surprise="memory-treasure">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">📚</div>
+                        <h3 class="surprise-title">Memory Book Treasure</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">Hidden treasures within our digital memory book, including secret pages and romantic artifacts.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Add 3 new memories</li>
+                                <li class="incomplete">Explore all categories</li>
+                                <li class="incomplete">Read all existing memories</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Complete Memory Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Anniversary Surprise -->
+                <div class="surprise-box locked" data-surprise="anniversary-gift">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">🎉</div>
+                        <h3 class="surprise-title">Anniversary Gift</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A very special anniversary gift that celebrates our journey together with something truly magical.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Visit Anniversary Page</li>
+                                <li class="incomplete">View relationship stats</li>
+                                <li class="incomplete">Trigger heart celebration</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Celebrate Anniversary
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Love Letters Surprise -->
+                <div class="surprise-box locked" data-surprise="letters-collection">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">💕</div>
+                        <h3 class="surprise-title">Letters Collection</h3>
+                        <p class="surprise-status">🔒 Locked</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">A curated collection of the most romantic love letters, including some very special surprises.</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Unlock Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Read 5 love letters</li>
+                                <li class="incomplete">Write a new letter</li>
+                                <li class="incomplete">Save a favorite letter</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-lock"></i>
+                            Explore Letters First
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Surprise -->
+                <div class="surprise-box locked" data-surprise="ultimate-treasure">
+                    <div class="surprise-header">
+                        <div class="surprise-icon">💎</div>
+                        <h3 class="surprise-title">Ultimate Treasure</h3>
+                        <p class="surprise-status">🔒 Master Lock</p>
+                    </div>
+                    <div class="surprise-content">
+                        <p class="surprise-description">The ultimate romantic surprise that unlocks only when you've discovered all other treasures. Something truly extraordinary awaits...</p>
+                        
+                        <div class="surprise-requirements">
+                            <div class="requirements-title">Master Requirements:</div>
+                            <ul class="requirements-list">
+                                <li class="incomplete">Unlock all 7 other surprises</li>
+                                <li class="incomplete">Complete the full journey</li>
+                                <li class="incomplete">Discover all hidden secrets</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="unlock-button" disabled>
+                            <i class="fa fa-crown"></i>
+                            Master All Surprises
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 🎭 Surprise Reveal Modal -->
+    <div class="surprise-reveal" id="surpriseReveal">
+        <div class="reveal-content" id="revealContent">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+
+    <!-- 🏆 Achievement Toast -->
+    <div class="achievement-toast" id="achievementToast">
+        <div class="toast-icon">🎉</div>
+        <div class="toast-content">
+            <div class="toast-title">Surprise Unlocked!</div>
+            <div class="toast-message">You've discovered a new treasure!</div>
+        </div>
+    </div>
+
+    <!-- 💝 Footer -->
+    <footer class="romantic-footer">
+        <div class="footer-content">
+            <p>Made with 💖 by Jerry for Soumya</p>
+            <small>&copy; 2025 Our Love Story. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <!-- 🎆 JavaScript -->
+    <script>
+        // Surprise System State Management
+        const surpriseData = {
+            'love-letter': {
+                icon: '💌',
+                title: 'Secret Love Letter',
+                subtitle: 'A message from my heart to yours',
+                message: `My Dearest Soumya,
+
+Every day with you feels like a beautiful surprise. From the moment I wake up to see your smile, to the quiet moments we share before sleep, you fill my world with wonder and joy.
+
+This website is my love letter to you - every page, every interaction, every little detail has been crafted with you in mind. You inspire me to be creative, to be romantic, and to never stop finding new ways to show you how much you mean to me.
+
+Thank you for being my partner, my best friend, and my greatest adventure. I love you more than words can express, but I'll keep trying anyway! 💕
+
+Forever yours,
+Jerry`,
+                gift: {
+                    title: 'Virtual Kiss',
+                    content: '💋 *Sending you a thousand virtual kisses* 💋'
+                }
+            },
+            'photo-memory': {
+                icon: '📸',
+                title: 'Hidden Photo Memory',
+                subtitle: 'A secret collection just for us',
+                message: `Behind every photo in our gallery lies a thousand unspoken moments. The laughter between poses, the silly faces we made, the way you looked when you thought no one was watching.
+
+This surprise unlocks a secret collection of our most candid, unguarded moments - the real us, beautifully imperfect and perfectly in love.`,
+                gift: {
+                    title: 'Exclusive Photo Collection',
+                    content: '📷 Access to 50+ hidden photos and behind-the-scenes moments 📷'
+                }
+            }
+            // ... more surprise data would go here
+        };
+
+        let unlockedSurprises = new Set();
+        let totalSurprises = 8;
+
+        // Initialize Surprise System
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSurpriseSystem();
+            createParticleEffects();
+            loadUnlockedSurprises();
+            updateProgress();
+            checkAutoUnlocks();
+        });
+
+        function initializeSurpriseSystem() {
+            console.log('🎁 Surprise System v5.0 initialized');
+            
+            // Add hover effects to surprise boxes
+            const surpriseBoxes = document.querySelectorAll('.surprise-box');
+            surpriseBoxes.forEach(box => {
+                box.addEventListener('mouseenter', () => {
+                    if (box.classList.contains('unlocked')) {
+                        createSparkleEffect(box);
+                    }
+                });
+            });
+        }
+
+        function createParticleEffects() {
+            const surpriseContainer = document.getElementById('surpriseParticles');
+            createFloatingTreasures(surpriseContainer);
+        }
+
+        function createFloatingTreasures(container) {
+            const treasureEmojis = ['🎁', '💎', '✨', '🌟', '💫', '🎉', '🎊', '💝'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const treasure = document.createElement('div');
+                    treasure.className = 'floating-treasure';
+                    treasure.innerHTML = treasureEmojis[Math.floor(Math.random() * treasureEmojis.length)];
+                    treasure.style.cssText = `
+                        position: fixed;
+                        font-size: ${Math.random() * 1.5 + 1}rem;
+                        left: ${Math.random() * 100}vw;
+                        top: 100vh;
+                        pointer-events: none;
+                        z-index: 1;
+                        animation: sparkleFloat ${Math.random() * 4 + 12}s linear infinite;
+                        opacity: 0.7;
+                    `;
+                    
+                    container.appendChild(treasure);
+                    
+                    setTimeout(() => {
+                        if (treasure.parentNode) {
+                            treasure.remove();
+                        }
+                    }, 16000);
+                }, i * 1000);
+            }
+        }
+
+        function loadUnlockedSurprises() {
+            const saved = localStorage.getItem('unlockedSurprises');
+            if (saved) {
+                unlockedSurprises = new Set(JSON.parse(saved));
+                
+                unlockedSurprises.forEach(surpriseId => {
+                    const box = document.querySelector(`[data-surprise="${surpriseId}"]`);
+                    if (box) {
+                        unlockSurpriseBox(box);
+                    }
+                });
+            } else {
+                // Auto-unlock the first surprise
+                unlockSurprise('love-letter');
+            }
+        }
+
+        function saveUnlockedSurprises() {
+            localStorage.setItem('unlockedSurprises', JSON.stringify([...unlockedSurprises]));
+        }
+
+        function unlockSurprise(surpriseId) {
+            if (!unlockedSurprises.has(surpriseId)) {
+                unlockedSurprises.add(surpriseId);
+                saveUnlockedSurprises();
+                
+                const box = document.querySelector(`[data-surprise="${surpriseId}"]`);
+                if (box) {
+                    unlockSurpriseBox(box);
+                    showAchievementToast(surpriseId);
+                    createUnlockCelebration();
+                }
+                
+                updateProgress();
+                checkForNewUnlocks();
+            }
+        }
+
+        function unlockSurpriseBox(box) {
+            box.classList.remove('locked');
+            box.classList.add('unlocked');
+            
+            const status = box.querySelector('.surprise-status');
+            status.textContent = '✅ Ready to Open';
+            
+            const button = box.querySelector('.unlock-button');
+            button.disabled = false;
+            button.innerHTML = `<i class="fa fa-gift"></i> Open Surprise`;
+            
+            const surpriseId = box.dataset.surprise;
+            button.setAttribute('onclick', `revealSurprise('${surpriseId}')`);
+            
+            // Update requirements list
+            const requirements = box.querySelectorAll('.requirements-list li');
+            requirements.forEach(req => {
+                req.classList.remove('incomplete');
+            });
+        }
+
+        function revealSurprise(surpriseId) {
+            const data = surpriseData[surpriseId];
+            if (!data) {
+                showNotification('🎁 Surprise content coming soon!', 'info');
+                return;
+            }
+            
+            const revealContent = document.getElementById('revealContent');
+            revealContent.innerHTML = `
+                <div class="reveal-header">
+                    <div class="reveal-icon">${data.icon}</div>
+                    <h2 class="reveal-title">${data.title}</h2>
+                    <p class="reveal-subtitle">${data.subtitle}</p>
+                </div>
+                <div class="reveal-body">
+                    <div class="surprise-message">${data.message}</div>
+                    <div class="surprise-gift">
+                        <div class="gift-title">${data.gift.title}</div>
+                        <div class="gift-content">${data.gift.content}</div>
+                    </div>
+                    <button class="close-reveal" onclick="closeSurpriseReveal()">
+                        Continue the Journey ✨
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('surpriseReveal').style.display = 'flex';
+            createConfettiCelebration();
+        }
+
+        function closeSurpriseReveal() {
+            document.getElementById('surpriseReveal').style.display = 'none';
+        }
+
+        function updateProgress() {
+            const unlockedCount = unlockedSurprises.size;
+            const percentage = (unlockedCount / totalSurprises) * 100;
+            
+            document.getElementById('progressFill').style.width = `${percentage}%`;
+            document.getElementById('progressText').textContent = `${unlockedCount} of ${totalSurprises} surprises unlocked`;
+            
+            // Check for ultimate unlock
+            if (unlockedCount === totalSurprises - 1) { // All except ultimate
+                setTimeout(() => {
+                    unlockSurprise('ultimate-treasure');
+                }, 2000);
+            }
+        }
+
+        function checkAutoUnlocks() {
+            // Check various conditions to auto-unlock surprises
+            
+            // Example: Check if user has visited photo gallery
+            if (localStorage.getItem('visitedPhotoGallery')) {
+                const photoRequirements = checkPhotoGalleryProgress();
+                if (photoRequirements.completed) {
+                    unlockSurprise('photo-memory');
+                }
+            }
+            
+            // Example: Check game achievements
+            const gameAchievements = JSON.parse(localStorage.getItem('gameAchievements') || '{}');
+            if (Object.keys(gameAchievements).length >= 3) {
+                unlockSurprise('game-achievement');
+            }
+        }
+
+        function checkPhotoGalleryProgress() {
+            // This would normally check actual photo gallery progress
+            // For demo purposes, we'll simulate the check
+            return {
+                completed: Math.random() > 0.7, // 30% chance to auto-unlock
+                visitedGallery: true,
+                viewedPhotos: 8,
+                addedFavorite: false
+            };
+        }
+
+        function checkForNewUnlocks() {
+            // This function would check if completing certain actions unlocks new surprises
+            const actions = JSON.parse(localStorage.getItem('userActions') || '{}');
+            
+            // Example unlock conditions
+            if (actions.completedPuzzle && actions.passedQuiz && !unlockedSurprises.has('game-achievement')) {
+                setTimeout(() => unlockSurprise('game-achievement'), 1000);
+            }
+            
+            if (actions.addedMemories >= 3 && !unlockedSurprises.has('memory-treasure')) {
+                setTimeout(() => unlockSurprise('memory-treasure'), 1500);
+            }
+        }
+
+        function showAchievementToast(surpriseId) {
+            const toast = document.getElementById('achievementToast');
+            const surpriseBox = document.querySelector(`[data-surprise="${surpriseId}"]`);
+            const title = surpriseBox.querySelector('.surprise-title').textContent;
+            
+            toast.querySelector('.toast-title').textContent = 'Surprise Unlocked!';
+            toast.querySelector('.toast-message').textContent = `${title} is now available!`;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        function createUnlockCelebration() {
+            const celebrations = ['🎉', '🎊', '✨', '💫', '🌟', '💝'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.innerHTML = celebrations[Math.floor(Math.random() * celebrations.length)];
+                    particle.style.cssText = `
+                        position: fixed;
+                        font-size: 1.5rem;
+                        left: ${Math.random() * 100}vw;
+                        top: -50px;
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: confettiDrop 3s linear;
+                    `;
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.remove();
+                        }
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        function createConfettiCelebration() {
+            const confetti = ['🎉', '🎊', '✨', '💕', '💖', '🌟', '💫', '🎁'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const piece = document.createElement('div');
+                    piece.innerHTML = confetti[Math.floor(Math.random() * confetti.length)];
+                    piece.style.cssText = `
+                        position: fixed;
+                        font-size: 2rem;
+                        left: ${Math.random() * 100}vw;
+                        top: -50px;
+                        pointer-events: none;
+                        z-index: 2100;
+                        animation: confettiDrop 4s linear;
+                    `;
+                    
+                    document.body.appendChild(piece);
+                    
+                    setTimeout(() => {
+                        if (piece.parentNode) {
+                            piece.remove();
+                        }
+                    }, 4000);
+                }, i * 50);
+            }
+        }
+
+        function createSparkleEffect(element) {
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = ['✨', '💫', '⭐', '🌟'][Math.floor(Math.random() * 4)];
+                    sparkle.style.cssText = `
+                        position: absolute;
+                        font-size: 1rem;
+                        left: ${Math.random() * 100}%;
+                        top: ${Math.random() * 100}%;
+                        pointer-events: none;
+                        animation: sparkle 1.5s ease-out;
+                        z-index: 10;
+                    `;
+                    element.style.position = 'relative';
+                    element.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 1500);
+                }, i * 200);
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--gradient-primary);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+                z-index: 1000;
+                animation: notificationSlide 3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSurpriseReveal();
+            }
+            
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key.toLowerCase()) {
+                    case 's':
+                        e.preventDefault();
+                        // Secret unlock code
+                        if (e.shiftKey) {
+                            unlockSurprise('love-letter');
+                            showNotification('🎁 Secret unlock activated!', 'success');
+                        }
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        createConfettiCelebration();
+                        break;
+                }
+            }
+        });
+
+        // Demo function to simulate unlocking surprises (for testing)
+        function demoUnlock() {
+            const lockedBoxes = document.querySelectorAll('.surprise-box.locked');
+            if (lockedBoxes.length > 0) {
+                const randomBox = lockedBoxes[Math.floor(Math.random() * lockedBoxes.length)];
+                const surpriseId = randomBox.dataset.surprise;
+                unlockSurprise(surpriseId);
+            }
+        }
+
+        // Add demo unlock button (hidden, for development)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            const demoButton = document.createElement('button');
+            demoButton.textContent = 'Demo Unlock';
+            demoButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 1000;
+                background: #333;
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 0.8rem;
+            `;
+            demoButton.onclick = demoUnlock;
+            document.body.appendChild(demoButton);
+        }
+
+        // Additional CSS animations
+        const additionalStyles = `
+            @keyframes sparkle {
+                0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+                50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            }
+            
+            @keyframes notificationSlide {
+                0% { transform: translateX(100%); opacity: 0; }
+                10% { transform: translateX(0); opacity: 1; }
+                90% { transform: translateX(0); opacity: 1; }
+                100% { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

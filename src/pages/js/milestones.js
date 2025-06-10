@@ -177,7 +177,7 @@ function startMilestoneChallenge() {
     const unlockBtn = document.getElementById('unlockMilestonesBtn');
     
     if (milestonesUnlocked) {
-        window.location.href = 'puzzle.html';
+        window.location.href = 'games.html';
         return;
     }
     
@@ -256,7 +256,7 @@ function checkMilestoneAnswer(answer) {
 }
 
 function proceedToPuzzle() {
-    window.location.href = 'puzzle.html';
+    window.location.href = 'games.html';
 }
 
 function createSuccessEffect() {
