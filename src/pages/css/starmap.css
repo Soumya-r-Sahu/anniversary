@@ -27,14 +27,14 @@
     padding: 1rem 2rem;
 }
 
-.nav-home {
+.story-navigation-home {
     color: #ffd700;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
-.nav-home:hover {
+.story-navigation-home:hover {
     color: #ffed4e;
 }
 
@@ -46,7 +46,7 @@
     text-shadow: 0 0 10px rgba(232, 213, 255, 0.5);
 }
 
-.nav-controls {
+.story-navigation-controls {
     display: flex;
     gap: 1rem;
 }
@@ -387,7 +387,7 @@
 }
 
 /* Memory Overlay */
-.memory-overlay {
+.precious-moment-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -399,13 +399,13 @@
     backdrop-filter: blur(5px);
 }
 
-.memory-overlay.active {
+.precious-moment-overlay.active {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.memory-card {
+.precious-moment-card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
@@ -416,14 +416,14 @@
     position: relative;
 }
 
-.memory-header {
+.precious-moment-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.memory-header h3 {
+.precious-moment-header h3 {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
     color: #e8d5ff;
@@ -444,13 +444,13 @@
     opacity: 1;
 }
 
-.memory-content {
+.precious-moment-content {
     display: flex;
     gap: 1.5rem;
     align-items: center;
 }
 
-.memory-image {
+.precious-moment-image {
     width: 150px;
     height: 150px;
     position: relative;
@@ -466,23 +466,23 @@
     overflow: hidden;
 }
 
-.memory-text {
+.precious-moment-text {
     flex: 1;
 }
 
-.memory-text h4 {
+.precious-moment-text h4 {
     color: #ffd700;
     font-size: 1.3rem;
     margin: 0 0 0.75rem 0;
 }
 
-.memory-text p {
+.precious-moment-text p {
     color: #ffffff;
     line-height: 1.6;
     margin: 0 0 1rem 0;
 }
 
-.memory-date {
+.precious-moment-date {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     font-style: italic;
@@ -648,7 +648,7 @@
         font-size: 1.5rem;
     }
 
-    .nav-controls {
+    .story-navigation-controls {
         justify-content: center;
     }
 
@@ -676,12 +676,12 @@
         grid-template-columns: 1fr;
     }
 
-    .memory-content {
+    .precious-moment-content {
         flex-direction: column;
         text-align: center;
     }
 
-    .memory-image {
+    .precious-moment-image {
         width: 120px;
         height: 120px;
     }
@@ -700,11 +700,11 @@
         flex-direction: column;
     }
 
-    .memory-card {
+    .precious-moment-card {
         padding: 1.5rem;
     }
 
-    .memory-header h3 {
+    .precious-moment-header h3 {
         font-size: 1.5rem;
     }
 }

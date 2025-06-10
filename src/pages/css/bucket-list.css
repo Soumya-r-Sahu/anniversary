@@ -117,12 +117,12 @@
     border-color: rgba(34, 197, 94, 0.4);
 }
 
-.bucket-item.completed .item-text {
+.bucket-item.completed .story-piece-text {
     text-decoration: line-through;
     opacity: 0.8;
 }
 
-.item-checkbox {
+.story-piece-checkbox {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -151,7 +151,7 @@
     75% { transform: scale(1.2); }
 }
 
-.item-text {
+.story-piece-text {
     color: white;
     font-size: 1.1rem;
     line-height: 1.4;
@@ -159,14 +159,14 @@
     margin-bottom: 0.5rem;
 }
 
-.item-description {
+.story-piece-description {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     line-height: 1.3;
     margin-bottom: 1rem;
 }
 
-.item-priority {
+.story-piece-priority {
     display: inline-block;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;

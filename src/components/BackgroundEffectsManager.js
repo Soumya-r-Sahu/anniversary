@@ -73,8 +73,8 @@ class BackgroundEffectsManager {
 
   async initializeMusic() {
     try {
-      const { MusicPlayerManager } = await import('../core/MusicPlayerManager.js');
-      this.components.music = new MusicPlayerManager({
+      const { MusicPlayer } = await import('../core/MusicPlayer.js');
+      this.components.music = new MusicPlayer({
         autoplay: false,
         volume: 0.3,
         crossPageSync: true,

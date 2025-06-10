@@ -19,189 +19,18 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/globals.css">
     <link rel="stylesheet" href="../css/timeline.css">
-    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⏰%3C/text%3E%3C/svg%3E">
     
-    <style>
-        .timeline-hero {
-            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .timeline-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-            animation: etherealGlow 8s ease-in-out infinite alternate;
-        }
-        
-        @keyframes etherealGlow {
-            0% { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.1); }
-        }
-        
-        .real-time-clock {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 2rem;
-            padding: 3rem;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        .digital-clock {
-            font-family: 'Courier New', monospace;
-            font-size: 3rem;
-            color: #ff6b9d;
-            text-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-        
-        .together-counter {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-        
-        .timeline-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .unlock-notice {
-            background: rgba(147, 51, 234, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.5);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            margin-top: 2rem;
-            color: #e9d5ff;
-        }
-        
-        .unlock-button {
-            background: linear-gradient(135deg, #9333ea, #ec4899);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .unlock-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(147, 51, 234, 0.4);
-        }
-        
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        
-        .heart {
-            position: absolute;
-            color: rgba(255, 107, 157, 0.6);
-            font-size: 2rem;
-            animation: floatUp 6s infinite linear;
-        }
-        
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .timeline-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ff6b9d;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: #e9d5ff;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
-        @media (max-width: 768px) {
-            .digital-clock {
-                font-size: 2rem;
-            }
-            
-            .together-counter {
-                font-size: 1.5rem;
-            }
-            
-            .real-time-clock {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
 </head>
 <body style="padding-top: 90px;">
     <!-- Navigation will be loaded dynamically -->
     
-    <main class="main-content">
-        <section class="timeline-hero">
+    <main class="love-story-content">
+        <section class="love-journey-hero">
             <div class="floating-hearts" id="floatingHearts"></div>
             
-            <div class="timeline-content">
+            <div class="love-journey-content">
                 <div class="text-center">
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
                         ⏰ Our Timeline ⏰
@@ -219,26 +48,26 @@
                     <div class="text-lg text-white/80">
                         Current Time
                     </div>
-                    <div class="together-counter" id="togetherCounter">
+                    <div class="united-hearts-counter" id="togetherCounter">
                         Loading our beautiful journey...
                     </div>
                 </div>
                 
                 <!-- Timeline Statistics -->
-                <div class="timeline-stats">
-                    <div class="stat-card">
+                <div class="love-journey-stats">
+                    <article class="stat-precious-moment-display">
                         <span class="stat-number" id="daysCount">0</span>
                         <div class="stat-label">Days Together</div>
                     </div>
-                    <div class="stat-card">
+                    <article class="stat-precious-moment-display">
                         <span class="stat-number" id="hoursCount">0</span>
                         <div class="stat-label">Hours of Love</div>
                     </div>
-                    <div class="stat-card">
+                    <article class="stat-precious-moment-display">
                         <span class="stat-number" id="minutesCount">0</span>
                         <div class="stat-label">Minutes of Joy</div>
                     </div>
-                    <div class="stat-card">
+                    <article class="stat-precious-moment-display">
                         <span class="stat-number" id="secondsCount">0</span>
                         <div class="stat-label">Seconds of Bliss</div>
                     </div>
@@ -248,7 +77,7 @@
                 <div class="unlock-notice">
                     <h3 class="text-2xl font-dancing mb-2">🎬 Unlock Milestones</h3>
                     <p class="text-lg">Our timeline has been counting! Ready to explore our milestone moments?</p>
-                    <button class="unlock-button" onclick="unlockMilestones()">
+                    <button class="unlock-action-heart" onclick="unlockMilestones()">
                         🎬 View Our Milestones
                     </button>
                 </div>
@@ -356,9 +185,9 @@
     <!-- Navigation Loader -->
     <script type="module" src="../scripts/navigation-loader.js"></script>
     <!-- Unified Navigation & Data Management System -->
-    <script type="module" src="../../utils/unifiedNavigation.js"></script>
-    <script type="module" src="../../utils/dataManager.js"></script>
-    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../../utils/Database.js"></script>
     <script>
         // Initialize unified systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {

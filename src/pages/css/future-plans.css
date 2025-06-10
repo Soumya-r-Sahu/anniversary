@@ -82,7 +82,7 @@
 }
 
 /* Milestone Tracker */
-.milestone-tracker  {
+.relationship-milestone-tracker  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -92,7 +92,7 @@
     will-change: transform;
 }
 
-.milestone  {
+.relationship-milestone  {
     display: flex;
     align-items: center;
     margin: 1rem 0;
@@ -104,12 +104,12 @@
     will-change: transform, background-color;
 }
 
-.milestone:hover  {
+.relationship-milestone:hover  {
     transform: translateX(10px);
     background-color: rgba(255, 105, 180, 0.1);
 }
 
-.milestone-status  {
+.relationship-milestone-status  {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -119,12 +119,12 @@
     flex-shrink: 0;
 }
 
-.milestone-status.completed  {
+.relationship-milestone-status.completed  {
     background: #ff69b4;
     box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
 }
 
-.milestone-status.completed::after  {
+.relationship-milestone-status.completed::after  {
     content: '✓';
     position: absolute;
     top: 50%;
@@ -135,14 +135,14 @@
     font-weight: bold;
 }
 
-.milestone-text  {
+.relationship-milestone-text  {
     color: #fff;
     flex: 1;
     font-size: 1rem;
     font-weight: 500;
 }
 
-.milestone-date  {
+.relationship-milestone-date  {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
     font-style: italic;
@@ -288,7 +288,7 @@
 }
 
 /* Celebration Hearts Animation */
-.celebration-heart  {
+.joy-moment-heart  {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
@@ -329,18 +329,18 @@
     grid-template-columns: 1fr;
 }
 
-    .milestone  {
+    .relationship-milestone  {
     flex-direction: column;
     text-align: center;
     padding: 1.5rem;
 }
 
-    .milestone-status  {
+    .relationship-milestone-status  {
     margin-bottom: 0.5rem;
     margin-right: 0;
 }
 
-    .milestone-text  {
+    .relationship-milestone-text  {
     margin-bottom: 0.5rem;
 }
 
@@ -370,7 +370,7 @@
 
 @media (max-width: 480px)  {
     .vision-card,
-    .milestone-tracker,
+    .relationship-milestone-tracker,
     .travel-map  {
     padding: 1.5rem;
     margin: 1rem 0;
@@ -388,7 +388,7 @@
     padding: 1rem;
 }
 
-    .milestone  {
+    .relationship-milestone  {
     padding: 1rem;
 }
 
@@ -397,7 +397,7 @@
 /* Performance Optimizations */
 .vision-card,
 .bucket-item,
-.milestone,
+.relationship-milestone,
 .destination-tag,
 .add-plan-btn  {
     transform: translateZ(0);
@@ -418,7 +418,7 @@
 /* Dark theme compatibility */
 @media (prefers-color-scheme: dark)  {
     .vision-card,
-    .milestone-tracker,
+    .relationship-milestone-tracker,
     .travel-map,
     .bucket-item  {
     background: rgba(255, 255, 255, 0.08);

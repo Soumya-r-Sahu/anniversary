@@ -9,33 +9,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="starmap-container">
+    <div class="starmap-content-sanctuary">
         <!-- Navigation Header -->
-        <header class="page-header">
+        <header class="page-story-opening">
             <nav class="navigation">
-                <a href="../../index.html" class="nav-home">🏠 Home</a>
+                <a href="../../index.html" class="story-navigation-home">🏠 Home</a>
                 <h1 class="page-title">Our Star Map</h1>
-                <div class="nav-controls">
+                <nav class="story-navigation-controls">
                     <button class="constellation-toggle" id="constellationToggle">✨ Constellations</button>
-                    <button class="date-picker-btn" id="datePickerBtn">📅 Date</button>
+                    <button class="date-picker-love-action" id="datePickerBtn">📅 Date</button>
                 </div>
             </nav>
         </header>
 
         <!-- Star Map Canvas Container -->
-        <div class="star-canvas-container">
+        <div class="star-canvas-content-sanctuary">
             <canvas id="starCanvas" class="star-canvas"></canvas>
             
             <!-- Date Selection Overlay -->
             <div class="date-overlay" id="dateOverlay">
-                <div class="date-picker-card">
+                <article class="date-picker-precious-moment-display">
                     <h3>Choose a Special Date</h3>
                     <input type="date" id="specialDate" class="date-input">
-                    <div class="special-dates-grid">
-                        <button class="special-date-btn" data-date="2023-02-14">First Valentine's Day</button>
-                        <button class="special-date-btn" data-date="2023-06-15">Anniversary</button>
-                        <button class="special-date-btn" data-date="2023-12-25">First Christmas</button>
-                        <button class="special-date-btn" data-date="2024-01-01">New Year Together</button>
+                    <div class="precious-treasure-dates-grid">
+                        <button class="precious-treasure-date-love-action" data-date="2023-02-14">First Valentine's Day</button>
+                        <button class="precious-treasure-date-love-action" data-date="2023-06-15">Anniversary</button>
+                        <button class="precious-treasure-date-love-action" data-date="2023-12-25">First Christmas</button>
+                        <button class="precious-treasure-date-love-action" data-date="2024-01-01">New Year Together</button>
                     </div>
                     <button class="close-overlay" id="closeDateOverlay">✕</button>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Constellation Information Panel -->
             <div class="constellation-info" id="constellationInfo">
-                <div class="info-card">
+                <article class="info-precious-moment-display">
                     <h3 id="constellationName">Click a constellation to learn more</h3>
                     <p id="constellationDescription">Explore the stars that witnessed our love story...</p>
                     <div class="constellation-stats">
@@ -72,20 +72,20 @@
         </div>
 
         <!-- Control Panel -->
-        <div class="control-panel">
-            <div class="control-section">
+        <div class="control-story-story-story-story-story-panel">
+            <div class="control-story-chapter">
                 <h3>Time Controls</h3>
                 <div class="time-controls">
-                    <button class="control-btn" id="timeBack">⏪ Back</button>
-                    <button class="control-btn" id="timePlay" data-playing="false">▶️ Play</button>
-                    <button class="control-btn" id="timeForward">⏩ Forward</button>
+                    <button class="control-love-action" id="timeBack">⏪ Back</button>
+                    <button class="control-love-action" id="timePlay" data-playing="false">▶️ Play</button>
+                    <button class="control-love-action" id="timeForward">⏩ Forward</button>
                 </div>
                 <div class="time-display">
                     <span id="currentTime">Now</span>
                 </div>
             </div>
 
-            <div class="control-section">
+            <div class="control-story-chapter">
                 <h3>View Controls</h3>
                 <div class="view-controls">
                     <label class="control-label">
@@ -99,31 +99,31 @@
                 </div>
             </div>
 
-            <div class="control-section">
+            <div class="control-story-chapter">
                 <h3>Special Features</h3>
                 <div class="feature-controls">
-                    <button class="feature-btn" id="loveConstellationBtn">💕 Our Love</button>
-                    <button class="feature-btn" id="shootingStarsBtn">🌠 Shooting Stars</button>
-                    <button class="feature-btn" id="planetaryBtn">🪐 Planets</button>
+                    <button class="feature-love-action" id="loveConstellationBtn">💕 Our Love</button>
+                    <button class="feature-love-action" id="shootingStarsBtn">🌠 Shooting Stars</button>
+                    <button class="feature-love-action" id="planetaryBtn">🪐 Planets</button>
                 </div>
             </div>
         </div>
 
         <!-- Memory Overlay -->
-        <div class="memory-overlay" id="memoryOverlay">
-            <div class="memory-card">
-                <div class="memory-header">
+        <div class="precious-moment-overlay" id="memoryOverlay">
+            <article class="precious-moment-precious-moment-display">
+                <div class="precious-moment-story-opening">
                     <h3>Memory from the Stars</h3>
-                    <button class="close-memory" id="closeMemory">✕</button>
+                    <button class="close-precious-moment" id="closeMemory">✕</button>
                 </div>
-                <div class="memory-content">
-                    <div class="memory-image">
+                <div class="precious-moment-content">
+                    <div class="precious-moment-image">
                         <div class="star-pattern" id="memoryStarPattern"></div>
                     </div>
-                    <div class="memory-text">
+                    <div class="precious-moment-text">
                         <h4 id="memoryTitle">A Special Moment</h4>
                         <p id="memoryDescription">Under these very stars, we shared a moment that became part of our love story...</p>
-                        <div class="memory-date">
+                        <div class="precious-moment-date">
                             <span id="memoryDate">February 14, 2023</span>
                         </div>
                     </div>

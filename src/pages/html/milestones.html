@@ -19,216 +19,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/globals.css">
     <link rel="stylesheet" href="../css/milestones.css">
-    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎬%3C/text%3E%3C/svg%3E">
     
-    <style>
-        .milestones-hero {
-            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .milestones-timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, #ff6b9d, #c44569, #9333ea);
-            transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
-        }
-        
-        .milestone-item {
-            position: relative;
-            margin: 4rem 0;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-        
-        .milestone-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .milestone-item:nth-child(odd) .milestone-content {
-            margin-right: 50%;
-            padding-right: 3rem;
-            text-align: right;
-        }
-        
-        .milestone-item:nth-child(even) .milestone-content {
-            margin-left: 50%;
-            padding-left: 3rem;
-            text-align: left;
-        }
-        
-        .milestone-marker {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 0 30px rgba(255, 107, 157, 0.6);
-            z-index: 10;
-        }
-        
-        .milestone-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            position: relative;
-        }
-        
-        .milestone-date {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            color: #ff6b9d;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .milestone-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-            font-family: 'Dancing Script', cursive;
-        }
-        
-        .milestone-description {
-            color: #e9d5ff;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .milestone-media {
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            margin-top: 1.5rem;
-        }
-        
-        .milestone-media img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .milestone-media:hover img {
-            transform: scale(1.05);
-        }
-        
-        .milestone-video {
-            width: 100%;
-            height: 300px;
-            border-radius: 1rem;
-            background: #000;
-        }
-        
-        .scroll-progress {
-            position: fixed;
-            top: 90px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-        
-        .scroll-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b9d, #c44569, #9333ea);
-            transition: width 0.1s ease;
-            width: 0%;
-        }
-        
-        .unlock-notice {
-            background: rgba(147, 51, 234, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.5);
-            border-radius: 2rem;
-            padding: 3rem;
-            text-align: center;
-            margin: 4rem auto;
-            max-width: 600px;
-            color: #e9d5ff;
-        }
-        
-        .unlock-button {
-            background: linear-gradient(135deg, #9333ea, #ec4899);
-            color: white;
-            border: none;
-            padding: 1.2rem 2.5rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .unlock-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 30px;
-            }
-            
-            .milestone-item:nth-child(odd) .milestone-content,
-            .milestone-item:nth-child(even) .milestone-content {
-                margin: 0;
-                padding: 2rem;
-                margin-left: 80px;
-                text-align: left;
-            }
-            
-            .milestone-marker {
-                left: 30px;
-            }
-            
-            .milestone-content {
-                padding: 2rem;
-            }
-            
-            .milestone-title {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
 </head>
 <body style="padding-top: 90px;">
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress">
         <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
+    </nav>
     
     <!-- Navigation will be loaded dynamically -->
     
-    <main class="main-content">
+    <main class="love-story-content">
         <section class="milestones-hero">
             <div class="text-center py-16">
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
@@ -239,20 +42,20 @@
                 </p>
             </div>
             
-            <div class="milestones-timeline">
-                <div class="timeline-line"></div>
+            <div class="milestones-love-journey">
+                <div class="love-journey-line"></div>
                 
                 <!-- Milestone 1: First Meeting -->
-                <div class="milestone-item" data-milestone="1">
-                    <div class="milestone-marker">💕</div>
-                    <div class="milestone-content">
-                        <div class="milestone-date">June 16, 2024</div>
-                        <h3 class="milestone-title">The Day We Met</h3>
-                        <p class="milestone-description">
+                <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-story-piece" data-milestone="1">
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-marker">💕</div>
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-content">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-date">June 16, 2024</div>
+                        <h3 class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-title">The Day We Met</h3>
+                        <p class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-description">
                             A magical moment when two hearts found each other. The beginning of our beautiful journey together, 
                             filled with laughter, dreams, and endless possibilities.
                         </p>
-                        <div class="milestone-media">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-media">
                             <img src="../../assets/images/first-meeting.jpg" alt="First Meeting" 
                                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzM3NDE1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZpcnN0IE1lZXRpbmcgTWVtb3J5IDI1MHgyNTA8L3RleHQ+PC9zdmc+'">
                         </div>
@@ -260,16 +63,16 @@
                 </div>
                 
                 <!-- Milestone 2: First Date -->
-                <div class="milestone-item" data-milestone="2">
-                    <div class="milestone-marker">🌹</div>
-                    <div class="milestone-content">
-                        <div class="milestone-date">June 20, 2024</div>
-                        <h3 class="milestone-title">Our First Date</h3>
-                        <p class="milestone-description">
+                <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-story-piece" data-milestone="2">
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-marker">🌹</div>
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-content">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-date">June 20, 2024</div>
+                        <h3 class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-title">Our First Date</h3>
+                        <p class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-description">
                             Nervous butterflies and excited hearts. Our first official date where we discovered 
                             how perfectly we complement each other. Time seemed to stop as we talked for hours.
                         </p>
-                        <div class="milestone-media">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-media">
                             <img src="../../assets/images/first-date.jpg" alt="First Date" 
                                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZlYmVmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2JmMjY2YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZpcnN0IERhdGUgTWVtb3J5IDI1MHgyNTA8L3RleHQ+PC9zdmc+'">
                         </div>
@@ -277,17 +80,17 @@
                 </div>
                 
                 <!-- Milestone 3: First Month -->
-                <div class="milestone-item" data-milestone="3">
-                    <div class="milestone-marker">🎉</div>
-                    <div class="milestone-content">
-                        <div class="milestone-date">July 16, 2024</div>
-                        <h3 class="milestone-title">One Month Together</h3>
-                        <p class="milestone-description">
+                <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-story-piece" data-milestone="3">
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-marker">🎉</div>
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-content">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-date">July 16, 2024</div>
+                        <h3 class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-title">One Month Together</h3>
+                        <p class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-description">
                             Celebrating our first month of being together! Already we knew this was something special. 
                             Every day brought new adventures and deeper connections.
                         </p>
-                        <div class="milestone-media">
-                            <video class="milestone-video" controls muted>
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-media">
+                            <video class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-video" controls muted>
                                 <source src="../../assets/video/first-month.mp4" type="video/mp4">
                                 <div style="background: #1a0b2e; color: white; padding: 4rem; text-align: center; border-radius: 1rem;">
                                     🎬 First Month Celebration Video<br>
@@ -299,16 +102,16 @@
                 </div>
                 
                 <!-- Milestone 4: Special Achievement -->
-                <div class="milestone-item" data-milestone="4">
-                    <div class="milestone-marker">🏆</div>
-                    <div class="milestone-content">
-                        <div class="milestone-date">August 10, 2024</div>
-                        <h3 class="milestone-title">Supporting Each Other's Dreams</h3>
-                        <p class="milestone-description">
+                <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-story-piece" data-milestone="4">
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-marker">🏆</div>
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-content">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-date">August 10, 2024</div>
+                        <h3 class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-title">Supporting Each Other's Dreams</h3>
+                        <p class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-description">
                             The moment we realized we're not just lovers, but true life partners. Supporting each other's 
                             goals and celebrating victories together made our bond even stronger.
                         </p>
-                        <div class="milestone-media">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-media">
                             <img src="../../assets/images/achievement.jpg" alt="Achievement" 
                                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZmYmViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2Y1OTAwZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFjaGlldmVtZW50IE1lbW9yeSAyNTB4MjUwPC90ZXh0Pjwvc3ZnPg=='">
                         </div>
@@ -316,16 +119,16 @@
                 </div>
                 
                 <!-- Milestone 5: Current Moment -->
-                <div class="milestone-item" data-milestone="5">
-                    <div class="milestone-marker">🌟</div>
-                    <div class="milestone-content">
-                        <div class="milestone-date">Present Day</div>
-                        <h3 class="milestone-title">Our Beautiful Present</h3>
-                        <p class="milestone-description">
+                <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-story-piece" data-milestone="5">
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-marker">🌟</div>
+                    <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-content">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-date">Present Day</div>
+                        <h3 class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-title">Our Beautiful Present</h3>
+                        <p class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-description">
                             Right here, right now - this moment of celebrating our journey together. Looking back with 
                             gratitude and forward with excitement for all the milestones yet to come.
                         </p>
-                        <div class="milestone-media">
+                        <div class="love-bond-love-bond-love-bond-love-bond-love-bond-milestone-media">
                             <img src="../../assets/images/current-moment.jpg" alt="Present Day" 
                                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzA5NzNkYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkN1cnJlbnQgTW9tZW50IDI1MHgyNTA8L3RleHQ+PC9zdmc+'">
                         </div>
@@ -340,7 +143,7 @@
                     You've experienced our milestone journey! Now let's see how well you know our story 
                     with a fun puzzle challenge.
                 </p>
-                <button class="unlock-button" onclick="unlockPuzzle()">
+                <button class="unlock-action-heart" onclick="unlockPuzzle()">
                     🧩 Start Our Love Puzzle
                 </button>
             </div>
@@ -350,7 +153,7 @@
     <script>
         // Scroll-triggered animations
         function observeMilestones() {
-            const milestones = document.querySelectorAll('.milestone-item');
+            const milestones = document.querySelectorAll('.love-bond-milestone-item');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -436,9 +239,9 @@
     <!-- Navigation Loader -->
     <script type="module" src="../scripts/navigation-loader.js"></script>
     <!-- Unified Navigation & Data Management System -->
-    <script type="module" src="../../utils/unifiedNavigation.js"></script>
-    <script type="module" src="../../utils/dataManager.js"></script>
-    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../../utils/Database.js"></script>
     <script>
         // Initialize unified systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,7 +1,7 @@
 /* Photo Gallery Page Styles */
 
 /* Memory Lane Road Animation Styles */
-.memory-road-container  {
+.precious-moment-road-container  {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -10,7 +10,7 @@
 }
 
 /* Animated Winding Road */
-.memory-road  {
+.precious-moment-road  {
     position: absolute;
     top: 0;
     left: 0;
@@ -58,7 +58,7 @@
 }
 
 /* Enhanced Car Animation */
-.memory-car  {
+.precious-moment-car  {
     position: absolute;
     z-index: 10;
     transform-origin: center;
@@ -130,7 +130,7 @@
 }
 
 /* Memory Popup Boxes */
-.memory-popup  {
+.precious-moment-popup  {
     position: absolute;
     bottom: 300px;
     background: rgba(255, 255, 255, 0.95);
@@ -146,7 +146,7 @@
     animation-fill-mode: forwards;
 }
 
-.memory-popup.active  {
+.precious-moment-popup.active  {
     animation: popupShow 1s ease-out forwards;
 }
 
@@ -163,7 +163,7 @@
 
 }
 
-.memory-placeholder  {
+.precious-moment-placeholder  {
     width: 100%;
     height: 200px;
     border-radius: 15px;
@@ -177,7 +177,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.memory-date  {
+.precious-moment-date  {
     color: #ec4899;
     font-weight: 600;
     font-size: 1.1rem;
@@ -185,14 +185,14 @@
     font-family: 'Dancing Script', cursive;
 }
 
-.memory-title  {
+.precious-moment-title  {
     color: #2d3748;
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-.memory-description  {
+.precious-moment-description  {
     color: #6b7280;
     line-height: 1.6;
     font-size: 0.95rem;
@@ -260,7 +260,7 @@
 }
 
 /* Gallery Filter Buttons */
-.gallery-filter-btn  {
+.visual-story-filter-btn  {
     background: linear-gradient(135deg, #374151, #4b5563);
     color: #e5e7eb;
     border: 1px solid #6b7280;
@@ -273,12 +273,12 @@
     overflow: hidden;
 }
 
-.gallery-filter-btn:not(.active):hover  {
+.visual-story-filter-btn:not(.active):hover  {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-.gallery-filter-btn.active  {
+.visual-story-filter-btn.active  {
     box-shadow: 0 0 25px rgba(34,197,94,0.5);
 }
 
@@ -294,7 +294,7 @@
 
 }
 
-.gallery-item:hover .relative  {
+.visual-story-item:hover .relative  {
     animation: quantum-glow 2s infinite;
 }
 
@@ -331,30 +331,30 @@
 }
 
 /* Gallery Grid Styles */
-.gallery-grid  {
+.visual-story-grid  {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem 0;
 }
 
-.gallery-item  {
+.visual-story-item  {
     position: relative;
     overflow: hidden;
 }
 
-.gallery-item img  {
+.visual-story-item img  {
     width: 100%;
     height: 300px;
     object-fit: cover;
     transition: transform 0.7s ease;
 }
 
-.gallery-item:hover img  {
+.visual-story-item:hover img  {
     transform: scale(1.1);
 }
 
-.gallery-overlay  {
+.visual-story-overlay  {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
@@ -365,33 +365,33 @@
     padding: 1.5rem;
 }
 
-.gallery-item:hover .gallery-overlay  {
+.visual-story-item:hover .visual-story-overlay  {
     opacity: 1;
 }
 
-.gallery-content  {
+.visual-story-content  {
     color: white;
     transform: translateY(1rem);
     transition: transform 0.5s ease;
 }
 
-.gallery-item:hover .gallery-content  {
+.visual-story-item:hover .visual-story-content  {
     transform: translateY(0);
 }
 
-.gallery-title  {
+.visual-story-title  {
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
-.gallery-description  {
+.visual-story-description  {
     font-size: 0.875rem;
     opacity: 0.9;
     margin-bottom: 0.75rem;
 }
 
-.gallery-divider  {
+.visual-story-divider  {
     width: 4rem;
     height: 0.25rem;
     border-radius: 9999px;
@@ -487,7 +487,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px)  {
-    .memory-popup  {
+    .precious-moment-popup  {
     max-width: 280px;
     padding: 15px;
     bottom: 250px;
@@ -505,7 +505,7 @@
     font-size: 20px;
 }
 
-    .memory-car  {
+    .precious-moment-car  {
     width: 60px;
     height: 37px;
 }
@@ -527,17 +527,17 @@
     height: 15px;
 }
 
-    .gallery-grid  {
+    .visual-story-grid  {
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 1rem 0;
 }
 
-    .gallery-item img  {
+    .visual-story-item img  {
     height: 250px;
 }
 
-    .gallery-overlay  {
+    .visual-story-overlay  {
     padding: 1rem;
 }
 
@@ -554,12 +554,12 @@
     font-size: 0.875rem;
 }
 
-    .memory-popup  {
+    .precious-moment-popup  {
     max-width: 250px;
     padding: 12px;
 }
 
-    .memory-placeholder  {
+    .precious-moment-placeholder  {
     height: 150px;
     font-size: 2rem;
 }
@@ -592,13 +592,13 @@
 }
 
 /* Performance optimizations */
-.gallery-item  {
+.visual-story-item  {
     will-change: transform;
     backface-visibility: hidden;
     transform: translateZ(0);
 }
 
-.gallery-item img  {
+.visual-story-item img  {
     will-change: transform;
     backface-visibility: hidden;
 }
@@ -613,8 +613,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference)  {
-    .gallery-item,
-    .gallery-item img,
+    .visual-story-item,
+    .visual-story-item img,
     .control-button,
     .home-button  {
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);

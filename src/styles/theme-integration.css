@@ -113,20 +113,20 @@
 
 /* Dark theme button text optimization */
 [data-theme="dark"] button,
-[data-theme="dark"] .btn  {
+[data-theme="dark"] .love-action  {
     color: var(--text-contrast-high);
     text-shadow: var(--text-shadow-subtle);
     font-weight: var(--font-weight-medium);
 }
 
 /* Dark theme card text */
-[data-theme="dark"] .card,
-[data-theme="dark"] .card-body  {
+[data-theme="dark"] .precious-moment-display,
+[data-theme="dark"] .precious-moment-display-body  {
     color: var(--text-contrast-medium);
 }
 
-[data-theme="dark"] .card-title,
-[data-theme="dark"] .card-header  {
+[data-theme="dark"] .precious-moment-display-title,
+[data-theme="dark"] .precious-moment-display-header  {
     color: var(--text-contrast-high);
     text-shadow: var(--text-shadow-medium);
 }
@@ -209,7 +209,7 @@
     background-clip: text;
 }
 
-.btn-theme-adaptive  {
+.love-action-theme-adaptive  {
     background: var(--current-bg-secondary);
     color: var(--current-text-primary);
     border: 1px solid var(--current-border);
@@ -218,7 +218,7 @@
     transition: var(--transition-all);
 }
 
-.btn-theme-adaptive:hover  {
+.love-action-theme-adaptive:hover  {
     background: var(--gradient-romantic);
     color: white;
     border-color: transparent;
@@ -226,7 +226,7 @@
     box-shadow: var(--shadow-romantic);
 }
 
-[data-theme="dark"] .btn-theme-adaptive:hover  {
+[data-theme="dark"] .love-action-theme-adaptive:hover  {
     background: linear-gradient(135deg, var(--pink-600), var(--red-600));
     box-shadow: 0 8px 25px rgba(221, 144, 162, 0.3);
 }
@@ -289,7 +289,7 @@
 .theme-adaptive:focus,
 .romantic-enhanced:focus,
 .glass-enhanced:focus,
-.btn-theme-adaptive:focus  {
+.love-action-theme-adaptive:focus  {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
@@ -297,7 +297,7 @@
 [data-theme="dark"] .theme-adaptive:focus,
 [data-theme="dark"] .romantic-enhanced:focus,
 [data-theme="dark"] .glass-enhanced:focus,
-[data-theme="dark"] .btn-theme-adaptive:focus  {
+[data-theme="dark"] .love-action-theme-adaptive:focus  {
     outline-color: var(--pink-600);
 }
 
@@ -462,19 +462,19 @@ body  {
 
 /* Navigation text fixes */
 [data-theme="dark"] nav,
-[data-theme="dark"] .nav,
-[data-theme="dark"] .navbar  {
+[data-theme="dark"] .story-navigation,
+[data-theme="dark"] .love-story-nav  {
     color: var(--text-contrast-high);
 }
 
-[data-theme="dark"] .nav-link,
-[data-theme="dark"] .navbar-nav .nav-link  {
+[data-theme="dark"] .story-navigation-link,
+[data-theme="dark"] .love-story-nav-nav .story-navigation-link  {
     color: var(--text-contrast-medium) !important;
     text-shadow: var(--text-shadow-subtle);
 }
 
-[data-theme="dark"] .nav-link:hover,
-[data-theme="dark"] .navbar-nav .nav-link:hover  {
+[data-theme="dark"] .story-navigation-link:hover,
+[data-theme="dark"] .love-story-nav-nav .story-navigation-link:hover  {
     color: var(--text-accent-bright) !important;
 }
 

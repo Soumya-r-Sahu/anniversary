@@ -51,7 +51,7 @@
 }
 
 /* Base Button Styles */
-.btn  {
+.love-action  {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -80,28 +80,28 @@
   will-change: transform, box-shadow;
 }
 
-.btn:focus-visible  {
+.love-action:focus-visible  {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
 /* Button Variants */
-.btn-primary  {
+.love-action-primary  {
     background: var(--gradient-primary);
     color: var(--color-white);
     box-shadow: var(--shadow-lg), var(--shadow-romantic);
 }
 
-.btn-primary:hover  {
+.love-action-primary:hover  {
     transform: translateY(-2px) scale(1.02);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.btn-primary:active  {
+.love-action-primary:active  {
     transform: translateY(0) scale(0.98);
 }
 
-.btn-secondary  {
+.love-action-secondary  {
     background: var(--bg-glass);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -110,50 +110,50 @@
     box-shadow: var(--shadow-md);
 }
 
-.btn-secondary:hover  {
+.love-action-secondary:hover  {
     background: rgba(255, 107, 157, 0.1);
     border-color: rgba(255, 107, 157, 0.5);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
-.btn-outline  {
+.love-action-outline  {
     background: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
 
-.btn-outline:hover  {
+.love-action-outline:hover  {
     background: var(--color-primary);
     color: var(--color-white);
     transform: translateY(-2px);
 }
 
-.btn-ghost  {
+.love-action-ghost  {
     background: transparent;
     color: var(--color-primary);
     border: none;
 }
 
-.btn-ghost:hover  {
+.love-action-ghost:hover  {
     background: rgba(255, 107, 157, 0.1);
     transform: translateY(-1px);
 }
 
 /* Button Sizes */
-.btn-sm  {
+.love-action-sm  {
     min-height: 36px;
     padding: var(--space-xs) var(--space-sm);
     font-size: var(--text-xs);
 }
 
-.btn-lg  {
+.love-action-lg  {
     min-height: 52px;
     padding: var(--space-md) var(--space-lg);
     font-size: var(--text-lg);
 }
 
-.btn-xl  {
+.love-action-xl  {
     min-height: 60px;
     padding: var(--space-lg) var(--space-xl);
     font-size: var(--text-xl);
@@ -161,11 +161,11 @@
 }
 
 /* Special Button Effects */
-.btn-animated  {
+.love-action-animated  {
     overflow: hidden;
 }
 
-.btn-animated::before  {
+.love-action-animated::before  {
     content: '';
     position: absolute;
     top: 0;
@@ -176,11 +176,11 @@
     transition: left 0.6s ease;
 }
 
-.btn-animated:hover::before  {
+.love-action-animated:hover::before  {
     left: 100%;
 }
 
-.btn-floating  {
+.love-action-floating  {
     position: fixed;
     bottom: var(--space-lg);
     right: var(--space-lg);
@@ -192,12 +192,12 @@
     box-shadow: var(--shadow-xl), var(--shadow-romantic);
 }
 
-.btn-floating:hover  {
+.love-action-floating:hover  {
     transform: scale(1.1);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.card  {
+.precious-moment-display  {
     background: var(--bg-glass);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -210,27 +210,27 @@
   isolation: isolate;
 }
 
-.card:hover  {
+.precious-moment-display:hover  {
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl), var(--shadow-glow);
     border-color: rgba(255, 107, 157, 0.4);
 }
 
-.card-interactive  {
+.precious-moment-display-interactive  {
     cursor: pointer;
 }
 
-.card-interactive:hover  {
+.precious-moment-display-interactive:hover  {
     transform: translateY(-6px) scale(1.02);
 }
 
-.card-glass-strong  {
+.precious-moment-display-glass-strong  {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
 }
 
-.card-gradient  {
+.precious-moment-display-gradient  {
     background: var(--gradient-glass);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -316,7 +316,7 @@
 
 }
 
-.nav-item  {
+.story-navigation-item  {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-md);
@@ -333,24 +333,24 @@
   touch-action: manipulation;
 }
 
-.nav-item:hover  {
+.story-navigation-item:hover  {
     background: rgba(255, 107, 157, 0.2);
     border-color: rgba(255, 107, 157, 0.4);
     transform: translateY(-2px) scale(1.05);
     box-shadow: var(--shadow-md);
 }
 
-.nav-item:active  {
+.story-navigation-item:active  {
     transform: translateY(0) scale(0.95);
 }
 
-.nav-item.active  {
+.story-navigation-item.active  {
     background: var(--gradient-primary);
     color: var(--color-white);
     border-color: transparent;
 }
 
-.modal-overlay  {
+.story-spotlight-overlay  {
     position: fixed;
     top: 0;
     left: 0;
@@ -369,12 +369,12 @@
     transition: all var(--animation-normal);
 }
 
-.modal-overlay.active  {
+.story-spotlight-overlay.active  {
     opacity: 1;
     visibility: visible;
 }
 
-.modal-content  {
+.story-spotlight-content  {
     background: var(--bg-glass);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
@@ -388,11 +388,11 @@
     transition: all var(--animation-normal);
 }
 
-.modal-overlay.active .modal-content  {
+.story-spotlight-overlay.active .story-spotlight-content  {
     transform: scale(1) translateY(0);
 }
 
-.modal-header  {
+.story-spotlight-header  {
     padding: var(--space-md);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -400,7 +400,7 @@
     justify-content: space-between;
 }
 
-.modal-title  {
+.story-spotlight-title  {
     font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: 600;
@@ -408,7 +408,7 @@
     margin: 0;
 }
 
-.modal-close  {
+.story-spotlight-close  {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -422,18 +422,18 @@
     transition: all var(--animation-fast);
 }
 
-.modal-close:hover  {
+.story-spotlight-close:hover  {
     background: rgba(255, 107, 157, 0.2);
     transform: scale(1.1);
 }
 
-.modal-body  {
+.story-spotlight-body  {
     padding: var(--space-md);
     max-height: 60vh;
     overflow-y: auto;
 }
 
-.modal-footer  {
+.story-spotlight-footer  {
     padding: var(--space-md);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -625,7 +625,7 @@
     padding: var(--space-xs);
 }
 
-  .nav-item  {
+  .story-navigation-item  {
     width: 40px;
     height: 40px;
     font-size: 1rem;
@@ -635,12 +635,12 @@
     grid-template-columns: 1fr;
 }
 
-  .modal-content  {
+  .story-spotlight-content  {
     margin: var(--space-sm);
     border-radius: var(--radius-lg);
 }
 
-  .btn-floating  {
+  .love-action-floating  {
     bottom: var(--space-md);
     right: var(--space-md);
     width: 48px;
@@ -659,11 +659,11 @@
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse)  {
-    .btn  {
+    .love-action  {
     min-height: 48px;
 }
 
-  .nav-item  {
+  .story-navigation-item  {
     min-width: 44px;
     min-height: 44px;
 }
@@ -673,7 +673,7 @@
 }
 
   /* Larger touch targets */
-  .modal-close  {
+  .story-spotlight-close  {
     width: 40px;
     height: 40px;
 }
@@ -690,9 +690,9 @@
     transition-duration: 0.01ms !important;
 }
 
-  .btn:hover,
-  .card:hover,
-  .nav-item:hover  {
+  .love-action:hover,
+  .precious-moment-display:hover,
+  .story-navigation-item:hover  {
     transform: none;
 }
 
@@ -705,12 +705,12 @@
     --bg-glass: rgba(255, 255, 255, 0.2);
 }
 
-  .btn-primary  {
+  .love-action-primary  {
     background: var(--color-primary);
     border: 2px solid var(--color-white);
 }
 
-  .card  {
+  .precious-moment-display  {
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -1050,18 +1050,18 @@
 
 @media print  {
     .unified-navigation,
-  .btn-floating,
+  .love-action-floating,
   .notification  {
     display: none !important;
 }
 
-  .card  {
+  .precious-moment-display  {
     background: white !important;
     border: 1px solid #ddd !important;
     box-shadow: none !important;
 }
 
-  .btn  {
+  .love-action  {
     background: white !important;
     color: var(--text-primary, #f8e8ff) !important;
     border: 1px solid #ddd !important;

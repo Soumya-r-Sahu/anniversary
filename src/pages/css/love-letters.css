@@ -1,6 +1,6 @@
 /* Love Letters Page Styles */
 
-.letter-card {
+.love-message {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-.letter-card::before {
+.love-message::before {
     content: '';
     position: absolute;
     top: 0;
@@ -27,13 +27,13 @@
     background-size: 22px 100%;
 }
 
-.letter-card:hover {
+.love-message:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 50px rgba(236, 72, 153, 0.3);
     border-color: rgba(236, 72, 153, 0.5);
 }
 
-.letter-content {
+.heartfelt-words {
     font-family: 'Kalam', cursive;
     line-height: 1.8;
     color: #f8fafc;
@@ -206,7 +206,7 @@
 }
 
 /* Love Letters Hero Section */
-.love-letters-hero {
+.letter-sanctuary-hero {
     background: linear-gradient(135deg, #ec4899, #f472b6);
     padding: 4rem 0;
     text-align: center;
@@ -232,13 +232,13 @@
         padding: 1.5rem;
     }
     
-    .letter-card {
+    .love-message {
         margin: 1rem 0;
     }
 }
 
 /* High contrast text for better readability */
-.letter-content p {
+.heartfelt-words p {
     margin-bottom: 1rem;
     line-height: 1.8;
 }

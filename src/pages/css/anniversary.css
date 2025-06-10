@@ -1,7 +1,7 @@
 
 
 /* Anniversary Hero Section */
-.anniversary-hero  {
+.love-milestone-hero  {
     background: linear-gradient(135deg, #ec4899, #f472b6);
     padding: 4rem 0;
     text-align: center;
@@ -10,7 +10,7 @@
 }
 
 /* Memory Cards */
-.memory-card  {
+.precious-moment-card  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -21,13 +21,13 @@
     will-change: transform, box-shadow;
 }
 
-.memory-card:hover  {
+.precious-moment-card:hover  {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
 }
 
 /* Anniversary Sparkle Animation */
-.anniversary-sparkle  {
+.love-milestone-sparkle  {
     animation: sparkleRotate 2s infinite linear;
 }
 
@@ -140,11 +140,11 @@
 }
 
 /* Memory Card Image Hover Effects */
-.memory-card .group:hover img  {
+.precious-moment-card .group:hover img  {
     transition: transform 0.7s ease;
 }
 
-.memory-card .group img  {
+.precious-moment-card .group img  {
     will-change: transform;
 }
 
@@ -159,7 +159,7 @@
 }
 
 /* Anniversary Icon Pulse Animation */
-.anniversary-icon-pulse  {
+.love-milestone-icon-pulse  {
     animation: anniversaryPulse 2s ease-in-out infinite;
 }
 
@@ -178,19 +178,19 @@
 
 /* Memory Grid Responsive Enhancements */
 @media (max-width: 1024px)  {
-    .memory-card  {
+    .precious-moment-card  {
     padding: 1.8rem;
 }
 
 }
 
 @media (max-width: 768px)  {
-    .anniversary-hero  {
+    .love-milestone-hero  {
     padding: 2rem;
     border-radius: 20px;
 }
 
-    .memory-card  {
+    .precious-moment-card  {
     padding: 1.5rem;
     border-radius: 15px;
 }
@@ -206,11 +206,11 @@
 }
 
 @media (max-width: 640px)  {
-    .anniversary-hero  {
+    .love-milestone-hero  {
     padding: 1.5rem;
 }
 
-    .memory-card  {
+    .precious-moment-card  {
     padding: 1rem;
 }
 
@@ -221,8 +221,8 @@
 }
 
 /* Performance Optimizations */
-.memory-card,
-.anniversary-hero,
+.precious-moment-card,
+.love-milestone-hero,
 .love-letter  {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -234,7 +234,7 @@ html[data-page-type="anniversary"]  {
 }
 
 /* Anniversary specific loading animation */
-.anniversary-loading  {
+.love-milestone-loading  {
     background: linear-gradient(45deg, #ec4899, #f472b6, #fbbf24);
     background-size: 300% 300%;
     animation: anniversaryGradient 3s ease infinite;

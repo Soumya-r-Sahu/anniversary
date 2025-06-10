@@ -1,5 +1,5 @@
 /* Timeline Page Styles */
-.timeline-hero {
+.love-journey-hero {
     background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
     min-height: 100vh;
     position: relative;
@@ -9,7 +9,7 @@
     justify-content: center;
 }
 
-.timeline-hero::before {
+.love-journey-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -26,7 +26,7 @@
     100% { transform: translateY(0) rotate(360deg); }
 }
 
-.timeline-content {
+.love-journey-content {
     text-align: center;
     z-index: 2;
     position: relative;

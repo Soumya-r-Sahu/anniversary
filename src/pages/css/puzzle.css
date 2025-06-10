@@ -181,7 +181,7 @@
     visibility: visible;
 }
 
-.modal-content {
+.story-spotlight-content {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -258,7 +258,7 @@
         max-width: 280px;
     }
     
-    .modal-content {
+    .story-spotlight-content {
         padding: 2rem;
         margin: 1rem;
     }

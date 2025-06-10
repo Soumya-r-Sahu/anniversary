@@ -1,206 +1,467 @@
 /* Anniversary Website v4.0.0 - System-Wide Color Palette */
 
 :root {
-  /* Base Colors */
-  --bg-base: #2D1B2F;
-  --accent-1: #650021;
-  --accent-2: #D4A5A5;
-  --highlight-text: #FADCD9;
-  --glow-active: #FF6B6B;
-  --secondary-text: #AAA2BF;
-  --music-player-bg: #1C1427;
-  --firework-video-bg: #121212;
+  /* Optimized Dark Theme Base Colors - Warmer & More Romantic */
+  --bg-base: #1A0D1F;                    /* Deeper, warmer dark purple */
+  --bg-surface: #2A1B33;                 /* Elevated surface color */
+  --bg-elevated: #3D2A47;                /* Higher elevation surfaces */
+  
+  /* Romantic Accent Colors - Enhanced Warmth */
+  --accent-1: #8B2635;                   /* Warmer deep rose */
+  --accent-2: #E8A5A5;                   /* Softer rose pink */
+  --accent-3: #F4C2A1;                   /* Warm peachy complement */
+  
+  /* Typography Colors - Better Contrast */
+  --text-primary: #FFF8F6;               /* Warm white for headings */
+  --text-secondary: #D4C4D8;             /* Warmer secondary text */
+  --text-tertiary: #9A8BA0;              /* Subtle tertiary text */
+  --text-accent: #F8D7DA;                /* Romantic accent text */
+  
+  /* Interactive & Glow Colors */
+  --glow-romantic: #FF7B8A;              /* Warmer romantic glow */
+  --glow-heart: #FFB3BA;                 /* Soft heart pink */
+  --glow-golden: #FFCF9E;                /* Golden romantic accent */
+  
+  /* Component Specific Backgrounds */
+  --music-player-bg: #1F1425;            /* Deeper music player */
+  --card-bg: rgba(42, 27, 51, 0.85);     /* Semi-transparent cards */
+  --modal-bg: rgba(26, 13, 31, 0.95);    /* Modal backdrop */
+  --firework-video-bg: #0F0A12;          /* Deepest background for fireworks */
 
-  /* Derived Colors for Better UX */
-  --accent-1-hover: #7a0027;
-  --accent-1-light: rgba(101, 0, 33, 0.1);
-  --accent-2-hover: #e2b8b8;
-  --accent-2-light: rgba(212, 165, 165, 0.1);
-  --glow-active-hover: #ff5252;
-  --glow-active-light: rgba(255, 107, 107, 0.2);
-  --highlight-text-dim: rgba(250, 220, 217, 0.8);
-  --secondary-text-light: rgba(170, 162, 191, 0.6);
+  /* Derived Interactive States */
+  --accent-1-hover: #A12D3F;
+  --accent-1-light: rgba(139, 38, 53, 0.12);
+  --accent-1-lighter: rgba(139, 38, 53, 0.06);
+  
+  --accent-2-hover: #EFBCBC;
+  --accent-2-light: rgba(232, 165, 165, 0.15);
+  --accent-2-lighter: rgba(232, 165, 165, 0.08);
+  
+  --glow-romantic-hover: #FF8A96;
+  --glow-romantic-light: rgba(255, 123, 138, 0.25);
+  --glow-romantic-lighter: rgba(255, 123, 138, 0.12);
+  
+  --text-primary-dim: rgba(255, 248, 246, 0.85);
+  --text-secondary-light: rgba(212, 196, 216, 0.7);
+  --text-tertiary-light: rgba(154, 139, 160, 0.5);
 
-  /* Shadow and Border Colors */
-  --shadow-primary: rgba(101, 0, 33, 0.3);
-  --shadow-glow: rgba(255, 107, 107, 0.4);
-  --border-subtle: rgba(212, 165, 165, 0.2);
-  --border-accent: rgba(255, 107, 107, 0.3);
+  /* Enhanced Shadow & Border System */
+  --shadow-romantic: rgba(139, 38, 53, 0.4);
+  --shadow-glow: rgba(255, 123, 138, 0.5);
+  --shadow-golden: rgba(255, 207, 158, 0.3);
+  --shadow-deep: rgba(0, 0, 0, 0.6);
+  
+  --border-romantic: rgba(232, 165, 165, 0.25);
+  --border-accent: rgba(255, 123, 138, 0.35);
+  --border-golden: rgba(255, 207, 158, 0.4);
+  --border-subtle: rgba(212, 196, 216, 0.15);
 
-  /* Gradient Combinations */
-  --gradient-primary: linear-gradient(135deg, var(--bg-base) 0%, var(--accent-1) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--accent-2) 0%, var(--highlight-text) 100%);
-  --gradient-glow: linear-gradient(135deg, var(--glow-active) 0%, var(--accent-1) 100%);
-  --gradient-music: linear-gradient(135deg, var(--music-player-bg) 0%, var(--bg-base) 100%);
+  /* Advanced Gradient System */
+  --gradient-primary: linear-gradient(135deg, var(--bg-base) 0%, var(--bg-surface) 50%, var(--accent-1) 100%);
+  --gradient-romantic: linear-gradient(135deg, var(--accent-1) 0%, var(--glow-romantic) 100%);
+  --gradient-heart: linear-gradient(135deg, var(--glow-heart) 0%, var(--accent-2) 100%);
+  --gradient-golden: linear-gradient(135deg, var(--glow-golden) 0%, var(--accent-3) 100%);
+  --gradient-surface: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-elevated) 100%);
+  --gradient-music: linear-gradient(135deg, var(--music-player-bg) 0%, var(--bg-surface) 100%);
+  --gradient-overlay: linear-gradient(135deg, rgba(26, 13, 31, 0.8) 0%, rgba(42, 27, 51, 0.6) 100%);
 }
 
 /* Global Base Styling */
 body {
   background-color: var(--bg-base);
-  color: var(--highlight-text);
+  color: var(--text-primary);
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(139, 38, 53, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 123, 138, 0.06) 0%, transparent 50%);
 }
 
-/* Typography Colors */
+/* Enhanced Typography Colors */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--highlight-text);
+  color: var(--text-primary);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 p, span, div {
-  color: var(--secondary-text);
+  color: var(--text-secondary);
 }
 
-/* Link Colors */
+.text-accent-romantic {
+  color: var(--text-accent);
+  text-shadow: 0 1px 4px rgba(139, 38, 53, 0.3);
+}
+
+/* Enhanced Link Colors */
 a {
   color: var(--accent-2);
-  transition: color 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 a:hover {
-  color: var(--glow-active);
+  color: var(--glow-romantic);
+  text-shadow: 0 0 8px var(--glow-romantic-light);
 }
 
-/* Button Base Styles */
-.btn-primary {
-  background: var(--gradient-glow);
-  color: var(--highlight-text);
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gradient-romantic);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Button Styles */
+.love-action-primary {
+  background: var(--gradient-romantic);
+  color: var(--text-primary);
   border: 1px solid var(--border-accent);
-  box-shadow: 0 4px 12px var(--shadow-glow);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 16px var(--shadow-romantic),
+    0 2px 8px var(--shadow-glow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-primary:hover {
-  background: var(--glow-active-hover);
-  box-shadow: 0 6px 20px var(--shadow-glow);
+.love-action-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 248, 246, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.love-action-primary:hover {
+  background: var(--glow-romantic-hover);
+  box-shadow: 
+    0 8px 24px var(--shadow-romantic),
+    0 4px 16px var(--shadow-glow);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.love-action-primary:hover::before {
+  left: 100%;
+}
+
+.love-action-secondary {
+  background: var(--gradient-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-romantic);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.love-action-secondary:hover {
+  background: var(--accent-1-hover);
+  border-color: var(--accent-2);
+  box-shadow: 0 6px 20px var(--shadow-romantic);
   transform: translateY(-2px);
 }
 
-.btn-secondary {
-  background: var(--accent-1);
-  color: var(--highlight-text);
-  border: 1px solid var(--accent-1-hover);
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: var(--accent-1-hover);
-  box-shadow: 0 4px 12px var(--shadow-primary);
-}
-
-/* Input and Form Elements */
+/* Enhanced Input and Form Elements */
 input, textarea, select {
-  background: rgba(45, 27, 47, 0.8);
-  border: 1px solid var(--border-subtle);
-  color: var(--highlight-text);
-  padding: 10px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border: 2px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: var(--glow-active);
-  box-shadow: 0 0 10px var(--glow-active-light);
+  border-color: var(--glow-romantic);
+  background: var(--bg-elevated);
+  box-shadow: 
+    0 0 0 3px var(--glow-romantic-lighter),
+    0 4px 12px var(--shadow-romantic);
   outline: none;
+  transform: translateY(-1px);
 }
 
 input::placeholder, textarea::placeholder {
-  color: var(--secondary-text-light);
+  color: var(--text-tertiary);
+  font-style: italic;
 }
 
-/* Card and Container Styles */
-.card {
-  background: rgba(45, 27, 47, 0.9);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+/* Enhanced Card and Container Styles */
+.precious-moment-display {
+  background: var(--card-bg);
+  border: 1px solid var(--border-romantic);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px var(--shadow-romantic);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
 }
 
-.card:hover {
+.precious-moment-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-heart);
+  opacity: 0.6;
+}
+
+.precious-moment-display:hover {
   border-color: var(--accent-2);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-  transform: translateY(-4px);
+  background: var(--bg-elevated);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 4px 16px var(--shadow-glow);
+  transform: translateY(-6px) scale(1.02);
+}
+  .precious-moment-display:hover {
+  border-color: var(--accent-2);
+  background: var(--bg-elevated);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 4px 16px var(--shadow-glow);
+  transform: translateY(-6px) scale(1.02);
 }
 
-/* Navigation Styles */
-.nav-item {
-  color: var(--secondary-text);
-  transition: color 0.3s ease;
+/* Enhanced Navigation Styles */
+.story-navigation-item {
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
 }
 
-.nav-item:hover,
-.nav-item.active {
-  color: var(--glow-active);
+.story-navigation-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-heart);
+  opacity: 0;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
-.nav-background {
-  background: rgba(45, 27, 47, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-subtle);
+.story-navigation-item:hover,
+.story-navigation-item.active {
+  color: var(--text-primary);
+  text-shadow: 0 0 8px var(--glow-romantic-light);
 }
 
-/* Music Player Specific */
-.music-player {
-  background: var(--music-player-bg);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+.story-navigation-item:hover::before,
+.story-navigation-item.active::before {
+  opacity: 0.2;
+}
+
+.story-navigation-background {
+  background: var(--modal-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-romantic);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Music Player Styles */
+.melody-heart {
+  background: var(--card-bg);
+  border: 1px solid var(--border-romantic);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px var(--shadow-romantic);
 }
 
 .music-controls {
   background: var(--gradient-music);
+  border-radius: 12px;
+  border: 1px solid var(--border-golden);
 }
 
-/* Fireworks Page Specific */
+/* Enhanced Fireworks Page */
 .fireworks-container {
   background: var(--firework-video-bg);
+  background-image: 
+    radial-gradient(circle at 30% 70%, rgba(139, 38, 53, 0.1) 0%, transparent 70%),
+    radial-gradient(circle at 70% 30%, rgba(255, 123, 138, 0.08) 0%, transparent 60%);
 }
 
-/* Utility Classes */
-.text-primary { color: var(--highlight-text); }
-.text-secondary { color: var(--secondary-text); }
+/* Enhanced Utility Classes */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
 .text-accent { color: var(--accent-2); }
-.text-glow { color: var(--glow-active); }
+.text-romantic { color: var(--glow-romantic); }
+.text-golden { color: var(--glow-golden); }
 
 .bg-primary { background-color: var(--bg-base); }
+.bg-surface { background-color: var(--bg-surface); }
+.bg-elevated { background-color: var(--bg-elevated); }
 .bg-accent-1 { background-color: var(--accent-1); }
 .bg-accent-2 { background-color: var(--accent-2); }
 .bg-music { background-color: var(--music-player-bg); }
 .bg-firework { background-color: var(--firework-video-bg); }
+.bg-card { background: var(--card-bg); }
 
+.border-romantic { border-color: var(--border-romantic); }
 .border-accent { border-color: var(--border-accent); }
+.border-golden { border-color: var(--border-golden); }
 .border-subtle { border-color: var(--border-subtle); }
 
-/* Glow Effects */
+/* Enhanced Glow Effects */
 .glow-soft {
-  box-shadow: 0 0 20px var(--glow-active-light);
+  box-shadow: 0 0 20px var(--glow-romantic-light);
 }
 
-.glow-strong {
-  box-shadow: 0 0 30px var(--shadow-glow);
+.glow-romantic {
+  box-shadow: 
+    0 0 30px var(--shadow-glow),
+    0 0 60px var(--glow-romantic-lighter);
 }
 
-/* Animation Classes */
-.pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite alternate;
+.glow-golden {
+  box-shadow: 
+    0 0 25px var(--shadow-golden),
+    0 0 50px rgba(255, 207, 158, 0.2);
 }
 
-@keyframes pulseGlow {
+.glow-heart {
+  box-shadow: 
+    0 0 20px rgba(255, 179, 186, 0.4),
+    0 0 40px rgba(255, 179, 186, 0.2);
+}
+
+/* Enhanced Animation Classes */
+.pulse-romantic {
+  animation: pulseRomantic 2.5s ease-in-out infinite alternate;
+}
+
+.pulse-golden {
+  animation: pulseGolden 3s ease-in-out infinite alternate;
+}
+
+.float-heart {
+  animation: floatHeart 4s ease-in-out infinite;
+}
+
+@keyframes pulseRomantic {
   from {
-    box-shadow: 0 0 10px var(--glow-active-light);
+    box-shadow: 
+      0 0 15px var(--glow-romantic-light),
+      0 0 30px var(--glow-romantic-lighter);
   }
   to {
-    box-shadow: 0 0 25px var(--shadow-glow);
+    box-shadow: 
+      0 0 30px var(--shadow-glow),
+      0 0 60px var(--glow-romantic-light);
   }
 }
 
-/* Responsive Adjustments */
+@keyframes pulseGolden {
+  from {
+    box-shadow: 
+      0 0 12px var(--shadow-golden),
+      0 0 24px rgba(255, 207, 158, 0.2);
+  }
+  to {
+    box-shadow: 
+      0 0 25px var(--shadow-golden),
+      0 0 50px rgba(255, 207, 158, 0.3);
+  }
+}
+
+@keyframes floatHeart {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  75% {
+    transform: translateY(-3px) scale(1.02);
+  }
+}
+
+/* Responsive Adjustments for Dark Theme */
 @media (max-width: 768px) {
-  .card {
-    margin: 10px;
-    padding: 15px;
+  .precious-moment-display {
+    margin: 8px;
+    padding: 16px;
+    border-radius: 12px;
   }
 
   input, textarea, select {
-    padding: 8px 12px;
+    padding: 10px 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .love-action-primary,
+  .love-action-secondary {
+    padding: 12px 20px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(139, 38, 53, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(255, 123, 138, 0.04) 0%, transparent 40%);
+  }
+
+  .precious-moment-display {
+    margin: 6px;
+    padding: 14px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --border-romantic: rgba(232, 165, 165, 0.4);
+    --border-accent: rgba(255, 123, 138, 0.5);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .pulse-romantic,
+  .pulse-golden,
+  .float-heart {
+    animation: none;
   }
 }

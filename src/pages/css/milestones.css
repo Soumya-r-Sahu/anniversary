@@ -13,7 +13,7 @@
     padding: 4rem 2rem;
 }
 
-.timeline-line {
+.love-journey-line {
     position: absolute;
     left: 50%;
     top: 0;
@@ -25,7 +25,7 @@
     box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
 }
 
-.milestone-item {
+.relationship-milestone-item {
     position: relative;
     margin: 4rem 0;
     opacity: 0;
@@ -33,28 +33,28 @@
     transition: all 0.8s ease-out;
 }
 
-.milestone-item.visible {
+.relationship-milestone-item.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.milestone-item:nth-child(even) {
+.relationship-milestone-item:nth-child(even) {
     flex-direction: row-reverse;
 }
 
-.milestone-item:nth-child(even) .milestone-content {
+.relationship-milestone-item:nth-child(even) .relationship-milestone-content {
     margin-left: 0;
     margin-right: calc(50% + 60px);
     text-align: right;
 }
 
-.milestone-item:nth-child(odd) .milestone-content {
+.relationship-milestone-item:nth-child(odd) .relationship-milestone-content {
     margin-left: calc(50% + 60px);
     margin-right: 0;
     text-align: left;
 }
 
-.milestone-marker {
+.relationship-milestone-marker {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -71,7 +71,7 @@
     z-index: 10;
 }
 
-.milestone-content {
+.relationship-milestone-content {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -80,7 +80,7 @@
     position: relative;
 }
 
-.milestone-date {
+.relationship-milestone-date {
     font-family: 'Dancing Script', cursive;
     font-size: 1.5rem;
     color: #ff6b9d;
@@ -88,7 +88,7 @@
     margin-bottom: 1rem;
 }
 
-.milestone-title {
+.relationship-milestone-title {
     font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
     color: white;
@@ -97,14 +97,14 @@
     line-height: 1.2;
 }
 
-.milestone-description {
+.relationship-milestone-description {
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
 }
 
-.milestone-media {
+.relationship-milestone-media {
     width: 100%;
     max-width: 400px;
     height: 250px;
@@ -164,29 +164,29 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .timeline-line {
+    .love-journey-line {
         left: 30px;
     }
     
-    .milestone-marker {
+    .relationship-milestone-marker {
         left: 30px;
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
     }
     
-    .milestone-item:nth-child(even) .milestone-content,
-    .milestone-item:nth-child(odd) .milestone-content {
+    .relationship-milestone-item:nth-child(even) .relationship-milestone-content,
+    .relationship-milestone-item:nth-child(odd) .relationship-milestone-content {
         margin-left: 80px;
         margin-right: 0;
         text-align: left;
     }
     
-    .milestone-content {
+    .relationship-milestone-content {
         padding: 2rem;
     }
     
-    .milestone-title {
+    .relationship-milestone-title {
         font-size: 2rem;
     }
 }

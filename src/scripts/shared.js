@@ -234,65 +234,7 @@ class NotificationManager {
     }
   }
 }
-// Music Player
-class MusicPlayer {
-  constructor() {
-    this.audio = null;
-    this.isPlaying = false;
-    this.volume = 0.5;
-    this.init();
-  }
-  init() {
-    // Create audio element
-    this.audio = document.createElement('audio');
-    this.audio.loop = true;
-    this.audio.volume = this.volume;
-    this.audio.preload = 'auto';
-    // Add music source
-    const source = document.createElement('source');
-    source.src = '../../public/assets/music/Arijitsingh.m4a';
-    source.type = 'audio/mp4';
-    this.audio.appendChild(source);
-    document.body.appendChild(this.audio);
-    this.setupControls();
-  }
-  setupControls() {
-    const playBtn = document.getElementById('music-play');
-    const volumeSlider = document.getElementById('music-volume');
-    if (playBtn) {
-      playBtn.addEventListener('click', () => this.toggle());
-    }
-    if (volumeSlider) {
-      volumeSlider.addEventListener('input', (e) => {
-        this.setVolume(parseFloat(e.target.value));
-      });
-      volumeSlider.value = this.volume;
-    }
-  }
-  async toggle() {
-    try {
-      if (this.isPlaying) {
-        this.audio.pause();
-        this.isPlaying = false;
-      } else {
-        await this.audio.play();
-        this.isPlaying = true;
-      }
-      this.updatePlayButton();
-    } catch (error) {
-      }
-  }
-  setVolume(volume) {
-    this.volume = Math.max(0, Math.min(1, volume));
-    this.audio.volume = this.volume;
-  }
-  updatePlayButton() {
-    const playBtn = document.getElementById('music-play');
-    if (playBtn) {
-      playBtn.textContent = this.isPlaying ? '⏸️' : '▶️';
-    }
-  }
-}
+
 // Global Error Handling
 window.addEventListener('error', (event) => {
     console.error('Global Error:', event.message);
@@ -311,13 +253,12 @@ window.addEventListener('unhandledrejection', (event) => {
     setTimeout(() => errorToast.remove(), 5000);
 });
 // Initialize global instances
-let themeManager, timeCalculator, notificationManager, musicPlayer;
+let themeManager, timeCalculator, notificationManager;
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   themeManager = new ThemeManager();
   timeCalculator = new TimeCalculator();
   notificationManager = new NotificationManager();
-  musicPlayer = new MusicPlayer();
   });
 // Make available globally
 if (typeof window !== 'undefined') {

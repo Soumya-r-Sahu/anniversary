@@ -1,44 +1,73 @@
-:root  {
-    /* Anniversary Website v4.0.0 - System-Wide Color Palette */
-  --bg-base: #2D1B2F;           /* Background base */
-  --accent-1: #650021;          /* Accent 1 */
-  --accent-2: #D4A5A5;          /* Accent 2 */
-  --highlight-text: #FADCD9;    /* Highlight Text */
-  --glow-active: #FF6B6B;       /* Glow/Active Button */
-  --secondary-text: #AAA2BF;    /* Secondary Text */
-  --music-player-bg: #1C1427;   /* Music player background */
-  --firework-video-bg: #121212; /* Firework/video background */
+:root {
+    /* Anniversary Website v4.0.0 - Optimized Dark Theme Color Palette */
+    /* Core Colors - Enhanced for Dark Theme */
+    --bg-base: #1A0D1F;                    /* Deeper, warmer dark purple */
+    --bg-surface: #2A1B33;                 /* Elevated surface color */
+    --bg-elevated: #3D2A47;                /* Higher elevation surfaces */
+    
+    /* Romantic Accent Colors - Enhanced Warmth */
+    --accent-1: #8B2635;                   /* Warmer deep rose */
+    --accent-2: #E8A5A5;                   /* Softer rose pink */
+    --accent-3: #F4C2A1;                   /* Warm peachy complement */
+    
+    /* Typography Colors - Better Contrast */
+    --highlight-text: #FFF8F6;             /* Warm white for headings */
+    --text-primary: #FFF8F6;               /* Primary text */
+    --text-secondary: #D4C4D8;             /* Secondary text */
+    --text-tertiary: #9A8BA0;              /* Tertiary text */
+    --secondary-text: #D4C4D8;             /* Legacy compatibility */
+    
+    /* Interactive & Glow Colors */
+    --glow-active: #FF7B8A;                /* Warmer romantic glow */
+    --glow-romantic: #FF7B8A;              /* Romantic glow */
+    --glow-heart: #FFB3BA;                 /* Soft heart pink */
+    --glow-golden: #FFCF9E;                /* Golden romantic accent */
+    
+    /* Component Specific Backgrounds */
+    --music-player-bg: #1F1425;            /* Deeper music player */
+    --firework-video-bg: #0F0A12;          /* Deepest background for fireworks */
 
-    /* Legacy Dark Romantic Colors - Backwards Compatibility */
-  --color-primary: var(--accent-1);
+    /* Legacy Dark Romantic Colors - Updated for Optimized Palette */
+    --color-primary: var(--accent-1);
     --color-primary-light: var(--accent-2);
     --color-primary-dark: var(--accent-1);
-    --color-primary-alpha: rgba(101, 0, 33, 0.15);
+    --color-primary-alpha: rgba(139, 38, 53, 0.15);
 
-    /* Updated Background System */
-  --bg-primary: var(--bg-base);
-  --bg-secondary: var(--bg-base);
-  --bg-tertiary: var(--music-player-bg);
-  --bg-card: var(--bg-base);
+    /* Updated Background System - Enhanced */
+    --bg-primary: var(--bg-base);
+    --bg-secondary: var(--bg-surface);
+    --bg-tertiary: var(--bg-elevated);
+    --bg-card: rgba(42, 27, 51, 0.85);
 
-  /* Updated Text Hierarchy */
-  --text-primary: var(--highlight-text);
-  --text-secondary: var(--secondary-text);
-  --text-tertiary: var(--secondary-text);
-  --text-muted: var(--secondary-text);
+    /* Updated Text Hierarchy - Enhanced Contrast */
+    --text-primary: var(--highlight-text);
+    --text-secondary: var(--text-secondary);
+    --text-tertiary: var(--text-tertiary);
+    --text-muted: var(--text-tertiary);
 
-  /* Enhanced Pink Palette - Dark Romantic */
-  --pink-50: #f8e8ff;
-    --pink-100: #f0d1e0;
-    --pink-200: #e8b4cc;
-    --pink-300: #d1a3d1;
-    --pink-400: #b794b7;
-    --pink-500: #8b5a8c;
-    --pink-600: #6b2c5f;
-    --pink-700: #4d1a3d;
-    /* Enhanced Purple Palette - Dark Romantic */
-  --purple-50: #f8e8ff;
-    --purple-100: #e8d1f0;
+    /* Enhanced Pink Palette - Optimized for Dark Theme */
+    --pink-50: #FFF8F6;    /* Lightest - matches text-primary */
+    --pink-100: #F8D7DA;   /* Very light romantic */
+    --pink-200: #F4C2A1;   /* Peachy complement */
+    --pink-300: #E8A5A5;   /* Accent-2 */
+    --pink-400: #FF7B8A;   /* Romantic glow */
+    --pink-500: #8B2635;   /* Accent-1 */
+    --pink-600: #6B1E2A;   /* Darker rose */
+    --pink-700: #4A1520;   /* Deep rose */
+    --pink-800: #2A1B33;   /* Surface color */
+    --pink-900: #1A0D1F;   /* Base color */
+
+    /* Enhanced Purple Palette - Optimized for Dark Theme */
+    --purple-50: #FFF8F6;   /* Lightest */
+    --purple-100: #D4C4D8;  /* Secondary text */
+    --purple-200: #9A8BA0;  /* Tertiary text */
+    --purple-300: #7A6B80;  /* Muted purple */
+    --purple-400: #5A4B60;  /* Mid purple */
+    --purple-500: #3D2A47;  /* Elevated surface */
+    --purple-600: #2A1B33;  /* Surface */
+    --purple-700: #1F1425;  /* Music player bg */
+    --purple-800: #1A0D1F;  /* Base */
+    --purple-900: #0F0A12;  /* Deepest */
     --purple-200: #d1a3d1;
     --purple-300: #b794b7;
     --purple-400: #9a7a9b;
@@ -635,7 +664,7 @@
     scroll-snap-type: y mandatory;
 }
 
-.btn  {
+.love-action  {
     padding: var(--btn-padding-y) var(--btn-padding-x);
     border-radius: var(--btn-border-radius);
     font-weight: var(--btn-font-weight);
@@ -648,27 +677,27 @@
     text-decoration: none;
 }
 
-.btn:hover  {
+.love-action:hover  {
     transform: translateY(-1px);
 }
 
-.btn:active  {
+.love-action:active  {
     transform: translateY(0);
 }
 
-.btn-romantic  {
+.love-action-romantic  {
     background: var(--gradient-romantic);
     color: white;
     box-shadow: var(--shadow-romantic);
 }
 
-.btn-romantic:hover  {
+.love-action-romantic:hover  {
     background: var(--gradient-romantic-hover);
     box-shadow: var(--shadow-glow);
     transform: translateY(-2px);
 }
 
-.card  {
+.precious-moment-display  {
     background: var(--card-background);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -676,12 +705,12 @@
     transition: var(--transition-all);
 }
 
-.card:hover  {
+.precious-moment-display:hover  {
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
 }
 
-.card-glass  {
+.precious-moment-display-glass  {
     background: var(--glass-bg);
     backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);

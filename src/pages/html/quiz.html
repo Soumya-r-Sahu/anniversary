@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/globals.css">
     <link rel="stylesheet" href="../css/quiz.css">
-    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E❓%3C/text%3E%3C/svg%3E">
     
 
@@ -27,12 +27,12 @@
 <body style="padding-top: 90px;">
     <!-- Navigation will be loaded dynamically -->
     
-    <main class="main-content">
+    <main class="love-story-content">
         <section class="quiz-hero">
             <div class="floating-questions" id="floatingQuestions"></div>
             
-            <div class="quiz-container">
-                <div class="quiz-card">
+            <div class="quiz-content-sanctuary">
+                <article class="quiz-precious-moment-display">
                     <div class="text-center mb-4">
                         <h1 class="text-4xl md:text-6xl font-dancing gradient-text mb-4 animate-float">
                             ❓ Love Quiz ❓
@@ -50,7 +50,7 @@
                     <!-- Quiz Content -->
                     <div class="quiz-content" id="quizContent">
                         <!-- Question Container -->
-                        <div class="question-container" id="questionContainer">
+                        <div class="question-content-sanctuary" id="questionContainer">
                             <div class="question-number" id="questionNumber">Question 1 of 10</div>
                             <div class="question-text" id="questionText">
                                 Loading your first question...
@@ -62,7 +62,7 @@
                         
                         <!-- Quiz Controls -->
                         <div class="quiz-controls">
-                            <button class="control-btn" id="nextBtn" onclick="nextQuestion()" disabled>
+                            <button class="control-love-action" id="nextBtn" onclick="nextQuestion()" disabled>
                                 Next Question ➡️
                             </button>
                         </div>
@@ -76,22 +76,22 @@
                         <div class="score-display" id="scoreDisplay">
                             0/10
                         </div>
-                        <div class="score-message" id="scoreMessage">
+                        <div class="score-tender-feeling-communication" id="scoreMessage">
                             <!-- Dynamic message based on score -->
                         </div>
                         <div class="score-breakdown" id="scoreBreakdown">
                             <!-- Detailed breakdown -->
-                        </div>
+                        </section>
                         
                         <!-- Unlock Next Page Section -->
-                        <div class="unlock-section">
+                        <div class="unlock-story-chapter">
                             <h3 class="text-2xl font-dancing text-white mb-4">
                                 🌟 Quiz Completed! 🌟
                             </h3>
                             <p class="text-white/80 mb-6">
                                 You've tested your knowledge about each other! Ready to explore the stars?
                             </p>
-                            <button class="unlock-btn" id="unlockBtn" onclick="unlockNextPage()">
+                            <button class="unlock-love-action" id="unlockBtn" onclick="unlockNextPage()">
                                 🌌 Continue to Star Map 🌌
                             </button>
                         </div>
@@ -108,9 +108,9 @@
     <script src="../js/quiz.js"></script>
     
     <!-- Unified Navigation & Data Management System -->
-    <script type="module" src="../../utils/unifiedNavigation.js"></script>
-    <script type="module" src="../../utils/dataManager.js"></script>
-    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../../utils/Database.js"></script>
     <script>
         // Initialize unified systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {

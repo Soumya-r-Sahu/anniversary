@@ -1,7 +1,7 @@
 
 
 /* Enhanced countdown styles */
-.countdown-container  {
+.love-milestone-countdown-container  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -17,7 +17,7 @@
     justify-content: center;
 }
 
-.countdown-number  {
+.love-milestone-countdown-number  {
     background: linear-gradient(135deg, #ec4899, #f472b6);
     background-clip: text;
     -webkit-background-clip: text;
@@ -27,7 +27,7 @@
     text-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
 }
 
-.countdown-label  {
+.love-milestone-countdown-label  {
     color: #ec4899;
     font-weight: 600;
     text-transform: uppercase;
@@ -35,7 +35,7 @@
     font-size: 0.875rem;
 }
 
-.countdown-item  {
+.love-milestone-countdown-item  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -45,13 +45,13 @@
     will-change: transform, opacity;
 }
 
-.countdown-item:hover  {
+.love-milestone-countdown-item:hover  {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(236, 72, 153, 0.3);
 }
 
 /* Enhanced container transitions */
-.countdown-container .grid  {
+.love-milestone-countdown-container .grid  {
     transition: all 0.3s ease-in-out;
 }
 
@@ -192,7 +192,7 @@
 
 }
 
-.countdown-burst-bubble  {
+.love-milestone-countdown-burst-bubble  {
     user-select: none;
     will-change: transform, opacity;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -244,21 +244,21 @@
     animation: celebrationFadeIn 0.5s ease-out;
 }
 
-.celebration-content  {
+.joy-moment-content  {
     text-align: center;
     color: white;
     max-width: 600px;
     padding: 2rem;
 }
 
-.celebration-content h1  {
+.joy-moment-content h1  {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     animation: bounce 1s infinite alternate;
 }
 
-.celebration-content p  {
+.joy-moment-content p  {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -328,11 +328,11 @@
 
 /* Mobile Responsive Styles */
 @media (max-width: 640px)  {
-    .countdown-number  {
+    .love-milestone-countdown-number  {
     font-size: 2.5rem;
 }
 
-    .countdown-container  {
+    .love-milestone-countdown-container  {
     padding: 2rem;
 }
 
@@ -340,15 +340,15 @@
 
 /* Responsive fixes for countdown layout */
 @media (max-width: 768px)  {
-    .countdown-container .grid  {
+    .love-milestone-countdown-container .grid  {
     gap: 1rem;
 }
 
-    .countdown-item  {
+    .love-milestone-countdown-item  {
     padding: 1rem;
 }
 
-    .countdown-number  {
+    .love-milestone-countdown-number  {
     font-size: 2rem;
 }
 
@@ -358,28 +358,28 @@
 }
 
     /* Mobile-specific grid layouts */
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
     grid-template-columns: repeat(2, 1fr) !important;
     grid-template-rows: repeat(2, 1fr);
 }
 
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    .love-milestone-countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
     grid-template-columns: repeat(3, 1fr) !important;
     grid-template-rows: 1fr;
 }
 
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
     grid-template-columns: repeat(2, 1fr) !important;
     grid-template-rows: 1fr;
 }
 
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    .love-milestone-countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr;
 }
 
     /* Enhanced mobile-layout rules with higher specificity */
-    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
     /* Force single row for 3 boxes on mobile */
         grid-template-columns: repeat(3, 1fr) !important;
     grid-template-rows: 1fr !important;
@@ -388,13 +388,13 @@
     gap: 1rem;
 }
 
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
     grid-template-columns: repeat(2, 1fr) !important;
     grid-template-rows: repeat(2, 1fr) !important;
     gap: 1rem;
 }
 
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2  {
     /* Single row for 2 boxes on mobile */
         grid-template-columns: repeat(2, 1fr) !important;
     grid-template-rows: 1fr !important;
@@ -403,7 +403,7 @@
     gap: 1rem;
 }
 
-    .countdown-container .grid.mobile-layout.grid-cols-1.md\\:grid-cols-1  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-1.md\\:grid-cols-1  {
     /* Centered single box on mobile */
         grid-template-columns: 1fr !important;
     grid-template-rows: 1fr !important;
@@ -411,7 +411,7 @@
     align-items: center;
 }
 
-    .countdown-container .grid.mobile-layout .countdown-item  {
+    .love-milestone-countdown-container .grid.mobile-layout .love-milestone-countdown-item  {
     min-width: 0;
     /* Prevent overflow */
         max-width: 100%;
@@ -421,23 +421,23 @@
 }
 
 @media (max-width: 480px)  {
-    .countdown-container  {
+    .love-milestone-countdown-container  {
     padding: 1.5rem;
 }
 
-    .countdown-container .grid  {
+    .love-milestone-countdown-container .grid  {
     gap: 0.75rem;
 }
 
-    .countdown-item  {
+    .love-milestone-countdown-item  {
     padding: 0.75rem;
 }
 
-    .countdown-number  {
+    .love-milestone-countdown-number  {
     font-size: 1.5rem;
 }
 
-    .countdown-label  {
+    .love-milestone-countdown-label  {
     font-size: 0.75rem;
 }
 
@@ -447,31 +447,31 @@
 }
 
     /* Ultra-mobile specific adjustments */
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    .love-milestone-countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 0.5rem;
 }
 
     /* Enhanced mobile-layout rules for small screens - Higher specificity */
-    .countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-3.md\\:grid-cols-3  {
     gap: 0.5rem !important;
 }
 
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2,
-    .countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-2,
+    .love-milestone-countdown-container .grid.mobile-layout.grid-cols-2.md\\:grid-cols-4  {
     gap: 0.75rem !important;
 }
 
-    .countdown-container .grid.mobile-layout .countdown-item  {
+    .love-milestone-countdown-container .grid.mobile-layout .love-milestone-countdown-item  {
     padding: 0.75rem !important;
     min-width: auto !important;
 }
 
-    .countdown-container .grid.mobile-layout .countdown-number  {
+    .love-milestone-countdown-container .grid.mobile-layout .love-milestone-countdown-number  {
     font-size: 1.5rem !important;
 }
 
-    .countdown-container .grid.mobile-layout .countdown-label  {
+    .love-milestone-countdown-container .grid.mobile-layout .love-milestone-countdown-label  {
     font-size: 0.75rem !important;
 }
 
@@ -479,10 +479,10 @@
 
 /* Desktop-specific layout: Always use row-style layout */
 @media (min-width: 769px)  {
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4,
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3,
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2,
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-4,
+    .love-milestone-countdown-container .grid.grid-cols-3.md\\:grid-cols-3,
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-2,
+    .love-milestone-countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
     /* Force single row layout for all configurations on desktop */
         grid-template-rows: 1fr !important;
     justify-items: center;
@@ -490,24 +490,24 @@
     gap: 1.5rem;
 }
 
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-4  {
     grid-template-columns: repeat(4, 1fr) !important;
 }
 
-    .countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
+    .love-milestone-countdown-container .grid.grid-cols-3.md\\:grid-cols-3  {
     grid-template-columns: repeat(3, 1fr) !important;
 }
 
-    .countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
+    .love-milestone-countdown-container .grid.grid-cols-2.md\\:grid-cols-2  {
     grid-template-columns: repeat(2, 1fr) !important;
 }
 
-    .countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
+    .love-milestone-countdown-container .grid.grid-cols-1.md\\:grid-cols-1  {
     grid-template-columns: 1fr !important;
 }
 
     /* Enhanced spacing for desktop row layout */
-    .countdown-container .countdown-item  {
+    .love-milestone-countdown-container .love-milestone-countdown-item  {
     padding: 1.75rem;
     min-width: 120px;
     max-width: 200px;
@@ -517,21 +517,21 @@
 
 /* Large desktop optimizations */
 @media (min-width: 1200px)  {
-    .countdown-container .grid  {
+    .love-milestone-countdown-container .grid  {
     gap: 2rem;
 }
 
-    .countdown-container .countdown-item  {
+    .love-milestone-countdown-container .love-milestone-countdown-item  {
     padding: 2rem;
     min-width: 140px;
     max-width: 220px;
 }
 
-    .countdown-number  {
+    .love-milestone-countdown-number  {
     font-size: 4rem;
 }
 
-    .countdown-label  {
+    .love-milestone-countdown-label  {
     font-size: 1rem;
 }
 
@@ -539,13 +539,13 @@
 
 /* Ultra-wide desktop optimizations */
 @media (min-width: 1600px)  {
-    .countdown-container .grid  {
+    .love-milestone-countdown-container .grid  {
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-    .countdown-container .countdown-item  {
+    .love-milestone-countdown-container .love-milestone-countdown-item  {
     padding: 2.5rem;
     min-width: 160px;
     max-width: 250px;

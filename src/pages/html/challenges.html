@@ -1,674 +1,360 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="🎮 Challenges 🎮"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><meta name="apple-touch-fullscreen" content="yes"><meta name="format-detection" content="telephone=no"><title>Relationship Challenges - Jerry & Soumya</title><meta name="description" content="Fun relationship games and challenges"><link rel="stylesheet" href="../styles/shared.css"><style>
-/* Challenges Hero Section */
-.challenges-hero {
-background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8));
-min-height: 60vh;
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-overflow: hidden;
-margin-bottom: 2rem;
-}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="🎮 Challenges 🎮">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ec4899">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>Relationship Challenges - Jerry & Soumya</title>
+<meta name="description" content="Fun relationship games and challenges">    <!-- Professional styling inheritance -->
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../css/challenges.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎯%3C/text%3E%3C/svg%3E">
 
-.challenges-hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="20" font-size="20" fill="rgba(255,255,255,0.1)">🎮</text><text x="30" y="50" font-size="15" fill="rgba(255,255,255,0.08)">🏆</text><text x="60" y="30" font-size="18" fill="rgba(255,255,255,0.1)">🎯</text><text x="20" y="80" font-size="16" fill="rgba(255,255,255,0.09)">🎲</text><text x="70" y="70" font-size="14" fill="rgba(255,255,255,0.07)">🃏</text></svg>') repeat;
-animation: gamePattern 20s linear infinite;
-z-index: 1;
-}
-
-@keyframes gamePattern {
-0% { transform: translateX(0) translateY(0); }
-100% { transform: translateX(-100px) translateY(-100px); }
-}
-
-.hero-content {
-text-align: center;
-z-index: 2;
-position: relative;
-}
-
-.hero-title {
-font-size: 4rem;
-font-weight: bold;
-margin-bottom: 1rem;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero-subtitle {
-font-size: 1.5rem;
-color: rgba(255, 255, 255, 0.9);
-font-family: 'Dancing Script', cursive;
-}
-
-.coming-soon {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-backdrop-filter: blur(30px);
-border-radius: 2rem;
-padding: 3rem 2rem;
-text-align: center;
-border: 2px solid rgba(255, 255, 255, 0.4);
-margin: 2rem 0;
-position: relative;
-transform: perspective(1000px) rotateX(5deg);
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-transition: all 0.4s ease;
-}
-
-.coming-soon:hover {
-transform: perspective(1000px) rotateX(0deg) translateY(-10px);
-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-}
-
-.page-icon {
-font-size: 5rem;
-margin-bottom: 1rem;
-animation: game-bounce 3s ease-in-out infinite;
-display: inline-block;
-transform-style: preserve-3d;
-}
-
-@keyframes game-bounce {
-0%, 100% { transform: scale(1) rotateY(0deg); filter: brightness(1); }
-25% { transform: scale(1.1) rotateY(90deg); filter: brightness(1.2) hue-rotate(60deg); }
-50% { transform: scale(1.2) rotateY(180deg); filter: brightness(1.4) hue-rotate(120deg); }
-75% { transform: scale(1.1) rotateY(270deg); filter: brightness(1.2) hue-rotate(60deg); }
-}
-
-.construction-icon {
-font-size: 2rem;
-margin: 0 0.5rem;
-animation: construction-pulse 2s ease-in-out infinite;
-display: inline-block;
-transform-style: preserve-3d;
-}
-
-@keyframes construction-pulse {
-0%, 100% { transform: scale(1) rotateZ(0deg); }
-50% { transform: scale(1.2) rotateZ(10deg); }
-}
-
-/* Challenges Grid */
-.challenges-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2rem;
-margin: 3rem 0;
-}
-
-.challenge-card {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(20px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 1.5rem;
-padding: 2rem;
-text-align: center;
-position: relative;
-transform: perspective(1000px) rotateX(10deg);
-transition: all 0.4s ease;
-overflow: hidden;
-}
-
-.challenge-card::before {
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 200%;
-height: 200%;
-background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-transform: rotate(45deg);
-transition: all 0.6s ease;
-opacity: 0;
-}
-
-.challenge-card:hover {
-transform: perspective(1000px) rotateX(0deg) translateY(-10px);
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.challenge-card:hover::before {
-opacity: 1;
-animation: shimmer-challenge 1.5s ease-in-out;
-}
-
-@keyframes shimmer-challenge {
-0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
-
-/* Game Stats */
-.game-stats {
-background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.05));
-border-radius: 1.5rem;
-padding: 2rem;
-margin: 2rem 0;
-position: relative;
-overflow: hidden;
-border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.game-stats::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-animation: shimmer-stats 3s ease-in-out infinite;
-}
-
-@keyframes shimmer-stats {
-0% { left: -100%; }
-100% { left: 100%; }
-}
-
-.game-icon {
-font-size: 3rem;
-margin: 0.5rem;
-animation: game-rotate 4s ease-in-out infinite;
-display: inline-block;
-}
-
-.game-icon:nth-child(odd) {
-animation-delay: 0.5s;
-}
-
-.game-icon:nth-child(even) {
-animation-delay: 1s;
-}
-
-@keyframes game-rotate {
-0%, 100% { transform: rotateY(0deg) scale(1); }
-50% { transform: rotateY(180deg) scale(1.1); }
-}
-
-/* Particle Effects */
-.challenges-particle-container {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: 1;
-overflow: hidden;
-}
-
-/* Challenge Filters */
-.challenge-filters {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 1rem;
-margin: 2rem 0;
-}
-
-.challenge-filter-btn {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(10px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 25px;
-padding: 0.75rem 1.5rem;
-font-size: 0.9rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-
-.challenge-filter-btn:hover {
-background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(147, 51, 234, 0.2));
-border-color: rgba(147, 51, 234, 0.5);
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(147, 51, 234, 0.2);
-}
-
-.challenge-filter-btn.active {
-background: linear-gradient(135deg, #9333ea, #7c3aed);
-color: white;
-border-color: #9333ea;
-box-shadow: 0 8px 20px rgba(147, 51, 234, 0.3);
-}
-
-/* Enhanced Challenge Cards */
-.challenge-status {
-position: absolute;
-top: 1rem;
-right: 1rem;
-z-index: 10;
-}
-
-.status-badge {
-padding: 0.25rem 0.75rem;
-border-radius: 20px;
-font-size: 0.75rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-
-.status-badge.active {
-background: linear-gradient(135deg, #10b981, #059669);
-color: white;
-box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-.status-badge.pending {
-background: linear-gradient(135deg, #f59e0b, #d97706);
-color: white;
-box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
-
-.status-badge.completed {
-background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-color: white;
-box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-
-.challenge-icon {
-font-size: 3rem;
-margin-bottom: 1rem;
-animation: challengeIconFloat 3s ease-in-out infinite;
-}
-
-.challenge-title {
-font-size: 1.5rem;
-font-weight: 600;
-color: #374151;
-margin-bottom: 0.75rem;
-font-family: 'Dancing Script', cursive;
-}
-
-.challenge-description {
-color: #6b7280;
-margin-bottom: 1.5rem;
-line-height: 1.6;
-}
-
-/* Progress Bars */
-.challenge-progress {
-margin-bottom: 1.5rem;
-}
-
-.progress-bar {
-width: 100%;
-height: 8px;
-background: rgba(156, 163, 175, 0.3);
-border-radius: 10px;
-overflow: hidden;
-margin-bottom: 0.5rem;
-}
-
-.progress-fill {
-height: 100%;
-background: linear-gradient(90deg, #10b981, #059669, #047857);
-border-radius: 10px;
-transition: width 0.8s ease;
-position: relative;
-}
-
-.progress-fill::after {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-animation: progressShimmer 2s ease-in-out infinite;
-}
-
-@keyframes progressShimmer {
-0% { transform: translateX(-100%); }
-100% { transform: translateX(100%); }
-}
-
-.progress-text {
-font-size: 0.875rem;
-color: #6b7280;
-font-weight: 500;
-}
-
-/* Challenge Actions */
-.challenge-actions {
-display: flex;
-gap: 0.75rem;
-justify-content: center;
-flex-wrap: wrap;
-}
-
-.btn-primary {
-background: linear-gradient(135deg, #10b981, #059669);
-color: white;
-border: none;
-padding: 0.75rem 1.5rem;
-border-radius: 25px;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-font-size: 0.875rem;
-}
-
-.btn-primary:hover {
-background: linear-gradient(135deg, #059669, #047857);
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-}
-
-.btn-secondary {
-background: linear-gradient(135deg, rgba(107, 114, 128, 0.1), rgba(107, 114, 128, 0.05));
-color: #374151;
-border: 1px solid rgba(107, 114, 128, 0.3);
-padding: 0.75rem 1.5rem;
-border-radius: 25px;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-font-size: 0.875rem;
-}
-
-.btn-secondary:hover {
-background: linear-gradient(135deg, rgba(107, 114, 128, 0.2), rgba(107, 114, 128, 0.1));
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(107, 114, 128, 0.2);
-}
-
-.btn-success {
-background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-color: white;
-border: none;
-padding: 0.75rem 1.5rem;
-border-radius: 25px;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-font-size: 0.875rem;
-}
-
-/* Stats Grid */
-.stats-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.stat-card {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(15px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 1rem;
-padding: 2rem;
-text-align: center;
-transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-transform: translateY(-5px) scale(1.02);
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.stat-icon {
-font-size: 2.5rem;
-margin-bottom: 0.5rem;
-}
-
-.stat-number {
-font-size: 2rem;
-font-weight: 700;
-color: #059669;
-margin-bottom: 0.25rem;
-}
-
-.stat-label {
-color: #6b7280;
-font-weight: 500;
-font-size: 0.875rem;
-}
-
-/* Challenge Form */
-.challenge-form {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-backdrop-filter: blur(20px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 2rem;
-padding: 2.5rem;
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-margin-bottom: 1.5rem;
-}
-
-.form-row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1rem;
-}
-
-.form-group label {
-display: block;
-margin-bottom: 0.5rem;
-font-weight: 600;
-color: #374151;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-width: 100%;
-padding: 0.75rem 1rem;
-border: 2px solid rgba(156, 163, 175, 0.3);
-border-radius: 10px;
-background: rgba(255, 255, 255, 0.8);
-backdrop-filter: blur(10px);
-transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-outline: none;
-border-color: #10b981;
-box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-}
-
-.char-counter {
-text-align: right;
-font-size: 0.75rem;
-color: #6b7280;
-margin-top: 0.25rem;
-}
-
-/* Templates Grid */
-.templates-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.template-card {
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(15px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 1.5rem;
-padding: 1.5rem;
-text-align: center;
-transition: all 0.3s ease;
-}
-
-.template-card:hover {
-transform: translateY(-5px) rotateY(5deg);
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.template-icon {
-font-size: 2.5rem;
-margin-bottom: 1rem;
-}
-
-.template-title {
-font-size: 1.25rem;
-font-weight: 600;
-color: #374151;
-margin-bottom: 0.5rem;
-font-family: 'Dancing Script', cursive;
-}
-
-.template-description {
-color: #6b7280;
-margin-bottom: 1rem;
-font-size: 0.875rem;
-line-height: 1.5;
-}
-
-@keyframes challengeIconFloat {
-0%, 100% { transform: scale(1) rotateY(0deg); }
-50% { transform: scale(1.1) rotateY(180deg); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-.challenges-hero {
-min-height: 50vh;
-padding: 2rem 1rem;
-}
-
-.hero-title {
-font-size: 2.5rem;
-}
-
-.hero-subtitle {
-font-size: 1.25rem;
-}
-
-.coming-soon {
-padding: 2rem 1.5rem;
-margin: 1.5rem 0;
-border-radius: 1.5rem;
-transform: none;
-}
-
-/* Fix for mobile touch scrolling */
-body {
--webkit-overflow-scrolling: touch;
-overflow-x: hidden;
-}
-}
-
-@media (max-width: 480px) {
-.challenges-hero {
-min-height: 40vh;
-padding: 1.5rem 1rem;
-}
-
-.hero-title {
-font-size: 2rem;
-}
-
-.hero-subtitle {
-font-size: 1rem;
-}
-
-.coming-soon {
-padding: 1.5rem 1rem;
-border-radius: 1rem;
-}
-}
-
-/* Performance optimization for mobile */
-@media (max-width: 768px) {
-.challenges-hero::before {
-animation-duration: 30s;
-}
-
-@keyframes gamePattern {
-0% { transform: translateX(0) translateY(0); }
-100% { transform: translateX(-50px) translateY(-50px); }
-}
-}
-</style>
-<link rel="stylesheet" href="../styles/unified-navigation.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎯%3C/text%3E%3C/svg%3E">
 </head>
+
 <body>
-<!-- Navigation will be loaded dynamically -->
-<div class="challenges-hero"><div class="hero-content"><h1 class="hero-title gradient-text animate-float">
-🎮 Challenges 🎮
-</h1><p class="hero-subtitle">
-Fun relationship games and challenges to strengthen our bond
-</p></div></div><main class="main-content"><div class="container mx-auto px-4 py-8"><div class="challenges-hero text-center mb-12"><h1 class="text-5xl md:text-6xl font-dancing text-purple-600 mb-4 animate-bounce">
-🎮 Love Games & Challenges 🎮
-</h1><p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+    <!-- Navigation will be loaded dynamically -->
+    
+    <main class="challenge-sanctuary">
+        <section class="challenges-hero">
+            <h1 class="challenges-title">🎮 Love Games & Challenges 🎮</h1>
+            <p class="challenges-subtitle">Fun relationship games and challenges to strengthen our bond</p>
+        </section>
+        
+        <section class="love-games-content">
 Fun challenges and games to strengthen our bond, create new memories, and have amazing adventures together!
-</p></div><div class="challenge-filters mb-8"><div class="flex flex-wrap justify-center gap-4"><button class="challenge-filter-btn active" data-category="all">
+</p>
+</div>
+<div class="challenge-filters mb-8">
+<div class="flex flex-wrap justify-center gap-4">
+<button class="challenge-filter-love-action active" data-category="all">
 🌟 All Challenges
-</button><button class="challenge-filter-btn" data-category="communication">
+</button>
+<button class="challenge-filter-love-action" data-category="communication">
 💬 Communication
-</button><button class="challenge-filter-btn" data-category="adventure">
+</button>
+<button class="challenge-filter-love-action" data-category="adventure">
 🗺️ Adventure
-</button><button class="challenge-filter-btn" data-category="creative">
+</button>
+<button class="challenge-filter-love-action" data-category="creative">
 🎨 Creative
-</button><button class="challenge-filter-btn" data-category="romantic">
+</button>
+<button class="challenge-filter-love-action" data-category="romantic">
 💕 Romantic
-</button><button class="challenge-filter-btn" data-category="fun">
+</button>
+<button class="challenge-filter-love-action" data-category="fun">
 🎪 Fun & Games
-</button></div></div><div class="challenges-grid mb-12"><div class="challenge-card" data-category="communication"><div class="challenge-status"><span class="status-badge active">Active</span></div><div class="challenge-icon">💬</div><h3 class="challenge-title">Deep Conversation Challenge</h3><p class="challenge-description">
+</button>
+</div>
+</div>
+<div class="challenges-grid mb-12">
+<div class="challenge-precious-moment-display" data-category="communication">
+<div class="challenge-status">
+<span class="status-badge active">Active</span>
+</div>
+<div class="challenge-icon">💬</div>
+<h3 class="challenge-title">Deep Conversation Challenge</h3>
+<p class="challenge-description">
 Share one meaningful story from your past each day for a week
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 43%"></div></div><span class="progress-text">3/7 days completed</span></div><div class="challenge-actions"><button class="btn-primary complete-challenge">Mark Complete</button><button class="btn-secondary view-details">View Details</button></div></div><div class="challenge-card" data-category="adventure"><div class="challenge-status"><span class="status-badge pending">Pending</span></div><div class="challenge-icon">🗺️</div><h3 class="challenge-title">Explore New Places</h3><p class="challenge-description">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 43%">
+</div>
+</div>
+<span class="progress-text">3/7 days completed</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-primary complete-challenge">Mark Complete</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+<div class="challenge-precious-moment-display" data-category="adventure">
+<div class="challenge-status">
+<span class="status-badge pending">Pending</span>
+</div>
+<div class="challenge-icon">🗺️</div>
+<h3 class="challenge-title">Explore New Places</h3>
+<p class="challenge-description">
 Visit 5 new places in our city we've never been to before
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 20%"></div></div><span class="progress-text">1/5 places visited</span></div><div class="challenge-actions"><button class="btn-primary start-challenge">Start Challenge</button><button class="btn-secondary view-details">View Details</button></div></div><div class="challenge-card" data-category="creative"><div class="challenge-status"><span class="status-badge completed">Completed</span></div><div class="challenge-icon">🎨</div><h3 class="challenge-title">Create Together</h3><p class="challenge-description">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 20%">
+</div>
+</div>
+<span class="progress-text">1/5 places visited</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-primary start-challenge">Start Challenge</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+<div class="challenge-precious-moment-display" data-category="creative">
+<div class="challenge-status">
+<span class="status-badge completed">Completed</span>
+</div>
+<div class="challenge-icon">🎨</div>
+<h3 class="challenge-title">Create Together</h3>
+<p class="challenge-description">
 Make something beautiful together - art, music, or craft project
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div><span class="progress-text">Completed! ✨</span></div><div class="challenge-actions"><button class="btn-success">Completed ✓</button><button class="btn-secondary view-details">View Details</button></div></div><div class="challenge-card" data-category="romantic"><div class="challenge-status"><span class="status-badge active">Active</span></div><div class="challenge-icon">💕</div><h3 class="challenge-title">Love Language Week</h3><p class="challenge-description">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 100%">
+</div>
+</div>
+<span class="progress-text">Completed! ✨</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-success">Completed ✓</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+<div class="challenge-precious-moment-display" data-category="romantic">
+<div class="challenge-status">
+<span class="status-badge active">Active</span>
+</div>
+<div class="challenge-icon">💕</div>
+<h3 class="challenge-title">Love Language Week</h3>
+<p class="challenge-description">
 Express love in each other's love language for one week
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 71%"></div></div><span class="progress-text">5/7 days completed</span></div><div class="challenge-actions"><button class="btn-primary complete-challenge">Mark Complete</button><button class="btn-secondary view-details">View Details</button></div></div><div class="challenge-card" data-category="fun"><div class="challenge-status"><span class="status-badge pending">Pending</span></div><div class="challenge-icon">🎪</div><h3 class="challenge-title">Game Night Marathon</h3><p class="challenge-description">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 71%">
+</div>
+</div>
+<span class="progress-text">5/7 days completed</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-primary complete-challenge">Mark Complete</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+<div class="challenge-precious-moment-display" data-category="fun">
+<div class="challenge-status">
+<span class="status-badge pending">Pending</span>
+</div>
+<div class="challenge-icon">🎪</div>
+<h3 class="challenge-title">Game Night Marathon</h3>
+<p class="challenge-description">
 Play 10 different games together over the next month
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div><span class="progress-text">0/10 games played</span></div><div class="challenge-actions"><button class="btn-primary start-challenge">Start Challenge</button><button class="btn-secondary view-details">View Details</button></div></div><div class="challenge-card" data-category="communication"><div class="challenge-status"><span class="status-badge active">Active</span></div><div class="challenge-icon">💭</div><h3 class="challenge-title">Gratitude Exchange</h3><p class="challenge-description">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 0%">
+</div>
+</div>
+<span class="progress-text">0/10 games played</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-primary start-challenge">Start Challenge</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+<div class="challenge-precious-moment-display" data-category="communication">
+<div class="challenge-status">
+<span class="status-badge active">Active</span>
+</div>
+<div class="challenge-icon">💭</div>
+<h3 class="challenge-title">Gratitude Exchange</h3>
+<p class="challenge-description">
 Share three things you're grateful for about each other daily
-</p><div class="challenge-progress"><div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div><span class="progress-text">6/10 days completed</span></div><div class="challenge-actions"><button class="btn-primary complete-challenge">Mark Complete</button><button class="btn-secondary view-details">View Details</button></div></div></div><div class="challenges-stats mb-12"><h2 class="text-3xl font-dancing text-center text-green-600 mb-8">Our Challenge Journey</h2><div class="stats-grid"><div class="stat-card"><div class="stat-icon">🏆</div><div class="stat-number">12</div><div class="stat-label">Completed Challenges</div></div><div class="stat-card"><div class="stat-icon">⚡</div><div class="stat-number">4</div><div class="stat-label">Active Challenges</div></div><div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-number">68%</div><div class="stat-label">Success Rate</div></div><div class="stat-card"><div class="stat-icon">📈</div><div class="stat-number">89</div><div class="stat-label">Total Points</div></div></div></div><div class="challenge-creator mb-12"><h2 class="text-3xl font-dancing text-center text-purple-600 mb-8">Create New Challenge</h2><form class="challenge-form max-w-2xl mx-auto"><div class="form-group"><label for="challengeTitle">Challenge Title</label><input type="text" id="challengeTitle" placeholder="Enter challenge title" required></div><div class="form-group"><label for="challengeCategory">Category</label><select id="challengeCategory" required><option value="">Select category</option><option value="communication">💬 Communication</option><option value="adventure">🗺️ Adventure</option><option value="creative">🎨 Creative</option><option value="romantic">💕 Romantic</option><option value="fun">🎪 Fun & Games</option></select></div><div class="form-group"><label for="challengeDescription">Description</label><textarea id="challengeDescription" placeholder="Describe the challenge..." rows="4" required></textarea><div class="char-counter"><span id="descCounter">0</span>/500 characters
-</div></div><div class="form-row"><div class="form-group"><label for="challengeDuration">Duration (days)</label><input type="number" id="challengeDuration" min="1" max="365" placeholder="7" required></div><div class="form-group"><label for="challengeDifficulty">Difficulty</label><select id="challengeDifficulty" required><option value="">Select difficulty</option><option value="easy">🟢 Easy</option><option value="medium">🟡 Medium</option><option value="hard">🔴 Hard</option></select></div></div><div class="form-group"><label for="challengeReward">Reward/Prize</label><input type="text" id="challengeReward" placeholder="What's the reward for completing this?"></div><button type="submit" class="btn-primary w-full">
+</p>
+<div class="challenge-progress">
+<div class="progress-bar">
+<div class="progress-fill" style="width: 60%">
+</div>
+</div>
+<span class="progress-text">6/10 days completed</span>
+</div>
+<div class="challenge-actions">
+<button class="love-action-primary complete-challenge">Mark Complete</button>
+<button class="love-action-secondary view-details">View Details</button>
+</div>
+</div>
+</div>
+<div class="challenges-stats mb-12">
+<h2 class="text-3xl font-dancing text-center text-green-600 mb-8">Our Challenge Journey</h2>
+<div class="stats-grid">
+<article class="stat-precious-moment-display">
+<div class="stat-icon">🏆</div>
+<div class="stat-number">12</div>
+<div class="stat-label">Completed Challenges</div>
+</div>
+<article class="stat-precious-moment-display">
+<div class="stat-icon">⚡</div>
+<div class="stat-number">4</div>
+<div class="stat-label">Active Challenges</div>
+</div>
+<article class="stat-precious-moment-display">
+<div class="stat-icon">🎯</div>
+<div class="stat-number">68%</div>
+<div class="stat-label">Success Rate</div>
+</div>
+<article class="stat-precious-moment-display">
+<div class="stat-icon">📈</div>
+<div class="stat-number">89</div>
+<div class="stat-label">Total Points</div>
+</div>
+</div>
+</div>
+<div class="challenge-creator mb-12">
+<h2 class="text-3xl font-dancing text-center text-purple-600 mb-8">Create New Challenge</h2>
+<form class="challenge-form max-w-2xl mx-auto">
+<div class="form-group">
+<label for="challengeTitle">Challenge Title</label>
+<input type="text" id="challengeTitle" placeholder="Enter challenge title" required>
+</div>
+<div class="form-group">
+<label for="challengeCategory">Category</label>
+<select id="challengeCategory" required>
+<option value="">Select category</option>
+<option value="communication">💬 Communication</option>
+<option value="adventure">🗺️ Adventure</option>
+<option value="creative">🎨 Creative</option>
+<option value="romantic">💕 Romantic</option>
+<option value="fun">🎪 Fun & Games</option>
+</select>
+</div>
+<div class="form-group">
+<label for="challengeDescription">Description</label>
+<textarea id="challengeDescription" placeholder="Describe the challenge..." rows="4" required>
+</textarea>
+<div class="char-counter">
+<span id="descCounter">0</span>/500 characters
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="challengeDuration">Duration (days)</label>
+<input type="number" id="challengeDuration" min="1" max="365" placeholder="7" required>
+</div>
+<div class="form-group">
+<label for="challengeDifficulty">Difficulty</label>
+<select id="challengeDifficulty" required>
+<option value="">Select difficulty</option>
+<option value="easy">🟢 Easy</option>
+<option value="medium">🟡 Medium</option>
+<option value="hard">🔴 Hard</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label for="challengeReward">Reward/Prize</label>
+<input type="text" id="challengeReward" placeholder="What's the reward for completing this?">
+</div>
+<button type="submit" class="love-action-primary w-full">
 🚀 Create Challenge
-</button></form></div><div class="challenge-templates"><h2 class="text-3xl font-dancing text-center text-orange-600 mb-8">Challenge Templates</h2><div class="templates-grid"><div class="template-card"><div class="template-icon">💌</div><h3 class="template-title">Love Letter Challenge</h3><p class="template-description">Write heartfelt letters to each other</p><button class="btn-secondary use-template" data-template="love-letter">Use Template</button></div><div class="template-card"><div class="template-icon">📸</div><h3 class="template-title">Photo Challenge</h3><p class="template-description">Capture special moments together</p><button class="btn-secondary use-template" data-template="photo">Use Template</button></div><div class="template-card"><div class="template-icon">🍳</div><h3 class="template-title">Cooking Challenge</h3><p class="template-description">Cook new recipes together</p><button class="btn-secondary use-template" data-template="cooking">Use Template</button></div><div class="template-card"><div class="template-icon">🌟</div><h3 class="template-title">Acts of Kindness</h3><p class="template-description">Random acts of love for each other</p><button class="btn-secondary use-template" data-template="kindness">Use Template</button></div></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"><a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎉</div><div class="text-sm font-medium text-pink-700">Anniversary</div></a><a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">📸</div><div class="text-sm font-medium text-pink-700">Gallery</div></a><a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">🎵</div><div class="text-sm font-medium text-pink-700">Music</div></a><a href="love-story.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none"><div class="text-2xl mb-2">💕</div><div class="text-sm font-medium text-pink-700">Love Story</div></a></div></div></main><div class="challenges-particle-container" id="challengesParticles"></div><div class="fixed bottom-4 right-4 z-50"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
-class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"></div></div><div class="mt-2 text-xs text-gray-600 text-center">
+</button>
+</form>
+</div>
+<div class="challenge-templates">
+<h2 class="text-3xl font-dancing text-center text-orange-600 mb-8">Challenge Templates</h2>
+<div class="templates-grid">
+<article class="template-precious-moment-display">
+<div class="template-icon">💌</div>
+<h3 class="template-title">Love Letter Challenge</h3>
+<p class="template-description">Write heartfelt letters to each other</p>
+<button class="love-action-secondary use-template" data-template="love-letter">Use Template</button>
+</div>
+<article class="template-precious-moment-display">
+<div class="template-icon">📸</div>
+<h3 class="template-title">Photo Challenge</h3>
+<p class="template-description">Capture special moments together</p>
+<button class="love-action-secondary use-template" data-template="photo">Use Template</button>
+</div>
+<article class="template-precious-moment-display">
+<div class="template-icon">🍳</div>
+<h3 class="template-title">Cooking Challenge</h3>
+<p class="template-description">Cook new recipes together</p>
+<button class="love-action-secondary use-template" data-template="cooking">Use Template</button>
+</div>
+<article class="template-precious-moment-display">
+<div class="template-icon">🌟</div>
+<h3 class="template-title">Acts of Kindness</h3>
+<p class="template-description">Random acts of love for each other</p>
+<button class="love-action-secondary use-template" data-template="kindness">Use Template</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
+<a href="anniversary.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+<div class="text-2xl mb-2">🎉</div>
+<div class="text-sm font-medium text-pink-700">Anniversary</div>
+</a>
+<a href="photo-gallery.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+<div class="text-2xl mb-2">📸</div>
+<div class="text-sm font-medium text-pink-700">Gallery</div>
+</a>
+<a href="music-playlist.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+<div class="text-2xl mb-2">🎵</div>
+<div class="text-sm font-medium text-pink-700">Music</div>
+</a>
+<a href="love-story.html" class="glassmorphism p-4 rounded-xl text-center hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-decoration-none">
+<div class="text-2xl mb-2">💕</div>
+<div class="text-sm font-medium text-pink-700">Love Story</div>
+</a>
+</div>
+</div>
+
+</main>
+<div class="challenges-particle-content-sanctuary" id="challengesParticles">
+</div>
+<div class="fixed bottom-4 right-4 z-50">
+<div class="glassmorphism p-4 rounded-xl shadow-lg">
+<div class="flex items-center space-x-3">
+<button id="music-play" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition-colors">
+<i data-lucide="play" class="icon-play">
+</i>
+</button>
+<div class="flex items-center space-x-2">
+<span class="text-sm">
+<i data-lucide="volume-2" class="icon-volume-high">
+</i>
+</span>
+<input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
+class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer">
+</div>
+</div>
+<div class="mt-2 text-xs text-gray-600 text-center">
 🎵 Our Love Song
-</div></div></div><footer class="shared-footer bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../../scripts/shared.js"></script><script type="module">
-import { ChallengesManager } from '../js/challenges.js';
+</div>
+</div>
+</div>
+<footer class="shared-story-closing bg-gradient-love text-white text-center py-4">
+<p class="mb-0">Made with <i class="fas fa-heart text-danger">
+</i> by Soumya</p>
+<small>&copy; 2025 Anniversary Website. All rights reserved.</small>
+</footer>
 
-// Initialize Challenges Manager when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-console.log('🎮 Challenges page loaded with enhanced interactive system');
+<script type="module" src="../../scripts/shared.js">
+</script>
 
-// ChallengesManager will auto-initialize
-// Additional page-specific initialization can go here
-});
-</script><script>
-// Initialize Lucide icons
-document.addEventListener('DOMContentLoaded', function() {
-if (typeof lucide !== 'undefined') {
-lucide.createIcons();
-}
-});
+<script type="module" src="../js/challenges-page.js">
 </script>
 <!-- Navigation Loader -->
-<script type="module" src="../scripts/navigation-loader.js"></script>
-<!-- Unified Navigation & Data Management System -->
-<script type="module" src="../../utils/unifiedNavigation.js"></script>
-<script type="module" src="../../utils/dataManager.js"></script>
-<script type="module" src="../../utils/jsonDatabase.js"></script>
-<script>
-// Initialize unified systems when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Unified systems loaded for challenges');
-});
+
+<script type="module" src="../scripts/navigation-loader.js">
 </script>
-</body></html>
+<!-- Unified Navigation & Data Management System -->
+
+<script type="module" src="../../utils/Navigation.js">
+</script>
+
+<script type="module" src="../../data/DataManager.js">
+</script>
+
+<script type="module" src="../../utils/Database.js">
+</script>
+
+</body>
+</html>

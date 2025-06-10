@@ -19,248 +19,16 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/globals.css">
     <link rel="stylesheet" href="../css/puzzle.css">
-    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧩%3C/text%3E%3C/svg%3E">
     
-    <style>
-        .puzzle-hero {
-            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-        
-        .puzzle-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .puzzle-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            max-width: 600px;
-            margin: 2rem auto;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .puzzle-piece {
-            aspect-ratio: 1;
-            background-size: 400% 400%;
-            background-repeat: no-repeat;
-            border-radius: 0.5rem;
-            cursor: grab;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .puzzle-piece:hover {
-            transform: scale(1.05);
-            border-color: #ff6b9d;
-            box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
-        }
-        
-        .puzzle-piece.dragging {
-            cursor: grabbing;
-            transform: scale(1.1);
-            z-index: 1000;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .puzzle-piece.correct {
-            border-color: #10b981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
-            cursor: default;
-        }
-        
-        .puzzle-piece.empty {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-        }
-        
-        .puzzle-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .control-button {
-            background: linear-gradient(135deg, #9333ea, #ec4899);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .control-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(147, 51, 234, 0.4);
-        }
-        
-        .control-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .puzzle-progress {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .progress-bar {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            height: 8px;
-            overflow: hidden;
-            margin: 1rem 0;
-        }
-        
-        .progress-fill {
-            background: linear-gradient(90deg, #ff6b9d, #c44569);
-            height: 100%;
-            transition: width 0.5s ease;
-            border-radius: 1rem;
-        }
-        
-        .completion-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            backdrop-filter: blur(10px);
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, #1a0b2e, #16213e);
-            border-radius: 2rem;
-            padding: 3rem;
-            text-align: center;
-            max-width: 500px;
-            margin: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 107, 157, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(147, 51, 234, 0.2) 0%, transparent 50%);
-            z-index: -1;
-        }
-        
-        .hidden-message {
-            font-size: 1.5rem;
-            color: #ff6b9d;
-            font-family: 'Dancing Script', cursive;
-            margin: 1.5rem 0;
-            font-weight: 600;
-        }
-        
-        .fireworks {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        
-        .firework {
-            position: absolute;
-            border-radius: 50%;
-            animation: explode 1s ease-out forwards;
-        }
-        
-        @keyframes explode {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0;
-            }
-        }
-        
-        .unlock-button {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border: none;
-            padding: 1.2rem 2.5rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .unlock-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .puzzle-board {
-                max-width: 90vw;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2px;
-            }
-            
-            .puzzle-controls {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .control-button {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
 </head>
 <body style="padding-top: 90px;">
     <!-- Navigation will be loaded dynamically -->
     
-    <main class="main-content">
+    <main class="love-story-content">
         <section class="puzzle-hero">
-            <div class="puzzle-container">
+            <div class="puzzle-content-sanctuary">
                 <div class="text-center mb-8">
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
                         🧩 Our Love Puzzle 🧩
@@ -288,13 +56,13 @@
                 
                 <!-- Puzzle Controls -->
                 <div class="puzzle-controls">
-                    <button class="control-button" onclick="shufflePuzzle()">
+                    <button class="control-action-heart" onclick="shufflePuzzle()">
                         🔀 Shuffle Pieces
                     </button>
-                    <button class="control-button" onclick="showHint()">
+                    <button class="control-action-heart" onclick="showHint()">
                         💡 Show Hint
                     </button>
-                    <button class="control-button" onclick="resetPuzzle()">
+                    <button class="control-action-heart" onclick="resetPuzzle()">
                         🔄 Reset Puzzle
                     </button>
                 </div>
@@ -302,7 +70,7 @@
                 <!-- Timer and Moves -->
                 <div class="text-center text-white/80 mt-4">
                     <p class="text-lg">
-                        Time: <span id="timer">00:00</span> | 
+                        Time: <span id="love-love-love-love-love-timer">00:00</span> | 
                         Moves: <span id="moveCount">0</span>
                     </p>
                 </div>
@@ -311,21 +79,21 @@
     </main>
 
     <!-- Completion Modal -->
-    <div class="completion-modal" id="completionModal">
-        <div class="modal-content">
+    <div class="completion-story-spotlight" id="completionModal">
+        <div class="story-spotlight-content">
             <div class="fireworks" id="modalFireworks"></div>
             <h2 class="text-4xl font-dancing text-white mb-4">🎉 Puzzle Completed! 🎉</h2>
             <p class="text-lg text-white/90 mb-4">
                 Amazing work! You've successfully put together our beautiful memory.
             </p>
-            <div class="hidden-message" id="hiddenMessage">
+            <div class="hidden-tender-feeling-communication" id="hiddenMessage">
                 "Every piece of our love story fits perfectly together, just like this puzzle. 
                 You complete me in every way possible. 💕"
             </div>
             <p class="text-white/80 mb-4">
                 Completed in <span id="finalTime">00:00</span> with <span id="finalMoves">0</span> moves!
             </p>
-            <button class="unlock-button" onclick="unlockMessageWall()">
+            <button class="unlock-action-heart" onclick="unlockMessageWall()">
                 💌 Continue to Message Wall
             </button>
         </div>
@@ -342,7 +110,7 @@
                 this.completedCount = 0;
                 this.moveCount = 0;
                 this.startTime = Date.now();
-                this.timer = null;
+                this.love-timer = null;
                 
                 this.init();
             }
@@ -506,7 +274,7 @@
             }
             
             startTimer() {
-                this.timer = setInterval(() => {
+                this.love-timer = setInterval(() => {
                     const elapsed = Date.now() - this.startTime;
                     const minutes = Math.floor(elapsed / 60000);
                     const seconds = Math.floor((elapsed % 60000) / 1000);
@@ -516,7 +284,7 @@
             }
             
             completePuzzle() {
-                clearInterval(this.timer);
+                clearInterval(this.love-timer);
                 
                 // Show completion modal
                 document.getElementById('finalTime').textContent = document.getElementById('timer').textContent;
@@ -578,7 +346,7 @@
         }
         
         function resetPuzzle() {
-            clearInterval(window.lovePuzzle.timer);
+            clearInterval(window.lovePuzzle.love-timer);
             window.lovePuzzle = new LovePuzzle();
         }
         
@@ -618,9 +386,9 @@
     <!-- Navigation Loader -->
     <script type="module" src="../scripts/navigation-loader.js"></script>
     <!-- Unified Navigation & Data Management System -->
-    <script type="module" src="../../utils/unifiedNavigation.js"></script>
-    <script type="module" src="../../utils/dataManager.js"></script>
-    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../../utils/Database.js"></script>
     <script>
         // Initialize unified systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {

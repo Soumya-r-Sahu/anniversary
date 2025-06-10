@@ -462,15 +462,15 @@ body.dark  {
     line-height: 1.5;
   }
 
-  .container {
+  .content-sanctuary {
     padding: var(--space-sm);
   }
 
-  .header {
+  .story-opening {
     font-size: 1.25rem;
   }
 
-  .button {
+  .action-heart {
     padding: var(--space-xs) var(--space-sm);
     font-size: 0.875rem;
   }
@@ -482,15 +482,15 @@ body.dark  {
     line-height: 1.4;
   }
 
-  .container {
+  .content-sanctuary {
     padding: var(--space-xs);
   }
 
-  .header {
+  .story-opening {
     font-size: 1rem;
   }
 
-  .button {
+  .action-heart {
     padding: var(--space-xs);
     font-size: 0.75rem;
   }

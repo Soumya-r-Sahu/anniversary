@@ -1,383 +1,11 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Happy Anniversary"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ec4899"><meta name="apple-touch-fullscreen" content="yes"><meta name="format-detection" content="telephone=no"><title>Anniversary Celebration - Jerry & Soumya</title><meta name="description" content="Celebrating our beautiful love story and anniversary"><link rel="stylesheet" href="../styles/shared.css"><link rel="stylesheet" href="../css/anniversary.css"><style>
-/* Anniversary Hero Section with 3D Effects */
-.anniversary-hero {
-position: relative;
-padding: 4rem 0;
-background: linear-gradient(135deg,
-rgba(236, 72, 153, 0.1) 0%,
-rgba(244, 114, 182, 0.1) 50%,
-rgba(251, 207, 232, 0.1) 100%);
-perspective: 1000px;
-overflow: hidden;
-}
-
-.anniversary-hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" fill="%23ec4899" opacity="0.1">♥</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
-animation: float-hearts 20s linear infinite;
-pointer-events: none;
-}
-
-@keyframes float-hearts {
-0% { transform: translateY(0); }
-100% { transform: translateY(-100px); }
-}
-
-/* Enhanced Time Calculator with 3D Cards */
-.time-calculator {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 2rem;
-margin-bottom: 3rem;
-perspective: 1200px;
-}
-
-.time-stat {
-position: relative;
-text-align: center;
-padding: 2rem 1.5rem;
-background: linear-gradient(145deg,
-rgba(255, 255, 255, 0.25),
-rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(30px);
-border-radius: 1.5rem;
-border: 2px solid rgba(255, 255, 255, 0.3);
-box-shadow:
-0 8px 32px rgba(0, 0, 0, 0.1),
-inset 0 1px 0 rgba(255, 255, 255, 0.5);
-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-transform-style: preserve-3d;
-}
-
-.time-stat::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: linear-gradient(45deg,
-rgba(236, 72, 153, 0.1),
-rgba(244, 114, 182, 0.1));
-border-radius: 1.5rem;
-opacity: 0;
-transition: opacity 0.3s ease;
-}
-
-.time-stat:hover {
-transform: rotateY(15deg) rotateX(10deg) translateY(-10px) scale(1.05);
-box-shadow:
-0 20px 60px rgba(236, 72, 153, 0.3),
-inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.time-stat:hover::before {
-opacity: 1;
-}
-
-.time-number {
-font-size: 2.5rem;
-font-weight: 700;
-background: linear-gradient(135deg, #ec4899, #f472b6, #fbbf24);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-margin-bottom: 0.75rem;
-animation: pulse-glow 3s ease-in-out infinite alternate;
-text-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
-transform: translateZ(20px);
-}
-
-@keyframes pulse-glow {
-0% { filter: brightness(1) drop-shadow(0 0 5px rgba(236, 72, 153, 0.5)); }
-100% { filter: brightness(1.2) drop-shadow(0 0 15px rgba(236, 72, 153, 0.8)); }
-}
-
-.time-label {
-font-size: 1rem;
-color: #6b7280;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-transform: translateZ(10px);
-}
-
-/* Enhanced Love Message with 3D Depth */
-.love-message {
-position: relative;
-background: linear-gradient(145deg,
-rgba(255, 255, 255, 0.2),
-rgba(255, 255, 255, 0.05));
-backdrop-filter: blur(40px);
-border-radius: 2rem;
-padding: 3rem;
-margin: 3rem 0;
-border: 2px solid rgba(255, 255, 255, 0.3);
-box-shadow:
-0 15px 60px rgba(0, 0, 0, 0.1),
-inset 0 1px 0 rgba(255, 255, 255, 0.5);
-transform-style: preserve-3d;
-transition: all 0.3s ease;
-}
-
-.love-message::before {
-content: '';
-position: absolute;
-top: -2px;
-left: -2px;
-right: -2px;
-bottom: -2px;
-background: linear-gradient(45deg,
-rgba(236, 72, 153, 0.5),
-rgba(244, 114, 182, 0.5),
-rgba(251, 207, 232, 0.5));
-border-radius: 2rem;
-z-index: -1;
-opacity: 0;
-transition: opacity 0.3s ease;
-}
-
-.love-message:hover::before {
-opacity: 1;
-}
-
-/* Enhanced Navigation Grid with 3D Cards */
-.navigation-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 2rem;
-margin-top: 4rem;
-perspective: 1500px;
-}
-
-.nav-card {
-position: relative;
-background: linear-gradient(145deg,
-rgba(255, 255, 255, 0.2),
-rgba(255, 255, 255, 0.1));
-backdrop-filter: blur(30px);
-border-radius: 1.5rem;
-padding: 2rem 1.5rem;
-text-align: center;
-text-decoration: none;
-color: inherit;
-border: 2px solid rgba(255, 255, 255, 0.25);
-box-shadow:
-0 10px 40px rgba(0, 0, 0, 0.1),
-inset 0 1px 0 rgba(255, 255, 255, 0.5);
-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-transform-style: preserve-3d;
-overflow: hidden;
-}
-
-.nav-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg,
-transparent,
-rgba(255, 255, 255, 0.3),
-transparent);
-transition: left 0.6s ease;
-}
-
-.nav-card:hover {
-transform: rotateY(12deg) rotateX(8deg) translateY(-12px) scale(1.05);
-box-shadow:
-0 25px 80px rgba(236, 72, 153, 0.25),
-inset 0 1px 0 rgba(255, 255, 255, 0.8);
-background: linear-gradient(145deg,
-rgba(255, 255, 255, 0.3),
-rgba(255, 255, 255, 0.15));
-}
-
-.nav-card:hover::before {
-left: 100%;
-}
-
-.nav-icon {
-font-size: 3rem;
-margin-bottom: 1.5rem;
-display: block;
-transition: all 0.3s ease;
-transform: translateZ(20px);
-filter: drop-shadow(0 5px 15px rgba(236, 72, 153, 0.3));
-}
-
-.nav-card:hover .nav-icon {
-transform: translateZ(30px) scale(1.1) rotateY(15deg);
-filter: drop-shadow(0 10px 25px rgba(236, 72, 153, 0.5));
-}
-
-.nav-title {
-font-size: 1.25rem;
-font-weight: 600;
-margin-bottom: 0.5rem;
-color: #1f2937;
-transform: translateZ(15px);
-}
-
-.nav-description {
-font-size: 0.875rem;
-color: #6b7280;
-transform: translateZ(10px);
-}
-
-/* Enhanced Music Player */
-.music-player-3d {
-position: fixed;
-bottom: 2rem;
-right: 2rem;
-z-index: 50;
-perspective: 800px;
-}
-
-.music-player-3d .glassmorphism {
-transform-style: preserve-3d;
-transition: all 0.3s ease;
-box-shadow:
-0 10px 40px rgba(0, 0, 0, 0.2),
-inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.music-player-3d:hover .glassmorphism {
-transform: rotateY(10deg) rotateX(5deg) translateZ(10px);
-}
-
-/* Romantic particle effects */
-.particle-container {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: 1;
-overflow: hidden;
-}
-
-.particle {
-position: absolute;
-font-size: 1rem;
-color: rgba(236, 72, 153, 0.6);
-animation: float-particle 8s linear infinite;
-}
-
-@keyframes float-particle {
-0% {
-transform: translateY(100vh) rotate(0deg);
-opacity: 0;
-}
-10% {
-opacity: 1;
-}
-90% {
-opacity: 1;
-}
-100% {
-transform: translateY(-100px) rotate(360deg);
-opacity: 0;
-}
-}
-
-.nav-title {
-font-weight: 600;
-color: #be185d;
-margin-bottom: 0.5rem;
-}
-
-.nav-description {
-font-size: 0.875rem;
-color: #6b7280;
-}
-
-@media (max-width: 640px) {
-.time-calculator {
-grid-template-columns: repeat(2, 1fr);
-}
-
-.time-number {
-font-size: 1.5rem;
-}
-
-.navigation-grid {
-grid-template-columns: repeat(2, 1fr);
-gap: 1rem;
-}
-}
-
-/* Mobile Responsiveness Fixes */
-@media (max-width: 768px) {
-.anniversary-hero {
-padding: 2rem 0;
-}
-
-.time-calculator {
-grid-template-columns: repeat(2, 1fr);
-gap: 1rem;
-margin-bottom: 2rem;
-}
-
-.time-stat {
-padding: 1.5rem 1rem;
-}
-
-.time-number {
-font-size: 2rem;
-}
-
-.time-label {
-font-size: 0.875rem;
-}
-
-.love-message {
-padding: 2rem 1.5rem;
-margin: 2rem 0;
-}
-
-/* Touch-friendly interactions */
-.time-stat:hover {
-transform: scale(1.02);
-box-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
-}
-}
-
-@media (max-width: 480px) {
-.time-calculator {
-grid-template-columns: 1fr;
-gap: 1rem;
-}
-
-.time-stat {
-padding: 1.25rem 1rem;
-}
-
-.time-number {
-font-size: 1.75rem;
-}
-
-.love-message {
-padding: 1.5rem 1rem;
-border-radius: 1rem;
-}
-}
-</style><link rel="stylesheet" href="../styles/unified-navigation.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💖%3C/text%3E%3C/svg%3E"></head><body><!-- Navigation will be loaded dynamically --><div class="particle-container" id="particle-container"></div><header class="shared-header"></header><header class="anniversary-hero"><div class="container mx-auto px-4 py-8"><div class="text-center mb-12"><h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-6 animate-shimmer">
 Happy Anniversary
-</h1><h2 class="text-xl md:text-3xl text-pink-700 mb-8 font-dancing card-3d-hover">
+</h1><h2 class="text-xl md:text-3xl text-pink-700 mb-8 font-dancing precious-moment-display-3d-hover">
 To my dearest <span class="text-red-500 font-semibold">Pujuu (Champi)</span>,
-my sweet <span class="text-pink-600 font-semibold">Jerry</span></h2></div></div></header><main class="main-content"><div class="container mx-auto px-4 py-8" --><div class="glassmorphism p-8 mb-12"><h3 class="text-2xl font-dancing text-pink-600 mb-6 text-center">
+my sweet <span class="text-pink-600 font-semibold">Jerry</span></h2></div></div></header><main class="love-story-content"><div class="content-sanctuary mx-auto px-4 py-8" --><div class="glassmorphism p-8 mb-12"><h3 class="text-2xl font-dancing text-pink-600 mb-6 text-center">
 ⏰ Our Time Together ⏰
 </h3><p class="text-center text-pink-600 font-medium mb-6">
 📅 Since June 16, 2024 💕
-</p><div id="time-calculator" class="time-calculator"><div class="time-stat"><div id="total-days" class="time-number">0</div><div class="time-label">Days</div></div><div class="time-stat"><div id="total-hours" class="time-number">0</div><div class="time-label">Hours</div></div><div class="time-stat"><div id="total-minutes" class="time-number">0</div><div class="time-label">Minutes</div></div><div class="time-stat"><div id="total-seconds" class="time-number">0</div><div class="time-label">Seconds</div></div></div></div><div class="love-message"><h3 class="text-2xl font-dancing text-pink-600 mb-4 text-center">
+</p><div id="time-calculator" class="time-calculator"><div class="time-stat"><div id="total-days" class="time-number">0</div><div class="time-label">Days</div></div><div class="time-stat"><div id="total-hours" class="time-number">0</div><div class="time-label">Hours</div></div><div class="time-stat"><div id="total-minutes" class="time-number">0</div><div class="time-label">Minutes</div></div><div class="time-stat"><div id="total-seconds" class="time-number">0</div><div class="time-label">Seconds</div></div></div></div><div class="love-tender-feeling-communication"><h3 class="text-2xl font-dancing text-pink-600 mb-4 text-center">
 💌 A Message From My Heart
 </h3><div class="text-lg text-gray-700 leading-relaxed space-y-4"><p>
 My dearest Jerry, from the moment we started talking on June 16, 2024,
@@ -391,13 +19,13 @@ Thank you for being my Jerry, my Pujuu, my everything.
 Here's to many more months and years of love, laughter, and beautiful memories together.
 </p><p class="text-center font-dancing text-xl text-pink-600">
 Forever yours, Mankada (Soumya) 💖
-</p></div></div><div class="navigation-grid"><a href="love-story.html" class="nav-card"><span class="nav-icon">📖</span><div class="nav-title">Our Love Story</div><div class="nav-description">Journey together</div></a><a href="photo-gallery.html" class="nav-card"><span class="nav-icon">📸</span><div class="nav-title">Photo Gallery</div><div class="nav-description">Beautiful memories</div></a><a href="music-playlist.html" class="nav-card"><span class="nav-icon">🎵</span><div class="nav-title">Our Playlist</div><div class="nav-description">Songs of love</div></a><a href="love-letters.html" class="nav-card"><span class="nav-icon">💌</span><div class="nav-title">Love Letters</div><div class="nav-description">Heartfelt words</div></a><a href="special-dates.html" class="nav-card"><span class="nav-icon">📅</span><div class="nav-title">Special Dates</div><div class="nav-description">Important moments</div></a><a href="fireworks.html" class="nav-card"><span class="nav-icon">🎆</span><div class="nav-title">Celebration</div><div class="nav-description">Fireworks show</div></a></div><div class="text-center mt-12"><a href="../../index.html"
+</p></div></div><nav class="navigation-grid"><a href="love-story.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">📖</span><nav class="story-navigation-title">Our Love Story</div><nav class="story-navigation-description">Journey together</div></a><a href="photo-gallery.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">📸</span><nav class="story-navigation-title">Photo Gallery</div><nav class="story-navigation-description">Beautiful memories</div></a><a href="music-playlist.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">🎵</span><nav class="story-navigation-title">Our Playlist</div><nav class="story-navigation-description">Songs of love</div></a><a href="love-letters.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">💌</span><nav class="story-navigation-title">Love Letters</div><nav class="story-navigation-description">Heartfelt words</div></a><a href="special-dates.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">📅</span><nav class="story-navigation-title">Special Dates</div><nav class="story-navigation-description">Important moments</div></a><a href="fireworks.html" class="story-navigation-precious-moment-display"><span class="story-navigation-icon">🎆</span><nav class="story-navigation-title">Celebration</div><nav class="story-navigation-description">Fireworks show</div></a></div><div class="text-center mt-12"><a href="../../index.html"
 class="inline-block bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-decoration-none">
 🏠 Back to Home
-</a></div></div></main><div class="music-player-3d"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="btn-3d-romantic text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
+</a></div></div></main><div class="melody-heart-3d"><div class="glassmorphism p-4 rounded-xl shadow-lg"><div class="flex items-center space-x-3"><button id="music-play" class="love-action-3d-heart-flutter text-white p-2 rounded-full transition-colors"><i data-lucide="play" class="icon-play"></i></button><div class="flex items-center space-x-2"><span class="text-sm"><i data-lucide="volume-2" class="icon-volume-high"></i></span><input id="music-volume" type="range" min="0" max="1" step="0.1" value="0.5"
 class="w-16 h-1 bg-pink-200 rounded-lg appearance-none cursor-pointer"></div></div><div class="mt-2 text-xs text-gray-600 text-center animate-pulse">
 🎵 Our Love Song
-</div></div></div><footer class="shared-footer bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../../scripts/shared.js"></script><script>
+</div></div></div><footer class="shared-story-closing bg-gradient-love text-white text-center py-4"><p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> by Soumya</p><small>&copy; 2025 Anniversary Website. All rights reserved.</small></footer><script type="module" src="../../scripts/shared.js"></script><script>
 // Enhanced 3D Effects and Particle System
 document.addEventListener('DOMContentLoaded', () => {
 // Initialize romantic particle effects
@@ -427,7 +55,7 @@ particle.parentNode.removeChild(particle);
 setInterval(createParticle, 800);
 
 // Enhanced 3D card interactions
-const cards = document.querySelectorAll('.time-stat, .nav-card');
+const cards = document.querySelectorAll('.time-stat, .story-navigation-card');
 cards.forEach(card => {
 card.addEventListener('mouseenter', (e) => {
 const rect = card.getBoundingClientRect();
@@ -476,7 +104,7 @@ window.notificationManager.show(
 }, 1000);
 
 // Enhanced music player interactions
-const musicPlayer = document.querySelector('.music-player-3d');
+const musicPlayer = document.querySelector('.melody-heart-3d');
 if (musicPlayer) {
 musicPlayer.addEventListener('mouseenter', () => {
 musicPlayer.style.transform = 'scale(1.05)';
@@ -498,9 +126,9 @@ lucide.createIcons();
 <!-- Navigation Loader -->
 <script type="module" src="../scripts/navigation-loader.js"></script>
 <!-- Unified Navigation & Data Management System -->
-<script type="module" src="../../utils/unifiedNavigation.js"></script>
-<script type="module" src="../../utils/dataManager.js"></script>
-<script type="module" src="../../utils/jsonDatabase.js"></script>
+<script type="module" src="../../utils/Navigation.js"></script>
+<script type="module" src="../../data/DataManager.js"></script>
+<script type="module" src="../../utils/Database.js"></script>
 <script>
 // Initialize unified systems when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {

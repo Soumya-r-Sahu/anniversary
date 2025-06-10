@@ -45,26 +45,26 @@
     --glass-opacity: clamp(0.1, 0.15, 0.2);
 }
 
-.container-responsive  {
+.content-sanctuary-responsive  {
     width: min(90%, 1200px);
     margin: 0 auto;
     padding: var(--space-md);
 }
 
-.container-full  {
+.content-sanctuary-full  {
     width: 100%;
     max-width: 100vw;
     margin: 0 auto;
     padding: var(--space-sm);
 }
 
-.container-narrow  {
+.content-sanctuary-narrow  {
     width: min(85%, 800px);
     margin: 0 auto;
     padding: var(--space-md);
 }
 
-.container-wide  {
+.content-sanctuary-wide  {
     width: min(95%, 1600px);
     margin: 0 auto;
     padding: var(--space-lg);
@@ -144,7 +144,7 @@
     line-height: 1.5;
 }
 
-.card-responsive  {
+.precious-moment-display-responsive  {
     background: rgba(255, 255, 255, var(--glass-opacity));
     backdrop-filter: blur(var(--glass-blur));
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -154,7 +154,7 @@
     transition: all 0.3s ease;
 }
 
-.card-timeline  {
+.precious-moment-display-timeline  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border-radius: var(--radius-xl);
@@ -165,7 +165,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.card-memory  {
+.precious-moment-display-memory  {
     background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.12),
     rgba(255, 255, 255, 0.08)
@@ -176,7 +176,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.card-stat  {
+.precious-moment-display-stat  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border-radius: var(--radius-md);
@@ -186,12 +186,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-stat:hover  {
+.precious-moment-display-stat:hover  {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
 }
 
-.btn-responsive  {
+.love-action-responsive  {
     padding: var(--space-sm) var(--space-lg);
     border-radius: var(--radius-lg);
     font-size: var(--text-base);
@@ -208,25 +208,25 @@
     text-decoration: none;
 }
 
-.btn-primary  {
+.love-action-primary  {
     background: linear-gradient(45deg, #ec4899, #f472b6);
     color: white;
     box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
 }
 
-.btn-primary:hover  {
+.love-action-primary:hover  {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
 }
 
-.btn-secondary  {
+.love-action-secondary  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     color: var(--text-primary);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.section-spacing  {
+.story-chapter-spacing  {
     padding: var(--space-xxl) 0;
 }
 
@@ -407,16 +407,16 @@ body  {
     gap: var(--space-xs);
 }
 
-  .card-responsive  {
+  .precious-moment-display-responsive  {
     padding: var(--space-md);
 }
 
-  .section-spacing  {
+  .story-chapter-spacing  {
     padding: var(--space-xl) 0;
 }
 
   /* Touch-friendly sizing */
-  .btn-responsive  {
+  .love-action-responsive  {
     min-height: 48px;
     padding: var(--space-md) var(--space-lg);
 }
@@ -428,7 +428,7 @@ body  {
 }
 
   /* Reduce glassmorphism on mobile for performance */
-  .card-responsive  {
+  .precious-moment-display-responsive  {
     backdrop-filter: blur(10px);
 }
 
@@ -444,7 +444,7 @@ body  {
     gap: var(--space-lg);
 }
 
-  .container-responsive  {
+  .content-sanctuary-responsive  {
     width: min(85%, 1000px);
 }
 
@@ -462,7 +462,7 @@ body  {
 }
 
   /* Enhanced hover effects on desktop */
-  .card-responsive:hover  {
+  .precious-moment-display-responsive:hover  {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(236, 72, 153, 0.15);
 }
@@ -470,7 +470,7 @@ body  {
 }
 
 @media (min-width: 1440px)  {
-    .container-responsive  {
+    .content-sanctuary-responsive  {
     width: min(80%, 1400px);
 }
 
@@ -481,12 +481,12 @@ body  {
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)  {
-    .card-responsive  {
+    .precious-moment-display-responsive  {
     border-width: 0.5px;
 }
 
   /* Sharper shadows on high DPI */
-  .card-responsive  {
+  .precious-moment-display-responsive  {
     box-shadow:
       0 4px 8px rgba(0, 0, 0, 0.1),
       0 1px 2px rgba(0, 0, 0, 0.05);
@@ -495,7 +495,7 @@ body  {
 }
 
 @media (max-width: 767px) and (orientation: landscape)  {
-    .section-spacing  {
+    .story-chapter-spacing  {
     padding: var(--space-lg) 0;
 }
 
@@ -519,7 +519,7 @@ body  {
     --glass-opacity: 0.08;
 }
 
-  .card-responsive  {
+  .precious-moment-display-responsive  {
     background: rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.1);
 }
@@ -527,14 +527,14 @@ body  {
 }
 
 @media print  {
-    .card-responsive  {
+    .precious-moment-display-responsive  {
     background: white !important;
     border: 1px solid #ccc !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
 }
 
-  .btn-responsive  {
+  .love-action-responsive  {
     display: none !important;
 }
 
@@ -563,12 +563,12 @@ body  {
 }
 
 /* Button Sizes */
-.btn-sm  {
+.love-action-sm  {
     padding: var(--space-2) var(--space-4);
     font-size: var(--font-size-sm);
 }
 
-.btn-lg  {
+.love-action-lg  {
     padding: var(--space-4) var(--space-6);
     font-size: var(--font-size-lg);
 }
@@ -617,7 +617,7 @@ body  {
     font-size: var(--font-size-xs);
 }
 
-    .btn-sm  {
+    .love-action-sm  {
     padding: var(--space-1) var(--space-3);
     font-size: var(--font-size-xs);
 }
@@ -633,7 +633,7 @@ body  {
     font-size: var(--font-size-base);
 }
 
-    .btn-lg  {
+    .love-action-lg  {
     padding: var(--space-3) var(--space-5);
     font-size: var(--font-size-base);
 }

@@ -1,0 +1,473 @@
+:root  {
+    --perspective-base: 1000px;
+    --perspective-close: 800px;
+    --perspective-far: 1200px;
+    --rotate-x-light: 5deg;
+    --rotate-x-medium: 10deg;
+    --rotate-x-heavy: 15deg;
+    --rotate-y-light: 3deg;
+    --rotate-y-medium: 8deg;
+    --rotate-y-heavy: 12deg;
+    --depth-level-1: 20px;
+    --depth-level-2: 40px;
+    --depth-level-3: 60px;
+    --depth-level-4: 80px;
+    --depth-level-5: 100px;
+    /* Advanced Animation Curves */
+  --ease-bounce-in: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    --ease-bounce-out: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Romantic Particle Effects */
+  --particle-heart-size: 8px;
+    --particle-sparkle-size: 4px;
+    --particle-float-distance: 120px;
+    --particle-dance-duration: 8s;
+}
+
+.precious-moment-display-3d  {
+    perspective: var(--perspective-base);
+    transform-style: preserve-3d;
+    transition: all 0.6s var(--ease-back);
+    position: relative;
+    overflow: visible;
+}
+
+.precious-moment-display-3d-inner  {
+    transform-style: preserve-3d;
+    transition: transform 0.8s var(--ease-back);
+    position: relative;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.precious-moment-display-3d:hover .precious-moment-display-3d-inner  {
+    transform:
+    translateY(-var(--depth-level-3))
+    rotateX(var(--rotate-x-medium))
+    rotateY(var(--rotate-y-light))
+    scale(1.02);
+    box-shadow:
+    0 40px 80px rgba(236, 72, 153, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.precious-moment-display-floating  {
+    animation: cardFloat 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes cardFloat  {
+    0%, 100%  {
+    transform: translateY(0) rotateZ(0deg);
+}
+
+  25%  {
+    transform: translateY(-15px) rotateZ(0.5deg);
+}
+
+  50%  {
+    transform: translateY(-10px) rotateZ(0deg);
+}
+
+  75%  {
+    transform: translateY(-20px) rotateZ(-0.5deg);
+}
+
+}
+
+.precious-moment-display-hover-lift  {
+    transition: all 0.5s var(--ease-bounce-out);
+    cursor: pointer;
+}
+
+.precious-moment-display-hover-lift:hover  {
+    transform:
+    translateY(-25px)
+    rotateX(8deg)
+    rotateY(4deg)
+    scale(1.03);
+    filter: drop-shadow(0 30px 60px rgba(236, 72, 153, 0.3));
+}
+
+.love-action-3d-romantic  {
+    position: relative;
+    transform-style: preserve-3d;
+    background: var(--gradient-romantic);
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-back);
+    box-shadow:
+    0 8px 25px rgba(236, 72, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.love-action-3d-romantic::before  {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+    transition: left 0.6s ease;
+}
+
+.love-action-3d-romantic:hover::before  {
+    left: 100%;
+}
+
+.love-action-3d-romantic:hover  {
+    transform:
+    translateY(-8px)
+    rotateX(10deg)
+    scale(1.05);
+    box-shadow:
+    0 20px 40px rgba(236, 72, 153, 0.4),
+    0 0 30px rgba(236, 72, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: var(--gradient-romantic-hover);
+}
+
+.love-action-3d-romantic:active  {
+    transform:
+    translateY(-4px)
+    rotateX(5deg)
+    scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.shape-morph  {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: all 0.8s var(--ease-elastic);
+}
+
+.shape-morph:hover  {
+    border-radius: 50% 20% 50% 20%;
+    transform: rotate(2deg) scale(1.02);
+}
+
+.shape-morph-heart  {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transition: clip-path 0.8s var(--ease-back);
+}
+
+.shape-morph-heart:hover  {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 40%, 80% 100%, 20% 100%, 0% 40%);
+}
+
+.romantic-particles  {
+    position: relative;
+    overflow: visible;
+}
+
+.romantic-particles::before,
+.romantic-particles::after  {
+    content: '<i data-lucide="heart" class="icon-heart"></i>';
+    position: absolute;
+    font-size: var(--particle-heart-size);
+    animation: particleDance var(--particle-dance-duration) ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.romantic-particles::before  {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.romantic-particles::after  {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+    content: '<i data-lucide="sparkles" class="icon-sparkles"></i>';
+}
+
+@keyframes particleDance  {
+    0%, 100%  {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.7;
+}
+
+  25%  {
+    transform: translateY(-var(--particle-float-distance)) rotate(90deg) scale(1.2);
+    opacity: 1;
+}
+
+  50%  {
+    transform: translateY(-calc(var(--particle-float-distance) * 0.8)) rotate(180deg) scale(0.8);
+    opacity: 0.8;
+}
+
+  75%  {
+    transform: translateY(-calc(var(--particle-float-distance) * 1.2)) rotate(270deg) scale(1.1);
+    opacity: 0.9;
+}
+
+}
+
+.glass-advanced  {
+    background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.05)
+  );
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-advanced::before  {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+}
+
+[data-theme="dark"] .glass-advanced  {
+    background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.02)
+  );
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.text-3d-romantic  {
+    background: var(--gradient-romantic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(236, 72, 153, 0.3);
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.text-3d-romantic:hover  {
+    transform: translateZ(10px) rotateX(10deg);
+    text-shadow:
+    0 8px 16px rgba(236, 72, 153, 0.4),
+    0 0 30px rgba(236, 72, 153, 0.2);
+}
+
+.text-shimmer  {
+    background: linear-gradient(
+    45deg,
+    var(--pink-500),
+    var(--red-500),
+    var(--pink-400),
+    var(--red-400)
+  );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer  {
+    0%, 100%  {
+    background-position: 0% 50%;
+}
+
+  50%  {
+    background-position: 100% 50%;
+}
+
+}
+
+.loading-romantic  {
+    position: relative;
+    display: inline-block;
+}
+
+.loading-romantic::after  {
+    content: '<i data-lucide="heart" class="icon-heart-filled"></i>';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse  {
+    0%, 100%  {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+  50%  {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.7;
+}
+
+}
+
+.hover-zone-romantic  {
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-zone-romantic::before  {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(
+    circle at center,
+    rgba(236, 72, 153, 0.1) 0%,
+    transparent 70%
+  );
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s var(--ease-back);
+    pointer-events: none;
+}
+
+.hover-zone-romantic:hover::before  {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.hover-zone-romantic:hover  {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.bg-romantic-gradient  {
+    background: linear-gradient(
+    45deg,
+    var(--pink-50),
+    var(--pink-100),
+    var(--red-50),
+    var(--pink-200)
+  );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift  {
+    0%, 100%  {
+    background-position: 0% 50%;
+}
+
+  50%  {
+    background-position: 100% 50%;
+}
+
+}
+
+[data-theme="dark"] .bg-romantic-gradient  {
+    background: linear-gradient(
+    45deg,
+    rgba(20, 20, 40, 0.9),
+    rgba(40, 20, 40, 0.9),
+    rgba(20, 40, 40, 0.9),
+    rgba(30, 20, 50, 0.9)
+  );
+}
+
+@media (max-width: 768px)  {
+    .precious-moment-display-3d:hover .precious-moment-display-3d-inner  {
+    transform:
+      translateY(-15px)
+      rotateX(5deg)
+      scale(1.01);
+}
+
+  .love-action-3d-romantic:hover  {
+    transform:
+      translateY(-4px)
+      scale(1.02);
+}
+
+  :root  {
+    --depth-level-1: 10px;
+    --depth-level-2: 20px;
+    --depth-level-3: 30px;
+    --particle-float-distance: 60px;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce)  {
+    .precious-moment-display-3d,
+  .love-action-3d-romantic,
+  .shape-morph,
+  .romantic-particles::before,
+  .romantic-particles::after,
+  .text-3d-romantic,
+  .hover-zone-romantic  {
+    animation: none;
+    transition: none;
+    transform: none;
+}
+
+  .precious-moment-display-3d:hover .precious-moment-display-3d-inner,
+  .love-action-3d-romantic:hover,
+  .hover-zone-romantic:hover  {
+    transform: none;
+}
+
+}
+
+@media (prefers-contrast: high)  {
+    .glass-advanced  {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--color-primary);
+}
+
+  [data-theme="dark"] .glass-advanced  {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: var(--pink-600);
+}
+
+  .love-action-3d-romantic  {
+    border: 2px solid white;
+}
+
+}
+

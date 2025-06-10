@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node copy-html-pages.cjs",
+    "build": "vite build && node test-copy.cjs",
+    "build:full": "vite build && node copy-html-pages.cjs",
     "build:surprise": "vite build && node copy-html-pages.cjs",
     "build:react": "vite build",
     "build:html": "node copy-html-pages.cjs",
@@ -17,8 +18,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx,css,html}\" --config config/prettier.json",
     "analyze": "vite-bundle-analyzer",
     "optimize": "npm run lint:fix && npm run format && npm run build:surprise",
-    "deploy": "npm run build:surprise && npm run deploy:gh-pages",
-    "deploy:gh-pages": "gh-pages -d dist"
+    "deploy": "npm run build:full && node content-focused-enhance.js && npm run deploy:gh-pages",
+    "deploy:complete": "bash deploy-complete.sh",
+    "deploy:gh-pages": "gh-pages -d dist",
+    "verify": "bash final-verification.sh"
   },
   "keywords": [
     "anniversary",

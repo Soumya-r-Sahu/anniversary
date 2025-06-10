@@ -19,298 +19,18 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles/globals.css">
     <link rel="stylesheet" href="../css/memory-box.css">
-    <link rel="stylesheet" href="../styles/unified-navigation.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📦%3C/text%3E%3C/svg%3E">
     
-    <style>
-        .memory-box-hero {
-            background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .floating-stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .star {
-            position: absolute;
-            color: #ffd700;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-        
-        .memory-box-container {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .memory-box-3d {
-            perspective: 1000px;
-            margin: 3rem auto;
-            width: 400px;
-            height: 300px;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .box {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 1s ease-in-out;
-        }
-        
-        .box.open {
-            transform: rotateX(-20deg) rotateY(15deg);
-        }
-        
-        .box-face {
-            position: absolute;
-            width: 400px;
-            height: 300px;
-            background: linear-gradient(135deg, #8B4513, #A0522D);
-            border: 3px solid #654321;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-        
-        .box-front {
-            transform: translateZ(150px);
-        }
-        
-        .box-back {
-            transform: rotateY(180deg) translateZ(150px);
-        }
-        
-        .box-right {
-            transform: rotateY(90deg) translateZ(50px);
-            width: 300px;
-        }
-        
-        .box-left {
-            transform: rotateY(-90deg) translateZ(350px);
-            width: 300px;
-        }
-        
-        .box-top {
-            transform: rotateX(90deg) translateZ(150px);
-            height: 300px;
-            background: linear-gradient(135deg, #B8860B, #DAA520);
-            transform-origin: bottom;
-            transition: transform 0.8s ease-in-out;
-        }
-        
-        .box.open .box-top {
-            transform: rotateX(90deg) translateZ(150px) rotateX(-135deg);
-        }
-        
-        .box-bottom {
-            transform: rotateX(-90deg) translateZ(150px);
-            background: linear-gradient(135deg, #654321, #8B4513);
-        }
-        
-        .memory-items {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 1s ease-in-out 0.5s;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .box.open .memory-items {
-            opacity: 1;
-        }
-        
-        .memory-item {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            max-width: 200px;
-        }
-        
-        .memory-item:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-        
-        .memory-item.photo {
-            top: 10%;
-            left: 10%;
-            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
-        }
-        
-        .memory-item.note {
-            top: 20%;
-            right: 10%;
-            background: linear-gradient(135deg, #E6E6FA, #F0E68C);
-        }
-        
-        .memory-item.ticket {
-            bottom: 30%;
-            left: 15%;
-            background: linear-gradient(135deg, #F0FFFF, #E0FFFF);
-        }
-        
-        .memory-item.quote {
-            bottom: 10%;
-            right: 15%;
-            background: linear-gradient(135deg, #FFF8DC, #FFFACD);
-        }
-        
-        .instruction-text {
-            color: #fff;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 2s forwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .memory-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #666;
-        }
-        
-        .unlock-section {
-            margin-top: 4rem;
-            text-align: center;
-        }
-        
-        .unlock-btn {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            border: none;
-            color: white;
-            padding: 1.5rem 3rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
-            font-family: 'Dancing Script', cursive;
-        }
-        
-        .unlock-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
-        }
-        
-        .unlock-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        @media (max-width: 768px) {
-            .memory-box-3d {
-                width: 300px;
-                height: 225px;
-            }
-            
-            .box-face {
-                width: 300px;
-                height: 225px;
-                font-size: 2rem;
-            }
-            
-            .box-top, .box-bottom {
-                height: 225px;
-            }
-            
-            .box-right, .box-left {
-                width: 225px;
-            }
-            
-            .memory-item {
-                max-width: 150px;
-                padding: 0.5rem;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
 </head>
 <body style="padding-top: 90px;">
     <!-- Navigation will be loaded dynamically -->
     
-    <main class="main-content">
-        <section class="memory-box-hero">
+    <main class="love-story-content">
+        <section class="precious-moment-love-content-sanctuary-hero">
             <div class="floating-stars" id="floatingStars"></div>
             
-            <div class="memory-box-container">
+            <div class="precious-moment-love-content-sanctuary-content-sanctuary">
                 <div class="text-center mb-8">
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-dancing gradient-text mb-4 animate-float">
                         📦 Our Memory Box 📦
@@ -321,42 +41,42 @@
                 </div>
                 
                 <!-- 3D Memory Box -->
-                <div class="memory-box-3d" id="memoryBox">
-                    <div class="box" id="box">
-                        <div class="box-face box-front">
+                <div class="precious-moment-love-content-sanctuary-3d" id="memoryBox">
+                    <div class="love-content-sanctuary" id="love-content-sanctuary">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-front">
                             📦 Memory Box
                         </div>
-                        <div class="box-face box-back">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-back">
                             💕 Love
                         </div>
-                        <div class="box-face box-right">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-right">
                             📸
                         </div>
-                        <div class="box-face box-left">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-left">
                             💌
                         </div>
-                        <div class="box-face box-top">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-top">
                             ✨ Open Me ✨
                         </div>
-                        <div class="box-face box-bottom">
+                        <div class="love-content-sanctuary-face love-content-sanctuary-bottom">
                             📦
                         </div>
                         
                         <!-- Memory Items inside the box -->
-                        <div class="memory-items" id="memoryItems">
-                            <div class="memory-item photo" data-memory="photo">
+                        <div class="precious-moment-items" id="memoryItems">
+                            <div class="precious-moment-story-piece photo" data-memory="photo">
                                 <div style="font-size: 2rem;">📸</div>
                                 <div style="font-size: 0.9rem; margin-top: 0.5rem;">First Photo</div>
                             </div>
-                            <div class="memory-item note" data-memory="note">
+                            <div class="precious-moment-story-piece note" data-memory="note">
                                 <div style="font-size: 2rem;">💌</div>
                                 <div style="font-size: 0.9rem; margin-top: 0.5rem;">Love Note</div>
                             </div>
-                            <div class="memory-item ticket" data-memory="ticket">
+                            <div class="precious-moment-story-piece ticket" data-memory="ticket">
                                 <div style="font-size: 2rem;">🎫</div>
                                 <div style="font-size: 0.9rem; margin-top: 0.5rem;">First Date</div>
                             </div>
-                            <div class="memory-item quote" data-memory="quote">
+                            <div class="precious-moment-story-piece quote" data-memory="quote">
                                 <div style="font-size: 2rem;">💭</div>
                                 <div style="font-size: 0.9rem; margin-top: 0.5rem;">Sweet Quote</div>
                             </div>
@@ -366,17 +86,17 @@
                 
                 <div class="instruction-text">
                     Click on the memory box to open it and explore our precious keepsakes
-                </div>
+                </section>
                 
                 <!-- Unlock Next Page Section -->
-                <div class="unlock-section">
+                <div class="unlock-story-chapter">
                     <h3 class="text-2xl font-dancing text-white mb-4">
                         🎉 Memory Box Explored! 🎉
                     </h3>
                     <p class="text-white/80 mb-6">
                         You've discovered our precious memories! Ready for our future dreams?
                     </p>
-                    <button class="unlock-btn" id="unlockBtn" onclick="unlockNextPage()">
+                    <button class="unlock-love-action" id="unlockBtn" onclick="unlockNextPage()">
                         ✨ Continue to Bucket List ✨
                     </button>
                 </div>
@@ -385,14 +105,14 @@
     </main>
     
     <!-- Memory Modal -->
-    <div class="memory-modal" id="memoryModal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeMemoryModal()">&times;</button>
+    <div class="precious-moment-story-spotlight" id="memoryModal">
+        <div class="story-spotlight-content">
+            <button class="close-story-spotlight" onclick="closeMemoryModal()">&times;</button>
             <div id="modalContent">
                 <!-- Content will be dynamically loaded -->
             </div>
         </div>
-    </div>
+    </nav>
     
     <!-- Navigation Loader -->
     <script type="module" src="../scripts/navigation-loader.js"></script>
@@ -433,12 +153,12 @@
             });
             
             // Setup memory item click handlers
-            const memoryItems = document.querySelectorAll('.memory-item');
+            const memoryItems = document.querySelectorAll('.precious-moment-item');
             memoryItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (boxOpened) {
-                        showMemoryDetail(item.dataset.memory);
+                        showMemoryDetail(item.dataset.precious-moment);
                     }
                 });
             });
@@ -475,7 +195,7 @@
         
         function createSparkleEffect() {
             const sparkles = ['✨', '⭐', '💫', '🌟'];
-            const container = document.querySelector('.memory-box-container');
+            const container = document.querySelector('.precious-moment-box-container');
             
             for (let i = 0; i < 20; i++) {
                 const sparkle = document.createElement('div');
@@ -670,7 +390,7 @@
                 }
             }
             
-            .memory-item.explored {
+            .precious-moment-item.explored {
                 border: 2px solid #00c851;
                 box-shadow: 0 0 20px rgba(0, 200, 81, 0.4);
             }
@@ -679,9 +399,9 @@
     </script>
     
     <!-- Unified Navigation & Data Management System -->
-    <script type="module" src="../../utils/unifiedNavigation.js"></script>
-    <script type="module" src="../../utils/dataManager.js"></script>
-    <script type="module" src="../../utils/jsonDatabase.js"></script>
+    <script type="module" src="../../utils/Navigation.js"></script>
+    <script type="module" src="../../data/DataManager.js"></script>
+    <script type="module" src="../../utils/Database.js"></script>
     <script>
         // Initialize unified systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
