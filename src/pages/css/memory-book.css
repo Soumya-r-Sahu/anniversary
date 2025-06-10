@@ -1,11 +1,13 @@
-/* Memory Book Page Styles */
+/* Enhanced Memory Book Page Styles */
 .precious-moment-book-container {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 2rem;
     margin: 2rem 0;
+    transition: all 0.3s ease;
 }
 
+/* Enhanced Sidebar */
 .precious-moment-sidebar {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -15,6 +17,12 @@
     height: fit-content;
     position: sticky;
     top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.precious-moment-sidebar:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .category-list {
@@ -23,6 +31,7 @@
     margin: 0;
 }
 
+/* Enhanced Category Items */
 .category-item {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -35,6 +44,23 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.category-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 105, 180, 0.2), 
+        transparent);
+    transition: left 0.6s ease;
 }
 
 .category-item:hover,
@@ -42,8 +68,21 @@
     background: rgba(255, 105, 180, 0.3);
     border-color: #ff69b4;
     color: #fff;
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
 }
 
+.category-item:hover::before,
+.category-item.active::before {
+    left: 100%;
+}
+
+.category-item:active {
+    transform: translateX(2px);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Category Count Badge */
 .category-count {
     background: rgba(255, 105, 180, 0.3);
     color: #fff;
@@ -51,6 +90,13 @@
     border-radius: 10px;
     font-size: 0.8rem;
     margin-left: auto;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover .category-count,
+.category-item.active .category-count {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
 
 .precious-moment-main {
@@ -58,6 +104,7 @@
     flex-direction: column;
 }
 
+/* Enhanced Controls */
 .precious-moment-controls {
     display: flex;
     gap: 1rem;
@@ -66,11 +113,17 @@
     flex-wrap: wrap;
 }
 
+/* Enhanced View Toggle */
 .view-toggle {
     display: flex;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.view-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .view-btn {
@@ -80,14 +133,40 @@
     padding: 0.8rem 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.view-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 105, 180, 0.3);
+    transition: width 0.3s ease;
 }
 
 .view-btn.active,
 .view-btn:hover {
     background: rgba(255, 105, 180, 0.3);
     color: #fff;
+    transform: scale(1.05);
 }
 
+.view-btn.active::before,
+.view-btn:hover::before {
+    width: 100%;
+}
+
+.view-btn:active {
+    transform: scale(1.02);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Search Box */
 .search-box {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -96,12 +175,30 @@
     border-radius: 10px;
     flex: 1;
     max-width: 300px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: rgba(255, 105, 180, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 0 0 4px rgba(255, 105, 180, 0.15),
+        0 8px 24px rgba(255, 105, 180, 0.2);
+    transform: translateY(-2px);
 }
 
 .search-box::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease;
 }
 
+.search-box:focus::placeholder {
+    color: rgba(255, 105, 180, 0.7);
+}
+
+/* Enhanced Memory Grid */
 .precious-moment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -114,22 +211,56 @@
     gap: 2rem;
 }
 
+/* Enhanced Memory Items */
 .precious-moment-item {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    will-change: transform, box-shadow;
+}
+
+.precious-moment-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 105, 180, 0.3),
+        rgba(138, 43, 226, 0.3),
+        rgba(255, 154, 158, 0.3));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
 }
 
 .precious-moment-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 105, 180, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+.precious-moment-item:hover::before {
+    opacity: 1;
+}
+
+.precious-moment-item:active {
+    transform: translateY(-8px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Photo Display */
 .precious-moment-photo {
     width: 100%;
     height: 200px;
@@ -142,6 +273,12 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.precious-moment-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
 }
 
 .precious-moment-photo img {
@@ -149,193 +286,12 @@
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
-}
-
-.precious-moment-photo.placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 3rem;
-}
-
-.photo-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: white;
-    font-size: 1.2rem;
-}
-
-.precious-moment-photo:hover .photo-overlay {
-    opacity: 1;
-}
-
-.precious-moment-date {
-    color: #ff69b4;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.precious-moment-title {
-    color: #fff;
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.precious-moment-description {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.precious-moment-tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-.precious-moment-tag {
-    background: rgba(255, 105, 180, 0.3);
-    color: #fff;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(255, 105, 180, 0.5);
-}
-
-.precious-moment-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.precious-moment-btn {
-    background: rgba(255, 105, 180, 0.3);
-    border: 1px solid #ff69b4;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
 }
 
-.precious-moment-btn:hover {
-    background: #ff69b4;
-    transform: scale(1.05);
-}
-
-.love-journey-item {
-    display: flex;
-    gap: 2rem;
-    position: relative;
-    padding-left: 3rem;
-}
-
-.love-journey-item::before {
-    content: '';
-    position: absolute;
-    left: 1rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #ff69b4, rgba(255, 105, 180, 0.3));
-}
-
-.love-journey-marker {
-    position: absolute;
-    left: 0.5rem;
-    top: 1rem;
-    width: 20px;
-    height: 20px;
-    background: #ff69b4;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.love-journey-content {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.add-memory-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: linear-gradient(45deg, #ff69b4, #8a2be2);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.add-memory-btn:hover {
+.precious-moment-photo:hover img {
     transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
-}
-
-.export-controls {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1rem;
-    margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-}
-
-.export-btn {
-    background: rgba(255, 105, 180, 0.3);
-    border: 1px solid #ff69b4;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 0 0.5rem;
-}
-
-.export-btn:hover {
-    background: #ff69b4;
-    transform: scale(1.05);
-}
-
-.precious-moment-stats {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.stats-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff69b4;
-}
-
-.stats-label {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+    filter: brightness(1.1) saturate(1.1);
 }
 
 /* Memory Book Hero Section */
@@ -680,6 +636,11 @@
     transition: left 0.5s ease;
 }
 
+.precious-moment-filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
 .precious-moment-filter-btn:hover::before {
     left: 100%;
 }
@@ -688,8 +649,6 @@
 .precious-moment-filter-btn.active {
     background: linear-gradient(135deg, #ff69b4, #ff1493);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
 }
 
 /* Memory Stats */

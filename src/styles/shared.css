@@ -702,68 +702,776 @@ body.dark  {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
-@media (max-width: 768px)  {
-    .story-navigation-links  {
-    display: none;
+/* ==================================================
+   ENHANCED BUTTON SYSTEM - PROFESSIONAL POLISH
+   ================================================== */
+
+/* Enhanced Universal Button Effects */
+button,
+.btn,
+.love-action,
+.enhanced-button,
+.control-button,
+.submit-button,
+.unlock-button,
+.nav-button,
+.action-btn,
+.test-button,
+.share-btn,
+.filter-tab,
+.ignite-btn,
+.surprise-button,
+[role="button"] {
+    /* Enhanced foundation */
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow, background;
+    touch-action: manipulation;
+    backface-visibility: hidden;
+    
+    /* Enhanced visual quality */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    
+    /* Premium shadows */
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-  .story-navigation-content  {
-    padding: 0.5rem 1rem;
+/* Enhanced Universal Hover States */
+button:hover,
+.btn:hover,
+.love-action:hover,
+.enhanced-button:hover,
+.control-button:hover,
+.submit-button:hover,
+.unlock-button:hover,
+.nav-button:hover,
+.action-btn:hover,
+.test-button:hover,
+.share-btn:hover,
+.filter-tab:hover:not(.active) {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 12px 32px rgba(0, 0, 0, 0.18),
+        0 6px 16px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    filter: brightness(1.1) saturate(1.1);
 }
 
-  .love-story-content  {
-    padding-top: 5rem;
+/* Enhanced Universal Active States */
+button:active,
+.btn:active,
+.love-action:active,
+.enhanced-button:active,
+.control-button:active,
+.submit-button:active,
+.unlock-button:active,
+.nav-button:active,
+.action-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 
+        0 6px 16px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease;
 }
 
-}
-
-/* Accessibility */
-*:focus  {
-    outline: 2px solid var(--primary-500);
+/* Enhanced Universal Focus States */
+button:focus-visible,
+.btn:focus-visible,
+.love-action:focus-visible {
+    outline: 3px solid rgba(255, 107, 157, 0.6);
     outline-offset: 2px;
+    border-radius: 8px;
 }
 
-*:focus:not(:focus-visible)  {
+/* Enhanced Disabled States */
+button:disabled,
+.btn:disabled,
+.love-action:disabled,
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+    filter: grayscale(0.3);
+    pointer-events: none;
+}
+
+/* Enhanced Premium Ripple Effect */
+button::before,
+.btn::before,
+.love-action::before,
+.enhanced-button::before,
+.control-button::before,
+.submit-button::before,
+.unlock-button::before,
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+button:hover::before,
+.btn:hover::before,
+.love-action:hover::before,
+.enhanced-button:hover::before,
+.control-button:hover::before,
+.submit-button:hover::before,
+.unlock-button:hover::before,
+.nav-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Gradient Button Styles */
+.love-action-primary,
+.submit-button,
+.unlock-button,
+.ignite-btn {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-action-primary::after,
+.submit-button::after,
+.unlock-button::after,
+.ignite-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.love-action-primary:hover::after,
+.submit-button:hover::after,
+.unlock-button:hover::after,
+.ignite-btn:hover::after {
+    left: 100%;
+}
+
+/* Enhanced Glass Button Styles */
+.love-action-secondary,
+.nav-button.secondary,
+.control-button {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.love-action-secondary:hover,
+.nav-button.secondary:hover,
+.control-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 107, 157, 0.4);
+}
+
+/* Enhanced Music Control Buttons */
+.music-control-btn,
+.ui-control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.music-control-btn:hover,
+.ui-control-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 107, 157, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 32px rgba(255, 107, 157, 0.2),
+        0 6px 16px rgba(0, 0, 0, 0.1),
+        0 0 0 4px rgba(255, 107, 157, 0.1);
+}
+
+/* Enhanced Filter Tab System */
+.filter-tab,
+.visual-story-filter-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 0.875rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-weight: 600;
+    overflow: hidden;
+}
+
+.filter-tab:hover,
+.visual-story-filter-btn:hover {
+    background: rgba(255, 107, 157, 0.15);
+    border-color: rgba(255, 107, 157, 0.3);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 8px 24px rgba(255, 107, 157, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.filter-tab.active,
+.visual-story-filter-btn.active {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border-color: rgba(255, 107, 157, 0.5);
+    color: white;
+    box-shadow: 
+        0 8px 24px rgba(236, 72, 153, 0.4),
+        0 0 0 4px rgba(236, 72, 153, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Special Button Effects */
+.surprise-button,
+.special-effect-btn {
+    position: relative;
+    overflow: hidden;
+    animation: gentlePulse 4s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        box-shadow: 
+            0 4px 16px rgba(236, 72, 153, 0.3),
+            0 0 0 0 rgba(236, 72, 153, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 8px 24px rgba(236, 72, 153, 0.5),
+            0 0 0 8px rgba(236, 72, 153, 0);
+    }
+}
+
+/* Enhanced Loading Button States */
+.loading-btn {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.loading-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: buttonSpin 1s linear infinite;
+}
+
+@keyframes buttonSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Responsive Button Optimizations */
+@media (max-width: 768px) {
+    button,
+    .btn,
+    .love-action {
+        min-height: 48px;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    button:hover,
+    .btn:hover,
+    .love-action:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+@media (max-width: 640px) {
+    button,
+    .btn,
+    .love-action {
+        font-size: 0.875rem;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Enhanced Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    button,
+    .btn,
+    .love-action {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    button:active,
+    .btn:active,
+    .love-action:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Enhanced High Contrast Support */
+@media (prefers-contrast: high) {
+    button,
+    .btn,
+    .love-action {
+        border: 3px solid;
+        background: #000000;
+        color: #ffffff;
+    }
+    
+    button:hover,
+    .btn:hover,
+    .love-action:hover {
+        background: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Enhanced Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    button,
+    .btn,
+    .love-action,
+    button::before,
+    .btn::before,
+    .love-action::before {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    button:hover,
+    .btn:hover,
+    .love-action:hover {
+        transform: none;
+        background-color: rgba(255, 107, 157, 0.1);
+        border-color: rgba(255, 107, 157, 0.3);
+    }
+}
+
+/* ==================================================
+   ENHANCED BUTTON SYSTEM COMPLETE
+   ================================================== */
+
+/* ==================================================
+   ENHANCED FORM SYSTEM - PROFESSIONAL POLISH
+   ================================================== */
+
+/* Enhanced Universal Form Elements */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select,
+.form-input,
+.form-control,
+.love-milestone-input {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    will-change: border-color, box-shadow, background;
+    width: 100%;
+}
+
+/* Enhanced Form Focus States */
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus,
+.form-input:focus,
+.form-control:focus,
+.love-milestone-input:focus {
     outline: none;
+    border-color: rgba(255, 107, 157, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        0 0 0 4px rgba(255, 107, 157, 0.15),
+        0 8px 24px rgba(255, 107, 157, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
 }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce)  {
-    *, *::before, *::after  {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* Enhanced Placeholder Styling */
+input::placeholder,
+textarea::placeholder,
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    transition: color 0.3s ease;
 }
 
+input:focus::placeholder,
+textarea:focus::placeholder,
+.form-input:focus::placeholder {
+    color: rgba(255, 107, 157, 0.7);
 }
 
-/* Text Shadow Utilities for Dark Romantic Theme */
-.text-shadow-dark  {
-    text-shadow: 0 1px 3px rgba(26, 11, 46, 0.8);
+/* Enhanced Form Labels */
+.form-label,
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
 }
 
-.text-shadow-glow  {
-    text-shadow: 0 0 10px rgba(139, 90, 140, 0.6);
+.form-group:focus-within .form-label {
+    color: rgba(255, 107, 157, 0.9);
 }
 
-.text-shadow-strong  {
-    text-shadow: 0 2px 4px rgba(26, 11, 46, 0.9), 0 0 8px rgba(139, 90, 140, 0.4);
+/* Enhanced Select Styling */
+select,
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ff6b9d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 3rem;
+    appearance: none;
 }
 
-/* Enhanced text contrast for dark romantic theme */
-.text-high-contrast  {
-    color: var(--text-primary, #f8e8ff);
-    text-shadow: 0 1px 3px rgba(26, 11, 46, 0.8);
+/* Enhanced Textarea Styling */
+textarea,
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    line-height: 1.6;
 }
 
-.text-medium-contrast  {
-    color: var(--text-secondary, #d1a3d1);
-    text-shadow: 0 1px 2px rgba(26, 11, 46, 0.6);
+/* Enhanced Checkbox and Radio Styling */
+input[type="checkbox"],
+input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.text-low-contrast  {
-    color: var(--text-tertiary, #b794b7);
-    text-shadow: 0 1px 2px rgba(26, 11, 46, 0.4);
+input[type="radio"] {
+    border-radius: 50%;
 }
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border-color: rgba(255, 107, 157, 0.6);
+    box-shadow: 
+        0 0 0 4px rgba(255, 107, 157, 0.15),
+        0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    transform: translate(-50%, -50%);
+}
+
+/* Enhanced File Input Styling */
+input[type="file"] {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: rgba(255, 107, 157, 0.5);
+    background: rgba(255, 107, 157, 0.1);
+}
+
+/* Enhanced Form Validation States */
+.form-input.valid,
+input:valid {
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+.form-input.invalid,
+input:invalid {
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.form-input.valid:focus,
+input:valid:focus {
+    box-shadow: 
+        0 0 0 4px rgba(34, 197, 94, 0.15),
+        0 8px 24px rgba(34, 197, 94, 0.2);
+}
+
+.form-input.invalid:focus,
+input:invalid:focus {
+    box-shadow: 
+        0 0 0 4px rgba(239, 68, 68, 0.15),
+        0 8px 24px rgba(239, 68, 68, 0.2);
+}
+
+/* Enhanced Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group.floating-label {
+    position: relative;
+}
+
+.form-group.floating-label .form-label {
+    position: absolute;
+    top: 0.875rem;
+    left: 1.25rem;
+    margin: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group.floating-label input:focus + .form-label,
+.form-group.floating-label input:not(:placeholder-shown) + .form-label {
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    color: rgba(255, 107, 157, 0.9);
+    background: rgba(26, 11, 46, 0.9);
+    padding: 0 0.5rem;
+    border-radius: 4px;
+}
+
+/* Enhanced Form Buttons in Context */
+.form-group button,
+.form-group .btn {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Enhanced Toggle Switches */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 34px;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 2px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border-color: rgba(255, 107, 157, 0.4);
+    box-shadow: 
+        0 6px 16px rgba(236, 72, 153, 0.3),
+        0 0 0 4px rgba(236, 72, 153, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Enhanced Form Error Messages */
+.form-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.form-success {
+    color: #22c55e;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Enhanced Form Disabled States */
+input:disabled,
+textarea:disabled,
+select:disabled,
+.form-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Responsive Form Design */
+@media (max-width: 768px) {
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .form-input {
+        min-height: 48px;
+        padding: 0.875rem 1rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 640px) {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .form-input {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Enhanced Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .form-input {
+        min-height: 48px;
+    }
+    
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Enhanced High Contrast Support */
+@media (prefers-contrast: high) {
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .form-input {
+        border: 3px solid;
+        background: rgba(0, 0, 0, 0.9);
+        color: #ffffff;
+    }
+    
+    input:focus,
+    textarea:focus,
+    select:focus,
+    .form-input:focus {
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Enhanced Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .form-input,
+    .slider,
+    .form-label {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ==================================================
+   ENHANCED FORM SYSTEM COMPLETE
+   ================================================== */
 

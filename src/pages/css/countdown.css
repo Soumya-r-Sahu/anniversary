@@ -1,5 +1,3 @@
-
-
 /* Enhanced countdown styles */
 .love-milestone-countdown-container  {
     background: rgba(255, 255, 255, 0.1);
@@ -15,8 +13,49 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    will-change: transform, box-shadow;
 }
 
+.love-milestone-countdown-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.3),
+        rgba(236, 72, 153, 0.3),
+        rgba(255, 154, 158, 0.3));
+    border-radius: 32px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.love-milestone-countdown-container:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 30px 80px rgba(236, 72, 153, 0.3),
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.love-milestone-countdown-container:hover::before {
+    opacity: 1;
+}
+
+.love-milestone-countdown-container:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Countdown Numbers */
 .love-milestone-countdown-number  {
     background: linear-gradient(135deg, #ec4899, #f472b6);
     background-clip: text;
@@ -25,34 +64,143 @@
     font-size: 4rem;
     font-weight: 700;
     text-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
 }
 
+.love-milestone-countdown-number:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 25px rgba(236, 72, 153, 0.5));
+}
+
+/* Enhanced Countdown Labels */
 .love-milestone-countdown-label  {
     color: #ec4899;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
+.love-milestone-countdown-label:hover {
+    color: #f472b6;
+    letter-spacing: 1.5px;
+    transform: scale(1.05);
+}
+
+/* Enhanced Countdown Items */
 .love-milestone-countdown-item  {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 1.5rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-milestone-countdown-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.2),
+        rgba(236, 72, 153, 0.2),
+        rgba(255, 154, 158, 0.2));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(3px);
 }
 
 .love-milestone-countdown-item:hover  {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(236, 72, 153, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 50px rgba(236, 72, 153, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.love-milestone-countdown-item:hover::before {
+    opacity: 1;
+}
+
+.love-milestone-countdown-item:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Interactive Buttons in Countdown */
+.love-milestone-countdown-container .btn,
+.love-milestone-countdown-container button,
+.countdown-action-btn {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border: none;
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.love-milestone-countdown-container .btn:hover,
+.love-milestone-countdown-container button:hover,
+.countdown-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+    filter: brightness(1.1);
+}
+
+.love-milestone-countdown-container .btn::before,
+.love-milestone-countdown-container button::before,
+.countdown-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.love-milestone-countdown-container .btn:hover::before,
+.love-milestone-countdown-container button:hover::before,
+.countdown-action-btn:hover::before {
+    left: 100%;
+}
+
+.love-milestone-countdown-container .btn:active,
+.love-milestone-countdown-container button:active,
+.countdown-action-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
 }
 
 /* Enhanced container transitions */
 .love-milestone-countdown-container .grid  {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.love-milestone-countdown-container .grid:hover {
+    transform: scale(1.01);
 }
 
 /* Enhanced Redirect Countdown Animations */

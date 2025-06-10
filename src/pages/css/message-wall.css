@@ -1,4 +1,4 @@
-/* Message Wall Page Styles */
+/* Enhanced Message Wall Page Styles */
 .sweet-communication-wall-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     min-height: 100vh;
@@ -7,6 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.sweet-communication-wall-hero:hover {
+    filter: brightness(1.05) saturate(1.1);
 }
 
 .sweet-communication-wall-hero::before {
@@ -39,6 +45,7 @@
     margin: 3rem 0;
 }
 
+/* Enhanced Message Cards */
 .sweet-communication-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -47,12 +54,31 @@
     padding: 2rem;
     position: relative;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform, box-shadow;
+}
+
+.sweet-communication-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(102, 126, 234, 0.3),
+        rgba(118, 75, 162, 0.3),
+        rgba(240, 147, 251, 0.3));
+    border-radius: calc(1.5rem + 2px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
 }
 
 .sweet-communication-card::before {
@@ -72,30 +98,24 @@
 }
 
 .sweet-communication-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(102, 126, 234, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-.sweet-communication-content {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-}
-
-.sweet-communication-card:hover .sweet-communication-content {
+.sweet-communication-card:hover::after {
     opacity: 1;
-    transform: translateY(0);
 }
 
-.sweet-communication-card.revealed .sweet-communication-content {
-    opacity: 1;
-    transform: translateY(0);
+.sweet-communication-card:active {
+    transform: translateY(-8px) scale(1.01);
+    transition: all 0.1s ease;
 }
 
+/* Enhanced Card Number Badge */
 .sweet-communication-number {
     position: absolute;
     top: 1rem;
@@ -111,6 +131,17 @@
     font-weight: bold;
     font-size: 1.1rem;
     z-index: 3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.sweet-communication-number:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.sweet-communication-card:hover .sweet-communication-number {
+    background: linear-gradient(135deg, #f093fb, #667eea);
 }
 
 .sweet-communication-text {
@@ -134,6 +165,7 @@
     text-align: center;
 }
 
+/* Enhanced Progress Section */
 .progress-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -143,22 +175,65 @@
     margin: 3rem auto;
     max-width: 600px;
     text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
+.progress-section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(102, 126, 234, 0.2),
+        rgba(118, 75, 162, 0.2),
+        rgba(240, 147, 251, 0.2));
+    border-radius: calc(1.5rem + 2px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(3px);
+}
+
+.progress-section:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(102, 126, 234, 0.3),
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.progress-section:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Progress Bar */
 .progress-bar {
     width: 100%;
     height: 12px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     overflow: hidden;
-    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.progress-bar:hover {
+    height: 14px;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
     border-radius: 6px;
-    transition: width 0.8s ease;
+    transition: width 0.5s ease;
     position: relative;
 }
 
@@ -166,109 +241,111 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: progress-shine 2s infinite;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    animation: progressShimmer 2s ease-in-out infinite;
 }
 
-@keyframes progress-shine {
-    0% { left: -100%; }
-    100% { left: 100%; }
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
-.sparkle {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1rem;
-    pointer-events: none;
-    animation: sparkle-float 2s ease-out forwards;
-}
-
-@keyframes sparkle-float {
-    0% {
-        transform: translateY(0) scale(0) rotate(0deg);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        transform: translateY(-100px) scale(0) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.floating-hearts {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.floating-heart {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 1.5rem;
-    animation: float-heart 12s infinite linear;
-    pointer-events: none;
-}
-
-@keyframes float-heart {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.unlock-section {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: rgba(255, 255, 255, 0.05);
+/* Enhanced Compose Message Section */
+.compose-message-section {
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
-    border-radius: 2rem;
-    margin: 4rem auto;
-    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin: 3rem 0;
+    transition: all 0.3s ease;
 }
 
-.unlock-button {
+.compose-message-section:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.compose-textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Dancing Script', cursive;
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.compose-textarea:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 0 0 4px rgba(102, 126, 234, 0.15),
+        0 8px 24px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.compose-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.compose-textarea:focus::placeholder {
+    color: rgba(102, 126, 234, 0.7);
+}
+
+.compose-submit-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     border: none;
     color: white;
-    padding: 1.2rem 3rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
     font-weight: 600;
-    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-    text-decoration: none;
-    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
 }
 
-.unlock-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 45px rgba(102, 126, 234, 0.6);
-    color: white;
+.compose-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    filter: brightness(1.1);
 }
 
-.unlock-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+.compose-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.compose-submit-btn:hover::before {
+    left: 100%;
+}
+
+.compose-submit-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
 }
 
 /* Responsive Design */

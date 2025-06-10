@@ -1,4 +1,4 @@
-/* Star Map Page Styles */
+/* Enhanced Star Map Page Styles */
 
 .starmap-container {
     min-height: 100vh;
@@ -6,9 +6,14 @@
     position: relative;
     overflow: hidden;
     color: #ffffff;
+    transition: all 0.3s ease;
 }
 
-/* Header Styles */
+.starmap-container:hover {
+    background: radial-gradient(ellipse at center, #0b0b1f 0%, #000005 70%);
+}
+
+/* Enhanced Header Styles */
 .page-header {
     position: fixed;
     top: 0;
@@ -18,6 +23,12 @@
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.page-header:hover {
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
 .navigation {
@@ -27,15 +38,21 @@
     padding: 1rem 2rem;
 }
 
+/* Enhanced Navigation Elements */
 .story-navigation-home {
     color: #ffd700;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
 }
 
 .story-navigation-home:hover {
     color: #ffed4e;
+    background: rgba(255, 215, 0, 0.1);
+    transform: scale(1.05);
 }
 
 .page-title {
@@ -44,6 +61,13 @@
     color: #e8d5ff;
     margin: 0;
     text-shadow: 0 0 10px rgba(232, 213, 255, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.page-title:hover {
+    text-shadow: 0 0 20px rgba(232, 213, 255, 0.8);
+    transform: scale(1.02);
 }
 
 .story-navigation-controls {
@@ -51,6 +75,7 @@
     gap: 1rem;
 }
 
+/* Enhanced Control Buttons */
 .constellation-toggle,
 .date-picker-btn {
     background: rgba(255, 215, 0, 0.2);
@@ -61,6 +86,24 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.constellation-toggle::before,
+.date-picker-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
 }
 
 .constellation-toggle:hover,
@@ -68,14 +111,37 @@
     background: rgba(255, 215, 0, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    filter: brightness(1.1);
 }
 
-/* Star Canvas */
+.constellation-toggle:hover::before,
+.date-picker-btn:hover::before {
+    left: 100%;
+}
+
+.constellation-toggle:active,
+.date-picker-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.constellation-toggle.active {
+    background: rgba(255, 215, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Enhanced Star Canvas */
 .star-canvas-container {
     position: relative;
     width: 100%;
     height: 100vh;
     padding-top: 80px;
+    transition: all 0.3s ease;
+}
+
+.star-canvas-container:hover {
+    transform: scale(1.001);
 }
 
 .star-canvas {
@@ -83,9 +149,14 @@
     height: 100%;
     display: block;
     cursor: crosshair;
+    transition: all 0.3s ease;
 }
 
-/* Date Overlay */
+.star-canvas:hover {
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* Enhanced Date Overlay */
 .date-overlay {
     position: fixed;
     top: 0;
@@ -96,14 +167,28 @@
     display: none;
     z-index: 2000;
     backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 }
 
 .date-overlay.active {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: overlayFadeIn 0.3s ease-out;
 }
 
+@keyframes overlayFadeIn {
+    from { 
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to { 
+        opacity: 1;
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* Enhanced Date Picker Card */
 .date-picker-card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -113,6 +198,40 @@
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    overflow: hidden;
+    will-change: transform, box-shadow;
+}
+
+.date-picker-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 215, 0, 0.3),
+        rgba(232, 213, 255, 0.3),
+        rgba(255, 215, 0, 0.3));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.date-picker-card:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        0 20px 40px rgba(255, 215, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.date-picker-card:hover::before {
+    opacity: 1;
 }
 
 .date-picker-card h3 {
@@ -120,8 +239,15 @@
     font-size: 1.8rem;
     color: #e8d5ff;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
 }
 
+.date-picker-card:hover h3 {
+    text-shadow: 0 0 15px rgba(232, 213, 255, 0.8);
+    transform: scale(1.02);
+}
+
+/* Enhanced Date Input */
 .date-input {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -131,8 +257,29 @@
     font-size: 1rem;
     margin-bottom: 1.5rem;
     width: 100%;
+    transition: all 0.3s ease;
 }
 
+.date-input:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 0 0 4px rgba(255, 215, 0, 0.15),
+        0 8px 24px rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.date-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.date-input:focus::placeholder {
+    color: rgba(255, 215, 0, 0.7);
+}
+
+/* Enhanced Special Date Buttons */
 .special-dates-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -149,13 +296,42 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.special-date-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
 }
 
 .special-date-btn:hover {
     background: rgba(255, 215, 0, 0.3);
-    transform: scale(1.05);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    filter: brightness(1.1);
 }
 
+.special-date-btn:hover::before {
+    left: 100%;
+}
+
+.special-date-btn:active {
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Close Overlay Button */
 .close-overlay {
     position: absolute;
     top: 10px;

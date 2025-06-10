@@ -1,15 +1,21 @@
-/* Photo Gallery Page Styles */
+/* Enhanced Photo Gallery Page Styles */
 
-/* Memory Lane Road Animation Styles */
+/* Enhanced Memory Lane Road Animation Styles */
 .precious-moment-road-container  {
     position: relative;
     width: 100%;
     height: 100vh;
     background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 50%, #B0E0E6 100%);
     overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Animated Winding Road */
+.precious-moment-road-container:hover {
+    filter: brightness(1.05) saturate(1.1);
+}
+
+/* Enhanced Animated Winding Road */
 .precious-moment-road  {
     position: absolute;
     top: 0;
@@ -17,9 +23,10 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    transition: all 0.3s ease;
 }
 
-/* SVG Path for Winding Road */
+/* Enhanced SVG Path for Winding Road */
 .road-path  {
     position: absolute;
     top: 0;
@@ -35,6 +42,11 @@
     stroke-width: 120;
     stroke-linecap: round;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+}
+
+.precious-moment-road-container:hover .road-stroke {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
 }
 
 .road-center-line  {
@@ -44,6 +56,12 @@
     stroke-linecap: round;
     stroke-dasharray: 20 15;
     animation: roadDashMove 2s linear infinite;
+    transition: all 0.3s ease;
+}
+
+.precious-moment-road-container:hover .road-center-line {
+    animation-duration: 1.5s;
+    stroke-width: 5;
 }
 
 @keyframes roadDashMove  {
@@ -64,6 +82,12 @@
     transform-origin: center;
     width: 80px;
     height: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.precious-moment-car:hover {
+    transform: scale(1.1);
 }
 
 .car-body  {
@@ -73,7 +97,13 @@
     border-radius: 20px 20px 5px 5px;
     position: relative;
     box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
-    transition: transform 0.1s ease-out;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.car-body:hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+    transform: translateY(-2px);
 }
 
 .car-windows  {
@@ -85,6 +115,12 @@
     background: rgba(135, 206, 235, 0.8);
     border-radius: 15px 15px 3px 3px;
     border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.car-body:hover .car-windows {
+    background: rgba(135, 206, 235, 1);
+    border-color: rgba(255, 255, 255, 0.9);
 }
 
 .car-wheels  {
@@ -101,32 +137,87 @@
     height: 20px;
     background: #2d3748;
     border-radius: 50%;
-    border: 3px solid #4a5568;
-    animation: wheelSpin 0.3s linear infinite;
+    transition: all 0.3s ease;
+    animation: wheelSpin 1s linear infinite;
+}
+
+@keyframes wheelSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.car-body:hover .wheel {
+    animation-duration: 0.5s;
+    background: #1a202c;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Photo Gallery Grid */
+.photo-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
     position: relative;
 }
 
-.wheel::after  {
+.photo-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    will-change: transform, box-shadow;
+}
+
+.photo-item::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 2px;
-    background: #6b7280;
-    transform: translate(-50%, -50%);
-    border-radius: 1px;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.3),
+        rgba(236, 72, 153, 0.3),
+        rgba(255, 154, 158, 0.3));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
 }
 
-@keyframes wheelSpin  {
-    0%  {
-    transform: rotate(0deg);
+.photo-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(255, 107, 157, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-    100%  {
-    transform: rotate(360deg);
+.photo-item:hover::before {
+    opacity: 1;
 }
 
+.photo-item:active {
+    transform: translateY(-8px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1) saturate(1.1);
 }
 
 /* Memory Popup Boxes */

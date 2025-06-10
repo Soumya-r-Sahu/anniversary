@@ -1,5 +1,6 @@
-/* Quiz Page Styles */
+/* Enhanced Quiz Page Styles */
 
+/* Enhanced Quiz Hero */
 .quiz-hero {
     background: linear-gradient(135deg, #8360c3 0%, #2ebf91 50%, #ff6b9d 100%);
     min-height: 100vh;
@@ -8,6 +9,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.quiz-hero:hover {
+    filter: brightness(1.05) saturate(1.1);
 }
 
 .floating-questions {
@@ -18,6 +24,11 @@
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.quiz-hero:hover .floating-questions {
+    transform: scale(1.05);
 }
 
 .question-mark {
@@ -25,6 +36,13 @@
     color: rgba(255, 255, 255, 0.4);
     animation: questionFloat 6s infinite ease-in-out;
     font-size: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.question-mark:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
 }
 
 @keyframes questionFloat {
@@ -38,14 +56,21 @@
     }
 }
 
+/* Enhanced Quiz Container */
 .quiz-container {
     position: relative;
     z-index: 10;
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+    transition: all 0.3s ease;
 }
 
+.quiz-container:hover {
+    transform: scale(1.01);
+}
+
+/* Enhanced Quiz Card */
 .quiz-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -55,14 +80,60 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    will-change: transform, box-shadow;
 }
 
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(131, 96, 195, 0.3),
+        rgba(46, 191, 145, 0.3),
+        rgba(255, 107, 157, 0.3));
+    border-radius: calc(2rem + 2px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.quiz-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(131, 96, 195, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.quiz-card:hover::before {
+    opacity: 1;
+}
+
+.quiz-card:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Progress Bar */
 .quiz-progress {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     height: 8px;
     margin-bottom: 2rem;
     overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-progress:hover {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .progress-bar {
@@ -71,20 +142,54 @@
     width: 0%;
     border-radius: 20px;
     transition: width 0.5s ease;
+    position: relative;
 }
 
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    animation: progressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Question Container */
 .question-container {
     margin: 2rem 0;
     min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
+.question-container:hover {
+    transform: scale(1.01);
+}
+
+/* Enhanced Question Elements */
 .question-number {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.question-number:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
 }
 
 .question-text {
@@ -94,49 +199,90 @@
     color: white;
     margin-bottom: 2rem;
     line-height: 1.4;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
+.question-text:hover {
+    transform: scale(1.02);
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced Answers Grid */
 .answers-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
-.answer-btn {
+/* Enhanced Answer Options */
+.answer-option {
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 1.5rem;
     color: white;
-    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
 }
 
-.answer-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+.answer-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.6s ease;
 }
 
-.answer-btn.correct {
-    background: linear-gradient(135deg, #00c851, #007e33);
-    border-color: #00c851;
-    animation: correctPulse 0.6s ease;
+.answer-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(131, 96, 195, 0.5);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(131, 96, 195, 0.3);
 }
 
-.answer-btn.incorrect {
+.answer-option:hover::before {
+    left: 100%;
+}
+
+.answer-option:active {
+    transform: translateY(-1px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+.answer-option.selected {
+    background: linear-gradient(135deg, #8360c3, #2ebf91);
+    border-color: rgba(131, 96, 195, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(131, 96, 195, 0.4);
+}
+
+.answer-option.correct {
+    background: linear-gradient(135deg, #00c851, #00ff88);
+    border-color: rgba(0, 200, 81, 0.8);
+    animation: correctPulse 0.6s ease-out;
+}
+
+.answer-option.incorrect {
     background: linear-gradient(135deg, #ff4444, #cc0000);
-    border-color: #ff4444;
-    animation: incorrectShake 0.6s ease;
+    border-color: rgba(255, 68, 68, 0.8);
+    animation: incorrectShake 0.6s ease-out;
 }
 
 @keyframes correctPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.05); }
 }
 
 @keyframes incorrectShake {

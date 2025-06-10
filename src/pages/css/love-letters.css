@@ -1,3 +1,232 @@
+/* Enhanced Love Letters Page Styles */
+
+/* Enhanced Love Message Cards */
+.love-message {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    cursor: pointer;
+    will-change: transform, box-shadow;
+}
+
+.love-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 20px,
+        rgba(236, 72, 153, 0.1) 20px,
+        rgba(236, 72, 153, 0.1) 22px
+    );
+    background-size: 22px 100%;
+}
+
+.love-message::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.3),
+        rgba(236, 72, 153, 0.3),
+        rgba(255, 154, 158, 0.3));
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(4px);
+}
+
+.love-message:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(236, 72, 153, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(236, 72, 153, 0.5);
+}
+
+.love-message:hover::after {
+    opacity: 1;
+}
+
+.love-message:active {
+    transform: translateY(-8px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Interactive Elements */
+.love-message .btn,
+.love-message button,
+.letter-action-btn {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border: none;
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.love-message .btn:hover,
+.love-message button:hover,
+.letter-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+    filter: brightness(1.1);
+}
+
+.love-message .btn::before,
+.love-message button::before,
+.letter-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.love-message .btn:hover::before,
+.love-message button:hover::before,
+.letter-action-btn:hover::before {
+    left: 100%;
+}
+
+.love-message .btn:active,
+.love-message button:active,
+.letter-action-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Enhanced Letter Date Badge */
+.letter-date {
+    background: linear-gradient(45deg, #ec4899, #f472b6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.letter-date:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+.letter-date::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.letter-date:hover::before {
+    left: 100%;
+}
+
+/* Enhanced Letter Envelope */
+.letter-envelope {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.letter-envelope:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+.letter-envelope::before {
+    content: '<i data-lucide="heart" class="icon-heart"></i>';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.letter-envelope:hover::before {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Enhanced Form Elements for Love Letters */
+.letter-composer-form .form-group input,
+.letter-composer-form .form-group textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    will-change: border-color, box-shadow;
+}
+
+.letter-composer-form .form-group input:focus,
+.letter-composer-form .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(236, 72, 153, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 0 0 4px rgba(236, 72, 153, 0.15),
+        0 8px 24px rgba(236, 72, 153, 0.2);
+    transform: translateY(-2px);
+}
+
+.letter-composer-form .form-group input::placeholder,
+.letter-composer-form .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.letter-composer-form .form-group input:focus::placeholder,
+.letter-composer-form .form-group textarea:focus::placeholder {
+    color: rgba(236, 72, 153, 0.7);
+}
+
 /* Love Letters Page Styles */
 
 .love-message {
