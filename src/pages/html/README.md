@@ -1,10 +1,10 @@
 # HTML Files
 
-This directory contains all html files for the Anniversary Website v4.0.0.
+This directory contains all html files for the Anniversary Website v5.0.0.
 
 ## Structure
 - Organized by file extension for better maintainability
-- Part of the new v4.0.0 architecture
+- Part of the new v5.0.0 architecture
 - Each file serves a specific purpose in the anniversary celebration
 
 ## Usage

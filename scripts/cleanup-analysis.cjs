@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-console.log('🧹 Anniversary Website v4.0.0 - Comprehensive File Cleanup Analysis');
+console.log('🧹 Anniversary Website v5.0.0 - Comprehensive File Cleanup Analysis');
 console.log('================================================================================');
 
 const baseDir = path.dirname(__dirname);
